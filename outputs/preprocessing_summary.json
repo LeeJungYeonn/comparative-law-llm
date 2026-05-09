@@ -1,0 +1,27 @@
+{
+  "total_rows": 100,
+  "rows_by_jurisdiction": {
+    "KR": 50,
+    "US": 50
+  },
+  "reasoning_token_count": {
+    "KR": {
+      "min": 22,
+      "median": 789.0,
+      "max": 4867
+    },
+    "US": {
+      "min": 219,
+      "median": 3800.0,
+      "max": 10841
+    }
+  },
+  "below_min_reasoning_tokens": {
+    "KR": 18,
+    "US": 1
+  },
+  "missing_reasoning_marker": {
+    "KR": 0,
+    "US": 25
+  }
+}

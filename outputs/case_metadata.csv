@@ -1,0 +1,102 @@
+﻿case_id,jurisdiction,country,court_name,court_level,decision_date,case_name,case_number_or_citation,source,case_type_keyword
+104947,KR,Korea,,appellate,2011-10-26,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금; 민법 제750조
+121915,KR,Korea,대법원,supreme,2002-03-13,,,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+38911,KR,Korea,,unknown,,,,lbox/lbox_open::precedent_corpus,손해배상
+66659,KR,Korea,대법원,supreme,2020-06-11,,2018고정81,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 지연손해금
+96329,KR,Korea,,trial,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
+31419,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,위자료
+129934,KR,Korea,,unknown,2015-10-20,,2010년 10,lbox/lbox_open::precedent_corpus,위자료; 지연손해금
+36616,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,불법행위
+69382,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 위자료; 지연손해금
+85061,KR,Korea,서울중앙지방법원,appellate,,,2019카합20280,lbox/lbox_open::precedent_corpus,위자료
+117324,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
+84898,KR,Korea,대법원,supreme,,,2008드단37479,lbox/lbox_open::precedent_corpus,위자료; 지연손해금
+5258,KR,Korea,대법원,supreme,,,2010다28604,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+31754,KR,Korea,대법원,supreme,,,2010다15363,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 상당인과관계
+83876,KR,Korea,대법원,supreme,2011-11-25,,2008가합2418,lbox/lbox_open::precedent_corpus,불법행위; 위자료; 지연손해금
+130519,KR,Korea,대법원,supreme,,,2016나52382,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+140296,KR,Korea,서울중앙지방법원,appellate,,,2001고단4388,lbox/lbox_open::precedent_corpus,손해배상
+91219,KR,Korea,서울중앙지방법원,appellate,2020-08-21,,"2018가소
+1780804",lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+29200,KR,Korea,대법원,supreme,2018-11-07,,2011가합112518,lbox/lbox_open::precedent_corpus,손해배상; 손해배상(기); 지연손해금; 상당인과관계
+61625,KR,Korea,,unknown,,,,lbox/lbox_open::precedent_corpus,불법행위
+28290,KR,Korea,대법원,supreme,2011-01-26,,,lbox/lbox_open::precedent_corpus,손해배상; 위자료; 지연손해금
+18558,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 지연손해금
+104819,KR,Korea,광주지방법원,appellate,,,2019고단5216,lbox/lbox_open::precedent_corpus,손해배상
+33940,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
+131883,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 위자료; 과실상계
+50381,KR,Korea,,unknown,,,,lbox/lbox_open::precedent_corpus,손해배상
+93462,KR,Korea,대법원,supreme,2010-02-04,,2005타경13406,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+88164,KR,Korea,대법원,supreme,,,2019고단3629,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금; 과실상계
+64705,KR,Korea,대법원,supreme,,,2009타경16181,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+132689,KR,Korea,,appellate,2020-08-20,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+66296,KR,Korea,대법원,supreme,,,2016가합109558,lbox/lbox_open::precedent_corpus,불법행위; 지연손해금
+102913,KR,Korea,대법원,supreme,,,2008부해830,lbox/lbox_open::precedent_corpus,불법행위
+125191,KR,Korea,,unknown,,,,lbox/lbox_open::precedent_corpus,손해배상; 위자료
+1845,KR,Korea,대법원,supreme,2021-01-28,,2001다82507,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 지연손해금
+114754,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 위자료; 지연손해금
+104762,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+77753,KR,Korea,,appellate,2000-05-26,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+49743,KR,Korea,,unknown,,,,lbox/lbox_open::precedent_corpus,손해배상
+80204,KR,Korea,대법원,supreme,2021-08-12,,2000다56822,lbox/lbox_open::precedent_corpus,손해배상; 위자료; 지연손해금; 과실상계
+69940,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
+58911,KR,Korea,대법원,supreme,2021-09-29,,2011므2997,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 지연손해금
+143871,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상
+78677,KR,Korea,,unknown,,,,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+89946,KR,Korea,광주고등법원,unknown,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
+63225,KR,Korea,대법원,supreme,,,,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+72769,KR,Korea,대법원,supreme,2016-02-04,,2001다38593,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금; 상당인과관계
+18603,KR,Korea,인천지방법원,appellate,,,2003르774,lbox/lbox_open::precedent_corpus,위자료; 지연손해금
+58005,KR,Korea,대법원,supreme,,,2005다61140,lbox/lbox_open::precedent_corpus,손해배상
+61284,KR,Korea,대법원,supreme,,,2018고단1633,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+91643,KR,Korea,대법원,supreme,1995-08-18,,1987년 7,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
+1742237,US,United States,"District Court, S.D. Iowa",trial,1996-05-15,"Bruce v. ICI Americas, Inc.",933 F. Supp. 781 (1996),harvard-lil/cold-cases,damages; negligence; tort
+2333112,US,United States,"District Court, D. Utah",trial,2004-10-04,Hafen v. Strebeck,338 F. Supp. 2d 1257 (2004),harvard-lil/cold-cases,damages; negligence; tort; duty of care
+2427282,US,United States,"District Court, D. Kansas",trial,2004-04-29,Sanders Ex Rel. Rayl v. KANSAS DEPT. OF SOCIAL AND REHABIL. SERVICES,317 F. Supp. 2d 1233 (2004),harvard-lil/cold-cases,damages
+1083174,US,United States,Court of Criminal Appeals of Tennessee,appellate,1997-12-10,State v. John Knapp,No weapon,harvard-lil/cold-cases,damages
+2201444,US,United States,Appellate Court of Illinois,appellate,1972-10-17,State Farm Mutual Automobile Insurance v. Hanson,No. 11616.,harvard-lil/cold-cases,damages; negligence
+1575504,US,United States,"District Court, District of Columbia",trial,2009-05-06,Cruz-Packer v. Chertoff,612 F.Supp.2d 67 (2009),harvard-lil/cold-cases,tort
+2698654,US,United States,Ohio Court of Appeals,appellate,2013-08-06,State v. Carpenter,269 U.S. 385,harvard-lil/cold-cases,negligence
+2645723,US,United States,New Mexico Court of Appeals,appellate,2013-12-05,Arias v. Phoenix Indemnity Ins. Co.,Docket No. 31,harvard-lil/cold-cases,damages; tort
+2698714,US,United States,Ohio Court of Appeals,appellate,2013-07-12,Dicken v. Statutory Agent for Allstate Ins. Co.,Case No. 12-CA-127,harvard-lil/cold-cases,damages; punitive damages
+2179475,US,United States,California Court of Appeal,appellate,1974-09-03,Pritchard v. Sharp,Docket No. 32758.,harvard-lil/cold-cases,damages
+1048066,US,United States,Court of Appeals of Tennessee,appellate,2011-05-19,Patti Zakour a/k/a Patti Smith v. UT Medical Group Inc.,256 F.3d 286,harvard-lil/cold-cases,damages; negligence; tort; compensatory damages; punitive damages; emotional distress
+2119458,US,United States,California Court of Appeal,appellate,1976-10-27,"Meininger v. Larwin-Northern California, Inc.",Docket No. 37923.,harvard-lil/cold-cases,tort
+2699801,US,United States,Ohio Court of Appeals,appellate,2011-12-09,Ruby v. Baird,Case No. 11-CA-7,harvard-lil/cold-cases,damages; negligence
+2474648,US,United States,"District Court, C.D. Illinois",trial,2009-07-22,Johnson v. State Farm Mutual Automobile Insurance,641 F.Supp.2d 748 (2009),harvard-lil/cold-cases,damages
+1087130,US,United States,California Court of Appeal,appellate,2013-10-25,City of Bell v. Super. Ct.,No. BC445497,harvard-lil/cold-cases,damages; negligence; tort
+2046473,US,United States,Court of Appeals of Wisconsin,appellate,2000-05-09,State v. Leighton,505 U.S. 647,harvard-lil/cold-cases,damages; negligence
+1685297,US,United States,Missouri Court of Appeals,appellate,2007-09-11,Barekman v. City of Republic,223 F.3d 818,harvard-lil/cold-cases,damages
+2574272,US,United States,"District Court, W.D. Kentucky",trial,2003-06-16,"Johnson v. Galen Health Institutes, Inc.",267 F.Supp.2d 679 (2003),harvard-lil/cold-cases,damages
+1438039,US,United States,New Jersey Superior Court Appellate Division,appellate,1974-07-17,Lakewood Tp. Mun. Util. v. S. Lakewood Water Co.,195 F.2d 106,harvard-lil/cold-cases,damages
+1048291,US,United States,Court of Appeals of Tennessee,appellate,2011-02-22,"Pamela Champion v. CLC of Dyersburg, LLC",No. 07-68,harvard-lil/cold-cases,damages; negligence; punitive damages; personal injury
+2700567,US,United States,Ohio Court of Appeals,appellate,2014-03-06,Patel v. Village of Bellaire,CASE NO. 13,harvard-lil/cold-cases,negligence; tort
+1043513,US,United States,Appellate Court of Illinois,appellate,2013-09-30,People v. Fonder,530 U.S. 466,harvard-lil/cold-cases,proximate cause
+2579657,US,United States,"District Court, N.D. California",trial,2002-05-31,Precision Pay Phones v. Qwest Communications Corp.,210 F. Supp. 2d 1106 (2002),harvard-lil/cold-cases,damages; negligence; tort
+1045809,US,United States,Court of Appeals of Tennessee,appellate,2012-11-29,"Apollo Hair Systems of Nashville, Inc. v. Micromode Medical Limited",No. 041561-III,harvard-lil/cold-cases,damages
+1046267,US,United States,Court of Appeals of Tennessee,appellate,2012-08-10,"Allison Jacob v. Alexis Partee and Tom Bedell, Jr. v. Top Gun Body Shop",No. CT-004519-10,harvard-lil/cold-cases,damages
+1047196,US,United States,Court of Appeals of Tennessee,appellate,2012-01-12,In Re: The Estate of Bessie Louise Thornton,No. 09183,harvard-lil/cold-cases,damages
+2580541,US,United States,"District Court, C.D. Illinois",trial,1999-08-05,Archer Daniels Midland Co. v. Whitacre,60 F. Supp. 2d 819 (1999),harvard-lil/cold-cases,damages; tort; emotional distress
+2580690,US,United States,"District Court, D. Delaware",trial,2004-04-07,"SeaChange International, Inc. v. nCUBE Corp.",313 F. Supp. 2d 393 (2004),harvard-lil/cold-cases,damages
+2701564,US,United States,Ohio Court of Appeals,appellate,2014-06-26,Simmons v. Narine,Case No. 2012,harvard-lil/cold-cases,damages
+2242427,US,United States,Massachusetts Appeals Court,appellate,1973-03-14,"Roketenetz v. Woburn Daily Times, Inc.",365 F.2d 965,harvard-lil/cold-cases,negligence; tort
+2636710,US,United States,Court of Civil Appeals of Oklahoma,appellate,2009-09-18,Taylor v. STATE EX REL. POLICE PENSION AND RETIREMENT BD.,No. 106,harvard-lil/cold-cases,negligence
+1252421,US,United States,Court of Appeals of Georgia,appellate,2002-11-26,"WABASH METAL PRODUCTS, INC. v. AT Plastics Corp.",No. A02A1262.,harvard-lil/cold-cases,negligence; proximate cause
+1055639,US,United States,Court of Appeals of Tennessee,appellate,2004-06-09,"Jeffrey P. Hopmayer v. Aladdin Industries, L.L.C.",No. 02-85-I,harvard-lil/cold-cases,damages
+2395894,US,United States,"District Court, N.D. Illinois",trial,1985-11-25,"Griswold v. EF Hutton & Co., Inc.",622 F. Supp. 1397 (1985),harvard-lil/cold-cases,damages; civil damages; tort; personal injury
+2640239,US,United States,Court of Civil Appeals of Oklahoma,appellate,2008-03-28,Ranken Energy Corp. v. DKMT CO.,No. 104,harvard-lil/cold-cases,damages
+1046591,US,United States,Court of Appeals of Tennessee,appellate,2012-06-07,Ray Paschall v. Patrick Srebnick,No. 35392,harvard-lil/cold-cases,damages
+2516170,US,United States,"District Court, D. Oregon",trial,1998-12-10,"U S West Communications, Inc. v. TCG Oregon",31 F. Supp. 2d 828 (1998),harvard-lil/cold-cases,damages; compensatory damages
+1065224,US,United States,Court of Appeals of Tennessee,appellate,2003-10-16,Juanita W. Keylon v. Robert A. Hill,No. 12413,harvard-lil/cold-cases,damages; negligence
+2156327,US,United States,Appellate Court of Illinois,appellate,1999-01-28,Modelski v. Navistar International Transportation Corp.,748 F.2d 304,harvard-lil/cold-cases,negligence; tort
+1188713,US,United States,Court of Appeals of Oregon,appellate,1981-11-02,Riddle v. Cain,No. 874-8,harvard-lil/cold-cases,damages; tort
+2639942,US,United States,Court of Appeals of Oregon,appellate,2005-01-19,Delcastillo v. Norris,no ambiguity,harvard-lil/cold-cases,damages; personal injury
+2692166,US,United States,Ohio Court of Appeals,appellate,2014-03-28,Berger v. Wade,NO. C-120863,harvard-lil/cold-cases,negligence; tort
+2622043,US,United States,Colorado Court of Appeals,appellate,2008-01-24,"Ba Mortg., LLC v. Quail Creek Condominium Ass'n, Inc.",No. 06CA0246.,harvard-lil/cold-cases,damages; tort
+2706710,US,United States,Ohio Court of Appeals,appellate,2014-06-30,"Wee Care Child Ctr., Inc. v. Ohio Dept. of Job & Family Servs.",680 F.3d 841,harvard-lil/cold-cases,damages; negligence; tort; duty of care; punitive damages; emotional distress
+2622468,US,United States,Court of Appeals of Washington,appellate,2007-12-18,Bishop v. City of Spokane,405 U.S. 156,harvard-lil/cold-cases,negligence; tort
+2622542,US,United States,Court of Civil Appeals of Oklahoma,appellate,2001-06-22,"Boatsman v. Southwestern Bell Yellow Pages, Inc.",no evidence,harvard-lil/cold-cases,damages; negligence; tort; compensatory damages; punitive damages
+2224076,US,United States,Appellate Court of Illinois,appellate,1975-07-25,Neal v. Lacob,350 F.2d 445,harvard-lil/cold-cases,damages
+2651444,US,United States,California Court of Appeal,appellate,2014-01-28,Quezada v. City of Los Angeles,384 U.S. 436,harvard-lil/cold-cases,damages
+2703952,US,United States,Ohio Court of Appeals,appellate,2011-12-29,State v. Wilson,443 U.S. 307,harvard-lil/cold-cases,duty of care
+1657799,US,United States,Louisiana Court of Appeal,appellate,1977-10-17,St. Pierre v. Gabel,No. 11520.,harvard-lil/cold-cases,negligence; proximate cause
