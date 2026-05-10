@@ -217,9 +217,24 @@ def infer_country(jurisdiction: str) -> str:
     return "Korea" if jurisdiction == "KR" else "United States"
 
 
-def infer_kr_court_level(court_name: str, text: str) -> str:
+def extract_kr_case_code(case_number: str) -> str:
+    match = re.search(r"\d{4}\s*([가-힣]{1,5})\s*\d+", normalize_whitespace(case_number))
+    return match.group(1) if match else ""
+
+
+def infer_kr_court_level(court_name: str, text: str, case_number: str = "") -> str:
+    case_code = extract_kr_case_code(case_number)
+    if case_code == "다":
+        return "supreme"
+    if case_code == "나":
+        return "appellate"
+    if case_code in {"가합", "가단", "가소"}:
+        return "trial"
+
     if "대법원" in court_name:
         return "supreme"
+    if "고등법원" in court_name:
+        return "appellate"
     if any(marker in text for marker in ["항소", "원심판결", "제1심 판결", "당심"]):
         return "appellate"
     if any(marker in text for marker in ["지방법원", "지원", "1심"]):
@@ -346,10 +361,18 @@ def preprocess_kr(df: pd.DataFrame, config: PreprocessConfig) -> pd.DataFrame:
         clean_text = strip_kr_appendix_and_footnotes(raw_text)
         reasoning_text, has_reasoning_marker = extract_kr_reasoning_text(clean_text)
 
-        court_name = normalize_whitespace(row.get("court_name", "")) or extract_kr_court_name(raw_text)
+        case_number_or_citation = (
+            normalize_whitespace(row.get("case_number_or_citation", ""))
+            or normalize_whitespace(row.get("case_number", ""))
+            or normalize_whitespace(row.get("case_no", ""))
+            or extract_case_number_or_citation("KR", raw_text)
+        )
+        court_name = normalize_whitespace(row.get("court_name", "")) or extract_kr_court_name(
+            raw_text[:500]
+        )
         decision_date = normalize_date(row.get("decision_date", "")) or extract_kr_decision_date(raw_text)
         court_level = normalize_whitespace(row.get("court_level", "")) or infer_kr_court_level(
-            court_name, raw_text
+            court_name, raw_text, case_number_or_citation
         )
 
         records.append(
@@ -362,7 +385,7 @@ def preprocess_kr(df: pd.DataFrame, config: PreprocessConfig) -> pd.DataFrame:
                 court_level=court_level,
                 decision_date=decision_date,
                 case_type_keyword=detect_keywords(raw_text, KR_KEYWORDS, case_sensitive=True),
-                case_number_or_citation=extract_case_number_or_citation("KR", raw_text),
+                case_number_or_citation=case_number_or_citation,
                 raw_text=raw_text,
                 clean_text=clean_text,
                 reasoning_text=reasoning_text,
@@ -490,6 +513,10 @@ def summarize(df: pd.DataFrame) -> dict[str, object]:
         },
         "missing_reasoning_marker": {
             key: int((~group["has_reasoning_or_opinion_marker"]).sum()) for key, group in grouped
+        },
+        "court_level": {
+            key: {level: int(count) for level, count in group["court_level"].value_counts().to_dict().items()}
+            for key, group in grouped
         },
     }
 

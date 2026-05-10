@@ -1,55 +1,54 @@
 ﻿case_id,jurisdiction,country,court_name,court_level,decision_date,case_name,case_number_or_citation,source,case_type_keyword
-104947,KR,Korea,,appellate,2011-10-26,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금; 민법 제750조
-121915,KR,Korea,대법원,supreme,2002-03-13,,,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
-38911,KR,Korea,,unknown,,,,lbox/lbox_open::precedent_corpus,손해배상
-66659,KR,Korea,대법원,supreme,2020-06-11,,2018고정81,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 지연손해금
-96329,KR,Korea,,trial,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
-31419,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,위자료
-129934,KR,Korea,,unknown,2015-10-20,,2010년 10,lbox/lbox_open::precedent_corpus,위자료; 지연손해금
-36616,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,불법행위
-69382,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 위자료; 지연손해금
-85061,KR,Korea,서울중앙지방법원,appellate,,,2019카합20280,lbox/lbox_open::precedent_corpus,위자료
-117324,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
-84898,KR,Korea,대법원,supreme,,,2008드단37479,lbox/lbox_open::precedent_corpus,위자료; 지연손해금
-5258,KR,Korea,대법원,supreme,,,2010다28604,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
-31754,KR,Korea,대법원,supreme,,,2010다15363,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 상당인과관계
-83876,KR,Korea,대법원,supreme,2011-11-25,,2008가합2418,lbox/lbox_open::precedent_corpus,불법행위; 위자료; 지연손해금
-130519,KR,Korea,대법원,supreme,,,2016나52382,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
-140296,KR,Korea,서울중앙지방법원,appellate,,,2001고단4388,lbox/lbox_open::precedent_corpus,손해배상
-91219,KR,Korea,서울중앙지방법원,appellate,2020-08-21,,"2018가소
-1780804",lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
-29200,KR,Korea,대법원,supreme,2018-11-07,,2011가합112518,lbox/lbox_open::precedent_corpus,손해배상; 손해배상(기); 지연손해금; 상당인과관계
-61625,KR,Korea,,unknown,,,,lbox/lbox_open::precedent_corpus,불법행위
-28290,KR,Korea,대법원,supreme,2011-01-26,,,lbox/lbox_open::precedent_corpus,손해배상; 위자료; 지연손해금
-18558,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 지연손해금
-104819,KR,Korea,광주지방법원,appellate,,,2019고단5216,lbox/lbox_open::precedent_corpus,손해배상
-33940,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
-131883,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 위자료; 과실상계
-50381,KR,Korea,,unknown,,,,lbox/lbox_open::precedent_corpus,손해배상
-93462,KR,Korea,대법원,supreme,2010-02-04,,2005타경13406,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
-88164,KR,Korea,대법원,supreme,,,2019고단3629,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금; 과실상계
-64705,KR,Korea,대법원,supreme,,,2009타경16181,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
-132689,KR,Korea,,appellate,2020-08-20,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
-66296,KR,Korea,대법원,supreme,,,2016가합109558,lbox/lbox_open::precedent_corpus,불법행위; 지연손해금
-102913,KR,Korea,대법원,supreme,,,2008부해830,lbox/lbox_open::precedent_corpus,불법행위
-125191,KR,Korea,,unknown,,,,lbox/lbox_open::precedent_corpus,손해배상; 위자료
-1845,KR,Korea,대법원,supreme,2021-01-28,,2001다82507,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 지연손해금
-114754,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 위자료; 지연손해금
-104762,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
-77753,KR,Korea,,appellate,2000-05-26,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
-49743,KR,Korea,,unknown,,,,lbox/lbox_open::precedent_corpus,손해배상
-80204,KR,Korea,대법원,supreme,2021-08-12,,2000다56822,lbox/lbox_open::precedent_corpus,손해배상; 위자료; 지연손해금; 과실상계
-69940,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
-58911,KR,Korea,대법원,supreme,2021-09-29,,2011므2997,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 지연손해금
-143871,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상
-78677,KR,Korea,,unknown,,,,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
-89946,KR,Korea,광주고등법원,unknown,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
-63225,KR,Korea,대법원,supreme,,,,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
-72769,KR,Korea,대법원,supreme,2016-02-04,,2001다38593,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금; 상당인과관계
-18603,KR,Korea,인천지방법원,appellate,,,2003르774,lbox/lbox_open::precedent_corpus,위자료; 지연손해금
-58005,KR,Korea,대법원,supreme,,,2005다61140,lbox/lbox_open::precedent_corpus,손해배상
-61284,KR,Korea,대법원,supreme,,,2018고단1633,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
-91643,KR,Korea,대법원,supreme,1995-08-18,,1987년 7,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
+59276,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,지연손해금
+62140,KR,Korea,서울고등법원,trial,,,2017가합518422,lbox/lbox_open::precedent_corpus,손해배상
+127741,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,손해배상
+1804,KR,Korea,,trial,,,2020가단525512,lbox/lbox_open::precedent_corpus,지연손해금
+147232,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,위자료
+22851,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상
+76897,KR,Korea,부산지방법원,trial_or_appellate_unknown,,,2019카단51195,lbox/lbox_open::precedent_corpus,지연손해금
+19178,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,지연손해금
+57235,KR,Korea,,trial_or_appellate_unknown,,,2020카단503372,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+91420,KR,Korea,,trial_or_appellate_unknown,,,2017타채16568,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+71086,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
+14839,KR,Korea,,trial_or_appellate_unknown,2010-02-12,,,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+77843,KR,Korea,,appellate,1989-02-13,,,lbox/lbox_open::precedent_corpus,지연손해금
+22023,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 위자료; 과실상계
+75090,KR,Korea,,trial_or_appellate_unknown,2021-08-24,,,lbox/lbox_open::precedent_corpus,지연손해금
+110015,KR,Korea,,trial_or_appellate_unknown,2021-11-26,,,lbox/lbox_open::precedent_corpus,지연손해금
+144508,KR,Korea,,trial_or_appellate_unknown,2021-11-18,,2019년 10,lbox/lbox_open::precedent_corpus,지연손해금
+103873,KR,Korea,,trial_or_appellate_unknown,2021-09-16,,2011므2997,lbox/lbox_open::precedent_corpus,불법행위; 위자료; 지연손해금
+8028,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,지연손해금
+40057,KR,Korea,,trial,2018-02-09,,2014가합675,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+24982,KR,Korea,,appellate,1985-03-13,,,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+26960,KR,Korea,,appellate,,,1998년 5,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
+103827,KR,Korea,,trial_or_appellate_unknown,2019-01-09,,,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+104681,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상
+59112,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,지연손해금
+149991,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상
+22627,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
+86048,KR,Korea,,appellate,2021-08-19,,2013고합163,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+3788,KR,Korea,,trial_or_appellate_unknown,,,2015년 9,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+16552,KR,Korea,,trial_or_appellate_unknown,,,2002구합16245,lbox/lbox_open::precedent_corpus,지연손해금
+48440,KR,Korea,,appellate,,,1240의 6,lbox/lbox_open::precedent_corpus,손해배상
+2993,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+1820,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,불법행위; 민법 제750조
+16064,KR,Korea,대법원,appellate,,,2007카기86,lbox/lbox_open::precedent_corpus,손해배상
+73058,KR,Korea,,trial_or_appellate_unknown,2015-04-10,,2002두9407,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 지연손해금; 과실상계
+96395,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
+68049,KR,Korea,,trial_or_appellate_unknown,2021-07-22,,2011므2997,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 지연손해금
+65794,KR,Korea,,trial,,,2014가단241348,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+110509,KR,Korea,,appellate,2021-10-29,,2020가소11545,lbox/lbox_open::precedent_corpus,지연손해금
+37848,KR,Korea,,trial_or_appellate_unknown,,,2018고약9983,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+121020,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,손해배상; 위자료
+47179,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,위자료
+132859,KR,Korea,,appellate,2000-11-23,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+65129,KR,Korea,,appellate,,,2005도856,lbox/lbox_open::precedent_corpus,손해배상
+34224,KR,Korea,,appellate,1994-04-06,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 지연손해금
+110601,KR,Korea,,trial_or_appellate_unknown,,,2012카공885,lbox/lbox_open::precedent_corpus,지연손해금
+91973,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,지연손해금
+54514,KR,Korea,인천지방법원,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,손해배상
+90255,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+76414,KR,Korea,,appellate,2021-09-09,,2020고합140,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 지연손해금
 1742237,US,United States,"District Court, S.D. Iowa",trial,1996-05-15,"Bruce v. ICI Americas, Inc.",933 F. Supp. 781 (1996),harvard-lil/cold-cases,damages; negligence; tort
 2333112,US,United States,"District Court, D. Utah",trial,2004-10-04,Hafen v. Strebeck,338 F. Supp. 2d 1257 (2004),harvard-lil/cold-cases,damages; negligence; tort; duty of care
 2427282,US,United States,"District Court, D. Kansas",trial,2004-04-29,Sanders Ex Rel. Rayl v. KANSAS DEPT. OF SOCIAL AND REHABIL. SERVICES,317 F. Supp. 2d 1233 (2004),harvard-lil/cold-cases,damages
