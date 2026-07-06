@@ -151,6 +151,8 @@ def collect_us_cases(args: argparse.Namespace) -> pd.DataFrame:
 
     for row in dataset:
         scanned += 1
+        if args.progress_every and scanned % args.progress_every == 0:
+            LOGGER.info("Scanned=%s collected=%s", scanned, len(records))
         if args.scan_limit and scanned > args.scan_limit:
             LOGGER.warning("Stopped at --scan-limit=%s with %s collected rows", args.scan_limit, len(records))
             break
@@ -237,6 +239,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--overwrite", action="store_true")
     parser.add_argument("--min-text-length", type=int, default=1_000)
     parser.add_argument("--max-text-length", type=int, default=0)
+    parser.add_argument("--progress-every", type=int, default=5_000)
     parser.add_argument("--log-level", default="INFO")
     return parser.parse_args()
 
@@ -244,6 +247,8 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     logging.basicConfig(level=getattr(logging, args.log_level.upper(), logging.INFO), format="%(levelname)s: %(message)s")
+    for noisy_logger in ["httpx", "httpcore", "huggingface_hub", "datasets"]:
+        logging.getLogger(noisy_logger).setLevel(logging.WARNING)
     output_path = Path(args.output)
     require_overwrite(output_path, args.overwrite)
     output_path.parent.mkdir(parents=True, exist_ok=True)

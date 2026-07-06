@@ -1,0 +1,6 @@
+﻿case_id,case_origin,jurisdiction,status,raw_length_chars,fact_length_chars,legal_signal_count,legal_signal_terms,quality_flags,removed_legal_signals
+KR_lbox_59276,KR,Korea,warning,2643,314,0,,manual_review_recommended; no_fact_section_detected; translation_needed,
+KR_lbox_62140,KR,Korea,warning,4761,955,0,,manual_review_recommended; no_fact_section_detected; translation_needed,서울고등법원; 서울
+KR_lbox_127741,KR,Korea,warning,1041,937,0,,manual_review_recommended; no_fact_section_detected; translation_needed,지방법원
+KR_lbox_1804,KR,Korea,warning,3252,354,0,,manual_review_recommended; no_fact_section_detected; translation_needed,
+KR_lbox_147232,KR,Korea,warning,6488,3112,0,,manual_review_recommended; no_fact_section_detected; translation_needed,서울; 위자료
