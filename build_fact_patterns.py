@@ -62,6 +62,8 @@ def build_fact_pattern(row: pd.Series, min_fact_chars: int, max_fact_chars: int)
     removed_signals.extend(removed)
     fact_text = truncate_preserving_sentence(fact_text, max_fact_chars)
 
+    fact_ko, fact_en = (fact_text, None) if origin == "KR" else (None, fact_text)
+
     remaining_legal = find_legal_signals(fact_text)
     remaining_jurisdiction = find_jurisdiction_signals(fact_text)
     if remaining_legal:
@@ -107,8 +109,8 @@ def build_fact_pattern(row: pd.Series, min_fact_chars: int, max_fact_chars: int)
         "jurisdiction": jurisdiction,
         "source_title": source_title,
         "raw_text_excerpt": excerpt(raw_text),
-        "neutral_fact_ko": fact_text,
-        "neutral_fact_en": None,
+        "neutral_fact_ko": fact_ko,
+        "neutral_fact_en": fact_en,
         "neutralization_method": "rule_based",
         "removed_legal_signals": unique(removed_signals),
         "quality_flags": sorted(flags),
