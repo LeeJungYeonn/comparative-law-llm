@@ -57,6 +57,17 @@ APPELLATE_TEXT_MARKERS = (
     "원심판결",
     "당심",
 )
+CRIMINAL_EXCLUDE_KEYWORDS = (
+    "피고인",
+    "징역",
+    "집행유예",
+    "범죄사실",
+    "범죄전력",
+    "공소",
+    "검사",
+    "유죄",
+    "형법",
+)
 
 
 def normalize_text(value: object) -> str:
@@ -130,6 +141,11 @@ def keyword_mask(series: pd.Series, keywords: list[str]) -> pd.Series:
     return series.str.contains(pattern, na=False, regex=True)
 
 
+def has_criminal_signal(*values: object) -> bool:
+    haystack = " ".join(normalize_text(value) for value in values)
+    return any(keyword in haystack for keyword in CRIMINAL_EXCLUDE_KEYWORDS)
+
+
 def collect_kr_cases(args: argparse.Namespace) -> pd.DataFrame:
     dataset = load_dataset(args.dataset, args.config, split=args.split)
     df = dataset.to_pandas()
@@ -148,6 +164,7 @@ def collect_kr_cases(args: argparse.Namespace) -> pd.DataFrame:
 
     records: list[dict[str, object]] = []
     scanned = 0
+    excluded_criminal = 0
     for _, row in filtered.iterrows():
         scanned += 1
         raw_text = normalize_text(row.get(text_col, ""))
@@ -158,6 +175,11 @@ def collect_kr_cases(args: argparse.Namespace) -> pd.DataFrame:
         court_name = normalize_text(row.get(court_col, "")) if court_col else ""
         case_number = normalize_text(row.get(case_number_col, "")) if case_number_col else ""
         case_number = case_number or extract_target_case_number(raw_text)
+        case_name = normalize_text(row.get(case_name_col, "")) if case_name_col else ""
+
+        if has_criminal_signal(raw_text, court_name, case_number, case_name):
+            excluded_criminal += 1
+            continue
 
         keep, reason, court_level = classify_kr_row(court_name, case_number, raw_text)
         if not keep:
@@ -167,12 +189,13 @@ def collect_kr_cases(args: argparse.Namespace) -> pd.DataFrame:
             {
                 "case_id": normalize_text(row.get("id", "")),
                 "jurisdiction": "KR",
-                "case_name": normalize_text(row.get(case_name_col, "")) if case_name_col else "",
+                "case_name": case_name,
                 "case_number_or_citation": case_number,
                 "court_name": court_name,
                 "court_level": court_level,
                 "decision_date": normalize_text(row.get(date_col, "")) if date_col else "",
                 "kr_filter_reason": reason,
+                "excluded_criminal_count_at_collection": excluded_criminal,
                 "raw_text": row.get(text_col, ""),
             }
         )

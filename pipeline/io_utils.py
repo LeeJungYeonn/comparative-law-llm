@@ -143,7 +143,7 @@ def build_case_table(df: pd.DataFrame) -> pd.DataFrame:
         source_dataset = first_present(row, ["source_dataset", "source"]) or (
             "lbox/lbox_open::precedent_corpus" if origin == "KR" else "harvard-lil/cold-cases"
         )
-        raw_text = first_present(row, ["raw_text", "clean_text", "reasoning_text", "text"])
+        raw_text = first_present(row, ["reasoning_text", "clean_text", "raw_text", "text"])
         title = first_present(row, ["title", "case_name", "name"])
         date = first_present(row, ["date", "decision_date", "date_filed"])
         court = first_present(row, ["court", "court_name", "court_full_name"])

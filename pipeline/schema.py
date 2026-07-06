@@ -41,4 +41,6 @@ QUALITY_FLAGS = {
     "manual_review_recommended",
     "ambiguous_us_state",
     "extraction_failed",
+    "contains_order_or_claim_section",
+    "contains_criminal_signal",
 }

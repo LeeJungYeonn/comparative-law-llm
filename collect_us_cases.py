@@ -40,6 +40,15 @@ US_TEXT_KEYWORDS = [
     "civil liability",
     "compensatory damages",
 ]
+US_CRIMINAL_EXCLUDE_KEYWORDS = [
+    "People v.",
+    "Crim.",
+    "warden",
+    "habeas",
+    "prison",
+    "sentence",
+    "conviction",
+]
 
 STATE_ALIASES = {
     "California": ["california", "cal.", "ca"],
@@ -90,6 +99,15 @@ def matches_keyword_criteria(row: dict[str, Any], text: str) -> tuple[bool, str]
     if any(keyword in lowered for keyword in US_TEXT_KEYWORDS):
         return True, "matched_text_keyword"
     return False, "no_tort_damages_keyword"
+
+
+def has_criminal_signal(row: dict[str, Any], text: str) -> bool:
+    metadata = " ".join(
+        compact_inline(row.get(column, ""))
+        for column in ["case_name", "name", "court_full_name", "court", "nature_of_suit", "court_type"]
+    )
+    haystack = f"{metadata}\n{text}"
+    return any(re.search(re.escape(keyword), haystack, flags=re.IGNORECASE) for keyword in US_CRIMINAL_EXCLUDE_KEYWORDS)
 
 
 def _state_match(value: object, target_state: str) -> bool:
@@ -147,7 +165,7 @@ def collect_us_cases(args: argparse.Namespace) -> pd.DataFrame:
 
     records: list[dict[str, object]] = []
     scanned = 0
-    skipped = {"state": 0, "keyword": 0, "length": 0}
+    skipped = {"state": 0, "keyword": 0, "length": 0, "criminal": 0}
 
     for row in dataset:
         scanned += 1
@@ -161,6 +179,9 @@ def collect_us_cases(args: argparse.Namespace) -> pd.DataFrame:
         text_length = len(text)
         if text_length < args.min_text_length or (args.max_text_length and text_length > args.max_text_length):
             skipped["length"] += 1
+            continue
+        if has_criminal_signal(row, text):
+            skipped["criminal"] += 1
             continue
 
         state_keep, state_status, state_notes = classify_state(row, args.state)
@@ -215,12 +236,13 @@ def collect_us_cases(args: argparse.Namespace) -> pd.DataFrame:
             break
 
     LOGGER.info(
-        "Scanned=%s collected=%s skipped_state=%s skipped_keyword=%s skipped_length=%s",
+        "Scanned=%s collected=%s skipped_state=%s skipped_keyword=%s skipped_length=%s skipped_criminal=%s",
         scanned,
         len(records),
         skipped["state"],
         skipped["keyword"],
         skipped["length"],
+        skipped["criminal"],
     )
     return pd.DataFrame(records)
 
