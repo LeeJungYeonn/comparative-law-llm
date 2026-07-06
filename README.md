@@ -51,7 +51,34 @@ Smoke test:
 python collect_us_cases.py --state California --limit 5 --output outputs/us_cases_sample.csv --overwrite
 ```
 
-### 3. Preprocess collected CSVs
+### 3. Collect California state civil raw opinions
+
+For the California raw opinion set used in later GPT-based fact extraction,
+use `collect_us_california_cases.py`. It also uses `harvard-lil/cold-cases`,
+but applies stricter California state-court, full-text, civil liability /
+damages, and exclusion filters for federal, criminal/habeas, administrative,
+insurance-only, IP, and procedure-only cases.
+
+```powershell
+python collect_us_california_cases.py --target-pass-count 50 --max-candidates 2000 --output-dir outputs --overwrite
+```
+
+This writes:
+
+- `outputs/us_california_cases_raw.jsonl`: selected California state raw
+  opinions with full `raw_text` and QC preview excerpt.
+- `outputs/us_california_cases_qc.csv`: all collected candidate QC rows,
+  including failures and exclusion reasons.
+- `outputs/us_california_cases_summary.json`: aggregate collection summary and
+  sanity-check results.
+
+Preview without writing files:
+
+```powershell
+python collect_us_california_cases.py --target-pass-count 5 --max-candidates 120 --preview-only
+```
+
+### 4. Preprocess collected CSVs
 
 `preprocess_cases.py` keeps its original interface and still expects:
 
@@ -70,7 +97,7 @@ This writes:
 - `outputs/case_metadata.csv`
 - `outputs/preprocessing_summary.json`
 
-### 4. Build unified case table and neutral fact candidates
+### 5. Build unified case table and neutral fact candidates
 
 `build_fact_patterns.py` reads `outputs/preprocessed_cases.csv` when available.
 It can also read a compatible collected CSV or case table. The script writes a
@@ -92,6 +119,11 @@ python build_fact_patterns.py --input outputs/preprocessed_cases.csv --output ou
   `preprocess_cases.py`.
 - `outputs/us_cases.csv`: U.S. collected source cases, compatible with
   `preprocess_cases.py`.
+- `outputs/us_california_cases_raw.jsonl`: stricter California state-court
+  full-opinion raw set for later LLM-based fact extraction. It does not replace
+  `outputs/us_cases.csv`.
+- `outputs/us_california_cases_qc.csv`: QC and exclusion reasons for California
+  raw collection candidates.
 - `outputs/preprocessed_cases.csv`: cleaned/normalized case text and metadata
   used as the preferred fact-pattern input.
 - `outputs/case_table.csv`: unified downstream table with stable IDs,

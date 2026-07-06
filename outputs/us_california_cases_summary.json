@@ -1,0 +1,41 @@
+{
+  "total_candidates": 1698,
+  "california_state_case_candidates": 883,
+  "federal_case_excluded": 299,
+  "out_of_state_case_excluded": 344,
+  "criminal_habeas_excluded": 314,
+  "administrative_public_law_excluded": 123,
+  "procedure_only_excluded": 22,
+  "no_full_text_excluded": 208,
+  "final_pass_count": 50,
+  "warning_count": 31,
+  "fail_count": 1606,
+  "pass_category_counts": {
+    "fraud_damages": 10,
+    "unclear": 1,
+    "personal_injury": 17,
+    "auto_accident": 13,
+    "wrongful_death": 4,
+    "property_damage": 3,
+    "professional_negligence": 1,
+    "product_liability": 1
+  },
+  "average_raw_text_length": 17108.64,
+  "excluded_reason_top_20": {
+    "out_of_state_or_not_california_state": 344,
+    "criminal_habeas_signal": 314,
+    "federal_case": 299,
+    "no_full_text_or_too_short": 208,
+    "no_liability_damages_keyword": 144,
+    "administrative_public_law_signal": 123,
+    "insurance_coverage_only_signal": 90,
+    "attorney_fee_only_signal": 22,
+    "procedure_only_signal": 22,
+    "no_specific_liability_category": 18,
+    "contract_only_without_tort_damages_facts": 7,
+    "ip_federal_statutory_signal": 6,
+    "no_potential_fact_background": 5,
+    "non_target_employment_or_public_policy_signal": 4
+  },
+  "sanity_check_errors": []
+}

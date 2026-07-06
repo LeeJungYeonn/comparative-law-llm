@@ -1,0 +1,100 @@
+{
+  "original_final_pass_count": 50,
+  "removed_from_original_final_count": 8,
+  "removed_cases": [
+    {
+      "case_id": "US_california_3279743",
+      "source_title": "Norton v. Meyers",
+      "reason": "contract_only_promissory_note_building_contract_case"
+    },
+    {
+      "case_id": "US_california_3283498",
+      "source_title": "Bilicke v. Janss",
+      "reason": "contract_only_rent_or_lease_case"
+    },
+    {
+      "case_id": "US_california_3285859",
+      "source_title": "Nelson v. Nelson",
+      "reason": "family_divorce_case"
+    },
+    {
+      "case_id": "US_california_3286933",
+      "source_title": "First National Bank v. Clifton",
+      "reason": "contract_only_promissory_note_case"
+    },
+    {
+      "case_id": "US_california_3293895",
+      "source_title": "Moffitt v. Moffitt",
+      "reason": "family_separate_maintenance_case"
+    },
+    {
+      "case_id": "US_california_5798321",
+      "source_title": "Rogers v. Transamerica Corp.",
+      "reason": "prior_litigation_fraud_procedural_case"
+    },
+    {
+      "case_id": "US_california_5799794",
+      "source_title": "Wetzel v. Wetzel",
+      "reason": "family_divorce_decree_case"
+    },
+    {
+      "case_id": "US_california_2136310",
+      "source_title": "Harold A. Newman Co. v. Nero",
+      "reason": "contract_equipment_sale_judgment_roll_case"
+    }
+  ],
+  "replacement_cases": [
+    {
+      "case_id": "US_california_5800141",
+      "source_title": "Tarasco v. Moyers",
+      "case_category_guess": "auto_accident"
+    },
+    {
+      "case_id": "US_california_5800312",
+      "source_title": "Smith v. Cantlay & Tanzola, Inc.",
+      "case_category_guess": "auto_accident"
+    },
+    {
+      "case_id": "US_california_5801346",
+      "source_title": "Reyes v. Gonzales",
+      "case_category_guess": "auto_accident"
+    },
+    {
+      "case_id": "US_california_5802386",
+      "source_title": "Schuler v. Winstanley",
+      "case_category_guess": "auto_accident"
+    },
+    {
+      "case_id": "US_california_5802677",
+      "source_title": "Sardisco v. Kiek",
+      "case_category_guess": "auto_accident"
+    },
+    {
+      "case_id": "US_california_1182459",
+      "source_title": "Young v. Bank of America National Trust & Savings Ass'n",
+      "case_category_guess": "personal_injury"
+    },
+    {
+      "case_id": "US_california_1182579",
+      "source_title": "Glenn v. City of Los Angeles",
+      "case_category_guess": "auto_accident"
+    },
+    {
+      "case_id": "US_california_1182836",
+      "source_title": "Rickey v. Kardassakis",
+      "case_category_guess": "auto_accident"
+    }
+  ],
+  "final_raw_v2_count": 50,
+  "category_counts": {
+    "fraud_damages": 8,
+    "property_damage": 3,
+    "personal_injury": 16,
+    "auto_accident": 18,
+    "wrongful_death": 4,
+    "professional_negligence": 1
+  },
+  "family_divorce_signal_remaining_count": 0,
+  "contract_only_signal_remaining_count": 0,
+  "federal_out_of_state_criminal_admin_signal_remaining_count": 0
+}
