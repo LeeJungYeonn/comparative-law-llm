@@ -1,0 +1,101 @@
+﻿case_id,jurisdiction,country,court_name,court_level,decision_date,case_name,case_number_or_citation,source,case_type_keyword
+59276,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,지연손해금
+62140,KR,Korea,서울고등법원,trial,,,2017가합518422,lbox/lbox_open::precedent_corpus,손해배상
+127741,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,손해배상
+1804,KR,Korea,,trial,,,2020가단525512,lbox/lbox_open::precedent_corpus,지연손해금
+147232,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,위자료
+22851,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상
+76897,KR,Korea,부산지방법원,trial_or_appellate_unknown,,,2019카단51195,lbox/lbox_open::precedent_corpus,지연손해금
+19178,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,지연손해금
+57235,KR,Korea,,trial_or_appellate_unknown,,,2020카단503372,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+91420,KR,Korea,,trial_or_appellate_unknown,,,2017타채16568,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+71086,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
+14839,KR,Korea,,trial_or_appellate_unknown,2010-02-12,,,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+77843,KR,Korea,,appellate,1989-02-13,,,lbox/lbox_open::precedent_corpus,지연손해금
+22023,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 위자료; 과실상계
+75090,KR,Korea,,trial_or_appellate_unknown,2021-08-24,,,lbox/lbox_open::precedent_corpus,지연손해금
+110015,KR,Korea,,trial_or_appellate_unknown,2021-11-26,,,lbox/lbox_open::precedent_corpus,지연손해금
+144508,KR,Korea,,trial_or_appellate_unknown,2021-11-18,,2019년 10,lbox/lbox_open::precedent_corpus,지연손해금
+103873,KR,Korea,,trial_or_appellate_unknown,2021-09-16,,2011므2997,lbox/lbox_open::precedent_corpus,불법행위; 위자료; 지연손해금
+8028,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,지연손해금
+40057,KR,Korea,,trial,2018-02-09,,2014가합675,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+24982,KR,Korea,,appellate,1985-03-13,,,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+26960,KR,Korea,,appellate,,,1998년 5,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
+103827,KR,Korea,,trial_or_appellate_unknown,2019-01-09,,,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+104681,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상
+59112,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,지연손해금
+149991,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상
+22627,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
+86048,KR,Korea,,appellate,2021-08-19,,2013고합163,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+3788,KR,Korea,,trial_or_appellate_unknown,,,2015년 9,lbox/lbox_open::precedent_corpus,손해배상; 지연손해금
+16552,KR,Korea,,trial_or_appellate_unknown,,,2002구합16245,lbox/lbox_open::precedent_corpus,지연손해금
+48440,KR,Korea,,appellate,,,1240의 6,lbox/lbox_open::precedent_corpus,손해배상
+2993,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+1820,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,불법행위; 민법 제750조
+16064,KR,Korea,대법원,appellate,,,2007카기86,lbox/lbox_open::precedent_corpus,손해배상
+73058,KR,Korea,,trial_or_appellate_unknown,2015-04-10,,2002두9407,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 지연손해금; 과실상계
+96395,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위
+68049,KR,Korea,,trial_or_appellate_unknown,2021-07-22,,2011므2997,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 지연손해금
+65794,KR,Korea,,trial,,,2014가단241348,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+110509,KR,Korea,,appellate,2021-10-29,,2020가소11545,lbox/lbox_open::precedent_corpus,지연손해금
+37848,KR,Korea,,trial_or_appellate_unknown,,,2018고약9983,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+121020,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,손해배상; 위자료
+47179,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,위자료
+132859,KR,Korea,,appellate,2000-11-23,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+65129,KR,Korea,,appellate,,,2005도856,lbox/lbox_open::precedent_corpus,손해배상
+34224,KR,Korea,,appellate,1994-04-06,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 지연손해금
+110601,KR,Korea,,trial_or_appellate_unknown,,,2012카공885,lbox/lbox_open::precedent_corpus,지연손해금
+91973,KR,Korea,,appellate,,,,lbox/lbox_open::precedent_corpus,지연손해금
+54514,KR,Korea,인천지방법원,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,손해배상
+90255,KR,Korea,,trial_or_appellate_unknown,,,,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 지연손해금
+76414,KR,Korea,,appellate,2021-09-09,,2020고합140,lbox/lbox_open::precedent_corpus,손해배상; 불법행위; 위자료; 지연손해금
+US_california_2179475,US,United States,California Court of Appeal,appellate,1974-09-03,Pritchard v. Sharp,Docket No. 32758.,harvard-lil/cold-cases,damages
+US_california_2119458,US,United States,California Court of Appeal,appellate,1976-10-27,"Meininger v. Larwin-Northern California, Inc.",Docket No. 37923.,harvard-lil/cold-cases,tort
+US_california_1087130,US,United States,California Court of Appeal,appellate,2013-10-25,City of Bell v. Super. Ct.,No. BC445497,harvard-lil/cold-cases,damages; negligence; tort
+US_california_2579657,US,United States,"District Court, N.D. California",trial,2002-05-31,Precision Pay Phones v. Qwest Communications Corp.,210 F. Supp. 2d 1106 (2002),harvard-lil/cold-cases,damages; negligence; tort
+US_california_2651444,US,United States,California Court of Appeal,appellate,2014-01-28,Quezada v. City of Los Angeles,384 U.S. 436,harvard-lil/cold-cases,damages
+US_california_2275753,US,United States,California Court of Appeal,appellate,2009-09-23,"Morgan v. AT&T Wireless Services, Inc.",No. B206788.,harvard-lil/cold-cases,damages; punitive damages
+US_california_2256677,US,United States,California Court of Appeal,appellate,1996-06-03,Jordan v. City of Santa Barbara,Docket No. B090198.,harvard-lil/cold-cases,damages; tort
+US_california_2211845,US,United States,California Court of Appeal,appellate,1966-09-16,Lucky Auto Supply v. Turner,No. 28638.,harvard-lil/cold-cases,damages; tort
+US_california_2207968,US,United States,California Court of Appeal,appellate,1964-02-24,Cooper v. Mart Associates,No. 21008.,harvard-lil/cold-cases,damages; negligence
+US_california_2612760,US,United States,California Court of Appeal,appellate,1938-07-22,Sala v. Security Title Insurance & Guarantee Co.,No. 11427.,harvard-lil/cold-cases,damages; negligence; tort
+US_california_1426563,US,United States,California Court of Appeal,appellate,1958-03-06,Sonleitner v. Superior Court,104 U.S. 78,harvard-lil/cold-cases,damages
+US_california_2579177,US,United States,"District Court, E.D. California",trial,2009-10-15,Stankewitz v. Wong,659 F. Supp. 2d 1103 (2009),harvard-lil/cold-cases,tort
+US_california_1804454,US,United States,"District Court, E.D. California",trial,1997-09-30,"United States v. Iron Mountain Mines, Inc.",987 F. Supp. 1244 (1997),harvard-lil/cold-cases,damages
+US_california_2617883,US,United States,California Court of Appeal,appellate,1949-09-21,Barder v. McClung,No. 17135.,harvard-lil/cold-cases,damages
+US_california_2533747,US,United States,"District Court, N.D. California",trial,2002-09-09,Clement v. California Department of Corrections,220 F. Supp. 2d 1098 (2002),harvard-lil/cold-cases,damages; negligence
+US_california_2686004,US,United States,California Court of Appeal,appellate,2014-07-28,"Quinn, Emanuel Urquhart & Sullivan v. Kurtin CA2/5",No. BS141596,harvard-lil/cold-cases,damages; negligence; tort
+US_california_2685449,US,United States,California Court of Appeal,appellate,2014-07-23,In re Bianca G. CA2/1,No. DK00103,harvard-lil/cold-cases,tort
+US_california_1113654,US,United States,California Court of Appeal,appellate,1947-08-04,Scarbourough v. Briggs,No. 15776.,harvard-lil/cold-cases,damages; tort; punitive damages; personal injury
+US_california_1117178,US,United States,California Court of Appeal,appellate,1946-04-23,Dougherty v. Lee,No. 7243.,harvard-lil/cold-cases,damages; negligence; proximate cause
+US_california_1186078,US,United States,Court of Appeals of Arizona,appellate,1977-04-26,"Shirley v. National Applicators of California, Inc.",134 F.2d 566,harvard-lil/cold-cases,damages
+US_california_1147719,US,United States,California Court of Appeal,appellate,1937-10-13,Marsden v. Collins,No. 11537.,harvard-lil/cold-cases,damages
+US_california_1147981,US,United States,California Court of Appeal,appellate,1951-10-16,"Moise v. Fairfax Markets, Inc.",No. 18410.,harvard-lil/cold-cases,damages; negligence; proximate cause
+US_california_1158543,US,United States,California Court of Appeal,appellate,1949-07-08,Whelan v. Zahniser,No. 3934.,harvard-lil/cold-cases,damages
+US_california_1167244,US,United States,California Court of Appeal,appellate,1936-02-21,People v. Mason,No. 1470.,harvard-lil/cold-cases,negligence
+US_california_1217284,US,United States,California Court of Appeal,appellate,1942-10-06,"Gillies v. La Mesa, Lemon Grove & Spring Valley Irrigation District",No. 2873.,harvard-lil/cold-cases,damages
+US_california_1221237,US,United States,California Court of Appeal,appellate,1957-12-04,Gonzales v. Arbelbide,No. 9221.,harvard-lil/cold-cases,damages
+US_california_1242211,US,United States,California Court of Appeal,appellate,1944-10-13,Greer v. Freitas,No. 7061.,harvard-lil/cold-cases,damages; negligence
+US_california_1269358,US,United States,California Court of Appeal,appellate,1954-09-28,Clark v. Stotts,No. 8421.,harvard-lil/cold-cases,damages
+US_california_1353538,US,United States,California Court of Appeal,appellate,1940-11-28,Reinhard v. Lawrence Warehouse Co.,No. 11372.,harvard-lil/cold-cases,damages; negligence
+US_california_1353634,US,United States,California Court of Appeal,appellate,1940-11-26,Wilmot v. Golden Gate Investment Co.,No. 11493.,harvard-lil/cold-cases,damages; negligence
+US_california_1375290,US,United States,"District Court, C.D. California",trial,2007-12-10,"UMG Recordings, Inc. v. MySpace, Inc.",526 F. Supp. 2d 1046 (2007),harvard-lil/cold-cases,damages
+US_california_1315192,US,United States,California Court of Appeal,appellate,1956-11-28,Faus v. Pacific Electric Ry. Co.(1956),No. 21743.,harvard-lil/cold-cases,damages
+US_california_2182119,US,United States,California Court of Appeal,appellate,1961-05-26,"White v. Tacoma Lumber Sales, Inc.",No. 10064.,harvard-lil/cold-cases,personal injury
+US_california_1409737,US,United States,California Court of Appeal,appellate,1950-08-08,Lenchner v. Chase,No. 14253.,harvard-lil/cold-cases,damages
+US_california_1037256,US,United States,California Court of Appeal,appellate,2013-08-05,BNSF Railway Co. v. Public Utilities Commission,No. 12-08-028,harvard-lil/cold-cases,damages
+US_california_1041911,US,United States,California Court of Appeal,appellate,2013-09-24,James v. State of Cal.,338 F.3d 1063,harvard-lil/cold-cases,tort
+US_california_1035813,US,United States,California Court of Appeal,appellate,2013-07-30,P. v. Gomez CA6,466 U.S. 668,harvard-lil/cold-cases,damages; tort; proximate cause
+US_california_1392113,US,United States,California Court of Appeal,appellate,1957-01-29,Zinn v. Ex-Cell-O Corp.,No. 16372.,harvard-lil/cold-cases,damages; negligence; tort
+US_california_1504901,US,United States,"District Court, N.D. California",trial,1987-07-02,"Fantasy, Inc. v. Fogerty",664 F. Supp. 1345 (1987),harvard-lil/cold-cases,damages
+US_california_1447003,US,United States,California Court of Appeal,appellate,1937-01-14,Breaux v. Soares,No. 9979.,harvard-lil/cold-cases,negligence; proximate cause
+US_california_1453593,US,United States,California Court of Appeal,appellate,1942-11-27,Sheldon v. City of Los Angeles,No. 13832.,harvard-lil/cold-cases,damages
+US_california_1462298,US,United States,"District Court, N.D. California",trial,1983-03-29,Tongol v. Usery,575 F.Supp. 409 (1983),harvard-lil/cold-cases,tort
+US_california_2719570,US,United States,California Court of Appeal,appellate,2014-08-20,Craig v. Saddle Ranch Chop House CA2/7,No. EC058553,harvard-lil/cold-cases,damages; negligence; personal injury
+US_california_1041592,US,United States,California Court of Appeal,appellate,2013-09-20,The People v. Anselmi CA3,926 F.2d 918,harvard-lil/cold-cases,tort
+US_california_2295747,US,United States,California Court of Appeal,appellate,2004-01-16,"Citi-Wide Preferred Couriers, Inc. v. Golden Eagle Insurance",No. B160823.,harvard-lil/cold-cases,tort; emotional distress
+US_california_1558667,US,United States,"District Court, N.D. California",trial,2009-07-31,Committee for Immigrant Rights v. County of Sonoma,644 F.Supp.2d 1177 (2009),harvard-lil/cold-cases,damages; civil damages; negligence; tort; duty of care; punitive damages; emotional distress; personal injury
+US_california_1616599,US,United States,"District Court, N.D. California",trial,1990-09-10,National Center for Youth Law v. Legal Services Corp.,749 F. Supp. 1013 (1990),harvard-lil/cold-cases,damages
+US_california_1627393,US,United States,"District Court, C.D. California",trial,1987-12-23,McNall v. Tatham,676 F. Supp. 987 (1987),harvard-lil/cold-cases,damages; negligence; tort; punitive damages
+US_california_2263513,US,United States,California Court of Appeal,appellate,1994-04-26,Quemetco Inc. v. Pacific Automobile Insurance,955 F.2d 1353,harvard-lil/cold-cases,damages; negligence; tort; personal injury
+US_california_1613396,US,United States,"District Court, C.D. California",trial,1981-02-05,"Stoddard v. Ling-Temco-Vought, Inc.",513 F. Supp. 335 (1981),harvard-lil/cold-cases,damages; negligence
