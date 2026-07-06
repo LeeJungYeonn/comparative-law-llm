@@ -105,7 +105,6 @@ def build_fact_pattern(row: pd.Series, min_fact_chars: int, max_fact_chars: int)
         "case_id": case_id,
         "case_origin": origin,
         "jurisdiction": jurisdiction,
-        "source_language": "ko" if origin == "KR" else "en",
         "source_title": source_title,
         "raw_text_excerpt": excerpt(raw_text),
         "neutral_fact_ko": fact_text,
