@@ -151,6 +151,10 @@ def collect_kr_cases(args: argparse.Namespace) -> pd.DataFrame:
     for _, row in filtered.iterrows():
         scanned += 1
         raw_text = normalize_text(row.get(text_col, ""))
+        if len(raw_text) < args.min_text_length:
+            continue
+        if args.max_text_length and len(raw_text) > args.max_text_length:
+            continue
         court_name = normalize_text(row.get(court_col, "")) if court_col else ""
         case_number = normalize_text(row.get(case_number_col, "")) if case_number_col else ""
         case_number = case_number or extract_target_case_number(raw_text)
@@ -180,8 +184,9 @@ def collect_kr_cases(args: argparse.Namespace) -> pd.DataFrame:
     if collected.empty:
         return collected
 
-    if args.sample_size and len(collected) > args.sample_size:
-        collected = collected.sample(n=args.sample_size, random_state=args.seed)
+    sample_size = args.limit if args.limit is not None else args.sample_size
+    if sample_size and len(collected) > sample_size:
+        collected = collected.sample(n=sample_size, random_state=args.seed)
 
     return collected.reset_index(drop=True)
 
@@ -195,9 +200,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--split", default="train")
     parser.add_argument("--text-col", default="")
     parser.add_argument("--sample-size", type=int, default=50)
+    parser.add_argument("--limit", type=int, default=None, help="Alias for --sample-size.")
     parser.add_argument("--scan-limit", type=int, default=0)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--output", default="outputs/kr_cases.csv")
+    parser.add_argument("--overwrite", action="store_true")
+    parser.add_argument("--min-text-length", type=int, default=0)
+    parser.add_argument("--max-text-length", type=int, default=0)
     parser.add_argument("--keywords", nargs="*", default=DEFAULT_KEYWORDS)
     return parser.parse_args()
 
@@ -205,6 +214,8 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     output_path = Path(args.output)
+    if output_path.exists() and not args.overwrite:
+        raise FileExistsError(f"Output exists: {output_path}. Pass --overwrite to replace it.")
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     collected = collect_kr_cases(args)
