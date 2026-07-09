@@ -83,7 +83,7 @@ US_california_434749,"Southwest Marine, Inc., a California Corporation v. Campbe
 US_california_118347,Food & Drug Administration v. Brown & Williamson Tobacco Corp.,Supreme Court of the United States,2000-03-28,274609,product_liability,False,False,True,False,False,False,True,False,fail,out_of_state_or_not_california_state,
 US_california_1113654,Scarbourough v. Briggs,California Court of Appeal,1947-08-04,17832,unclear,True,False,False,False,False,True,True,False,fail,procedure_only_signal,
 US_california_1114580,People v. Jacobs,California Court of Appeal,1952-05-23,6926,unclear,True,False,False,True,False,False,True,True,fail,criminal_habeas_signal,
-US_california_1117178,Dougherty v. Lee,California Court of Appeal,1946-04-23,14570,unclear,True,False,False,False,False,False,True,True,pass,,
+US_california_1117178,Dougherty v. Lee,California Court of Appeal,1946-04-23,14570,property_damage,True,False,False,False,False,False,True,True,pass,,
 US_california_1117199,Otten v. San Francisco Hotel Owners Ass'n,California Court of Appeal,1946-05-02,4997,personal_injury,True,False,False,False,False,False,True,False,fail,no_liability_damages_keyword,
 US_california_272256,Calvin C. Shobe v. The People of the State of California,Court of Appeals for the Ninth Circuit,1966-10-10,7756,unclear,False,True,True,True,False,True,True,True,fail,federal_case,
 US_california_1122150,Bradner v. Woods,California Court of Appeal,1939-02-07,9628,unclear,True,False,False,False,False,False,True,False,fail,no_liability_damages_keyword,
@@ -586,7 +586,7 @@ US_california_3279347,Opinion No. (2004),California Attorney General Reports,200
 US_california_3279402,Opinion No. (2000),California Attorney General Reports,2000-12-08,8824,unclear,False,False,True,True,False,False,True,False,fail,out_of_state_or_not_california_state,
 US_california_3279432,Opinion No. (1997),California Attorney General Reports,1997-08-14,23483,personal_injury,False,False,True,False,True,False,True,True,fail,out_of_state_or_not_california_state,
 US_california_3279555,Kinard v. Ward,California Court of Appeal,1913-02-05,7348,unclear,True,False,False,False,False,True,True,False,fail,procedure_only_signal,
-US_california_3279743,Norton v. Meyers,California Court of Appeal,1929-04-08,9034,fraud_damages,True,False,False,False,False,False,True,True,pass,,
+US_california_3279743,Norton v. Meyers,California Court of Appeal,1929-04-08,9034,fraud_damages,True,False,False,False,False,False,True,True,fail,contract_only_promissory_note_building_contract_case,; removed_from_final_v2
 US_california_3279812,Bekins v. Smith,California Court of Appeal,1918-07-29,799,unclear,True,False,False,False,False,False,False,False,fail,no_full_text_or_too_short,
 US_california_3280210,Walter v. Arnold,California Court of Appeal,1920-12-18,8589,unclear,True,False,False,False,False,False,True,False,fail,no_specific_liability_category,
 US_california_3280715,People v. Black,California Court of Appeal,1928-02-10,10419,fraud_damages,True,False,False,True,False,True,True,True,fail,criminal_habeas_signal,
@@ -611,7 +611,7 @@ US_california_3282907,Globe Cotton Oil Mills v. Industrial Accident Commission,C
 US_california_3283020,Stewart v. Smith,California Court of Appeal,1907-07-30,22714,fraud_damages,True,False,False,False,False,True,True,True,fail,no_liability_damages_keyword,
 US_california_3283132,Loomis F.G. Assn. v. California F. Exch.,California Court of Appeal,1932-12-19,39972,unclear,True,False,False,False,False,False,True,True,fail,no_liability_damages_keyword,
 US_california_3283393,Kaye v. Superior Court,California Court of Appeal,1917-03-21,2488,unclear,True,False,False,False,False,True,False,False,fail,no_full_text_or_too_short,
-US_california_3283498,Bilicke v. Janss,California Court of Appeal,1910-10-17,8353,property_damage,True,False,False,False,False,False,True,True,pass,,
+US_california_3283498,Bilicke v. Janss,California Court of Appeal,1910-10-17,8353,property_damage,True,False,False,False,False,False,True,True,fail,contract_only_rent_or_lease_case,; removed_from_final_v2
 US_california_3283889,Lewis v. Brown,California Court of Appeal,1913-05-08,14443,unclear,True,False,False,False,False,False,True,True,fail,no_liability_damages_keyword,
 US_california_3283897,Kelly v. Silbough,California Court of Appeal,1933-06-07,1227,personal_injury,True,False,False,False,False,False,False,False,fail,no_full_text_or_too_short,
 US_california_3284018,Lowry v. County of Los Angeles,California Court of Appeal,1918-09-07,15191,unclear,True,False,False,False,False,True,True,True,fail,no_liability_damages_keyword,
@@ -631,7 +631,7 @@ US_california_3285397,Good v. City of San Bernardino,California Court of Appeal,
 US_california_3285451,Merino v. Pacific Coast Borax Co.,California Court of Appeal,1932-06-16,15593,wrongful_death,True,False,False,False,True,True,True,True,fail,administrative_public_law_signal,insurance coverage signal present
 US_california_3285484,Estate of Guinasso,California Court of Appeal,1910-05-30,5477,fraud_damages,True,False,False,False,False,False,True,True,fail,no_liability_damages_keyword,
 US_california_3285673,Alderman v. McCardia,California Court of Appeal,1931-12-17,5243,unclear,True,False,False,False,False,False,True,True,fail,no_liability_damages_keyword,
-US_california_3285859,Nelson v. Nelson,California Court of Appeal,1912-04-02,12502,auto_accident,True,False,False,False,False,False,True,True,pass,,
+US_california_3285859,Nelson v. Nelson,California Court of Appeal,1912-04-02,12502,auto_accident,True,False,False,False,False,False,True,True,fail,family_divorce_case,; removed_from_final_v2
 US_california_3285880,Garlinghouse v. Merkle,California Court of Appeal,1933-11-06,1316,personal_injury,True,False,False,False,False,False,False,False,fail,no_full_text_or_too_short,
 US_california_3285932,Thompson v. McKenna,California Court of Appeal,1913-05-17,11772,unclear,True,False,False,False,False,False,True,True,fail,no_liability_damages_keyword,
 US_california_3285940,Waltz v. Silveria,California Court of Appeal,1914-11-09,9531,personal_injury,True,False,False,False,False,False,True,True,fail,no_liability_damages_keyword,
@@ -643,7 +643,7 @@ US_california_3286739,Universal Film Manufacturing Co. v. Kerrigan,California Co
 US_california_3286832,Hollman v. Hollman,California Court of Appeal,1928-01-31,14058,unclear,True,False,False,False,False,True,True,True,fail,attorney_fee_only_signal,
 US_california_3286861,Faria v. Bettencourt,California Court of Appeal,1929-07-18,5503,unclear,True,False,False,False,False,False,True,True,fail,no_liability_damages_keyword,
 US_california_3286919,McCarthy v. Holland,California Court of Appeal,1916-05-19,6783,unclear,True,False,False,False,False,False,True,True,fail,no_liability_damages_keyword,
-US_california_3286933,First National Bank v. Clifton,California Court of Appeal,1925-06-08,8050,personal_injury,True,False,False,False,False,False,True,True,pass,,
+US_california_3286933,First National Bank v. Clifton,California Court of Appeal,1925-06-08,8050,personal_injury,True,False,False,False,False,False,True,True,fail,contract_only_promissory_note_case,; removed_from_final_v2
 US_california_3287263,Northern Assurance Co. v. Stout,California Court of Appeal,1911-06-28,22497,unclear,True,False,False,False,False,False,True,True,fail,insurance_coverage_only_signal,insurance coverage signal present
 US_california_3287992,Youngs v. Wright,California Court of Appeal,1934-02-08,6843,unclear,True,False,False,False,False,False,True,True,fail,no_liability_damages_keyword,
 US_california_3288137,Southern California Edison Co. v. Industrial Accident Commission,California Court of Appeal,1928-06-01,9258,personal_injury,True,False,False,False,True,False,True,True,fail,administrative_public_law_signal,
@@ -668,7 +668,7 @@ US_california_3292926,People v. McGrath,California Court of Appeal,1928-10-27,13
 US_california_3292990,People v. Wieler,California Court of Appeal,1921-12-16,13303,personal_injury,True,False,False,True,False,True,True,True,fail,criminal_habeas_signal,
 US_california_3293558,Barrow v. Barrow,California Court of Appeal,1919-07-02,3852,unclear,True,False,False,True,False,False,True,True,fail,criminal_habeas_signal,
 US_california_3293640,In Re Fontino,California Court of Appeal,1933-11-27,5156,unclear,True,False,False,True,True,False,True,True,fail,criminal_habeas_signal,
-US_california_3293895,Moffitt v. Moffitt,California Court of Appeal,1933-01-13,7177,personal_injury,True,False,False,False,False,False,True,True,pass,,
+US_california_3293895,Moffitt v. Moffitt,California Court of Appeal,1933-01-13,7177,personal_injury,True,False,False,False,False,False,True,True,fail,family_separate_maintenance_case,; removed_from_final_v2
 US_california_3294109,Tutsch v. Director-General of Railroads,California Court of Appeal,1921-05-18,8661,personal_injury,True,False,False,False,False,True,True,False,fail,procedure_only_signal,
 US_california_3294657,People v. Gibson,California Court of Appeal,1920-02-04,2303,unclear,True,False,False,True,False,True,False,False,fail,no_full_text_or_too_short,
 US_california_3295075,Shapiro v. Ralph G. Whitlock Co.,California Court of Appeal,1926-03-25,3186,unclear,True,False,False,False,False,False,True,True,fail,no_specific_liability_category,
@@ -922,7 +922,7 @@ US_california_5795943,People v. Chavez,California Court of Appeal,1929-09-03,521
 US_california_5796133,Capital Glenn Mining Co. v. Industrial Accident Commission,California Court of Appeal,1932-06-03,581,personal_injury,True,False,False,False,True,False,False,False,fail,no_full_text_or_too_short,
 US_california_5796143,Thomas v. Lavery,California Court of Appeal,1932-09-15,352,unclear,True,False,False,False,False,False,False,False,fail,no_full_text_or_too_short,
 US_california_5796382,Johnston v. Joint Highway District No. 12,California Court of Appeal,1934-05-07,8855,auto_accident,True,False,False,False,False,False,True,False,fail,no_liability_damages_keyword,
-US_california_5796609,Schwerin v. H. C. Capwell Co.,California Court of Appeal,1934-07-19,5799,auto_accident,True,False,False,False,False,False,True,True,pass,,
+US_california_5796609,Schwerin v. H. C. Capwell Co.,California Court of Appeal,1934-07-19,5799,personal_injury,True,False,False,False,False,False,True,True,pass,,
 US_california_5796759,Dallman v. Dallman,California Court of Appeal,1960-03-18,3729,fraud_damages,True,False,False,False,False,True,True,True,fail,no_liability_damages_keyword,
 US_california_5796956,In re Morales,California Court of Appeal,1935-02-05,432,unclear,True,False,False,True,True,False,False,False,fail,no_full_text_or_too_short,
 US_california_5797543,Drapeau v. Rundle,California Court of Appeal,1936-08-28,16183,unclear,True,False,False,False,False,False,True,False,fail,no_liability_damages_keyword,
@@ -930,7 +930,7 @@ US_california_5797591,California Pacific Title & Trust Co. v. California Mining 
 US_california_5797595,Mathewson v. Naylor,California Court of Appeal,1936-11-10,1498,unclear,True,False,False,False,False,False,False,False,fail,no_full_text_or_too_short,
 US_california_5797665,Dixon v. Columbia Glass Co.,California Court of Appeal,1937-01-29,975,unclear,True,False,False,False,False,False,False,False,fail,no_full_text_or_too_short,
 US_california_5797701,"Adjustment Service, Inc. v. Dutton",California Court of Appeal,1937-03-18,2003,personal_injury,True,False,False,False,False,False,False,False,fail,no_full_text_or_too_short,
-US_california_5798321,Rogers v. Transamerica Corp.,California Court of Appeal,1939-12-22,23617,fraud_damages,True,False,False,False,False,False,True,True,pass,,
+US_california_5798321,Rogers v. Transamerica Corp.,California Court of Appeal,1939-12-22,23617,fraud_damages,True,False,False,False,False,False,True,True,fail,prior_litigation_fraud_procedural_case,; removed_from_final_v2
 US_california_5798508,People v. Waite,California Court of Appeal,1941-10-10,715,unclear,True,False,False,True,False,False,False,False,fail,no_full_text_or_too_short,
 US_california_5798519,City of Oakland v. El Dorado Terminal Co.,California Court of Appeal,1940-11-06,25217,unclear,True,False,False,False,False,True,True,True,fail,no_liability_damages_keyword,
 US_california_5798939,Overland v. Davis,California Court of Appeal,1942-03-17,18255,auto_accident,True,False,False,False,False,False,True,True,fail,no_liability_damages_keyword,
@@ -938,22 +938,22 @@ US_california_5799464,People v. Gordon,California Court of Appeal,1944-01-12,114
 US_california_5799564,Smith v. Sleepy Hollow Investment Co.,California Court of Appeal,1944-06-26,11430,unclear,True,False,False,False,False,False,True,True,fail,insurance_coverage_only_signal,insurance coverage signal present
 US_california_5799576,People v. Reese,California Court of Appeal,1944-07-31,72615,auto_accident,True,False,False,True,False,False,True,True,fail,criminal_habeas_signal,
 US_california_5799671,People v. Ratner,Appellate Division of the Superior Court of California,1944-11-30,13817,unclear,False,False,True,True,False,False,True,True,fail,out_of_state_or_not_california_state,
-US_california_5799794,Wetzel v. Wetzel,California Court of Appeal,1945-10-09,3240,property_damage,True,False,False,False,False,False,True,True,pass,,
+US_california_5799794,Wetzel v. Wetzel,California Court of Appeal,1945-10-09,3240,property_damage,True,False,False,False,False,False,True,True,fail,family_divorce_decree_case,; removed_from_final_v2
 US_california_5800020,Lowe v. Pierce,California Court of Appeal,1946-10-02,1633,auto_accident,True,False,False,False,False,False,False,False,fail,no_full_text_or_too_short,
-US_california_5800141,Tarasco v. Moyers,California Court of Appeal,1947-05-07,3997,auto_accident,True,False,False,False,False,False,True,True,pass,,
+US_california_5800141,Tarasco v. Moyers,California Court of Appeal,1947-05-07,3997,auto_accident,True,False,False,False,False,False,True,True,pass,,selected_replacement_v2; selected_replacement_v2
 US_california_5800278,Martin v. Industrial Accident Commission & Pacific Indemnity Co.,California Court of Appeal,1947-12-05,12834,personal_injury,True,False,False,False,True,True,True,True,fail,administrative_public_law_signal,insurance coverage signal present
-US_california_5800312,"Smith v. Cantlay & Tanzola, Inc.",California Court of Appeal,1948-02-17,5715,auto_accident,True,False,False,False,False,False,True,True,pass,,
+US_california_5800312,"Smith v. Cantlay & Tanzola, Inc.",California Court of Appeal,1948-02-17,5715,auto_accident,True,False,False,False,False,False,True,True,pass,,selected_replacement_v2; selected_replacement_v2
 US_california_5800354,Aptos Land and Water Co. v. Superior Court,California Court of Appeal,1948-03-04,2116,unclear,True,False,False,False,False,True,False,False,fail,no_full_text_or_too_short,
 US_california_5800434,People v. Ortiz,Appellate Division of the Superior Court of California,1948-06-17,7520,auto_accident,False,False,True,True,False,False,True,False,fail,out_of_state_or_not_california_state,
 US_california_5800493,People v. Hamilton,California Court of Appeal,1948-11-09,7013,unclear,True,False,False,True,False,False,True,False,fail,criminal_habeas_signal,
 US_california_5800607,Ellenberger v. Warren,California Court of Appeal,1949-03-23,16002,personal_injury,True,False,False,False,True,True,True,True,fail,administrative_public_law_signal,
 US_california_5800652,Johns Hopkins University v. Kuchel,California Court of Appeal,1949-05-23,39312,personal_injury,True,False,False,False,False,False,True,True,fail,no_liability_damages_keyword,
-US_california_5801346,Reyes v. Gonzales,California Court of Appeal,1952-04-04,5445,auto_accident,True,False,False,False,False,False,True,True,pass,,
+US_california_5801346,Reyes v. Gonzales,California Court of Appeal,1952-04-04,5445,auto_accident,True,False,False,False,False,False,True,True,pass,,selected_replacement_v2; selected_replacement_v2
 US_california_5802024,Valley Group Pipe Trades Trust Fund v. L. R. Strain Plumbing & Heating Co.,California Court of Appeal,1955-03-11,15214,unclear,True,False,False,False,False,False,True,False,fail,insurance_coverage_only_signal,insurance coverage signal present
-US_california_5802325,Smidt v. Overholtzer,California Court of Appeal,1956-03-08,5933,personal_injury,True,False,False,False,False,False,True,True,pass,,
-US_california_5802386,Schuler v. Winstanley,California Court of Appeal,1956-05-23,19655,auto_accident,True,False,False,False,False,False,True,True,pass,,
+US_california_5802325,Smidt v. Overholtzer,California Court of Appeal,1956-03-08,5933,property_damage,True,False,False,False,False,False,True,True,pass,,
+US_california_5802386,Schuler v. Winstanley,California Court of Appeal,1956-05-23,19655,auto_accident,True,False,False,False,False,False,True,True,pass,,selected_replacement_v2; selected_replacement_v2
 US_california_5802591,MacDonald v. Kingsley,California Court of Appeal,1957-03-22,4215,fraud_damages,True,False,False,False,False,False,True,True,pass,,
-US_california_5802677,Sardisco v. Kiek,California Court of Appeal,1957-07-16,3703,auto_accident,True,False,False,False,False,False,True,True,pass,,
+US_california_5802677,Sardisco v. Kiek,California Court of Appeal,1957-07-16,3703,auto_accident,True,False,False,False,False,False,True,True,pass,,selected_replacement_v2; selected_replacement_v2
 US_california_5802744,E. A. Hosmer & Co. v. Shand & Jurs Co.,California Court of Appeal,1957-10-22,6628,unclear,True,False,False,False,False,False,True,False,fail,no_liability_damages_keyword,
 US_california_5803279,People v. Hicks,California Court of Appeal,1959-11-24,3080,auto_accident,True,False,False,True,False,False,True,True,fail,criminal_habeas_signal,
 US_california_5803350,People v. Cass,California Court of Appeal,1960-02-24,3809,unclear,True,False,False,True,False,False,True,True,fail,criminal_habeas_signal,
@@ -1305,9 +1305,9 @@ US_california_1178349,Llewellyn v. Cheesewright,California Court of Appeal,1948-
 US_california_1178392,Sparks v. Mendoza,California Court of Appeal,1948-02-06,7902,fraud_damages,True,False,False,False,False,False,True,True,fail,no_liability_damages_keyword,
 US_california_456021,"Raymond Edward Middleton v. Hoyt C. Cupp, Superintendent, Oregon State Penitentiary",Court of Appeals for the Ninth Circuit,1985-08-14,12986,personal_injury,False,True,True,True,False,False,True,True,fail,federal_case,
 US_california_1180767,Zemke v. Workmen's Compensation Appeals Board,California Supreme Court,1968-06-28,14915,personal_injury,False,False,True,False,False,False,True,True,fail,out_of_state_or_not_california_state,
-US_california_1182459,Young v. Bank of America National Trust & Savings Ass'n,California Court of Appeal,1950-01-26,12801,personal_injury,True,False,False,False,False,False,True,True,pass,,
-US_california_1182579,Glenn v. City of Los Angeles,California Court of Appeal,1950-02-16,4478,auto_accident,True,False,False,False,False,False,True,True,pass,,
-US_california_1182836,Rickey v. Kardassakis,California Court of Appeal,1952-04-08,11879,auto_accident,True,False,False,False,False,False,True,True,pass,,
+US_california_1182459,Young v. Bank of America National Trust & Savings Ass'n,California Court of Appeal,1950-01-26,12801,personal_injury,True,False,False,False,False,False,True,True,pass,,selected_replacement_v2; selected_replacement_v2
+US_california_1182579,Glenn v. City of Los Angeles,California Court of Appeal,1950-02-16,4478,auto_accident,True,False,False,False,False,False,True,True,pass,,selected_replacement_v2; selected_replacement_v2
+US_california_1182836,Rickey v. Kardassakis,California Court of Appeal,1952-04-08,11879,auto_accident,True,False,False,False,False,False,True,True,pass,,selected_replacement_v2; selected_replacement_v2
 US_california_1183968,California Compensation & Fire Co. v. Workmen's Compensation Appeals Board,California Supreme Court,1968-01-25,8863,wrongful_death,False,False,True,False,False,False,True,True,fail,out_of_state_or_not_california_state,insurance coverage signal present
 US_california_1184049,Kuenzel v. Grettenberg,California Court of Appeal,1948-11-18,6983,unclear,True,False,False,False,False,True,True,True,fail,ip_federal_statutory_signal,ip signal present
 US_california_543873,United States v. Francisco Rangel-Navarro,Court of Appeals for the Ninth Circuit,1990-07-02,4649,unclear,False,True,True,True,False,False,True,False,fail,federal_case,
@@ -1545,7 +1545,7 @@ US_california_2117495,In Re Marriage of Roesch,California Court of Appeal,1978-0
 US_california_2118269,People v. Isaac,California Court of Appeal,1976-03-29,10119,personal_injury,True,False,False,True,False,False,True,True,fail,criminal_habeas_signal,
 US_california_2119018,In Re Dayan,California Court of Appeal,1991-06-14,9996,unclear,True,False,False,True,True,False,True,False,fail,criminal_habeas_signal,
 US_california_2119227,C.I.T. Corp. v. Anwright Corp.,California Court of Appeal,1987-05-18,16932,unclear,True,False,False,False,False,True,True,True,fail,no_liability_damages_keyword,
-US_california_2136310,Harold A. Newman Co. v. Nero,California Court of Appeal,1973-04-05,14968,product_liability,True,False,False,False,False,False,True,True,pass,,
+US_california_2136310,Harold A. Newman Co. v. Nero,California Court of Appeal,1973-04-05,14968,contract_damages,True,False,False,False,False,False,True,True,fail,contract_equipment_sale_judgment_roll_case,; removed_from_final_v2
 US_california_130710,Appleberry v. United States District Court for the Central District of California,Supreme Court of the United States,2003-06-23,210,unclear,False,True,True,False,False,False,False,False,fail,no_full_text_or_too_short,
 US_california_2121369,Paulfrey v. Blue Chip Stamps,California Court of Appeal,1983-12-27,27167,personal_injury,True,False,False,False,False,True,True,True,fail,insurance_coverage_only_signal,insurance coverage signal present
 US_california_2121754,Blackwell v. Phelps Dodge Corp.,California Court of Appeal,1984-06-20,17872,personal_injury,True,False,False,False,False,True,True,True,warning,,procedure term present but factual background detected
