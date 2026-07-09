@@ -627,7 +627,7 @@ US_california_3285086,Jenicek v. Barman,California Court of Appeal,1933-02-07,93
 US_california_3285161,People v. Lewis,California Court of Appeal,1909-12-09,2947,unclear,True,False,False,True,False,False,False,False,fail,no_full_text_or_too_short,
 US_california_3285237,In Re Avdalas,California Court of Appeal,1909-05-04,14392,fraud_damages,True,False,False,True,True,True,True,True,fail,criminal_habeas_signal,
 US_california_3285347,Eastman v. Piper,California Court of Appeal,1924-09-05,38519,fraud_damages,True,False,False,False,False,False,True,True,fail,no_liability_damages_keyword,
-US_california_3285397,Good v. City of San Bernardino,California Court of Appeal,1920-10-13,12936,personal_injury,True,False,False,False,False,False,True,True,pass,,
+US_california_3285397,Good v. City of San Bernardino,California Court of Appeal,1920-10-13,12936,wrongful_death,True,False,False,False,False,False,True,True,pass,,
 US_california_3285451,Merino v. Pacific Coast Borax Co.,California Court of Appeal,1932-06-16,15593,wrongful_death,True,False,False,False,True,True,True,True,fail,administrative_public_law_signal,insurance coverage signal present
 US_california_3285484,Estate of Guinasso,California Court of Appeal,1910-05-30,5477,fraud_damages,True,False,False,False,False,False,True,True,fail,no_liability_damages_keyword,
 US_california_3285673,Alderman v. McCardia,California Court of Appeal,1931-12-17,5243,unclear,True,False,False,False,False,False,True,True,fail,no_liability_damages_keyword,
@@ -922,7 +922,7 @@ US_california_5795943,People v. Chavez,California Court of Appeal,1929-09-03,521
 US_california_5796133,Capital Glenn Mining Co. v. Industrial Accident Commission,California Court of Appeal,1932-06-03,581,personal_injury,True,False,False,False,True,False,False,False,fail,no_full_text_or_too_short,
 US_california_5796143,Thomas v. Lavery,California Court of Appeal,1932-09-15,352,unclear,True,False,False,False,False,False,False,False,fail,no_full_text_or_too_short,
 US_california_5796382,Johnston v. Joint Highway District No. 12,California Court of Appeal,1934-05-07,8855,auto_accident,True,False,False,False,False,False,True,False,fail,no_liability_damages_keyword,
-US_california_5796609,Schwerin v. H. C. Capwell Co.,California Court of Appeal,1934-07-19,5799,personal_injury,True,False,False,False,False,False,True,True,pass,,
+US_california_5796609,Schwerin v. H. C. Capwell Co.,California Court of Appeal,1934-07-19,5799,premises_liability,True,False,False,False,False,False,True,True,pass,,
 US_california_5796759,Dallman v. Dallman,California Court of Appeal,1960-03-18,3729,fraud_damages,True,False,False,False,False,True,True,True,fail,no_liability_damages_keyword,
 US_california_5796956,In re Morales,California Court of Appeal,1935-02-05,432,unclear,True,False,False,True,True,False,False,False,fail,no_full_text_or_too_short,
 US_california_5797543,Drapeau v. Rundle,California Court of Appeal,1936-08-28,16183,unclear,True,False,False,False,False,False,True,False,fail,no_liability_damages_keyword,
@@ -951,9 +951,9 @@ US_california_5800652,Johns Hopkins University v. Kuchel,California Court of App
 US_california_5801346,Reyes v. Gonzales,California Court of Appeal,1952-04-04,5445,auto_accident,True,False,False,False,False,False,True,True,pass,,selected_replacement_v2; selected_replacement_v2
 US_california_5802024,Valley Group Pipe Trades Trust Fund v. L. R. Strain Plumbing & Heating Co.,California Court of Appeal,1955-03-11,15214,unclear,True,False,False,False,False,False,True,False,fail,insurance_coverage_only_signal,insurance coverage signal present
 US_california_5802325,Smidt v. Overholtzer,California Court of Appeal,1956-03-08,5933,property_damage,True,False,False,False,False,False,True,True,pass,,
-US_california_5802386,Schuler v. Winstanley,California Court of Appeal,1956-05-23,19655,auto_accident,True,False,False,False,False,False,True,True,pass,,selected_replacement_v2; selected_replacement_v2
+US_california_5802386,Schuler v. Winstanley,California Court of Appeal,1956-05-23,19655,property_dispute,True,False,False,False,False,False,True,True,pass,,selected_replacement_v2; selected_replacement_v2
 US_california_5802591,MacDonald v. Kingsley,California Court of Appeal,1957-03-22,4215,fraud_damages,True,False,False,False,False,False,True,True,pass,,
-US_california_5802677,Sardisco v. Kiek,California Court of Appeal,1957-07-16,3703,auto_accident,True,False,False,False,False,False,True,True,pass,,selected_replacement_v2; selected_replacement_v2
+US_california_5802677,Sardisco v. Kiek,California Court of Appeal,1957-07-16,3703,premises_liability,True,False,False,False,False,False,True,True,pass,,selected_replacement_v2; selected_replacement_v2
 US_california_5802744,E. A. Hosmer & Co. v. Shand & Jurs Co.,California Court of Appeal,1957-10-22,6628,unclear,True,False,False,False,False,False,True,False,fail,no_liability_damages_keyword,
 US_california_5803279,People v. Hicks,California Court of Appeal,1959-11-24,3080,auto_accident,True,False,False,True,False,False,True,True,fail,criminal_habeas_signal,
 US_california_5803350,People v. Cass,California Court of Appeal,1960-02-24,3809,unclear,True,False,False,True,False,False,True,True,fail,criminal_habeas_signal,
@@ -1696,4 +1696,4 @@ US_california_2288343,People v. Bailey,California Court of Appeal,2010-08-26,309
 US_california_2289482,Golden Gateway Center v. San Francisco Residential Stabilization,California Court of Appeal,1999-08-02,22227,personal_injury,True,False,False,False,True,True,True,True,fail,administrative_public_law_signal,
 US_california_2291647,Holland v. Sterling Casualty Insurance,California Court of Appeal,1994-06-09,13351,auto_accident,True,False,False,False,False,False,True,True,fail,insurance_coverage_only_signal,insurance coverage signal present
 US_california_2292233,People v. Leonard,California Court of Appeal,1996-11-05,14158,property_damage,True,False,False,True,False,False,True,True,fail,criminal_habeas_signal,
-US_california_2294485,"Schoendorf v. U.D. Registry, Inc.",California Court of Appeal,2002-03-28,36188,property_damage,True,False,False,False,False,False,True,True,pass,,
+US_california_2294485,"Schoendorf v. U.D. Registry, Inc.",California Court of Appeal,2002-03-28,36188,consumer_reporting,True,False,False,False,False,False,True,True,pass,,
