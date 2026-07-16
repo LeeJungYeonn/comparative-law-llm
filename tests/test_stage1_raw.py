@@ -7,6 +7,7 @@ import pytest
 
 from collect_ca_raw_cases import evaluate_row as evaluate_ca_row
 from collect_kr_raw_cases import evaluate_row as evaluate_kr_row
+from collect_kr_raw_cases import mark_duplicate_candidates, select_final_sample, split_pools
 from pipeline.stage1_raw import apply_duplicate_qc, make_raw_record, require_outputs, sample_records, stratified_sample_with_fallback
 
 
@@ -17,9 +18,33 @@ def ca_args(**overrides):
 
 
 def kr_args(**overrides):
-    values = {"dataset": "lbox/lbox_open", "config": "precedent_corpus", "min_text_chars": 20, "max_text_chars": 0, "year_min": 0, "year_max": 0, "text_col": ""}
+    values = {
+        "dataset": "lbox/lbox_open",
+        "config": "precedent_corpus",
+        "min_text_chars": 20,
+        "max_text_chars": 0,
+        "year_min": 0,
+        "year_max": 9999,
+        "text_col": "",
+        "court_level": "appellate",
+        "strict_tort_only": True,
+        "target_count": 20,
+        "seed": 42,
+        "allow_year_fallback": False,
+        "relax_subtype_quota": False,
+    }
     values.update(overrides)
     return Namespace(**values)
+
+
+def kr_case_text(body: str) -> str:
+    return (
+        "서울고등법원 2019나12345 손해배상\n"
+        "기초사실\n"
+        f"{body}\n"
+        "판단\n"
+        "민법 제750조의 불법행위 책임이 문제 된다."
+    )
 
 
 def test_kr_criminal_case_excluded():
@@ -34,6 +59,183 @@ def test_kr_supreme_case_excluded():
     record = evaluate_kr_row(row, kr_args())
     assert record["collection_status"] == "fail"
     assert "supreme_court_excluded" in record["exclude_signals"]
+
+
+def test_kr_case_number_na_classifies_appellate():
+    row = {
+        "id": "kr-app",
+        "case_number": "2019나12345",
+        "court_name": "서울고등법원",
+        "decision_date": "2019. 5. 1.",
+        "precedent": kr_case_text("2018. 1. 1. 피고가 차량을 운전하다 원고 차량을 충돌하여 원고가 상해를 입고 치료비 손해가 발생하였다."),
+    }
+    record = evaluate_kr_row(row, kr_args(year_min=2010, year_max=2021))
+    assert record["court_level"] == "appellate"
+    assert record["court_level_confidence"] == "high"
+    assert record["strict_eligible"] is True
+
+
+def test_kr_case_number_da_classifies_supreme():
+    row = {
+        "id": "kr-sup-da",
+        "case_number": "2020다12345",
+        "court_name": "대법원",
+        "decision_date": "2020. 1. 1.",
+        "precedent": "대법원 2020다12345 상고이유 손해배상 관련 법리를 판단한다.",
+    }
+    record = evaluate_kr_row(row, kr_args())
+    assert record["court_level"] == "supreme"
+
+
+def test_kr_high_court_name_is_appellate_evidence():
+    row = {
+        "id": "kr-high-court",
+        "case_number": "2019나12345",
+        "court_name": "서울고등법원",
+        "decision_date": "2019. 1. 1.",
+        "precedent": kr_case_text("2018. 1. 1. 피고가 시설을 방치하여 원고가 추락 사고로 상해와 치료비 손해를 입었다."),
+    }
+    record = evaluate_kr_row(row, kr_args())
+    assert record["court_level"] == "appellate"
+    assert any("court_name: 서울고등법원" == item for item in record["court_level_evidence"])
+
+
+def test_kr_supreme_roles_with_supreme_court_are_supreme():
+    row = {
+        "id": "kr-sup-role",
+        "court_name": "대법원",
+        "case_number": "2020다12345",
+        "precedent": "대법원 상고이유 피상고인 원심판결 손해배상",
+    }
+    record = evaluate_kr_row(row, kr_args())
+    assert record["court_level"] == "supreme"
+
+
+def test_kr_metadata_case_number_beats_cited_case_number():
+    row = {
+        "id": "kr-citation",
+        "case_number": "2019나12345",
+        "court_name": "서울고등법원",
+        "decision_date": "2019. 5. 1.",
+        "precedent": kr_case_text("대법원 2020다99999 판결을 인용한다. 2018. 1. 1. 피고가 차량을 충돌하여 원고가 상해와 치료비 손해를 입었다."),
+    }
+    record = evaluate_kr_row(row, kr_args())
+    assert record["case_number"] == "2019나12345"
+    assert record["court_level"] == "appellate"
+
+
+def test_kr_contract_damages_classifies_contract_only():
+    row = {
+        "id": "kr-contract",
+        "case_number": "2019나22222",
+        "court_name": "서울고등법원",
+        "decision_date": "2019. 5. 1.",
+        "precedent": "손해배상(기) 기초사실 원고와 피고는 매매계약을 체결하였다. 피고가 대금 지급 계약상 의무를 이행하지 않아 계약 위반 손해배상이 문제 되었다.",
+    }
+    record = evaluate_kr_row(row, kr_args())
+    assert record["liability_basis"] == "contract_only"
+    assert record["strict_eligible"] is False
+
+
+def test_kr_traffic_personal_injury_classifies_non_contractual_tort():
+    row = {
+        "id": "kr-traffic",
+        "case_number": "2019나33333",
+        "court_name": "서울고등법원",
+        "decision_date": "2019. 5. 1.",
+        "precedent": kr_case_text("2018. 1. 1. 피고가 자동차를 운전하다 원고를 추돌하였다. 원고는 상해를 입고 치료비와 위자료 손해가 발생하였다."),
+    }
+    record = evaluate_kr_row(row, kr_args(year_min=2010, year_max=2021))
+    assert record["liability_basis"] == "non_contractual_tort"
+    assert record["case_subtype"] == "traffic_accident"
+
+
+def test_kr_insurance_policy_only_classifies_insurance_only():
+    row = {
+        "id": "kr-insurance",
+        "case_number": "2019나44444",
+        "court_name": "서울고등법원",
+        "decision_date": "2019. 5. 1.",
+        "precedent": "손해배상 보험금 청구 기초사실 원고와 피고는 보험계약을 체결하였다. 이 사건은 보험약관의 면책 조항과 보험금 지급 범위만 문제 된다.",
+    }
+    record = evaluate_kr_row(row, kr_args())
+    assert record["liability_basis"] == "insurance_only"
+    assert record["strict_eligible"] is False
+
+
+def test_kr_legal_principles_only_is_factually_insufficient():
+    row = {
+        "id": "kr-legal-only",
+        "case_number": "2019나55555",
+        "court_name": "서울고등법원",
+        "decision_date": "2019. 5. 1.",
+        "precedent": "손해배상 관련 법리 대법원은 불법행위 손해배상책임의 요건과 과실 및 인과관계에 관한 법리는 다음과 같다고 판시하였다.",
+    }
+    record = evaluate_kr_row(row, kr_args())
+    assert record["factual_background_sufficient"] is False
+
+
+def test_kr_strict_pool_and_selected_count_are_separate():
+    first = evaluate_kr_row(
+        {
+            "id": "kr-s1",
+            "case_number": "2019나10001",
+            "court_name": "서울고등법원",
+            "decision_date": "2019. 1. 1.",
+            "precedent": kr_case_text("2018. 1. 1. 피고가 차량을 충돌하여 원고가 상해와 치료비 손해를 입었다."),
+        },
+        kr_args(year_min=2010, year_max=2021, target_count=1),
+    )
+    second = evaluate_kr_row(
+        {
+            "id": "kr-s2",
+            "case_number": "2018나10002",
+            "court_name": "서울고등법원",
+            "decision_date": "2018. 1. 1.",
+            "precedent": kr_case_text("2017. 1. 1. 피고가 시설을 방치하여 원고가 추락하고 치료비 손해를 입었다."),
+        },
+        kr_args(year_min=2010, year_max=2021, target_count=1),
+    )
+    args = kr_args(year_min=2010, year_max=2021, target_count=1)
+    pools = split_pools([first, second], args)
+    selected, _ = select_final_sample(pools["strict_eligible"], args)
+    assert len(pools["strict_eligible"]) == 2
+    assert len(selected) == 1
+
+
+def test_kr_target_count_does_not_relax_strict_shortage():
+    record = evaluate_kr_row(
+        {
+            "id": "kr-shortage",
+            "case_number": "2019나77777",
+            "court_name": "서울고등법원",
+            "decision_date": "2019. 1. 1.",
+            "precedent": kr_case_text("2018. 1. 1. 피고가 자동차를 충돌하여 원고가 상해와 치료비 손해를 입었다."),
+        },
+        kr_args(year_min=2010, year_max=2021),
+    )
+    selected, meta = select_final_sample([record], kr_args(year_min=2010, year_max=2021, target_count=20))
+    assert len(selected) == 1
+    assert meta["shortage"] == 19
+
+
+def test_kr_related_duplicate_marked():
+    first = evaluate_kr_row(
+        {
+            "id": "kr-dupe1",
+            "case_number": "2019나88888",
+            "court_name": "서울고등법원",
+            "decision_date": "2019. 1. 1.",
+            "precedent": kr_case_text("2018. 1. 1. 피고가 차량을 충돌하여 원고가 상해와 치료비 손해를 입었다."),
+        },
+        kr_args(),
+    )
+    second = dict(first)
+    second["case_id"] = "KR_other"
+    second["source_record_id"] = "kr-dupe2"
+    counts = mark_duplicate_candidates([first, second])
+    assert counts["duplicate_exact_hash"] == 1
+    assert second["duplicate_of_case_id"] == first["case_id"]
 
 
 def test_ca_federal_case_excluded():
