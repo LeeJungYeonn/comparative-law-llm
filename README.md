@@ -6,6 +6,49 @@ sources and reasoning-unit distributions in LLM-generated liability analysis.
 Stage 1 builds the reusable case corpus and neutral fact-pattern candidates. It
 does not translate, call an LLM, or evaluate model outputs.
 
+## Stage 1 v2: Reproducible Raw Corpus
+
+Use the v2 collectors when building the raw corpus for later neutral fact
+pattern generation. Korea and California remain separate scripts and separate
+outputs. The collectors use a keyword-gated scan: rows without any configured
+include keyword are counted in summary gate statistics and skipped before full
+QC, while every keyword-hit candidate is written to QC. The eligible pool is
+then sampled with a fixed seed.
+
+```powershell
+python collect_kr_raw_cases.py --target-count 50 --scan-limit 100000 --seed 42
+python collect_ca_raw_cases.py --target-count 50 --scan-limit 500000 --seed 42
+```
+
+Smoke tests without writing outputs:
+
+```powershell
+python collect_kr_raw_cases.py --target-count 3 --scan-limit 100 --preview-only
+python collect_ca_raw_cases.py --target-count 3 --scan-limit 1000 --preview-only
+```
+
+Full run with explicit replacement of existing v2 outputs:
+
+```powershell
+python collect_kr_raw_cases.py --target-count 100 --scan-limit 200000 --seed 42 --overwrite
+python collect_ca_raw_cases.py --target-count 100 --scan-limit 750000 --seed 42 --overwrite
+```
+
+Required v2 outputs:
+
+- `outputs/raw/kr_cases_raw.jsonl`
+- `outputs/raw/kr_cases_qc.csv`
+- `outputs/raw/kr_cases_summary.json`
+- `outputs/raw/ca_cases_raw.jsonl`
+- `outputs/raw/ca_cases_qc.csv`
+- `outputs/raw/ca_cases_summary.json`
+- `outputs/manifests/case_manifest.csv`
+
+Each raw JSONL row includes stable IDs, source metadata, full `raw_text`,
+SHA-256 hash, include/exclude evidence, quality flags, duplicate grouping, and
+`collection_version=stage1-v2`. QC CSVs include pass, warning, and fail rows
+with `exclusion_reason`; candidates are not silently dropped after inspection.
+
 ## Stage 1: Data Collection And Fact Patterns
 
 ### 1. Collect Korean damages / civil-liability cases

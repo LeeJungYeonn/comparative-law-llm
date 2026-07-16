@@ -1,0 +1,89 @@
+{
+  "collection_version": "stage1-v2",
+  "total_candidates_scanned": 882,
+  "eligible_pool_count": 166,
+  "selected_count": 50,
+  "status_counts": {
+    "warning": 155,
+    "fail": 716,
+    "pass": 11
+  },
+  "selected_court_level_counts": {
+    "unknown": 35,
+    "appellate": 8,
+    "trial": 7
+  },
+  "selected_decision_year_counts": {
+    "2003": 1,
+    "1989": 2,
+    "2019": 6,
+    "1980": 1,
+    "2020": 3,
+    "1967": 3,
+    "2018": 3,
+    "2015": 2,
+    "2008": 1,
+    "2017": 1,
+    "1991": 1,
+    "2000": 1,
+    "1997": 1,
+    "1996": 1,
+    "2014": 3,
+    "1988": 1,
+    "1983": 3,
+    "1981": 2,
+    "2004": 2,
+    "1987": 1,
+    "1968": 1,
+    "2006": 2,
+    "2016": 1,
+    "1990": 1,
+    "1976": 1,
+    "1979": 1,
+    "1998": 1,
+    "1993": 1,
+    "1999": 1,
+    "1994": 1
+  },
+  "selected_case_subtype_counts": {
+    "traffic_accident": 18,
+    "medical_professional": 19,
+    "facility_product_safety": 6,
+    "property_economic_harm": 4,
+    "unclear": 3
+  },
+  "candidate_case_subtype_counts": {
+    "medical_professional": 213,
+    "traffic_accident": 298,
+    "contract_only": 91,
+    "property_economic_harm": 98,
+    "facility_product_safety": 79,
+    "intentional_tort": 3,
+    "unclear": 81,
+    "personal_injury": 19
+  },
+  "duplicate_flag_counts": {
+    "duplicate_case_number_or_citation": 22,
+    "duplicate_exact_hash": 2
+  },
+  "seed": 42,
+  "target_count": 50,
+  "scan_limit": 5000,
+  "min_text_chars": 2000,
+  "max_text_chars": 0,
+  "stream_rows_scanned": 5001,
+  "keyword_gate_hits": 882,
+  "keyword_gate_skipped": 4118,
+  "keyword_gate_patterns": [
+    "손해배상",
+    "불법행위",
+    "위자료",
+    "치료비",
+    "일실수입",
+    "과실상계",
+    "주의의무",
+    "사용자책임",
+    "공작물책임",
+    "제조물책임"
+  ]
+}
