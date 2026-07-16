@@ -7,7 +7,7 @@ import pytest
 
 from collect_ca_raw_cases import evaluate_row as evaluate_ca_row
 from collect_kr_raw_cases import evaluate_row as evaluate_kr_row
-from pipeline.stage1_raw import apply_duplicate_qc, make_raw_record, require_outputs, sample_records
+from pipeline.stage1_raw import apply_duplicate_qc, make_raw_record, require_outputs, sample_records, stratified_sample_with_fallback
 
 
 def ca_args(**overrides):
@@ -134,3 +134,35 @@ def test_overwrite_protection(tmp_path: Path):
 def test_fixed_seed_sampling_reproducible():
     records = [{"case_id": f"CA_{idx}", "court_level": "appellate", "decision_year": 2020, "case_subtype": "personal_injury"} for idx in range(10)]
     assert [row["case_id"] for row in sample_records(records, 4, 123)] == [row["case_id"] for row in sample_records(records, 4, 123)]
+
+
+def test_stratified_sampling_prefers_primary_period_before_fallback():
+    primary = [
+        {"case_id": f"CA_primary_{idx}", "court_level": "appellate", "decision_year": 2015, "case_subtype": "auto_accident"}
+        for idx in range(3)
+    ]
+    fallback = [
+        {"case_id": f"CA_fallback_{idx}", "court_level": "appellate", "decision_year": 2005, "case_subtype": "auto_accident"}
+        for idx in range(10)
+    ]
+    selected, meta = stratified_sample_with_fallback(primary + fallback, target_count=3, seed=42)
+    assert {row["case_id"] for row in selected} == {row["case_id"] for row in primary}
+    assert meta["fallback_used_for_total_shortage"] is False
+
+
+def test_stratified_sampling_uses_fallback_only_for_total_shortage():
+    primary = [{"case_id": "CA_primary", "court_level": "appellate", "decision_year": 2015, "case_subtype": "auto_accident"}]
+    fallback = [{"case_id": "CA_fallback", "court_level": "appellate", "decision_year": 2005, "case_subtype": "auto_accident"}]
+    selected, meta = stratified_sample_with_fallback(primary + fallback, target_count=2, seed=42)
+    assert {row["case_id"] for row in selected} == {"CA_primary", "CA_fallback"}
+    assert meta["fallback_used_for_total_shortage"] is True
+
+
+def test_stratified_sampling_excludes_unknown_court_and_pre_2000():
+    records = [
+        {"case_id": "CA_ok", "court_level": "appellate", "decision_year": 2015, "case_subtype": "auto_accident"},
+        {"case_id": "CA_trial", "court_level": "trial", "decision_year": 2015, "case_subtype": "auto_accident"},
+        {"case_id": "CA_old", "court_level": "appellate", "decision_year": 1999, "case_subtype": "auto_accident"},
+    ]
+    selected, _ = stratified_sample_with_fallback(records, target_count=3, seed=42)
+    assert [row["case_id"] for row in selected] == ["CA_ok"]

@@ -16,8 +16,8 @@ from pipeline.stage1_raw import (
     length_flags,
     make_raw_record,
     require_outputs,
-    sample_records,
     status_from_signals,
+    stratified_sample_with_fallback,
     summarize_records,
     write_jsonl,
     write_manifest,
@@ -121,10 +121,6 @@ def evaluate_row(row: dict[str, Any], args: argparse.Namespace) -> dict[str, obj
     text = compact(raw_text)
     year_match = re.search(r"\b(18|19|20)\d{2}\b", compact(row.get("date_filed", "")))
     year = int(year_match.group(0)) if year_match else None
-    if year is not None and args.year_min and year < args.year_min:
-        return None
-    if year is not None and args.year_max and year > args.year_max:
-        return None
     metadata = "\n".join(compact(row.get(key, "")) for key in ["case_name", "case_name_full", "case_name_short", "court_full_name", "court_short_name", "headmatter", "summary", "syllabus", "disposition"])
     haystack = f"{metadata}\n{text[:12000]}"
     include_signals = regex_hits(INCLUDE_PATTERNS, haystack)
@@ -132,6 +128,12 @@ def evaluate_row(row: dict[str, Any], args: argparse.Namespace) -> dict[str, obj
     quality_flags = length_flags(text, args.min_text_chars, args.max_text_chars)
     if not is_california_state(row):
         exclude_signals.append("not_california_state_court_or_federal")
+    if court_level(row) != "appellate":
+        exclude_signals.append("non_appellate_or_unknown_court_level")
+    if year is None:
+        exclude_signals.append("decision_year_unknown")
+    elif year < args.year_min or year > args.year_max:
+        exclude_signals.append("decision_year_out_of_range")
     if regex_hits(FEDERAL_PATTERNS, haystack):
         exclude_signals.append("federal_case")
     if regex_hits(CRIMINAL_PATTERNS, haystack):
@@ -209,8 +211,17 @@ def collect(args: argparse.Namespace) -> tuple[list[dict[str, object]], list[dic
             LOGGER.info("scanned=%s keyword_hits=%s qc_candidates=%s gate_skipped=%s", scanned, keyword_gate_hits, len(records), keyword_gate_skipped)
     grouped_case_numbers(records)
     apply_duplicate_qc(records)
-    selected = sample_records([row for row in records if row["collection_status"] == "pass" or (args.include_warning and row["collection_status"] == "warning")], args.target_count, args.seed)
+    eligible = [row for row in records if row["collection_status"] == "pass" or (args.include_warning and row["collection_status"] == "warning")]
+    selected, sampling_meta = stratified_sample_with_fallback(
+        eligible,
+        target_count=args.target_count,
+        seed=args.seed,
+        primary_year_min=args.primary_year_min,
+        fallback_year_min=args.fallback_year_min,
+        year_max=args.year_max,
+    )
     summary = summarize_records(all_records=records, selected_records=selected, args=args)
+    summary.update(sampling_meta)
     add_gate_stats(
         summary,
         stream_rows_scanned=scanned,
@@ -228,8 +239,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--target-count", type=int, default=50)
     parser.add_argument("--scan-limit", type=int, default=500000)
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--year-min", type=int, default=0)
-    parser.add_argument("--year-max", type=int, default=0)
+    parser.add_argument("--year-min", type=int, default=2000)
+    parser.add_argument("--year-max", type=int, default=2020)
+    parser.add_argument("--primary-year-min", type=int, default=2010)
+    parser.add_argument("--fallback-year-min", type=int, default=2000)
     parser.add_argument("--min-text-chars", type=int, default=3000)
     parser.add_argument("--max-text-chars", type=int, default=0)
     parser.add_argument("--include-warning", action="store_true")

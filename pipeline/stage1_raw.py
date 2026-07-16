@@ -13,6 +13,15 @@ from typing import Iterable
 
 COLLECTION_VERSION = "stage1-v2"
 
+DEFAULT_SUBTYPE_QUOTAS = {
+    "traffic_auto_accident": 15,
+    "medical_professional_liability": 10,
+    "premises_facility_safety": 8,
+    "product_safety": 5,
+    "property_economic_harm": 7,
+    "injury_death_other": 5,
+}
+
 RAW_SCHEMA_FIELDS = [
     "case_id",
     "case_origin",
@@ -279,11 +288,164 @@ def sample_records(records: list[dict[str, object]], target_count: int, seed: in
     return sorted(pool, key=lambda row: str(row.get("case_id", "")))
 
 
+def subtype_quota_group(subtype: object) -> str:
+    value = compact(subtype).lower()
+    if value in {"traffic_accident", "auto_accident"}:
+        return "traffic_auto_accident"
+    if value in {"medical_professional", "professional_negligence"}:
+        return "medical_professional_liability"
+    if value in {"premises_facility_safety", "facility_product_safety"}:
+        return "premises_facility_safety"
+    if value in {"product_safety", "product_liability"}:
+        return "product_safety"
+    if value == "property_economic_harm":
+        return "property_economic_harm"
+    return "injury_death_other"
+
+
+def period_bucket(year: object) -> str:
+    try:
+        value = int(year)
+    except (TypeError, ValueError):
+        return "unknown"
+    start = value - ((value - 2000) % 5)
+    end = min(start + 4, 2020)
+    return f"{start}-{end}"
+
+
+def appellate_year_pool(records: list[dict[str, object]], *, year_min: int, year_max: int) -> list[dict[str, object]]:
+    pool = []
+    for record in records:
+        if record.get("court_level") != "appellate":
+            continue
+        year = record.get("decision_year")
+        if not isinstance(year, int):
+            continue
+        if year_min <= year <= year_max:
+            pool.append(record)
+    return pool
+
+
+def stratified_quota_sample(
+    records: list[dict[str, object]],
+    *,
+    target_count: int,
+    seed: int,
+    subtype_quotas: dict[str, int] | None = None,
+) -> list[dict[str, object]]:
+    quotas = subtype_quotas or DEFAULT_SUBTYPE_QUOTAS
+    rng = random.Random(seed)
+    by_group_period: dict[tuple[str, str], list[dict[str, object]]] = defaultdict(list)
+    for record in records:
+        by_group_period[(subtype_quota_group(record.get("case_subtype")), period_bucket(record.get("decision_year")))].append(record)
+    for values in by_group_period.values():
+        values.sort(key=lambda row: str(row.get("case_id", "")))
+        rng.shuffle(values)
+
+    selected: list[dict[str, object]] = []
+    selected_ids: set[str] = set()
+    for group, quota in quotas.items():
+        periods = sorted(period for (candidate_group, period) in by_group_period if candidate_group == group)
+        while periods and sum(1 for row in selected if subtype_quota_group(row.get("case_subtype")) == group) < quota:
+            progressed = False
+            for period in periods:
+                bucket = by_group_period[(group, period)]
+                while bucket and bucket[0]["case_id"] in selected_ids:
+                    bucket.pop(0)
+                if not bucket:
+                    continue
+                row = bucket.pop(0)
+                selected.append(row)
+                selected_ids.add(str(row["case_id"]))
+                progressed = True
+                if sum(1 for item in selected if subtype_quota_group(item.get("case_subtype")) == group) >= quota:
+                    break
+                if len(selected) >= target_count:
+                    break
+            if len(selected) >= target_count or not progressed:
+                break
+
+    leftovers = [row for row in records if str(row.get("case_id", "")) not in selected_ids]
+    leftovers.sort(key=lambda row: (subtype_quota_group(row.get("case_subtype")), period_bucket(row.get("decision_year")), str(row.get("case_id", ""))))
+    rng.shuffle(leftovers)
+    for row in leftovers:
+        if len(selected) >= target_count:
+            break
+        selected.append(row)
+        selected_ids.add(str(row["case_id"]))
+
+    return sorted(selected[:target_count], key=lambda row: str(row.get("case_id", "")))
+
+
+def stratified_sample_with_fallback(
+    records: list[dict[str, object]],
+    *,
+    target_count: int,
+    seed: int,
+    primary_year_min: int = 2010,
+    fallback_year_min: int = 2000,
+    year_max: int = 2020,
+    subtype_quotas: dict[str, int] | None = None,
+) -> tuple[list[dict[str, object]], dict[str, object]]:
+    quotas = subtype_quotas or DEFAULT_SUBTYPE_QUOTAS
+    primary_pool = appellate_year_pool(records, year_min=primary_year_min, year_max=year_max)
+    selected = stratified_quota_sample(primary_pool, target_count=target_count, seed=seed, subtype_quotas=quotas)
+    fallback_used = False
+    fallback_pool: list[dict[str, object]] = []
+    if len(selected) < target_count:
+        fallback_used = True
+        selected_ids = {str(row["case_id"]) for row in selected}
+        fallback_pool = [
+            row
+            for row in appellate_year_pool(records, year_min=fallback_year_min, year_max=year_max)
+            if str(row.get("case_id", "")) not in selected_ids
+        ]
+        fallback_selected = stratified_quota_sample(
+            fallback_pool,
+            target_count=target_count - len(selected),
+            seed=seed + 1,
+            subtype_quotas=quotas,
+        )
+        selected = sorted(selected + fallback_selected, key=lambda row: str(row.get("case_id", "")))
+
+    selected_primary = [row for row in selected if isinstance(row.get("decision_year"), int) and int(row["decision_year"]) >= primary_year_min]
+    shortage_report = {}
+    for group, quota in quotas.items():
+        primary_available = sum(1 for row in primary_pool if subtype_quota_group(row.get("case_subtype")) == group)
+        primary_selected = sum(1 for row in selected_primary if subtype_quota_group(row.get("case_subtype")) == group)
+        shortage_report[group] = {
+            "quota": quota,
+            "primary_available": primary_available,
+            "primary_selected": primary_selected,
+            "primary_shortage": max(0, quota - primary_selected),
+        }
+    meta = {
+        "sampling_method": "subtype_x_5year_period_stratified",
+        "primary_year_min": primary_year_min,
+        "fallback_year_min": fallback_year_min,
+        "year_max": year_max,
+        "fallback_used_for_total_shortage": fallback_used,
+        "primary_eligible_count": len(primary_pool),
+        "fallback_eligible_count": len(fallback_pool),
+        "shortage_report": shortage_report,
+        "subtype_quotas": quotas,
+    }
+    return selected[:target_count], meta
+
+
 def summarize_records(*, all_records: list[dict[str, object]], selected_records: list[dict[str, object]], args: object) -> dict[str, object]:
     def counts(field: str, rows: list[dict[str, object]]) -> dict[str, int]:
         return dict(Counter(str(row.get(field, "") or "unknown") for row in rows))
 
     duplicate_flags = Counter(flag for row in all_records for flag in row.get("quality_flags", []) if str(flag).startswith("duplicate_"))
+    candidate_period_subtype = Counter(
+        f"{period_bucket(row.get('decision_year'))}|{subtype_quota_group(row.get('case_subtype'))}"
+        for row in all_records
+    )
+    selected_period_subtype = Counter(
+        f"{period_bucket(row.get('decision_year'))}|{subtype_quota_group(row.get('case_subtype'))}"
+        for row in selected_records
+    )
     return {
         "collection_version": COLLECTION_VERSION,
         "total_candidates_scanned": len(all_records),
@@ -293,7 +455,11 @@ def summarize_records(*, all_records: list[dict[str, object]], selected_records:
         "selected_court_level_counts": counts("court_level", selected_records),
         "selected_decision_year_counts": counts("decision_year", selected_records),
         "selected_case_subtype_counts": counts("case_subtype", selected_records),
+        "candidate_court_level_counts": counts("court_level", all_records),
+        "candidate_decision_year_counts": counts("decision_year", all_records),
         "candidate_case_subtype_counts": counts("case_subtype", all_records),
+        "candidate_period_x_subtype_counts": dict(candidate_period_subtype),
+        "selected_period_x_subtype_counts": dict(selected_period_subtype),
         "duplicate_flag_counts": dict(duplicate_flags),
         "seed": getattr(args, "seed", None),
         "target_count": getattr(args, "target_count", None),

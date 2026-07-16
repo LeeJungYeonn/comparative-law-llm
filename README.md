@@ -15,9 +15,15 @@ include keyword are counted in summary gate statistics and skipped before full
 QC, while every keyword-hit candidate is written to QC. The eligible pool is
 then sampled with a fixed seed.
 
+Default v2 sampling targets appellate cases from 2010-2020 first. If fewer than
+the requested count are available, it expands only to 2000-2020. Pre-2000,
+trial, supreme, and unknown-court-level cases are excluded from the final sample.
+Sampling is stratified by coarse subtype and 5-year decision period; subtype
+shortages are reported rather than filled automatically with older cases.
+
 ```powershell
-python collect_kr_raw_cases.py --target-count 50 --scan-limit 100000 --seed 42
-python collect_ca_raw_cases.py --target-count 50 --scan-limit 500000 --seed 42
+python collect_kr_raw_cases.py --target-count 50 --scan-limit 200000 --seed 42 --overwrite
+python collect_ca_raw_cases.py --target-count 50 --scan-limit 750000 --seed 42 --overwrite
 ```
 
 Smoke tests without writing outputs:
@@ -30,8 +36,8 @@ python collect_ca_raw_cases.py --target-count 3 --scan-limit 1000 --preview-only
 Full run with explicit replacement of existing v2 outputs:
 
 ```powershell
-python collect_kr_raw_cases.py --target-count 100 --scan-limit 200000 --seed 42 --overwrite
-python collect_ca_raw_cases.py --target-count 100 --scan-limit 750000 --seed 42 --overwrite
+python collect_kr_raw_cases.py --target-count 50 --scan-limit 200000 --seed 42 --overwrite
+python collect_ca_raw_cases.py --target-count 50 --scan-limit 750000 --seed 42 --overwrite
 ```
 
 Required v2 outputs:
@@ -48,6 +54,9 @@ Each raw JSONL row includes stable IDs, source metadata, full `raw_text`,
 SHA-256 hash, include/exclude evidence, quality flags, duplicate grouping, and
 `collection_version=stage1-v2`. QC CSVs include pass, warning, and fail rows
 with `exclusion_reason`; candidates are not silently dropped after inspection.
+Summary JSONs include candidate and selected counts by year, subtype, court
+level, subtype x 5-year period, keyword-gate counts, fallback usage, and shortage
+report.
 
 ## Stage 1: Data Collection And Fact Patterns
 
