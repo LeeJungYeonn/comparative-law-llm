@@ -6,6 +6,10 @@ from pathlib import Path
 import pytest
 
 from collect_ca_raw_cases import evaluate_row as evaluate_ca_row
+from collect_us_california_cases import evaluate_row as evaluate_ca_v3_row
+from collect_us_california_cases import mark_duplicates as mark_ca_v3_duplicates
+from collect_us_california_cases import select_final_sample as select_ca_v3_final_sample
+from collect_us_california_cases import split_pools as split_ca_v3_pools
 from collect_kr_raw_cases import evaluate_row as evaluate_kr_row
 from collect_kr_raw_cases import mark_duplicate_candidates, select_final_sample, split_pools
 from pipeline.stage1_raw import apply_duplicate_qc, make_raw_record, require_outputs, sample_records, stratified_sample_with_fallback
@@ -15,6 +19,52 @@ def ca_args(**overrides):
     values = {"dataset": "harvard-lil/cold-cases", "min_text_chars": 20, "max_text_chars": 0, "year_min": 0, "year_max": 0}
     values.update(overrides)
     return Namespace(**values)
+
+
+def ca_v3_args(**overrides):
+    values = {
+        "dataset": "harvard-lil/cold-cases",
+        "year_min": 2010,
+        "year_max": 2021,
+        "court_system": "california-state",
+        "court_level": "intermediate-appellate",
+        "strict_tort_only": True,
+        "publication_status": "any",
+        "min_text_chars": 20,
+        "max_text_chars": 0,
+        "target_count": 20,
+        "seed": 42,
+        "reference_kr_selected": "",
+        "match_kr_subtypes": True,
+        "match_kr_years": True,
+        "match_kr_lengths": True,
+    }
+    values.update(overrides)
+    return Namespace(**values)
+
+
+def ca_v3_row(**overrides):
+    text = overrides.pop(
+        "text",
+        (
+            "FACTUAL BACKGROUND Plaintiff was a pedestrian. In 2020 defendant drove a vehicle and struck plaintiff in a collision. "
+            "Plaintiff suffered bodily injury, medical expenses, emotional distress, and other damages. "
+            "Defendant denied negligence and argued comparative fault after the accident. "
+            "DISCUSSION The negligence claim required duty, breach, causation, and damages."
+        ),
+    )
+    row = {
+        "id": overrides.pop("id", "ca-v3"),
+        "case_name": overrides.pop("case_name", "Smith v. Jones"),
+        "court_full_name": overrides.pop("court_full_name", "California Court of Appeal, Second Appellate District, Division Seven"),
+        "court_jurisdiction": overrides.pop("court_jurisdiction", "California"),
+        "court_type": overrides.pop("court_type", "SA"),
+        "date_filed": overrides.pop("date_filed", "2020-01-01"),
+        "citations": overrides.pop("citations", [{"cite": "1 Cal.App.5th 1"}]),
+        "opinions": overrides.pop("opinions", [{"type": "majority", "opinion_text": text}]),
+    }
+    row.update(overrides)
+    return row
 
 
 def kr_args(**overrides):
@@ -266,6 +316,166 @@ def test_ca_procedural_only_excluded():
     record = evaluate_ca_row(row, ca_args())
     assert record["collection_status"] == "fail"
     assert "procedural_only_or_no_factual_background" in record["exclude_signals"]
+
+
+def test_ca_v3_court_of_appeal_included():
+    record = evaluate_ca_v3_row(ca_v3_row(), ca_v3_args())
+    assert record["court_system"] == "california_state"
+    assert record["court_level"] == "intermediate_appellate"
+    assert record["court_level_confidence"] == "high"
+    assert record["strict_eligible"] is True
+
+
+def test_ca_v3_supreme_court_excluded():
+    record = evaluate_ca_v3_row(
+        ca_v3_row(court_full_name="Supreme Court of California", court_type="ST"),
+        ca_v3_args(),
+    )
+    assert record["court_level"] == "supreme"
+    assert "california_supreme_excluded" in record["exclusion_reasons"]
+
+
+def test_ca_v3_federal_courts_excluded():
+    ninth = evaluate_ca_v3_row(ca_v3_row(court_full_name="United States Court of Appeals for the Ninth Circuit", court_jurisdiction="Federal", court_type="F"), ca_v3_args())
+    district = evaluate_ca_v3_row(ca_v3_row(court_full_name="United States District Court, Central District of California", court_jurisdiction="Federal", court_type="FD"), ca_v3_args())
+    assert ninth["court_level"] == "federal"
+    assert district["court_level"] == "federal"
+    assert "federal_court_excluded" in ninth["exclusion_reasons"]
+    assert "federal_court_excluded" in district["exclusion_reasons"]
+
+
+def test_ca_v3_superior_appellate_division_excluded():
+    record = evaluate_ca_v3_row(ca_v3_row(court_full_name="Superior Court Appellate Division of the Superior Court of California"), ca_v3_args())
+    assert record["court_level"] == "trial_or_other"
+    assert any(reason.startswith("non_target_court_level") for reason in record["exclusion_reasons"])
+
+
+def test_ca_v3_other_state_mentions_california_excluded():
+    record = evaluate_ca_v3_row(
+        ca_v3_row(court_full_name="Supreme Court of Nevada", court_jurisdiction="Nevada", court_type="ST", text="FACTUAL BACKGROUND The California defendant drove a vehicle in 2020 and struck plaintiff, causing bodily injury and damages."),
+        ca_v3_args(),
+    )
+    assert record["court_system"] != "california_state"
+    assert record["strict_eligible"] is False
+
+
+def test_ca_v3_majority_selected_over_dissent():
+    row = ca_v3_row(
+        opinions=[
+            {"type": "dissent", "opinion_text": "I dissent."},
+            {"type": "majority", "opinion_text": "FACTUAL BACKGROUND Plaintiff was injured in 2020 when defendant failed to maintain stairs. Plaintiff suffered bodily injury and damages. Defendant disputed causation. DISCUSSION negligence damages."},
+        ]
+    )
+    record = evaluate_ca_v3_row(row, ca_v3_args())
+    assert record["main_opinion_type"] == "majority"
+    assert record["separate_opinion_count"] == 1
+
+
+def test_ca_v3_dissent_only_excluded():
+    row = ca_v3_row(opinions=[{"type": "dissent", "opinion_text": "Plaintiff was injured and damages are discussed only in dissent."}])
+    record = evaluate_ca_v3_row(row, ca_v3_args())
+    assert record["main_opinion_type"] == "dissent"
+    assert record["strict_eligible"] is False
+
+
+def test_ca_v3_automobile_negligence_is_non_contractual_tort():
+    record = evaluate_ca_v3_row(ca_v3_row(), ca_v3_args())
+    assert record["liability_basis"] == "non_contractual_tort"
+    assert record["case_subtype"] == "traffic_accident"
+
+
+def test_ca_v3_premises_liability_is_non_contractual_tort():
+    record = evaluate_ca_v3_row(
+        ca_v3_row(text="FACTUAL BACKGROUND Plaintiff was a customer. In 2019 defendant failed to maintain a stairway and plaintiff fell in an accident. Plaintiff suffered bodily injury and medical damages. Defendant disputed notice and causation. DISCUSSION premises liability negligence."),
+        ca_v3_args(),
+    )
+    assert record["liability_basis"] == "non_contractual_tort"
+    assert record["case_subtype"] == "premises_facility_safety"
+
+
+def test_ca_v3_medical_malpractice_is_non_contractual_tort():
+    record = evaluate_ca_v3_row(
+        ca_v3_row(text="FACTUAL BACKGROUND Plaintiff was a patient. In 2018 defendant physician performed surgery and failed to diagnose a complication. Plaintiff suffered bodily injury, medical expenses, and damages. Defendant disputed causation. DISCUSSION medical malpractice professional negligence."),
+        ca_v3_args(),
+    )
+    assert record["liability_basis"] == "non_contractual_tort"
+    assert record["case_subtype"] == "medical_professional"
+
+
+def test_ca_v3_contract_insurance_procedural_and_criminal_classification():
+    contract = evaluate_ca_v3_row(ca_v3_row(text="FACTUAL BACKGROUND Plaintiff and defendant signed a purchase agreement in 2020. Defendant breached the contract and failed to pay contract damages. No bodily injury occurred."), ca_v3_args())
+    insurance = evaluate_ca_v3_row(ca_v3_row(text="FACTUAL BACKGROUND The parties disputed insurance coverage and policy interpretation after an accident. The only issue was the insurer duty to defend and payment obligation."), ca_v3_args())
+    procedural = evaluate_ca_v3_row(ca_v3_row(text="FACTUAL BACKGROUND Plaintiff filed late. The appeal concerns only the statute of limitations and jurisdiction, with no underlying accident facts."), ca_v3_args())
+    criminal = evaluate_ca_v3_row(ca_v3_row(case_name="People v. Smith", text="FACTUAL BACKGROUND Defendant was convicted of felony assault and sentenced to prison. This criminal appeal concerns Penal Code instructions."), ca_v3_args())
+    assert contract["liability_basis"] == "contract_only"
+    assert insurance["liability_basis"] == "insurance_only"
+    assert procedural["liability_basis"] == "procedural_only"
+    assert criminal["criminal_case_likely"] is True
+
+
+def test_ca_v3_probate_in_re_classifies_family_or_probate():
+    record = evaluate_ca_v3_row(
+        ca_v3_row(case_name="In re Estate of Smith", text="FACTUAL BACKGROUND This probate trust dispute involved an estate, beneficiaries, and distribution of property. The appeal did not involve independent negligence injury damages."),
+        ca_v3_args(),
+    )
+    assert record["liability_basis"] == "family_or_probate"
+
+
+def test_ca_v3_underlying_crime_wrongful_death_stays_civil_tort_candidate():
+    record = evaluate_ca_v3_row(
+        ca_v3_row(case_name="Smith v. Security Co.", text="FACTUAL BACKGROUND Plaintiff brought a civil wrongful death negligence action after a criminal assault in 2020. Defendant security company failed to supervise the premises, and decedent was killed. Plaintiff suffered damages and defendant disputed causation. DISCUSSION wrongful death negligence."),
+        ca_v3_args(),
+    )
+    assert record["criminal_case_likely"] is False
+    assert record["liability_basis"] == "non_contractual_tort"
+
+
+def test_ca_v3_legal_rules_only_factually_insufficient():
+    record = evaluate_ca_v3_row(
+        ca_v3_row(text="DISCUSSION We review the standard of review and legal principles for negligence, causation, duty, breach, and damages. Prior precedent governs the issue."),
+        ca_v3_args(),
+    )
+    assert record["factual_background_sufficient"] is False
+
+
+def test_ca_v3_demurrer_fact_status_is_assumed_true():
+    record = evaluate_ca_v3_row(
+        ca_v3_row(text="FACTUAL BACKGROUND On demurrer, plaintiff alleged that defendant failed to warn in 2020 and plaintiff suffered bodily injury and damages. Defendant disputed causation. DISCUSSION The demurrer assumes pleaded facts are true."),
+        ca_v3_args(),
+    )
+    assert record["procedural_posture"] == "demurrer_or_motion_to_dismiss"
+    assert record["fact_status"] == "assumed_true_at_pleading_stage"
+
+
+def test_ca_v3_strict_pool_and_selected_count_are_separate():
+    records = []
+    for idx in range(2):
+        records.append(evaluate_ca_v3_row(ca_v3_row(id=f"ca-pool-{idx}", date_filed=f"202{idx}-01-01"), ca_v3_args()))
+    pools = split_ca_v3_pools(records, [])
+    selected, _, _ = select_ca_v3_final_sample(pools["strict_eligible"], ca_v3_args(target_count=1, match_kr_subtypes=False, match_kr_years=False, match_kr_lengths=False))
+    assert len(pools["strict_eligible"]) == 2
+    assert len(selected) == 1
+
+
+def test_ca_v3_fixed_seed_sampling_reproducible_and_no_subtype_relaxation():
+    records = [evaluate_ca_v3_row(ca_v3_row(id="ca-only", text="FACTUAL BACKGROUND Plaintiff was a pedestrian. In 2020 defendant drove a car and struck plaintiff in a collision. Plaintiff suffered bodily injury and damages. Defendant disputed causation. DISCUSSION negligence damages."), ca_v3_args())]
+    args = ca_v3_args(target_count=20, match_kr_subtypes=False, match_kr_years=False, match_kr_lengths=False)
+    left, _, meta_left = select_ca_v3_final_sample(records, args)
+    right, _, meta_right = select_ca_v3_final_sample(records, args)
+    assert [row["case_id"] for row in left] == [row["case_id"] for row in right]
+    assert len(left) == 1
+    assert meta_left["quota_shortage_report"]["traffic_accident"]["shortage"] > 0
+    assert meta_right["quota_shortage_report"]["traffic_accident"]["shortage"] > 0
+
+
+def test_ca_v3_related_duplicate_marked():
+    first = evaluate_ca_v3_row(ca_v3_row(id="ca-dupe-1"), ca_v3_args())
+    second = dict(first)
+    second["case_id"] = "CA_other"
+    second["source_record_id"] = "ca-dupe-2"
+    counts = mark_ca_v3_duplicates([first, second])
+    assert counts["duplicate_citation"] == 1
+    assert second["duplicate_or_related_reason"] == "duplicate_citation"
 
 
 def test_duplicate_exact_hash_excludes_second_record():
