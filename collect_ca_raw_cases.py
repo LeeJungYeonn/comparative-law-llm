@@ -2,1223 +2,1464 @@ from __future__ import annotations
 
 import argparse
 import csv
+import gc
 import json
 import logging
+import math
 import random
 import re
+import time
 from collections import Counter, defaultdict
+from contextlib import ExitStack
+from datetime import date
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Iterable, Iterator
 
+import requests
 from datasets import Dataset, load_dataset
 
-from pipeline.stage1_raw import compact, normalized_text_for_hash, parse_year, require_outputs, sha256_text, short_hash, unique, write_summary
-from pipeline.text_utils import normalize_whitespace, split_sentences
+try:
+    import psutil
+except ImportError:  # pragma: no cover
+    psutil = None
+
+from pipeline.claim_posture import classify_claim_posture, classify_liability_basis
+from pipeline.factual_sufficiency import assess_factual_sufficiency, classify_fact_status, classify_procedural_posture
+from pipeline.stage1_raw import compact, normalized_text_for_hash, require_outputs, sha256_text, short_hash, unique, write_summary
+from pipeline.text_utils import normalize_whitespace
+from pipeline.tort_taxonomy import TORT_SUBTYPES, classify_harm_flags, classify_tort_subtype
 
 
 LOGGER = logging.getLogger(__name__)
+COLLECTION_VERSION = "stage1-ca-direct-tort-appellate-v4-shortlist"
+SOURCE_DATASET = "harvard-lil/cold-cases"
+DEFAULT_OUTPUT_DIR = Path("outputs/raw/ca_v4_shortlist")
+DEFAULT_MANIFEST = Path("outputs/manifests/ca_v4_shortlist_case_manifest.csv")
+DEFAULT_ALIGNMENT = Path("outputs/manifests/kr_ca_v4_shortlist_alignment.csv")
+DEFAULT_KR_REFERENCE = Path("outputs/raw/kr_v4/kr_cases_selected_50_final.jsonl")
+DEFAULT_DECISION_DATE_FROM = "2000-01-01"
 
-COLLECTION_VERSION = "stage1-ca-tort-appellate-v3"
-DEFAULT_OUTPUT_DIR = Path("outputs/raw/ca_v3")
-DEFAULT_MANIFEST_OUTPUT = Path("outputs/manifests/ca_v3_case_manifest.csv")
-DEFAULT_ALIGNMENT_OUTPUT = Path("outputs/manifests/kr_ca_sampling_alignment.csv")
+EXPECTED_KR_DISTRIBUTION = {
+    "traffic_accident": 10,
+    "medical_professional": 9,
+    "employer_vicarious_liability": 7,
+    "premises_facility_safety": 6,
+    "privacy_reputation": 5,
+    "intentional_tort": 5,
+    "product_safety": 4,
+    "property_damage": 2,
+    "general_personal_injury": 1,
+    "other_tort": 1,
+}
 
-TEXT_KEYS = ("opinion_text", "text", "raw_text")
-CASE_NAME_KEYS = ("case_name", "case_name_full", "case_name_short", "name")
-COURT_KEYS = ("court_full_name", "court_short_name", "court_name", "court")
-DATE_KEYS = ("date_filed", "decision_date", "date")
-DOCKET_KEYS = ("docket_number", "docket", "docket_numbers")
+OUTPUT_NAMES = {
+    "california": "ca_california_candidates_all.jsonl",
+    "state": "ca_state_court_candidates_all.jsonl",
+    "appeal": "ca_court_of_appeal_candidates_all.jsonl",
+    "civil": "ca_civil_candidates_all.jsonl",
+    "direct": "ca_direct_tort_candidates_all.jsonl",
+    "strict": "ca_strict_eligible_all.jsonl",
+    "published": "ca_strict_eligible_published.jsonl",
+    "unpublished": "ca_strict_eligible_unpublished.jsonl",
+    "excluded": "ca_excluded_non_direct_claims.jsonl",
+    "shortlist": "ca_direct_tort_shortlist_100.jsonl",
+    "qc": "ca_direct_tort_shortlist_100_qc.csv",
+    "summary": "ca_shortlist_100_summary.json",
+}
 
 BROAD_TORT_PATTERNS = [
-    r"\btort\b",
-    r"\bnegligence\b",
-    r"\bnegligent\b",
-    r"duty of care",
-    r"breach of duty",
-    r"\bdamages\b",
-    r"personal injur",
-    r"bodily injur",
-    r"wrongful death",
-    r"premises liability",
-    r"dangerous condition",
-    r"product liability",
-    r"strict liability",
-    r"defective product",
-    r"medical malpractice",
-    r"professional negligence",
-    r"motor vehicle accident",
-    r"automobile accident",
-    r"\bcollision\b",
-    r"\bpedestrian\b",
-    r"property damage",
-    r"emotional distress",
-    r"defamation",
-    r"\blibel\b",
-    r"\bslander\b",
-    r"invasion of privacy",
-    r"vicarious liability",
-    r"respondeat superior",
-    r"employer liability",
-    r"failure to warn",
-    r"failure to maintain",
-    r"\bcausation\b",
-    r"proximate cause",
-    r"comparative fault",
-    r"contributory negligence",
-    r"intentional tort",
-    r"\bbattery\b",
-    r"\bassault\b",
-    r"\bfraud\b",
-    r"misrepresentation",
-    r"\bnuisance\b",
-    r"\btrespass\b",
-    r"\baccident\b",
+    r"\btort(?:ious)?\b", r"\bneglig(?:ence|ent)\b", r"duty of care", r"personal injur",
+    r"wrongful death", r"premises liability", r"dangerous condition", r"product liability",
+    r"medical malpractice", r"professional negligence", r"motor vehicle", r"automobile accident",
+    r"\bcollision\b", r"property damage", r"emotional distress", r"defamation", r"\blibel\b",
+    r"\bslander\b", r"invasion of privacy", r"vicarious liability", r"respondeat superior",
+    r"failure to warn", r"proximate cause", r"comparative fault", r"\bbattery\b", r"\bassault\b",
+    r"\bnuisance\b", r"\btrespass\b",
+]
+POSTURE_SCREEN_PATTERNS = [
+    r"liability insurer", r"Insurance Code section 11580", r"\bsubrogat(?:e|ed|ion)\b", r"\bsubrogee\b",
+    r"equitable indemnity", r"joint tortfeasor", r"insurance coverage", r"duty to defend",
+    r"breach of contract", r"purchase agreement", r"judgment creditor", r"writ of execution",
+    r"\bdemurrer\b", r"motion to dismiss",
 ]
 
-CA_APPELLATE_PATTERNS = [
-    r"California Court of Appeal",
+CA_APPEAL_NAMES = [
+    r"California Court of Appeal", r"Court of Appeal of California",
     r"Court of Appeal of the State of California",
     r"Court of Appeal,? (?:First|Second|Third|Fourth|Fifth|Sixth) Appellate District",
     r"Cal\. Ct\. App\.",
-    r"California Courts of Appeal",
 ]
-CA_SUPREME_PATTERNS = [r"Supreme Court of California", r"California Supreme Court"]
-FEDERAL_PATTERNS = [
-    r"United States Supreme Court",
-    r"U\.S\. Supreme Court",
-    r"United States Court of Appeals",
-    r"Ninth Circuit",
-    r"9th Cir\.",
-    r"United States District Court",
-    r"Central District of California",
-    r"Northern District of California",
-    r"Southern District of California",
-    r"Eastern District of California",
-    r"\bC\.D\. Cal\.",
-    r"\bN\.D\. Cal\.",
-    r"\bS\.D\. Cal\.",
-    r"\bE\.D\. Cal\.",
-    r"\bF\. ?Supp\.?\b",
-    r"\bF\. ?\d+d\b",
+EXCLUDED_COURTS = [
+    r"California Supreme Court", r"Supreme Court of California", r"United States Supreme Court",
+    r"Ninth Circuit", r"U\.S\. Court of Appeals", r"United States Court of Appeals",
+    r"United States District Court", r"District of California", r"California Superior Court",
+    r"Superior Court Appellate Division", r"Appellate Division of the Superior Court",
+    r"Workers['’] Compensation Appeals Board",
 ]
-TRIAL_OR_OTHER_PATTERNS = [
-    r"California Superior Court",
-    r"Superior Court Appellate Division",
-    r"Appellate Division of the Superior Court",
-    r"Workers'? Compensation Appeals Board",
-    r"Tax Appeals",
-    r"Board of Immigration Appeals",
-]
-ADMIN_PATTERNS = [r"administrative review", r"agency decision", r"writ of mandate", r"mandamus", r"Public Utilities Commission", r"Workers'? Compensation"]
 CRIMINAL_PATTERNS = [
-    r"\bPeople v\.",
-    r"criminal conviction",
-    r"defendant was convicted",
-    r"\bsentence\b",
-    r"imprisonment",
-    r"\bfelony\b",
-    r"misdemeanor",
-    r"prosecution",
-    r"Penal Code",
-    r"habeas corpus",
-    r"\bwarden\b",
-    r"\bparole\b",
-    r"probation revocation",
-    r"criminal appeal",
+    r"^People v\.", r"\bconvicted\b", r"criminal conviction", r"\bsentence\b", r"\bfelony\b",
+    r"misdemeanor", r"\bprosecution\b", r"habeas corpus", r"\bwarden\b", r"\bparole\b", r"\bprobation\b",
 ]
-FAMILY_PROBATE_PATTERNS = [r"\bprobate\b", r"\btrust\b", r"\bestate\b", r"child custody", r"\bdivorce\b", r"\bmarital\b", r"\bspousal\b", r"guardianship"]
-CONTRACT_PATTERNS = [r"breach of contract", r"contract interpretation", r"contract damages", r"promissory note", r"specific performance", r"purchase agreement", r"lease agreement", r"employment contract"]
-INSURANCE_PATTERNS = [r"insurance coverage", r"policy interpretation", r"duty to defend", r"\binsurer\b", r"\binsured\b", r"coverage dispute"]
-PROCEDURAL_PATTERNS = [r"statute of limitations", r"\blimitations\b", r"jurisdiction", r"\bvenue\b", r"arbitration", r"attorney fees?", r"costs only", r"judgment enforcement", r"appealability", r"standard of review", r"\bdemurrer\b", r"anti-SLAPP"]
-PUBLIC_LAW_PATTERNS = [r"constitutional", r"civil rights", r"42 U\.S\.C", r"section 1983", r"administrative", r"mandamus", r"tax", r"immigration"]
-TORT_STRONG_PATTERNS = [
-    r"\bnegligence\b",
-    r"\bnegligent\b",
-    r"premises liability",
-    r"product liability",
-    r"strict liability",
-    r"medical malpractice",
-    r"professional negligence",
-    r"wrongful death",
-    r"personal injur",
-    r"bodily injur",
-    r"emotional distress",
-    r"defamation",
-    r"vicarious liability",
-    r"respondeat superior",
-    r"\bfraud\b",
-    r"misrepresentation",
-    r"\bnuisance\b",
-    r"\btrespass\b",
-    r"\bbattery\b",
-    r"\bassault\b",
-]
-CONDUCT_PATTERNS = [r"failed to", r"failure to", r"struck", r"collided", r"operated", r"drove", r"treated", r"diagnosed", r"performed", r"warn", r"maintain", r"supervise", r"published", r"represented", r"exposed"]
-DAMAGE_PATTERNS = [r"injur", r"death", r"killed", r"damage", r"harm", r"loss", r"medical expenses", r"emotional distress", r"property", r"pain and suffering"]
-CHRONOLOGY_PATTERNS = [r"\b(?:19|20)\d{2}\b", r"after", r"before", r"when", r"while", r"following", r"subsequently", r"then"]
-FACT_HEADING_PATTERNS = [r"FACTS", r"BACKGROUND", r"FACTUAL BACKGROUND", r"FACTUAL AND PROCEDURAL BACKGROUND", r"FACTUAL HISTORY", r"STATEMENT OF FACTS", r"THE ACCIDENT", r"UNDERLYING FACTS", r"EVIDENCE AT TRIAL"]
-ANALYSIS_HEADING_RE = re.compile(r"(?im)^\s*(?:DISCUSSION|ANALYSIS|STANDARD OF REVIEW|LEGAL PRINCIPLES|CONTENTIONS|DISPOSITION|CONCLUSION)\s*$")
+CIVIL_TORT_OVERRIDE = [r"wrongful death", r"premises liability", r"medical malpractice", r"personal injury action", r"civil action for"]
 
-SUBTYPE_PATTERNS = [
-    ("traffic_accident", [r"motor vehicle", r"automobile", r"\bcar\b", r"\btruck\b", r"collision", r"pedestrian", r"driver", r"traffic accident"]),
-    ("medical_professional", [r"medical malpractice", r"professional negligence", r"hospital", r"physician", r"doctor", r"surgery", r"diagnos", r"treatment"]),
-    ("premises_facility_safety", [r"premises liability", r"dangerous condition", r"slip and fall", r"fell", r"sidewalk", r"stairs", r"property owner"]),
-    ("product_safety", [r"product liability", r"defective product", r"failure to warn", r"manufacturer", r"design defect", r"strict liability"]),
-    ("employer_vicarious_liability", [r"respondeat superior", r"vicarious liability", r"employer", r"employee", r"scope of employment"]),
-    ("privacy_reputation", [r"defamation", r"libel", r"slander", r"invasion of privacy", r"privacy", r"reputation"]),
-    ("wrongful_death", [r"wrongful death", r"survival action", r"decedent", r"killed", r"fatal"]),
-    ("property_damage", [r"property damage", r"trespass", r"nuisance", r"fire damage", r"flood", r"real property"]),
-    ("general_personal_injury", [r"personal injur", r"bodily injur", r"assault", r"battery", r"was injured", r"were injured"]),
-]
-
-OPINION_PRIORITY = {"majority": 0, "lead": 1, "per_curiam": 2, "per curiam": 2, "plurality": 3, "main": 4, "unanimous": 4, "unknown": 5}
-KR_REFERENCE_SUBTYPE_DEFAULT = {
-    "traffic_accident": 4,
-    "premises_facility_safety": 4,
-    "medical_professional": 4,
-    "other_tort": 1,
-    "product_safety": 1,
-    "employer_vicarious_liability": 3,
-    "privacy_reputation": 2,
-    "general_personal_injury": 1,
+OPINION_TYPE_MAP = {
+    "010combined": "majority", "015unamimous": "majority", "015unanimous": "majority",
+    "020lead": "lead", "025plurality": "plurality", "030concurrence": "concurrence",
+    "035concurrenceinpart": "concurrence", "040dissent": "dissent",
+    "majority": "majority", "lead": "lead", "plurality": "plurality", "percuriam": "per_curiam",
+    "per_curiam": "per_curiam", "concurrence": "concurrence", "dissent": "dissent",
 }
-KR_REFERENCE_YEAR_DEFAULT = {2019: 8, 2020: 8, 2021: 4}
+MAIN_PRIORITY = {"majority": 0, "lead": 1, "per_curiam": 2, "plurality": 3, "unknown": 4}
 
-QC_FIELDS = [
-    "case_id",
-    "source_record_id",
-    "case_name",
-    "docket_number",
-    "citation",
-    "decision_date",
-    "decision_year",
-    "court_name",
-    "court_system",
-    "court_level",
-    "appellate_district",
-    "division",
-    "court_level_confidence",
-    "main_opinion_type",
-    "main_opinion_confidence",
-    "publication_status",
-    "civil_case_likely",
-    "criminal_case_likely",
-    "liability_basis",
-    "case_subtype",
-    "procedural_posture",
-    "factual_background_sufficient",
-    "factual_sufficiency_score",
-    "strict_eligible",
-    "exclusion_reasons",
-    "court_evidence",
-    "tort_evidence",
-    "factual_sufficiency_reasons",
-    "duplicate_or_related_reason",
-    "related_case_group_id",
-    "raw_text_sha256",
-]
-
-MANIFEST_FIELDS = [
-    "case_id",
-    "collection_version",
-    "source_dataset",
-    "source_record_id",
-    "case_name",
-    "docket_number",
-    "citation",
-    "decision_date",
-    "decision_year",
-    "court_name",
-    "court_system",
-    "court_level",
-    "appellate_district",
-    "division",
-    "publication_status",
-    "liability_basis",
-    "case_subtype",
-    "procedural_posture",
-    "strict_eligible",
-    "selected",
-    "matched_kr_case_id",
-    "year_match_level",
-    "duplicate_or_related_reason",
-    "related_case_group_id",
-    "raw_text_sha256",
-    "raw_length_chars",
-    "raw_path",
+QC_COLUMNS = [
+    "case_id", "case_name", "citation", "docket_number", "decision_date", "decision_year",
+    "court_name", "appellate_district", "division", "publication_status", "main_opinion_type",
+    "main_opinion_confidence", "claim_posture", "claim_posture_confidence", "liability_basis",
+    "governing_law_confidence", "case_subtype", "procedural_posture", "death_involved",
+    "physical_injury_involved", "property_damage_involved", "emotional_harm_involved",
+    "facts_independently_reconstructable", "fact_source_quality", "factual_sufficiency_score",
+    "reference_kr_subtype_count", "shortlist_minimum_target", "shortlist_subtype_rank",
+    "shortlist_overflow_candidate", "shortlist_selection_score", "shortlist_selection_reasons",
+    "quality_flags", "exclusion_reasons", "human_qc_status", "human_qc_corrected_subtype",
+    "human_qc_corrected_claim_posture", "human_qc_notes",
 ]
 
 
-def regex_hits(patterns: Iterable[str], text: str) -> list[str]:
-    return [pattern for pattern in patterns if re.search(pattern, text, flags=re.IGNORECASE)]
+def _matches(text: str, patterns: Iterable[str]) -> list[str]:
+    found = []
+    for pattern in patterns:
+        match = re.search(pattern, text, re.IGNORECASE)
+        if match:
+            found.append(match.group(0)[:180])
+    return unique(found)
 
 
-def first_existing(row: dict[str, Any], keys: Iterable[str]) -> str:
+def _first(row: dict[str, Any], *keys: str) -> str:
     for key in keys:
-        if key in row and compact(row.get(key, "")):
-            value = row.get(key)
-            if isinstance(value, list):
-                return "; ".join(compact(item) for item in value if compact(item))
+        value = row.get(key)
+        if value not in (None, "", [], {}):
             return compact(value)
     return ""
 
 
-def citations_text(row: dict[str, Any]) -> str:
-    citations = row.get("citations") or row.get("citation") or []
-    if isinstance(citations, str):
-        return compact(citations)
-    if not isinstance(citations, list):
-        return compact(citations)
-    values = []
-    for citation in citations:
-        if isinstance(citation, dict):
-            values.append(compact(citation.get("cite") or citation.get("citation") or ""))
-        else:
-            values.append(compact(citation))
-    return "; ".join(value for value in values if value)
+def _metadata_text(row: dict[str, Any]) -> str:
+    return "\n".join(compact(row.get(key)) for key in (
+        "case_name", "case_name_full", "nature_of_suit", "posture", "summary", "syllabus", "headnotes", "headmatter", "history"
+    ) if row.get(key))
 
 
-def normalize_opinion_type(value: object) -> str:
-    text = compact(value).lower().replace("-", "_").replace(" ", "_")
-    if text in {"majority", "lead", "plurality", "main", "unanimous"}:
-        return text
-    if text in {"per_curiam", "percuriam"}:
+def normalize_opinion_type(opinion: dict[str, Any]) -> str:
+    if opinion.get("per_curiam") is True:
         return "per_curiam"
-    if "dissent" in text:
+    raw = re.sub(r"[^a-z0-9_]", "", compact(opinion.get("type")).lower())
+    if raw in OPINION_TYPE_MAP:
+        return OPINION_TYPE_MAP[raw]
+    if "dissent" in raw:
         return "dissent"
-    if "concur" in text:
+    if "concurr" in raw:
         return "concurrence"
+    if "plural" in raw:
+        return "plurality"
+    if "lead" in raw or "merits" in raw:
+        return "lead"
+    if "major" in raw or "combined" in raw or "unanim" in raw:
+        return "majority"
     return "unknown"
 
 
-def opinion_text_from_dict(opinion: dict[str, Any]) -> str:
-    return normalize_whitespace(first_existing(opinion, TEXT_KEYS))
+def _opinion_text(opinion: dict[str, Any]) -> str:
+    return normalize_whitespace(opinion.get("opinion_text") or opinion.get("text") or opinion.get("ocr") or "")
 
 
-def select_main_opinion(row: dict[str, Any]) -> tuple[str, str, str, list[dict[str, str]], str]:
-    opinions = row.get("opinions") or []
-    if not isinstance(opinions, list) or not opinions:
-        text = normalize_whitespace(first_existing(row, TEXT_KEYS))
-        confidence = "medium" if len(text) >= 1000 else "low"
-        return text, "unknown", confidence, [], ""
-
-    candidates: list[tuple[int, str, str, dict[str, Any]]] = []
-    separate: list[dict[str, str]] = []
-    source_url = ""
-    for idx, opinion in enumerate(opinions):
+def select_main_opinion(row: dict[str, Any], *, minimum_chars: int = 1800) -> dict[str, Any]:
+    opinions = row.get("opinions") if isinstance(row.get("opinions"), list) else []
+    candidates = []
+    separate = []
+    for opinion in opinions:
         if not isinstance(opinion, dict):
             continue
-        text = opinion_text_from_dict(opinion)
-        op_type = normalize_opinion_type(opinion.get("type") or opinion.get("opinion_type") or "")
-        if opinion.get("download_url") and not source_url:
-            source_url = compact(opinion.get("download_url"))
-        if op_type in {"dissent", "concurrence"}:
-            separate.append({"opinion_type": op_type, "text": text})
+        kind = normalize_opinion_type(opinion)
+        text = _opinion_text(opinion)
+        item = {
+            "opinion_id": compact(opinion.get("opinion_id")), "opinion_type": kind,
+            "author": compact(opinion.get("author_str")), "text_length": len(text),
+            "raw_text_sha256": sha256_text(text) if text else "",
+        }
+        raw_kind = compact(opinion.get("type")).lower()
+        if any(raw_kind.startswith(prefix) for prefix in ("050", "060", "070", "090")):
+            separate.append(item)
             continue
-        priority = OPINION_PRIORITY.get(op_type, OPINION_PRIORITY["unknown"])
-        if text:
-            candidates.append((priority, op_type, text, opinion))
-
+        if kind in {"concurrence", "dissent"}:
+            separate.append(item)
+        elif text:
+            candidates.append((MAIN_PRIORITY.get(kind, 4), -len(text), kind, text, item))
     if not candidates:
-        for opinion in opinions:
-            if not isinstance(opinion, dict):
-                continue
-            text = opinion_text_from_dict(opinion)
-            op_type = normalize_opinion_type(opinion.get("type") or opinion.get("opinion_type") or "")
-            if text:
-                return text, op_type, "low", separate, source_url
-        return "", "unknown", "low", separate, source_url
-
-    candidates.sort(key=lambda item: (item[0], -len(item[2])))
-    _, op_type, text, _ = candidates[0]
-    confidence = "high" if op_type in {"majority", "lead", "per_curiam", "plurality"} else "medium"
-    return text, op_type, confidence, separate, source_url
-
-
-def classify_court(row: dict[str, Any], text: str) -> dict[str, object]:
-    court_name = first_existing(row, COURT_KEYS)
-    jurisdiction = compact(row.get("court_jurisdiction", ""))
-    court_type = compact(row.get("court_type", "")).upper()
-    haystack = f"{court_name}\n{jurisdiction}\n{court_type}\n{citations_text(row)}\n{text[:1200]}"
-    evidence: list[str] = []
-    if court_name:
-        evidence.append(f"court_metadata: {court_name}")
-    if jurisdiction:
-        evidence.append(f"jurisdiction_metadata: {jurisdiction}")
-    if court_type:
-        evidence.append(f"court_type_metadata: {court_type}")
-
-    court_system = "unknown"
-    court_level = "unknown"
-    if regex_hits(FEDERAL_PATTERNS, haystack):
-        court_system = "federal"
-        court_level = "federal"
-    elif regex_hits(CA_SUPREME_PATTERNS, haystack):
-        court_system = "california_state"
-        court_level = "supreme"
-    elif regex_hits(TRIAL_OR_OTHER_PATTERNS, haystack):
-        court_system = "california_state" if "California" in haystack else "unknown"
-        court_level = "trial_or_other"
-    elif regex_hits(CA_APPELLATE_PATTERNS, haystack) or (court_type == "SA" and jurisdiction.lower() in {"california", "ca", "cal."}):
-        court_system = "california_state"
-        court_level = "intermediate_appellate"
-    elif jurisdiction.lower() in {"california", "ca", "cal."}:
-        court_system = "california_state"
-        court_level = "unknown"
-
-    district_match = re.search(r"\b(First|Second|Third|Fourth|Fifth|Sixth)\s+Appellate District\b", haystack, flags=re.IGNORECASE)
-    division_match = re.search(r"\bDivision\s+(One|Two|Three|Four|Five|Six|Seven|Eight|\d+)\b", haystack, flags=re.IGNORECASE)
-    confidence = "high" if court_level in {"intermediate_appellate", "supreme", "federal"} and court_name else "medium" if court_level != "unknown" else "low"
+        return {
+            "main_opinion_text": "", "main_opinion_type": "unknown", "main_opinion_confidence": "low",
+            "full_main_opinion_available": False, "separate_opinions": separate,
+            "opinion_exclusion_reason": "separate_opinion_or_summary_only" if separate else "no_opinion_text",
+        }
+    _, _, kind, text, _ = sorted(candidates, key=lambda item: (item[0], item[1], item[4]["opinion_id"]))[0]
+    full = len(text) >= minimum_chars and not re.match(r"(?is)^\s*(?:syllabus|headnote|summary)\b", text)
+    confidence = "high" if kind in {"majority", "lead", "per_curiam"} else "medium" if kind in {"plurality", "unknown"} and full else "low"
     return {
-        "court_name": court_name or "unknown",
-        "court_system": court_system,
-        "court_level": court_level,
-        "appellate_district": district_match.group(1).title() if district_match else "",
-        "division": division_match.group(1).title() if division_match else "",
+        "main_opinion_text": text, "main_opinion_type": kind, "main_opinion_confidence": confidence,
+        "full_main_opinion_available": full, "separate_opinions": separate,
+        "opinion_exclusion_reason": "" if full else "full_main_opinion_unavailable",
+    }
+
+
+def classify_court(row: dict[str, Any]) -> dict[str, Any]:
+    court_name = _first(row, "court_full_name", "court_short_name", "court_name", "court")
+    jurisdiction = compact(row.get("court_jurisdiction"))
+    court_type = compact(row.get("court_type")).upper()
+    value = f"{court_name}\n{jurisdiction}"
+    california = bool(re.search(r"California(?:, CA)?", jurisdiction, re.I) or re.search(r"California|Cal\. Ct\.", court_name, re.I))
+    excluded = _matches(value, EXCLUDED_COURTS)
+    appeal_evidence = _matches(court_name, CA_APPEAL_NAMES)
+    metadata_evidence = []
+    if jurisdiction.lower() in {"california", "california, ca", "ca"}:
+        metadata_evidence.append(f"court_jurisdiction={jurisdiction}")
+    if court_type == "SA":
+        metadata_evidence.append("court_type=SA")
+    is_appeal = bool(appeal_evidence) and not excluded
+    state = california and not _matches(value, [r"United States|Federal|Ninth Circuit|District Court"])
+    confidence = "high" if is_appeal and appeal_evidence and metadata_evidence else "medium" if is_appeal and len(appeal_evidence + metadata_evidence) >= 2 else "low"
+    return {
+        "california_candidate": california, "california_state_candidate": state,
+        "court_name": court_name or None, "court_system": "california_state" if state else "other",
+        "court_level": "intermediate_appellate" if is_appeal else "other",
         "court_level_confidence": confidence,
-        "jurisdiction_confidence": confidence if court_system == "california_state" else "low",
-        "court_evidence": evidence or ["no_court_metadata"],
+        "court_evidence": unique(appeal_evidence + metadata_evidence), "court_exclusion_evidence": excluded,
     }
 
 
-def classify_publication_status(row: dict[str, Any], citation: str, text: str) -> str:
-    raw = compact(row.get("status") or row.get("publication_status") or row.get("published") or "")
-    lowered = raw.lower()
-    if "unpublished" in lowered or "not published" in lowered:
-        return "unpublished"
-    if "published" in lowered or lowered in {"true", "yes"}:
+def extract_district_division(row: dict[str, Any], text: str) -> tuple[str | None, str | None]:
+    value = f"{_metadata_text(row)[:4000]}\n{text[:1500]}"
+    suffix = re.search(r"\bCA([1-6])/(\d+)\b", value, re.I)
+    district = re.search(r"\b(First|Second|Third|Fourth|Fifth|Sixth) Appellate District\b", value, re.I)
+    division = re.search(r"\bDivision\s+(One|Two|Three|Four|Five|Six|Seven|Eight|Nine|\d+)\b", value, re.I)
+    number_words = {"1": "First", "2": "Second", "3": "Third", "4": "Fourth", "5": "Fifth", "6": "Sixth"}
+    if suffix:
+        return f"{number_words[suffix.group(1)]} Appellate District", f"Division {suffix.group(2)}"
+    return (district.group(0).title() if district else None, division.group(0).title() if division else None)
+
+
+def classify_publication_status(value: Any) -> str:
+    raw = compact(value).lower()
+    if raw in {"published", "precedential"} or ("published" in raw and "unpublished" not in raw):
         return "published"
-    if re.search(r"\b\d+\s+Cal\.(?:App\.)?\s*(?:\d+d|\d+th|\d+)?\s+\d+\b", citation):
-        return "published"
-    if "not certified for publication" in text[:2000].lower() or "not to be published" in text[:2000].lower():
+    if "unpublished" in raw or "non-precedential" in raw or "nonprecedential" in raw:
         return "unpublished"
     return "unknown"
 
 
-def classify_civil_criminal(case_name: str, haystack: str) -> tuple[bool, bool, list[str]]:
-    criminal_hits = regex_hits(CRIMINAL_PATTERNS, f"{case_name}\n{haystack[:4000]}")
-    wrongful_death_or_civil = regex_hits([r"wrongful death", r"civil action", r"negligence", r"damages"], haystack)
-    criminal = bool(criminal_hits) and not wrongful_death_or_civil
-    reasons = [f"criminal_signal: {hit}" for hit in criminal_hits[:5]] if criminal else []
-    return not criminal, criminal, reasons
+def classify_civil(case_name: str, text: str, claim_posture: str) -> tuple[bool, list[str]]:
+    sample = f"{case_name}\n{text[:15000]}"
+    criminal = _matches(sample, CRIMINAL_PATTERNS)
+    civil_override = _matches(sample, CIVIL_TORT_OVERRIDE)
+    if claim_posture == "direct_tort_claim":
+        return True, civil_override
+    return not bool(criminal), criminal
 
 
-def classify_governing_law(court_system: str, haystack: str) -> tuple[str, str, bool, bool, list[str]]:
-    federal_hits = regex_hits([r"42 U\.S\.C", r"section 1983", r"Title VII", r"federal claim", r"constitutional"], haystack)
-    other_state_hits = regex_hits([r"New York law", r"Nevada law", r"Arizona law", r"Oregon law", r"Texas law"], haystack)
-    if court_system == "california_state" and not federal_hits and not other_state_hits:
-        return "california_state_law", "high", False, False, []
-    if court_system == "california_state" and federal_hits:
-        return "mixed_or_federal_law", "medium", True, bool(other_state_hits), [f"federal_law_signal: {hit}" for hit in federal_hits[:4]]
-    return "unclear", "low", bool(federal_hits), bool(other_state_hits), []
+def classify_governing_law(text: str, court: dict[str, Any], claim_posture: str) -> dict[str, Any]:
+    sample = text[:30000]
+    federal = _matches(sample, [r"42 U\.?S\.?C\.? ?§? ?1983", r"federal civil rights", r"federal constitutional claim"])
+    other_state = _matches(sample, [r"law of (?!California)[A-Z][a-z]+", r"under (?!California)[A-Z][a-z]+ law"])
+    ca = _matches(sample, [r"California (?:Civil|Evidence|Government|Code)", r"California law", r"Cal\. Civ\. Code", r"Civil Code section", r"California common law"])
+    state_core = court["court_system"] == "california_state" and claim_posture != "civil_rights_only" and not other_state
+    confidence = "high" if state_core and (ca or court["court_level_confidence"] == "high") else "medium" if state_core else "low"
+    return {
+        "primary_governing_law": "california_state_law" if state_core else "federal_or_other_law",
+        "federal_claim_present": bool(federal), "other_state_law_present": bool(other_state),
+        "governing_law_confidence": confidence, "governing_law_evidence": unique(ca + federal + other_state),
+    }
 
 
-def classify_liability_basis(haystack: str) -> tuple[str, str, list[str]]:
-    tort_hits = regex_hits(TORT_STRONG_PATTERNS, haystack)
-    broad_hits = regex_hits(BROAD_TORT_PATTERNS, haystack)
-    contract_hits = regex_hits(CONTRACT_PATTERNS, haystack)
-    insurance_hits = regex_hits(INSURANCE_PATTERNS, haystack)
-    procedural_hits = regex_hits(PROCEDURAL_PATTERNS, haystack)
-    admin_hits = regex_hits(ADMIN_PATTERNS, haystack)
-    family_hits = regex_hits(FAMILY_PROBATE_PATTERNS, haystack)
-    public_law_hits = regex_hits(PUBLIC_LAW_PATTERNS, haystack)
-    conduct_hits = regex_hits(CONDUCT_PATTERNS, haystack)
-    damage_hits = regex_hits(DAMAGE_PATTERNS, haystack)
-    evidence = [f"tort_signal: {hit}" for hit in (tort_hits or broad_hits)[:8]]
-
-    if family_hits and (not tort_hits or regex_hits([r"did not involve independent", r"no independent"], haystack)):
-        return "family_or_probate", "high", [f"family_or_probate_signal: {hit}" for hit in family_hits[:5]]
-    if contract_hits and regex_hits([r"no bodily injury", r"no personal injury", r"no property damage", r"only contract", r"contract damages"], haystack):
-        return "contract_only", "high", [f"contract_signal: {hit}" for hit in contract_hits[:5]]
-    if insurance_hits and not (tort_hits and conduct_hits and damage_hits):
-        return "insurance_only", "high", [f"insurance_signal: {hit}" for hit in insurance_hits[:5]]
-    if procedural_hits and not (tort_hits and conduct_hits and damage_hits):
-        return "procedural_only", "high", [f"procedural_signal: {hit}" for hit in procedural_hits[:5]]
-    if admin_hits:
-        return "administrative_or_public_law", "medium", [f"admin_signal: {hit}" for hit in admin_hits[:5]]
-    if public_law_hits and not tort_hits:
-        return "civil_rights_only", "medium", [f"public_law_signal: {hit}" for hit in public_law_hits[:5]]
-    if tort_hits and conduct_hits and damage_hits:
-        if contract_hits:
-            return "mixed_tort_contract", "medium", evidence + [f"contract_signal: {hit}" for hit in contract_hits[:5]]
-        return "non_contractual_tort", "high", evidence + [f"conduct_signal: {hit}" for hit in conduct_hits[:5]] + [f"damage_signal: {hit}" for hit in damage_hits[:5]]
-    if contract_hits and not tort_hits:
-        return "contract_only", "high", [f"contract_signal: {hit}" for hit in contract_hits[:5]]
-    if tort_hits or broad_hits:
-        return "unclear", "low", evidence
-    return "unclear", "low", ["no_tort_signal"]
+def _citation(row: dict[str, Any]) -> str | None:
+    values = row.get("citations")
+    if isinstance(values, list):
+        rendered = []
+        for value in values:
+            if isinstance(value, dict):
+                rendered.append(compact(value.get("cite") or value.get("citation") or value.get("volume") or value))
+            else:
+                rendered.append(compact(value))
+        return "; ".join(item for item in rendered if item) or None
+    return compact(values) or None
 
 
-def classify_subtype(haystack: str) -> str:
-    for subtype, patterns in SUBTYPE_PATTERNS:
-        if regex_hits(patterns, haystack):
-            return subtype
-    if regex_hits(TORT_STRONG_PATTERNS, haystack):
-        return "other_tort"
-    return "unclear"
+def _docket(row: dict[str, Any], text: str) -> str | None:
+    structured = _first(row, "docket_number", "docket", "docket_numbers")
+    if structured:
+        return structured
+    match = re.search(r"(?im)^\s*(?:No\.|Case No\.)\s*([A-Z0-9][A-Z0-9.\-/ ]{2,30})\s*$", text[:2500])
+    return compact(match.group(1)) if match else None
 
 
-def classify_procedural_posture(haystack: str) -> str:
-    posture_patterns = [
-        ("summary_judgment", [r"summary judgment"]),
-        ("demurrer_or_motion_to_dismiss", [r"\bdemurrer\b", r"motion to dismiss"]),
-        ("anti_slapp", [r"anti-SLAPP", r"special motion to strike"]),
-        ("judgment_notwithstanding_verdict", [r"judgment notwithstanding the verdict", r"\bJNOV\b"]),
-        ("new_trial_motion", [r"new trial motion", r"motion for new trial"]),
-        ("post_trial_appeal", [r"jury verdict", r"bench trial", r"judgment after trial", r"trial court entered judgment"]),
-        ("interlocutory_or_procedural", [r"writ petition", r"appealability", r"interlocutory"]),
-    ]
-    for label, patterns in posture_patterns:
-        if regex_hits(patterns, haystack):
-            return label
-    return "unknown"
-
-
-def factual_status(posture: str) -> str:
-    if posture == "summary_judgment":
-        return "record_evidence"
-    if posture == "demurrer_or_motion_to_dismiss":
-        return "assumed_true_at_pleading_stage"
-    if posture == "post_trial_appeal":
-        return "jury_found_fact"
-    return "unclear"
-
-
-def extract_fact_probe(text: str) -> tuple[str, bool]:
-    value = normalize_whitespace(text)
-    heading_re = re.compile(
-        r"(?im)^\s*(?:I+\.\s*)?(?:FACTS|BACKGROUND|FACTUAL BACKGROUND|FACTUAL AND PROCEDURAL BACKGROUND|FACTUAL HISTORY|STATEMENT OF FACTS|THE ACCIDENT|UNDERLYING FACTS|EVIDENCE AT TRIAL)\s*$"
-    )
-    match = heading_re.search(value)
+def _date(value: Any) -> tuple[str | None, int | None]:
+    raw = compact(value)
+    match = re.match(r"((?:18|19|20)\d{2})-(\d{2})-(\d{2})", raw)
     if match:
-        tail = value[match.end() :]
-        end_match = ANALYSIS_HEADING_RE.search(tail)
-        return normalize_whitespace(tail[: end_match.start()] if end_match else tail), True
-    sentences = split_sentences(value)
-    return " ".join(sentences[: min(18, len(sentences))]), False
+        return match.group(0), int(match.group(1))
+    year = re.search(r"\b(18|19|20)\d{2}\b", raw)
+    return (raw or None, int(year.group(0)) if year else None)
 
 
-def assess_factual_sufficiency(text: str, haystack: str, posture: str) -> tuple[bool, int, list[str], str]:
-    fact_probe, has_heading = extract_fact_probe(text)
-    if len(fact_probe) < 250:
-        fact_probe = haystack[:6000]
-    reasons: list[str] = ["fact_heading_detected" if has_heading else "no_explicit_fact_heading"]
-    categories = {
-        "party_or_context": regex_hits([r"plaintiff", r"defendant", r"appellant", r"respondent", r"patient", r"driver", r"employee", r"customer"], fact_probe),
-        "specific_conduct": regex_hits(CONDUCT_PATTERNS, fact_probe),
-        "injury_event": regex_hits([r"accident", r"collision", r"fall", r"surgery", r"publication", r"exposure", r"incident"], fact_probe),
-        "harm": regex_hits(DAMAGE_PATTERNS, fact_probe),
-        "chronology": regex_hits(CHRONOLOGY_PATTERNS, fact_probe),
-        "defense_or_dispute": regex_hits([r"denied", r"disputed", r"contended", r"argued", r"defense", r"comparative", r"assumption of risk"], fact_probe),
-    }
-    score = sum(1 for hits in categories.values() if hits)
-    reasons.extend(f"{name}: {hits[0]}" for name, hits in categories.items() if hits)
-    min_fact_chars = 200 if score >= 5 else 500
-    if len(fact_probe) < min_fact_chars:
-        reasons.append("fact_background_too_short")
-    if score < 4:
-        reasons.append("insufficient_fact_categories")
-    procedural_heavy = posture in {"interlocutory_or_procedural", "anti_slapp"} and score < 5
-    if procedural_heavy:
-        reasons.append("procedural_posture_with_weak_underlying_facts")
-    legal_only = bool(regex_hits([r"standard of review", r"legal principles", r"we review", r"precedent"], fact_probe)) and score < 4
-    if legal_only:
-        reasons.append("mostly_legal_or_procedural_discussion")
-    return len(fact_probe) >= min_fact_chars and score >= 4 and not procedural_heavy and not legal_only, score, unique(reasons), factual_status(posture)
+def event_era(year: Any) -> str:
+    try: value = int(year)
+    except (TypeError, ValueError): return "unknown"
+    if value < 1960: return "before_1960"
+    if value <= 1979: return "1960_1979"
+    if value <= 1999: return "1980_1999"
+    if value <= 2009: return "2000_2009"
+    if value <= 2019: return "2010_2019"
+    return "2020_or_later"
 
 
-def stable_case_id(source_dataset: str, source_record_id: str, citation: str, docket_number: str, decision_date: str, text: str) -> str:
-    stable = compact(source_record_id) or compact(citation) or compact(docket_number)
-    return f"CA_{short_hash(source_dataset, stable, decision_date, text[:1000], length=16)}"
-
-
-def scanned_manifest_row(row: dict[str, Any], args: argparse.Namespace) -> dict[str, object]:
-    court = first_existing(row, COURT_KEYS)
-    return {
-        "source_dataset": args.dataset,
-        "source_record_id": compact(row.get("id", "")),
-        "case_name": first_existing(row, CASE_NAME_KEYS),
-        "court_name": court,
-        "court_jurisdiction": compact(row.get("court_jurisdiction", "")),
-        "court_type": compact(row.get("court_type", "")),
-        "decision_date": first_existing(row, DATE_KEYS),
-        "citation": citations_text(row),
-        "main_opinion_type": "",
-        "main_opinion_confidence": "",
-        "raw_length_chars": 0,
-    }
-
-
-def row_maybe_california_metadata(row: dict[str, Any]) -> bool:
-    court = first_existing(row, COURT_KEYS)
-    jurisdiction = compact(row.get("court_jurisdiction", ""))
-    court_type = compact(row.get("court_type", ""))
-    citation = citations_text(row)
-    haystack = f"{court}\n{jurisdiction}\n{court_type}\n{citation}"
-    return bool(
-        re.search(r"\bCalifornia\b|\bCal\.?\b|Cal\. Ct\. App\.|Ninth Circuit|Central District of California|Northern District of California|Southern District of California|Eastern District of California", haystack, flags=re.IGNORECASE)
-        or jurisdiction.lower() in {"california", "ca", "cal."}
-    )
-
-
-def evaluate_row(row: dict[str, Any], args: argparse.Namespace) -> dict[str, object]:
-    main_text, main_type, main_confidence, separate_opinions, source_url = select_main_opinion(row)
-    main_text = normalize_whitespace(main_text)
-    case_name = first_existing(row, CASE_NAME_KEYS)
-    citation = citations_text(row)
-    docket_number = first_existing(row, DOCKET_KEYS)
-    decision_date = first_existing(row, DATE_KEYS)
-    decision_year = parse_year(decision_date)
-    court = classify_court(row, main_text)
-    publication_status = classify_publication_status(row, citation, main_text)
-    metadata = "\n".join(
-        [
-            case_name,
-            docket_number,
-            citation,
-            decision_date,
-            str(court["court_name"]),
-            compact(row.get("headmatter", "")),
-            compact(row.get("summary", "")),
-            compact(row.get("syllabus", "")),
-            compact(row.get("disposition", "")),
-        ]
-    )
-    haystack = f"{metadata}\n{main_text[:16000]}"
-    civil_likely, criminal_likely, criminal_reasons = classify_civil_criminal(case_name, haystack)
-    primary_law, law_confidence, federal_claim, other_state_law, law_reasons = classify_governing_law(str(court["court_system"]), haystack)
-    liability_basis, tort_confidence, tort_evidence = classify_liability_basis(haystack)
-    subtype = classify_subtype(haystack)
-    posture = classify_procedural_posture(haystack)
-    fact_sufficient, fact_score, fact_reasons, fact_status = assess_factual_sufficiency(main_text, haystack, posture)
-    broad_hits = regex_hits(BROAD_TORT_PATTERNS, haystack)
-    raw_hash = sha256_text(main_text)
-
-    exclusion_reasons: list[str] = []
-    exclusion_reasons.extend(criminal_reasons)
-    exclusion_reasons.extend(law_reasons)
-    if court["court_system"] != args.court_system.replace("-", "_"):
-        exclusion_reasons.append(f"non_target_court_system:{court['court_system']}")
-    if court["court_level"] == "supreme":
-        exclusion_reasons.append("california_supreme_excluded")
-    if court["court_level"] == "federal":
-        exclusion_reasons.append("federal_court_excluded")
-    if court["court_level"] in {"trial_or_other", "unknown"}:
-        exclusion_reasons.append(f"non_target_court_level:{court['court_level']}")
-    if court["court_level"] != args.court_level.replace("-", "_"):
-        exclusion_reasons.append(f"not_{args.court_level}:{court['court_level']}")
-    if decision_year is None:
-        exclusion_reasons.append("decision_year_unknown")
-    elif decision_year < args.year_min or decision_year > args.year_max:
-        exclusion_reasons.append("decision_year_out_of_range")
-    if not civil_likely:
-        exclusion_reasons.append("not_civil_case")
-    if not broad_hits:
-        exclusion_reasons.append("no_broad_tort_keyword")
-    if args.strict_tort_only and liability_basis != "non_contractual_tort":
-        exclusion_reasons.append(f"not_strict_non_contractual_tort:{liability_basis}")
-    if primary_law != "california_state_law":
-        exclusion_reasons.append(f"non_primary_california_state_law:{primary_law}")
-    if not fact_sufficient:
-        exclusion_reasons.append("factual_background_insufficient")
-    if not main_text:
-        exclusion_reasons.append("main_opinion_missing")
-    if main_type in {"dissent", "concurrence"} or (main_confidence == "low" and main_type == "unknown"):
-        exclusion_reasons.append(f"main_opinion_not_strict_eligible:{main_type}")
-    if len(main_text) < args.min_text_chars:
-        exclusion_reasons.append("too_short_or_no_full_opinion_text")
-    if args.max_text_chars and len(main_text) > args.max_text_chars:
-        exclusion_reasons.append("too_long")
-    if args.publication_status != "any" and publication_status != args.publication_status:
-        exclusion_reasons.append(f"publication_status_mismatch:{publication_status}")
-
-    strict_eligible = (
-        str(court["court_system"]) == args.court_system.replace("-", "_")
-        and str(court["court_level"]) == args.court_level.replace("-", "_")
-        and civil_likely
-        and not criminal_likely
-        and bool(broad_hits)
-        and liability_basis == "non_contractual_tort"
-        and primary_law == "california_state_law"
-        and fact_sufficient
-        and isinstance(decision_year, int)
-        and args.year_min <= decision_year <= args.year_max
-        and bool(main_text)
-        and main_type not in {"dissent", "concurrence"}
-        and not (main_confidence == "low" and main_type == "unknown")
-        and len(main_text) >= args.min_text_chars
-        and not (args.max_text_chars and len(main_text) > args.max_text_chars)
-        and (args.publication_status == "any" or publication_status == args.publication_status)
-    )
-    source_record_id = compact(row.get("id", ""))
-    case_id = stable_case_id(args.dataset, source_record_id, citation, docket_number, decision_date, main_text)
-    return {
-        "case_id": case_id,
-        "collection_version": COLLECTION_VERSION,
-        "source_dataset": args.dataset,
-        "source_record_id": source_record_id,
-        "source_url_or_citation": source_url or citation,
-        "case_name": case_name,
-        "docket_number": docket_number,
-        "citation": citation,
-        "decision_date": decision_date,
-        "decision_year": decision_year,
-        **court,
-        "main_opinion_text": main_text,
-        "raw_text": main_text,
-        "main_opinion_type": main_type,
-        "main_opinion_confidence": main_confidence,
-        "separate_opinions": separate_opinions[:5],
-        "separate_opinion_count": len(separate_opinions),
-        "publication_status": publication_status,
-        "civil_case_likely": civil_likely,
-        "criminal_case_likely": criminal_likely,
-        "primary_governing_law": primary_law,
-        "federal_claim_present": federal_claim,
-        "other_state_law_present": other_state_law,
-        "governing_law_confidence": law_confidence,
-        "liability_basis": liability_basis,
-        "tort_confidence": tort_confidence,
-        "tort_evidence": tort_evidence,
-        "case_subtype": subtype,
-        "procedural_posture": posture,
-        "fact_status": fact_status,
-        "factual_background_sufficient": fact_sufficient,
-        "factual_sufficiency_score": fact_score,
-        "factual_sufficiency_reasons": fact_reasons,
-        "strict_eligible": strict_eligible,
-        "exclusion_reasons": unique(exclusion_reasons),
-        "include_signals": broad_hits,
-        "raw_text_sha256": raw_hash,
-        "normalized_text_sha256": sha256_text(normalized_text_for_hash(main_text)),
-        "raw_length_chars": len(main_text),
-        "related_case_group_id": "",
-        "related_case_ids": [],
-        "duplicate_or_related_reason": "",
-        "selected": False,
-        "sampling_rank": "",
-        "matched_kr_case_id": "",
-        "subtype_match": "",
-        "year_match_distance": "",
-        "year_match_level": "",
-        "factual_length_ratio": "",
-        "sampling_reason": [],
-    }
-
-
-def iter_rows(args: argparse.Namespace) -> Iterable[dict[str, Any]]:
-    if args.local_arrow_dir:
-        paths = sorted(Path(args.local_arrow_dir).glob("*.arrow"))
-        if not paths:
-            raise FileNotFoundError(f"No .arrow files found in {args.local_arrow_dir}")
-        for path in paths:
-            dataset = Dataset.from_file(str(path))
-            for row in dataset:
-                yield row
+def assign_primary_exclusion(record: dict[str, Any]) -> None:
+    reasons = list(record.get("exclusion_reasons") or [])
+    if not reasons:
+        record["primary_exclusion_stage"] = None
+        record["primary_exclusion_reason"] = None
         return
-    dataset = load_dataset(args.dataset, split=args.split, streaming=True)
-    if args.shuffle_buffer:
-        dataset = dataset.shuffle(seed=args.seed, buffer_size=args.shuffle_buffer)
+    reason = reasons[0]
+    if reason.startswith("claim_posture:"):
+        stage, reason = "claim_posture", reason.split(":", 1)[1]
+    elif reason.startswith("liability_basis:"):
+        stage = "liability_basis"
+    elif "court" in reason or reason.startswith("not_california"):
+        stage = "court"
+    elif reason == "not_civil_current_appeal":
+        stage, reason = "civil", "criminal_current_proceeding"
+    elif reason == "not_broad_tort_candidate":
+        stage, reason = "broad_tort", "not_broad_tort"
+    elif "governing" in reason or "primary_law" in reason:
+        stage, reason = "governing_law", "not_california_state_law"
+    elif "opinion" in reason or "principal" in reason:
+        stage, reason = "main_opinion", "no_full_main_opinion"
+    elif "fact" in reason:
+        stage, reason = "factual_sufficiency", "insufficient_factual_background"
+    elif "duplicate" in reason or "related" in reason:
+        stage = "duplicate_related"
+    else:
+        stage = "unclear"
+    record["primary_exclusion_stage"] = stage
+    record["primary_exclusion_reason"] = reason
+
+
+def broad_tort_gate(text: str) -> tuple[bool, list[str]]:
+    evidence = _matches(text[:30000], BROAD_TORT_PATTERNS)
+    screening = _matches(text[:30000], POSTURE_SCREEN_PATTERNS)
+    return len(evidence) >= 2 or bool(screening), unique(evidence + screening)
+
+
+def evaluate_row(row: dict[str, Any], args: argparse.Namespace) -> dict[str, Any]:
+    court = classify_court(row)
+    opinion = select_main_opinion(row, minimum_chars=getattr(args, "min_opinion_chars", 1800))
+    text = opinion["main_opinion_text"]
+    metadata = _metadata_text(row)
+    case_name = _first(row, "case_name", "case_name_full", "case_name_short")
+    source_id = compact(row.get("id") or row.get("source_record_id"))
+    decision_date, decision_year = _date(row.get("date_filed") or row.get("decision_date"))
+    docket = _docket(row, text or metadata)
+    citation = _citation(row)
+    district, division = extract_district_division(row, text)
+    publication = classify_publication_status(row.get("precedential_status") or row.get("publication_status"))
+
+    classification_text = f"{metadata}\n{text}"
+    broad, broad_evidence = broad_tort_gate(classification_text)
+    if broad:
+        posture = classify_claim_posture(text or metadata, case_name=case_name, metadata=metadata)
+        liability_basis, liability_evidence = classify_liability_basis(classification_text, posture["claim_posture"])
+        subtype, subtype_evidence = classify_tort_subtype(classification_text)
+        harms = classify_harm_flags(classification_text)
+        procedural, procedural_evidence = classify_procedural_posture(text)
+        fact_status, fact_status_evidence = classify_fact_status(text, procedural)
+        facts = assess_factual_sufficiency(text, full_main_opinion_available=opinion["full_main_opinion_available"])
+    else:
+        posture = {"claim_posture": "unclear", "confidence": "low", "evidence": []}
+        liability_basis, liability_evidence = "unclear", []
+        subtype, subtype_evidence = "unclear", []
+        harms = {key: False for key in ("death_involved", "physical_injury_involved", "property_damage_involved", "emotional_harm_involved")}
+        procedural, procedural_evidence = "unknown", []
+        fact_status, fact_status_evidence = "unclear", []
+        facts = {
+            "factual_background_sufficient": False, "facts_independently_reconstructable": False,
+            "fact_source_quality": "insufficient", "factual_sufficiency_score": 0,
+            "factual_sufficiency_evidence": [], "factual_insufficiency_reasons": ["not_broad_tort_candidate"],
+        }
+    civil, civil_evidence = classify_civil(case_name, classification_text, posture["claim_posture"])
+    governing = classify_governing_law(classification_text, court, posture["claim_posture"])
+
+    exclusions = []
+    if not court["california_candidate"]: exclusions.append("not_california_jurisdiction")
+    if not court["california_state_candidate"]: exclusions.append("not_california_state_court")
+    if court["court_level"] != "intermediate_appellate": exclusions.append("not_california_court_of_appeal")
+    if court["court_level_confidence"] not in {"high", "medium"}: exclusions.append("court_level_not_verified")
+    if not civil: exclusions.append("not_civil_current_appeal")
+    if not broad: exclusions.append("not_broad_tort_candidate")
+    if posture["claim_posture"] != "direct_tort_claim": exclusions.append(f"claim_posture:{posture['claim_posture']}")
+    if liability_basis != "non_contractual_tort": exclusions.append(f"liability_basis:{liability_basis}")
+    if governing["primary_governing_law"] != "california_state_law": exclusions.append("primary_law_not_california_state_law")
+    if governing["governing_law_confidence"] not in {"high", "medium"}: exclusions.append("governing_law_not_verified")
+    if not opinion["full_main_opinion_available"]: exclusions.append(opinion["opinion_exclusion_reason"] or "full_main_opinion_unavailable")
+    if opinion["main_opinion_type"] in {"concurrence", "dissent"} or opinion["main_opinion_confidence"] == "low": exclusions.append("no_valid_principal_opinion")
+    if not facts["factual_background_sufficient"]: exclusions.append("factual_background_insufficient")
+    if not facts["facts_independently_reconstructable"]: exclusions.append("facts_not_independently_reconstructable")
+    if facts["fact_source_quality"] not in {"self_contained", "partially_incorporated"}: exclusions.append("fact_source_quality_insufficient")
+
+    case_id = f"CA_{short_hash(SOURCE_DATASET, source_id or docket or citation or case_name, length=16)}"
+    quality_flags = []
+    if publication == "unknown": quality_flags.append("publication_status_unknown")
+    if not district: quality_flags.append("appellate_district_unknown")
+    if opinion["main_opinion_confidence"] == "medium": quality_flags.append("main_opinion_medium_confidence")
+    if procedural == "demurrer_or_motion_to_dismiss": quality_flags.append("pleading_facts_not_adjudicated")
+    record = {
+        "case_id": case_id, "source_dataset": SOURCE_DATASET, "source_record_id": source_id,
+        "case_name": case_name or None, "docket_number": docket, "citation": citation,
+        "decision_date": decision_date, "decision_year": decision_year,
+        "incident_date": None, "incident_year": None, "event_era": "unknown",
+        **{key: court[key] for key in ("court_name", "court_system", "court_level", "court_level_confidence", "court_evidence")},
+        "appellate_district": district, "division": division,
+        **{key: opinion[key] for key in ("main_opinion_text", "main_opinion_type", "main_opinion_confidence", "full_main_opinion_available", "separate_opinions")},
+        "publication_status": publication, **governing,
+        "liability_basis": liability_basis, "liability_basis_evidence": liability_evidence,
+        "claim_posture": posture["claim_posture"], "claim_posture_confidence": posture["confidence"],
+        "direct_tort_evidence": posture["evidence"] if posture["claim_posture"] == "direct_tort_claim" else [],
+        "claim_posture_evidence": posture["evidence"], "broad_tort_candidate": broad, "broad_tort_evidence": broad_evidence,
+        "civil_candidate": civil, "civil_classification_evidence": civil_evidence,
+        "case_subtype": subtype, "case_subtype_evidence": subtype_evidence,
+        "procedural_posture": procedural, "procedural_posture_evidence": procedural_evidence,
+        "fact_epistemic_status": fact_status, "fact_status_evidence": fact_status_evidence,
+        **harms, **facts,
+        "strict_eligible": not exclusions, "exclusion_reasons": unique(exclusions), "quality_flags": unique(quality_flags),
+        "related_case_group_id": None, "related_case_ids": [], "underlying_incident_fingerprint": None,
+        "duplicate_or_related_reason": None, "raw_text_sha256": sha256_text(text),
+        "normalized_main_opinion_sha256": sha256_text(normalized_text_for_hash(text)),
+        "reference_kr_subtype_count": None, "shortlist_minimum_target": None, "shortlist_subtype_rank": None,
+        "shortlist_overflow_candidate": False, "shortlist_selection_score": None, "shortlist_selection_reasons": [],
+        "human_qc_status": None, "human_qc_corrected_subtype": None,
+        "human_qc_corrected_claim_posture": None, "human_qc_notes": None,
+        "collection_version": COLLECTION_VERSION,
+    }
+    assign_primary_exclusion(record)
+    return record
+
+
+def underlying_incident_fingerprint(record: dict[str, Any]) -> str | None:
+    name = compact(record.get("case_name")).lower()
+    tokens = sorted(set(re.findall(r"[a-z]{3,}", name)) - {"super", "superior", "court", "appeal", "county", "state", "california", "estate"})
+    if len(tokens) < 2:
+        return None
+    text = compact(record.get("main_opinion_text"))[:5000]
+    incident_date = re.search(r"\b(?:18|19|20)\d{2}[-/, ]\d{1,2}[-/, ]\d{1,2}\b", text)
+    event = _matches(text, [r"motor vehicle|collision|medical procedure|surgery|premises|publication|shooting|assault|product"])
+    if not incident_date and not event:
+        return None
+    return short_hash(" ".join(tokens[:8]), incident_date.group(0) if incident_date else "", "|".join(event[:2]), length=20)
+
+
+def mark_duplicates(records: list[dict[str, Any]]) -> dict[str, int]:
+    reason_counts: Counter[str] = Counter()
+    keys = ["source_record_id", "docket_number", "citation", "raw_text_sha256"]
+    seen: dict[tuple[str, str], dict[str, Any]] = {}
+    normalized_seen: dict[str, dict[str, Any]] = {}
+    incident_seen: dict[str, dict[str, Any]] = {}
+    ordered = sorted(records, key=lambda row: (
+        row.get("claim_posture") != "direct_tort_claim", -int(row.get("factual_sufficiency_score") or 0),
+        row.get("main_opinion_confidence") != "high", str(row.get("case_id")),
+    ))
+    for record in ordered:
+        duplicate_of = None
+        reason = None
+        for key in keys:
+            value = compact(record.get(key)).lower()
+            if value and (key, value) in seen:
+                duplicate_of, reason = seen[(key, value)], f"duplicate_{key}"
+                break
+        normalized = sha256_text(normalized_text_for_hash(str(record.get("main_opinion_text") or "")))
+        if not duplicate_of and normalized in normalized_seen:
+            duplicate_of, reason = normalized_seen[normalized], "duplicate_normalized_main_opinion"
+        fingerprint = underlying_incident_fingerprint(record)
+        record["underlying_incident_fingerprint"] = fingerprint
+        if not duplicate_of and fingerprint and fingerprint in incident_seen:
+            duplicate_of, reason = incident_seen[fingerprint], "related_underlying_incident"
+        if duplicate_of:
+            group = duplicate_of.get("related_case_group_id") or f"CAREL_{short_hash(duplicate_of['case_id'], record['case_id'], length=14)}"
+            duplicate_of["related_case_group_id"] = group
+            record["related_case_group_id"] = group
+            record["related_case_ids"] = unique(list(record.get("related_case_ids") or []) + [str(duplicate_of["case_id"])])
+            duplicate_of["related_case_ids"] = unique(list(duplicate_of.get("related_case_ids") or []) + [str(record["case_id"])])
+            record["duplicate_or_related_reason"] = reason
+            record["strict_eligible"] = False
+            record["exclusion_reasons"] = unique(list(record.get("exclusion_reasons") or []) + [reason])
+            assign_primary_exclusion(record)
+            reason_counts[reason] += 1
+        else:
+            for key in keys:
+                value = compact(record.get(key)).lower()
+                if value: seen[(key, value)] = record
+            normalized_seen[normalized] = record
+            if fingerprint: incident_seen[fingerprint] = record
+    return dict(reason_counts)
+
+
+def split_pools(records: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    california = [row for row in records if classify_bool(row, "california_candidate", default=True)]
+    state = [row for row in california if row.get("court_system") == "california_state"]
+    appeal = [row for row in state if row.get("court_level") == "intermediate_appellate"]
+    civil = [row for row in appeal if row.get("civil_candidate")]
+    direct = [row for row in civil if row.get("claim_posture") == "direct_tort_claim"]
+    strict = [row for row in direct if row.get("strict_eligible")]
+    excluded = [row for row in civil if row.get("broad_tort_candidate") and row.get("claim_posture") != "direct_tort_claim"]
+    return {"california": california, "state": state, "appeal": appeal, "civil": civil, "direct": direct, "strict": strict, "excluded": excluded}
+
+
+def classify_bool(row: dict[str, Any], key: str, default: bool = False) -> bool:
+    if key in row: return bool(row[key])
+    return default
+
+
+def iter_rows(args: argparse.Namespace) -> Iterator[dict[str, Any]]:
+    local_dir = getattr(args, "local_arrow_dir", None)
+    if local_dir:
+        dataset = Dataset.load_from_disk(str(local_dir))
+        yield from dataset
+        return
+    if getattr(args, "source_loader", "datasets-server") == "datasets-server":
+        yield from iter_hf_filtered_rows(args)
+        return
+    columns = [
+        "id", "case_name", "case_name_full", "case_name_short", "citations", "court_full_name",
+        "court_short_name", "court_jurisdiction", "court_type", "date_filed", "headmatter", "headnotes",
+        "history", "nature_of_suit", "opinions", "posture", "precedential_status", "slug", "summary", "syllabus",
+    ]
+    # Parquet predicate pushdown scans the complete California jurisdiction range; no first-N limit is used.
+    year_min = getattr(args, "year_min", None)
+    year_max = getattr(args, "year_max", None)
+    decision_date_from = date(int(year_min), 1, 1) if year_min is not None else date.fromisoformat(getattr(args, "decision_date_from", DEFAULT_DECISION_DATE_FROM))
+    filters: list[tuple[str, str, Any]] = [
+        ("court_jurisdiction", "==", "California, CA"), ("court_type", "==", "SA"),
+        ("date_filed", ">=", decision_date_from),
+    ]
+    if year_max is not None:
+        filters.append(("date_filed", "<=", date(int(year_max), 12, 31)))
+    dataset = load_dataset(
+        getattr(args, "dataset", SOURCE_DATASET), split=getattr(args, "split", "train"), streaming=True,
+        columns=columns,
+        filters=filters,
+        batch_size=getattr(args, "loader_batch_size", 32),
+    )
     yield from dataset
 
 
-def is_california_candidate(record: dict[str, object]) -> bool:
-    return str(record.get("court_system")) == "california_state" or "California" in f"{record.get('court_name')} {record.get('case_name')} {record.get('citation')}"
+def iter_hf_filtered_rows(args: argparse.Namespace) -> Iterator[dict[str, Any]]:
+    endpoint = "https://datasets-server.huggingface.co/filter"
+    year_min = getattr(args, "year_min", None)
+    year_max = getattr(args, "year_max", None)
+    decision_date_from = f"{int(year_min):04d}-01-01" if year_min is not None else getattr(args, "decision_date_from", DEFAULT_DECISION_DATE_FROM)
+    decision_date_to = f"{int(year_max):04d}-12-31" if year_max is not None else None
+    where = (
+        '"court_jurisdiction"=\'California, CA\' AND '
+        '"court_type"=\'SA\' AND '
+        f'"date_filed">=\'{decision_date_from}\''
+    )
+    if decision_date_to:
+        where += f' AND "date_filed"<=\'{decision_date_to}\''
+    page_size = max(1, min(100, int(getattr(args, "loader_page_size", 10))))
+    offset = max(0, int(getattr(args, "source_start_offset", 0)))
+    total_rows: int | None = None
+    while total_rows is None or offset < total_rows:
+        params = {
+            "dataset": getattr(args, "dataset", SOURCE_DATASET), "config": "default", "split": getattr(args, "split", "train"),
+            "where": where, "offset": offset, "length": page_size,
+        }
+        last_error: Exception | None = None
+        for attempt in range(8):
+            try:
+                response = requests.get(endpoint, params=params, timeout=(30, 180))
+                response.raise_for_status()
+                payload = response.json()
+                break
+            except (requests.RequestException, ValueError) as error:
+                last_error = error
+                if attempt == 7:
+                    raise RuntimeError(f"Hugging Face filtered-page request failed at offset {offset}") from error
+                time.sleep(min(30, 2 ** attempt))
+        else:  # pragma: no cover
+            raise RuntimeError("unreachable filtered-page retry state") from last_error
+        reported_total = int(payload.get("num_rows_total") or 0)
+        if total_rows is None:
+            total_rows = reported_total
+            setattr(args, "metadata_scope_row_count", total_rows)
+            setattr(args, "source_filter_partial_flag", bool(payload.get("partial")))
+            LOGGER.info("Hugging Face filtered scope rows: %s", total_rows)
+        elif reported_total != total_rows:
+            raise RuntimeError(f"Filtered source row count changed during scan: {total_rows} -> {reported_total}")
+        rows = payload.get("rows") or []
+        if not rows and offset < total_rows:
+            raise RuntimeError(f"Filtered source returned an empty page before completion at offset {offset}")
+        for relative_index, item in enumerate(rows):
+            row = item.get("row") if isinstance(item, dict) else None
+            if isinstance(row, dict):
+                row["_source_index"] = offset + relative_index
+                yield row
+        offset += len(rows)
 
 
-def split_pools(records: list[dict[str, object]], scanned_manifest: list[dict[str, object]]) -> dict[str, list[dict[str, object]]]:
-    california = [row for row in records if is_california_candidate(row)]
-    state = [row for row in california if row.get("court_system") == "california_state"]
-    coa = [row for row in state if row.get("court_level") == "intermediate_appellate"]
-    civil = [row for row in coa if row.get("civil_case_likely") is True and row.get("criminal_case_likely") is False]
-    tort = [row for row in civil if row.get("include_signals")]
-    strict = [row for row in records if row.get("strict_eligible") is True]
-    return {
-        "all_scanned_manifest": scanned_manifest,
-        "california_candidates": california,
-        "state_court_candidates": state,
-        "court_of_appeal_candidates": coa,
-        "civil_candidates": civil,
-        "tort_candidates": tort,
-        "strict_eligible": strict,
-        "strict_eligible_published": [row for row in strict if row.get("publication_status") == "published"],
-    }
-
-
-def mark_duplicates(records: list[dict[str, object]]) -> dict[str, int]:
-    counters: Counter[str] = Counter()
-    seen_source: dict[str, str] = {}
-    seen_citation: dict[str, str] = {}
-    seen_docket: dict[str, str] = {}
-    seen_exact: dict[str, str] = {}
-    seen_norm: dict[str, str] = {}
-    for record in records:
-        duplicate_of = ""
-        reason = ""
-        source_id = compact(record.get("source_record_id", ""))
-        citation = compact(record.get("citation", "")).lower()
-        docket = compact(record.get("docket_number", "")).lower()
-        exact = str(record.get("raw_text_sha256") or "")
-        norm = str(record.get("normalized_text_sha256") or "")
-        if source_id and source_id in seen_source:
-            duplicate_of, reason = seen_source[source_id], "duplicate_source_case_id"
-        elif citation and citation in seen_citation:
-            duplicate_of, reason = seen_citation[citation], "duplicate_citation"
-        elif docket and docket in seen_docket:
-            duplicate_of, reason = seen_docket[docket], "duplicate_docket_number"
-        elif exact and exact in seen_exact:
-            duplicate_of, reason = seen_exact[exact], "duplicate_exact_opinion_hash"
-        elif norm and norm in seen_norm:
-            duplicate_of, reason = seen_norm[norm], "duplicate_normalized_opinion_hash"
-        seen_source.setdefault(source_id, str(record["case_id"]))
-        if citation:
-            seen_citation.setdefault(citation, str(record["case_id"]))
-        if docket:
-            seen_docket.setdefault(docket, str(record["case_id"]))
-        if exact:
-            seen_exact.setdefault(exact, str(record["case_id"]))
-        if norm:
-            seen_norm.setdefault(norm, str(record["case_id"]))
-        if duplicate_of:
-            record["related_case_group_id"] = f"grp_{short_hash(duplicate_of, record['case_id'], length=12)}"
-            record["related_case_ids"] = [duplicate_of]
-            record["duplicate_or_related_reason"] = reason
-            counters[reason] += 1
-    return dict(counters)
-
-
-def read_jsonl(path: Path) -> list[dict[str, object]]:
-    rows: list[dict[str, object]] = []
-    if not path.exists():
-        return rows
+def read_jsonl(path: Path) -> list[dict[str, Any]]:
     with path.open("r", encoding="utf-8") as handle:
-        for line in handle:
-            if line.strip():
-                rows.append(json.loads(line))
-    return rows
+        return [json.loads(line) for line in handle if line.strip()]
 
 
-def reference_distribution(args: argparse.Namespace) -> tuple[dict[str, int], dict[int, int], list[dict[str, object]]]:
-    rows = read_jsonl(Path(args.reference_kr_selected)) if args.reference_kr_selected else []
-    if not rows:
-        return dict(KR_REFERENCE_SUBTYPE_DEFAULT), dict(KR_REFERENCE_YEAR_DEFAULT), []
-    subtype_counts = Counter(str(row.get("case_subtype") or "unclear") for row in rows)
-    year_counts = Counter(int(row["decision_year"]) for row in rows if isinstance(row.get("decision_year"), int))
-    return dict(subtype_counts), dict(year_counts), rows
-
-
-def year_match_level(distance: int) -> str:
-    if distance == 0:
-        return "exact"
-    if distance == 1:
-        return "plus_minus_one_year"
-    if distance <= 2:
-        return "same_three_year_band"
-    return "same_candidate_period"
-
-
-def candidate_rank(row: dict[str, object], ref_year: int | None, ref_length: int | None) -> tuple[int, int, int, int, str]:
-    year = row.get("decision_year")
-    year_distance = abs(int(year) - ref_year) if isinstance(year, int) and ref_year is not None else 99
-    fact_score = int(row.get("factual_sufficiency_score") or 0)
-    opinion_conf = {"high": 0, "medium": 1, "low": 2}.get(str(row.get("main_opinion_confidence")), 3)
-    court_conf = {"high": 0, "medium": 1, "low": 2}.get(str(row.get("jurisdiction_confidence")), 3)
-    length_distance = abs(int(row.get("raw_length_chars") or 0) - ref_length) if ref_length else 0
-    return (year_distance, -fact_score, opinion_conf + court_conf, length_distance, str(row.get("case_id", "")))
-
-
-def select_final_sample(records: list[dict[str, object]], args: argparse.Namespace) -> tuple[list[dict[str, object]], list[dict[str, object]], dict[str, object]]:
-    subtype_quota, year_quota, kr_rows = reference_distribution(args)
-    pool = [row for row in records if not row.get("duplicate_or_related_reason")]
-    rng = random.Random(args.seed)
-    selected: list[dict[str, object]] = []
-    selected_ids: set[str] = set()
-    alignment_rows: list[dict[str, object]] = []
-    shortage: dict[str, dict[str, int]] = {}
-
-    if args.match_kr_subtypes and kr_rows:
-        refs = kr_rows[: args.target_count]
-    else:
-        refs = []
-        for subtype, count in subtype_quota.items():
-            for _ in range(count):
-                refs.append({"case_id": "", "case_subtype": subtype, "decision_year": None, "raw_text": ""})
-        refs = refs[: args.target_count]
-
-    for rank, ref in enumerate(refs, start=1):
-        subtype = str(ref.get("case_subtype") or "unclear")
-        ref_year = ref.get("decision_year") if args.match_kr_years else None
-        ref_year_int = int(ref_year) if isinstance(ref_year, int) else None
-        ref_length = len(str(ref.get("raw_text") or "")) if args.match_kr_lengths else None
-        candidates = [row for row in pool if str(row.get("case_id")) not in selected_ids and row.get("case_subtype") == subtype]
-        if args.match_kr_years and ref_year_int is not None:
-            same_year = [row for row in candidates if row.get("decision_year") == ref_year_int]
-            if same_year:
-                candidates = same_year
-            else:
-                candidates = [row for row in candidates if isinstance(row.get("decision_year"), int) and abs(int(row["decision_year"]) - ref_year_int) <= 1] or candidates
-        rng.shuffle(candidates)
-        candidates.sort(key=lambda row: candidate_rank(row, ref_year_int, ref_length))
-        if not candidates:
-            shortage.setdefault(subtype, {"quota": 0, "selected": 0, "shortage": 0})
-            shortage[subtype]["quota"] += 1
-            shortage[subtype]["shortage"] += 1
-            continue
-        row = candidates[0]
-        selected_ids.add(str(row["case_id"]))
-        ca_year = row.get("decision_year")
-        distance = abs(int(ca_year) - ref_year_int) if isinstance(ca_year, int) and ref_year_int is not None else ""
-        length_ratio = round((int(row.get("raw_length_chars") or 0) / ref_length), 4) if ref_length else ""
-        row["selected"] = True
-        row["sampling_rank"] = rank
-        row["matched_kr_case_id"] = str(ref.get("case_id") or "")
-        row["subtype_match"] = row.get("case_subtype") == subtype
-        row["year_match_distance"] = distance
-        row["year_match_level"] = year_match_level(int(distance)) if isinstance(distance, int) else ""
-        row["factual_length_ratio"] = length_ratio
-        row["sampling_reason"] = ["matched_reference_subtype", f"year_match:{row['year_match_level']}" if row["year_match_level"] else "year_not_matched"]
-        selected.append(row)
-        shortage.setdefault(subtype, {"quota": 0, "selected": 0, "shortage": 0})
-        shortage[subtype]["quota"] += 1
-        shortage[subtype]["selected"] += 1
-        alignment_rows.append(
-            {
-                "sampling_rank": rank,
-                "kr_case_id": ref.get("case_id", ""),
-                "kr_subtype": subtype,
-                "kr_year": ref.get("decision_year", ""),
-                "kr_raw_length_chars": len(str(ref.get("raw_text") or "")),
-                "ca_case_id": row.get("case_id", ""),
-                "ca_subtype": row.get("case_subtype", ""),
-                "ca_year": row.get("decision_year", ""),
-                "ca_raw_length_chars": row.get("raw_length_chars", ""),
-                "year_match_distance": distance,
-                "year_match_level": row.get("year_match_level", ""),
-                "subtype_match": row.get("subtype_match", ""),
-            }
-        )
-
-    selected = selected[: args.target_count]
-    for subtype, quota in subtype_quota.items():
-        info = shortage.setdefault(subtype, {"quota": quota, "selected": 0, "shortage": 0})
-        info["quota"] = quota
-        info["available"] = sum(1 for row in pool if row.get("case_subtype") == subtype)
-        info["shortage"] = max(info.get("shortage", 0), max(0, min(quota, args.target_count) - info.get("selected", 0)) if subtype in subtype_quota else info.get("shortage", 0))
-
-    return sorted(selected, key=lambda row: int(row.get("sampling_rank") or 999)), alignment_rows, {
-        "sampling_method": "korea_reference_subtype_year_length_matching",
-        "seed": args.seed,
-        "reference_kr_selected": args.reference_kr_selected,
-        "reference_subtype_distribution": subtype_quota,
-        "reference_year_distribution": {str(key): value for key, value in year_quota.items()},
-        "quota_shortage_report": shortage,
-    }
-
-
-def count_by(rows: Iterable[dict[str, object]], field: str) -> dict[str, int]:
-    return dict(Counter(str(row.get(field, "") or "unknown") for row in rows))
-
-
-def summarize(
-    *,
-    scanned: int,
-    pools: dict[str, list[dict[str, object]]],
-    selected: list[dict[str, object]],
-    duplicate_counts: dict[str, int],
-    sampling_meta: dict[str, object],
-    args: argparse.Namespace,
-) -> dict[str, object]:
-    records = pools["california_candidates"]
-    coa = pools["court_of_appeal_candidates"]
-    strict = pools["strict_eligible"]
-    liability_counts = Counter(str(row.get("liability_basis") or "unclear") for row in records)
-    exclusion_counts = Counter(reason for row in records for reason in row.get("exclusion_reasons", []))
-    factual_reason_counts = Counter(reason.split(":", 1)[0] for row in records for reason in row.get("factual_sufficiency_reasons", []))
-    summary = {
-        "collection_version": COLLECTION_VERSION,
-        "total_scanned": scanned,
-        "california_keyword_or_metadata_hits": len(pools["california_candidates"]),
-        "california_state_court_candidates": len(pools["state_court_candidates"]),
-        "california_court_of_appeal_candidates": len(coa),
-        "california_supreme_count": sum(1 for row in records if row.get("court_level") == "supreme"),
-        "federal_court_count": sum(1 for row in records if row.get("court_level") == "federal"),
-        "trial_or_other_court_count": sum(1 for row in records if row.get("court_level") == "trial_or_other"),
-        "court_unknown_count": sum(1 for row in records if row.get("court_level") == "unknown"),
-        "civil_candidate_count": len(pools["civil_candidates"]),
-        "broad_tort_candidate_count": len(pools["tort_candidates"]),
-        "non_contractual_tort_count": liability_counts.get("non_contractual_tort", 0),
-        "mixed_tort_contract_count": liability_counts.get("mixed_tort_contract", 0),
-        "contract_only_count": liability_counts.get("contract_only", 0),
-        "insurance_only_count": liability_counts.get("insurance_only", 0),
-        "procedural_only_count": liability_counts.get("procedural_only", 0),
-        "administrative_or_public_law_count": liability_counts.get("administrative_or_public_law", 0),
-        "civil_rights_only_count": liability_counts.get("civil_rights_only", 0),
-        "family_or_probate_count": liability_counts.get("family_or_probate", 0),
-        "unclear_count": liability_counts.get("unclear", 0),
-        "factually_sufficient_count": sum(1 for row in records if row.get("factual_background_sufficient") is True),
-        "criminal_excluded": sum(1 for row in records if row.get("criminal_case_likely") is True),
-        "full_main_opinion_available": sum(1 for row in records if int(row.get("raw_length_chars") or 0) >= args.min_text_chars),
-        "main_opinion_unknown": sum(1 for row in records if row.get("main_opinion_type") == "unknown"),
-        "strict_eligible_pool_count": len(strict),
-        "published_strict_eligible": sum(1 for row in strict if row.get("publication_status") == "published"),
-        "unpublished_strict_eligible": sum(1 for row in strict if row.get("publication_status") == "unpublished"),
-        "publication_unknown_strict_eligible": sum(1 for row in strict if row.get("publication_status") == "unknown"),
-        "selected_count": len(selected),
-        "target_count": args.target_count,
-        "court_of_appeal_candidates_by_year": count_by(coa, "decision_year"),
-        "strict_eligible_by_year": count_by(strict, "decision_year"),
-        "candidate_by_subtype": count_by(records, "case_subtype"),
-        "strict_eligible_by_subtype": count_by(strict, "case_subtype"),
-        "appellate_district_counts": count_by(coa, "appellate_district"),
-        "publication_status_counts": count_by(records, "publication_status"),
-        "strict_publication_status_counts": count_by(strict, "publication_status"),
-        "procedural_posture_counts": count_by(records, "procedural_posture"),
-        "liability_basis_counts": count_by(records, "liability_basis"),
-        "exclusion_reason_counts": dict(exclusion_counts),
-        "factual_insufficiency_reason_counts": dict(factual_reason_counts),
-        "duplicate_removed_counts": duplicate_counts,
-        "final_selected_subtype_distribution": count_by(selected, "case_subtype"),
-        "final_selected_year_distribution": count_by(selected, "decision_year"),
-        "final_selected_publication_status_distribution": count_by(selected, "publication_status"),
-        "year_min": args.year_min,
-        "year_max": args.year_max,
-        "scan_limit": args.scan_limit,
-        "publication_status": args.publication_status,
-    }
-    summary.update(sampling_meta)
-    return summary
-
-
-def collect(args: argparse.Namespace) -> tuple[dict[str, list[dict[str, object]]], list[dict[str, object]], list[dict[str, object]], dict[str, object]]:
-    records: list[dict[str, object]] = []
-    scanned_manifest: list[dict[str, object]] = []
-    scanned = 0
-    for scanned, row in enumerate(iter_rows(args), start=1):
-        if args.scan_limit and scanned > args.scan_limit:
-            scanned -= 1
-            break
-        scanned_manifest.append(scanned_manifest_row(row, args))
-        if not row_maybe_california_metadata(row):
-            if args.progress_every and scanned % args.progress_every == 0:
-                LOGGER.info("scanned=%s california_candidates=%s strict=%s", scanned, len(records), sum(1 for item in records if item.get("strict_eligible")))
-            continue
-        record = evaluate_row(row, args)
-        if is_california_candidate(record):
-            records.append(record)
-        if args.preview_only and scanned >= args.preview_count:
-            break
-        if args.progress_every and scanned % args.progress_every == 0:
-            LOGGER.info("scanned=%s california_candidates=%s strict=%s", scanned, sum(1 for item in records if is_california_candidate(item)), sum(1 for item in records if item.get("strict_eligible")))
-
-    duplicate_counts = mark_duplicates(records)
-    pools = split_pools(records, scanned_manifest)
-    selected: list[dict[str, object]] = []
-    alignment_rows: list[dict[str, object]] = []
-    sampling_meta: dict[str, object] = {}
-    if args.select_final_sample:
-        selected, alignment_rows, sampling_meta = select_final_sample(pools["strict_eligible"], args)
-    summary = summarize(scanned=scanned, pools=pools, selected=selected, duplicate_counts=duplicate_counts, sampling_meta=sampling_meta, args=args)
-    return pools, selected, alignment_rows, summary
-
-
-def output_paths(args: argparse.Namespace) -> dict[str, Path]:
-    output_dir = Path(args.output_dir)
-    return {
-        "all_scanned_manifest": output_dir / "ca_all_scanned_manifest.jsonl",
-        "california_candidates": output_dir / "ca_california_candidates_all.jsonl",
-        "state_court_candidates": output_dir / "ca_state_court_candidates_all.jsonl",
-        "court_of_appeal_candidates": output_dir / "ca_court_of_appeal_candidates_all.jsonl",
-        "civil_candidates": output_dir / "ca_civil_candidates_all.jsonl",
-        "tort_candidates": output_dir / "ca_tort_candidates_all.jsonl",
-        "strict_eligible": output_dir / "ca_strict_eligible_all.jsonl",
-        "strict_eligible_published": output_dir / "ca_strict_eligible_published.jsonl",
-        "selected": output_dir / f"ca_cases_selected_{args.target_count}.jsonl",
-        "qc": output_dir / "ca_cases_qc.csv",
-        "summary": output_dir / "ca_cases_summary.json",
-        "manifest": Path(args.manifest_output),
-        "alignment": Path(args.alignment_output),
-    }
-
-
-def write_jsonl(path: Path, rows: Iterable[dict[str, object]]) -> None:
+def write_jsonl(path: Path, rows: Iterable[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="\n") as handle:
         for row in rows:
-            handle.write(json.dumps(row, ensure_ascii=False) + "\n")
+            handle.write(json.dumps(row, ensure_ascii=False, default=str) + "\n")
 
 
-def csv_value(value: object) -> object:
-    if isinstance(value, list):
-        return "; ".join(json.dumps(item, ensure_ascii=False) if isinstance(item, dict) else str(item) for item in value)
+def read_kr_reference(path: Path) -> tuple[dict[str, int], list[str]]:
+    rows = read_jsonl(path)
+    distribution = dict(Counter(compact(row.get("case_subtype")) or "unclear" for row in rows))
+    warnings = []
+    if len(rows) != 50:
+        warnings.append(f"reference_kr_record_count_is_{len(rows)}_not_50")
+    if sum(distribution.values()) != 50:
+        warnings.append("reference_kr_subtype_total_is_not_50")
+    if distribution != EXPECTED_KR_DISTRIBUTION:
+        warnings.append("reference_kr_distribution_differs_from_documented_distribution;file_distribution_used")
+    return distribution, warnings
+
+
+def minimum_targets(kr_distribution: dict[str, int]) -> dict[str, int]:
+    return {subtype: max(count + 2, math.ceil(count * 1.5)) for subtype, count in kr_distribution.items() if subtype != "unclear"}
+
+
+def _confidence_points(value: Any) -> int:
+    return {"high": 12, "medium": 6, "low": 0}.get(compact(value).lower(), 0)
+
+
+def base_shortlist_score(row: dict[str, Any], available: Counter[str], kr: dict[str, int]) -> float:
+    subtype = str(row.get("case_subtype"))
+    scarcity = 15 * (kr.get(subtype, 0) / max(1, available.get(subtype, 0)))
+    harm_diversity = 2 * sum(bool(row.get(key)) for key in (
+        "death_involved", "physical_injury_involved", "property_damage_involved", "emotional_harm_involved"
+    ))
+    return round(float(row.get("factual_sufficiency_score") or 0) + _confidence_points(row.get("main_opinion_confidence")) +
+                 _confidence_points(row.get("governing_law_confidence")) + _confidence_points(row.get("claim_posture_confidence")) +
+                 scarcity + harm_diversity, 3)
+
+
+def build_shortlist(
+    strict_pool: list[dict[str, Any]], *, shortlist_count: int, kr_distribution: dict[str, int], seed: int
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    eligible = [dict(row) for row in strict_pool if row.get("strict_eligible") and row.get("case_subtype") != "unclear"]
+    available = Counter(str(row.get("case_subtype")) for row in eligible)
+    targets = minimum_targets(kr_distribution)
+    rng = random.Random(seed)
+    tie = {str(row["case_id"]): rng.random() for row in sorted(eligible, key=lambda item: str(item["case_id"]))}
+    for row in eligible:
+        row["reference_kr_subtype_count"] = kr_distribution.get(str(row.get("case_subtype")), 0)
+        row["shortlist_minimum_target"] = targets.get(str(row.get("case_subtype")), 0)
+        row["shortlist_selection_score"] = base_shortlist_score(row, available, kr_distribution)
+
+    def rank_key(row: dict[str, Any]) -> tuple[Any, ...]:
+        return (-float(row["shortlist_selection_score"]), tie[str(row["case_id"])], str(row["case_id"]))
+
+    by_subtype: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in eligible:
+        by_subtype[str(row["case_subtype"])].append(row)
+    for values in by_subtype.values(): values.sort(key=rank_key)
+    selected: list[dict[str, Any]] = []
+    selected_ids: set[str] = set()
+    for subtype, target in targets.items():
+        for rank, row in enumerate(by_subtype.get(subtype, [])[:target], start=1):
+            row["shortlist_subtype_rank"] = rank
+            row["shortlist_overflow_candidate"] = False
+            row["shortlist_selection_reasons"] = ["kr_reference_minimum_target", "strict_eligible", "subtype_rank"]
+            selected.append(row); selected_ids.add(str(row["case_id"]))
+
+    counts = Counter(str(row["case_subtype"]) for row in selected)
+    procedure = Counter(str(row.get("procedural_posture")) for row in selected)
+    district = Counter(str(row.get("appellate_district") or "unknown") for row in selected)
+    decade = Counter(decade_bucket(row.get("decision_year")) for row in selected)
+    publication = Counter(str(row.get("publication_status")) for row in selected)
+    leftovers = [row for row in eligible if str(row["case_id"]) not in selected_ids]
+    while len(selected) < shortlist_count and leftovers:
+        scored = []
+        for row in leftovers:
+            subtype = str(row["case_subtype"])
+            if counts[subtype] >= 25: continue
+            diversity = (
+                6 / (1 + procedure[str(row.get("procedural_posture"))]) +
+                6 / (1 + district[str(row.get("appellate_district") or "unknown")]) +
+                4 / (1 + decade[decade_bucket(row.get("decision_year"))]) +
+                3 / (1 + publication[str(row.get("publication_status"))]) +
+                8 / (1 + counts[subtype])
+            )
+            scored.append((-(float(row["shortlist_selection_score"]) + diversity), tie[str(row["case_id"])], str(row["case_id"]), row))
+        if not scored: break
+        row = min(scored)[3]
+        subtype = str(row["case_subtype"])
+        row["shortlist_subtype_rank"] = counts[subtype] + 1
+        row["shortlist_overflow_candidate"] = True
+        row["shortlist_selection_reasons"] = ["strict_eligible_overflow", "quality_score", "distribution_diversity"]
+        selected.append(row); selected_ids.add(str(row["case_id"])); leftovers.remove(row)
+        counts[subtype] += 1
+        procedure[str(row.get("procedural_posture"))] += 1
+        district[str(row.get("appellate_district") or "unknown")] += 1
+        decade[decade_bucket(row.get("decision_year"))] += 1
+        publication[str(row.get("publication_status"))] += 1
+
+    selected.sort(key=lambda row: (str(row.get("case_subtype")), int(row.get("shortlist_subtype_rank") or 999), str(row["case_id"])))
+    shortage = {subtype: {"minimum_target": target, "strict_available": available.get(subtype, 0), "shortage": max(0, target - available.get(subtype, 0))} for subtype, target in targets.items()}
+    return selected, {"minimum_targets": targets, "shortage_report": shortage, "strict_available_by_subtype": dict(available)}
+
+
+def decade_bucket(year: Any) -> str:
+    try: value = int(year)
+    except (TypeError, ValueError): return "unknown"
+    return f"{value // 10 * 10}s"
+
+
+def distribution(rows: Iterable[dict[str, Any]], key: str, *, transform=None) -> dict[str, int]:
+    counter = Counter()
+    for row in rows:
+        value = row.get(key)
+        if transform: value = transform(value)
+        counter[str(value if value not in (None, "") else "unknown")] += 1
+    return dict(sorted(counter.items()))
+
+
+def output_paths(output_dir: Path) -> dict[str, Path]:
+    return {key: output_dir / name for key, name in OUTPUT_NAMES.items()}
+
+
+def qc_value(value: Any) -> Any:
+    if isinstance(value, (list, dict)): return json.dumps(value, ensure_ascii=False)
+    if value is None: return ""
     return value
 
 
-def write_qc_csv(path: Path, rows: list[dict[str, object]]) -> None:
+def write_qc(path: Path, rows: list[dict[str, Any]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8-sig", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=QC_FIELDS, extrasaction="ignore")
+        writer = csv.DictWriter(handle, fieldnames=QC_COLUMNS, extrasaction="ignore")
         writer.writeheader()
-        for row in rows:
-            writer.writerow({field: csv_value(row.get(field, "")) for field in QC_FIELDS})
+        for row in rows: writer.writerow({key: qc_value(row.get(key)) for key in QC_COLUMNS})
 
 
-def write_manifest(path: Path, selected: list[dict[str, object]], raw_path: Path) -> None:
+def write_manifest(path: Path, records: list[dict[str, Any]], shortlist_ids: set[str]) -> None:
+    fields = ["case_id", "source_record_id", "case_name", "citation", "docket_number", "decision_date", "court_name",
+              "claim_posture", "liability_basis", "case_subtype", "strict_eligible", "in_shortlist", "publication_status",
+              "related_case_group_id", "raw_text_sha256", "collection_version"]
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8-sig", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=MANIFEST_FIELDS, extrasaction="ignore")
-        writer.writeheader()
-        for row in selected:
-            out = {field: row.get(field, "") for field in MANIFEST_FIELDS}
-            out["raw_path"] = str(raw_path)
-            writer.writerow(out)
+        writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore"); writer.writeheader()
+        for row in records:
+            item = dict(row); item["in_shortlist"] = str(row.get("case_id")) in shortlist_ids; writer.writerow(item)
 
 
-def write_alignment(path: Path, rows: list[dict[str, object]]) -> None:
+def write_alignment(path: Path, kr: dict[str, int], targets: dict[str, int], strict: list[dict[str, Any]], shortlist: list[dict[str, Any]]) -> None:
+    strict_counts = Counter(str(row.get("case_subtype")) for row in strict)
+    shortlist_counts = Counter(str(row.get("case_subtype")) for row in shortlist)
+    fields = ["case_subtype", "kr_reference_count", "ca_shortlist_minimum_target", "ca_strict_available", "ca_shortlist_count", "shortage"]
     path.parent.mkdir(parents=True, exist_ok=True)
-    fieldnames = [
-        "sampling_rank",
-        "kr_case_id",
-        "kr_subtype",
-        "kr_year",
-        "kr_raw_length_chars",
-        "ca_case_id",
-        "ca_subtype",
-        "ca_year",
-        "ca_raw_length_chars",
-        "year_match_distance",
-        "year_match_level",
-        "subtype_match",
-    ]
     with path.open("w", encoding="utf-8-sig", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore")
-        writer.writeheader()
-        writer.writerows(rows)
+        writer = csv.DictWriter(handle, fieldnames=fields); writer.writeheader()
+        for subtype in kr:
+            writer.writerow({"case_subtype": subtype, "kr_reference_count": kr[subtype],
+                             "ca_shortlist_minimum_target": targets.get(subtype, 0), "ca_strict_available": strict_counts[subtype],
+                             "ca_shortlist_count": shortlist_counts[subtype], "shortage": max(0, targets.get(subtype, 0) - strict_counts[subtype])})
 
 
-def print_summary(summary: dict[str, object]) -> None:
-    keys = [
-        ("total_scanned", "total_scanned"),
-        ("california_candidates", "california_keyword_or_metadata_hits"),
-        ("california_state_court_candidates", "california_state_court_candidates"),
-        ("court_of_appeal_candidates", "california_court_of_appeal_candidates"),
-        ("california_supreme_excluded", "california_supreme_count"),
-        ("federal_court_excluded", "federal_court_count"),
-        ("other_court_excluded", "trial_or_other_court_count"),
-        ("civil_candidates", "civil_candidate_count"),
-        ("criminal_excluded", "criminal_excluded"),
-        ("broad_tort_candidates", "broad_tort_candidate_count"),
-        ("non_contractual_tort", "non_contractual_tort_count"),
-        ("mixed_tort_contract", "mixed_tort_contract_count"),
-        ("contract_only", "contract_only_count"),
-        ("insurance_only", "insurance_only_count"),
-        ("procedural_only", "procedural_only_count"),
-        ("administrative_or_public_law", "administrative_or_public_law_count"),
-        ("unclear", "unclear_count"),
-        ("full_main_opinion_available", "full_main_opinion_available"),
-        ("main_opinion_unknown", "main_opinion_unknown"),
-        ("factually_sufficient", "factually_sufficient_count"),
-        ("strict_eligible_pool", "strict_eligible_pool_count"),
-        ("published_strict_eligible", "published_strict_eligible"),
-        ("unpublished_strict_eligible", "unpublished_strict_eligible"),
-        ("publication_unknown_strict_eligible", "publication_unknown_strict_eligible"),
-        ("selected", "selected_count"),
-        ("target_count", "target_count"),
-    ]
-    for label, key in keys:
-        print(f"{label}={summary.get(key, 0)}")
+def build_summary(
+    strict: list[dict[str, Any]], shortlist: list[dict[str, Any]], scan: dict[str, Any], stage_counts: dict[str, int],
+    kr: dict[str, int], shortlist_meta: dict[str, Any], duplicate_counts: dict[str, int], warnings: list[str], shortlist_count: int,
+) -> dict[str, Any]:
+    counts = {
+        "total_scanned": scan["total_scanned"], "california_candidates": stage_counts["california_candidates"],
+        "california_state_court_candidates": stage_counts["california_state_court_candidates"],
+        "court_of_appeal_candidates": stage_counts["court_of_appeal_candidates"],
+        "civil_candidates": stage_counts["civil_candidates"], "broad_tort_candidates": stage_counts["broad_tort_candidates"],
+        "direct_tort_candidates": stage_counts["direct_tort_candidates"],
+        "factually_sufficient_direct_tort_count": stage_counts["factually_sufficient_direct_tort_count"],
+        "strict_eligible_pool_count": len(strict), "shortlist_requested_count": shortlist_count,
+        "shortlist_actual_count": len(shortlist),
+    }
+    summary = {
+        "collection_version": COLLECTION_VERSION, "source_dataset": SOURCE_DATASET,
+        "source_schema": scan.get("source_schema", []), "opinion_structure": scan.get("opinion_structure", []),
+        "scan": scan, "counts": counts,
+        "excluded_claim_posture_counts": dict(sorted(stage_counts.get("excluded_claim_posture_counts", {}).items())),
+        "duplicate_and_related_removal_counts": duplicate_counts,
+        "strict_pool_distributions": {
+            "case_subtype": distribution(strict, "case_subtype"), "publication_status": distribution(strict, "publication_status"),
+            "procedural_posture": distribution(strict, "procedural_posture"), "appellate_district": distribution(strict, "appellate_district"),
+            "decision_year": distribution(strict, "decision_year"), "decision_decade": distribution(strict, "decision_year", transform=decade_bucket),
+        },
+        "reference_kr_subtype_distribution": kr, "shortlist_minimum_targets": shortlist_meta.get("minimum_targets", {}),
+        "shortage_report": shortlist_meta.get("shortage_report", {}),
+        "shortlist_distributions": {
+            "case_subtype": distribution(shortlist, "case_subtype"), "publication_status": distribution(shortlist, "publication_status"),
+            "procedural_posture": distribution(shortlist, "procedural_posture"), "appellate_district": distribution(shortlist, "appellate_district"),
+            "decision_year": distribution(shortlist, "decision_year"), "decision_decade": distribution(shortlist, "decision_year", transform=decade_bucket),
+        },
+        "warnings": list(warnings),
+    }
+    decades = Counter(decade_bucket(row.get("decision_year")) for row in shortlist)
+    if shortlist and any(count / len(shortlist) >= 0.5 for decade, count in decades.items() if decade != "unknown"):
+        summary["warnings"].append("one_decade_is_at_least_50_percent_of_shortlist")
+    return summary
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Stage 1 California state Court of Appeal tort collector v3.")
-    parser.add_argument("--dataset", default="harvard-lil/cold-cases")
-    parser.add_argument("--split", default="train")
-    parser.add_argument("--export-all-candidates", action="store_true")
-    parser.add_argument("--select-final-sample", action="store_true")
-    parser.add_argument("--target-count", type=int, default=20)
-    parser.add_argument("--year-min", type=int, default=2010)
-    parser.add_argument("--year-max", type=int, default=2021)
-    parser.add_argument("--court-system", choices=["california-state"], default="california-state")
-    parser.add_argument("--court-level", choices=["intermediate-appellate"], default="intermediate-appellate")
-    parser.add_argument("--strict-tort-only", action="store_true")
-    parser.add_argument("--publication-status", choices=["any", "published", "unpublished"], default="any")
-    parser.add_argument("--reference-kr-selected", default="outputs/raw/kr_v3/kr_cases_selected_20.jsonl")
-    parser.add_argument("--match-kr-subtypes", action="store_true")
-    parser.add_argument("--match-kr-years", action="store_true")
-    parser.add_argument("--match-kr-lengths", action="store_true")
-    parser.add_argument("--allow-year-fallback", action="store_true")
-    parser.add_argument("--relax-subtype-quota", action="store_true")
-    parser.add_argument("--allow-publication-status-fallback", action="store_true")
-    parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--scan-limit", type=int, default=750000)
-    parser.add_argument("--shuffle-buffer", type=int, default=0)
-    parser.add_argument("--min-text-chars", type=int, default=3000)
-    parser.add_argument("--max-text-chars", type=int, default=0)
-    parser.add_argument("--overwrite", action="store_true")
-    parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--preview-only", action="store_true")
-    parser.add_argument("--preview-count", type=int, default=10)
-    parser.add_argument("--progress-every", type=int, default=10000)
-    parser.add_argument("--log-level", default="INFO")
-    parser.add_argument("--output-dir", default=str(DEFAULT_OUTPUT_DIR))
-    parser.add_argument("--manifest-output", default=str(DEFAULT_MANIFEST_OUTPUT))
-    parser.add_argument("--alignment-output", default=str(DEFAULT_ALIGNMENT_OUTPUT))
-    parser.add_argument("--local-arrow-dir", default="")
-    args = parser.parse_args()
-    if not args.export_all_candidates and not args.select_final_sample:
-        args.export_all_candidates = True
-        args.select_final_sample = True
-    return args
+def chunk_paths(output_dir: Path, chunk_name: str) -> dict[str, Path]:
+    base = output_dir / "chunks"
+    prefix = f"ca_{chunk_name}"
+    return {
+        "court": base / f"{prefix}_court_candidates.jsonl",
+        "direct": base / f"{prefix}_direct_tort_candidates.jsonl",
+        "strict": base / f"{prefix}_strict_eligible.jsonl",
+        "excluded": base / f"{prefix}_excluded.jsonl",
+        "summary": base / f"{prefix}_summary.json",
+        "checkpoint": base / f"{prefix}_checkpoint.json",
+        "strict_pre": base / f".{prefix}_strict_pre.jsonl.incomplete",
+    }
 
 
-def main() -> None:
-    args = parse_args()
-    logging.basicConfig(level=getattr(logging, args.log_level.upper(), logging.INFO), format="%(levelname)s: %(message)s")
-    pools, selected, alignment_rows, summary = collect(args)
-    print_summary(summary)
-    if args.preview_only or args.dry_run:
-        return
-    paths = output_paths(args)
-    targets = [paths["summary"], paths["qc"], paths["manifest"], paths["alignment"]]
-    if args.export_all_candidates:
-        targets.extend(
-            [
-                paths["all_scanned_manifest"],
-                paths["california_candidates"],
-                paths["state_court_candidates"],
-                paths["court_of_appeal_candidates"],
-                paths["civil_candidates"],
-                paths["tort_candidates"],
-                paths["strict_eligible"],
-                paths["strict_eligible_published"],
-            ]
-        )
-    if args.select_final_sample:
-        targets.append(paths["selected"])
-    require_outputs(targets, args.overwrite)
-    if args.export_all_candidates:
-        for key in [
-            "all_scanned_manifest",
-            "california_candidates",
-            "state_court_candidates",
-            "court_of_appeal_candidates",
-            "civil_candidates",
-            "tort_candidates",
-            "strict_eligible",
-            "strict_eligible_published",
-        ]:
-            write_jsonl(paths[key], pools[key])
-    if args.select_final_sample:
-        write_jsonl(paths["selected"], selected)
-    write_qc_csv(paths["qc"], pools["california_candidates"])
+def lightweight_court_candidate(row: dict[str, Any], court: dict[str, Any]) -> dict[str, Any]:
+    opinions = row.get("opinions") if isinstance(row.get("opinions"), list) else []
+    opinion_inventory = []
+    for opinion in opinions:
+        if not isinstance(opinion, dict):
+            continue
+        text = _opinion_text(opinion)
+        opinion_inventory.append({
+            "opinion_id": compact(opinion.get("opinion_id")), "type": compact(opinion.get("type")),
+            "normalized_type": normalize_opinion_type(opinion), "per_curiam": bool(opinion.get("per_curiam")),
+            "text_available": bool(text), "text_length": len(text),
+        })
+    decision_date, decision_year = _date(row.get("date_filed"))
+    return {
+        "source_record_id": compact(row.get("id")), "case_name": _first(row, "case_name", "case_name_full", "case_name_short"),
+        "decision_date": decision_date, "decision_year": decision_year, "court_name": court.get("court_name"),
+        "court_system": court.get("court_system"), "court_level": court.get("court_level"),
+        "court_level_confidence": court.get("court_level_confidence"), "court_evidence": court.get("court_evidence"),
+        "court_jurisdiction": compact(row.get("court_jurisdiction")), "court_type": compact(row.get("court_type")),
+        "citation": _citation(row), "docket_number": _docket(row, _metadata_text(row)),
+        "opinion_count": len(opinions), "opinion_inventory": opinion_inventory,
+        "collection_version": COLLECTION_VERSION,
+    }
+
+
+def _rss_bytes() -> int:
+    if psutil is None:
+        return 0
+    return int(psutil.Process().memory_info().rss)
+
+
+def _atomic_json(path: Path, payload: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temp = path.with_suffix(path.suffix + ".tmp")
+    temp.write_text(json.dumps(payload, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
+    temp.replace(path)
+
+
+def _config_signature(args: argparse.Namespace) -> str:
+    return short_hash(
+        COLLECTION_VERSION, getattr(args, "year_min", ""), getattr(args, "year_max", ""),
+        getattr(args, "chunk_name", ""), getattr(args, "court_system", ""), getattr(args, "court_level", ""),
+        getattr(args, "publication_status", ""), length=24,
+    )
+
+
+def _checkpoint_payload(
+    args: argparse.Namespace, *, phase: str, next_source_index: int, counters: Counter[str],
+    diagnostics: dict[str, Counter[str]], handles: dict[str, Any], completed: bool,
+    peak_rss_bytes: int,
+) -> dict[str, Any]:
+    offsets = {}
+    paths = {}
+    for key, handle in handles.items():
+        handle.flush()
+        offsets[key] = handle.tell()
+        paths[key] = str(Path(handle.name))
+    return {
+        "collection_version": COLLECTION_VERSION, "config_signature": _config_signature(args),
+        "year_min": args.year_min, "year_max": args.year_max, "chunk_name": args.chunk_name,
+        "phase": phase, "last_source_index": next_source_index,
+        "last_source_record_id": getattr(args, "last_source_record_id", None),
+        "total_scanned": int(counters.get("total_scanned", 0)), "counters": dict(counters),
+        "diagnostics": {key: dict(value) for key, value in diagnostics.items()},
+        "partial_output_paths": paths, "partial_output_offsets": offsets,
+        "peak_rss_bytes": peak_rss_bytes, "completed": completed,
+    }
+
+
+def _load_checkpoint(path: Path, args: argparse.Namespace) -> dict[str, Any]:
+    if not path.exists():
+        raise FileNotFoundError(f"Checkpoint not found: {path}")
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if payload.get("collection_version") != COLLECTION_VERSION or payload.get("config_signature") != _config_signature(args):
+        raise RuntimeError("Checkpoint collection version or configuration does not match this run")
+    return payload
+
+
+def _truncate_to_checkpoint(payload: dict[str, Any]) -> None:
+    for key, raw_path in (payload.get("partial_output_paths") or {}).items():
+        path = Path(raw_path)
+        offset = int((payload.get("partial_output_offsets") or {}).get(key, 0))
+        if not path.exists():
+            if offset:
+                raise RuntimeError(f"Checkpoint output is missing: {path}")
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.touch()
+        if path.stat().st_size < offset:
+            raise RuntimeError(f"Checkpoint offset exceeds output size: {path}")
+        with path.open("r+b") as handle:
+            handle.truncate(offset)
+        if offset:
+            with path.open("rb") as handle:
+                handle.seek(offset - 1)
+                if handle.read(1) != b"\n":
+                    raise RuntimeError(f"Checkpoint does not end at a complete JSONL record: {path}")
+
+
+def _chunk_funnel_rates(funnel: Counter[str]) -> dict[str, float]:
+    def rate(numerator: str, denominator: str) -> float:
+        value = int(funnel.get(denominator, 0))
+        return round(int(funnel.get(numerator, 0)) / value, 6) if value else 0.0
+    return {
+        "court_of_appeal_retention_rate": rate("court_of_appeal_candidates", "date_range_candidates"),
+        "civil_retention_rate": rate("civil_candidates", "court_of_appeal_candidates"),
+        "direct_tort_retention_rate": rate("direct_tort_candidates", "broad_tort_candidates"),
+        "full_opinion_retention_rate": rate("full_main_opinion_candidates", "california_state_law_candidates"),
+        "factual_sufficiency_retention_rate": rate("factually_sufficient_candidates", "full_main_opinion_candidates"),
+    }
+
+
+def _funnel_warnings(funnel: Counter[str], rates: dict[str, float]) -> list[str]:
+    warnings = []
+    labels = {
+        "court_of_appeal_retention_rate": "court validation", "civil_retention_rate": "civil classification",
+        "direct_tort_retention_rate": "direct tort classification", "full_opinion_retention_rate": "main opinion validation",
+        "factual_sufficiency_retention_rate": "factual sufficiency",
+    }
+    for key, label in labels.items():
+        if rates[key] < 0.1:
+            warnings.append(f"Sharp funnel drop at {label}: retention={rates[key]:.1%}; inspect rules and source metadata")
+    return warnings
+
+
+def _strict_distributions(rows: list[dict[str, Any]]) -> dict[str, dict[str, int]]:
+    return {
+        "case_subtype": distribution(rows, "case_subtype"), "publication_status": distribution(rows, "publication_status"),
+        "procedural_posture": distribution(rows, "procedural_posture"), "appellate_district": distribution(rows, "appellate_district"),
+        "decision_year": distribution(rows, "decision_year"), "decision_decade": distribution(rows, "decision_year", transform=decade_bucket),
+        "event_era": distribution(rows, "event_era"),
+    }
+
+
+def collect_chunk(args: argparse.Namespace) -> int:
+    if args.year_min is None or args.year_max is None or not args.chunk_name:
+        raise ValueError("Chunk collection requires --year-min, --year-max, and --chunk-name")
+    if args.year_min > args.year_max:
+        raise ValueError("--year-min must not exceed --year-max")
+    paths = chunk_paths(args.output_dir, args.chunk_name)
+    if args.dry_run:
+        print(json.dumps({
+            "action": "collect_chunk", "year_min": args.year_min, "year_max": args.year_max,
+            "chunk_name": args.chunk_name, "streaming": True,
+            "outputs": {key: str(value) for key, value in paths.items() if key != "strict_pre"},
+        }, ensure_ascii=False, indent=2))
+        return 0
+    checkpoint_path = args.resume_from_checkpoint or paths["checkpoint"]
+    resume = bool(args.resume or args.resume_from_checkpoint)
+    required = [paths[key] for key in ("court", "direct", "strict", "excluded", "summary", "checkpoint")]
+    checkpoint: dict[str, Any] | None = None
+    if resume:
+        checkpoint = _load_checkpoint(checkpoint_path, args)
+        if checkpoint.get("completed"):
+            LOGGER.info("Chunk %s is already complete; nothing to resume", args.chunk_name)
+            return 0
+        _truncate_to_checkpoint(checkpoint)
+    else:
+        require_outputs(required, args.overwrite)
+        paths["court"].parent.mkdir(parents=True, exist_ok=True)
+        if paths["strict_pre"].exists():
+            paths["strict_pre"].unlink()
+
+    phase = str(checkpoint.get("phase")) if checkpoint else "metadata"
+    counters = Counter(checkpoint.get("counters") or {}) if checkpoint else Counter()
+    diagnostics = {
+        key: Counter((checkpoint.get("diagnostics") or {}).get(key, {}) if checkpoint else {})
+        for key in ("court_name", "jurisdiction", "opinion_type", "primary_exclusion_reason")
+    }
+    peak_rss = max(int((checkpoint or {}).get("peak_rss_bytes") or 0), _rss_bytes())
+    checkpoint_every = max(1, int(args.checkpoint_every))
+
+    if phase == "metadata":
+        start = int((checkpoint or {}).get("last_source_index") or 0)
+        args.source_start_offset = start
+        mode = "a" if resume and start else "w"
+        with paths["court"].open(mode, encoding="utf-8", newline="\n") as court_handle:
+            handles = {"court": court_handle}
+            processed_since_checkpoint = 0
+            for row in iter_rows(args):
+                source_index = int(row.get("_source_index", start))
+                args.last_source_record_id = compact(row.get("id"))
+                counters["metadata_total_scanned"] += 1
+                diagnostics["court_name"][_first(row, "court_full_name", "court_short_name") or "unknown"] += 1
+                diagnostics["jurisdiction"][compact(row.get("court_jurisdiction")) or "unknown"] += 1
+                for opinion in row.get("opinions") or []:
+                    if isinstance(opinion, dict): diagnostics["opinion_type"][compact(opinion.get("type")) or "unknown"] += 1
+                court = classify_court(row)
+                if court["court_system"] == "california_state" and court["court_level"] == "intermediate_appellate":
+                    court_handle.write(json.dumps(lightweight_court_candidate(row, court), ensure_ascii=False, default=str, separators=(",", ":")) + "\n")
+                    counters["metadata_court_candidates"] += 1
+                processed_since_checkpoint += 1
+                peak_rss = max(peak_rss, _rss_bytes())
+                if processed_since_checkpoint >= checkpoint_every:
+                    payload = _checkpoint_payload(args, phase="metadata", next_source_index=source_index + 1, counters=counters, diagnostics=diagnostics, handles=handles, completed=False, peak_rss_bytes=peak_rss)
+                    _atomic_json(checkpoint_path, payload); processed_since_checkpoint = 0; gc.collect()
+                del row, court
+            payload = _checkpoint_payload(args, phase="full_opinion", next_source_index=0, counters=counters, diagnostics=diagnostics, handles=handles, completed=False, peak_rss_bytes=peak_rss)
+            _atomic_json(checkpoint_path, payload)
+        phase = "full_opinion"
+        checkpoint = json.loads(checkpoint_path.read_text(encoding="utf-8"))
+
+    if phase == "full_opinion":
+        start = int((checkpoint or {}).get("last_source_index") or 0)
+        args.source_start_offset = start
+        resume_full = resume and start > 0
+        direct_mode = "a" if resume_full else "w"
+        excluded_mode = "a" if resume_full else "w"
+        pre_mode = "a" if resume_full else "w"
+        with ExitStack() as stack:
+            direct_handle = stack.enter_context(paths["direct"].open(direct_mode, encoding="utf-8", newline="\n"))
+            excluded_handle = stack.enter_context(paths["excluded"].open(excluded_mode, encoding="utf-8", newline="\n"))
+            pre_handle = stack.enter_context(paths["strict_pre"].open(pre_mode, encoding="utf-8", newline="\n"))
+            handles = {"direct": direct_handle, "excluded": excluded_handle, "strict_pre": pre_handle}
+            processed_since_checkpoint = 0
+            for row in iter_rows(args):
+                source_index = int(row.get("_source_index", start))
+                args.last_source_record_id = compact(row.get("id"))
+                counters["total_scanned"] += 1; counters["date_range_candidates"] += 1
+                record = evaluate_row(dict(row), args)
+                record["collection_chunk"] = args.chunk_name
+                record["underlying_incident_fingerprint"] = underlying_incident_fingerprint(record)
+                rendered = json.dumps(record, ensure_ascii=False, default=str, separators=(",", ":")) + "\n"
+                if classify_court(row)["california_candidate"]: counters["california_candidates"] += 1
+                if record.get("court_system") == "california_state": counters["california_state_court_candidates"] += 1
+                if record.get("court_level") == "intermediate_appellate": counters["court_of_appeal_candidates"] += 1
+                if record.get("civil_candidate"): counters["civil_candidates"] += 1
+                if record.get("civil_candidate") and record.get("broad_tort_candidate"): counters["broad_tort_candidates"] += 1
+                if record.get("claim_posture") == "direct_tort_claim":
+                    counters["direct_tort_candidates"] += 1; direct_handle.write(rendered)
+                    if record.get("primary_governing_law") == "california_state_law": counters["california_state_law_candidates"] += 1
+                    if record.get("primary_governing_law") == "california_state_law" and record.get("full_main_opinion_available"): counters["full_main_opinion_candidates"] += 1
+                    if record.get("primary_governing_law") == "california_state_law" and record.get("full_main_opinion_available") and record.get("facts_independently_reconstructable"): counters["factually_sufficient_candidates"] += 1
+                if record.get("strict_eligible"):
+                    counters["strict_eligible_pre_dedup"] += 1; pre_handle.write(rendered)
+                else:
+                    excluded_handle.write(rendered)
+                    diagnostics["primary_exclusion_reason"][str(record.get("primary_exclusion_reason") or "unclear")] += 1
+                processed_since_checkpoint += 1
+                peak_rss = max(peak_rss, _rss_bytes())
+                if processed_since_checkpoint >= checkpoint_every:
+                    payload = _checkpoint_payload(args, phase="full_opinion", next_source_index=source_index + 1, counters=counters, diagnostics=diagnostics, handles=handles, completed=False, peak_rss_bytes=peak_rss)
+                    _atomic_json(checkpoint_path, payload); processed_since_checkpoint = 0; gc.collect()
+                del row, record, rendered
+            payload = _checkpoint_payload(args, phase="dedup_merge", next_source_index=int(getattr(args, "metadata_scope_row_count", counters["total_scanned"])), counters=counters, diagnostics=diagnostics, handles=handles, completed=False, peak_rss_bytes=peak_rss)
+            _atomic_json(checkpoint_path, payload)
+
+    pre_strict = read_jsonl(paths["strict_pre"]) if paths["strict_pre"].exists() else []
+    duplicate_counts = mark_duplicates(pre_strict)
+    strict = [row for row in pre_strict if row.get("strict_eligible")]
+    removed = [row for row in pre_strict if not row.get("strict_eligible")]
+    if removed:
+        with paths["excluded"].open("a", encoding="utf-8", newline="\n") as handle:
+            for row in removed:
+                handle.write(json.dumps(row, ensure_ascii=False, default=str, separators=(",", ":")) + "\n")
+                diagnostics["primary_exclusion_reason"][str(row.get("primary_exclusion_reason") or "duplicate")] += 1
+    counters["strict_eligible_candidates"] = len(strict)
+    write_jsonl(paths["strict"], strict)
+    rates = _chunk_funnel_rates(counters)
+    summary = {
+        "collection_version": COLLECTION_VERSION, "period": args.chunk_name,
+        "year_min": args.year_min, "year_max": args.year_max, "source_dataset": SOURCE_DATASET,
+        "scan_complete": True, "streaming": True, "funnel_counts": dict(counters),
+        "retention_rates": rates, "warnings": _funnel_warnings(counters, rates),
+        "exclusion_reason_counts": dict(diagnostics["primary_exclusion_reason"].most_common()),
+        "court_metadata_top_100": diagnostics["court_name"].most_common(100),
+        "jurisdiction_top_100": diagnostics["jurisdiction"].most_common(100),
+        "opinion_type_frequencies": dict(diagnostics["opinion_type"].most_common()),
+        "strict_pool_distributions": _strict_distributions(strict),
+        "duplicate_and_related_removal_counts": duplicate_counts,
+        "peak_memory_bytes": peak_rss, "peak_memory_mb": round(peak_rss / 1024 / 1024, 2),
+        "checkpoint_path": str(checkpoint_path),
+    }
     write_summary(paths["summary"], summary)
-    write_manifest(paths["manifest"], selected, paths["selected"])
-    write_alignment(paths["alignment"], alignment_rows)
-    print(f"raw={paths['selected']}")
-    print(f"qc={paths['qc']}")
-    print(f"summary={paths['summary']}")
-    print(f"manifest={paths['manifest']}")
-    print(f"alignment={paths['alignment']}")
+    completed_payload = _checkpoint_payload(args, phase="complete", next_source_index=int(counters.get("total_scanned", 0)), counters=counters, diagnostics=diagnostics, handles={}, completed=True, peak_rss_bytes=peak_rss)
+    _atomic_json(checkpoint_path, completed_payload)
+    if paths["strict_pre"].exists():
+        paths["strict_pre"].unlink()
+    LOGGER.info("chunk=%s scanned=%s strict=%s peak_mb=%.2f", args.chunk_name, counters["total_scanned"], len(strict), summary["peak_memory_mb"])
+    return 0
+
+
+def _completed_chunk_sets(output_dir: Path) -> list[dict[str, Path]]:
+    chunk_dir = output_dir / "chunks"
+    groups = []
+    for checkpoint_path in sorted(chunk_dir.glob("ca_*_checkpoint.json")):
+        payload = json.loads(checkpoint_path.read_text(encoding="utf-8"))
+        if not payload.get("completed"):
+            continue
+        name = str(payload.get("chunk_name"))
+        paths = chunk_paths(output_dir, name)
+        if all(paths[key].exists() for key in ("court", "direct", "strict", "excluded", "summary")):
+            groups.append(paths)
+    return groups
+
+
+def _compact_for_merge(row: dict[str, Any], source_path: Path) -> dict[str, Any]:
+    if not row.get("normalized_main_opinion_sha256") and row.get("main_opinion_text"):
+        row = dict(row)
+        row["normalized_main_opinion_sha256"] = sha256_text(normalized_text_for_hash(str(row["main_opinion_text"])))
+    compact_row = {key: value for key, value in row.items() if key != "main_opinion_text"}
+    compact_row["_source_path"] = str(source_path)
+    return compact_row
+
+
+def _resolve_merged_strict(chunk_sets: list[dict[str, Path]]) -> tuple[list[dict[str, Any]], set[tuple[str, str]], dict[str, int]]:
+    compact_rows = []
+    for paths in chunk_sets:
+        for row in read_jsonl(paths["strict"]):
+            compact_rows.append(_compact_for_merge(row, paths["strict"]))
+    compact_rows.sort(key=lambda row: (
+        -int(row.get("factual_sufficiency_score") or 0), row.get("main_opinion_confidence") != "high",
+        row.get("claim_posture_confidence") != "high", str(row.get("case_id")),
+    ))
+    seen: dict[tuple[str, str], dict[str, Any]] = {}
+    winners: list[dict[str, Any]] = []
+    losers: set[tuple[str, str]] = set()
+    counts: Counter[str] = Counter()
+    for row in compact_rows:
+        duplicate_of = None
+        reason = None
+        keys = [
+            ("source_record_id", compact(row.get("source_record_id")).lower()),
+            ("docket_number", compact(row.get("docket_number")).lower()),
+            ("citation", compact(row.get("citation")).lower()),
+            ("exact_main_opinion_hash", compact(row.get("raw_text_sha256")).lower()),
+            ("normalized_main_opinion_hash", compact(row.get("normalized_main_opinion_sha256")).lower()),
+            ("related_underlying_incident", compact(row.get("underlying_incident_fingerprint")).lower()),
+        ]
+        for label, value in keys:
+            if value and (label, value) in seen:
+                duplicate_of, reason = seen[(label, value)], label
+                break
+        if duplicate_of:
+            losers.add((str(row["_source_path"]), str(row["case_id"]))); counts[reason or "duplicate"] += 1
+            row["strict_eligible"] = False
+            row["duplicate_or_related_reason"] = reason
+            row["exclusion_reasons"] = unique(list(row.get("exclusion_reasons") or []) + [reason or "duplicate"])
+            assign_primary_exclusion(row)
+            continue
+        winners.append(row)
+        for label, value in keys:
+            if value: seen[(label, value)] = row
+    return winners, losers, dict(counts)
+
+
+def _stream_concat(inputs: list[Path], output: Path, *, extra_rows: Iterable[dict[str, Any]] = ()) -> None:
+    temp = output.with_suffix(output.suffix + ".incomplete")
+    if temp.exists(): temp.unlink()
+    with temp.open("w", encoding="utf-8", newline="\n") as target:
+        for path in inputs:
+            with path.open("r", encoding="utf-8") as source:
+                for line in source:
+                    if line.strip(): target.write(line if line.endswith("\n") else line + "\n")
+        for row in extra_rows:
+            target.write(json.dumps(row, ensure_ascii=False, default=str, separators=(",", ":")) + "\n")
+    temp.replace(output)
+
+
+def merge_chunks(args: argparse.Namespace) -> int:
+    chunk_sets = _completed_chunk_sets(args.output_dir)
+    if not chunk_sets:
+        raise RuntimeError("No completed chunk checkpoints were found")
+    if args.dry_run:
+        print(json.dumps({
+            "action": "merge_chunks", "completed_chunk_count": len(chunk_sets),
+            "chunk_summaries": [str(group["summary"]) for group in chunk_sets],
+            "output_dir": str(args.output_dir),
+        }, ensure_ascii=False, indent=2))
+        return 0
+    paths = output_paths(args.output_dir)
+    outputs = [paths[key] for key in ("appeal", "direct", "strict", "published", "unpublished", "excluded", "shortlist", "qc", "summary")]
+    outputs += [args.manifest_output, args.alignment_output]
+    require_outputs(outputs, args.overwrite)
+
+    winner_meta, loser_ids, duplicate_counts = _resolve_merged_strict(chunk_sets)
+    winner_occurrences = {(str(row["_source_path"]), str(row["case_id"])) for row in winner_meta}
+    strict_rows: list[dict[str, Any]] = []
+    removed_rows: list[dict[str, Any]] = []
+    for group in chunk_sets:
+        for row in read_jsonl(group["strict"]):
+            if not row.get("normalized_main_opinion_sha256"):
+                row["normalized_main_opinion_sha256"] = sha256_text(normalized_text_for_hash(str(row.get("main_opinion_text") or "")))
+            occurrence = (str(group["strict"]), str(row.get("case_id")))
+            if occurrence in winner_occurrences:
+                strict_rows.append(row)
+            elif occurrence in loser_ids:
+                row["strict_eligible"] = False
+                row["duplicate_or_related_reason"] = "cross_chunk_duplicate_or_related"
+                row["exclusion_reasons"] = unique(list(row.get("exclusion_reasons") or []) + ["cross_chunk_duplicate_or_related"])
+                assign_primary_exclusion(row); removed_rows.append(row)
+
+    _stream_concat([group["court"] for group in chunk_sets], paths["appeal"])
+    _stream_concat([group["direct"] for group in chunk_sets], paths["direct"])
+    _stream_concat([group["excluded"] for group in chunk_sets], paths["excluded"], extra_rows=removed_rows)
+    write_jsonl(paths["strict"], strict_rows)
+    write_jsonl(paths["published"], [row for row in strict_rows if row.get("publication_status") == "published"])
+    write_jsonl(paths["unpublished"], [row for row in strict_rows if row.get("publication_status") == "unpublished"])
+
+    kr_distribution, reference_warnings = read_kr_reference(args.reference_kr_final)
+    shortlist_compact, shortlist_meta = build_shortlist(
+        [_compact_for_merge(row, paths["strict"]) for row in strict_rows], shortlist_count=args.shortlist_count,
+        kr_distribution=kr_distribution, seed=args.seed,
+    )
+    selection_by_id = {str(row["case_id"]): row for row in shortlist_compact}
+    shortlist = []
+    for row in strict_rows:
+        selection = selection_by_id.get(str(row["case_id"]))
+        if not selection: continue
+        for key in (
+            "reference_kr_subtype_count", "shortlist_minimum_target", "shortlist_subtype_rank",
+            "shortlist_overflow_candidate", "shortlist_selection_score", "shortlist_selection_reasons",
+        ):
+            row[key] = selection.get(key)
+        shortlist.append(row)
+    shortlist.sort(key=lambda row: (str(row.get("case_subtype")), int(row.get("shortlist_subtype_rank") or 999), str(row["case_id"])))
+    write_jsonl(paths["shortlist"], shortlist); write_qc(paths["qc"], shortlist)
+    write_manifest(args.manifest_output, strict_rows, {str(row["case_id"]) for row in shortlist})
+    write_alignment(args.alignment_output, kr_distribution, shortlist_meta["minimum_targets"], strict_rows, shortlist)
+
+    chunk_summaries = [json.loads(group["summary"].read_text(encoding="utf-8")) for group in chunk_sets]
+    merged_funnel: Counter[str] = Counter()
+    merged_exclusions: Counter[str] = Counter()
+    merged_courts: Counter[str] = Counter()
+    merged_jurisdictions: Counter[str] = Counter()
+    merged_opinion_types: Counter[str] = Counter()
+    peak_memory = 0
+    for summary in chunk_summaries:
+        merged_funnel.update(summary.get("funnel_counts") or {})
+        merged_exclusions.update(summary.get("exclusion_reason_counts") or {})
+        merged_courts.update(dict(summary.get("court_metadata_top_100") or []))
+        merged_jurisdictions.update(dict(summary.get("jurisdiction_top_100") or []))
+        merged_opinion_types.update(summary.get("opinion_type_frequencies") or {})
+        peak_memory = max(peak_memory, int(summary.get("peak_memory_bytes") or 0))
+    summary = {
+        "collection_version": COLLECTION_VERSION, "source_dataset": SOURCE_DATASET,
+        "merged_chunks": [summary.get("period") for summary in chunk_summaries],
+        "legacy_non_merged_files": [
+            "ca_california_candidates_all.jsonl", "ca_state_court_candidates_all.jsonl", "ca_civil_candidates_all.jsonl"
+        ],
+        "funnel_counts": dict(merged_funnel), "retention_rates": _chunk_funnel_rates(merged_funnel),
+        "warnings": unique(reference_warnings + _funnel_warnings(merged_funnel, _chunk_funnel_rates(merged_funnel))),
+        "exclusion_reason_counts": dict(merged_exclusions.most_common()),
+        "court_metadata_top_100": merged_courts.most_common(100),
+        "jurisdiction_top_100": merged_jurisdictions.most_common(100),
+        "opinion_type_frequencies": dict(merged_opinion_types.most_common()),
+        "strict_eligible_pool_count": len(strict_rows), "strict_pool_distributions": _strict_distributions(strict_rows),
+        "duplicate_and_related_removal_counts": duplicate_counts,
+        "reference_kr_subtype_distribution": kr_distribution,
+        "shortlist_requested_count": args.shortlist_count, "shortlist_actual_count": len(shortlist),
+        "shortlist_minimum_targets": shortlist_meta["minimum_targets"], "shortage_report": shortlist_meta["shortage_report"],
+        "shortlist_distributions": _strict_distributions(shortlist),
+        "decision_year_distribution": distribution(shortlist, "decision_year"),
+        "decision_decade_distribution": distribution(shortlist, "decision_year", transform=decade_bucket),
+        "event_era_distribution": distribution(shortlist, "event_era"),
+        "peak_chunk_memory_bytes": peak_memory, "peak_chunk_memory_mb": round(peak_memory / 1024 / 1024, 2),
+    }
+    decades = Counter(decade_bucket(row.get("decision_year")) for row in shortlist)
+    if shortlist and any(count / len(shortlist) > 0.5 for decade, count in decades.items() if decade != "unknown"):
+        summary["warnings"].append("More than 50% of shortlist records fall in the same decision decade")
+    write_summary(paths["summary"], summary)
+    LOGGER.info("merged_chunks=%s strict=%s shortlist=%s", len(chunk_sets), len(strict_rows), len(shortlist))
+    return 0
+
+
+def parser() -> argparse.ArgumentParser:
+    value = argparse.ArgumentParser(description="Build a deterministic California direct-tort Court of Appeal pool and human-review shortlist.")
+    value.add_argument("--export-all-candidates", action="store_true")
+    value.add_argument("--build-shortlist", action="store_true")
+    value.add_argument("--merge-chunks", action="store_true")
+    value.add_argument("--shortlist-count", type=int, default=100)
+    value.add_argument("--reference-kr-final", type=Path, default=DEFAULT_KR_REFERENCE)
+    value.add_argument("--court-system", choices=["california-state"], default="california-state")
+    value.add_argument("--court-level", choices=["intermediate-appellate"], default="intermediate-appellate")
+    value.add_argument("--strict-direct-tort-only", action="store_true", default=True)
+    value.add_argument("--publication-status", choices=["any", "published", "unpublished"], default="any")
+    value.add_argument("--decision-date-from", default=DEFAULT_DECISION_DATE_FROM)
+    value.add_argument("--year-min", type=int)
+    value.add_argument("--year-max", type=int)
+    value.add_argument("--chunk-name")
+    value.add_argument("--streaming", action="store_true", default=True)
+    value.add_argument("--checkpoint-every", type=int, default=10000)
+    value.add_argument("--resume", action="store_true")
+    value.add_argument("--resume-from-checkpoint", type=Path)
+    value.add_argument("--seed", type=int, default=42)
+    value.add_argument("--overwrite", action="store_true")
+    value.add_argument("--dry-run", action="store_true")
+    value.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR, help=argparse.SUPPRESS)
+    value.add_argument("--manifest-output", type=Path, default=DEFAULT_MANIFEST, help=argparse.SUPPRESS)
+    value.add_argument("--alignment-output", type=Path, default=DEFAULT_ALIGNMENT, help=argparse.SUPPRESS)
+    value.add_argument("--dataset", default=SOURCE_DATASET, help=argparse.SUPPRESS)
+    value.add_argument("--split", default="train", help=argparse.SUPPRESS)
+    value.add_argument("--local-arrow-dir", type=Path, help=argparse.SUPPRESS)
+    value.add_argument("--min-opinion-chars", type=int, default=1800, help=argparse.SUPPRESS)
+    value.add_argument("--loader-batch-size", type=int, default=32, help=argparse.SUPPRESS)
+    value.add_argument("--loader-page-size", type=int, default=10, help=argparse.SUPPRESS)
+    value.add_argument("--source-loader", choices=["datasets-server", "datasets"], default="datasets-server", help=argparse.SUPPRESS)
+    return value
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parser().parse_args(argv)
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+    if args.merge_chunks:
+        return merge_chunks(args)
+    if args.year_min is not None or args.year_max is not None or args.chunk_name:
+        return collect_chunk(args)
+    if not args.export_all_candidates and not args.build_shortlist:
+        args.export_all_candidates = True; args.build_shortlist = True
+    paths = output_paths(args.output_dir)
+    shortlist_outputs = [paths["shortlist"], paths["qc"], paths["summary"], args.alignment_output]
+    export_outputs = [paths[key] for key in ("california", "state", "appeal", "civil", "direct", "strict", "published", "unpublished", "excluded")] + [args.manifest_output]
+    if args.export_all_candidates:
+        require_outputs(export_outputs, args.overwrite)
+    if args.build_shortlist:
+        require_outputs(shortlist_outputs, args.overwrite)
+    if args.build_shortlist and not args.reference_kr_final.exists():
+        raise FileNotFoundError(f"Korean reference file not found: {args.reference_kr_final}")
+
+    total = 0
+    stage_counts: dict[str, Any] = {
+        "california_candidates": 0, "california_state_court_candidates": 0,
+        "court_of_appeal_candidates": 0, "civil_candidates": 0, "broad_tort_candidates": 0,
+        "direct_tort_candidates": 0, "factually_sufficient_direct_tort_count": 0,
+        "excluded_claim_posture_counts": Counter(),
+    }
+    pre_strict: list[dict[str, Any]] = []
+    streamed_temp_paths: dict[str, Path] = {}
+    # Large candidate stages are streamed directly to disk. Only the much smaller
+    # pre-dedup strict pool is retained for related-case resolution and shortlisting.
+    with ExitStack() as stack:
+        handles: dict[str, Any] = {}
+        if args.export_all_candidates and not args.dry_run:
+            args.output_dir.mkdir(parents=True, exist_ok=True)
+            for key in ("california", "state", "appeal", "civil", "direct", "excluded"):
+                temp_path = paths[key].with_suffix(paths[key].suffix + ".incomplete")
+                if temp_path.exists():
+                    temp_path.unlink()
+                streamed_temp_paths[key] = temp_path
+                handles[key] = stack.enter_context(temp_path.open("w", encoding="utf-8", newline="\n"))
+
+        def emit(key: str, rendered: str) -> None:
+            if key in handles:
+                handles[key].write(rendered)
+
+        for row in iter_rows(args):
+            total += 1
+            record = evaluate_row(dict(row), args)
+            rendered = json.dumps(record, ensure_ascii=False, default=str, separators=(",", ":")) + "\n"
+            stage_counts["california_candidates"] += 1
+            emit("california", rendered)
+            if total % 1000 == 0:
+                for handle in handles.values():
+                    handle.flush()
+                LOGGER.info("California metadata rows scanned: %s; pre-strict retained: %s", total, len(pre_strict))
+            if record.get("court_system") != "california_state":
+                continue
+            stage_counts["california_state_court_candidates"] += 1; emit("state", rendered)
+            if record.get("court_level") != "intermediate_appellate":
+                continue
+            stage_counts["court_of_appeal_candidates"] += 1; emit("appeal", rendered)
+            if not record.get("civil_candidate"):
+                continue
+            stage_counts["civil_candidates"] += 1; emit("civil", rendered)
+            if record.get("broad_tort_candidate"):
+                stage_counts["broad_tort_candidates"] += 1
+            if record.get("broad_tort_candidate") and record.get("claim_posture") != "direct_tort_claim":
+                stage_counts["excluded_claim_posture_counts"][str(record.get("claim_posture"))] += 1
+                emit("excluded", rendered)
+            if record.get("claim_posture") != "direct_tort_claim":
+                continue
+            stage_counts["direct_tort_candidates"] += 1; emit("direct", rendered)
+            if record.get("factual_background_sufficient") and record.get("facts_independently_reconstructable"):
+                stage_counts["factually_sufficient_direct_tort_count"] += 1
+            if record.get("strict_eligible"):
+                pre_strict.append(record)
+
+    duplicate_counts = mark_duplicates(pre_strict)
+    strict = [row for row in pre_strict if row.get("strict_eligible")]
+    if args.publication_status != "any":
+        strict = [row for row in strict if row.get("publication_status") == args.publication_status]
+
+    kr_distribution: dict[str, int] = {}
+    warnings: list[str] = []
+    shortlist: list[dict[str, Any]] = []
+    shortlist_meta: dict[str, Any] = {"minimum_targets": {}, "shortage_report": {}}
+    if args.build_shortlist:
+        kr_distribution, warnings = read_kr_reference(args.reference_kr_final)
+        shortlist, shortlist_meta = build_shortlist(strict, shortlist_count=args.shortlist_count, kr_distribution=kr_distribution, seed=args.seed)
+        for warning in warnings: LOGGER.warning(warning)
+
+    scan = {
+        "strategy": "bounded_page_filtered_index_scan" if args.source_loader == "datasets-server" else "bounded_batch_parquet_streaming",
+        "scope": f"complete California Court of Appeal source range with date_filed >= {args.decision_date_from}",
+        "full_source_scan": False,
+        "date_filter_applied": True,
+        "decision_date_from": args.decision_date_from,
+        "metadata_scope_row_count_reported_by_hf_filter_api": getattr(args, "metadata_scope_row_count", None),
+        "source_filter_partial_flag": getattr(args, "source_filter_partial_flag", None),
+        "terminated_early": False,
+        "first_n_or_scan_limit_used": False, "total_scanned": total,
+        "loader_batch_size": args.loader_batch_size if args.source_loader == "datasets" else None,
+        "loader_page_size": args.loader_page_size if args.source_loader == "datasets-server" else None,
+        "loader_parallel_workers": 1,
+        "memory_policy": "candidate stages streamed to disk; only pre-dedup strict candidates retained in memory",
+        "source_total_records_reported_by_hf_size_api": 410807,
+        "source_size_api_partial_flag": True,
+        "source_readme_record_count_claim": 8300000,
+        "source_size_metadata_warning": "live Hugging Face size API reports 410,807 rows while the dataset card describes 8.3 million decisions",
+        "source_schema": ["arguments", "attorneys", "case_name", "case_name_full", "case_name_short", "citation_count", "citations", "correction", "court_full_name", "court_jurisdiction", "court_short_name", "court_type", "cross_reference", "date_filed", "date_filed_is_approximate", "disposition", "headmatter", "headnotes", "history", "id", "judges", "nature_of_suit", "opinions", "other_dates", "posture", "precedential_status", "slug", "summary", "syllabus"],
+        "opinion_structure": ["author_id", "author_str", "download_url", "ocr", "opinion_id", "opinion_text", "page_count", "per_curiam", "type"],
+    }
+    summary = build_summary(strict, shortlist, scan, stage_counts, kr_distribution, shortlist_meta, duplicate_counts, warnings, args.shortlist_count)
+    if args.dry_run:
+        print(json.dumps(summary, ensure_ascii=False, indent=2)); return 0
+
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    if args.export_all_candidates:
+        write_jsonl(paths["strict"], strict)
+        write_jsonl(paths["published"], [row for row in strict if row.get("publication_status") == "published"])
+        write_jsonl(paths["unpublished"], [row for row in strict if row.get("publication_status") == "unpublished"])
+        write_manifest(args.manifest_output, strict, {str(row["case_id"]) for row in shortlist})
+        for key, temp_path in streamed_temp_paths.items():
+            temp_path.replace(paths[key])
+    if args.build_shortlist:
+        write_jsonl(paths["shortlist"], shortlist); write_qc(paths["qc"], shortlist)
+        write_summary(paths["summary"], summary)
+        write_alignment(args.alignment_output, kr_distribution, shortlist_meta["minimum_targets"], strict, shortlist)
+    LOGGER.info("strict=%s shortlist=%s", len(strict), len(shortlist))
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
