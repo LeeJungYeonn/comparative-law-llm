@@ -235,7 +235,11 @@ def infer_kr_court_level(court_name: str, text: str, case_number: str = "") -> s
         return "supreme"
     if "고등법원" in court_name:
         return "appellate"
-    if any(marker in text for marker in ["항소", "원심판결", "제1심 판결", "당심"]):
+    current_appellate_signals = re.findall(
+        r"항소취지|원고의\s*항소|피고의\s*항소|제1심\s*판결[^.]{0,80}(?:취소|변경)|항소를\s*기각|항소비용",
+        text[:5000],
+    )
+    if len(set(current_appellate_signals)) >= 2:
         return "appellate"
     if any(marker in text for marker in ["지방법원", "지원", "1심"]):
         return "trial"
@@ -279,12 +283,12 @@ def normalize_date(value: object) -> str:
 
 def extract_kr_decision_date(text: str) -> str:
     anchored_patterns = [
-        r"판결\s*선고일인\s*(\d{4}\.\s*\d{1,2}\.\s*\d{1,2}\.?)",
-        r"선고일인\s*(\d{4}\.\s*\d{1,2}\.\s*\d{1,2}\.?)",
+        r"이\s*사건\s*판결\s*선고일인\s*(\d{4}\.\s*\d{1,2}\.\s*\d{1,2}\.?)",
         r"선고\s*(\d{4}\.\s*\d{1,2}\.\s*\d{1,2}\.?)",
+        r"(\d{4}\.\s*\d{1,2}\.\s*\d{1,2}\.?)\s*선고",
     ]
     for pattern in anchored_patterns:
-        match = re.search(pattern, text)
+        match = re.search(pattern, text[:1600])
         if match:
             return normalize_date(match.group(1))
     return ""
@@ -320,8 +324,8 @@ def extract_kr_court_name(text: str) -> str:
 def extract_case_number_or_citation(jurisdiction: str, text: str) -> str:
     if jurisdiction == "KR":
         patterns = [
-            r"\d{4}[가-힣]{1,5}\d+",
-            r"\d{4}\s*[가-힣]{1,5}\s*\d+",
+            r"(?:사건번호|사\s*건)\s*[:：]?\s*(\d{4}[가-힣]{1,5}\d+)",
+            r"(?:사건번호|사\s*건)\s*[:：]?\s*(\d{4}\s*[가-힣]{1,5}\s*\d+)",
         ]
     else:
         patterns = [
@@ -333,9 +337,10 @@ def extract_case_number_or_citation(jurisdiction: str, text: str) -> str:
         ]
 
     for pattern in patterns:
-        match = re.search(pattern, text, flags=re.IGNORECASE)
+        search_text = text[:1600] if jurisdiction == "KR" else text
+        match = re.search(pattern, search_text, flags=re.IGNORECASE)
         if match:
-            return normalize_whitespace(match.group(0))
+            return normalize_whitespace(match.group(1) if jurisdiction == "KR" else match.group(0))
     return ""
 
 
@@ -362,7 +367,12 @@ def preprocess_kr(df: pd.DataFrame, config: PreprocessConfig) -> pd.DataFrame:
         reasoning_text, has_reasoning_marker = extract_kr_reasoning_text(clean_text)
 
         case_number_or_citation = (
-            normalize_whitespace(row.get("case_number_or_citation", ""))
+            (
+                normalize_whitespace(row.get("current_case_number", ""))
+                if bool(row.get("current_case_number_verified", False))
+                else ""
+            )
+            or normalize_whitespace(row.get("case_number_or_citation", ""))
             or normalize_whitespace(row.get("case_number", ""))
             or normalize_whitespace(row.get("case_no", ""))
             or extract_case_number_or_citation("KR", raw_text)
@@ -370,7 +380,11 @@ def preprocess_kr(df: pd.DataFrame, config: PreprocessConfig) -> pd.DataFrame:
         court_name = normalize_whitespace(row.get("court_name", "")) or extract_kr_court_name(
             raw_text[:500]
         )
-        decision_date = normalize_date(row.get("decision_date", "")) or extract_kr_decision_date(raw_text)
+        decision_date = (
+            normalize_date(row.get("decision_date", ""))
+            if bool(row.get("decision_date_verified", bool(row.get("decision_date", ""))))
+            else ""
+        ) or extract_kr_decision_date(raw_text)
         court_level = normalize_whitespace(row.get("court_level", "")) or infer_kr_court_level(
             court_name, raw_text, case_number_or_citation
         )

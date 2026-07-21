@@ -83,8 +83,12 @@ def kr_args(**overrides):
 def kr_case_text(body: str) -> str:
     return (
         "서울고등법원 2019나12345 손해배상\n"
+        "주문 피고의 항소를 기각한다. 항소비용은 피고가 부담한다.\n"
+        "항소취지 제1심판결 중 피고 패소 부분을 취소한다.\n"
         "기초사실\n"
-        f"{body}\n"
+        "원고는 피해자이고 피고는 사고 당시 행위자이다. 사건 현장에서 다음 사고가 발생하였다. "
+        f"{body} 그 후 원고에게 손해가 발생하였다. "
+        "피고는 원고의 과실 때문에 사고가 발생하였고 자신은 주의의무를 다하였다고 주장한다.\n"
         "판단\n"
         "민법 제750조의 불법행위 책임이 문제 된다."
     )
@@ -239,6 +243,8 @@ def test_kr_strict_pool_and_selected_count_are_separate():
         },
         kr_args(year_min=2010, year_max=2021, target_count=1),
     )
+    first["strict_eligible"] = True
+    second["strict_eligible"] = True
     args = kr_args(year_min=2010, year_max=2021, target_count=1)
     pools = split_pools([first, second], args)
     selected, _ = select_final_sample(pools["strict_eligible"], args)
@@ -257,6 +263,7 @@ def test_kr_target_count_does_not_relax_strict_shortage():
         },
         kr_args(year_min=2010, year_max=2021),
     )
+    record["strict_eligible"] = True
     selected, meta = select_final_sample([record], kr_args(year_min=2010, year_max=2021, target_count=20))
     assert len(selected) == 1
     assert meta["shortage"] == 19

@@ -1,0 +1,23 @@
+{
+  "version": "tort-n50-common-v1",
+  "target_count": 50,
+  "shortlist_count": 100,
+  "max_single_subtype_share": 0.25,
+  "quotas": {
+    "traffic_accident": 10,
+    "medical_professional": 8,
+    "premises_facility_safety": 8,
+    "product_safety": 6,
+    "employer_vicarious_liability": 5,
+    "privacy_reputation": 5,
+    "general_personal_injury": 4,
+    "property_damage_or_other_tort": 4
+  },
+  "quota_groups": {
+    "property_damage_or_other_tort": [
+      "property_damage",
+      "intentional_tort",
+      "other_tort"
+    ]
+  }
+}
