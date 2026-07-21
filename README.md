@@ -3,219 +3,88 @@
 Reproducible pipeline for comparing how input language may shift legal knowledge
 sources and reasoning-unit distributions in LLM-generated liability analysis.
 
-Stage 1 builds the reusable case corpus and neutral fact-pattern candidates. It
-does not translate, call an LLM, or evaluate model outputs.
+Stage 1 builds the reusable Korean and California case corpora. It does not
+translate cases, call an LLM, or evaluate model outputs.
 
-## Stage 1 v2: Reproducible Raw Corpus
+## Stage 1 v3: Raw Case Collection
 
-Use the v2 collectors when building the raw corpus for later neutral fact
-pattern generation. Korea and California remain separate scripts and separate
-outputs. The collectors use a keyword-gated scan: rows without any configured
-include keyword are counted in summary gate statistics and skipped before full
-QC, while every keyword-hit candidate is written to QC. The eligible pool is
-then sampled with a fixed seed.
+The canonical collectors are:
 
-Default v2 sampling targets appellate cases from 2010-2020 first. If fewer than
-the requested count are available, it expands only to 2000-2020. Pre-2000,
-trial, supreme, and unknown-court-level cases are excluded from the final sample.
-Sampling is stratified by coarse subtype and 5-year decision period; subtype
-shortages are reported rather than filled automatically with older cases.
+- `collect_kr_raw_cases.py`: Korean tort appellate cases
+- `collect_ca_raw_cases.py`: California state Court of Appeal tort cases
 
-```powershell
-python collect_kr_raw_cases.py --target-count 50 --scan-limit 200000 --seed 42 --overwrite
-python collect_ca_raw_cases.py --target-count 50 --scan-limit 750000 --seed 42 --overwrite
-```
+Both collectors stream their source datasets, apply deterministic screening and
+QC, sample with a fixed seed, and create their output directories automatically.
+When neither `--export-all-candidates` nor `--select-final-sample` is supplied,
+both outputs are enabled.
 
-Smoke tests without writing outputs:
+Run a full collection from PowerShell:
 
 ```powershell
-python collect_kr_raw_cases.py --target-count 3 --scan-limit 100 --preview-only
-python collect_ca_raw_cases.py --target-count 3 --scan-limit 1000 --preview-only
+& .venv\Scripts\python.exe collect_kr_raw_cases.py --target-count 50 --scan-limit 200000 --seed 42 --overwrite
+& .venv\Scripts\python.exe collect_ca_raw_cases.py --target-count 50 --scan-limit 750000 --seed 42 --overwrite
 ```
 
-Full run with explicit replacement of existing v2 outputs:
+Smoke-test the collectors without writing outputs:
 
 ```powershell
-python collect_kr_raw_cases.py --target-count 50 --scan-limit 200000 --seed 42 --overwrite
-python collect_ca_raw_cases.py --target-count 50 --scan-limit 750000 --seed 42 --overwrite
+& .venv\Scripts\python.exe collect_kr_raw_cases.py --target-count 3 --scan-limit 100 --preview-only
+& .venv\Scripts\python.exe collect_ca_raw_cases.py --target-count 3 --scan-limit 1000 --preview-only
 ```
 
-Required v2 outputs:
+Use `--overwrite` only when existing output files should be replaced.
 
-- `outputs/raw/kr_cases_raw.jsonl`
-- `outputs/raw/kr_cases_qc.csv`
-- `outputs/raw/kr_cases_summary.json`
-- `outputs/raw/ca_cases_raw.jsonl`
-- `outputs/raw/ca_cases_qc.csv`
-- `outputs/raw/ca_cases_summary.json`
-- `outputs/manifests/case_manifest.csv`
+### Default outputs
 
-Each raw JSONL row includes stable IDs, source metadata, full `raw_text`,
-SHA-256 hash, include/exclude evidence, quality flags, duplicate grouping, and
-`collection_version=stage1-v2`. QC CSVs include pass, warning, and fail rows
-with `exclusion_reason`; candidates are not silently dropped after inspection.
-Summary JSONs include candidate and selected counts by year, subtype, court
-level, subtype x 5-year period, keyword-gate counts, fallback usage, and shortage
-report.
+Korean outputs are written under `outputs/raw/kr_v3`, including:
 
-## Stage 1: Data Collection And Fact Patterns
+- `kr_cases_selected_<target-count>.jsonl`
+- `kr_cases_qc.csv`
+- `kr_cases_summary.json`
+- candidate-pool JSONL files
 
-### 1. Collect Korean damages / civil-liability cases
+The Korean manifest is written to
+`outputs/manifests/kr_v3_case_manifest.csv`.
 
-The Korean collector reuses the pilot logic in `collect_kr_cases.py`. It loads
-`lbox/lbox_open::precedent_corpus`, filters damages/civil-liability keywords,
-and keeps trial/appellate-oriented cases where possible.
+California outputs are written under `outputs/raw/ca_v3`, including:
 
-```powershell
-python collect_kr_cases.py --limit 50 --output outputs/kr_cases.csv
-```
+- `ca_cases_selected_<target-count>.jsonl`
+- `ca_cases_qc.csv`
+- `ca_cases_summary.json`
+- candidate-pool JSONL files
 
-Use `--overwrite` only when you intentionally want to replace an existing file.
-For a tiny smoke test:
+California manifest and sampling-alignment outputs are written to:
 
-```powershell
-python collect_kr_cases.py --limit 5 --output outputs/kr_cases_sample.csv --overwrite
-```
+- `outputs/manifests/ca_v3_case_manifest.csv`
+- `outputs/manifests/kr_ca_sampling_alignment.csv`
 
-### 2. Collect U.S. tort / damages cases
+Output locations can be changed with `--output-dir`, `--manifest-output`, and,
+for California, `--alignment-output`.
 
-The U.S. collector extracts the pilot notebook logic from `load_dataset.ipynb`
-into `collect_us_cases.py`. It streams `harvard-lil/cold-cases`, reads
-`opinions[*].opinion_text`, filters tort/damages/civil-liability keywords, and
-adds state-specific filtering.
+## Downstream Fact-Pattern Utilities
 
-```powershell
-python collect_us_cases.py --state California --limit 50 --output outputs/us_cases.csv
-```
-
-Supported states:
-
-- `California`
-- `New York`
-
-State filtering records `state_filter_status` as `exact`, `inferred`,
-`ambiguous`, or `unavailable`. Ambiguous rows are excluded by default; pass
-`--include-ambiguous` only if you want them saved with QC flags.
-
-Smoke test:
-
-```powershell
-python collect_us_cases.py --state California --limit 5 --output outputs/us_cases_sample.csv --overwrite
-```
-
-### 3. Collect California state civil raw opinions
-
-For the California raw opinion set used in later GPT-based fact extraction,
-use `collect_us_california_cases.py`. It also uses `harvard-lil/cold-cases`,
-but applies stricter California state-court, full-text, civil liability /
-damages, and exclusion filters for federal, criminal/habeas, administrative,
-insurance-only, IP, and procedure-only cases.
-
-```powershell
-python collect_us_california_cases.py --target-pass-count 50 --max-candidates 2000 --output-dir outputs --overwrite
-```
-
-This writes:
-
-- `outputs/us_california_cases_raw.jsonl`: selected California state raw
-  opinions with full `raw_text` and QC preview excerpt.
-- `outputs/us_california_cases_qc.csv`: all collected candidate QC rows,
-  including failures and exclusion reasons.
-- `outputs/us_california_cases_summary.json`: aggregate collection summary and
-  sanity-check results.
-
-Preview without writing files:
-
-```powershell
-python collect_us_california_cases.py --target-pass-count 5 --max-candidates 120 --preview-only
-```
-
-### 4. Preprocess collected CSVs
-
-`preprocess_cases.py` keeps its original interface and still expects:
-
-- `outputs/kr_cases.csv`
-- `outputs/us_cases.csv`
-
-Run:
-
-```powershell
-python preprocess_cases.py
-```
-
-This writes:
+`preprocess_cases.py` supports the legacy collected CSV interface and writes:
 
 - `outputs/preprocessed_cases.csv`
 - `outputs/case_metadata.csv`
 - `outputs/preprocessing_summary.json`
 
-### 5. Build unified case table and neutral fact candidates
+```powershell
+& .venv\Scripts\python.exe preprocess_cases.py
+```
 
-`build_fact_patterns.py` reads `outputs/preprocessed_cases.csv` when available.
-It can also read a compatible collected CSV or case table. The script writes a
-unified case table and deterministic, rule-based neutral fact-pattern candidates.
+`build_fact_patterns.py` builds a unified case table and deterministic neutral
+fact-pattern candidates from a compatible preprocessed case table.
 
 ```powershell
-python build_fact_patterns.py --input outputs/preprocessed_cases.csv --output outputs/fact_patterns.jsonl
+& .venv\Scripts\python.exe build_fact_patterns.py --input outputs/preprocessed_cases.csv --output outputs/fact_patterns.jsonl
 ```
 
 Smoke test:
 
 ```powershell
-python build_fact_patterns.py --input outputs/preprocessed_cases.csv --output outputs/fact_patterns_sample.jsonl --limit 5 --overwrite
+& .venv\Scripts\python.exe build_fact_patterns.py --input outputs/preprocessed_cases.csv --output outputs/fact_patterns_sample.jsonl --limit 5 --overwrite
 ```
 
-## Output Relationships
-
-- `outputs/kr_cases.csv`: Korean collected source cases, compatible with
-  `preprocess_cases.py`.
-- `outputs/us_cases.csv`: U.S. collected source cases, compatible with
-  `preprocess_cases.py`.
-- `outputs/us_california_cases_raw.jsonl`: stricter California state-court
-  full-opinion raw set for later LLM-based fact extraction. It does not replace
-  `outputs/us_cases.csv`.
-- `outputs/us_california_cases_qc.csv`: QC and exclusion reasons for California
-  raw collection candidates.
-- `outputs/preprocessed_cases.csv`: cleaned/normalized case text and metadata
-  used as the preferred fact-pattern input.
-- `outputs/case_table.csv`: unified downstream table with stable IDs,
-  normalized jurisdiction labels, raw text, collection notes, and quality flags.
-- `outputs/fact_patterns.jsonl`: neutral fact-pattern candidates. In Stage 1,
-  the neutral text remains in the source language and `neutral_fact_en` is
-  always `null`; translation is reserved for Stage 2.
-- `outputs/fact_pattern_failures.jsonl`: rows where extraction failed or failed
-  QC.
-- `outputs/fact_pattern_qc.csv`: per-case QC status, flags, removed legal
-  signals, and legal-signal leakage checks.
-
-Inspect QC quickly:
-
-```powershell
-Import-Csv outputs/fact_pattern_qc.csv | Group-Object status
-Import-Csv outputs/fact_pattern_qc.csv | Select-Object case_id,status,quality_flags -First 10
-```
-
-## Important CLI Options
-
-Collectors support:
-
-- `--limit`
-- `--seed`
-- `--output`
-- `--overwrite`
-- `--min-text-length`
-- `--max-text-length`
-
-The U.S. collector also supports:
-
-- `--state California`
-- `--state New York`
-- `--include-ambiguous`
-- `--scan-limit`
-
-## Notes
-
-- API keys are not used in Stage 1.
-- Stage 1 uses deterministic heuristics only.
-- Failed or uncertain fact extraction is saved with quality flags rather than
-  silently dropped.
+Stage 1 uses deterministic heuristics only. Failed or uncertain extraction is
+recorded with QC flags rather than silently dropped.

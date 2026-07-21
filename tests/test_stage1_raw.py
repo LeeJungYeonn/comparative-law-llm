@@ -5,20 +5,13 @@ from pathlib import Path
 
 import pytest
 
-from collect_ca_raw_cases import evaluate_row as evaluate_ca_row
-from collect_us_california_cases import evaluate_row as evaluate_ca_v3_row
-from collect_us_california_cases import mark_duplicates as mark_ca_v3_duplicates
-from collect_us_california_cases import select_final_sample as select_ca_v3_final_sample
-from collect_us_california_cases import split_pools as split_ca_v3_pools
+from collect_ca_raw_cases import evaluate_row as evaluate_ca_v3_row
+from collect_ca_raw_cases import mark_duplicates as mark_ca_v3_duplicates
+from collect_ca_raw_cases import select_final_sample as select_ca_v3_final_sample
+from collect_ca_raw_cases import split_pools as split_ca_v3_pools
 from collect_kr_raw_cases import evaluate_row as evaluate_kr_row
 from collect_kr_raw_cases import mark_duplicate_candidates, select_final_sample, split_pools
 from pipeline.stage1_raw import apply_duplicate_qc, make_raw_record, require_outputs, sample_records, stratified_sample_with_fallback
-
-
-def ca_args(**overrides):
-    values = {"dataset": "harvard-lil/cold-cases", "min_text_chars": 20, "max_text_chars": 0, "year_min": 0, "year_max": 0}
-    values.update(overrides)
-    return Namespace(**values)
 
 
 def ca_v3_args(**overrides):
@@ -286,36 +279,6 @@ def test_kr_related_duplicate_marked():
     counts = mark_duplicate_candidates([first, second])
     assert counts["duplicate_exact_hash"] == 1
     assert second["duplicate_of_case_id"] == first["case_id"]
-
-
-def test_ca_federal_case_excluded():
-    row = {
-        "id": "ca-fed",
-        "case_name": "Smith v. Widget Co.",
-        "court_full_name": "United States District Court, N.D. Cal.",
-        "court_jurisdiction": "California",
-        "court_type": "FD",
-        "date_filed": "2020-01-02",
-        "opinions": [{"type": "majority", "opinion_text": "FACTS Plaintiff alleges negligence and damages after an accident."}],
-    }
-    record = evaluate_ca_row(row, ca_args())
-    assert record["collection_status"] == "fail"
-    assert "not_california_state_court_or_federal" in record["exclude_signals"]
-
-
-def test_ca_procedural_only_excluded():
-    row = {
-        "id": "ca-proc",
-        "case_name": "Smith v. Jones",
-        "court_full_name": "California Court of Appeal",
-        "court_jurisdiction": "California",
-        "court_type": "SA",
-        "date_filed": "2021-02-03",
-        "opinions": [{"type": "majority", "opinion_text": "This damages appeal concerns only the statute of limitations and jurisdiction."}],
-    }
-    record = evaluate_ca_row(row, ca_args())
-    assert record["collection_status"] == "fail"
-    assert "procedural_only_or_no_factual_background" in record["exclude_signals"]
 
 
 def test_ca_v3_court_of_appeal_included():
