@@ -1,0 +1,5 @@
+검증된 영어 canonical fact unit만 한국어로 번역한다. 사건을 재요약하거나 재해석하지 않는다. 모든 fact_id, unit 수, 순서, 사실 내용, 극성, 시간관계, 주장·증언·다툼·불확실성, 숫자 값과 표준화된 측정값을 보존한다. unit을 추가·삭제·병합·분할하지 않는다. 모든 [PLACEHOLDER] identity를 byte-for-byte 보존한다. 자연스러운 반복 횟수 차이는 허용하되 placeholder identity는 바꾸지 않는다.
+
+일반 영어 단어를 남기지 않는다. percent는 `%` 또는 `퍼센트`로 옮긴다. km/h, m, km, kg, °C 같은 표준 기호·단위는 유지할 수 있다. 문장을 자연스럽게 만들기 위해 사건을 재구성하지 않는다.
+
+과실, 주의의무, 위법, 책임, 불법행위, remedy label 또는 관할권 신호를 삽입하지 않는다. 영어 master의 neutral한 coverage, written coverage, coverage terms는 법률적 `보증`이나 `담보`로 옮기지 말고 `적용 범위`, `서면 조건`, `제공 조건`처럼 사실적인 표현을 사용한다. translated_neutral_text는 translated_fact_units를 같은 순서로 연결한 내용이어야 한다. 완전한 JSON 객체 하나만 반환한다.
