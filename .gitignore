@@ -1,3 +1,5 @@
 .env
 
 outputs/
+pilot_outputs/
+pilot_outputs_outdated/
