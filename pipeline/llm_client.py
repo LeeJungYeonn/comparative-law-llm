@@ -64,8 +64,8 @@ class LLMClient:
         self.cache_hits = 0
         self.request_hashes_seen: set[str] = set()
 
-    def _request_hash(self, *, case_id: str, stage: str, prompt_hash: str, user_payload: dict[str, Any], parameters: dict[str, Any]) -> str:
-        material = {"case_id": case_id, "stage": stage, "input_content_hash": hashlib.sha256(_stable_json(user_payload).encode()).hexdigest(), "prompt_file_hash": prompt_hash, "model": self.model, "base_url_identifier": self.base_url, "effective_generation_parameters": parameters, "schema_version": SCHEMA_VERSION}
+    def _request_hash(self, *, case_id: str, stage: str, prompt_hash: str, user_payload: dict[str, Any], parameters: dict[str, Any], schema_version: str = SCHEMA_VERSION, context_hashes: dict[str, str] | None = None) -> str:
+        material = {"case_id": case_id, "stage": stage, "input_content_hash": hashlib.sha256(_stable_json(user_payload).encode()).hexdigest(), "prompt_file_hash": prompt_hash, "model": self.model, "base_url_identifier": self.base_url, "effective_generation_parameters": parameters, "schema_version": schema_version, **(context_hashes or {})}
         return hashlib.sha256(_stable_json(material).encode()).hexdigest()
 
     def _mock(self, stage: str, case_id: str) -> dict[str, Any]:
@@ -114,7 +114,7 @@ class LLMClient:
             raise LLMRequestError("Response content is not text")
         return content
 
-    def call(self, *, case_id: str, stage: str, system_prompt: str, user_payload: dict[str, Any], schema: dict[str, Any], required_fields: tuple[str, ...], prompt_version: str) -> LLMResult:
+    def call(self, *, case_id: str, stage: str, system_prompt: str, user_payload: dict[str, Any], schema: dict[str, Any], required_fields: tuple[str, ...], prompt_version: str, schema_version: str = SCHEMA_VERSION, context_hashes: dict[str, str] | None = None) -> LLMResult:
         prompt_hash = hashlib.sha256(system_prompt.encode("utf-8")).hexdigest()
         requested = {"temperature": self.temperature, "seed": self.seed, "structured_output": "json_schema"}
         mode_order = [self.structured_mode] if self.structured_mode else ["json_schema", "json_object", "json_only"]
@@ -127,7 +127,7 @@ class LLMClient:
                 effective["temperature"] = self.temperature
             if self.seed is not None:
                 effective["seed"] = self.seed
-            request_hash = self._request_hash(case_id=case_id, stage=stage, prompt_hash=prompt_hash, user_payload=user_payload, parameters=effective)
+            request_hash = self._request_hash(case_id=case_id, stage=stage, prompt_hash=prompt_hash, user_payload=user_payload, parameters=effective, schema_version=schema_version, context_hashes=context_hashes)
             cache_path = self.output_dir / "request_cache" / stage / f"{request_hash}.json"
             raw_path = self.output_dir / "raw_responses" / stage / f"{case_id}__{request_hash[:12]}.json"
             if cache_path.is_file() and not self.bypass_cache:
