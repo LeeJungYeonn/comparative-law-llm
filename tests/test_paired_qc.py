@@ -345,6 +345,93 @@ def test_source_import_allows_fully_reviewed_fact_structure_replacement(
     assert imported["human_validated_fact_ids"] == ["F001"]
 
 
+def test_source_import_allows_lossless_split_with_marked_text_edits(
+    tmp_path: Path,
+) -> None:
+    case = _case()
+    cases = {"KR_TEST": case}
+    row = source_review_rows("stage-a", cases, [_source_qc()])[0]
+    units = [
+        {
+            **case["master"]["fact_units"][0],
+            "master_text": "[PERSON_A] carefully examined [PERSON_B].",
+        },
+        {
+            **case["master"]["fact_units"][1],
+            "fact_id": "F002",
+            "master_text": "[PERSON_B] was injured.",
+        },
+        {
+            **case["master"]["fact_units"][1],
+            "fact_id": "F003",
+            "master_text": "Treatment followed.",
+        },
+    ]
+    case["master"]["fact_units"][1]["master_text"] = (
+        "[PERSON_B] was injured. Treatment followed."
+    )
+    case["master"]["master_neutral_text"] = " ".join(
+        unit["master_text"] for unit in case["master"]["fact_units"]
+    )
+    row = source_review_rows("stage-a", cases, [_source_qc()])[0]
+    row.update({
+        "human_source_action": "edit_master",
+        "human_source_status": "accepted_with_edits",
+        "edited_fact_ids": "F001",
+        "reviewer_id": "reviewer_1",
+        "reviewer_notes": "Edited F001 and split F002 without text changes.",
+        "human_validated_master_text": " ".join(
+            unit["master_text"] for unit in units
+        ),
+        "human_validated_fact_units_json": json.dumps(units),
+    })
+    path = tmp_path / "source.csv"
+    write_csv(path, SOURCE_REVIEW_FIELDS, [row])
+    import_source_reviews(path, cases, tmp_path)
+    imported = json.loads(
+        (tmp_path / "human_validated_masters.jsonl")
+        .read_text(encoding="utf-8").splitlines()[0]
+    )
+    assert imported["fact_structure_changed"] is True
+    assert imported["edited_fact_ids"] == ["F001"]
+
+
+def test_source_import_rejects_unmarked_structural_text_edit(
+    tmp_path: Path,
+) -> None:
+    case = _case()
+    cases = {"KR_TEST": case}
+    units = [
+        dict(case["master"]["fact_units"][0]),
+        {
+            **case["master"]["fact_units"][1],
+            "fact_id": "F002",
+            "master_text": "Substantively changed text.",
+        },
+        {
+            **case["master"]["fact_units"][1],
+            "fact_id": "F003",
+            "master_text": "Additional fact.",
+        },
+    ]
+    row = source_review_rows("stage-a", cases, [_source_qc()])[0]
+    row.update({
+        "human_source_action": "edit_master",
+        "human_source_status": "accepted_with_edits",
+        "edited_fact_ids": "F001",
+        "reviewer_id": "reviewer_1",
+        "reviewer_notes": "Incomplete edit markers.",
+        "human_validated_master_text": " ".join(
+            unit["master_text"] for unit in units
+        ),
+        "human_validated_fact_units_json": json.dumps(units),
+    })
+    path = tmp_path / "source.csv"
+    write_csv(path, SOURCE_REVIEW_FIELDS, [row])
+    with pytest.raises(ValueError, match="substantively changed"):
+        import_source_reviews(path, cases, tmp_path)
+
+
 def test_translation_readiness_never_uses_stale_translation() -> None:
     case = _case()
     cases = {"KR_TEST": case}

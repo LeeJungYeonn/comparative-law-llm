@@ -198,6 +198,30 @@ def test_v3_graph_drops_nonreflexive_self_relations_and_renumbers() -> None:
     ]
 
 
+def test_v3_graph_drops_one_unknown_anchor_when_valid_anchor_remains() -> None:
+    payload = {
+        "case_id": "X",
+        "entities": [{
+            "entity_id": "a",
+            "entity_type": "person",
+            "source_sentence_ids": ["SRC0001", "SRC000?"],
+        }],
+        "relations": [],
+        "completeness_warnings": [],
+    }
+    graph = normalize_entity_relation_graph(
+        payload,
+        case_id="X",
+        case_origin="CA",
+        evidence={"evidence_units": [{"source_sentence_ids": ["SRC0001"]}]},
+    )
+    assert graph["graph_status"] == "warning"
+    assert graph["entities"][0]["source_sentence_ids"] == ["SRC0001"]
+    assert graph["completeness_warnings"] == [
+        "dropped_unknown_source_sentence_id:ENT001:SRC000?"
+    ]
+
+
 @pytest.mark.parametrize(
     "master_text",
     [

@@ -1103,6 +1103,54 @@ def _require_unique_case_rows(rows: list[dict[str, str]]) -> None:
         raise ValueError(f"duplicate review row: {duplicates}")
 
 
+def _required_structural_edit_ids(
+    original_units: list[dict[str, Any]],
+    replacement_units: list[dict[str, Any]],
+) -> tuple[set[str], bool]:
+    """Return replacement IDs covering substantive text changes.
+
+    Splitting or merging fact units without changing their normalized text is
+    structural-only and does not require every re-numbered fact to be marked
+    as edited.
+    """
+    def token_stream(
+        units: list[dict[str, Any]],
+    ) -> tuple[list[str], list[str]]:
+        tokens: list[str] = []
+        owners: list[str] = []
+        for unit in units:
+            unit_tokens = re.findall(
+                r"\S+", str(unit.get("master_text") or "")
+            )
+            tokens.extend(unit_tokens)
+            owners.extend([str(unit.get("fact_id") or "")] * len(unit_tokens))
+        return tokens, owners
+
+    original_tokens, _ = token_stream(original_units)
+    replacement_tokens, replacement_owners = token_stream(replacement_units)
+    required: set[str] = set()
+    has_unmapped_deletion = False
+    matcher = SequenceMatcher(
+        a=original_tokens, b=replacement_tokens, autojunk=False,
+    )
+    for tag, old_start, old_end, new_start, new_end in matcher.get_opcodes():
+        if tag == "equal":
+            continue
+        if new_start != new_end:
+            required.update(replacement_owners[new_start:new_end])
+            continue
+        adjacent = {
+            replacement_owners[index]
+            for index in (new_start - 1, new_start)
+            if 0 <= index < len(replacement_owners)
+        }
+        if len(adjacent) == 1:
+            required.update(adjacent)
+        else:
+            has_unmapped_deletion = True
+    return required, has_unmapped_deletion
+
+
 def import_source_reviews(
     review_path: Path, cases: dict[str, dict[str, Any]], output_dir: Path,
 ) -> list[dict[str, Any]]:
@@ -1151,6 +1199,7 @@ def import_source_reviews(
                 str(unit.get("fact_id") or "")
                 for unit in case["master"].get("fact_units") or []
             ]
+            original_units = list(case["master"].get("fact_units") or [])
             unit_ids = [str(unit.get("fact_id") or "") for unit in units]
             fact_structure_changed = unit_ids != original_unit_ids
             if fact_structure_changed:
@@ -1162,9 +1211,20 @@ def import_source_reviews(
                         f"replacement fact IDs must be unique and sequential "
                         f"for {case_id}"
                     )
-                if set(edited_ids) != set(unit_ids):
+                required_edit_ids, has_unmapped_deletion = (
+                    _required_structural_edit_ids(original_units, units)
+                )
+                if (
+                    not set(edited_ids) <= set(unit_ids)
+                    or not required_edit_ids <= set(edited_ids)
+                    or (
+                        has_unmapped_deletion
+                        and set(edited_ids) != set(unit_ids)
+                    )
+                ):
                     raise ValueError(
-                        f"all replacement fact IDs must be marked edited "
+                        f"substantively changed replacement fact IDs must be "
+                        f"marked edited "
                         f"for {case_id}"
                     )
             elif not set(edited_ids) <= valid_fact_ids:

@@ -563,8 +563,18 @@ def normalize_entity_relation_graph(
         errors.append("entity_placeholders_duplicate")
     if any(not PLACEHOLDER_RE.fullmatch(value) for value in placeholders):
         errors.append("invalid_entity_placeholder")
+    completeness_warnings = list(payload.get("completeness_warnings") or [])
     for entity in entities:
-        if not set(entity.get("source_sentence_ids") or []) <= source_ids:
+        anchored_ids = list(entity.get("source_sentence_ids") or [])
+        valid_ids = [value for value in anchored_ids if value in source_ids]
+        unknown_ids = [value for value in anchored_ids if value not in source_ids]
+        if unknown_ids and valid_ids:
+            entity["source_sentence_ids"] = valid_ids
+            completeness_warnings.append(
+                f"dropped_unknown_source_sentence_id:"
+                f"{entity.get('entity_id')}:{','.join(unknown_ids)}"
+            )
+        elif unknown_ids:
             errors.append(f"{entity.get('entity_id')}:unknown_source_sentence_id")
     relation_ids = [str(item.get("relation_id") or "") for item in relations]
     if len(relation_ids) != len(set(relation_ids)) or "" in relation_ids:
@@ -578,9 +588,17 @@ def normalize_entity_relation_graph(
             errors.append(f"{relation_id}:unknown_object_entity")
         if relation.get("relation_type") not in RELATION_TYPES:
             errors.append(f"{relation_id}:invalid_relation_type")
-        if not set(relation.get("source_sentence_ids") or []) <= source_ids:
+        anchored_ids = list(relation.get("source_sentence_ids") or [])
+        valid_ids = [value for value in anchored_ids if value in source_ids]
+        unknown_ids = [value for value in anchored_ids if value not in source_ids]
+        if unknown_ids and valid_ids:
+            relation["source_sentence_ids"] = valid_ids
+            completeness_warnings.append(
+                f"dropped_unknown_source_sentence_id:"
+                f"{relation_id}:{','.join(unknown_ids)}"
+            )
+        elif unknown_ids:
             errors.append(f"{relation_id}:unknown_source_sentence_id")
-    completeness_warnings = list(payload.get("completeness_warnings") or [])
     completeness_warnings.extend(
         f"dropped_nonreflexive_self_relation:{relation_id}"
         for relation_id in dropped_self_relations
