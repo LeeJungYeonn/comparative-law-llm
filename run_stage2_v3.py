@@ -33,10 +33,13 @@ from pipeline.stage2_runtime import (
 from pipeline.stage2_v3_pipeline import (
     build_entity_relation_graph,
     canonical_quantity_tokens,
+    configure_generation_profile,
     coverage_record,
     extract_evidence,
+    generation_profile,
     neutralize,
     normalize_entity_relation_graph,
+    normalize_master_relation_metadata,
     source_checks,
     stable_hash,
     translate,
@@ -81,6 +84,7 @@ V3_PROMPTS = [
     "verify_translation_relations_ko_en_v4.txt",
     "verify_translation_relations_en_ko_v4.txt",
 ]
+DEFAULT_V3_PROMPTS = tuple(V3_PROMPTS)
 HUMAN_QC_FIELDS = [
     "case_id", "case_origin", "case_subtype", "source_coverage_complete",
     "core_event_preserved", "harm_preserved", "causal_sequence_preserved",
@@ -120,6 +124,12 @@ def parser() -> argparse.ArgumentParser:
     value.add_argument("--max-cases-per-origin", type=int)
     value.add_argument("--concurrency", type=int, default=2)
     value.add_argument("--max-retries", type=int, default=5)
+    value.add_argument(
+        "--generation-profile",
+        choices=["v3", "english-v1"],
+        default="v3",
+        help="Prompt/version profile. english-v1 creates the isolated v4 dataset.",
+    )
     value.add_argument("--max-input-tokens", type=int, default=12000)
     value.add_argument("--chunk-overlap-sentences", type=int, default=2)
     value.add_argument("--resume", action="store_true")
@@ -166,10 +176,24 @@ def _write_input_artifacts(
     kr_path: Path, ca_path: Path, output: Path
 ) -> tuple[list[Any], dict[str, Any], dict[str, Any]]:
     cases, report, manifest = validate_inputs(kr_path, ca_path, None)
-    report = {**report, "dataset_version": DATASET_VERSION}
+    profile = generation_profile()
+    profile_metadata = {
+        "generation_profile": profile["profile_name"],
+        "generation_schema_version": profile["schema_version"],
+        "generation_instruction_language": profile["instruction_language"],
+        "neutralization_policy": profile["neutralization_policy"],
+        "generation_prompt_versions": sorted(
+            name.removesuffix(".txt")
+            for name in profile["prompts"].values()
+        ),
+    }
+    report = {
+        **report, "dataset_version": DATASET_VERSION, **profile_metadata,
+    }
     manifest = {
         **manifest,
         "dataset_version": DATASET_VERSION,
+        **profile_metadata,
         "source_field_mapping": {
             "KR": {
                 "case_origin": "KR",
@@ -677,7 +701,15 @@ def _calibration_report(
 
 
 def main(argv: list[str] | None = None) -> int:
+    global DATASET_VERSION, V3_PROMPTS
     args = parser().parse_args(argv)
+    profile = configure_generation_profile(args.generation_profile)
+    DATASET_VERSION = str(profile["dataset_version"])
+    V3_PROMPTS = (
+        sorted(set(profile["prompts"].values()))
+        if args.generation_profile == "english-v1"
+        else list(DEFAULT_V3_PROMPTS)
+    )
     output = args.output_dir
     output.mkdir(parents=True, exist_ok=True)
     _snapshot_prompts(output)
@@ -764,7 +796,8 @@ def main(argv: list[str] | None = None) -> int:
             },
         )
         print(
-            f"v3 dry-run complete: inputs=70 selected={len(selected)} "
+            f"{args.generation_profile} dry-run complete: "
+            f"inputs=70 selected={len(selected)} "
             f"coverage_failures={len(coverage_failures)} api_calls=0"
         )
         return 2 if coverage_failures else 0
@@ -881,12 +914,30 @@ def main(argv: list[str] | None = None) -> int:
             evidence = evidence_all.get(case.case_id)
             graph = graph_all.get(case.case_id)
             if master and evidence and graph:
+                normalized_units, metadata_warnings = (
+                    normalize_master_relation_metadata(
+                        [
+                            dict(unit)
+                            for unit in master.get("fact_units") or []
+                        ],
+                        graph,
+                    )
+                )
                 payload = {
                     "master_neutral_text": master.get("master_neutral_text") or "",
-                    "fact_units": master.get("fact_units") or [],
+                    "fact_units": normalized_units,
                 }
                 checks = source_checks(payload, evidence, graph, case.source_language)
                 updated = dict(master)
+                updated["fact_units"] = normalized_units
+                updated["metadata_normalization_warnings"] = sorted(set(
+                    list(master.get("metadata_normalization_warnings") or [])
+                    + metadata_warnings
+                ))
+                updated["grounding_warnings"] = sorted(set(
+                    list(master.get("grounding_warnings") or [])
+                    + metadata_warnings
+                ))
                 updated["deterministic_checks"] = checks
                 updated["neutralization_status"] = checks["status"]
                 updated["deterministic_factual_sufficiency"] = checks[
@@ -1323,7 +1374,7 @@ def main(argv: list[str] | None = None) -> int:
         or regression["status"] == "fail"
     )
     print(
-        f"v3 batch complete: selected={selected_count} "
+        f"{args.generation_profile} batch complete: selected={selected_count} "
         f"api_calls={client.new_api_calls} cache_hits={client.cache_hits} "
         f"hard_fail={len(selected_failures)} blocked={blocked}"
     )

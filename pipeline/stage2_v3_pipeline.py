@@ -67,6 +67,86 @@ ATTRIBUTION_MARKERS = {
 EVENT_TYPES = {"action", "omission", "event"}
 HARM_TYPES = {"harm", "economic_harm"}
 
+GENERATION_PROFILES: dict[str, dict[str, Any]] = {
+    "v3": {
+        "dataset_version": DATASET_VERSION,
+        "stage_prefix": "v3",
+        "instruction_language": "mixed",
+        "neutralization_policy": "stage2-v3",
+        "prompts": {
+            "evidence:KR": "extract_evidence_ko_v3.txt",
+            "evidence:CA": "extract_evidence_en_v3.txt",
+            "graph:KR": "extract_entity_relations_ko_v3.txt",
+            "graph:CA": "extract_entity_relations_en_v3.txt",
+            "neutralize:KR": "neutralize_ko_v6.txt",
+            "neutralize:CA": "neutralize_en_v6.txt",
+            "grounding:KR": "verify_grounding_and_roles_ko_v4.txt",
+            "grounding:CA": "verify_grounding_and_roles_en_v4.txt",
+            "translation:KR": "translate_ko_to_en_v4.txt",
+            "translation:CA": "translate_en_to_ko_v4.txt",
+            "translation_verifier:KR": "verify_translation_relations_ko_en_v4.txt",
+            "translation_verifier:CA": "verify_translation_relations_en_ko_v4.txt",
+        },
+    },
+    "english-v1": {
+        "dataset_version": "stage2-neutral-facts-35x35-v4",
+        "stage_prefix": "v4_en",
+        "instruction_language": "English",
+        "neutralization_policy": "canonical-neutralization-en-v1",
+        "prompts": {
+            "evidence:KR": "extract_evidence_ko_v4_en.txt",
+            "evidence:CA": "extract_evidence_en_v4_en.txt",
+            "graph:KR": "extract_entity_relations_ko_v4_en.txt",
+            "graph:CA": "extract_entity_relations_en_v4_en.txt",
+            "neutralize:KR": "neutralize_ko_v7_en.txt",
+            "neutralize:CA": "neutralize_en_v7_en.txt",
+            "grounding:KR": "verify_grounding_and_roles_ko_v5_en.txt",
+            "grounding:CA": "verify_grounding_and_roles_en_v5_en.txt",
+            "translation:KR": "translate_ko_to_en_v5_en.txt",
+            "translation:CA": "translate_en_to_ko_v5_en.txt",
+            "translation_verifier:KR": "verify_translation_relations_ko_en_v5_en.txt",
+            "translation_verifier:CA": "verify_translation_relations_en_ko_v5_en.txt",
+        },
+    },
+}
+_ACTIVE_GENERATION_PROFILE = "v3"
+
+
+def configure_generation_profile(name: str) -> dict[str, Any]:
+    global _ACTIVE_GENERATION_PROFILE
+    if name not in GENERATION_PROFILES:
+        raise ValueError(f"Unknown generation profile: {name}")
+    _ACTIVE_GENERATION_PROFILE = name
+    return generation_profile(name)
+
+
+def generation_profile(name: str | None = None) -> dict[str, Any]:
+    selected = name or _ACTIVE_GENERATION_PROFILE
+    profile = GENERATION_PROFILES[selected]
+    return {
+        **profile,
+        "prompts": dict(profile["prompts"]),
+        "profile_name": selected,
+        "schema_version": SCHEMA_VERSION,
+    }
+
+
+def _active_dataset_version() -> str:
+    return str(GENERATION_PROFILES[_ACTIVE_GENERATION_PROFILE]["dataset_version"])
+
+
+def _active_stage(name: str) -> str:
+    prefix = GENERATION_PROFILES[_ACTIVE_GENERATION_PROFILE]["stage_prefix"]
+    return f"{prefix}_{name}"
+
+
+def _active_prompt(kind: str, origin: str) -> str:
+    return str(
+        GENERATION_PROFILES[_ACTIVE_GENERATION_PROFILE]["prompts"][
+            f"{kind}:{origin}"
+        ]
+    )
+
 
 def load_prompt(root: Path, filename: str) -> str:
     return (root / "prompts" / filename).read_text(encoding="utf-8")
@@ -146,10 +226,7 @@ def extract_evidence(
     client: LLMClient,
     root: Path,
 ) -> dict[str, Any]:
-    prompt_name = (
-        "extract_evidence_ko_v3.txt" if case.case_origin == "KR"
-        else "extract_evidence_en_v3.txt"
-    )
+    prompt_name = _active_prompt("evidence", case.case_origin)
     segment_map = {
         str(row["source_sentence_id"]): str(row["text"])
         for row in segment_record.get("segments") or []
@@ -172,7 +249,9 @@ def extract_evidence(
         }
         result = client.call(
             case_id=case.case_id,
-            stage=f"v3_factual_evidence_{str(chunk['chunk_id']).lower()}",
+            stage=_active_stage(
+                f"factual_evidence_{str(chunk['chunk_id']).lower()}"
+            ),
             system_prompt=load_prompt(root, prompt_name),
             user_payload=payload,
             schema=EVIDENCE_SCHEMA,
@@ -239,7 +318,7 @@ def extract_evidence(
     coverage["extraction_call_count"] = len(segment_record.get("candidate_chunks") or [])
     status = "fail" if errors or coverage["coverage_status"] != "complete" else "pass"
     return {
-        "dataset_version": DATASET_VERSION,
+        "dataset_version": _active_dataset_version(),
         "case_id": case.case_id,
         "case_origin": case.case_origin,
         "evidence_units": deduplicated,
@@ -260,10 +339,7 @@ def build_entity_relation_graph(
     root: Path,
     segment_record: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    prompt_name = (
-        "extract_entity_relations_ko_v3.txt" if case.case_origin == "KR"
-        else "extract_entity_relations_en_v3.txt"
-    )
+    prompt_name = _active_prompt("graph", case.case_origin)
     evidence_units = [
         {
             key: unit.get(key)
@@ -279,7 +355,7 @@ def build_entity_relation_graph(
     evidence_hash = stable_hash(evidence_units)
     result = client.call(
         case_id=case.case_id,
-        stage="v3_entity_relations",
+        stage=_active_stage("entity_relations"),
         system_prompt=load_prompt(root, prompt_name),
         user_payload={
             "case_id": case.case_id,
@@ -510,7 +586,7 @@ def normalize_entity_relation_graph(
         for relation_id in dropped_self_relations
     )
     return {
-        "dataset_version": DATASET_VERSION,
+        "dataset_version": _active_dataset_version(),
         "case_id": case_id,
         "case_origin": case_origin,
         "entities": entities,
@@ -694,6 +770,45 @@ def source_checks(
     }
 
 
+def normalize_master_relation_metadata(
+    fact_units: list[dict[str, Any]],
+    graph: dict[str, Any],
+) -> tuple[list[dict[str, Any]], list[str]]:
+    """Canonicalize graph-derived metadata without changing generated prose."""
+    placeholders = {
+        str(entity.get("entity_id")): str(entity.get("placeholder") or "")
+        for entity in graph.get("entities") or []
+    }
+    relations = {
+        str(relation.get("relation_id")): {
+            "subject_placeholder": placeholders.get(
+                str(relation.get("subject_entity_id")), ""
+            ),
+            "relation_type": str(relation.get("relation_type") or ""),
+            "object_placeholder": placeholders.get(
+                str(relation.get("object_entity_id")), ""
+            ),
+        }
+        for relation in graph.get("relations") or []
+    }
+    normalized: list[dict[str, Any]] = []
+    warnings: list[str] = []
+    for raw in fact_units:
+        unit = dict(raw)
+        relation_ids = [str(value) for value in unit.get("relation_ids") or []]
+        canonical = [
+            relations[relation_id]
+            for relation_id in relation_ids if relation_id in relations
+        ]
+        if canonical != list(unit.get("realized_relations") or []):
+            warnings.append(
+                f"{unit.get('fact_id')}:realized_relations_canonicalized_from_graph"
+            )
+            unit["realized_relations"] = canonical
+        normalized.append(unit)
+    return normalized, warnings
+
+
 def neutralize(
     case: Stage2CaseInput,
     evidence: dict[str, Any],
@@ -701,9 +816,7 @@ def neutralize(
     client: LLMClient,
     root: Path,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
-    prompt_name = (
-        "neutralize_ko_v6.txt" if case.case_origin == "KR" else "neutralize_en_v6.txt"
-    )
+    prompt_name = _active_prompt("neutralize", case.case_origin)
     admissible_evidence = [
         {
             key: unit.get(key)
@@ -723,7 +836,7 @@ def neutralize(
     graph_hash = str(graph.get("graph_hash") or stable_hash(graph_payload))
     result = client.call(
         case_id=case.case_id,
-        stage="v3_source_neutral",
+        stage=_active_stage("source_neutral"),
         system_prompt=load_prompt(root, prompt_name),
         user_payload={
             "case_id": case.case_id,
@@ -739,7 +852,12 @@ def neutralize(
         context_hashes={"entity_relation_graph_hash": graph_hash},
     )
     payload = dict(result.payload)
-    payload["fact_units"] = [dict(unit) for unit in payload.get("fact_units") or []]
+    payload["fact_units"], metadata_normalization_warnings = (
+        normalize_master_relation_metadata(
+            [dict(unit) for unit in payload.get("fact_units") or []],
+            graph,
+        )
+    )
     payload["master_neutral_text"] = " ".join(
         str(unit.get("master_text") or "").strip()
         for unit in payload["fact_units"] if str(unit.get("master_text") or "").strip()
@@ -752,7 +870,7 @@ def neutralize(
         else "pass"
     )
     record = {
-        "dataset_version": DATASET_VERSION,
+        "dataset_version": _active_dataset_version(),
         "case_id": case.case_id,
         "case_origin": case.case_origin,
         "case_subtype": case.case_subtype,
@@ -769,8 +887,11 @@ def neutralize(
         "removed_jurisdiction_signals": payload.get("removed_jurisdiction_signals") or [],
         "anonymization_warnings": payload.get("anonymization_warnings") or [],
         "grounding_warnings": (
-            list(payload.get("grounding_warnings") or []) + checks["warnings"]
+            list(payload.get("grounding_warnings") or [])
+            + metadata_normalization_warnings
+            + checks["warnings"]
         ),
+        "metadata_normalization_warnings": metadata_normalization_warnings,
         "model_insufficient_factual_detail": model_insufficient,
         "deterministic_factual_sufficiency": checks[
             "deterministic_factual_sufficiency"
@@ -798,11 +919,7 @@ def verify_grounding(
     client: LLMClient,
     root: Path,
 ) -> dict[str, Any]:
-    prompt_name = (
-        "verify_grounding_and_roles_ko_v4.txt"
-        if master["case_origin"] == "KR"
-        else "verify_grounding_and_roles_en_v4.txt"
-    )
+    prompt_name = _active_prompt("grounding", str(master["case_origin"]))
     graph_hash = str(graph.get("graph_hash") or "")
     request = {
         "case_id": master["case_id"],
@@ -826,7 +943,7 @@ def verify_grounding(
     }
     result = client.call(
         case_id=master["case_id"],
-        stage="v3_grounding_role_verifier",
+        stage=_active_stage("grounding_role_verifier"),
         system_prompt=load_prompt(root, prompt_name),
         user_payload=request,
         schema=GROUNDING_SCHEMA,
@@ -1180,9 +1297,7 @@ def translate(
     root: Path,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     origin = str(master["case_origin"])
-    prompt_name = (
-        "translate_ko_to_en_v4.txt" if origin == "KR" else "translate_en_to_ko_v4.txt"
-    )
+    prompt_name = _active_prompt("translation", origin)
     direction = "ko_to_en" if origin == "KR" else "en_to_ko"
     target_language = "en" if origin == "KR" else "ko"
     graph_hash = str(master.get("entity_relation_graph_hash") or "")
@@ -1208,7 +1323,7 @@ def translate(
     }
     result = client.call(
         case_id=master["case_id"],
-        stage="v3_translation",
+        stage=_active_stage("translation"),
         system_prompt=load_prompt(root, prompt_name),
         user_payload=request,
         schema=TRANSLATION_SCHEMA,
@@ -1228,7 +1343,7 @@ def translate(
     )
     checks = translation_checks(master, payload, target_language)
     record = {
-        "dataset_version": DATASET_VERSION,
+        "dataset_version": _active_dataset_version(),
         "case_id": master["case_id"],
         "case_origin": origin,
         "master_language": master["master_language"],
@@ -1251,10 +1366,8 @@ def verify_translation(
     client: LLMClient,
     root: Path,
 ) -> dict[str, Any]:
-    prompt_name = (
-        "verify_translation_relations_ko_en_v4.txt"
-        if master["case_origin"] == "KR"
-        else "verify_translation_relations_en_ko_v4.txt"
+    prompt_name = _active_prompt(
+        "translation_verifier", str(master["case_origin"])
     )
     graph_hash = str(master.get("entity_relation_graph_hash") or "")
     request = {
@@ -1274,7 +1387,7 @@ def verify_translation(
     }
     result = client.call(
         case_id=master["case_id"],
-        stage="v3_translation_verifier",
+        stage=_active_stage("translation_verifier"),
         system_prompt=load_prompt(root, prompt_name),
         user_payload=request,
         schema=TRANSLATION_VERIFIER_SCHEMA,

@@ -6,6 +6,9 @@ import pytest
 
 from pipeline.stage2_v3_pipeline import (
     canonical_quantity_tokens,
+    configure_generation_profile,
+    generation_profile,
+    normalize_master_relation_metadata,
     normalize_entity_relation_graph,
     source_checks,
     translation_checks,
@@ -85,6 +88,20 @@ def test_v3_version_and_taxonomy_are_distinct() -> None:
     assert {"treated", "spoke_by_phone_with", "manufactured", "distributed"} <= RELATION_TYPES
 
 
+def test_english_v1_profile_is_isolated_and_uniform() -> None:
+    profile = generation_profile("english-v1")
+    assert profile["dataset_version"] == "stage2-neutral-facts-35x35-v4"
+    assert profile["instruction_language"] == "English"
+    assert profile["schema_version"] == "stage2-v3.1"
+    assert profile["neutralization_policy"] == "canonical-neutralization-en-v1"
+    assert all(name.endswith("_en.txt") for name in profile["prompts"].values())
+    try:
+        configured = configure_generation_profile("english-v1")
+        assert configured["stage_prefix"] == "v4_en"
+    finally:
+        configure_generation_profile("v3")
+
+
 @pytest.mark.parametrize(
     ("ko", "en"),
     [
@@ -112,6 +129,26 @@ def test_v3_source_checks_require_material_relation_realization() -> None:
     checked = source_checks(broken, _evidence(), _graph(), "en")
     assert checked["status"] == "fail"
     assert checked["missing_material_relation_ids"] == ["R001"]
+
+
+def test_relation_metadata_normalization_copies_graph_without_editing_text() -> None:
+    units = _master_payload()["fact_units"]
+    units[0]["realized_relations"] = [{
+        "subject_placeholder": "[PERSON_B]",
+        "relation_type": "treated",
+        "object_placeholder": "[PERSON_A]",
+    }]
+    text = units[0]["master_text"]
+    normalized, warnings = normalize_master_relation_metadata(units, _graph())
+    assert normalized[0]["master_text"] == text
+    assert normalized[0]["realized_relations"] == [{
+        "subject_placeholder": "[PERSON_A]",
+        "relation_type": "treated",
+        "object_placeholder": "[PERSON_B]",
+    }]
+    assert warnings == [
+        "F001:realized_relations_canonicalized_from_graph"
+    ]
 
 
 def test_v3_graph_drops_nonreflexive_self_relations_and_renumbers() -> None:

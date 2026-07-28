@@ -189,3 +189,41 @@ is intentionally disabled so original outputs remain auditable.
 See `STAGE2_IMPLEMENTATION_REPORT.md` for the implementation inventory,
 subtype distributions, prompt and schema sources, test evidence, and smoke/full
 run status.
+
+# Paired Stage 2 QC
+
+The consistent English-instruction generation profile is
+`stage2-neutral-facts-35x35-v4`. Run it through `run_stage2_v4.py`; Korean
+source masters remain Korean, while every generation prompt uses English
+instructions. The v4 manifests pin profile `english-v1`, schema
+`stage2-v3.1`, and policy `canonical-neutralization-en-v1`.
+
+```powershell
+python run_stage2_v4.py --case-id-file configs\stage2_calibration_a_6.txt --batch-name stage-a-english --dry-run
+python run_stage2_v4.py --case-id-file configs\stage2_calibration_a_6.txt --batch-name stage-a-english --resume
+```
+
+The paired QC entrypoint is `qc_neutral_fact_pairs.py`. It validates one
+consistent Stage 2 generation version, runs source-neutral QC, stops for human
+source review, then runs translation QC only after the validated master is
+imported.
+
+```powershell
+python qc_neutral_fact_pairs.py --generation-output-dir outputs\neutral\stage2-neutral-35x35-v4 --batch-name stage-a --dry-run
+python qc_neutral_fact_pairs.py --generation-output-dir outputs\neutral\stage2-neutral-35x35-v4 --batch-name stage-a --source-qc-only
+python qc_neutral_fact_pairs.py --generation-output-dir outputs\neutral\stage2-neutral-35x35-v4 --batch-name stage-a --import-human-source-review outputs\neutral\stage2-paired-qc-v1\human_source_review.csv
+python qc_neutral_fact_pairs.py --generation-output-dir outputs\neutral\stage2-neutral-35x35-v4 --batch-name stage-a --regenerate-stale-translations --resume
+python qc_neutral_fact_pairs.py --generation-output-dir outputs\neutral\stage2-neutral-35x35-v4 --batch-name stage-a --translation-qc-only
+python qc_neutral_fact_pairs.py --generation-output-dir outputs\neutral\stage2-neutral-35x35-v4 --batch-name stage-a --import-human-translation-review outputs\neutral\stage2-paired-qc-v1\human_translation_review.csv
+```
+
+For the current six-case Stage A, all six source masters were accepted with
+human edits. Translations regenerated from those exact validated masters are
+stored separately in
+`outputs/neutral/stage2-paired-qc-v1/regenerated_translations.jsonl`; the v4
+generation artifacts are not overwritten. Automatic translation QC currently
+reports six failures and has stopped at
+`outputs/neutral/stage2-paired-qc-v1/human_translation_review.csv`.
+
+See `PAIRED_QC_IMPLEMENTATION_REPORT.md` for verified paths, gate results,
+workflow, and canonical prompt locations.
