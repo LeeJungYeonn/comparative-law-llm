@@ -33,6 +33,8 @@ from sklearn.preprocessing import StandardScaler
 
 BOOTSTRAP_RESAMPLES = 10_000
 BOOTSTRAP_SEED = 20_260_714
+DISPERSION_PERMUTATIONS = 10_000
+DISPERSION_SEED = 20_260_730
 
 KR_STATUTE_RE = re.compile(
     r"(?:민법|상법|형법|민사소송법|민사집행법|국가배상법|도로교통법|근로기준법"
@@ -324,8 +326,17 @@ def feature_statistics(features: pd.DataFrame, resamples: int, seed: int) -> pd.
     return result.sort_values("cliffs_delta_KR_vs_CA", key=lambda s: s.abs(), ascending=False)
 
 
-def run_pca(features: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, np.ndarray]:
-    scaled = StandardScaler().fit_transform(features[PCA_FEATURES])
+def standardized_pca_space(features: pd.DataFrame) -> np.ndarray:
+    """Return the same pooled z-scored eight-dimensional space used by PCA."""
+    return StandardScaler().fit_transform(features[PCA_FEATURES])
+
+
+def run_pca(
+    features: pd.DataFrame,
+    scaled: np.ndarray | None = None,
+) -> tuple[pd.DataFrame, pd.DataFrame, np.ndarray]:
+    if scaled is None:
+        scaled = standardized_pca_space(features)
     pca = PCA(n_components=2, random_state=42)
     coordinates = pca.fit_transform(scaled)
     loadings = pca.components_.T.copy()
@@ -342,6 +353,104 @@ def run_pca(features: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, np.ndar
     loading_df = pd.DataFrame(loadings, index=PCA_FEATURES, columns=["PC1", "PC2"])
     loading_df.index.name = "feature"
     return scores, loading_df.reset_index(), pca.explained_variance_ratio_
+
+
+def _dispersion_pseudo_f(distances: np.ndarray, groups: np.ndarray) -> float:
+    """One-way ANOVA pseudo-F for distances to the observed group centroids."""
+    labels = np.unique(groups)
+    grand_mean = float(distances.mean())
+    ss_between = sum(
+        int(np.sum(groups == label))
+        * (float(distances[groups == label].mean()) - grand_mean) ** 2
+        for label in labels
+    )
+    ss_within = sum(
+        float(np.sum((distances[groups == label] - distances[groups == label].mean()) ** 2))
+        for label in labels
+    )
+    df_between = len(labels) - 1
+    df_within = len(distances) - len(labels)
+    if ss_within == 0:
+        return float("inf") if ss_between > 0 else 0.0
+    return (ss_between / df_between) / (ss_within / df_within)
+
+
+def dispersion_analysis(
+    features: pd.DataFrame,
+    scaled: np.ndarray,
+    permutations: int,
+    seed: int,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Test equality of multivariate dispersion in the standardized PCA space.
+
+    Euclidean distances are measured from every case to its observed
+    jurisdiction centroid in all eight standardized dimensions.  The primary
+    PERMDISP-style test permutes least-squares residuals from the one-way group
+    model and compares the one-way pseudo-F statistic.  A directional
+    permutation p-value for KR having the larger mean distance is also reported.
+    """
+    if permutations < 1:
+        raise ValueError("dispersion permutations must be at least 1")
+    if scaled.shape != (len(features), len(PCA_FEATURES)):
+        raise ValueError(
+            f"Expected scaled shape {(len(features), len(PCA_FEATURES))}; found {scaled.shape}"
+        )
+
+    groups = features["jurisdiction"].to_numpy()
+    distances = np.empty(len(features), dtype=float)
+    for label in np.unique(groups):
+        mask = groups == label
+        centroid = scaled[mask].mean(axis=0)
+        distances[mask] = np.linalg.norm(scaled[mask] - centroid, axis=1)
+
+    distance_df = features[["case_id", "jurisdiction"]].copy()
+    distance_df["distance_to_group_centroid_8d"] = distances
+
+    kr = distances[groups == "KR"]
+    ca = distances[groups == "CA"]
+    observed_difference = float(kr.mean() - ca.mean())
+    observed_f = _dispersion_pseudo_f(distances, groups)
+    fitted = np.empty(len(distances), dtype=float)
+    for label in np.unique(groups):
+        fitted[groups == label] = distances[groups == label].mean()
+    residuals = distances - fitted
+
+    rng = np.random.default_rng(seed)
+    permuted_f = np.empty(permutations, dtype=float)
+    permuted_difference = np.empty(permutations, dtype=float)
+    for index in range(permutations):
+        permuted_residuals = rng.permutation(residuals)
+        permuted_f[index] = _dispersion_pseudo_f(permuted_residuals, groups)
+        permuted_difference[index] = (
+            permuted_residuals[groups == "KR"].mean()
+            - permuted_residuals[groups == "CA"].mean()
+        )
+
+    p_two_sided = float((1 + np.sum(permuted_f >= observed_f)) / (permutations + 1))
+    p_kr_greater = float(
+        (1 + np.sum(permuted_difference >= observed_difference)) / (permutations + 1)
+    )
+    summary = pd.DataFrame([{
+        "dimensions": len(PCA_FEATURES),
+        "distance_metric": "Euclidean",
+        "center": "group_centroid",
+        "standardization": "pooled_z_score",
+        "permutation_scheme": "least_squares_residuals",
+        "n_KR": len(kr),
+        "n_CA": len(ca),
+        "KR_mean_distance": kr.mean(),
+        "CA_mean_distance": ca.mean(),
+        "KR_median_distance": np.median(kr),
+        "CA_median_distance": np.median(ca),
+        "mean_difference_KR_minus_CA": observed_difference,
+        "mean_ratio_KR_over_CA": kr.mean() / ca.mean(),
+        "pseudo_F": observed_f,
+        "permutations": permutations,
+        "seed": seed,
+        "p_permdisp_two_sided": p_two_sided,
+        "p_directional_KR_greater": p_kr_greater,
+    }])
+    return distance_df, summary
 
 
 def configure_fonts() -> None:
@@ -414,6 +523,92 @@ def plot_loadings(loadings: pd.DataFrame, output: Path) -> None:
     plt.close(fig)
 
 
+def plot_dispersion(
+    distances: pd.DataFrame,
+    summary: pd.DataFrame,
+    output: Path,
+) -> None:
+    groups = ["KR", "CA"]
+    colors = ["#4472C4", "#ED7D31"]
+    values = [
+        distances.loc[
+            distances["jurisdiction"] == group,
+            "distance_to_group_centroid_8d",
+        ].to_numpy()
+        for group in groups
+    ]
+    row = summary.iloc[0]
+    fig, ax = plt.subplots(figsize=(7, 6))
+    boxes = ax.boxplot(values, tick_labels=groups, widths=0.5, patch_artist=True)
+    for patch, color in zip(boxes["boxes"], colors):
+        patch.set_facecolor(color)
+        patch.set_alpha(0.35)
+    for position, (group_values, color) in enumerate(zip(values, colors), start=1):
+        jitter = np.linspace(-0.12, 0.12, len(group_values))
+        ax.scatter(
+            position + jitter,
+            np.sort(group_values),
+            color=color,
+            alpha=0.75,
+            s=32,
+            edgecolors="white",
+            linewidths=0.4,
+        )
+    ax.set_ylabel("Euclidean distance to jurisdiction centroid")
+    ax.set_title(
+        "Dispersion in standardized 8D feature space\n"
+        f"PERMDISP p={row.p_permdisp_two_sided:.4g}; "
+        f"KR > CA p={row.p_directional_KR_greater:.4g}"
+    )
+    ax.grid(axis="y", linestyle=":", alpha=0.3)
+    fig.tight_layout()
+    fig.savefig(output, dpi=180, bbox_inches="tight")
+    plt.close(fig)
+
+
+def write_dispersion_report(
+    output: Path,
+    distances: pd.DataFrame,
+    summary: pd.DataFrame,
+) -> None:
+    row = summary.iloc[0]
+    grouped = distances.groupby("jurisdiction")["distance_to_group_centroid_8d"]
+    descriptions = grouped.agg(["mean", "std", "median", "min", "max"])
+    q1 = grouped.quantile(0.25)
+    q3 = grouped.quantile(0.75)
+    report = f"""# Standardized 8D dispersion test
+
+## Method
+
+- Space: pooled z-score standardization of the eight PCA input features.
+- Distance: Euclidean distance from each case to its observed jurisdiction centroid in all eight dimensions.
+- Primary test: PERMDISP-style one-way pseudo-F on centroid distances.
+- Permutation scheme: least-squares residuals from the one-way group model are permuted, matching the standard PERMDISP procedure.
+- Permutations: {int(row.permutations):,}; seed: {int(row.seed)}.
+- `p_permdisp_two_sided` tests equality of dispersion; `p_directional_KR_greater` tests the prespecified direction KR > CA.
+
+## Group distances
+
+| jurisdiction | n | mean | SD | median [Q1-Q3] | min-max |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| KR | {int(row.n_KR)} | {descriptions.loc['KR', 'mean']:.4f} | {descriptions.loc['KR', 'std']:.4f} | {descriptions.loc['KR', 'median']:.4f} [{q1.loc['KR']:.4f}-{q3.loc['KR']:.4f}] | {descriptions.loc['KR', 'min']:.4f}-{descriptions.loc['KR', 'max']:.4f} |
+| CA | {int(row.n_CA)} | {descriptions.loc['CA', 'mean']:.4f} | {descriptions.loc['CA', 'std']:.4f} | {descriptions.loc['CA', 'median']:.4f} [{q1.loc['CA']:.4f}-{q3.loc['CA']:.4f}] | {descriptions.loc['CA', 'min']:.4f}-{descriptions.loc['CA', 'max']:.4f} |
+
+## Test result
+
+| statistic | value |
+| --- | ---: |
+| Mean difference (KR - CA) | {row.mean_difference_KR_minus_CA:.4f} |
+| Mean ratio (KR / CA) | {row.mean_ratio_KR_over_CA:.4f} |
+| Pseudo-F | {row.pseudo_F:.4f} |
+| Permutation p (two-sided PERMDISP) | {row.p_permdisp_two_sided:.6f} |
+| Permutation p (directional KR > CA) | {row.p_directional_KR_greater:.6f} |
+
+The test concerns within-group dispersion, not separation between the two jurisdiction centroids.
+"""
+    output.write_text(report, encoding="utf-8")
+
+
 def markdown_table(statistics: pd.DataFrame) -> str:
     lines = [
         "| feature | KR mean | CA mean | Cliff's δ | 95% CI | effect | Bonf. p |",
@@ -434,6 +629,7 @@ def write_report(
     scores: pd.DataFrame,
     loadings: pd.DataFrame,
     variance: np.ndarray,
+    dispersion_summary: pd.DataFrame,
     metadata: dict,
 ) -> None:
     centroids = scores.groupby("jurisdiction")[["PC1", "PC2"]].mean()
@@ -445,6 +641,7 @@ def write_report(
     notable = statistics[statistics["effect_size"].isin(["large", "medium"])]
     positive = notable[notable["cliffs_delta_KR_vs_CA"] > 0].head(3)["feature"].tolist()
     negative = notable[notable["cliffs_delta_KR_vs_CA"] < 0].head(3)["feature"].tolist()
+    dispersion = dispersion_summary.iloc[0]
     report = f"""# 한국–California 판례 feature 비교 (각 35건)
 
 ## 핵심 결과
@@ -461,6 +658,15 @@ def write_report(
 
 {markdown_table(statistics)}
 
+## 표준화 8차원 dispersion 검정
+
+- PCA 입력과 동일한 8개 feature를 전체 표본 pooled z-score로 표준화한 공간을 사용했다.
+- 각 사건에서 해당 관할권 centroid까지의 Euclidean distance 평균은 KR={dispersion.KR_mean_distance:.4f}, CA={dispersion.CA_mean_distance:.4f}이다.
+- 평균거리 차이(KR-CA)는 {dispersion.mean_difference_KR_minus_CA:.4f}, 평균거리 비(KR/CA)는 {dispersion.mean_ratio_KR_over_CA:.4f}이다.
+- PERMDISP pseudo-F={dispersion.pseudo_F:.4f}, 최소제곱 잔차 {int(dispersion.permutations):,}회 순열 p={dispersion.p_permdisp_two_sided:.6f}이다.
+- 사전 방향가설 KR>CA의 순열 p={dispersion.p_directional_KR_greater:.6f}이다.
+- 이 검정은 두 집단 중심의 분리가 아니라 각 집단 내부의 퍼짐 차이를 평가한다.
+
 ## 방법
 
 - 입력: `ca_cases_selected_35.jsonl` 35건, `kr_cases_selected_35.jsonl` 35건.
@@ -470,13 +676,14 @@ def write_report(
 - Cliff's δ 95% CI는 percentile bootstrap {metadata['bootstrap_resamples']:,}회, seed={metadata['bootstrap_seed']}이다.
 - Mann–Whitney U 양측검정과 {len(ALL_FEATURES)}개 feature Bonferroni 보정 p값을 함께 제시했다.
 - PCA는 8개 밀도/구조 feature를 z-score 표준화한 뒤 계산했다. PC1 부호는 KR 중심이 양수가 되도록 정렬했으며 PCA 부호 자체는 임의적이다.
+- 8차원 dispersion 검정은 집단별 centroid 거리의 일원 pseudo-F를 사용하고, 표준 PERMDISP 절차에 따라 집단모형의 최소제곱 잔차를 순열했다.
 - 이 결과는 언어별 정규식·용어 사전의 탐지 민감도와 표본 구성에 영향을 받으므로, 법체계의 본질적 차이에 대한 직접적 인과증거로 해석하지 않는다.
 
 ## 재현 정보
 
 - CA SHA-256: `{metadata['ca_sha256']}`
 - KR SHA-256: `{metadata['kr_sha256']}`
-- 생성 파일: `feature_vectors.csv`, `cliffs_delta_by_feature.csv`, `pca_scores.csv`, `pca_loadings.csv`, `analysis_metadata.json`, `plots/*.png`.
+- 생성 파일: `feature_vectors.csv`, `cliffs_delta_by_feature.csv`, `pca_scores.csv`, `pca_loadings.csv`, `dispersion_distances_8d.csv`, `dispersion_test_8d.csv`, `dispersion_summary_8d.md`, `analysis_metadata.json`, `plots/*.png`.
 """
     output.write_text(report, encoding="utf-8")
 
@@ -488,6 +695,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", type=Path, default=Path("outputs/analysis/kr_ca_35"))
     parser.add_argument("--bootstrap-resamples", type=int, default=BOOTSTRAP_RESAMPLES)
     parser.add_argument("--bootstrap-seed", type=int, default=BOOTSTRAP_SEED)
+    parser.add_argument("--dispersion-permutations", type=int, default=DISPERSION_PERMUTATIONS)
+    parser.add_argument("--dispersion-seed", type=int, default=DISPERSION_SEED)
     return parser.parse_args()
 
 
@@ -513,12 +722,25 @@ def main() -> None:
     feature_rows.extend(extract_features(record, "CA") for record in ca_records)
     features = pd.DataFrame(feature_rows)
     statistics = feature_statistics(features, args.bootstrap_resamples, args.bootstrap_seed)
-    scores, loadings, variance = run_pca(features)
+    scaled = standardized_pca_space(features)
+    scores, loadings, variance = run_pca(features, scaled)
+    dispersion_distances, dispersion_summary = dispersion_analysis(
+        features,
+        scaled,
+        args.dispersion_permutations,
+        args.dispersion_seed,
+    )
 
     features.to_csv(args.output_dir / "feature_vectors.csv", index=False, encoding="utf-8-sig")
     statistics.to_csv(args.output_dir / "cliffs_delta_by_feature.csv", index=False, encoding="utf-8-sig")
     scores.to_csv(args.output_dir / "pca_scores.csv", index=False, encoding="utf-8-sig")
     loadings.to_csv(args.output_dir / "pca_loadings.csv", index=False, encoding="utf-8-sig")
+    dispersion_distances.to_csv(
+        args.output_dir / "dispersion_distances_8d.csv", index=False, encoding="utf-8-sig"
+    )
+    dispersion_summary.to_csv(
+        args.output_dir / "dispersion_test_8d.csv", index=False, encoding="utf-8-sig"
+    )
 
     metadata = {
         "ca_input": str(args.ca_jsonl),
@@ -531,6 +753,20 @@ def main() -> None:
         "bootstrap_seed": args.bootstrap_seed,
         "pca_features": PCA_FEATURES,
         "pca_explained_variance_ratio": variance.tolist(),
+        "dispersion_dimensions": len(PCA_FEATURES),
+        "dispersion_distance_metric": "Euclidean",
+        "dispersion_center": "group_centroid",
+        "dispersion_standardization": "pooled_z_score",
+        "dispersion_permutation_scheme": "least_squares_residuals",
+        "dispersion_permutations": args.dispersion_permutations,
+        "dispersion_seed": args.dispersion_seed,
+        "dispersion_pseudo_F": float(dispersion_summary.iloc[0]["pseudo_F"]),
+        "dispersion_p_permdisp_two_sided": float(
+            dispersion_summary.iloc[0]["p_permdisp_two_sided"]
+        ),
+        "dispersion_p_directional_KR_greater": float(
+            dispersion_summary.iloc[0]["p_directional_KR_greater"]
+        ),
     }
     (args.output_dir / "analysis_metadata.json").write_text(
         json.dumps(metadata, ensure_ascii=False, indent=2), encoding="utf-8"
@@ -538,11 +774,33 @@ def main() -> None:
     plot_deltas(statistics, plot_dir / "01_cliffs_delta.png")
     plot_pca(scores, variance, plot_dir / "02_pca.png")
     plot_loadings(loadings, plot_dir / "03_pca_loadings.png")
-    write_report(args.output_dir / "analysis_summary.md", statistics, scores, loadings, variance, metadata)
+    plot_dispersion(dispersion_distances, dispersion_summary, plot_dir / "04_dispersion_8d.png")
+    write_report(
+        args.output_dir / "analysis_summary.md",
+        statistics,
+        scores,
+        loadings,
+        variance,
+        dispersion_summary,
+        metadata,
+    )
+    write_dispersion_report(
+        args.output_dir / "dispersion_summary_8d.md",
+        dispersion_distances,
+        dispersion_summary,
+    )
 
     print(f"Completed KR={len(kr_records)}, CA={len(ca_records)}")
     print(f"Output: {args.output_dir}")
     print(f"PCA variance: PC1={variance[0]:.4f}, PC2={variance[1]:.4f}")
+    dispersion_row = dispersion_summary.iloc[0]
+    print(
+        "8D dispersion: "
+        f"KR mean={dispersion_row.KR_mean_distance:.4f}, "
+        f"CA mean={dispersion_row.CA_mean_distance:.4f}, "
+        f"pseudo-F={dispersion_row.pseudo_F:.4f}, "
+        f"p={dispersion_row.p_permdisp_two_sided:.6f}"
+    )
     print(statistics[["feature", "cliffs_delta_KR_vs_CA", "ci_95_low", "ci_95_high", "effect_size"]].head(8).to_string(index=False))
 
 
