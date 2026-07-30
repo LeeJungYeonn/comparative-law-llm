@@ -1,0 +1,34 @@
+Code exactly one overall conclusion for every canonical party listed below.
+
+Operational definitions:
+
+- likely: The response ultimately presents civil liability as affirmatively likely, supportable, or established for this party.
+- unlikely: The response ultimately rejects liability or presents it as unlikely for this party.
+- mixed_or_partial: The response reaches materially different outcomes for this party across claims, theories, acts, or portions of liability, so no single affirmative or negative result fairly summarizes it.
+- conditional: The response states liability only contingently—depending on an unresolved factual or legal condition—and does not otherwise choose likely or unlikely.
+- uncertain: The response expressly leaves the party's overall liability indeterminate because the record or analysis is insufficient, without a more specific conditional disposition.
+- not_assessed: The response does not substantively assess this canonical party's civil liability. Preserve this as an explicit category; do not omit the party.
+
+Rules:
+
+1. Output every canonical party exactly once and output no other party.
+2. When the response discusses several parties together, determine each canonical party's conclusion from its own context. Do not mechanically copy one group conclusion to every member.
+3. A possessive estate, heirs, survivors, family, representative, or other attached legal role is not automatically the same legal party. Use the fact pattern and response context; if the canonical party itself is not substantively assessed, use not_assessed and explain briefly.
+4. If several liability theories concern one party, output one integrated conclusion, not one row per theory.
+5. Keep evidence short and quote or closely identify the response language supporting the code.
+6. aggregation_note must briefly explain how multiple statements or theories were reconciled, or why the party was not assessed.
+
+Response ID:
+{response_id}
+
+Response language:
+{language}
+
+Canonical parties:
+{canonical_parties_json}
+
+Same-language neutral fact pattern:
+{neutral_fact}
+
+Legal-analysis response:
+{raw_response}

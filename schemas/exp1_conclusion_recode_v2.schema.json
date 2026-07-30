@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Experiment 1 conclusion-only recoding v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["response_id", "language", "parties"],
+  "properties": {
+    "response_id": {"type": "string", "minLength": 1},
+    "language": {"enum": ["ko", "en"]},
+    "parties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["canonical_party_id", "conclusion", "assessed", "supporting_text", "aggregation_note"],
+        "properties": {
+          "canonical_party_id": {"type": "string", "minLength": 1},
+          "conclusion": {"enum": ["likely", "unlikely", "mixed_or_partial", "conditional", "uncertain", "not_assessed"]},
+          "assessed": {"type": "boolean"},
+          "supporting_text": {"type": "string"},
+          "aggregation_note": {"type": "string"}
+        }
+      }
+    }
+  }
+}
