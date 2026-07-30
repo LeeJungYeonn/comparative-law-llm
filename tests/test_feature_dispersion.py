@@ -1,7 +1,45 @@
 import numpy as np
 import pandas as pd
 
-from analyze_kr_ca_features import PCA_FEATURES, dispersion_analysis
+from analyze_kr_ca_features import (
+    CA_DOCTRINE_TERMS,
+    CA_PCA_DOCTRINE_TERMS,
+    CA_REMEDY_TERMS,
+    KR_DOCTRINE_TERMS,
+    KR_PCA_DOCTRINE_TERMS,
+    KR_REMEDY_TERMS,
+    PCA_FEATURES,
+    dispersion_analysis,
+    extract_features,
+)
+
+
+def test_pca_feature_space_is_log1p_and_doctrine_remedy_exclusive() -> None:
+    assert len(PCA_FEATURES) == 8
+    assert all(feature.startswith("log1p(") for feature in PCA_FEATURES)
+    assert len(KR_PCA_DOCTRINE_TERMS) < len(KR_DOCTRINE_TERMS)
+    assert len(CA_PCA_DOCTRINE_TERMS) == len(CA_DOCTRINE_TERMS)
+    assert not any(
+        doctrine in remedy or remedy in doctrine
+        for doctrine in KR_PCA_DOCTRINE_TERMS
+        for remedy in KR_REMEDY_TERMS
+    )
+    assert not any(
+        doctrine in remedy or remedy in doctrine
+        for doctrine in CA_PCA_DOCTRINE_TERMS
+        for remedy in CA_REMEDY_TERMS
+    )
+
+    features = extract_features(
+        {"case_id": "KR_test", "raw_text": "손해배상 위자료 상당인과관계."},
+        "KR",
+    )
+    assert features["remedy_exclusive_term_count"] >= 2
+    assert features["doctrine_exclusive_term_count"] >= 1
+    assert features["doctrine_exclusive_term_count"] < features["doctrine_term_count"]
+    assert features["log1p(doctrine_exclusive_per_1k)"] == np.log1p(
+        features["doctrine_exclusive_per_1k"]
+    )
 
 
 def test_dispersion_analysis_detects_larger_kr_spread() -> None:

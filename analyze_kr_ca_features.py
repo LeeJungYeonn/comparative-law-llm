@@ -118,6 +118,21 @@ CA_JURISDICTION_TERMS = [
     "Court of Appeals", "state court",
 ]
 
+# The PCA/PERMDISP representation gives remedy terms priority.  Any doctrine
+# term that contains, or is contained by, a remedy term is removed so the two
+# dimensions do not count the same lexical signal.  This matters in Korean,
+# where broad doctrine terms such as "손해" overlap several remedy expressions.
+KR_PCA_DOCTRINE_TERMS = [
+    term for term in KR_DOCTRINE_TERMS
+    if not any(term in remedy or remedy in term for remedy in KR_REMEDY_TERMS)
+]
+CA_PCA_DOCTRINE_TERMS = [
+    term for term in CA_DOCTRINE_TERMS
+    if not any(term in remedy or remedy in term for remedy in CA_REMEDY_TERMS)
+]
+KR_PCA_REMEDY_TERMS = KR_REMEDY_TERMS.copy()
+CA_PCA_REMEDY_TERMS = CA_REMEDY_TERMS.copy()
+
 ALL_FEATURES = [
     "doc_length_tokens", "doc_length_sentences", "avg_sentence_length",
     "statute_ref_count", "precedent_citation_count", "citation_count",
@@ -126,11 +141,17 @@ ALL_FEATURES = [
     "citation_density", "doctrine_per_1k", "remedy_per_1k", "procedure_per_1k",
     "jurisdiction_per_1k", "conclusion_position", "party_arg_density",
 ]
-PCA_FEATURES = [
-    "statute_per_1k", "precedent_per_1k", "doctrine_per_1k", "remedy_per_1k",
-    "procedure_per_1k", "jurisdiction_per_1k", "avg_sentence_length",
-    "party_arg_density",
+PCA_FEATURE_SPECS = [
+    ("log1p(doc_length_sentences)", "doc_length_sentences"),
+    ("log1p(avg_sentence_length)", "avg_sentence_length"),
+    ("log1p(statute_per_1k)", "statute_per_1k"),
+    ("log1p(precedent_per_1k)", "precedent_per_1k"),
+    ("log1p(doctrine_exclusive_per_1k)", "doctrine_exclusive_per_1k"),
+    ("log1p(remedy_exclusive_per_1k)", "remedy_exclusive_per_1k"),
+    ("log1p(procedure_per_1k)", "procedure_per_1k"),
+    ("log1p(party_arg_density)", "party_arg_density"),
 ]
+PCA_FEATURES = [output for output, _ in PCA_FEATURE_SPECS]
 FEATURE_MEANINGS = {
     "doc_length_tokens": "판결문 토큰 수",
     "doc_length_sentences": "판결문 문장 수",
@@ -229,13 +250,19 @@ def extract_features(record: dict, jurisdiction: str) -> dict:
     precedent_count = len(precedent_pattern.findall(text))
     doctrine_count = count_terms(text, KR_DOCTRINE_TERMS if is_kr else CA_DOCTRINE_TERMS)
     remedy_count = count_terms(text, KR_REMEDY_TERMS if is_kr else CA_REMEDY_TERMS)
+    doctrine_exclusive_count = count_terms(
+        text, KR_PCA_DOCTRINE_TERMS if is_kr else CA_PCA_DOCTRINE_TERMS
+    )
+    remedy_exclusive_count = count_terms(
+        text, KR_PCA_REMEDY_TERMS if is_kr else CA_PCA_REMEDY_TERMS
+    )
     procedure_count = count_terms(text, KR_PROCEDURE_TERMS if is_kr else CA_PROCEDURE_TERMS)
     jurisdiction_count = count_terms(
         text, KR_JURISDICTION_TERMS if is_kr else CA_JURISDICTION_TERMS
     )
     party_count = len(party_pattern.findall(text))
 
-    return {
+    result = {
         "case_id": record.get("case_id", ""),
         "jurisdiction": jurisdiction,
         "text_field": text_key,
@@ -254,11 +281,18 @@ def extract_features(record: dict, jurisdiction: str) -> dict:
         "citation_density": density(statute_count + precedent_count, token_count),
         "doctrine_per_1k": density(doctrine_count, token_count),
         "remedy_per_1k": density(remedy_count, token_count),
+        "doctrine_exclusive_term_count": doctrine_exclusive_count,
+        "remedy_exclusive_term_count": remedy_exclusive_count,
+        "doctrine_exclusive_per_1k": density(doctrine_exclusive_count, token_count),
+        "remedy_exclusive_per_1k": density(remedy_exclusive_count, token_count),
         "procedure_per_1k": density(procedure_count, token_count),
         "jurisdiction_per_1k": density(jurisdiction_count, token_count),
         "conclusion_position": conclusion_position(text, conclusion_pattern),
         "party_arg_density": density(party_count, token_count),
     }
+    for transformed_name, source_name in PCA_FEATURE_SPECS:
+        result[transformed_name] = float(np.log1p(result[source_name]))
+    return result
 
 
 def cliffs_delta(a: np.ndarray, b: np.ndarray) -> float:
@@ -327,7 +361,7 @@ def feature_statistics(features: pd.DataFrame, resamples: int, seed: int) -> pd.
 
 
 def standardized_pca_space(features: pd.DataFrame) -> np.ndarray:
-    """Return the same pooled z-scored eight-dimensional space used by PCA."""
+    """Return the pooled z-scored log1p eight-dimensional space used by PCA."""
     return StandardScaler().fit_transform(features[PCA_FEATURES])
 
 
@@ -434,7 +468,7 @@ def dispersion_analysis(
         "dimensions": len(PCA_FEATURES),
         "distance_metric": "Euclidean",
         "center": "group_centroid",
-        "standardization": "pooled_z_score",
+        "standardization": "log1p_then_pooled_z_score",
         "permutation_scheme": "least_squares_residuals",
         "n_KR": len(kr),
         "n_CA": len(ca),
@@ -580,7 +614,7 @@ def write_dispersion_report(
 
 ## Method
 
-- Space: pooled z-score standardization of the eight PCA input features.
+- Space: `log1p` transformation followed by pooled z-score standardization of the eight PCA input features.
 - Distance: Euclidean distance from each case to its observed jurisdiction centroid in all eight dimensions.
 - Primary test: PERMDISP-style one-way pseudo-F on centroid distances.
 - Permutation scheme: least-squares residuals from the one-way group model are permuted, matching the standard PERMDISP procedure.
@@ -658,9 +692,19 @@ def write_report(
 
 {markdown_table(statistics)}
 
+## PCA/PERMDISP feature 선정 근거
+
+- `doc_length_sentences`는 판결문 전체 규모, `avg_sentence_length`는 문장 단위 서술 복잡성을 나타내므로 서로 다른 구조 차원을 담당한다.
+- `statute_per_1k`와 `precedent_per_1k`는 조문 중심·판례 중심 인용 관행을 합계로 뭉개지 않고 분리한다.
+- `doctrine_exclusive_per_1k`와 `remedy_exclusive_per_1k`는 법리 전개와 구제수단 논의를 구분하되 remedy 우선 비중첩 사전으로 중복 집계를 제거한다.
+- `procedure_per_1k`는 절차적 서술, `party_arg_density`는 당사자 주장 제시라는 별도 담화 기능을 측정한다.
+- `jurisdiction_per_1k`는 관할권별 영값 비율과 사전 의미의 비교가능성이 낮아 주공간에서 제외했다.
+- 길이·밀도 변수의 우측 왜도와 극단값 영향을 줄이기 위해 8개 모두 `log1p` 변환한 뒤 pooled z-score로 동일 가중했다.
+
 ## 표준화 8차원 dispersion 검정
 
-- PCA 입력과 동일한 8개 feature를 전체 표본 pooled z-score로 표준화한 공간을 사용했다.
+- PCA 입력과 동일한 확정 8개 feature에 `log1p`를 적용하고 전체 표본 pooled z-score로 표준화한 공간을 사용했다.
+- doctrine/remedy는 remedy 우선 비중첩 규칙을 적용해 같은 어휘 신호가 두 차원에 동시에 집계되지 않도록 했다.
 - 각 사건에서 해당 관할권 centroid까지의 Euclidean distance 평균은 KR={dispersion.KR_mean_distance:.4f}, CA={dispersion.CA_mean_distance:.4f}이다.
 - 평균거리 차이(KR-CA)는 {dispersion.mean_difference_KR_minus_CA:.4f}, 평균거리 비(KR/CA)는 {dispersion.mean_ratio_KR_over_CA:.4f}이다.
 - PERMDISP pseudo-F={dispersion.pseudo_F:.4f}, 최소제곱 잔차 {int(dispersion.permutations):,}회 순열 p={dispersion.p_permdisp_two_sided:.6f}이다.
@@ -675,7 +719,8 @@ def write_report(
 - 토큰·문장 분리는 `preprocess_cases.py`와 동일한 정규식 규칙을 사용했다.
 - Cliff's δ 95% CI는 percentile bootstrap {metadata['bootstrap_resamples']:,}회, seed={metadata['bootstrap_seed']}이다.
 - Mann–Whitney U 양측검정과 {len(ALL_FEATURES)}개 feature Bonferroni 보정 p값을 함께 제시했다.
-- PCA는 8개 밀도/구조 feature를 z-score 표준화한 뒤 계산했다. PC1 부호는 KR 중심이 양수가 되도록 정렬했으며 PCA 부호 자체는 임의적이다.
+- PCA는 확정된 8개 길이/밀도 feature에 `log1p`를 적용한 후 pooled z-score 표준화하여 계산했다. PC1 부호는 KR 중심이 양수가 되도록 정렬했으며 PCA 부호 자체는 임의적이다.
+- PCA와 PERMDISP는 완전히 동일한 변환·표준화 8차원 feature matrix를 사용했다.
 - 8차원 dispersion 검정은 집단별 centroid 거리의 일원 pseudo-F를 사용하고, 표준 PERMDISP 절차에 따라 집단모형의 최소제곱 잔차를 순열했다.
 - 이 결과는 언어별 정규식·용어 사전의 탐지 민감도와 표본 구성에 영향을 받으므로, 법체계의 본질적 차이에 대한 직접적 인과증거로 해석하지 않는다.
 
@@ -683,7 +728,7 @@ def write_report(
 
 - CA SHA-256: `{metadata['ca_sha256']}`
 - KR SHA-256: `{metadata['kr_sha256']}`
-- 생성 파일: `feature_vectors.csv`, `cliffs_delta_by_feature.csv`, `pca_scores.csv`, `pca_loadings.csv`, `dispersion_distances_8d.csv`, `dispersion_test_8d.csv`, `dispersion_summary_8d.md`, `analysis_metadata.json`, `plots/*.png`.
+- 생성 파일: `feature_vectors.csv`, `cliffs_delta_by_feature.csv`, `pca_feature_matrix.csv`, `pca_scores.csv`, `pca_loadings.csv`, `dispersion_distances_8d.csv`, `dispersion_test_8d.csv`, `dispersion_summary_8d.md`, `analysis_metadata.json`, `plots/*.png`.
 """
     output.write_text(report, encoding="utf-8")
 
@@ -735,6 +780,9 @@ def main() -> None:
     statistics.to_csv(args.output_dir / "cliffs_delta_by_feature.csv", index=False, encoding="utf-8-sig")
     scores.to_csv(args.output_dir / "pca_scores.csv", index=False, encoding="utf-8-sig")
     loadings.to_csv(args.output_dir / "pca_loadings.csv", index=False, encoding="utf-8-sig")
+    features[["case_id", "jurisdiction", *PCA_FEATURES]].to_csv(
+        args.output_dir / "pca_feature_matrix.csv", index=False, encoding="utf-8-sig"
+    )
     dispersion_distances.to_csv(
         args.output_dir / "dispersion_distances_8d.csv", index=False, encoding="utf-8-sig"
     )
@@ -752,11 +800,22 @@ def main() -> None:
         "bootstrap_resamples": args.bootstrap_resamples,
         "bootstrap_seed": args.bootstrap_seed,
         "pca_features": PCA_FEATURES,
+        "pca_feature_sources": {
+            transformed: source for transformed, source in PCA_FEATURE_SPECS
+        },
+        "pca_transform": "log1p_then_pooled_z_score",
+        "pca_doctrine_remedy_overlap_policy": "remedy_priority",
+        "pca_removed_KR_doctrine_terms": [
+            term for term in KR_DOCTRINE_TERMS if term not in KR_PCA_DOCTRINE_TERMS
+        ],
+        "pca_removed_CA_doctrine_terms": [
+            term for term in CA_DOCTRINE_TERMS if term not in CA_PCA_DOCTRINE_TERMS
+        ],
         "pca_explained_variance_ratio": variance.tolist(),
         "dispersion_dimensions": len(PCA_FEATURES),
         "dispersion_distance_metric": "Euclidean",
         "dispersion_center": "group_centroid",
-        "dispersion_standardization": "pooled_z_score",
+        "dispersion_standardization": "log1p_then_pooled_z_score",
         "dispersion_permutation_scheme": "least_squares_residuals",
         "dispersion_permutations": args.dispersion_permutations,
         "dispersion_seed": args.dispersion_seed,
