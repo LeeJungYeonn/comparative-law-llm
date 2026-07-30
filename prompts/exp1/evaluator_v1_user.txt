@@ -1,0 +1,6 @@
+Code the legal-analysis response below. Party identifiers must follow the placeholders used in the response. For every detected ontology concept, quote the shortest supporting evidence span and assign the supplied A/B/C marker strength. A means an explicit statute, precedent, or jurisdiction; B means a legal-system-characteristic doctrine expression; C means a general functional concept shared across systems. Do not treat generic duty, causation, damage, or fault alone as jurisdiction selection.
+
+For reasoning units, reproduce a short exact span, then assign all applicable labels. Code damages at concept level. Flag unsupported or hallucinated authority only where the response presents a suspect legal authority, not merely because no citation is supplied.
+
+[Response]
+{raw_response}

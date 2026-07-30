@@ -1,0 +1,14 @@
+Based on the following facts, analyze the potential liability for damages of each party whose conduct may give rise to liability.
+
+Organize the response as follows:
+
+1. Key issues
+2. Potentially applicable legal principles
+3. Application of those principles to the facts
+4. Conclusion regarding each party’s potential liability
+5. Potential scope and categories of recoverable damages
+
+Do not assume facts that are not stated. If information necessary for the analysis is missing, identify that uncertainty. Write the answer in English.
+
+[Facts]
+{neutral_fact_en}

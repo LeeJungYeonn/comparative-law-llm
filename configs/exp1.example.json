@@ -1,0 +1,20 @@
+{
+  "experiment_id": "exp1-input-language-v1",
+  "input": "outputs/neutral/stage2-paired-qc-v1/accepted_pairs.jsonl",
+  "output_dir": "outputs/exp1",
+  "model": "REQUIRED_EXACT_MODEL_SNAPSHOT",
+  "evaluator_model": "REQUIRED_EXACT_MODEL_SNAPSHOT",
+  "base_url": "https://gw.letsur.ai/v1",
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "max_output_tokens": 8000,
+  "evaluator_max_output_tokens": 12000,
+  "reasoning_effort": "low",
+  "concurrency": 4,
+  "seed": 20260730,
+  "request_order_seed": 20260730,
+  "repetitions": 3,
+  "generation_prompt_version": "generation_v1",
+  "evaluator_prompt_version": "evaluator_v1",
+  "max_retries": 5
+}

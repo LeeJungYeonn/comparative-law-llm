@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Experiment 1 response evaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["parties", "jurisdiction_signals", "concepts", "reasoning_units", "damages", "evaluator_confidence", "evaluator_notes"],
+  "properties": {
+    "parties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["party_id", "conclusion", "evidence_span", "confidence"],
+        "properties": {
+          "party_id": {"type": "string", "minLength": 1},
+          "conclusion": {"enum": ["likely", "unlikely", "mixed_or_partial", "conditional", "uncertain", "not_assessed"]},
+          "evidence_span": {"type": "string"},
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+        }
+      }
+    },
+    "jurisdiction_signals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["explicit_jurisdiction", "explicit_statute_reference", "explicit_precedent_reference", "civil_law_authority_marker", "common_law_authority_marker", "jurisdiction_specific_doctrine", "unsupported_or_hallucinated_authority", "evidence_spans"],
+      "properties": {
+        "explicit_jurisdiction": {"enum": ["KR", "US_CA", "US_OTHER", "OTHER", "NONE", "AMBIGUOUS"]},
+        "explicit_statute_reference": {"type": "boolean"},
+        "explicit_precedent_reference": {"type": "boolean"},
+        "civil_law_authority_marker": {"type": "boolean"},
+        "common_law_authority_marker": {"type": "boolean"},
+        "jurisdiction_specific_doctrine": {"type": "boolean"},
+        "unsupported_or_hallucinated_authority": {"type": "boolean"},
+        "evidence_spans": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "concepts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["concept_id", "present", "evidence_span", "confidence", "marker_strength"],
+        "properties": {
+          "concept_id": {"type": "string", "minLength": 1},
+          "present": {"type": "boolean"},
+          "evidence_span": {"type": "string"},
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+          "marker_strength": {"enum": ["A", "B", "C"]}
+        }
+      }
+    },
+    "reasoning_units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["unit_id", "text_span", "labels"],
+        "properties": {
+          "unit_id": {"type": "integer", "minimum": 1},
+          "text_span": {"type": "string", "minLength": 1},
+          "labels": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "enum": ["issue_identification", "governing_rule", "duty_or_protected_interest", "breach_or_wrongfulness", "fault_or_intent", "factual_causation", "legal_or_proximate_causation", "injury_or_damage", "plaintiff_fault_or_defense", "vicarious_or_organizational_liability", "multiple_tortfeasors", "damages_scope", "evidentiary_uncertainty", "procedural_reasoning", "policy_reasoning", "conclusion", "other"]
+            }
+          }
+        }
+      }
+    },
+    "damages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["damage_id", "present", "evidence_span", "confidence"],
+        "properties": {
+          "damage_id": {
+            "enum": ["medical_expenses", "lost_earnings", "future_economic_loss", "property_damage", "pain_and_suffering_or_nonpecuniary", "emotional_distress", "wrongful_death_related", "punitive_damages", "mitigation", "comparative_reduction", "amount_or_proof_uncertainty"]
+          },
+          "present": {"type": "boolean"},
+          "evidence_span": {"type": "string"},
+          "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+        }
+      }
+    },
+    "evaluator_confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "evaluator_notes": {"type": "string"}
+  }
+}
