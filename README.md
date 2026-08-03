@@ -3,6 +3,10 @@
 Reproducible pipeline for comparing how input language may shift legal knowledge
 sources and reasoning-unit distributions in LLM-generated liability analysis.
 
+Experiment runbooks are in `EXP1_GUIDE.md` and `EXP2_GUIDE.md`. Experiment 2
+reuses the Experiment 1 pipeline and adds only an explicit, language-matched
+jurisdiction instruction; its outputs are isolated under `outputs/exp2`.
+
 Stage 1 builds the reusable Korean and California case corpora. It does not
 translate cases, call an LLM, or evaluate model outputs.
 

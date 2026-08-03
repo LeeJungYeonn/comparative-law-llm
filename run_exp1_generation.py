@@ -11,15 +11,21 @@ from audit_exp1 import audit
 from exp1 import EXPERIMENT_ID, GENERATION_PROMPT_VERSION
 from exp1.common import (
     DEFAULT_INPUT, append_jsonl, assert_request_is_blind, build_manifest,
-    generation_record_base, load_prompts, now_iso, parse_case_ids, post_chat,
+    directory_hashes, generation_record_base, load_prompts, now_iso, parse_case_ids, post_chat,
     read_jsonl, render_generation, request_payload, response_content, select_cases,
-    sha256_text, stable_json, unique_key, usable_cases, write_json, write_jsonl,
+    sha256_file, sha256_text, stable_json, unique_key, usable_cases, write_json, write_jsonl,
 )
 from exp1.common import REPO_ROOT, load_env_file
+from exp1.design import (
+    EXP1_GENERATION_PROMPT_VERSION, EXP2_EXPERIMENT_ID,
+    JURISDICTION_INSTRUCTION_VERSION, experiment_values, jurisdiction_metadata,
+)
 
 
 def build_plan(
     rows: list[dict[str, Any]], repetitions: int, model: str, seed: int,
+    experiment_id: str = EXPERIMENT_ID,
+    prompt_version: str = GENERATION_PROMPT_VERSION,
 ) -> list[dict[str, Any]]:
     plan = []
     for row in rows:
@@ -32,7 +38,7 @@ def build_plan(
                     "replicate_id": replicate_id,
                     "seed": replicate_seed,
                     "unique_key": unique_key(
-                        row["case_id"], condition, replicate_id, model, GENERATION_PROMPT_VERSION,
+                        row["case_id"], condition, replicate_id, model, prompt_version,
                     ),
                 })
     random.Random(seed).shuffle(plan)
@@ -50,37 +56,52 @@ def completed_keys(path: Path) -> set[str]:
     }
 
 
-def public_plan(plan: list[dict[str, Any]], model: str) -> list[dict[str, Any]]:
-    return [{
+def public_plan(
+    plan: list[dict[str, Any]], model: str, experiment_id: str = EXPERIMENT_ID,
+    prompt_version: str = GENERATION_PROMPT_VERSION,
+) -> list[dict[str, Any]]:
+    result = []
+    for item in plan:
+        row = {
+        "experiment_id": experiment_id,
         "case_id": item["row"]["case_id"],
+        "case_origin": item["row"]["case_origin"],
         "condition": item["condition"],
+        "input_language": item["condition"],
         "replicate_id": item["replicate_id"],
+        "replicate_number": item["replicate_id"],
         "seed": item["seed"],
         "request_order": item["request_order"],
         "model": model,
-        "prompt_version": GENERATION_PROMPT_VERSION,
+        "prompt_version": prompt_version,
         "unique_key": item["unique_key"],
-    } for item in plan]
+        }
+        if experiment_id == EXP2_EXPERIMENT_ID:
+            row.update(jurisdiction_metadata(item["row"], item["condition"]))
+        result.append(row)
+    return result
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run Experiment 1 paired raw-response generation.")
+def parse_args(default_experiment: str = "exp1") -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Run the shared Exp 1/Exp 2 paired raw-response generator.")
+    parser.add_argument("--experiment", choices=("exp1", "exp2"), default=default_experiment)
     parser.add_argument("--input", type=Path, default=DEFAULT_INPUT)
-    parser.add_argument("--output-dir", type=Path, default=Path("outputs/exp1"))
+    parser.add_argument("--output-dir", type=Path)
+    parser.add_argument("--exp1-dir", type=Path, default=Path("outputs/exp1"))
     parser.add_argument("--model", help="Exact model snapshot identifier; required for generation.")
-    parser.add_argument("--base-url", default="https://gw.letsur.ai/v1")
+    parser.add_argument("--base-url")
     parser.add_argument("--api-key-env", default="LETSUR_API_KEY")
     parser.add_argument("--env-file", type=Path, default=REPO_ROOT / ".env")
-    parser.add_argument("--temperature", type=float, default=1.0)
-    parser.add_argument("--top-p", type=float, default=1.0)
-    parser.add_argument("--max-output-tokens", type=int, default=8000)
+    parser.add_argument("--temperature", type=float)
+    parser.add_argument("--top-p", type=float)
+    parser.add_argument("--max-output-tokens", type=int)
     parser.add_argument("--reasoning-effort")
-    parser.add_argument("--seed", type=int, default=20260730)
-    parser.add_argument("--repetitions", type=int, default=3)
+    parser.add_argument("--seed", type=int)
+    parser.add_argument("--repetitions", type=int)
     parser.add_argument("--limit", type=int)
     parser.add_argument("--case-ids", nargs="*")
-    parser.add_argument("--max-retries", type=int, default=5)
-    parser.add_argument("--concurrency", type=int, default=1)
+    parser.add_argument("--max-retries", type=int)
+    parser.add_argument("--concurrency", type=int)
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--preflight-only", action="store_true")
@@ -88,14 +109,66 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def main() -> None:
-    args = parse_args()
+def _configure_args(args: argparse.Namespace) -> dict[str, Any] | None:
+    legacy_defaults = {
+        "base_url": "https://gw.letsur.ai/v1", "temperature": 1.0, "top_p": 1.0,
+        "max_output_tokens": 8000, "reasoning_effort": None, "seed": 20260730,
+        "repetitions": 3, "max_retries": 5, "concurrency": 1,
+    }
+    baseline: dict[str, Any] | None = None
+    if args.experiment == "exp2":
+        config_path = args.exp1_dir / "config.json"
+        manifest_path = args.exp1_dir / "run_manifest.json"
+        if not config_path.is_file() or not manifest_path.is_file():
+            raise SystemExit("Exp 2 requires the completed Exp 1 config.json and run_manifest.json")
+        baseline = json.loads(config_path.read_text(encoding="utf-8"))
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if manifest.get("input_sha256") != sha256_file(args.input):
+            raise SystemExit("Exp 2 input differs from the immutable Exp 1 input")
+        defaults = {
+            "base_url": baseline["base_url_identifier"], "temperature": baseline["temperature"],
+            "top_p": baseline["top_p"], "max_output_tokens": baseline["max_output_tokens"],
+            "reasoning_effort": baseline.get("reasoning_effort"), "seed": baseline["seed"],
+            "repetitions": baseline["repetitions"], "max_retries": baseline["max_retries"],
+            "concurrency": baseline["concurrency"],
+        }
+        args.model = args.model or baseline["model"]
+    else:
+        defaults = legacy_defaults
+    for name, value in defaults.items():
+        if getattr(args, name) is None:
+            setattr(args, name, value)
+    args.output_dir = args.output_dir or Path(f"outputs/{args.experiment}")
+    if args.experiment == "exp2":
+        checked = {
+            "model": args.model, "base_url_identifier": args.base_url,
+            "temperature": args.temperature, "top_p": args.top_p,
+            "max_output_tokens": args.max_output_tokens, "reasoning_effort": args.reasoning_effort,
+            "seed": args.seed, "max_retries": args.max_retries, "concurrency": args.concurrency,
+        }
+        mismatches = {key: (value, baseline.get(key)) for key, value in checked.items() if value != baseline.get(key)}
+        if not args.smoke_test and args.repetitions != baseline.get("repetitions"):
+            mismatches["repetitions"] = (args.repetitions, baseline.get("repetitions"))
+        if mismatches:
+            raise SystemExit(f"Exp 2 settings must match Exp 1: {mismatches}")
+        exp1_resolved = args.exp1_dir.resolve()
+        output_resolved = args.output_dir.resolve()
+        if output_resolved == exp1_resolved or exp1_resolved in output_resolved.parents:
+            raise SystemExit("Exp 2 output directory must be separate from outputs/exp1")
+    return baseline
+
+
+def main(default_experiment: str = "exp1") -> None:
+    args = parse_args(default_experiment)
+    baseline = _configure_args(args)
+    experiment_id, prompt_version = experiment_values(args.experiment)
     if args.repetitions < 1:
         raise SystemExit("--repetitions must be >= 1")
     if args.concurrency < 1:
         raise SystemExit("--concurrency must be >= 1")
     if args.smoke_test and args.repetitions != 1:
         raise SystemExit("--smoke-test requires --repetitions 1")
+    exp1_baseline_hashes = directory_hashes(args.exp1_dir) if args.experiment == "exp2" else None
     preflight = audit(args.input, args.output_dir)
     if args.preflight_only:
         print(f"preflight={preflight['status']} api_calls=0")
@@ -109,7 +182,7 @@ def main() -> None:
     )
     if not rows:
         raise SystemExit("No cases selected")
-    plan = build_plan(rows, args.repetitions, args.model, args.seed)
+    plan = build_plan(rows, args.repetitions, args.model, args.seed, experiment_id, prompt_version)
     output_dir = args.output_dir
     raw_path = output_dir / "raw_responses.jsonl"
     failed_path = output_dir / "failed_requests.jsonl"
@@ -126,7 +199,7 @@ def main() -> None:
         "seed": args.seed,
         "request_order_seed": args.seed,
         "repetitions": args.repetitions,
-        "generation_prompt_version": GENERATION_PROMPT_VERSION,
+        "generation_prompt_version": prompt_version,
         "max_retries": args.max_retries,
         "concurrency": args.concurrency,
         "selected_case_count": len(rows),
@@ -134,11 +207,25 @@ def main() -> None:
         "smoke_test": args.smoke_test,
         "dry_run": args.dry_run,
     }
+    if args.experiment == "exp2":
+        parameters.update({
+            "base_generation_prompt_version": EXP1_GENERATION_PROMPT_VERSION,
+            "jurisdiction_instruction_version": JURISDICTION_INSTRUCTION_VERSION,
+            "exp1_config_sha256": sha256_file(args.exp1_dir / "config.json"),
+            "raw_record_schema_sha256": sha256_file(REPO_ROOT / "schemas/exp2_raw_response_v1.schema.json"),
+        })
     started_at = now_iso()
-    manifest = build_manifest(args.input, parameters, started_at)
+    manifest = build_manifest(args.input, parameters, started_at, experiment_id)
+    if args.experiment == "exp2":
+        manifest.update({
+            "exp1_output_dir": str(args.exp1_dir.resolve()),
+            "exp1_baseline_file_hashes": exp1_baseline_hashes,
+            "exp1_reference_parameters": baseline,
+            "prompt_delta_policy": "jurisdiction_instruction + two newlines + unchanged Exp 1 user prompt",
+        })
     write_json(output_dir / "config.json", parameters)
     write_json(output_dir / "run_manifest.json", manifest)
-    write_json(output_dir / "request_plan.json", public_plan(plan, args.model))
+    write_json(output_dir / "request_plan.json", public_plan(plan, args.model, experiment_id, prompt_version))
 
     prompts = load_prompts()
     already = completed_keys(raw_path) if args.resume else set()
@@ -158,7 +245,7 @@ def main() -> None:
                 "max_output_tokens": args.max_output_tokens,
                 "reasoning_effort": args.reasoning_effort,
                 "seed": item["seed"],
-                "prompt_version": GENERATION_PROMPT_VERSION,
+                "prompt_version": prompt_version,
             }
             mismatched = {
                 key: (record.get(key), value)
@@ -175,7 +262,7 @@ def main() -> None:
             skipped += 1
             continue
         row, condition = item["row"], item["condition"]
-        system_prompt, user_prompt = render_generation(row, condition, prompts)
+        system_prompt, user_prompt = render_generation(row, condition, prompts, experiment_id)
         body = request_payload(
             model=args.model,
             system_prompt=system_prompt,
@@ -193,6 +280,7 @@ def main() -> None:
             row, condition, item["replicate_id"], args.model, args.temperature,
             args.top_p, args.max_output_tokens, args.reasoning_effort,
             item["seed"], item["request_order"],
+            experiment_id, prompt_version,
         )
         pending.append((item, body, base))
 

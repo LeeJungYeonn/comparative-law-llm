@@ -11,7 +11,7 @@ from typing import Any
 
 import jsonschema
 
-from exp1 import EVALUATOR_PROMPT_VERSION, EXPERIMENT_ID
+from exp1 import EVALUATOR_PROMPT_VERSION
 from exp1.common import (
     ONTOLOGY_PATH, REPO_ROOT, SCHEMA_PATH, append_jsonl, assert_request_is_blind,
     load_env_file, load_prompts,
@@ -76,12 +76,14 @@ def write_derived(output_dir: Path) -> None:
             for label in unit["labels"]:
                 label_counts[label] = label_counts.get(label, 0) + 1
             reasoning_rows.append({
-                "experiment_id": EXPERIMENT_ID,
+                "experiment_id": record["experiment_id"],
                 "response_unique_key": record["response_unique_key"],
                 "case_id": record["case_id"],
                 "case_origin": record["case_origin"],
                 "condition": record["condition"],
                 "replicate_id": record["replicate_id"],
+                "condition_id": record.get("condition_id"),
+                "target_jurisdiction": record.get("target_jurisdiction"),
                 **unit,
             })
         detected = {c["concept_id"]: c for c in evaluation["concepts"] if c["present"]}
@@ -91,6 +93,9 @@ def write_derived(output_dir: Path) -> None:
             "case_origin": record["case_origin"],
             "condition": record["condition"],
             "replicate_id": record["replicate_id"],
+            "experiment_id": record["experiment_id"],
+            "condition_id": record.get("condition_id"),
+            "target_jurisdiction": record.get("target_jurisdiction"),
             "output_chars": len(record.get("raw_response", "")),
             "reasoning_unit_count": len(units),
             "average_labels_per_unit": (
@@ -129,7 +134,7 @@ def write_derived(output_dir: Path) -> None:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Blindly evaluate Experiment 1 responses one at a time.")
+    parser = argparse.ArgumentParser(description="Blindly evaluate Exp 1 or Exp 2 responses one at a time.")
     parser.add_argument("--input", type=Path, default=Path("outputs/exp1/raw_responses.jsonl"))
     parser.add_argument("--output-dir", type=Path, default=Path("outputs/exp1"))
     parser.add_argument("--model", required=True, help="Exact evaluator model snapshot identifier.")
@@ -158,6 +163,10 @@ def main() -> None:
     raw_rows = [r for r in read_jsonl(args.input) if r.get("raw_response") and not r.get("error")]
     if args.limit is not None:
         raw_rows = raw_rows[:args.limit]
+    experiment_ids = {r.get("experiment_id") for r in raw_rows}
+    if len(experiment_ids) != 1 or None in experiment_ids:
+        raise SystemExit(f"Input must contain exactly one experiment_id, found {sorted(map(str, experiment_ids))}")
+    experiment_id = str(next(iter(experiment_ids)))
     output_path = args.output_dir / "evaluations.jsonl"
     failed_path = args.output_dir / "failed_evaluations.jsonl"
     attempt_path = args.output_dir / "evaluator_raw_attempts.jsonl"
@@ -215,7 +224,7 @@ def main() -> None:
             local_transport_retries += retry_count
             raw_evaluator_response = response_content(envelope)
             attempt_record = {
-                "experiment_id": EXPERIMENT_ID,
+                "experiment_id": experiment_id,
                 "evaluation_key": key,
                 "response_unique_key": raw["unique_key"],
                 "case_id": raw["case_id"],
@@ -243,13 +252,17 @@ def main() -> None:
                 attempt_record["validation_status"] = "valid"
                 attempt_records.append(attempt_record)
                 record = {
-                    "experiment_id": EXPERIMENT_ID,
+                    "experiment_id": experiment_id,
                     "evaluation_key": key,
                     "response_unique_key": raw["unique_key"],
                     "case_id": raw["case_id"],
                     "case_origin": raw["case_origin"],
                     "case_subtype": raw["case_subtype"],
                     "condition": raw["condition"],
+                    "condition_id": raw.get("condition_id"),
+                    "input_language": raw.get("input_language", raw["condition"]),
+                    "target_jurisdiction": raw.get("target_jurisdiction"),
+                    "jurisdiction_instruction": raw.get("jurisdiction_instruction"),
                     "replicate_id": raw["replicate_id"],
                     "evaluator_model_requested": args.model,
                     "evaluator_model_returned": envelope.get("model"),
@@ -275,7 +288,7 @@ def main() -> None:
                 attempt_record["validation_error"] = f"{type(exc).__name__}: {exc}"
                 attempt_records.append(attempt_record)
         failed_record = {
-            "experiment_id": EXPERIMENT_ID,
+            "experiment_id": experiment_id,
             "evaluation_key": key,
             "response_unique_key": raw["unique_key"],
             "case_id": raw["case_id"],
@@ -319,6 +332,7 @@ def main() -> None:
             category = error.split(":", 1)[0] or "other"
         invalid_reason_counts[category] += 1
     summary = {
+        "experiment_id": experiment_id,
         "model": args.model,
         "parameters": {
             "temperature": args.temperature,

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Experiment 2 raw response record",
+  "type": "object",
+  "required": [
+    "experiment_id", "condition_id", "case_id", "case_origin", "input_language",
+    "target_jurisdiction", "jurisdiction_instruction", "prompt_version",
+    "base_prompt_version", "system_prompt_sha256", "user_prompt_template_sha256",
+    "user_prompt_sha256", "fact_text_sha256", "input_text_sha256",
+    "jurisdiction_instruction_version", "jurisdiction_instruction_sha256",
+    "replicate_id", "replicate_number",
+    "model_requested", "temperature", "top_p", "max_output_tokens", "seed",
+    "raw_response"
+  ],
+  "properties": {
+    "experiment_id": {"const": "exp2-explicit-jurisdiction-v1"},
+    "condition_id": {"enum": ["KR_ko_KR", "KR_en_KR", "CA_ko_US_CA", "CA_en_US_CA"]},
+    "case_id": {"type": "string", "minLength": 1},
+    "case_origin": {"enum": ["KR", "CA"]},
+    "input_language": {"enum": ["ko", "en"]},
+    "target_jurisdiction": {"enum": ["KR", "US_CA"]},
+    "jurisdiction_instruction": {"type": "string", "minLength": 1},
+    "prompt_version": {"const": "generation_v1+jurisdiction_v1"},
+    "base_prompt_version": {"const": "generation_v1"},
+    "system_prompt_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "user_prompt_template_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "user_prompt_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "fact_text_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "input_text_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "jurisdiction_instruction_version": {"const": "jurisdiction_v1"},
+    "jurisdiction_instruction_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "replicate_id": {"type": "integer", "minimum": 1},
+    "replicate_number": {"type": "integer", "minimum": 1},
+    "raw_response": {"type": "string"}
+  },
+  "additionalProperties": true
+}

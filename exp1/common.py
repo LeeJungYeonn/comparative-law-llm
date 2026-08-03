@@ -19,6 +19,8 @@ from pathlib import Path
 from typing import Any, Iterable
 
 from exp1 import EXPERIMENT_ID, GENERATION_PROMPT_VERSION
+from exp1.design import EXP2_EXPERIMENT_ID, jurisdiction_metadata
+from exp1.design import JURISDICTION_INSTRUCTION_VERSION
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INPUT = REPO_ROOT / "outputs/neutral/stage2-paired-qc-v1/accepted_pairs.jsonl"
@@ -217,16 +219,28 @@ def select_cases(rows: list[dict[str, Any]], case_ids: set[str] | None, limit: i
     return rows
 
 
-def render_generation(row: dict[str, Any], condition: str, prompts: dict[str, str]) -> tuple[str, str]:
+def render_generation(
+    row: dict[str, Any], condition: str, prompts: dict[str, str],
+    experiment_id: str = EXPERIMENT_ID,
+) -> tuple[str, str]:
     if condition == "ko":
-        return (
+        system, user = (
             prompts["generation_ko_v1_system.txt"],
             prompts["generation_ko_v1_user.txt"].replace("{neutral_fact_ko}", str(row["neutral_fact_ko"])),
         )
-    return (
-        prompts["generation_en_v1_system.txt"],
-        prompts["generation_en_v1_user.txt"].replace("{neutral_fact_en}", str(row["neutral_fact_en"])),
-    )
+    elif condition == "en":
+        system, user = (
+            prompts["generation_en_v1_system.txt"],
+            prompts["generation_en_v1_user.txt"].replace("{neutral_fact_en}", str(row["neutral_fact_en"])),
+        )
+    else:
+        raise ValueError(f"Unsupported input-language condition: {condition}")
+    if experiment_id == EXP2_EXPERIMENT_ID:
+        instruction = str(jurisdiction_metadata(row, condition)["jurisdiction_instruction"])
+        user = instruction + "\n\n" + user
+    elif experiment_id != EXPERIMENT_ID:
+        raise ValueError(f"Unsupported experiment_id: {experiment_id}")
+    return system, user
 
 
 def request_payload(
@@ -346,9 +360,12 @@ def package_versions() -> dict[str, str | None]:
     return result
 
 
-def build_manifest(input_path: Path, parameters: dict[str, Any], started_at: str) -> dict[str, Any]:
+def build_manifest(
+    input_path: Path, parameters: dict[str, Any], started_at: str,
+    experiment_id: str = EXPERIMENT_ID,
+) -> dict[str, Any]:
     return {
-        "experiment_id": EXPERIMENT_ID,
+        "experiment_id": experiment_id,
         "started_at": started_at,
         "input_path": str(input_path.resolve()),
         "input_sha256": sha256_file(input_path),
@@ -367,12 +384,15 @@ def generation_record_base(
     row: dict[str, Any], condition: str, replicate_id: int, model: str,
     temperature: float, top_p: float, max_output_tokens: int,
     reasoning_effort: str | None, seed: int | None, request_order: int,
+    experiment_id: str = EXPERIMENT_ID,
+    prompt_version: str = GENERATION_PROMPT_VERSION,
 ) -> dict[str, Any]:
     prompts = load_prompts()
     fact = str(row[f"neutral_fact_{condition}"])
     master = str(row.get("master_language", "")).lower()
-    return {
-        "experiment_id": EXPERIMENT_ID,
+    system_prompt, user_prompt = render_generation(row, condition, prompts, experiment_id)
+    record = {
+        "experiment_id": experiment_id,
         "case_id": row["case_id"],
         "case_origin": row["case_origin"],
         "case_subtype": row["case_subtype"],
@@ -381,6 +401,7 @@ def generation_record_base(
         "source_language": row.get("source_language"),
         "is_translated_input": bool(master and master != condition),
         "replicate_id": replicate_id,
+        "replicate_number": replicate_id,
         "model_requested": model,
         "model_returned": None,
         "temperature": temperature,
@@ -388,10 +409,13 @@ def generation_record_base(
         "max_output_tokens": max_output_tokens,
         "reasoning_effort": reasoning_effort,
         "seed": seed,
-        "prompt_version": GENERATION_PROMPT_VERSION,
-        "system_prompt_sha256": sha256_text(prompts[f"generation_{condition}_v1_system.txt"]),
+        "prompt_version": prompt_version,
+        "base_prompt_version": GENERATION_PROMPT_VERSION,
+        "system_prompt_sha256": sha256_text(system_prompt),
         "user_prompt_template_sha256": sha256_text(prompts[f"generation_{condition}_v1_user.txt"]),
+        "user_prompt_sha256": sha256_text(user_prompt),
         "fact_text_sha256": sha256_text(fact),
+        "input_text_sha256": sha256_text(fact),
         "request_order": request_order,
         "timestamp": None,
         "latency_seconds": None,
@@ -400,5 +424,20 @@ def generation_record_base(
         "retry_count": 0,
         "raw_response": None,
         "error": None,
-        "unique_key": unique_key(row["case_id"], condition, replicate_id, model, GENERATION_PROMPT_VERSION),
+        "unique_key": unique_key(row["case_id"], condition, replicate_id, model, prompt_version),
+    }
+    if experiment_id == EXP2_EXPERIMENT_ID:
+        record.update(jurisdiction_metadata(row, condition))
+        record["jurisdiction_instruction_version"] = JURISDICTION_INSTRUCTION_VERSION
+        record["jurisdiction_instruction_sha256"] = sha256_text(str(record["jurisdiction_instruction"]))
+    return record
+
+
+def directory_hashes(path: Path) -> dict[str, str]:
+    """Hash every existing file below a directory for an immutability checkpoint."""
+    if not path.is_dir():
+        return {}
+    return {
+        file.relative_to(path).as_posix(): sha256_file(file)
+        for file in sorted(candidate for candidate in path.rglob("*") if candidate.is_file())
     }
