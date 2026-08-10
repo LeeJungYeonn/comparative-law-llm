@@ -1,0 +1,771 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 21810,
+      "row": {
+        "id": 2488359,
+        "judges": null,
+        "date_filed": "2012-01-20",
+        "date_filed_is_approximate": false,
+        "slug": "williams-v-leblanc",
+        "case_name_short": "LeBlanc",
+        "case_name": "Williams v. LeBlanc",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "78 So. 3d 133"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n78 So. 3d 133 (2012)\nRobert WILLIAMS\nv.\nJames LEBLANC, Secretary, Department of Correction &amp; Risk Review Panel.\nNo. 2010-CI-2691.\nSupreme Court of Louisiana.\nJanuary 20, 2012.\nDenied.\n",
+            "ocr": false,
+            "opinion_id": 2488359
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 22039,
+      "row": {
+        "id": 1595541,
+        "judges": null,
+        "date_filed": "2010-03-05",
+        "date_filed_is_approximate": false,
+        "slug": "state-ex-rel-williams-v-state",
+        "case_name_short": null,
+        "case_name": "STATE EX REL. WILLIAMS v. State",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "28 So. 3d 999"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n28 So.3d 999 (2010)\nSTATE ex rel. John F. WILLIAMS\nv.\nSTATE of Louisiana.\nNo. 2009-KH-1002.\nSupreme Court of Louisiana.\nMarch 5, 2010.\nDenied.\n",
+            "ocr": false,
+            "opinion_id": 1595541
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 22498,
+      "row": {
+        "id": 1641712,
+        "judges": "Guidry",
+        "date_filed": "2009-05-01",
+        "date_filed_is_approximate": false,
+        "slug": "boxie-v-town-of-sunset",
+        "case_name_short": "Boxie",
+        "case_name": "Boxie v. Town of Sunset",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "6 So. 3d 812"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": 4576,
+            "opinion_text": "\n6 So.3d 812 (2009)\nLydia BOXIE\nv.\nTOWN OF SUNSET.\nNo. 2009-CC-0595.\nSupreme Court of Louisiana.\nMay 1, 2009.\nDenied.\nGUIDRY, J., would grant.\n",
+            "ocr": false,
+            "opinion_id": 1641712
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 23433,
+      "row": {
+        "id": 1717728,
+        "judges": null,
+        "date_filed": "2008-12-19",
+        "date_filed_is_approximate": false,
+        "slug": "booth-v-amberg",
+        "case_name_short": "Booth",
+        "case_name": "Booth v. AMBERG",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "996 So. 2d 1126"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n996 So. 2d 1126 (2008)\nAudrey Foster BOOTH and Benjamin D. Foster, III\nv.\nElizabeth Foster AMBERG.\nNo. 2008-C-2526.\nSupreme Court of Louisiana.\nDecember 19, 2008.\nStay denied; writ application denied.\n",
+            "ocr": false,
+            "opinion_id": 1717728
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 23491,
+      "row": {
+        "id": 1601993,
+        "judges": null,
+        "date_filed": "2009-02-20",
+        "date_filed_is_approximate": false,
+        "slug": "chumley-v-todays-realty-inc",
+        "case_name_short": "Chumley",
+        "case_name": "Chumley v. TODAY'S REALTY, INC.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "1 So. 3d 498"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n1 So. 3d 498 (2009)\nJ. Gale CHUMLEY\nv.\nTODAY'S REALTY, INC., Frank M. Cordaro and Kathie Cordaro.\nNo. 2008-C-2999.\nSupreme Court of Louisiana.\nFebruary 20, 2009.\nDenied.\n",
+            "ocr": false,
+            "opinion_id": 1601993
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 24450,
+      "row": {
+        "id": 1822178,
+        "judges": null,
+        "date_filed": "2002-04-12",
+        "date_filed_is_approximate": false,
+        "slug": "hollingsworth-v-united-serv-auto-assn",
+        "case_name_short": "Hollingsworth",
+        "case_name": "Hollingsworth v. UNITED SERV. AUTO. ASS'N",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 3,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "813 So. 2d 406"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n813 So. 2d 406 (2002)\nHeather Marie HOLLINGSWORTH, et al.\nv.\nUNITED SERVICES AUTOMOBILE ASSOCIATION.\nNo. 2002-CC-0295.\nSupreme Court of Louisiana.\nApril 12, 2002.\n*407 Denied.\n",
+            "ocr": false,
+            "opinion_id": 1822178
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 25639,
+      "row": {
+        "id": 1593765,
+        "judges": null,
+        "date_filed": "2009-10-16",
+        "date_filed_is_approximate": false,
+        "slug": "norman-v-asbestos",
+        "case_name_short": "Norman",
+        "case_name": "Norman v. ASBESTOS",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 1,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "19 So. 3d 481"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n19 So.3d 481 (2009)\nRobert Anthony NORMAN, Sr., et al.\nv.\nASBESTOS DEFENDANTS, et al.\nNo. 2009-CC-1630.\nSupreme Court of Louisiana.\nOctober 16, 2009.\nDenied.\n",
+            "ocr": false,
+            "opinion_id": 1593765
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 25643,
+      "row": {
+        "id": 1595081,
+        "judges": null,
+        "date_filed": "2010-03-12",
+        "date_filed_is_approximate": false,
+        "slug": "kelly-v-manuel",
+        "case_name_short": "Kelly",
+        "case_name": "Kelly v. Manuel",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "28 So. 3d 1015"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n28 So. 3d 1015 (2010)\nJessica KELLY\nv.\nAlbert MANUEL, et al.\nNo. 2010-CC-0247.\nSupreme Court of Louisiana.\nMarch 12, 2010.\n*1016 Granted. The trial court erred in finding plaintiffs claims for penalties and attorney fees should not be included in calculating the amount of plaintiffs cause of action for purposes of La.Code Civ. P. art. 1732(1). See Cambridge Corner Corp. v. Menard, 525 So. 2d 527, 530 (La.1988). Accordingly, the judgment of the trial court striking relator's jury trial is reversed, and the case is remanded to the trial court for further proceedings.\n",
+            "ocr": false,
+            "opinion_id": 1595081
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 25670,
+      "row": {
+        "id": 1852025,
+        "judges": "Johnson",
+        "date_filed": "2005-04-01",
+        "date_filed_is_approximate": false,
+        "slug": "hand-v-city-of-new-orleans",
+        "case_name_short": "Hand",
+        "case_name": "Hand v. City of New Orleans",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 3,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "897 So. 2d 603"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": 4583,
+            "opinion_text": "\n897 So. 2d 603 (2005)\nWilda HAND\nv.\nThe CITY OF NEW ORLEANS (Health Dept.).\nNo. 2005-C-0143.\nSupreme Court of Louisiana.\nApril 1, 2005.\nIn re Hand, Wilda;  Plaintiff; Applying for Writ of Certiorari and/or Review Office of Workers' Compensation District 8, No. OWC # 02-08268; to the Court of Appeal, Fourth Circuit, No. 2004-CA-0845.\nDenied.\nJOHNSON, J., would grant the writ.\n",
+            "ocr": false,
+            "opinion_id": 1852025
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 25781,
+      "row": {
+        "id": 1561893,
+        "judges": null,
+        "date_filed": "2009-10-09",
+        "date_filed_is_approximate": false,
+        "slug": "belle-company-llc-v-state-department-of-environmen",
+        "case_name_short": null,
+        "case_name": "Belle Company, LLC v. State, Department of Environmental Quality",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "18 So. 3d 1288"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n18 So. 3d 1288 (2009)\nBELLE COMPANY, LLC\nv.\nSTATE of Louisiana, Through the DEPARTMENT OF ENVIRONMENTAL QUALITY, Assumption Parish, Mike McDaniel and Chuck Carr Brown.\nNo. 2009-C-1582.\nSupreme Court of Louisiana.\nOctober 9, 2009.\nDenied.\n",
+            "ocr": false,
+            "opinion_id": 1561893
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 3333,
+  "num_rows_per_page": 100,
+  "partial": true
+}

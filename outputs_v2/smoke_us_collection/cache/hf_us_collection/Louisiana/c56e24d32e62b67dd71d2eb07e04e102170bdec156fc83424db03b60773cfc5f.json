@@ -1,0 +1,771 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 25836,
+      "row": {
+        "id": 1573709,
+        "judges": null,
+        "date_filed": "2009-09-04",
+        "date_filed_is_approximate": false,
+        "slug": "state-ex-rel-spann-v-state",
+        "case_name_short": null,
+        "case_name": "STATE EX REL. SPANN v. State",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 1,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "17 So. 3d 952"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n17 So. 3d 952 (2009)\nSTATE ex rel. Carlos SPANN\nv.\nSTATE of Louisiana.\nNo. 2008-KH-2392.\nSupreme Court of Louisiana.\nSeptember 4, 2009.\nGranted for the sole purpose of remanding the application to the court of appeal for treatment on the merits. Department of Public Safety and Corrections records reveal that relator has a full-term release date of May 16, 2010. The application for post-conviction relief thus satisfies the; custody requirement of La.C.Cr.P. art. 924(2) (\"`Custody' means detention or confinement, or probation or parole supervision....\"). See also State v. Smith, 96-1798, p. 4-6 (La.10/21/97), 700 So. 2d 493, 495-96 (analyzing custody requirement in light of State ex rel. Becnel v. Blackburn, 410 So. 2d 1015 (La.1982)). In all other respects, the application is denied.\n",
+            "ocr": false,
+            "opinion_id": 1573709
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 25838,
+      "row": {
+        "id": 1574892,
+        "judges": null,
+        "date_filed": "2009-09-18",
+        "date_filed_is_approximate": false,
+        "slug": "robinson-v-jefferson-parish-school-board",
+        "case_name_short": "Robinson",
+        "case_name": "Robinson v. Jefferson Parish School Board",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 3,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "17 So. 3d 975"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n17 So. 3d 975 (2009)\nDemetris ROBINSON, Individually and on Behalf of Her Deceased Son, Rayvon Robinson\nv.\nJEFFERSON PARISH SCHOOL BOARD, Southern Baptist Camping Association, Tall Timbers Baptist Conference Center and Sam White\nRaynell Bailey, Individually and on Behalf of His Deceased Son, Rayvon Robinson\nv.\nJefferson Parish School Board, Southern Baptist Camping Association, Tall Timbers Baptist Conference Center and Sam White.\nNo. 2009-C-1187.\nSupreme Court of Louisiana.\nSeptember 18, 2009.\nDenied.\n",
+            "ocr": false,
+            "opinion_id": 1574892
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 26088,
+      "row": {
+        "id": 1899324,
+        "judges": null,
+        "date_filed": "2006-05-26",
+        "date_filed_is_approximate": false,
+        "slug": "state-v-fy",
+        "case_name_short": "FY",
+        "case_name": "State v. FY",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 1,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "930 So. 2d 35"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n930 So. 2d 35 (2006)\nSTATE of Louisiana\nv.\nF.Y. &amp; R.D.Y.\nNo. 2006-CJ-0932.\nSupreme Court of Louisiana.\nMay 26, 2006.\nDenied.\n",
+            "ocr": false,
+            "opinion_id": 1899324
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 29189,
+      "row": {
+        "id": 1563356,
+        "judges": "Per Curiam",
+        "date_filed": "2009-09-04",
+        "date_filed_is_approximate": false,
+        "slug": "state-v-charles",
+        "case_name_short": "Charles",
+        "case_name": "State v. Charles",
+        "case_name_full": "STATE of Louisiana v. Carlton CHARLES and Gwendolyn Charles",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 1,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<parties id=\"b1210-7\">\n    STATE of Louisiana v. Carlton CHARLES and Gwendolyn Charles.\n   </parties><br><docketnumber id=\"b1210-10\">\n    No. 2009-KK-0433.\n   </docketnumber><br><court id=\"b1210-11\">\n    Supreme Court of Louisiana.\n   </court><br><decisiondate id=\"b1210-12\">\n    Sept. 4, 2009.\n   </decisiondate>",
+        "citations": [
+          "16 So. 3d 1166"
+        ],
+        "opinions": [
+          {
+            "author_str": "Per Curiam",
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n16 So. 3d 1166 (2009)\nSTATE of Louisiana\nv.\nCarlton CHARLES and Gwendolyn Charles.\nNo. 2009-KK-0433.\nSupreme Court of Louisiana.\nSeptember 4, 2009.\n*1167 PER CURIAM.[1]\nGranted. The ruling of the Fourth Circuit is affirmed in part and reversed in part.\nWe agree with the court of appeal that the trial court erred in granting defendants' motion to suppress to the extent that the ruling would exclude at trial the original questionnaires signed individually and submitted by defendants to the Gaming Control Board in pursuit of a video poker license and any testimony by investigator Fellon concerning information he gained as a result of an investigation which allegedly revealed misrepresentations in both questionnaires. State v. Charles, et al., 09-0126 (La.App. 4th Cir.2/9/09). The Fifth Amendment protects only against compelled self-incrimination, Fisher v. United States, 425 U.S. 391, 397, 96 S. Ct. 1569, 1574, 48 L. Ed. 2d 39 (1976)(\"The Court has held repeatedly that the Fifth Amendment is limited to prohibiting the use of `physical or moral compulsion' exerted on the person asserting the privilege.\") (citations omitted), and the questionnaires, false in many respects according to the state and therefore self-incriminating to that extent, were voluntarily prepared by defendants and voluntarily submitted to the Board in pursuit of the sought-after gaming license. United States v. Doe, 465 U.S. 605, 610, 104 S. Ct. 1237, 1241, 79 L. Ed. 2d 552 (1984)(\"Where the preparation of business records is voluntary, no compulsion is present.\") (footnote omitted). Thus, \"the Fifth Amendment would not be violated by the fact alone that the papers on their face might incriminate the [preparer], for the privilege protects a person only against being incriminated by his own compelled testimonial communications.\" Fisher, 425 U.S. at 409, 96 S.Ct. at 1580.\nHowever, we disagree with the court of appeal that the trial court did not err in granting the motion to suppress to the extent that the ruling would exclude \"all evidence taken from the respondents when they were interviewed by Kipp O. Fellon, including the documents obtained and initialed by the respondents.\" *1168 Charles, 09-0126 at 1. We recognize that even in cases in which the contents of a document may not be privileged, \"the act of producing the document may be.\" Doe, 465 U.S. at 612, 104 S.Ct. at 1242. When investigator Fellon paid a visit to defendants at the bar or lounge they owned and asked them to review their questionnaires and to initial the bottom of each page if they saw no need to make any changes, the investigator invited a testimonial response with Fifth Amendment implications because he asked defendants \"to restate, repeat, or affirm the truth of the contents\" of the questionnaires. Fisher, 425 U.S. at 409, 96 S.Ct. at 1580.\nNevertheless, the trial court erred in ruling that the failure of the investigator to advise defendants of their Miranda rights required exclusion of the initialed statements. The warnings required by Miranda apply only when a person is questioned by law enforcement after he has been \"taken into custody or otherwise deprived of his freedom of action in any significant way.\" Miranda v. Arizona, 384 U.S. 436, 444, 86 S. Ct. 1602, 1612, 16 L. Ed. 2d 694 (1966). In the present case, investigator Fellon did not subject defendants to custodial interrogation or its equivalent when he sat with them at a table in their place of business as they reviewed and initialed the questionnaires. Fellon did not place defendants under formal arrest, nor did he subject them to the restraint associated with a formal arrest, before he gathered up the initialed questionnaires, inspected the licenses on the premises, took some photographs, and departed. Stansbury v. California, 511 U.S. 318, 322, 114 S. Ct. 1526, 1528-29, 128 L. Ed. 2d 293 (1994)(\"In determining whether an individual was in custody [for Miranda purposes], a court must examine all of the circumstances surrounding the interrogation, but the ultimate inquiry is simply whether there was a formal arrest or restraint on freedom of movement of the degree associated with a formal arrest.\")(internal quotation marks, brackets, and citations omitted). Although Fellon believed that he had probable cause to arrest both defendants at the time, \"an officer's subjective and undisclosed view concerning whether the person being interrogated is a suspect is irrelevant to the assessment whether the person is in custody.\" Stansbury, 511 U.S. at 319, 114 S.Ct. at 1527; see Beckwith v. United States, 425 U.S. 341, 346-47, 96 S. Ct. 1612, 1616, 48 L. Ed. 2d 1 (1976)(Although the investigation had focused on defendant at the time IRS agents interviewed him in a private home, defendant was not in custody for purposes of Miranda because it was \"the compulsive aspect of custodial interrogation, and not the strength or content of the government's suspicions at the time the questioning was conducted, which led the Court to impose the Miranda requirements with regard to custodial questioning.\") (internal quotation marks and citation omitted).\nThe trial court's ruling on defendants' motion to suppress is therefore vacated in its entirety and this case is remanded to the district court for further proceedings consistent with the views expressed herein.\nNOTES\n[1]  Judge Benjamin Jones, of the Fourth Judicial District Court, assigned as Justice Pro Tempore, participating in the decision.\n\n",
+            "ocr": false,
+            "opinion_id": 1563356
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 29194,
+      "row": {
+        "id": 1565234,
+        "judges": null,
+        "date_filed": "2010-04-23",
+        "date_filed_is_approximate": false,
+        "slug": "vincent-v-normand",
+        "case_name_short": "Vincent",
+        "case_name": "Vincent v. Normand",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "34 So. 3d 278"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n34 So. 3d 278 (2010)\nBrandon VINCENT\nv.\nNewell NORMAND, Sheriff Jefferson Parish Sheriffs Office Jefferson Parish Correctional Center.\nNo. 2009-KP-1290.\nSupreme Court of Louisiana.\nApril 23, 2010.\nDenied.\n",
+            "ocr": false,
+            "opinion_id": 1565234
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 29200,
+      "row": {
+        "id": 1568803,
+        "judges": "Per Curiam",
+        "date_filed": "2010-03-12",
+        "date_filed_is_approximate": false,
+        "slug": "in-re-smith",
+        "case_name_short": "In Re Smith",
+        "case_name": "In Re Smith",
+        "case_name_full": "In Re Mark Steven SMITH",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 1,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<parties id=\"b544-9\">\n    In re Mark Steven SMITH.\n   </parties><br><docketnumber id=\"b544-10\">\n    No. 2009-B-2523.\n   </docketnumber><br><court id=\"b544-11\">\n    Supreme Court of Louisiana.\n   </court><br><decisiondate id=\"b544-12\">\n    March 12, 2010.\n   </decisiondate>",
+        "citations": [
+          "29 So. 3d 484"
+        ],
+        "opinions": [
+          {
+            "author_str": "Per Curiam",
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n29 So. 3d 484 (2010)\nIn re Mark Steven SMITH.\nNo. 2009-B-2523.\nSupreme Court of Louisiana.\nMarch 12, 2010.\n\n\n*485 ATTORNEY DISCIPLINARY PROCEEDINGS\nPER CURIAM.[*]\nThis disciplinary matter arises from formal charges filed by the Office of Disciplinary Counsel (\"ODC\") against respondent, Mark Steven Smith. For the reasons that follow, we accept the recommendation of the disciplinary board and permanently disbar respondent.\n\nUNDERLYING FACTS AND PROCEDURAL HISTORY\nBetween 2003 through 2005, respondent served as director of the Louisiana Film Commission. In his capacity as director of the Commission, respondent was charged with the responsibility of approving budgets submitted to the State of Louisiana by film production companies.\nOn August 17, 2007, the United States Attorney for the Eastern District of Louisiana filed a bill of information alleging respondent engaged in a conspiracy to willfully allow and approve inflated budgets to be submitted to the state by a film production company in order to receive inflated state tax credits. The bill of information alleged respondent knowingly solicited bribes to influence his issuance of state tax credits.\nOn September 7, 2007, respondent entered a plea of guilty in the United States District Court for the Eastern District of Louisiana to one count each of bribery and conspiracy. In the factual basis accompanying the guilty plea, respondent admitted that he knowingly conspired to falsely inflate movie budgets so that a film production company could reap bigger state tax credits; in return, respondent accepted cash bribes totaling $67,500.\nUpon receiving notice that respondent had pled guilty to the criminal charges, the ODC filed a motion to place respondent on interim suspension pursuant to Supreme Court Rule XIX, § 19. On October 3, 2007, this court suspended respondent from the practice of law on an interim basis. In re: Smith, 07-1845 (La.10/3/07), 965 So. 2d 864.\nThereafter, the ODC filed one count of formal charges against respondent. The charges alleged respondent's actions violated Rule 8.4(a)(b) and (c) of the Rules of Professional Conduct.[1]\n*486 Respondent answered the formal charges. His answer stated, in its entirety, \"[d]ue to my guilty plea to bribery and conspiracy in the United States District Court for the Eastern District of Louisiana, I hereby relinquish my Louisiana law license, and will not contest the Board's formal charges.\"\nBased on respondent's answer, the chair of the hearing committee determined that a formal hearing was not required. Accordingly, the chair issued an order providing that matter would proceed as a \"deemed admitted\" matter pursuant to Supreme Court Rule XIX, § 11(E)(3). The parties were given an opportunity to file written arguments and documentary evidence on the issue of sanctions, but respondent did not avail himself of this opportunity.\n\nHearing Committee Report\nAfter considering the ODC's deemed admitted submission, the hearing committee determined that the formal charges were deemed admitted and proven by clear and convincing evidence. Based on the deemed admitted facts and additional evidence presented by the ODC, the committee determined that respondent violated the following provisions of the Rules of Professional Conduct: Rules 8.4(a), 8.4(b), and 8.4(c).\nCiting In re: Rome, 01-2942 (La.9/26/03), 856 So. 2d 1167, the committee found that malfeasance by an attorney serving in a public office is serious misconduct. The committee determined that respondent's conduct, as a lawyer and public official, was both intentional and extensive. Relying on the ABA's Standards for Imposing Lawyer Sanctions, the committee concluded that disbarment is the baseline sanction.\nThe committee identified several aggravating factors: dishonest or selfish motive; pattern of misconduct; substantial experience in the practice of law (admitted 1994); and illegal conduct. In mitigation, the committee found the absence of a prior disciplinary record, and a cooperative attitude toward the proceedings.\nAfter reviewing the jurisprudence, the committee concluded that respondent violated his duties as an attorney, and violated the public trust as a public servant, noting that \"[b]ribery is a particular insidious evil because it poisons the very foundation of that public trust.\" The committee concluded that respondent's \"conviction involving fraud and bribery while he occupied a position of trust as a public official goes to the very heart of our system of justice.\" Accordingly, the committee recommended that respondent be permanently disbarred. Neither respondent nor the ODC filed an objection to the hearing committee's recommendation.\n\nDisciplinary Board Recommendation\nProcedurally, the disciplinary board determined that this case did not fall under the provisions of the \"deemed-admitted rule,\" Supreme Court Rule XIX, § 11(E)(3), because respondent filed a formal answer. Nonetheless, the board concluded that respondent essentially conceded that the issues of fact raised by the formal charges were not in dispute. Additionally, it noted that in his answer, respondent did not request an opportunity to present evidence in mitigation.\n*487 Turning to the merits, the board determined that respondent, while serving as director of the Louisiana Film Commission, acted intentionally when he engaged in the crimes of conspiracy and bribery. It found respondent knowingly and willfully allowed and approved inflated budgets to be submitted to the state by a film production company. Thereafter, respondent caused to be issued inflated state tax credits based upon the fraudulent budgets submitted by the film production company. The board concluded that respondent violated duties owed to the public and the profession, and that the applicable baseline sanction is disbarment.\nIn aggravation, the board recognized the following factors: dishonest or selfish motive; pattern of misconduct; substantial experience in the practice of law; and illegal conduct. In mitigation, the board found the absence of a prior disciplinary record, but rejected the committee's finding of cooperative attitude toward the proceeding.\nIn determining an appropriate sanction, the board found guidance in In re: Rome, 03-0744 (La.9/26/03), 856 So. 2d 1167, and In re: Burks, 07-0637 (La.8/31/07), 964 So. 2d 298, in which this court permanently disbarred attorneys who knowingly engaged in criminal conduct while serving in a governmental position. As in those cases, the board found respondent engaged in conduct amounting to malfeasance in office, and entered a plea of guilty to felonious criminal acts resulting from his misconduct in office. Accordingly, the board recommended that respondent be permanently disbarred.\nNeither respondent nor the ODC filed an objection to the disciplinary board's recommendation. Accordingly, the matter was presented to this court for entry of an order of discipline pursuant to Supreme Court Rule XIX, § 11(G)(a).\n\nDISCUSSION\nBar disciplinary matters fall within the original jurisdiction of this court. La. Const. art. V, § 5(B). Consequently, we act as triers of fact and conduct an independent review of the record to determine whether the alleged misconduct has been proven by clear and convincing evidence. In re: Banks, 09-1212 (La.10/2/09), 18 So. 3d 57. While we are not bound in any way by the findings and recommendations of the hearing committee and disciplinary board, we have held the manifest error standard is applicable to the committee's factual findings. In re: Sharp, 09-0207 (La.6/26/09), 16 So. 3d 343.\nProcedurally, we agree with the disciplinary board's conclusion that respondent's answer prevents this case from falling within the scope of Supreme Court Rule XIX, § 11(E)(3), which allows the facts of the formal charges to be deemed admitted when the respondent does not answer. Nonetheless, respondent's answer, in which he indicates he will not contest the formal charges and wishes to relinquish his law license, represents an implicit acknowledgment of the correctness of the facts alleged in the formal charges.\nMoreover, when the disciplinary proceedings involve an attorney who has been convicted of a serious crime, the conviction is conclusive evidence of guilt, and the sole issue presented is whether respondent's crimes warrant discipline, and if so, the extent thereof. Supreme Court Rule XIX, § 19(E); In re: Meece, 08-2980 (La.4/13/09), 6 So. 3d 751; In re: Boudreau, 02-0007 (La.4/12/02), 815 So. 2d 76; Louisiana State Bar Ass'n v. Wilkinson, 562 So. 2d 902 (La.1990).\nThe record contains evidence establishing that the federal court accepted *488 respondent's plea and adjudged respondent guilty of crimes arising from his activities while serving as director of the Louisiana Film Commission. The crimes of which respondent were convicted are felonies, which are considered to be serious crimes under Supreme Court Rule XIX, § 19(B). Based on this evidence, it is clear respondent's conduct violates Rule 8.4, and therefore warrants discipline.\nIn determining a sanction, we are mindful that disciplinary proceedings are designed to maintain high standards of conduct, protect the public, preserve the integrity of the profession, and deter future misconduct. In re: Coffman, 09-1165 (La.9/25/09), 17 So. 3d 934. The discipline to be imposed depends upon the facts of each case and the seriousness of the offenses involved, considered in light of any aggravating and mitigating circumstances. In re: Smith, 09-1141 (La.9/25/09), 17 So. 3d 927.\nIt is well-settled that the baseline sanction for misconduct arising out of felony convictions involving bribery is disbarment. See, e.g., In re: Mithun, 00-3174 (La.1/5/01), 776 So. 2d 426; In re: Hingle, 98-0774 (La.9/18/98), 717 So. 2d 636; In re: Collins, 94-2251 (La.11/18/94), 645 So. 2d 1131; Louisiana State Bar Ass'n v. Pitard, 462 So. 2d 178 (La.1985). Numerous aggravating factors are present in this case, including dishonest or selfish motive, a pattern of misconduct, substantial experience in the practice of law, and illegal conduct. The sole mitigating factor we are able to discern from the record is respondent's lack of a prior disciplinary record. Given the absence of any significant mitigating factors or extenuating circumstances, we see no reason to depart from the baseline sanction of disbarment.\nHaving found respondent should be disbarred, we now turn to the question of whether respondent's misconduct is so egregious that he should be permanently prohibited from seeking readmission to the practice of law. In Appendix E to Supreme Court Rule XIX, we set forth guidelines illustrating the types of conduct which might warrant permanent disbarment. While these guidelines are not intended to bind this court in its decision-making process, they present useful information concerning the types of conduct the court might consider worthy of permanent disbarment. In re: Arbour, 09-1217 (La.10/2/09), 18 So. 3d 747.\nFor purposes of the instant case, Guideline 7 is relevant. That guideline refers to \"[m]alfeasance in office which results in a felony conviction, and which involves fraud.\"\nRespondent's actions fall within the parameters of this guideline. Respondent misused his office as director of the Louisiana Film Commission to fraudulently inflate state tax credits in exchange for bribes. His actions resulted in federal felony charges, to which respondent has pled guilty.\nThis court has consistently held that an attorney occupying a position of public trust is held to a higher standard of conduct than an ordinary attorney. See In re: Fahrenholtz, 09-0748 (La.10/2/09), 18 So. 3d 751; In re: Bankston, 01-2780 (La.3/8/02), 810 So. 2d 1113; In re: Naccari, 97-1546 (La.12/19/97), 705 So. 2d 734; In re: Huckaby, 96-2643 (La.5/20/97), 694 So. 2d 906. By his actions, respondent has revealed he falls far short of this high ethical standard, and lacks the moral fitness to practice law in the State of Louisiana.\nWe do not lightly impose the sanction of permanent disbarment. In re: Morphis, 01-2803 (La.12/4/02), 831 So. 2d 934. Nonetheless, we are firmly convinced that we would be remiss in our constitutional *489 duty to regulate the practice of law if we did not impose that sanction under the egregious facts of this case. Accordingly, we will accept the recommendation of the disciplinary board and permanently disbar respondent.\n\nDECREE\nUpon review of the findings and recommendations of the hearing committee and disciplinary board, and considering the record, it is ordered that the name of Mark Steven Smith, Louisiana Bar Roll number 22867, be stricken from the roll of attorneys, and that his license to practice law in the State of Louisiana be revoked. Pursuant to Supreme Court Rule XIX, § 24(A), it is further ordered that respondent be permanently prohibited from being readmitted to the practice of law in this state. All costs and expenses in the matter are assessed against respondent in accordance with Page 11 of Supreme Court Rule XIX, § 10.1, with legal interest to commence thirty days from the date of finality of this court's judgment until paid.\nNOTES\n[*]  Chief Justice Kimball not participating in the opinion.\n[1]  Rule 8.4 provides, in pertinent part:\n\nIt is professional misconduct for a lawyer to:\n(a) Violate or attempt to violate the Rules of Professional Conduct, knowingly assist or induce another to do so, or do so through the acts of another;\n(b) Commit a criminal act especially one that reflects adversely on the lawyer's honesty, trustworthiness or fitness as a lawyer in other respects;\n(c) Engage in conduct involving dishonesty, fraud, deceit or misrepresentation.\n\n",
+            "ocr": false,
+            "opinion_id": 1568803
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 29987,
+      "row": {
+        "id": 1921374,
+        "judges": null,
+        "date_filed": "2008-06-06",
+        "date_filed_is_approximate": false,
+        "slug": "willis-knighton-medical-center-v-edmiston",
+        "case_name_short": "Edmiston",
+        "case_name": "WILLIS KNIGHTON MEDICAL CENTER v. Edmiston",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "983 So. 2d 922"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n983 So.2d 922 (2008)\nWILLIS KNIGHTON MEDICAL CENTER\nv.\nBobby W. EDMISTON, Assessor, Bossier Parish, Louisiana, et al.\nNo. 2008-C-0831.\nSupreme Court of Louisiana.\nJune 6, 2008.\nIn re Bossier, City of; Edmiston, Bobby W. Assessor; Deen, Larry C. Sheriff;  Defendant(s); Applying for Writ of Certiorari and/or Review, Parish of Bossier, 26th Judicial District Court Div. D, Nos. 113,513, 116,163, 119,065; to the Court of Appeal, Second Circuit, No(s). 43,106-CA, 43,107-CA, 43,108-CA.\nDenied.\n",
+            "ocr": false,
+            "opinion_id": 1921374
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 30248,
+      "row": {
+        "id": 1693528,
+        "judges": "Per Curiam",
+        "date_filed": "2004-10-14",
+        "date_filed_is_approximate": false,
+        "slug": "in-re-leblanc",
+        "case_name_short": "In Re LeBlanc",
+        "case_name": "In Re LeBlanc",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 3,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "884 So. 2d 552"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n884 So. 2d 552 (2004)\nIn re Lloyd J. LeBLANC, Jr.\nNo. 2004-B-0681.\nSupreme Court of Louisiana.\nOctober 14, 2004.\n\n\n*553 ATTORNEY DISCIPLINARY PROCEEDINGS\nPER CURIAM.\nThis disciplinary matter arises from formal charges filed by the Office of Disciplinary Counsel (\"ODC\") against respondent, *554 Lloyd J. LeBlanc, Jr., an attorney licensed to practice law in Louisiana.\n\nUNDERLYING FACTS\nIn September 1986, Nancy Blackwell filed a defamation suit against her former employer, Brown &amp; Root, Inc. Nancy Blackwell v. Brown &amp; Root, Inc., No. 30,887 on the docket of the 29th Judicial District Court for the Parish of St. Charles. In September 1994, when Ms. Blackwell's original attorney was no longer able to continue handling the matter, attorney James Quaid enrolled as Ms. Blackwell's counsel of record. Shortly thereafter, Mr. Quaid was disbarred by this court.[1]\nIn February 1995, Ms. Blackwell, who then resided in Arkansas, met with respondent at his office in Louisiana to discuss the pending suit. Respondent advised Ms. Blackwell that he would \"look into her case.\" After a short delay, respondent received Ms. Blackwell's file from Mr. Quaid. Over the next five years, respondent had frequent telephone conversations with Ms. Blackwell in which they discussed the defamation suit and the efforts respondent was purportedly making to move the case forward. Nevertheless, during this time, respondent did not review Ms. Blackwell's file or the court record, did not enroll as her counsel of record, and took no action in the litigation on her behalf.\nIn March 2000, Ms. Blackwell's defamation suit was dismissed as abandoned on motion of Brown &amp; Root. Ms. Blackwell was unaware of this turn of events because the trial court's record did not contain her correct mailing address. Respondent learned of the dismissal sometime in November or December 2000, when he reviewed the court record for the first time. On December 6, 2000, respondent wrote Ms. Blackwell a letter notifying her that her case had been dismissed.\nIn August 2001, Ms. Blackwell filed a complaint against respondent with the ODC. In January 2002, respondent returned Ms. Blackwell's file to her by mail. On August 26, 2002, one year after the filing of the disciplinary complaint, but prior to the filing of formal charges against respondent by the ODC, respondent sent Ms. Blackwell a letter of apology, along with a check for $10,000. In the letter, respondent stated:\nI am writing you now to do what I should have done a long time ago. I am writing to apologize for what happened in your case.\nI should have either enrolled as counsel of record on your behalf, and taken steps to bring the case to a conclusion, or I should have told you that I was unable to represent you.\nI deeply regret my failure in this regard.\nEnclosed is my check in the amount of $10,000.00 which I hope will serve as some compensation for my failures. Accepting this check will not adversely affect any of your rights against me. You have the right to seek the advice of an independent attorney with respect to your claims against me.\nI will understand if you do not accept my apology. I only wish I had given it earlier.\nIn September 2002, Ms. Blackwell filed a legal malpractice suit against respondent and his professional liability insurer, seeking damages for respondent's failure to prosecute the defamation suit. Ms. Blackwell's malpractice suit was eventually dismissed after the trial court granted an exception of prescription filed by the defendants.\n\n\n*555 DISCIPLINARY PROCEEDINGS\nFollowing its investigation, the ODC filed one count of formal charges against respondent, alleging his conduct violated Rules 1.1(a) (failure to provide competent representation to a client), 1.2(a) (scope of the representation), 1.3 (failure to act with reasonable diligence and promptness in representing a client), 1.4 (failure to communicate with a client), 1.8(h) (improperly settling a malpractice claim with an unrepresented client), 1.16(d) (obligations upon termination of the representation), 8.4(a) (violation of the Rules of Professional Conduct), 8.4(c) (engaging in conduct involving dishonesty, fraud, deceit, or misrepresentation), and 8.4(d) (engaging in conduct prejudicial to the administration of justice) of the Rules of Professional Conduct.\nIn his answer to the formal charges, respondent denied the ODC's allegations. Specifically, respondent asserted that he did not make any attempt to deceive Ms. Blackwell about her case. Alternatively, respondent sought a hearing in mitigation.\n\nFormal Hearing\nThis matter proceeded to a formal hearing before the hearing committee. The ODC presented the testimony of Ms. Blackwell and James \"J.D.\" Monk, who was present at the initial meeting between respondent and Ms. Blackwell. Respondent testified on his own behalf. Additionally, he called as witnesses Sharon Lee, who initially referred Ms. Blackwell to him, and Rob Worley, the attorney for Brown &amp; Root. Respondent also introduced testimony, both in person and by affidavit, concerning his good character and reputation in the community.\n\nHearing Committee Recommendation\nAt the conclusion of the hearing, the hearing committee filed its report with the disciplinary board. The committee determined that Ms. Blackwell possessed a reasonable subjective belief that respondent was representing her in the defamation suit. In particular, the committee relied on respondent's admission that he never told Ms. Blackwell that he was not her attorney, nor did he advise her that she should hire an attorney to pursue her claims against Brown &amp; Root. The committee found respondent discussed the case with Ms. Blackwell on a frequent basis, telling her that \"I'll try to help you,\" \"I'll try to do what I can to help you,\" and that he would see what he could do to \"move [the case] along.\"\nHaving found an attorney-client relationship existed between respondent and Ms. Blackwell, the committee concluded that respondent violated the Rules of Professional Conduct as charged in the formal charges. Respondent violated Rule 1.1(a) by failing to review the file or the court record of the case. The committee also found respondent did not abide by the scope of the representation, as required by Rule 1.2(a), because he advised Ms. Blackwell of a variety of actions that he would take in the lawsuit but failed to take any of these actions. It determined respondent violated Rule 1.3, which requires a lawyer to act with reasonable diligence, because he failed to take any action whatsoever on the record, or to advise Ms. Blackwell that he would not be able to represent her. Turning to Rule 1.4, the committee found respondent failed to communicate with his client because he provided her with inaccurate information concerning the case and mislead her concerning his actions.\nWith regard to respondent's actions following the dismissal of the case, the committee found he violated Rule 1.8(h) by failing to promptly advise Ms. Blackwell of the dismissal of her lawsuit or that she should seek the advice of independent counsel in connection with his malpractice. It also found he violated Rule 1.16(d) by failing to promptly return her file.\n*556 Finally, the committee found respondent's actions as a whole violated the prohibition against deceitful conduct and conduct prejudicial to the administration of justice in Rules 8.4(c), and (d), respectively. The committee observed that respondent told his client, Ms. Blackwell, about actions he was taking or was going to take, when in fact he had not even reviewed the file or the court record. It concluded such conduct is dishonest and deceitful. Moreover, it found that permitting a client's case to be dismissed when the lawyer has failed to take any action on behalf of the client, and has failed to review the client's file or the court record, is conduct prejudicial to the administration of justice.\nIn determining a sanction, the committee found that respondent violated duties owed to his client, to the public, and as a professional. It concluded respondent's actions were at least knowing and harm was caused to Ms. Blackwell in that her lawsuit was dismissed as abandoned. Thus, the committee found the baseline sanction for respondent's misconduct is a suspension from the practice of law.\nAs aggravating factors, the committee recognized respondent's prior disciplinary offenses (a successfully completed diversionary matter), refusal to acknowledge the wrongful nature of the conduct, vulnerability of the victim, and substantial experience in the practice of law (admitted 1975). In mitigation, the committee acknowledged respondent's good character and reputation. The committee did not consider respondent's payment of $10,000 in partial restitution to Ms. Blackwell to be either an aggravating or mitigating circumstance, because the payment was made after the filing of the disciplinary complaint.\nConsidering all the facts of this case, the committee recommended that respondent be suspended from the practice of law for a period of one year and one day, with all but forty-five days deferred, to be followed by an eighteen-month period of supervised probation governed by specified conditions.\nBoth respondent and the ODC filed objections to the hearing committee's report and recommendation.\n\nDisciplinary Board Recommendation\nAfter reviewing this matter, the disciplinary board concurred in the hearing committee's factual findings and application of the Rules of Professional Conduct. The board also made additional factual findings relating to the existence of the attorney-client relationship between respondent and Ms. Blackwell, specifically noting that Ms. Blackwell's testimony at the hearing established her subjective belief that respondent was representing her in the suit against Brown &amp; Root.\nRespondent violated duties owed to his client, to the legal system, and as a professional. His actions were knowing and caused injury to Ms. Blackwell in that her suit was dismissed on grounds of abandonment; however, the board also noted that Ms. Blackwell has received restitution from respondent for his failure to pursue the legal action against Brown &amp; Root.\nIn mitigation, the board recognized respondent's timely good faith effort to make restitution and to rectify the consequences of his misconduct, full and free disclosure to the disciplinary board and cooperative attitude toward the proceedings, good character and reputation, and remorse. As aggravating factors, the board acknowledged the vulnerability of the victim and respondent's substantial experience in the practice of law.\nTurning to the issue of an appropriate sanction for respondent's misconduct, the board noted the baseline sanction is suspension under the ABA's Standards for *557 Imposing Lawyer Sanctions.[2] Considering the mitigating factors and noting that it was impressed by respondent's candor during oral argument, the board recommended that respondent be suspended from the practice of law for one year, all but thirty days deferred, with any misconduct occurring during a one-year period following the finality of the court's order being grounds for making the deferred period of suspension executory.\nNeither respondent nor the ODC filed an objection to the disciplinary board's recommendation.\n\nDISCUSSION\nBar disciplinary matters come within the original jurisdiction of this court. La. Const. art. V, § 5(B). Consequently, we act as triers of fact and conduct an independent review of the record to determine whether the alleged misconduct has been proven by clear and convincing evidence. In re: Quaid, 94-1316 (La.11/30/94), 646 So. 2d 343; Louisiana State Bar Ass'n v. Boutall, 597 So. 2d 444 (La.1992). While we are not bound in any way by the findings and recommendations of the hearing committee and disciplinary board, we have held the manifest error standard is applicable to the committee's factual findings. See In re: Caulfield, 96-1401 (La.11/25/96), 683 So. 2d 714; In re: Pardue, 93-2865 (La.3/11/94), 633 So. 2d 150.\nBased upon our review of the record, we conclude the hearing committee's finding of fact that an attorney-client relationship existed between respondent and Ms. Blackwell is not clearly wrong. As we explained in Louisiana State Bar Ass'n v. Bosworth, 481 So. 2d 567, 571 (La.1986), the existence of an attorney-client relationship \"turns largely on the client's subjective belief that it exists.\" Ms. Blackwell's testimony reveals that she clearly believed respondent was her attorney. Respondent's actions over the five-year period at issue fostered Ms. Blackwell's belief that he was taking action on her behalf in the defamation suit. At no time did respondent clearly and unequivocally advise Ms. Blackwell he did not intend to represent her.\nHaving found an attorney-client relationship existed, we conclude the hearing committee correctly determined that respondent violated Rules 1.1(a) and 1.2(a) by failing to represent Ms. Blackwell with competence. Likewise, we find he violated Rule 1.3 by failing to act with reasonable diligence and promptness and violated Rule 1.4 by failing to fully communicate with Ms. Blackwell about the status of the case.\nHowever, we do not find the record supports the conclusion that respondent violated Rule 1.8(h) by improperly attempting to settle his malpractice liability. Although respondent did send Ms. Blackwell a check for $10,000, his accompanying cover letter explained that accepting the check \"will not adversely affect any of your rights against me\" and advised her of her right to consult with independent counsel. We conclude respondent's offer was in the nature of an unconditional tender, the acceptance of which would not prejudice Ms. *558 Blackwell's rights in any way. Accordingly, we do not believe respondent's actions violated Rule 1.8(h).\nWe also do not believe the record supports the conclusion that respondent violated Rule 1.16(d), which deals with an attorney's obligations upon the termination of a representation. The record reveals that shortly after respondent learned the case had been dismissed, he sent a letter to Ms. Blackwell advising her of that fact and indicated that attempts to proceed further would be futile. Respondent also returned Ms. Blackwell's file to her, albeit in a somewhat tardy fashion.\nLikewise, we question whether the ODC proved by clear and convincing evidence that respondent acted with deceit in violation of Rule 8.4(b) and whether his actions were prejudicial to the administration of justice for purposes of Rule 8.4(c). Respondent has consistently taken the position throughout these proceedings that he was not Ms. Blackwell's lawyer and that his communications with Ms. Blackwell related only to actions he planned to take if he accepted the representation. Although we now find respondent's position that no attorney-client relationship existed is legally incorrect, we cannot say his statements to Ms. Blackwell were based on an intent to deceive her or harm her pending litigation.\nIn summary, we find the record supports violations of Rules 1.1(a), 1.2(a), 1.3, 1.4 and 8.4(a).[3] The remaining rule violations alleged by the ODC are not supported by the record.\nHaving found professional misconduct, we now turn to a discussion of an appropriate sanction. In considering that issue, we are mindful that the purpose of disciplinary proceedings is not primarily to punish the lawyer, but rather to maintain the appropriate standards of professional conduct, to preserve the integrity of the legal profession, and to deter other lawyers from engaging in violations of the standards of the profession. In re: Vaughan, 00-1892 (La.10/27/00), 772 So. 2d 87; In re: Lain, 00-0148 (La.5/26/00), 760 So. 2d 1152; Louisiana State Bar Ass'n v. Levy, 400 So. 2d 1355 (La.1981). The discipline to be imposed depends upon the facts of each case and the seriousness of the offenses involved, considered in light of any aggravating and mitigating circumstances. In re: Redd, 95-1472 (La.9/15/95), 660 So. 2d 839; Louisiana State Bar Ass'n v. Whittington, 459 So. 2d 520 (La.1984).\nRespondent's failure to clearly communicate with his client is at the heart of the misconduct in this case. Any misunderstandings about the representation could have been easily dispelled had respondent merely taken the time to send a letter to Ms. Blackwell at the inception of their contact advising whether he intended to accept or decline the representation. Instead, respondent's vague and ambiguous actions led Ms. Blackwell to believe her rights were being protected by respondent, when they in fact were not. As a result, Ms. Blackwell suffered harm due to the dismissal of her civil action on grounds of abandonment.\nThe jurisprudence of this court in bar disciplinary matters does not contain many cases involving analogous fact patterns, suggesting that such cases tend to be addressed by civil actions for legal malpractice *559 rather than in a disciplinary context.[4] In general, the baseline sanction for respondent's misconduct appears to be a suspension in the range of one year, all or part of which may be deferred. See, e.g., In re: Cantrell, 03-0910 (La.5/2/03), 848 So. 2d 507 (lawyer suspended by consent for one year and one day, fully deferred, subject to an eighteen-month period of probation, where the lawyer neglected the complainant's appeal due to a belief that he never agreed to handle the complainant's case).\nSeveral aggravating factors are present, including respondent's substantial experience in the practice of law and his prior disciplinary record.[5] In mitigation, we recognize respondent's good character and reputation and his efforts to make at least partial restitution to Ms. Blackwell through his $10,000 unconditional tender.\nConsidering these factors, we conclude the appropriate sanction is a suspension from the practice of law for a period of one year. We will defer all but thirty days of the suspension and place respondent on unsupervised probation for a period of one year, subject to the condition that any misconduct during the probationary period may be grounds for making the deferred portion of the suspension executory or imposing additional discipline, as appropriate.\n\nDECREE\nUpon review of the findings and recommendations of the hearing committees and disciplinary board, and considering the record, it is ordered that Lloyd J. LeBlanc, Jr., Louisiana Bar Roll number 8202, be suspended from the practice of law for a period of one year. It is further ordered that all but thirty days of the suspension shall be deferred, and respondent shall be placed on unsupervised probation for a period of one year, subject to the condition that any misconduct by respondent during the probationary period may be grounds for making the deferred portion of the suspension executory, or imposing additional discipline, as appropriate. All costs and expenses in the matter are assessed against respondent in accordance with Supreme Court Rule XIX, § 10.1, with legal interest to commence thirty days from the date of finality of this court's judgment until paid.\nNOTES\n[1]  See In re: Quaid, 94-1316 (La.11/30/94), 646 So. 2d 343.\n[2]  Standard 4.42(a) suggests that suspension is generally appropriate when a lawyer knowingly fails to perform services for a client, and causes injury or potential injury to the client; Standard 4.62 suggests that suspension is generally appropriate when a lawyer knowingly deceives a client, and causes injury or potential injury to the client. Here, respondent failed to perform any substantial work on Ms. Blackwell's file, causing the case to be dismissed on grounds of abandonment. Further, respondent misrepresented to her the extent of the services he planned to perform on the case.\n[3]  A violation of Rule 8.4(a) occurs whenever a lawyer violates any other provision of the Rules of Professional Conduct.\n[4]  We note that Ms. Blackwell instituted a legal malpractice action against respondent, although that action was later found to be prescribed.\n[5]  As previously stated, respondent had been the subject of an unrelated complaint in 2000. This complaint was not the basis for formal discipline, but was referred by the ODC to diversion. The disciplinary board erroneously concluded that a complaint resolved by diversion could not constitute prior discipline. In fact, Supreme Court Rule XIX, § 10(A)(9) makes it clear that \"diversion may be used as evidence in subsequent proceedings in which the respondent has been found guilty of misconduct bearing upon the issue of sanction to be imposed in the subsequent proceeding.\" Of course, in this context, a diverted matter may not carry the same weight as other forms of sanctions; nonetheless, it constitutes prior discipline which may be considered as an aggravating factor.\n\n",
+            "ocr": false,
+            "opinion_id": 1693528
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 30575,
+      "row": {
+        "id": 1813029,
+        "judges": null,
+        "date_filed": "2008-09-19",
+        "date_filed_is_approximate": false,
+        "slug": "rochon-v-cain",
+        "case_name_short": "Rochon",
+        "case_name": "Rochon v. Cain",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "992 So. 2d 961"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n992 So. 2d 961 (2008)\nRaymond ROCHON\nv.\nBurl CAIN, Richard Stalder, LSP Disciplinary Board.\nNo. 2008-CP-1106.\nSupreme Court of Louisiana.\nSeptember 19, 2008.\n*962 Motion denied. Writ denied on the showing made.\n",
+            "ocr": false,
+            "opinion_id": 1813029
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 31162,
+      "row": {
+        "id": 1954971,
+        "judges": null,
+        "date_filed": "2000-09-29",
+        "date_filed_is_approximate": false,
+        "slug": "domonter-v-cf-bean-corp",
+        "case_name_short": "Domonter",
+        "case_name": "Domonter v. CF Bean Corp.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 16,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "770 So. 2d 354"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n770 So.2d 354 (2000)\nFrederick DOMONTER\nv.\nC.F. BEAN CORPORATION.\nNo. 2000-C-1872.\nSupreme Court of Louisiana.\nSeptember 29, 2000.\nDenied.\n",
+            "ocr": false,
+            "opinion_id": 1954971
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 3333,
+  "num_rows_per_page": 100,
+  "partial": true
+}

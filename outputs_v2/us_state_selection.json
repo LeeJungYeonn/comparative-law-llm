@@ -1,0 +1,82 @@
+{
+  "collection_version": "kr-us-highcourt-corpus-v2.0",
+  "source_dataset": "harvard-lil/cold-cases",
+  "source_config": "default",
+  "source_revision": "5d8d0d8457ef63b6463af9737da21d3badd924ad",
+  "date_window": [
+    "2000-01-01",
+    "2025-12-31"
+  ],
+  "court_type_required": "S",
+  "selection_rule": "highest deterministic metadata availability score subject to >=30 liability candidates, >=25 published records, >=3 core domains; opinion-text usability is rechecked during candidate collection; one state per Census region where feasible, then highest remaining score; alphabetical tie-break",
+  "audit_source_mode": "parquet",
+  "partial_audit": false,
+  "source_rows_scanned": 544841,
+  "selected_states": [
+    {
+      "state": "Pennsylvania",
+      "region": "Northeast",
+      "primary_court_jurisdiction": "Pennsylvania, PA",
+      "selection_score": 5696,
+      "total_state_supreme_cases": 50959,
+      "civil_liability_candidate_count": 501,
+      "usable_full_text_count": 0,
+      "general_negligence_count": 17,
+      "medical_professional_count": 38,
+      "product_liability_count": 139,
+      "employer_supervision_count": 153
+    },
+    {
+      "state": "Michigan",
+      "region": "Midwest",
+      "primary_court_jurisdiction": "Michigan, MI",
+      "selection_score": 4517,
+      "total_state_supreme_cases": 42637,
+      "civil_liability_candidate_count": 154,
+      "usable_full_text_count": 0,
+      "general_negligence_count": 4,
+      "medical_professional_count": 5,
+      "product_liability_count": 62,
+      "employer_supervision_count": 7
+    },
+    {
+      "state": "Louisiana",
+      "region": "South",
+      "primary_court_jurisdiction": "Louisiana, LA",
+      "selection_score": 7440,
+      "total_state_supreme_cases": 66339,
+      "civil_liability_candidate_count": 707,
+      "usable_full_text_count": 0,
+      "general_negligence_count": 9,
+      "medical_professional_count": 67,
+      "product_liability_count": 233,
+      "employer_supervision_count": 155
+    },
+    {
+      "state": "Nevada",
+      "region": "West",
+      "primary_court_jurisdiction": "Nevada, NV",
+      "selection_score": 1797,
+      "total_state_supreme_cases": 16797,
+      "civil_liability_candidate_count": 413,
+      "usable_full_text_count": 0,
+      "general_negligence_count": 100,
+      "medical_professional_count": 11,
+      "product_liability_count": 26,
+      "employer_supervision_count": 2
+    },
+    {
+      "state": "West Virginia",
+      "region": "South",
+      "primary_court_jurisdiction": "West Virginia, WV",
+      "selection_score": 3696,
+      "total_state_supreme_cases": 11667,
+      "civil_liability_candidate_count": 2511,
+      "usable_full_text_count": 0,
+      "general_negligence_count": 2330,
+      "medical_professional_count": 41,
+      "product_liability_count": 92,
+      "employer_supervision_count": 0
+    }
+  ]
+}

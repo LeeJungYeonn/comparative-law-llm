@@ -1,0 +1,754 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 38758,
+      "row": {
+        "id": 3164463,
+        "judges": "Baer, Max",
+        "date_filed": "2015-12-21",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-williams-t",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Williams, T.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 4,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/J-52-2015co - 1024791385860129.pdf",
+            "author_id": 5515,
+            "opinion_text": "                            [J-52-2015] [MO: Baer, J.]\n                   IN THE SUPREME COURT OF PENNSYLVANIA\n                               EASTERN DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA,                    : No. 14 EM 2015\n                                                 :\n                     Petitioner                  : Emergency Petition for Extraordinary\n                                                 : Relief Under King’s Bench Jurisdiction\n                                                 :\n              v.                                 :\n                                                 :\n                                                 :\nTERRANCE WILLIAMS,                               :\n                                                 :\n                     Respondent                  :\n                                                   ARGUED: September 10, 2015\n\n\n                                  CONCURRING OPINION\n\n\nMR. JUSTICE STEVENS                                       DECIDED: December 21, 2015\n       On June 11, 1984, Appellant deceived Amos Norwood, who was on his way to\n\nchurch, into giving him a ride. Once at a secluded spot in a cemetery Appellant stole\n\n$20 from Mr. Norwood. While Mr. Norwood begged for his life, Appellant tied his hands\n\ntogether, tied his legs together and stuffed socks in his mouth. Appellant beat Mr.\n\nNorwood with a tire iron until Mr. Norwood was dead, hid the body behind two\n\ntombstones, covered the body with loose brush and later that evening soaked Mr.\n\nNorwood’s body in gasoline and set it on fire.\n\n       In 1990, the Pennsylvania Supreme Court determined Appellant’s due process\n\nrights were protected, and after further review through Post Conviction Act appeals, it\n\nconfirmed this finding, and held that the jury verdict would be carried out. See Majority\n\nOpinion at 2 for procedural history.\n\f      On January 13, 2015, Governor Tom Corbett signed a death warrant scheduling\n\nAppellant’s execution for March 4, 2015.       On February 13, 2015, newly elected\n\nGovernor Tom Wolf issued a reprieve of Appellant’s death sentence.\n\n      Three decades have passed, and Appellant’s horrific actions snuffing out the life\n\nof Mr. Amos Norwood have become secondary to philosophic discussions about the\n\nviability of the death penalty. As stated so eloquently by Paul Simon, “A man hears\n\nwhat he wants to hear and disregards the rest.” Simon & Garfunkel, “The Boxer,” on\n\nBridge over Troubled Water (Columbia Records 1970).\n\n      While I concur with the Majority finding that the Governor has the authority to\n\nissue a temporary reprieve in this case, I write separately to express my concern that\n\nour decision does not encourage or validate executive branch nullification of lawfully\n\nenacted statutes.1\n\n      Article II section 1 of the Pennsylvania Constitution states: “The legislative power\n\nof this Commonwealth shall be vested in a General Assembly, which shall consist of a\n\nSenate and a House of Representatives.” PA. CONST. art. II, § 1.\n\n      Article IV section 2 states, inter alia, “The supreme executive power shall be\n\nvested in the Governor, who shall take care that the laws be faithfully executedI”. PA.\n\nCONST. art. IV, § 2. Thus, a Governor has a constitutional duty to make certain the\n\nlaws shall be carried out. Therefore, once a statute is duly passed and signed by the\n\nGovernor, that becomes the law of Pennsylvania.\n\n\n1\n  My discussion is strictly about the relationship between the executive and legislative\nbranches of government, and at all times I remain respectful to Governor Tom Wolf and\nmembers of the Senate. Senate Resolution No. 6 of 2011 established a Joint State\nGovernment Commission to establish a bipartisan task force and advisory committee to\nconduct a study of capital punishment in Pennsylvania and its co-chairmen, Senator\nStewart Greenleaf and Senator Daylin Leach, as well as the Senate committee\nmembers are highly respected members of the Senate.\n\n\n\n                             [J-52-2015] [MO: Baer, J.] - 2\n\f        Any Governor who is elected and personally opposes such law, no matter how\n\ndistasteful to him or her, violates one of our country’s basic principles should that\n\nGovernor refuse to enforce the law. As John Adams stated during the early days of our\n\ncountry: we are a “government of laws, not of men.”                 John Adams, “Letters of\n\nNovanglus No. 7,” Boston Gazette (1774). In other words, the Executive Branch cannot\n\nunilaterally and arbitrarily nullify a valid, existing statute by refusing to enforce it.\n\n        Pennsylvania has enacted a capital punishment law.2           While I acknowledge the\n\ndeath penalty is an emotional, controversial issue, Pennsylvania has determined it is the\n\nappropriate punishment for certain enumerated offenses, after full due process of law is\n\nafforded the defendant. Indeed, juries listen to horrific facts and after due deliberation,\n\nsuch as in this case, make the decision to employ the penalty of death. If the death\n\npenalty is to no longer apply in Pennsylvania, that decision should come from the\n\nelected members of the Pennsylvania House and Senate and not from nullification by\n\nan Executive or by fiat by the Judiciary.\n\n        The Majority’s conclusion that the Governor has the power to issue reprieves is\n\nconsistent with a plain language interpretation of the Constitution.3 What is problematic\n\n2\n    Pennsylvania’s Death Penalty Statute provides, in part:\n        § 9711. Sentencing procedure for murder of the first degree.\n        (a) Procedure in jury trials.\n           (1) After a verdict of murder of the first degree is recorded and before\n        the jury is discharged, the court shall conduct a separate sentencing\n        hearing in which the jury shall determine whether the defendant shall be\n        sentenced to death or life imprisonment.\n42 Pa.C.S. § 9711(a)(1).\n3\n Article IV, Section 9 states, in part, “In all criminal cases except impeachment the\nGovernor shall have power to remit fines and forfeitures, to grant reprievesI” PA.\nCONST. art. IV, § 9.\n\n\n\n                                [J-52-2015] [MO: Baer, J.] - 3\n\fin this particular case is that the Governor has conditioned the timing of the reprieve on\n\na report from the aforesaid committee indicating it will continue until the Task Force\n\nreport is issued and “any recommendations contained therein are satisfactorily\n\naddressed.” See Governor Wolf’s Reprieve to Terrance Williams dated February 13,\n\n2015.\n\n        There is no time limit on when such Report will be issued or if there will be any\n\nReport at all. Who determines if any recommendations are “satisfactorily” addressed?”\n\nMy concern is that by conditioning the reprieve on a speculative event and requiring\n\nconcerns be “satisfactorily” addressed, the reprieve is not truly temporary in nature. It\n\nhas already been four years since the passage of Senate Resolution No. 6, supra, and\n\nthirty-one years since Amos Norwood was robbed, tortured and murdered.\n\n        In any event, I agree with the Majority that the Governor has the constitutional\n\npower to issue a reprieve in this case and would urge such reprieve to be made truly\n\ntemporary in nature.     In this case, the defendant has had due process of law for\n\nmurdering Amos Norwood in 1984, a crime for which he was convicted in 1986, and has\n\nreceived careful review by the Pennsylvania Supreme Court and the federal courts.\n\n        The Pennsylvania Supreme Court is in danger of becoming irrelevant in death\n\npenalty cases. Decades come and go after a defendant has had due process of law and\n\nappropriate review by this Court, yet the decisions of this Court affirming the convictions\n\nare ignored. The families of the victims are victimized again and again, this time by the\n\nfailure of the criminal justice system to carry out the law.\n\n        If there is to be no death penalty law in Pennsylvania, such decision should come\n\nfrom the legislative body.     Otherwise, the rule of law envisioned by our Founding\n\nFathers as the bedrock principle of our democracy becomes unglued by being only\n\napplied when convenient and disregarded at will.\n\n\n\n\n                               [J-52-2015] [MO: Baer, J.] - 4\n\f",
+            "ocr": false,
+            "opinion_id": 3164463
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 38771,
+      "row": {
+        "id": 3167027,
+        "judges": "Per Curiam",
+        "date_filed": "2016-01-04",
+        "date_filed_is_approximate": false,
+        "slug": "latchs-lane-owners-assn-v-bazargani-t",
+        "case_name_short": null,
+        "case_name": "Latch's Lane Owners Assn v. Bazargani, T.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/687MAL2015 - 1024914345909193.pdf",
+            "author_id": null,
+            "opinion_text": "                  IN THE SUPREME COURT OF PENNSYLVANIA\n                              MIDDLE DISTRICT\n\n\nLATCH'S LANE OWNERS                          : No. 687 MAL 2015\nASSOCIATION,                                 :\n                                             :\n                   Respondent                : Petition for Allowance of Appeal from\n                                             : the Order of the Commonwealth Court\n                                             :\n            v.                               :\n                                             :\n                                             :\nTAWOOS BAZARGANI, M.D.,                      :\n                                             :\n                   Petitioner                :\n\n\n                                        ORDER\n\n\n\nPER CURIAM\n\n     AND NOW, this 4th day of January, 2016, the Petition for Allowance of Appeal is\n\nDENIED.\n\n\n\n     Mr. Justice Eakin did not participate in the decision of this matter.\n\f",
+            "ocr": false,
+            "opinion_id": 3167027
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 38814,
+      "row": {
+        "id": 3177744,
+        "judges": "per curiam",
+        "date_filed": "2016-02-16",
+        "date_filed_is_approximate": false,
+        "slug": "barley-s-aplt-v-gavin-w",
+        "case_name_short": null,
+        "case_name": "Barley, S., Aplt v. Gavin, W.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/12WAP2015pco - 1025467456149280.pdf",
+            "author_id": null,
+            "opinion_text": "                 IN THE SUPREME COURT OF PENNSYLVANIA\n                            WESTERN DISTRICT\n\n\nSEAN LAVELLE BARLEY,                      :   No. 12 WAP 2015\n                                          :\n                  Appellant               :   Appeal from the Order of the\n                                          :   Commonwealth Court dated April 21,\n                                          :   2015 at No. 209 M.D. 2015.\n            v.                            :\n                                          :\n                                          :\nWAYNE J. GAVIN AND PENNSYLVANIA           :\nBOARD OF PROBATION AND PAROLE,            :\n                                          :\n                  Appellees               :\n\n\n                                     ORDER\n\n\nPER CURIAM\n      AND NOW, this 16th day of February 2016, the Order of the Commonwealth\n\nCourt is AFFIRMED.\n\n      Mr. Justice Eakin did not participate in the consideration or decision of this\n\nmatter.\n\f",
+            "ocr": false,
+            "opinion_id": 3177726
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 38963,
+      "row": {
+        "id": 3211006,
+        "judges": "Per Curiam",
+        "date_filed": "2016-06-08",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-settles-j-pet",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Settles, J., Pet",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/45WAL2016 - 1026889907265367.pdf",
+            "author_id": null,
+            "opinion_text": "                IN THE SUPREME COURT OF PENNSYLVANIA\n                           WESTERN DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA,           : No. 45 WAL 2016\n                                        :\n                 Respondent             :\n                                        : Petition for Allowance of Appeal from\n                                        : the Order of the Superior Court\n           v.                           :\n                                        :\n                                        :\nJOHN SETTLES,                           :\n                                        :\n                 Petitioner             :\n\n\n                                    ORDER\n\n\n\nPER CURIAM\n\n     AND NOW, this 8th day of June, 2016, the Petition for Allowance of Appeal is\n\nDENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 3210900
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 38972,
+      "row": {
+        "id": 3215174,
+        "judges": "Per Curiam",
+        "date_filed": "2016-06-20",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-cosby-pet",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Cosby, Pet",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/63MM2016 - 1027028477363882.pdf",
+            "author_id": null,
+            "opinion_text": "                IN THE SUPREME COURT OF PENNSYLVANIA\n                            MIDDLE DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA,            : No. 63 MM 2016\n                                         :\n                 Respondent              :\n                                         :\n                                         :\n           v.                            :\n                                         :\n                                         :\nWILLIAM HENRY COSBY,                     :\n                                         :\n                 Petitioner              :\n\n\n                                    ORDER\n\n\n\nPER CURIAM\n\n     AND NOW, this 20th day of June, 2016, the Petition for Review is DENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 3215068
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 38977,
+      "row": {
+        "id": 3216330,
+        "judges": "Per Curiam",
+        "date_filed": "2016-06-22",
+        "date_filed_is_approximate": false,
+        "slug": "estate-of-bouher-a-v-giftwares-co-pets",
+        "case_name_short": null,
+        "case_name": "Estate of Bouher, A. v. Giftwares Co., Pets",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/78MAL2016 - 1027055887382528.pdf",
+            "author_id": null,
+            "opinion_text": "                    IN THE SUPREME COURT OF PENNSYLVANIA\n                                MIDDLE DISTRICT\n\n\nESTATE OF ASHLEY NICHOLE          : No. 78 MAL 2016\nBOUHER, JENNIFER S. BOUHER AND    :\nRICHARD A. BOUHER                 : Petition for Allowance of Appeal from\n                                  : the Order of the Superior Court\n             v.                   :\n                                  :\nGIFTWARES CO., INC., CONSOLIDATED :\nRAIL CORPORATION PENNSYLVANIA     :\nLINES, LLC., BARRY DICKMAN, GREGG :\nDICKMAN, MITCHELL DICKMAN,        :\nGIFTWARES ASSOC., NORFOLK         :\nSOUTHERN RAILWAY COMPANY,         :\nROYERSFORD BOROUGH AND            :\nPATRICK J. SULLIVAN               :\n                                  :\n                                  :\nPETITION OF: GIFTWARES CO., INC., :\nCONSOLIDATED RAIL CORPORATION     :\nPENNSYLVANIA LINES, LLC., BARRY   :\nDICKMAN, GREGG DICKMAN,           :\nMITCHELL DICKMAN, GIFTWARES       :\nASSOC., NORFOLK SOUTHERN          :\nRAILWAY COMPANY                   :\n                                  :\n                                  :\n\n\n                                      ORDER\n\n\n\nPER CURIAM\n\n       AND NOW, this 22nd day of June, 2016, the Petition for Allowance of Appeal is\n\nDENIED.\n\n       Justice Donohue and Justice Wecht did not participate in the consideration or\n\ndecision of this matter.\n\f",
+            "ocr": false,
+            "opinion_id": 3216224
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 49413,
+      "row": {
+        "id": 4246413,
+        "judges": "Per Curiam",
+        "date_filed": "2016-08-11",
+        "date_filed_is_approximate": false,
+        "slug": "noon-r-v-somerset-ccp",
+        "case_name_short": null,
+        "case_name": "Noon, R. v. Somerset CCP",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/78WM2016 - 1027681398589717.pdf",
+            "author_id": null,
+            "opinion_text": "                 IN THE SUPREME COURT OF PENNSYLVANIA\n                            WESTERN DISTRICT\n\n\nRAYMOND A. NOON, JR.,                     : No. 78 WM 2016\n                                          :\n                   Petitioner             :\n                                          :\n                                          :\n            v.                            :\n                                          :\n                                          :\nSOMERSET COUNTY COMMON PLEAS              :\nCOURT,                                    :\n                                          :\n                   Respondent             :\n\n\n                                     ORDER\n\n\n\nPER CURIAM\n\n      AND NOW, this 11th day of August, 2016, the Application for Leave to File\n\nOriginal Process is GRANTED, and the Petition for Writ of Mandamus is DENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 4023674
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 49560,
+      "row": {
+        "id": 4253575,
+        "judges": "Per Curiam",
+        "date_filed": "2016-09-01",
+        "date_filed_is_approximate": false,
+        "slug": "hoege-k-pet-v-ccp-westmoreland-co",
+        "case_name_short": null,
+        "case_name": "Hoege, K., Pet v. CCP Westmoreland Co.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/85WM2016 - 1027951498790104.pdf",
+            "author_id": null,
+            "opinion_text": "                   IN THE SUPREME COURT OF PENNSYLVANIA\n                              WESTERN DISTRICT\n\n\nKASSEY J. HOEGE,                            : No. 85 WM 2016\n                                            :\n                    Petitioner              :\n                                            :\n                                            :\n             v.                             :\n                                            :\n                                            :\nCOURT OF COMMON PLEAS OF                    :\nWESTMORELAND COUNTY,                        :\n                                            :\n                    Respondent              :\n\n\n                                       ORDER\n\n\n\nPER CURIAM\n\n      AND NOW, this 1st day of September, 2016, the Application for Leave to File\n\nOriginal Process and the Petition for Writ of Mandamus and/or Extraordinary Relief, to\n\nthe extent it seeks mandamus relief, is GRANTED.\n\n      The Court of Common Pleas of Westmoreland County is DIRECTED to\n\nadjudicate the pending contempt petition within 30 days.\n\n      The Prothonotary is DIRECTED to serve this order on the President Judge of the\n\nCourt of Common Pleas of Westmoreland County.\n\f",
+            "ocr": false,
+            "opinion_id": 4030836
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 50475,
+      "row": {
+        "id": 4315065,
+        "judges": "Donohue",
+        "date_filed": "2016-10-24",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-williams-g",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Williams, G.",
+        "case_name_full": "COMMONWEALTH of Pennsylvania, Respondent v. George WILLIAMS, Petitioner",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<citation id=\"b213-13\">\n    159 A.3d 940\n   </citation><br><parties id=\"b213-14\">\n    COMMONWEALTH of Pennsylvania, Respondent v. George WILLIAMS, Petitioner\n   </parties><docketnumber id=\"AhH\">\n    No. 639 EAL 2015\n   </docketnumber><court id=\"Ai3\">\n    Supreme Court of Pennsylvania.\n   </court><br><decisiondate id=\"b213-17\">\n    October 24, 2016\n   </decisiondate>",
+        "citations": [
+          "159 A.3d 940",
+          "639 Pa. 173"
+        ],
+        "opinions": [
+          {
+            "author_str": "Per Curiam",
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/639EAL2015 - 10285729214053183.pdf",
+            "author_id": null,
+            "opinion_text": "lN THE SUPRE|V|E COURT OF PENNSYLVAN|A\nEASTERN DlSTRlCT\n\nCO|\\/||\\/|ONWEALTH OF PENNSYLVAN|A, 1 NO. 639 EAL 2015\n\nRespondent\nPetition for A||owance of Appea| from\nthe Order of the Superior Court\nv.\nGEORGE W|LL|A|\\/|S,\nPetitioner\n\n \n\nPER CUR|A|V|\n\nAND NOW, this 24th day of October, 2016, the Petition for A||owance of Appea|\nis DEN|ED.\n\nJustice Donohue did not participate in the Consideration or decision of this\n\nmatter.\n\n",
+            "ocr": true,
+            "opinion_id": 4092326
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 50478,
+      "row": {
+        "id": 4316213,
+        "judges": "Per Curiam",
+        "date_filed": "2016-10-27",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-erwin-r-pet",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Erwin, R., Pet",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/244WAL2016 - 10286382214095148.pdf",
+            "author_id": null,
+            "opinion_text": "                  IN THE SUPREME COURT OF PENNSYLVANIA\n                             WESTERN DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA,               : No. 244 WAL 2016\n                                            :\n                   Respondent               :\n                                            : Petition for Allowance of Appeal from\n                                            : the Order of the Superior Court\n             v.                             :\n                                            :\n                                            :\nRAYMOND LEROY ERWIN, JR.,                   :\n                                            :\n                   Petitioner               :\n\n\n                                       ORDER\n\n\n\nPER CURIAM\n\n     AND NOW, this 27th day of October, 2016, the Petition for Allowance of Appeal\n\nis DENIED.\n\n     Justice Mundy did not participate in the consideration or decision of this matter.\n\f",
+            "ocr": false,
+            "opinion_id": 4093474
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 2600,
+  "num_rows_per_page": 100,
+  "partial": true
+}

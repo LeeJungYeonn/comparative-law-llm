@@ -1,0 +1,753 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 69813,
+      "row": {
+        "id": 4335631,
+        "judges": "Per Curiam",
+        "date_filed": "2016-12-30",
+        "date_filed_is_approximate": false,
+        "slug": "in-the-matter-of-james-h-pickering-jr",
+        "case_name_short": null,
+        "case_name": "In the Matter of: James H. Pickering Jr.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/94RST2016 - 10293598914827674.pdf",
+            "author_id": null,
+            "opinion_text": "lN THE SUPREME COURT OF PENNSYLVAN|A\n\n|n the |\\/|atter of : No. 154 DB 2016 (No. 94 RST 2016)\n\nJA|\\/|ES H. P|CKER|NG, JR. : AttOrney RegistratiOn NO. 54050\n\nPET|T|ON FOR RE|NSTATE|\\/|ENT .\nFRO|\\/| AD|\\/||N|STRAT|VE SUSPENS|ON : (Phi|ade|phia)\n\nORDER\n\nPER CUR|AM\n\nAND NOW, this 30th day of December, 2016, the Report and Recommendation\nof Discip|inary Board |\\/|ember dated Decemeber 20, 2016, is approved and it is\nORDERED that James H. Pickering, Jr., who has been on Administrative Suspension,\nhas never been suspended or disbarred, and has demonstrated that he has the moral\nqualifications, competency and learning in law required for admission to practice in the\nCommonwea|th, sha|| be and is, hereby reinstated to active status as a member of the\nBar of this Commonwea|th. The expenses incurred by the Board in the investigation\n\nand processing of this matter sha|| be paid by the Petitioner.\n\n",
+            "ocr": true,
+            "opinion_id": 4112892
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 69834,
+      "row": {
+        "id": 4343739,
+        "judges": "Per Curiam",
+        "date_filed": "2017-01-30",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-davila-lugo-l",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Davila-Lugo, L.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/630MAL2016 - 10297191215884522.pdf",
+            "author_id": null,
+            "opinion_text": "                  IN THE SUPREME COURT OF PENNSYLVANIA\n                              MIDDLE DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA,            : No. 630 MAL 2016\n                                         :\n                  Respondent             :\n                                         : Petition for Allowance of Appeal from\n                                         : the Order of the Superior Court\n             v.                          :\n                                         :\n                                         :\nLUIS ALGENIS DAVILA-LUGO,                :\n                                         :\n                  Petitioner             :\n\n\n                                    ORDER\n\n\n\nPER CURIAM\n\n     AND NOW, this 30th day of January, 2017, the Petition for Allowance of Appeal\n\nis DENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 4121000
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 70473,
+      "row": {
+        "id": 4379332,
+        "judges": null,
+        "date_filed": "2017-03-29",
+        "date_filed_is_approximate": false,
+        "slug": "mclean-v-v-ucbr",
+        "case_name_short": "McLean",
+        "case_name": "McLean v. v. UCBR",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/819MAL2016 - 10304437716693450.pdf",
+            "author_id": null,
+            "opinion_text": "                IN THE SUPREME COURT OF PENNSYLVANIA\n                            MIDDLE DISTRICT\n\n\nVICTOR MCLEAN JR.,                       : No. 819 MAL 2016\n                                         :\n                 Petitioner              :\n                                         : Petition for Allowance of Appeal from\n                                         : the Order of the Commonwealth Court\n           v.                            :\n                                         :\n                                         :\nUNEMPLOYMENT COMPENSATION                :\nBOARD OF REVIEW,                         :\n                                         :\n                 Respondent              :\n\n\n                                    ORDER\n\n\n\nPER CURIAM\n\n     AND NOW, this 29th day of March, 2017, the Petition for Allowance of Appeal is\n\nDENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 4156585
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 70533,
+      "row": {
+        "id": 4379973,
+        "judges": null,
+        "date_filed": "2017-03-31",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-olds-r-pet",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Olds, R., Pet",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/126WM2016 - 10304859416748319.pdf",
+            "author_id": null,
+            "opinion_text": "                  IN THE SUPREME COURT OF PENNSYLVANIA\n                             WESTERN DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA,                : No. 126 WM 2016\n                                             :\n                   Respondent                :\n                                             :\n                                             :\n            v.                               :\n                                             :\n                                             :\nRICKY L. OLDS,                               :\n                                             :\n                   Petitioner                :\n\n\n                                      ORDER\n\n\n\nPER CURIAM\n\n      AND NOW, this 31st day of March, 2017, the Motion for Leave to File a Reply is\n\nGRANTED, and the “Appeal from the Superior Court’s Order Denying Petitioner’s\n\nMotion for Bail Pending Appeal” is DENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 4157226
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 70545,
+      "row": {
+        "id": 4381963,
+        "judges": null,
+        "date_filed": "2017-04-10",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-rambert-e-pet",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Rambert, E., Pet",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/509WAL2016 - 10305837416855552.pdf",
+            "author_id": null,
+            "opinion_text": "                IN THE SUPREME COURT OF PENNSYLVANIA\n                           WESTERN DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA,            : No. 509 WAL 2016\n                                         :\n                 Respondent              :\n                                         : Petition for Allowance of Appeal from\n                                         : the Order of the Superior Court\n           v.                            :\n                                         :\n                                         :\nERIC RAMBERT,                            :\n                                         :\n                 Petitioner              :\n\n\n                                    ORDER\n\n\n\nPER CURIAM\n\n     AND NOW, this 10th day of April, 2017, the Petition for Allowance of Appeal is\n\nDENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 4159216
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 70571,
+      "row": {
+        "id": 4388763,
+        "judges": null,
+        "date_filed": "2017-05-03",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-ruiz-c",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Ruiz, C.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/799MAL2016 - 10308656717201196.pdf",
+            "author_id": null,
+            "opinion_text": "                IN THE SUPREME COURT OF PENNSYLVANIA\n                            MIDDLE DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA,           : No. 799 MAL 2016\n                                        :\n                 Respondent             :\n                                        : Petition for Allowance of Appeal from\n                                        : the Order of the Superior Court\n           v.                           :\n                                        :\n                                        :\nCHRISTOBAL R. RUIZ,                     :\n                                        :\n                 Petitioner             :\n\n\n                                   ORDER\n\n\n\nPER CURIAM\n\n     AND NOW, this 3rd day of May, 2017, the Petition for Allowance of Appeal is\n\nDENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 4166016
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 70660,
+      "row": {
+        "id": 4399626,
+        "judges": null,
+        "date_filed": "2017-06-12",
+        "date_filed_is_approximate": false,
+        "slug": "kanofsky-a-v-city-of-bethlehem",
+        "case_name_short": null,
+        "case_name": "Kanofsky, A. v. City of Bethlehem",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/11MAL2017 - 10313251218547270.pdf",
+            "author_id": null,
+            "opinion_text": "                IN THE SUPREME COURT OF PENNSYLVANIA\n                            MIDDLE DISTRICT\n\n\nALVIN S. KANOFSKY,                       : No. 11 MAL 2017\n                                         :\n                 Petitioner              :\n                                         : Petition for Allowance of Appeal from\n                                         : the Order of the Commonwealth Court\n           v.                            :\n                                         :\n                                         :\nCITY OF BETHLEHEM,                       :\n                                         :\n                 Respondent              :\n\n\n                                    ORDER\n\n\n\nPER CURIAM\n\n     AND NOW, this 12th day of June, 2017, the Petition for Allowance of Appeal is\n\nDENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 4176879
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 70667,
+      "row": {
+        "id": 4401769,
+        "judges": null,
+        "date_filed": "2017-06-20",
+        "date_filed_is_approximate": false,
+        "slug": "metropolitan-edison-aplt-v-city-of-reading",
+        "case_name_short": null,
+        "case_name": "Metropolitan Edison, Aplt. v. City of Reading",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 2,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/J-128-2016co - 10314195018687754.pdf",
+            "author_id": null,
+            "opinion_text": "                               [J-128-2016] [MO: Donohue, J.]\n                      IN THE SUPREME COURT OF PENNSYLVANIA\n                                        MIDDLE DISTRICT\n\n\nMETROPOLITAN EDISON COMPANY,                       :   No. 58 MAP 2016\n\n                       Appellant                   :   Appeal from the Order of the\n                                                   :   Commonwealth Court dated October\n                                                   :   15, 2015 at No. 2188 CD 2014\n                v.                                 :   Reversing the Judgment Entered in the\n                                                   :   Berks County Court of Common Pleas,\n                                                   :   Civil Division, dated November 17,\nCITY OF READING,                                   :   2014, exited November 19, 2014, at No.\n                                                   :   10-21418.\n                       Appellee\n                                                   :   ARGUED: December 7, 2016\n\n\n                                   CONCURRING OPINION\n\n\nJUSTICE MUNDY                                                DECIDED: June 20, 2017\n       I   join the majority opinion.    As the majority notes, Section 8542(b) of the Tort\n\nClaims Act, provides in relevant part:\n\n\n       (b) Acts which may impose liability. --The following acts by a local\n       agency or any of its employees may result in the imposition of liability on a\n       local agency:\n\n\n\n            (5) Utility service facilities. --A dangerous condition of the facilities of\n            steam, sewer, water, gas or electric systems owned by the local\n            agency and located within rights -of -way, except that the claimant to\n            recover must establish that the dangerous condition created a\n            reasonably foreseeable risk of the kind of injury which was incurred\n            and that the local agency had actual notice or could reasonably be\n            charged with notice under the circumstances of the dangerous\n            condition at a sufficient time prior to the event to have taken\n            measures to protect against the dangerous condition.\n\n42 Pa.C.S. § 8542(b)(5).\n\f       With respect to the utility service facilities exception, would expressly adopt the\n                                                                    I\n\n\n\n\nfollowing position set forth by the Commonwealth Court in Miller        v. Pa.   Dep't of Transp.,\n\n690 A.2d 818 (Pa. Cmwlth. 1997):\n\n       In  County of Allegheny v. Dominijanni, 109 Pa. Cmwlth. 484, 531 A.2d 562\n       (1987), the Court held that the term \"right-of-way,\" as used in this\n       exception included the strip of land on which the local agency constructed\n       its utility service facilities. In Dominijanni the underlying suit was based on\n       the agency's negligence, inter alia, in failing to use the proper backfill\n       when installing a sewer pipe, which resulted in a landslide. Consequently,\n       this Court concludes that the language \"of the facilities ... and located\n       within rights of way\" in the utilities service facilities exception applies not\n       only to the water pipes but also to the strip of land which the [water\n       authority] disturbed to repair its water pipe.\n\nMiller, supra at 820.\n\n\n       By expressly adopting Miller, this Court will definitively establish that the utility\n\nservice exception applies to the utiliity's property as well as to the land within its right-of-\n\nway.\n\n       Justice Baer joins this concurring opinion.\n\n\n\n\n                             [J-128-2016] [MO: Donohue, J.]     -   2\n\f",
+            "ocr": false,
+            "opinion_id": 4179022
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 71161,
+      "row": {
+        "id": 4427327,
+        "judges": "Per Curiam",
+        "date_filed": "2017-09-19",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-norton-m",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Norton, M.",
+        "case_name_full": "COMMONWEALTH of Pennsylvania, Respondent v. Michael NORTON, Petitioner",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<parties id=\"ALHR\">\n    COMMONWEALTH of Pennsylvania, Respondent v. Michael NORTON, Petitioner\n   </parties><docketnumber id=\"AjE7\">\n    No. 262 MAL 2017\n   </docketnumber><court id=\"AKj-X\">\n    Supreme Court of Pennsylvania.\n   </court><decisiondate id=\"aii-dedup-2\">\n    September 19, 2017\n   </decisiondate>",
+        "citations": [
+          "170 A.3d 1059"
+        ],
+        "opinions": [
+          {
+            "author_str": "Per Curiam",
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/23927852.pdf",
+            "author_id": null,
+            "opinion_text": "                                                                    M.D. Appeal Dkt.\n                                                                    53 2017\n\n\n\n                  IN THE SUPREME COURT OF PENNSYLVANIA\n                              MIDDLE DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA,              : No. 262 MAL 2017\n                                           :\n                   Respondent              :\n                                           : Petition for Allowance of Appeal from\n                                           : the Order of the Superior Court\n             v.                            :\n                                           :\n                                           :\nMICHAEL NORTON,                            :\n                                           :\n                   Petitioner              :\n\n\n                                      ORDER\n\n\n\nPER CURIAM\n\n      AND NOW, this 19th day of September, 2017, the Petition for Allowance of\n\nAppeal is GRANTED. The issue presented by Petitioner and rephrased for clarity is:\n\n      Whether a defendant’s assertion of innocence based on the sufficiency\n      of the evidence and his inability to reconcile entering a plea when he\n      maintained his innocence well before the time of his sentencing and\n      when the Commonwealth made no argument of prejudice, is sufficient to\n      establish a fair and just reason for withdrawing his plea of nolo\n      contendere?\n\f",
+            "ocr": false,
+            "opinion_id": 4204580
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 71496,
+      "row": {
+        "id": 4431965,
+        "judges": null,
+        "date_filed": "2017-10-04",
+        "date_filed_is_approximate": false,
+        "slug": "johnson-t-v-austin-a",
+        "case_name_short": null,
+        "case_name": "Johnson, T. v. Austin, A.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/25032749.pdf",
+            "author_id": null,
+            "opinion_text": "                IN THE SUPREME COURT OF PENNSYLVANIA\n                           EASTERN DISTRICT\n\n\nTERRENCE JOHNSON,                         : No. 215 EAL 2017\n                                          :\n                  Petitioner              : Petition for Allowance of Appeal from\n                                          : the Order of the Superior Court\n                                          :\n           v.                             :\n                                          :\n                                          :\nANTHONY A. AUSTIN,                        :\n                                          :\n                  Respondent              :\n\n\n                                     ORDER\n\n\n\nPER CURIAM\n\n     AND NOW, this 4th day of October, 2017, the Petition for Allowance of Appeal is\n\nDENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 4209218
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 2600,
+  "num_rows_per_page": 100,
+  "partial": true
+}

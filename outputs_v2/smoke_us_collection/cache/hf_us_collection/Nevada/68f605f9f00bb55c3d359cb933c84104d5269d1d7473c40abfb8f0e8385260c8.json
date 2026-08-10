@@ -1,0 +1,757 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 55439,
+      "row": {
+        "id": 4861390,
+        "judges": null,
+        "date_filed": "2021-03-04",
+        "date_filed_is_approximate": false,
+        "slug": "bank-of-america-na-vs-sfr-invs-pool-1-llc",
+        "case_name_short": null,
+        "case_name": "Bank Of America, N.A. Vs. Sfr Invs. Pool 1, Llc",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": "http://caseinfo.nvsupremecourt.us/document/view.do?csNameID=56008&csIID=56008&deLinkID=808322&onBaseDocumentNumber=21-06337",
+            "author_id": null,
+            "opinion_text": "\r\n\r\n\r\n\t\t\t\t \r\n\t\t\t\t \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n    \r\n\r\n\r\n\r\n\tC-Track E-Filing\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n     \r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t \r\n\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\r\n\tNevada\r\n\tAppellate Courts\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\r\n\t\t\r\n\t\t\tAppellate Case Management System\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\tC-Track, the browser based CMS for Appellate Courts\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tCase Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tParticipant Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\t\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t \r\n\t\t\t\t\t \r\n\t\t\t\t \r\n\t\t\t \r\n\t\t\r\n\t\r\n \r\n\r\n\r\n",
+            "ocr": false,
+            "opinion_id": 4665169
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 55474,
+      "row": {
+        "id": 4868791,
+        "judges": null,
+        "date_filed": "2021-03-29",
+        "date_filed_is_approximate": false,
+        "slug": "in-re-discipline-of-suneel-j-nelson",
+        "case_name_short": null,
+        "case_name": "In Re: Discipline Of Suneel J. Nelson",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": "http://caseinfo.nvsupremecourt.us/document/view.do?csNameID=60133&csIID=60133&deLinkID=811095&onBaseDocumentNumber=21-09004",
+            "author_id": null,
+            "opinion_text": "\r\n\r\n\r\n\t\t\t\t \r\n\t\t\t\t \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n    \r\n\r\n\r\n\r\n\tC-Track E-Filing\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n     \r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t \r\n\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\r\n\tNevada\r\n\tAppellate Courts\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\r\n\t\t\r\n\t\t\tAppellate Case Management System\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\tC-Track, the browser based CMS for Appellate Courts\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tCase Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tParticipant Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\t\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t \r\n\t\t\t\t\t \r\n\t\t\t\t \r\n\t\t\t \r\n\t\t\r\n\t\r\n \r\n\r\n\r\n",
+            "ocr": false,
+            "opinion_id": 4672570
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 55656,
+      "row": {
+        "id": 4874479,
+        "judges": null,
+        "date_filed": "2021-04-16",
+        "date_filed_is_approximate": false,
+        "slug": "main-st-invs-iii-llc-vs-crowdcredit-estonia-ou",
+        "case_name_short": null,
+        "case_name": "Main St. Invs. Iii, Llc Vs. Crowdcredit Estonia Ou",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": "http://caseinfo.nvsupremecourt.us/document/view.do?csNameID=60521&csIID=60521&deLinkID=813244&onBaseDocumentNumber=21-11037",
+            "author_id": null,
+            "opinion_text": "\r\n\r\n\r\n\t\t\t\t \r\n\t\t\t\t \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n    \r\n\r\n\r\n\r\n\tC-Track E-Filing\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n     \r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t \r\n\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\r\n\tNevada\r\n\tAppellate Courts\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\r\n\t\t\r\n\t\t\tAppellate Case Management System\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\tC-Track, the browser based CMS for Appellate Courts\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tCase Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tParticipant Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\t\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t \r\n\t\t\t\t\t \r\n\t\t\t\t \r\n\t\t\t \r\n\t\t\r\n\t\r\n \r\n\r\n\r\n",
+            "ocr": false,
+            "opinion_id": 4678258
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 55678,
+      "row": {
+        "id": 4878935,
+        "judges": null,
+        "date_filed": "2021-04-29",
+        "date_filed_is_approximate": false,
+        "slug": "newman-vs-full-color-games-inc",
+        "case_name_short": null,
+        "case_name": "Newman Vs. Full Color Games, Inc.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": "http://caseinfo.nvsupremecourt.us/document/view.do?csNameID=56254&csIID=56254&deLinkID=814635&onBaseDocumentNumber=21-12366",
+            "author_id": null,
+            "opinion_text": "\r\n\r\n\r\n\t\t\t\t \r\n\t\t\t\t \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n    \r\n\r\n\r\n\r\n\tC-Track E-Filing\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n     \r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t \r\n\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\r\n\tNevada\r\n\tAppellate Courts\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\r\n\t\t\r\n\t\t\tAppellate Case Management System\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\tC-Track, the browser based CMS for Appellate Courts\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tCase Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tParticipant Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\t\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t \r\n\t\t\t\t\t \r\n\t\t\t\t \r\n\t\t\t \r\n\t\t\r\n\t\r\n \r\n\r\n\r\n",
+            "ocr": false,
+            "opinion_id": 4682714
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 60332,
+      "row": {
+        "id": 5300553,
+        "judges": null,
+        "date_filed": "2021-11-23",
+        "date_filed_is_approximate": false,
+        "slug": "jacuzzi-inc-vs-dist-ct-ansara",
+        "case_name_short": null,
+        "case_name": "Jacuzzi, Inc. Vs. Dist. Ct. (Ansara)",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": "http://caseinfo.nvsupremecourt.us/document/view.do?csNameID=62474&csIID=62474&deLinkID=837174&onBaseDocumentNumber=21-33690",
+            "author_id": null,
+            "opinion_text": "\r\n\r\n\r\n\t\t\t\t \r\n\t\t\t\t \r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n    \r\n\r\n\r\n\r\n\tC-Track E-Filing\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n     \r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t \r\n\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\r\n\tNevada\r\n\tAppellate Courts\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\r\n\t\t\r\n\t\t\tAppellate Case Management System\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\tC-Track, the browser based CMS for Appellate Courts\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tCase Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tParticipant Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\t\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t \r\n\t\t\t\t\t \r\n\t\t\t\t \r\n\t\t\t \r\n\t\t\r\n\t\r\n \r\n\r\n\r\n",
+            "ocr": false,
+            "opinion_id": 5129115
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 60338,
+      "row": {
+        "id": 5303186,
+        "judges": null,
+        "date_filed": "2021-09-16",
+        "date_filed_is_approximate": false,
+        "slug": "followill-nicole-vs-state",
+        "case_name_short": null,
+        "case_name": "Followill (Nicole) Vs. State",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": "http://caseinfo.nvsupremecourt.us/document/view.do?csNameID=60675&csIID=60675&deLinkID=829982&onBaseDocumentNumber=21-26871",
+            "author_id": null,
+            "opinion_text": "\r\n\r\n\r\n\r\n\r\n\t82307: Case View\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n     \r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t\r\n\t \r\n\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\r\n\tNevada\r\n\tAppellate Courts\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\r\n\t\t\r\n\t\t\tAppellate Case Management System\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\tC-Track, the browser based CMS for Appellate Courts\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tCase Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tParticipant Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\t\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\tCases\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\tCase Search\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\tParticipant Search\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\t21-26871: This document is currently unavailable. If you need a copy of this document, please contact Clerk's Office at (775)684-1600.\t\r\n\t\r\n\t\r\n\r\n\tDisclaimer: The information and documents available here should not be relied upon as an official record of action.Only filed documents can be viewed.  Some documents received in a case may not be available for viewing.Some documents originating from a lower court, including records and appendices, may not be available for viewing.For official records, please contact the Clerk of the Supreme Court of Nevada at (775) 684-1600.\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\nCase Information: 82307\r\n\r\n\r\nShort Caption:FOLLOWILL (NICOLE) VS. STATECourt:Supreme Court\r\n\r\n\r\nRelated Case(s):67041, 71459, 72731, 72731-COA, 76697\r\n\r\n\r\nLower Court Case(s):Douglas Co. - Ninth Judicial District - 14-CR-0055Classification:Criminal Appeal - Other - Other/Proper Person\r\n\r\n\r\nDisqualifications:Case Status:Remittitur Issued/Case Closed\r\n\r\n\r\nReplacement:Panel Assigned:\r\n\t\t\t\t\tPanel\r\n\t\t\t\t\t\r\n\r\n\r\nTo SP/Judge:SP Status:\r\n\r\n\r\nOral Argument:Oral Argument Location:\r\n\r\n\r\nSubmission Date:04/12/2021How Submitted:On Record And Briefs\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\t\r\n\t\t\r\n\r\n+\r\n\t\t\t\t\t\tParty Information\r\n\t\t\t\t\t\r\n\r\n\r\nRoleParty NameRepresented By\r\n\r\n\r\nAppellantNicole Christine Followill\r\n\t\t\t\t\tIn Proper Person\r\n\t\t\t\t\r\n\r\n\r\nRespondentThe State of NevadaAaron D. Ford\r\n\t\t\t\t\t\t\t(Attorney General/Carson City)\r\n\t\t\t\t\t\tMark B. Jackson\r\n\t\t\t\t\t\t\t(Douglas County District Attorney/Minden)\r\n\t\t\t\t\t\tMatthew S. Johnson\r\n\t\t\t\t\t\t\t(Douglas County District Attorney/Minden)\r\n\t\t\t\t\t\t\r\n\r\n\r\n\t\t\r\n\t\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\r\nDocket Entries\r\n\r\n\r\nDateTypeDescriptionPending?Document\r\n\r\n\r\n01/11/2021Filing FeeFiling Fee Waived - Criminal.  (SC)\r\n\r\n\r\n01/11/2021Notice of Appeal DocumentsFiled Notice of Appeal/Proper Person. Appeal docketed in the Supreme Court this day.  (SC)21-00841\r\n\r\n\r\n\r\n\r\n02/01/2021Notice of Appeal DocumentsFiled Copy of District Court Docket Entries. (SC)21-02981\r\n\r\n\r\n\r\n\r\n02/05/2021BriefFiled Proper Person Appellant's Informal Brief.  (DETACHED EXHIBITS AND RETURNED, UNFILED PER ORDER 2/26/21).  (SC)21-03557\r\n\r\n\r\n\r\n\r\n02/05/2021Notice/IncomingFiled Notice of Appearance (Matthew S. Johnson, Deputy District Attorney as counsel for respondent). (SC)21-03645\r\n\r\n\r\n\r\n\r\n02/12/2021Order/ProceduralFiled Order of Limited Remand.  The district court shall have 14 days from the date of this order to (1) enter an amended written order or (2) inform this court that it is reconsidering its decision.  (SC)21-04266\r\n\r\n\r\n\r\n\r\n02/23/2021Order/IncomingFiled District Court Order.  Certified copy of order filed in district court on February 19, 2021.  Amended Order Regarding Pending Motion. (SC)21-05293\r\n\r\n\r\n\r\n\r\n02/26/2021Order/ProceduralFiled Order Directing Transmission of Record and Regarding Briefing.  Record on Appeal due:  30 days.  Appellant has filed an informal brief with exhibits.  The clerk of this court shall detach the exhibits attached to the brief, and return them, unfiled.   (SC)21-05686\r\n\r\n\r\n\r\n\r\n03/26/2021Record on Appeal DocumentsFiled Record on Appeal - Volume 1. (2014-CR-00055/2014-CR-00055BD). (SC)21-08749\r\n\r\n\r\n\r\n\r\n03/26/2021Record on Appeal DocumentsFiled Record on Appeal - Volume 2. (2014-CR-00055/2014-CR-00055BD). (SC)21-08750\r\n\r\n\r\n\r\n\r\n03/26/2021Record on Appeal DocumentsFiled Record on Appeal - Volume 3. (2014-CR-00055/2014-CR-00055BD). (SC)21-08775\r\n\r\n\r\n\r\n\r\n03/26/2021Record on Appeal DocumentsFiled Record on Appeal - Volume 4. (2014-CR-00055/2014-CR-00055BD). (SC)21-08777\r\n\r\n\r\n\r\n\r\n03/26/2021Record on Appeal DocumentsFiled Record on Appeal - Volume 5.  (2014-CR-00055/2014-CR-00055BD). (SC)21-08779\r\n\r\n\r\n\r\n\r\n03/31/2021Record on Appeal DocumentsFiled Presentence Investigation Report (SEALED). (SC)\r\n\r\n\r\n04/12/2021Case Status UpdateBriefing Completed/Submitted For Decision/To Screening.  (SC)\r\n\r\n\r\n06/04/2021Order/IncomingFiled District Court Order. Certified copy of order filed in district court on June 1, 2021.  Order denying a \"Motion to Move Case From District Court II to District Court I in Douglas County.\" (SC)21-15996\r\n\r\n\r\n\r\n\r\n06/22/2021MotionFiled Proper Person Appellant's Motion for Review - Emergency Motion. (SC)21-18007\r\n\r\n\r\n\r\n\r\n09/16/2021Order/DispositionalFiled Order of Affirmance. \"ORDER the judgment of the district court AFFIRMED.\" fn4 [The Honorable Mark Gibbons, Senior Justice, participated in the decision of this matter under a general order of assignment.] JH/LS/MG. (SC)21-26871\r\n\r\n\r\n\r\n\r\n10/11/2021RemittiturIssued Remittitur. (SC).21-29039\r\n\r\n\r\n\r\n\r\n10/11/2021Case Status UpdateRemittitur Issued/Case Closed. (SC).\r\n\r\n\r\n10/20/2021RemittiturFiled Remittitur. Received by County Clerk on October 13, 2021. (SC)21-29039\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\t\r\n\t\r\n\t\t\r\n\t\t\tCombined Case View\r\n\t\t\t\r\n\t\r\n\r\n\r\n\r\n\t\t\t\t\t\t \r\n\t\t\t\t\t \r\n\t\t\t\t \r\n\t\t\t \r\n\t\t\r\n\t\r\n \r\n\r\n\r\n\r\n\r\n",
+            "ocr": false,
+            "opinion_id": 5131748
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 60339,
+      "row": {
+        "id": 5303240,
+        "judges": null,
+        "date_filed": "2021-08-26",
+        "date_filed_is_approximate": false,
+        "slug": "reberger-lance-vs-dist-ct-state",
+        "case_name_short": null,
+        "case_name": "Reberger (Lance) Vs. Dist. Ct. (State)",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": "http://caseinfo.nvsupremecourt.us/document/view.do?csNameID=62091&csIID=62091&deLinkID=827851&onBaseDocumentNumber=21-24830",
+            "author_id": null,
+            "opinion_text": "\r\n\r\n\r\n\r\n\r\n\t83310: Case View\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n     \r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t\r\n\t \r\n\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\r\n\tNevada\r\n\tAppellate Courts\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\r\n\t\t\r\n\t\t\tAppellate Case Management System\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\tC-Track, the browser based CMS for Appellate Courts\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tCase Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tParticipant Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\t\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\tCases\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\tCase Search\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\tParticipant Search\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\t21-24830: This document is currently unavailable. If you need a copy of this document, please contact Clerk's Office at (775)684-1600.\t\r\n\t\r\n\t\r\n\r\n\tDisclaimer: The information and documents available here should not be relied upon as an official record of action.Only filed documents can be viewed.  Some documents received in a case may not be available for viewing.Some documents originating from a lower court, including records and appendices, may not be available for viewing.For official records, please contact the Clerk of the Supreme Court of Nevada at (775) 684-1600.\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\nCase Information: 83310\r\n\r\n\r\nShort Caption:REBERGER (LANCE) VS. DIST. CT. (STATE)Court:Supreme Court\r\n\r\n\r\nRelated Case(s):50632, 53574, 53580, 53807, 58928, 59179, 59641, 60210, 60461, 60963, 68522, 83075, 83075-COA, 83311, 83606, 83606-COA\r\n\r\n\r\nLower Court Case(s):Clark Co. - Eighth Judicial District - C098213Classification:Original Proceeding - Criminal - Proper Person Writ Petition\r\n\r\n\r\nDisqualifications:Case Status:Notice in Lieu of Remittitur Issued/Case Closed\r\n\r\n\r\nReplacement:Panel Assigned:\r\n\t\t\t\t\tPanel\r\n\t\t\t\t\t\r\n\r\n\r\nTo SP/Judge:SP Status:\r\n\r\n\r\nOral Argument:Oral Argument Location:\r\n\r\n\r\nSubmission Date:How Submitted:\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\t\r\n\t\t\r\n\r\n+\r\n\t\t\t\t\t\tParty Information\r\n\t\t\t\t\t\r\n\r\n\r\nRoleParty NameRepresented By\r\n\r\n\r\nPetitionerLance Reberger\r\n\t\t\t\t\tIn Proper Person\r\n\t\t\t\t\r\n\r\n\r\nReal Party in InterestThe State of NevadaAlexander G. Chen\r\n\t\t\t\t\t\t\t(Clark County District Attorney)\r\n\t\t\t\t\t\tAaron D. Ford\r\n\t\t\t\t\t\t\t(Attorney General/Carson City)\r\n\t\t\t\t\t\tSteven B. Wolfson\r\n\t\t\t\t\t\t\t(Clark County District Attorney)\r\n\t\t\t\t\t\t\r\n\r\n\r\nRespondentThe Eighth Judicial District Court of the State of Nevada, in and for the County of Clark\r\n\r\n\r\n\t\t\r\n\t\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\r\nDocket Entries\r\n\r\n\r\nDateTypeDescriptionPending?Document\r\n\r\n\r\n08/03/2021Filing FeePetition Filing Fee Waived.  Criminal. (SC)\r\n\r\n\r\n08/03/2021Petition/WritFiled Proper Person Petition for Writ of Mandamus. (Exhibits attached) (SC)21-22472\r\n\r\n\r\n\r\n\r\n08/26/2021Order/DispositionalFiled Order Denying Petition.  \"ORDER the petition DENIED.\"  JH/RP/LS  (SC)21-24830\r\n\r\n\r\n\r\n\r\n09/20/2021RemittiturIssued Notice in Lieu of Remittitur. (SC)21-27119\r\n\r\n\r\n\r\n\r\n09/20/2021Case Status UpdateNotice in Lieu of Remittitur Issued/Case Closed. (SC)\r\n\r\n\r\n\t\r\n\r\n\r\n\t\r\n\t\r\n\t\t\r\n\t\t\tCombined Case View\r\n\t\t\t\r\n\t\r\n\r\n\r\n\r\n\t\t\t\t\t\t \r\n\t\t\t\t\t \r\n\t\t\t\t \r\n\t\t\t \r\n\t\t\r\n\t\r\n \r\n\r\n\r\n\r\n\r\n",
+            "ocr": false,
+            "opinion_id": 5131802
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 60346,
+      "row": {
+        "id": 5304655,
+        "judges": null,
+        "date_filed": "2021-11-18",
+        "date_filed_is_approximate": false,
+        "slug": "wilson-vs-las-vegas-metro-police-dept",
+        "case_name_short": null,
+        "case_name": "WILSON VS. LAS VEGAS METRO. POLICE DEP'T",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "2021 NV 70"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": "http://caseinfo.nvsupremecourt.us/document/view.do?csNameID=60116&csIID=60116&deLinkID=836638&onBaseDocumentNumber=21-33205",
+            "author_id": null,
+            "opinion_text": "\r\n\r\n\r\n\r\n\r\n\t81940: Case View\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n     \r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t\r\n\t \r\n\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\r\n\tNevada\r\n\tAppellate Courts\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\r\n\t\t\r\n\t\t\tAppellate Case Management System\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\tC-Track, the browser based CMS for Appellate Courts\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tCase Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tParticipant Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\t\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\tCases\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\tCase Search\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\tParticipant Search\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\t21-33205: This document is currently unavailable. If you need a copy of this document, please contact Clerk's Office at (775)684-1600.\t\r\n\t\r\n\t\r\n\r\n\tDisclaimer: The information and documents available here should not be relied upon as an official record of action.Only filed documents can be viewed.  Some documents received in a case may not be available for viewing.Some documents originating from a lower court, including records and appendices, may not be available for viewing.For official records, please contact the Clerk of the Supreme Court of Nevada at (775) 684-1600.\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\nCase Information: 81940\r\n\r\n\r\nShort Caption:WILSON VS. LAS VEGAS METRO. POLICE DEP'TCourt:Supreme Court\r\n\r\n\r\nLower Court Case(s):Clark Co. - Eighth Judicial District - A805368Classification:Civil Appeal - General - Other\r\n\r\n\r\nDisqualifications:Case Status:Disposition Filed\r\n\r\n\r\nReplacement:Panel Assigned:\r\n\t\t\t\t\tPanel\r\n\t\t\t\t\t\r\n\r\n\r\nTo SP/Judge:10/16/2020 / Tanksley, ThomasSP Status:Completed\r\n\r\n\r\nOral Argument:Oral Argument Location:\r\n\r\n\r\nSubmission Date:11/15/2021How Submitted:On Briefs\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\t\r\n\t\t\r\n\r\n+\r\n\t\t\t\t\t\tParty Information\r\n\t\t\t\t\t\r\n\r\n\r\nRoleParty NameRepresented By\r\n\r\n\r\nAppellantCurtis WilsonBrandon L. Phillips\r\n\t\t\t\t\t\t\t(Brandon L. Phillips, Attorney At Law, PLLC)\r\n\t\t\t\t\t\t\r\n\r\n\r\nRespondentLas Vegas Metropolitan Police DepartmentLyssa S. Anderson\r\n\t\t\t\t\t\t\t(Kaempfer Crowell/Las Vegas)\r\n\t\t\t\t\t\tRyan W. Daniels\r\n\t\t\t\t\t\t\t(Kaempfer Crowell/Las Vegas)\r\n\t\t\t\t\t\tKristopher J. Kalkowski\r\n\t\t\t\t\t\t\t(Kaempfer Crowell/Las Vegas)\r\n\t\t\t\t\t\t\r\n\r\n\r\nRespondentOfficer E. VonjaganLyssa S. Anderson\r\n\t\t\t\t\t\t\t(Kaempfer Crowell/Las Vegas)\r\n\t\t\t\t\t\tRyan W. Daniels\r\n\t\t\t\t\t\t\t(Kaempfer Crowell/Las Vegas)\r\n\t\t\t\t\t\tKristopher J. Kalkowski\r\n\t\t\t\t\t\t\t(Kaempfer Crowell/Las Vegas)\r\n\t\t\t\t\t\t\r\n\r\n\r\nRespondentOfficer TennantLyssa S. Anderson\r\n\t\t\t\t\t\t\t(Kaempfer Crowell/Las Vegas)\r\n\t\t\t\t\t\tRyan W. Daniels\r\n\t\t\t\t\t\t\t(Kaempfer Crowell/Las Vegas)\r\n\t\t\t\t\t\tKristopher J. Kalkowski\r\n\t\t\t\t\t\t\t(Kaempfer Crowell/Las Vegas)\r\n\t\t\t\t\t\t\r\n\r\n\r\n\t\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\r\n+\r\n\t\t\t\t\t\tDue Items\r\n\t\t\t\t\t\r\n\r\n\r\nDue DateStatusDue ItemDue From\r\n\r\n\r\n12/13/2021OpenRemittitur\r\n\r\n\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\r\nDocket Entries\r\n\r\n\r\nDateTypeDescriptionPending?Document\r\n\r\n\r\n10/15/2020Filing FeeFiling Fee due for Appeal. (SC)\r\n\r\n\r\n10/15/2020Notice of Appeal DocumentsFiled Notice of Appeal. Appeal docketed in the Supreme Court this day. (SC)20-37859\r\n\r\n\r\n\r\n\r\n10/15/2020Notice/OutgoingIssued Notice to File Case Appeal Statement/Civil. Due date: 10 days. (SC)20-37862\r\n\r\n\r\n\r\n\r\n10/15/2020Notice/OutgoingIssued Notice to Pay Supreme Court Filing Fee. No action will be taken on this matter until filing fee is paid. Due Date: 10 days. (SC)20-37864\r\n\r\n\r\n\r\n\r\n10/15/2020Filing FeeE-Payment $250.00 from Brandon L. Phillips. (SC)\r\n\r\n\r\n10/16/2020Notice/OutgoingIssued Notice of Referral to Settlement Program. This appeal may be assigned to the settlement program.  Timelines for requesting transcripts and filing briefs are stayed. Docketing Statement mailed to counsel for appellant - due: 21 days. (SC).20-38009\r\n\r\n\r\n\r\n\r\n10/16/2020Settlement NoticeIssued Notice: Assignment to Settlement Program. Issued Assignment Notice to NRAP 16 Settlement Program.  Settlement Judge: Thomas J. Tanksley. (SC).20-38192\r\n\r\n\r\n\r\n\r\n10/26/2020Notice/IncomingFiled Appellant's Notice of Posting Cost Bond. (SC)20-39211\r\n\r\n\r\n\r\n\r\n10/28/2020Order/ProceduralFiled Order Directing Appellant to File Overdue Case Appeal Statement. To date, appellant has failed to comply with this court's notice. Case appeal statement due: 7 days. (SC)20-39502\r\n\r\n\r\n\r\n\r\n11/04/2020Settlement Program ReportFiled ECAR/Not Appropriate for Settlement Program. This case is not appropriate for mediation. (SC).20-40156\r\n\r\n\r\n\r\n\r\n11/04/2020Settlement Order/ProceduralFiled Order Removing From Settlement Program and Reinstating Briefing. This appeal is removed from the settlement program. Appellant(s): 14 days transcript request; 90 days opening brief. (SC)20-40228\r\n\r\n\r\n\r\n\r\n11/04/2020Notice of Appeal DocumentsFiled Appellant's Case Appeal Statement. (SC)20-40264\r\n\r\n\r\n\r\n\r\n11/06/2020Order/Clerk'sFiled Order Granting Extension Per Telephonic Request. Appellant's docketing statement due: November 20, 2020. (SC)20-40650\r\n\r\n\r\n\r\n\r\n12/14/2020MotionFiled Appellant's Motion to Extend Time to File Docketing Statement.  (DETACHED DOCKETING STATEMENT AND RETURNED UNFILED PER ORDER 12/28/2020).  (SC)20-45183\r\n\r\n\r\n\r\n\r\n12/28/2020Order/ProceduralFiled Order.  The clerk shall detach the docketing statement from the motion and return it unfiled.  Appellant shall have 14 days from the date of this order to file and serve an amended docketing statement that contains complete responses to all items and has all required documentation attached, and a transcript request form or a certificate that no transcripts will be requested.  (SC)20-46579\r\n\r\n\r\n\r\n\r\n01/05/2021Transcript RequestFiled Request for Transcript of Proceedings. Transcripts requested:  6/25/2020.  To Court Reporter: Unknown. (SC)21-00309\r\n\r\n\r\n\r\n\r\n01/15/2021Docketing StatementFiled Appellant's Docketing Statement Civil Appeal. (SC)21-01407\r\n\r\n\r\n\r\n\r\n01/15/2021MotionFiled Appellant's Request to Extend Time to File Corrected Docketing Statement. (SC)21-01410\r\n\r\n\r\n\r\n\r\n01/22/2021Docketing StatementFiled Respondents' Response to Docketing Statement. (SC)21-02090\r\n\r\n\r\n\r\n\r\n02/01/2021Order/ProceduralFiled Order Granting Motion.  Appellant's motion for an extension of time to file the amended docketing statement is granted.  The amended docketing statement was filed on January 15, 2021.  The clerk of this court shall add attorney Kristopher J. Kalkowski, of the law firm of Kaempfer Crowell, as attorney for respondents Las Vegas Metropolitan Police Department, Vonjagan, and Tennant.  (SC)21-03070\r\n\r\n\r\n\r\n\r\n03/02/2021Order/ProceduralFiled Order to File Documents.  Appellant's Opening Brief and Appendix due:  14 days.  (SC)21-06017\r\n\r\n\r\n\r\n\r\n03/16/2021MotionFiled Appellant's Motion to Extend Time to File Opening Brief and Appendix. (SC)21-07654\r\n\r\n\r\n\r\n\r\n03/18/2021Order/ProceduralFiled Order Granting Motion.  Appellant's Opening Brief and Appendix due:  March 23, 2021.  (SC)21-07817\r\n\r\n\r\n\r\n\r\n03/23/2021BriefFiled Appellant's Opening Brief. (SC)21-08368\r\n\r\n\r\n\r\n\r\n03/23/2021AppendixFiled Appellant's Appendix. Vol. 1. (SC)21-08369\r\n\r\n\r\n\r\n\r\n04/21/2021MotionFiled Stipulation to Extend time for Respondents to File Answering Brief. (SC)21-11488\r\n\r\n\r\n\r\n\r\n04/21/2021Notice/OutgoingIssued Notice Motion/Stipulation Approved for Answering Brief. Due date is May 24, 2021. (SC)21-11508\r\n\r\n\r\n\r\n\r\n05/24/2021BriefFiled Respondents' Answering Brief. (SC)21-14753\r\n\r\n\r\n\r\n\r\n07/15/2021Case Status UpdateBriefing Completed/To Screening.  (SC)\r\n\r\n\r\n11/15/2021Order/ProceduralFiled Order Submitting for Decision Without Oral Argument.  (SC)21-32698\r\n\r\n\r\n\r\n\r\n11/18/2021Opinion/DispositionalFiled Authored Opinion. \"Affirmed.\" Before: Parraguirre/Stiglich/Silver. Author: Silver, J. Majority: Parraguirre/Stiglich/Silver. 137 Nev. Adv. Opn. No. 70. SNP21-RP/LS/AS. (SC).21-33205\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\t\r\n\t\r\n\t\t\r\n\t\t\tCombined Case View\r\n\t\t\t\r\n\t\r\n\r\n\r\n\r\n\t\t\t\t\t\t \r\n\t\t\t\t\t \r\n\t\t\t\t \r\n\t\t\t \r\n\t\t\r\n\t\r\n \r\n\r\n\r\n\r\n\r\n",
+            "ocr": false,
+            "opinion_id": 5133215
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 60347,
+      "row": {
+        "id": 5304765,
+        "judges": null,
+        "date_filed": "2020-10-08",
+        "date_filed_is_approximate": false,
+        "slug": "young-vs-nev-gaming-control-bd",
+        "case_name_short": null,
+        "case_name": "YOUNG VS. NEV. GAMING CONTROL BD.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "2020 NV 66"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": "http://caseinfo.nvsupremecourt.us/document/view.do?csNameID=55592&csIID=55592&deLinkID=789871&onBaseDocumentNumber=20-36875",
+            "author_id": null,
+            "opinion_text": "\r\n\r\n\r\n\r\n\r\n\t78916: Case View\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n     \r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t\r\n\t \r\n\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\r\n\tNevada\r\n\tAppellate Courts\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\r\n\t\t\r\n\t\t\tAppellate Case Management System\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\tC-Track, the browser based CMS for Appellate Courts\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tCase Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tParticipant Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\t\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\tCases\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\tCase Search\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\tParticipant Search\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\t20-36875: This document is currently unavailable. If you need a copy of this document, please contact Clerk's Office at (775)684-1600.\t\r\n\t\r\n\t\r\n\r\n\tDisclaimer: The information and documents available here should not be relied upon as an official record of action.Only filed documents can be viewed.  Some documents received in a case may not be available for viewing.Some documents originating from a lower court, including records and appendices, may not be available for viewing.For official records, please contact the Clerk of the Supreme Court of Nevada at (775) 684-1600.\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\nCase Information: 78916\r\n\r\n\r\nShort Caption:YOUNG VS. NEV. GAMING CONTROL BD.Court:Supreme Court\r\n\r\n\r\nLower Court Case(s):Clark Co. - Eighth Judicial District - A775062Classification:Civil Appeal - Administrative Agency - General\r\n\r\n\r\nDisqualifications:Case Status:Remittitur Issued/Case Closed\r\n\r\n\r\nReplacement:Panel Assigned:\r\n\t\t\t\t\tPanel\r\n\t\t\t\t\t\r\n\r\n\r\nTo SP/Judge:06/10/2019 / Mishel, PersiSP Status:Completed\r\n\r\n\r\nOral Argument:Oral Argument Location:\r\n\r\n\r\nSubmission Date:06/24/2020How Submitted:On Record And Briefs\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\t\r\n\t\t\r\n\r\n+\r\n\t\t\t\t\t\tParty Information\r\n\t\t\t\t\t\r\n\r\n\r\nRoleParty NameRepresented By\r\n\r\n\r\nAppellantTsun YoungRobert A. Nersesian\r\n\t\t\t\t\t\t\t(Nersesian &amp; Sankiewicz)\r\n\t\t\t\t\t\tThea Marie Sankiewicz\r\n\t\t\t\t\t\t\t(Nersesian &amp; Sankiewicz)\r\n\t\t\t\t\t\t\r\n\r\n\r\nRespondentHard Rock Hotel and CasinoMarla J. Hudgens\r\n\t\t\t\t\t\t\t(Lewis Roca Rothgerber Christie LLP/Phoenix)\r\n\t\t\t\t\t\t\r\n\r\n\r\nRespondentNevada Gaming Control BoardAaron D. Ford\r\n\t\t\t\t\t\t\t(Attorney General/Carson City)\r\n\t\t\t\t\t\tMichael P. Somps\r\n\t\t\t\t\t\t\t(Attorney General/Reno)\r\n\t\t\t\t\t\t\r\n\r\n\r\n\t\t\r\n\t\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\r\nDocket Entries\r\n\r\n\r\nDateTypeDescriptionPending?Document\r\n\r\n\r\n06/05/2019Filing FeeFiling Fee Paid. $250.00 from Nersesian &amp; Sankiewicz.  Check no. 4212. (SC)\r\n\r\n\r\n06/05/2019Notice of Appeal DocumentsFiled Notice of Appeal. Appeal docketed in the Supreme Court this day. (Docketing statement mailed to counsel for appellant.) (SC)19-24427\r\n\r\n\r\n\r\n\r\n06/05/2019Notice/OutgoingIssued Notice of Referral to Settlement Program. This appeal may be assigned to the settlement program.  Timelines for requesting transcripts and filing briefs are stayed. (SC)19-24429\r\n\r\n\r\n\r\n\r\n06/10/2019Settlement NoticeIssued Notice: Assignment to Settlement Program. Issued Assignment Notice to NRAP 16 Settlement Program.  Settlement Judge: Persi J. Mishel. (SC).19-24979\r\n\r\n\r\n\r\n\r\n06/11/2019Notice/IncomingFiled Notice of Appearance.  Marl J. Hudgens, Esq. of the law firm\r\r\nLewis Roca Rothgerber Christie LLP, appearing as counsel for respondent Hard Rock Hotel and Casino.  (SC)19-25250\r\n\r\n\r\n\r\n\r\n06/26/2019Docketing StatementFiled Docketing Statement Civil Appeals (REJECTED PER NOTICE ISSUED ON 06/26/19). (SC)\r\n\r\n\r\n06/26/2019Notice/OutgoingIssued Notice of Rejection of Filed Document (Docketing Statement). (SC)19-27559\r\n\r\n\r\n\r\n\r\n06/26/2019Docketing StatementFiled Docketing Statement Civil Appeals. (SC)19-27564\r\n\r\n\r\n\r\n\r\n07/11/2019Settlement Program ReportFiled ECAR/Not Appropriate for Settlement Program. This case is not appropriate for mediation.  (SC)19-29581\r\n\r\n\r\n\r\n\r\n07/17/2019Settlement Order/ProceduralFiled Order Removing From Settlement Program/Briefing Reinstated. This appeal is removed from the settlement program.  Appellant: 14 days transcript request; 90 days opening brief and appendix. (SC).19-30311\r\n\r\n\r\n\r\n\r\n07/31/2019Transcript RequestFiled Request for Transcript of Proceedings. Transcripts requested: 01/29/19, 04/02/19. To Court Reporter: Sandy Anderson. (SC)19-32219\r\n\r\n\r\n\r\n\r\n09/25/2019TranscriptFiled Notice from Court Reporter. Sandra Anderson stating that the requested transcripts were delivered.  Dates of transcripts: 01/29/19, 04/02/19. (SC)19-39942\r\n\r\n\r\n\r\n\r\n10/14/2019Order/Clerk'sFiled Order Granting Telephonic Extension.  Appellant's Opening Brief and Appendix due:  October 29, 2019.  (SC)19-42452\r\n\r\n\r\n\r\n\r\n10/29/2019AppendixFiled Joint Appendix - Volume 1.  (SC)19-44526\r\n\r\n\r\n\r\n\r\n10/29/2019AppendixFiled Joint Appendix - Volume 2.  (SC)19-44527\r\n\r\n\r\n\r\n\r\n10/29/2019AppendixFiled Joint Appendix - Volume 3.  (SC)19-44529\r\n\r\n\r\n\r\n\r\n10/29/2019AppendixFiled Joint Appendix - Volume 4.  (SC)19-44530\r\n\r\n\r\n\r\n\r\n10/29/2019BriefFiled Appellant's Opening Brief.  (SC)19-44552\r\n\r\n\r\n\r\n\r\n10/30/2019Notice/IncomingFiled Appellant's Certificate of Service of Joint Appendix, Volumes 1 through 4.  (SC)19-44571\r\n\r\n\r\n\r\n\r\n10/30/2019Notice/IncomingFiled Appellant's Notice - NRAP 26.1 Disclosure.  (SC)19-44596\r\n\r\n\r\n\r\n\r\n11/27/2019BriefFiled Respondent Nevada Gaming Control Board's Answering Brief.  (SC)19-48484\r\n\r\n\r\n\r\n\r\n12/03/2019Order/Clerk'sFiled Order Granting Extension Per Telephonic Request. Respondent Hard Rock Hotel and Casino's Answering Brief due: December 16, 2019. (SC).19-48861\r\n\r\n\r\n\r\n\r\n12/16/2019BriefFiled Respondent LVHR Casino, LLC's Answering Brief.  (SC)19-50872\r\n\r\n\r\n\r\n\r\n01/13/2020Order/Clerk'sFiled Order Granting Extension Per Telephonic Request. Appellant's Reply Brief due: January 29, 2020. (SC).20-01498\r\n\r\n\r\n\r\n\r\n01/29/2020BriefFiled Young's Brief in Reply on Appeal. (SC)20-04079\r\n\r\n\r\n\r\n\r\n01/30/2020Case Status UpdateBriefing Completed/To Screening. (SC)\r\n\r\n\r\n06/24/2020Order/ProceduralFiled Order Submitting for Decision Without Oral Argument.  (SC)20-23400\r\n\r\n\r\n\r\n\r\n10/08/2020Opinion/DispositionalFiled Authored Opinion. \"Reversed and remanded with instructions.\" Before: Parraguirre/Hardesty/Cadish. Author: Parraguirre, J. Majority: Parraguirre/Hardesty/Cadish. 136 Nev. Adv. Opn. No. 66. NNP20-RP/JH/EC. (SC).20-36875\r\n\r\n\r\n\r\n\r\n11/02/2020RemittiturIssued Remittitur.  (SC)20-39823\r\n\r\n\r\n\r\n\r\n11/02/2020Case Status UpdateRemittitur Issued/Case Closed.  (SC)\r\n\r\n\r\n11/24/2020RemittiturFiled Remittitur. Received by District Court Clerk on November 10, 2020. (SC)20-39823\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\t\r\n\t\r\n\t\t\r\n\t\t\tCombined Case View\r\n\t\t\t\r\n\t\r\n\r\n\r\n\r\n\t\t\t\t\t\t \r\n\t\t\t\t\t \r\n\t\t\t\t \r\n\t\t\t \r\n\t\t\r\n\t\r\n \r\n\r\n\r\n\r\n\r\n",
+            "ocr": false,
+            "opinion_id": 5133325
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 60348,
+      "row": {
+        "id": 5304889,
+        "judges": null,
+        "date_filed": "2019-07-03",
+        "date_filed_is_approximate": false,
+        "slug": "amaya-vs-guerrero-rivera-child-custody",
+        "case_name_short": null,
+        "case_name": "AMAYA VS. GUERRERO RIVERA (CHILD CUSTODY)",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "2019 NV 27"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": "http://caseinfo.nvsupremecourt.us/document/view.do?csNameID=46007&csIID=46007&deLinkID=725712&onBaseDocumentNumber=19-28444",
+            "author_id": null,
+            "opinion_text": "\r\n\r\n\r\n\r\n\r\n\t75769: Case View\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n     \r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t\r\n\t \r\n\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\r\n\tNevada\r\n\tAppellate Courts\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\r\n\t\t\r\n\t\t\tAppellate Case Management System\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\tC-Track, the browser based CMS for Appellate Courts\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tCase Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tParticipant Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\t\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\tCases\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\tCase Search\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\tParticipant Search\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\t19-28444: This document is currently unavailable. If you need a copy of this document, please contact Clerk's Office at (775)684-1600.\t\r\n\t\r\n\t\r\n\r\n\tDisclaimer: The information and documents available here should not be relied upon as an official record of action.Only filed documents can be viewed.  Some documents received in a case may not be available for viewing.Some documents originating from a lower court, including records and appendices, may not be available for viewing.For official records, please contact the Clerk of the Supreme Court of Nevada at (775) 684-1600.\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\nCase Information: 75769\r\n\r\n\r\nShort Caption:AMAYA VS. GUERRERO RIVERA (CHILD CUSTODY)Court:Supreme Court\r\n\r\n\r\nLower Court Case(s):Clark Co. - Eighth Judicial District - D562584Classification:Civil Appeal - Family Law - Fast Track Child Custody\r\n\r\n\r\nDisqualifications:Case Status:Remittitur Issued/Case Closed\r\n\r\n\r\nReplacement:Panel Assigned:\r\n\t\t\t\t\tPanel\r\n\t\t\t\t\t\r\n\r\n\r\nTo SP/Judge:SP Status:\r\n\r\n\r\nOral Argument:Oral Argument Location:\r\n\r\n\r\nSubmission Date:03/28/2019How Submitted:On Record And Briefs\r\n\r\n\r\nExpedited\r\n\r\n\r\n\t\r\n\r\n\t\r\n\t\t\r\n\r\n+\r\n\t\t\t\t\t\tParty Information\r\n\t\t\t\t\t\r\n\r\n\r\nRoleParty NameRepresented By\r\n\r\n\r\nAppellantYesennia Esmeralda AmayaAlissa A. Cooley\r\n\t\t\t\t\t\t\t(Law Offices of Martin Hart, LLC)\r\n\t\t\t\t\t\t\r\n\r\n\r\nRespondentMilton Orlando Guerrero Rivera\r\n\t\t\t\t\tIn Proper Person\r\n\t\t\t\t\r\n\r\n\r\n\t\t\r\n\t\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\r\nDocket Entries\r\n\r\n\r\nDateTypeDescriptionPending?Document\r\n\r\n\r\n05/08/2018Filing FeeFiling Fee due for Appeal.\r\n\r\n\r\n05/08/2018Notice of Appeal DocumentsFiled Notice of Appeal. Appeal docketed in the Supreme Court this day.18-17393\r\n\r\n\r\n\r\n\r\n05/08/2018Notice/OutgoingIssued Notice to Pay Supreme Court Filing Fee. No action will be taken on this matter until filing fee is paid. Due Date: 10 days.18-17395\r\n\r\n\r\n\r\n\r\n05/08/2018Notice of Appeal DocumentsFiled District Court Docket Entries (SEALED).\r\n\r\n\r\n05/14/2018Order/IncomingFiled District Court Order. Copy of order filed in district court on 05/08/18. Order to Proceed In Forma Pauperis.18-18307\r\n\r\n\r\n\r\n\r\n05/15/2018Order/ProceduralFiled Order Waiving Filing Fee.18-18368\r\n\r\n\r\n\r\n\r\n05/16/2018Notice/OutgoingIssued Notice of Expedited Filing Deadlines/Child Custody. Transcript request due: 10 days.  Fast Track Statement &amp; Appendix due: 40 days.18-18633\r\n\r\n\r\n\r\n\r\n05/16/2018Transcript RequestFiled Certificate of No Transcript Request.18-18789\r\n\r\n\r\n\r\n\r\n06/26/2018Fast Track BriefFiled Appellant's Fast Track Statement.18-24361\r\n\r\n\r\n\r\n\r\n06/26/2018AppendixFiled Appendix to Fast Track Statement.18-24366\r\n\r\n\r\n\r\n\r\n08/28/2018Order/ProceduralFiled Order to File Fast Track Response. Respondent's Fast Track Response due: 20 days.18-33558\r\n\r\n\r\n\r\n\r\n10/11/2018Order/ProceduralFiled Order.  To date, respondent has not filed the fast track response or otherwise communicated with this court.  Accordingly, this appeal will be decided without a fast track response.18-39898\r\n\r\n\r\n\r\n\r\n10/11/2018Case Status UpdateFast Track Briefing Completed.\r\n\r\n\r\n03/28/2019Order/ProceduralFiled Order Submitting for Decision Without Oral Argument. (SC).19-13776\r\n\r\n\r\n\r\n\r\n07/03/2019Opinion/DispositionalFiled Authored Opinion. \"Reversed and Remanded\".  Before: Hardesty/Stiglich/Silver. Author: Stiglich, J. Majority: Stiglich/Hardesty. Silver, J. dissenting. 135 Nev. Adv. Opn. No. 27. SNP19-JH/LS/AS (SC)19-28444\r\n\r\n\r\n\r\n\r\n07/29/2019RemittiturIssued Remittitur. (SC).19-31781\r\n\r\n\r\n\r\n\r\n07/29/2019Case Status UpdateRemittitur Issued/Case Closed. (SC).\r\n\r\n\r\n08/13/2019RemittiturFiled Remittitur. Received by District Court Clerk on August 2, 2019. (SC)19-31781\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\t\r\n\t\r\n\t\t\r\n\t\t\tCombined Case View\r\n\t\t\t\r\n\t\r\n\r\n\r\n\r\n\t\t\t\t\t\t \r\n\t\t\t\t\t \r\n\t\t\t\t \r\n\t\t\t \r\n\t\t\r\n\t\r\n \r\n\r\n\r\n\r\n\r\n",
+            "ocr": false,
+            "opinion_id": 5133449
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 840,
+  "num_rows_per_page": 100,
+  "partial": true
+}

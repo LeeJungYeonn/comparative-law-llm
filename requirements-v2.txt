@@ -1,0 +1,4 @@
+datasets>=4.8.5
+duckdb>=1.5.5
+openai>=2.0.0
+pytest>=9.0.0

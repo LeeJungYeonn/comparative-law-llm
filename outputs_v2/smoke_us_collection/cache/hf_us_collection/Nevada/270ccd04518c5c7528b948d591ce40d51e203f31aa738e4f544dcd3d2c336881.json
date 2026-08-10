@@ -1,0 +1,773 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 183549,
+      "row": {
+        "id": 6659035,
+        "judges": "Hardesty, Silver, Stiglich",
+        "date_filed": "2019-07-03",
+        "date_filed_is_approximate": false,
+        "slug": "saticoy-bay-llc-series-9050-w-warm-springs-2079-v-nev-assn-servs",
+        "case_name_short": null,
+        "case_name": "Saticoy Bay LLC Series 9050 W Warm Springs 2079 v. Nev. Ass'n Servs.",
+        "case_name_full": "SATICOY BAY LLC SERIES 9050 W WARM SPRINGS 2079 v. NEVADA ASSOCIATION SERVICES James P. Markey and Ditech Financial LLC",
+        "attorneys": "Law Offices of Michael F. Bohn, Ltd., and Michael F. Bohn, Henderson, for Appellant., Law Office of John W. Thomson and John W. Thomson, Henderson; Messner Reeves LLP and Brigette E. Foley, Las Vegas, for Respondent James P. Markey., Wolfe & Wyman LLP and Colt B. Dodrill, Las Vegas, for Respondent Ditech Financial LLC., Christopher V. Yergensen, Las Vegas, for Respondent Nevada Association Services.",
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 2,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "444 P.3d 428"
+        ],
+        "opinions": [
+          {
+            "author_str": "Stiglich",
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nBy the Court, STIGLICH, J.:\nIn SFR Investments Pool 1, LLC v . U.S. Bank, N.A. , 130 Nev. 742, 334 P.3d 408 (2014), this court held that NRS 116.3116(2) (2013) provided a homeowners' association (HOA) with a \"superpriority\" lien that, when properly foreclosed, extinguished a first deed of trust and vested title in the foreclosure sale purchaser \"without equity or right of redemption,\" NRS 116.31166(3) (1993). In the wake of SFR Investments , Nevada's Legislature enacted substantial amendments to NRS Chapter 116's HOA foreclosure sale statutes, in part, by creating a statutory right for homeowners, holders of a recorded security interest, and successors in interest to redeem property within a 60-day time frame after such a sale. We are asked to consider for the first time the application of this amendment. Because we conclude that the homeowner in this matter complied with the redemption statute at issue, we affirm the district court's grant of summary judgment in favor of the homeowner.\nFACTS AND PROCEDURAL HISTORY\nAppellant Saticoy Bay LLC Series 9050 W Warm Springs 2079 purchased property owned by respondent James Markey for $48,600 at an HOA foreclosure sale in November 2015. After the foreclosure sale, Nevada Association Services (NAS), the entity that conducted the sale, distributed $4,564.23 of sale proceeds to pay off the HOA lien and satisfy costs associated with the sale. It then held the remaining proceeds of the sale in its trust account. Within 60 days of the foreclosure sale, Markey notified NAS that he intended to redeem the property pursuant to Nevada's newly enacted HOA foreclosure sale redemption statute, NRS 116.31166(3) (2015).1 NAS in turn notified Saticoy Bay of Markers intent to redeem, but neither NAS nor Markey provided Saticoy Bay with a certified copy of the deed on the property.\nNAS provided Markey with the figures that encompassed the redemption amount. Pursuant to NRS 116.31166(3), the redemption amount is calculated as the sum of (1) the purchase price of the property at the foreclosure sale, (2) the HOA lien and costs,2 (3) reimbursement for reasonable maintenance costs, and (4) statutory interest accumulated from the date of the HOA foreclosure sale to the date of redemption. NAS informed Markey that it would direct the remaining proceeds of the sale it held in trust toward the full redemption amount and instructed Markey to supply the remainder. Further, NAS informed Markey that as soon as he sent the remainder of the redemption amount, NAS would return to Saticoy Bay the proceeds of the sale held in trust along with the remainder of the redemption amount from Markey (together, the full redemption amount).\n*431Markey sent the remainder of the redemption amount to NAS, and NAS sent a check to Saticoy Bay for the full redemption amount. Saticoy Bay, however, refused the check because it believed that the money had to come directly from Markey, not NAS, and because Markey could not use proceeds from the sale to redeem the property. NAS sent another check, this time in Markey's name, to Saticoy Bay on the last day of the redemption period, but Saticoy Bay again rejected it. Respondent Ditech Financial LLC-the bank servicing the mortgage on Markey's property-also expressed interest in redeeming the property prior to Markey's notice. However, when Ditech learned of Markey's intent to redeem, it abandoned those efforts. Ditech later memorialized that position when it notified NAS that to the extent Ditech had any interest in the proceeds of the sale NAS held in its trust account, Ditech authorized Markey to use those funds to redeem the property. When Saticoy Bay sought a foreclosure deed3 for the property, NAS refused, arguing that Markey's redemption was successful and that the foreclosure sale was terminated.\nSaticoy Bay filed a complaint in the district court seeking quiet title to the property, declaratory relief, and specific performance. Ditech moved for summary judgment, which Markey joined, arguing that the plain language of NRS 116.31166(3) and (4) did not prevent unit owners from using the proceeds of an HOA foreclosure sale to exercise their redemption rights, and that it was \"immaterial\" that Markey did not provide a certified copy of his deed when he sought redemption. Saticoy Bay opposed and countermoved for summary judgment, arguing that Markey failed to comply with NRS 116.31166(3) because the checks came from NAS and not Markey I directly, that NAS and Markey failed to comply with NRS 116.31164(7)(b), and that NRS 116.31166(4) mandated strict compliance. The district court concluded that NAS's \"tender to Saticoy Bay of the full redemption amount of $50,052.16 via cashier's check on behalf of Markey immediately extinguished Saticoy Bay's interest in the property.\" It also found that \"the amount, time, and manner of the tender was sufficient\" to satisfy the redemption statute. Consequently, the district court granted summary judgment to Ditech and Markey, terminated the foreclosure sale, and quieted title in favor of Markey subject to Ditech's first deed of trust.\nSaticoy Bay appeals from the order granting summary judgment and raises two primary arguments: (1) Markey did not comply with the HOA foreclosure sale redemption statute when he directed NAS to put the proceeds of the foreclosure sale toward redemption of the property, and (2) Markey did not comply with the notice provision of the redemption statute when he failed to produce a certified copy of the deed with his notice to redeem. Saticoy Bay argues that this failure to comply with the statutory requirements renders the redemption invalid, and therefore, the district court erred in granting summary judgment to Ditech and Markey.\nDISCUSSION\nGenerally, \"[t]his court reviews a district court's grant of summary judgment de novo, without deference to the findings of the lower court.\" Wood v. Safeway, Inc., 121 Nev. 724, 729, 121 P.3d 1026, 1029 (2005). Pursuant to NRCP 56(c), summary judgment is proper when no genuine issue of material fact remains and the movant \"is entitled to a judgment as a matter of law.\" Id. (internal quotation omitted). And this court views the evidence in a light most favorable to the nonmoving party. Id. Further, issues of statutory construction are reviewed de novo. Leven v. Frey , 123 Nev. 399, 402, 168 P.3d 712, 714 (2007). \"Similarly, whether a statute's procedural requirements must be complied with strictly or only substantially is a question of law subject to [this court's] plenary review.\" Id.\nMarkey complied with the HOA foreclosure redemption provision\nIn 2015, NRS Chapter 116 was amended to include NRS 116.31166(3) in order to afford *432property owners, holders of a recorded security interest, and successors in interest a right to redeem the properties after delinquent HOA payments result in an HOA foreclosure sale.4 Legislative Counsel Bureau Research Division, Policy and Program Report: Housing 3-4 (Apr. 2016). In relevant part, the statute provides that a unit owner, holder of a recorded security interest in the unit, or successor in interest of those persons may redeem the property within 60 days after the HOA foreclosure sale \"by paying: (a) [t]he purchaser the amount of his or her purchase price, with interest at the rate of 1 percent per month thereon in addition, to the time of the redemption, plus\" additional fees, taxes, assessments, and liens that vary depending on the circumstances. NRS 116.31166(3).\nSaticoy Bay argues that Markey did not comply with NRS 116.31166(3) because he was not permitted to use the funds held in trust by NAS-funds provided by Saticoy Bay to NAS for the foreclosure sale price-to \"pay ... [t]he purchaser the amount of his or her purchase price\" to redeem the property. NRS 116.31166(3). In furtherance of this argument, Saticoy Bay looks to NRS 116.31164(7), which states:\n7. After the sale , the person conducting the sale shall:\n(a) Comply with the provisions of subsection 2 of NRS 116.31166 ; and\n(b) Apply the proceeds of the sale for the following purposes in the following order :\n(1) The reasonable expenses of sale;\n(2) The reasonable expenses of securing possession before sale, holding, maintaining, and preparing the unit for sale, including payment of taxes and other governmental charges, premiums on hazard and liability insurance, and, to the extent provided for by the declaration, reasonable attorney's fees and other legal expenses incurred by the association;\n(3) Satisfaction of the association's lien;\n(4) Satisfaction in the order of priority of any subordinate claim of record; and\n(5) Remittance of any excess to the unit's owner .\nNRS 116.31164(7) (emphases added). Saticoy Bay argues that after the foreclosure sale, NAS was obligated to distribute the proceeds of the sale immediately according to the distribution order in NRS 116.31164(7). Given the distribution order and that a deed of trust encumbered the property, Saticoy Bay argues the proceeds should have been distributed immediately to Ditech, the servicer for the deed of trust beneficiary. See NRS 116.31164(7)(b)(4)-(5). Because, on behalf of Markey, NAS directed the remaining proceeds of the sale back to Saticoy Bay to satisfy the redemption and not toward the order of distribution, Saticoy Bay claims NAS and Markey improperly bypassed NRS 116.31164(7)(b)-(4).\nReviewing Saticoy Bay's argument de novo as it presents issues of statutory interpretation, Zohar v . Zbiegien, 130 Nev. 733, 737, 334 P.3d 402, 405 (2014), we first look to the statute's plain language to decipher legislative intent. See Robert E. v. Justice Court , 99 Nev. 443, 445, 664 P.2d 957, 959 (1983). If the statute's language is clear and unambiguous, we do not look beyond it. Id.\nAs an initial matter, NRS 116.31164(7) contains more than an order of distribution provision. Indeed, subsection (7)(a) directs the person conducting the sale, here NAS, to also comply with NRS 116.31166(2) \"[a]fter the sale.\" NRS 116.31164(7)(a). NRS 116.31166(2) in turn directs NAS to provide the purchaser, here Saticoy Bay, with a certificate of sale and, among other things, \"[a] statement that the unit is subject to redemption.\" NRS 116.31166(2)(a)(4). Receipt of such certificate of sale in exchange for the purchase price provides purchasers with a recorded interest in the property until the redemption period expires. See NRS 116.31166(2)(b) ; NRS 116.31166(7). \"After the sale,\" the person conducting the sale must also comply with NRS 116.31164(7)(b) and distribute the proceeds *433of the sale in a particular order. This distribution begins with the \"reasonable expenses of [the] sale,\" expenses associated with preparing the unit for sale, and satisfaction of the HOA's lien, and concludes with satisfying claims of record on the unit and remitting any excess to the prior unit owner. See NRS 116.31164(7)(b).\nWe conclude that NAS complied with the plain language of these provisions, whether or not it explicitly invoked the statute.5 After Saticoy Bay tendered the $48,600 purchase price at the HOA foreclosure sale, NAS distributed $4,564.23 pursuant to NRS 116.31164(7)(b)(1)-(3) to pay off the HOA lien and costs associated with the sale. It was for this reason that NAS only held $44,035.77 in trust-it had not yet distributed the remainder of the proceeds of the sale pursuant to NRS 116.31164(7)(b)(4)-(5).\nThis court agrees with Saticoy Bay that the statute required NAS to distribute the proceeds of the sale to Ditech immediately following the sale, however, Ditech's receipt or non-receipt of the proceeds is not for Saticoy Bay to dispute. Critically, the relevant provisions are silent in terms of granting an HOA foreclosure sale purchaser authority to direct how the proceeds are distributed. And Saticoy Bay has not identified any language in the statute that gives it such authority. Rather, the statute explicitly places responsibility on the person conducting the sale (here, NAS) to distribute the proceeds of the sale pursuant to NRS 116.31164(7)(b). Absent any such authorization to the purchaser, common sense dictates that Saticoy Bay does not have such authority. In this, Saticoy Bay errs by continuing to characterize the purchase price funds as \"its\" money. Indeed, once Saticoy Bay received the certificate of sale, it received all it was entitled to at that time under the redemption statute-an interest in the property. Therefore, whether the proceeds of the sale must be distributed toward a subordinate claim of record pursuant to subsection 4, such as that of Ditech here, or to Markey as remittance of any excess proceeds pursuant to subsection 5, is not for Saticoy Bay to assert because those funds no longer belong to Saticoy Bay.6 See Beazer Homes Holding Corp . v. Eighth Judicial Dist. Court , 128 Nev. 723, 731, 291 P.3d 128, 133 (2012) (\"[A] party generally has standing to assert only its own rights and cannot raise the claims of a third party not before the court.\"); see also Chapman v. Deutsche Bank Nat'l Tr . Co. , 129 Nev. 314, 318, 302 P.3d 1103, 1106 (2013) (\"[E]ach party must plead and prove his or her own claim to the property in question.\" (internal quotation omitted)). Rather, that argument is for Ditech to make.\nHere, however, the record demonstrates that Ditech authorized NAS to use any sale proceeds Ditech may have had a superior interest in under NRS 116.31164(7)(b)(4) for the benefit of Markey to redeem. Simply put, Ditech waived the very argument Saticoy Bay attempts to assert, and under the unique circumstances of this case, Markey was entitled to use the excess proceeds of the sale to redeem the property.7 Specifically, after receiving the *434fees from Markey, NAS tendered a check for a total of $50,052.16 to Saticoy Bay before the redemption period expired. That sum included the return of the $48,600 purchase price (less the $4,564.23 HOA lien and costs associated with the sale), as well as $6,016.39 tendered by | Markey for the above-mentioned lien and costs and expenses.8 Therefore, Saticoy Bay received what NRS 116.31166(3) requires if the homeowner chooses to redeem.\nIn sum, we conclude that in light of Ditech having allowed Markey to use sale proceeds to which Ditech was otherwise entitled, Markey complied with the redemption provision when he tendered the statutorily mandated fees and costs described above9 and Saticoy Bay received all to which it was entitled pursuant to the redemption statute.10\nMarkey substantially complied with the HOA foreclosure sale notice of redemption provision\nThe redemption statute also includes a notice requirement. Under NRS 116.31166(4), a unit owner is obligated to provide notice of redemption to the person who conducted the HOA foreclosure sale-here, NAS-as well as the person who purchased the property at the sale-here, Saticoy Bay. NRS 116.31166(4). Where, as here, the unit owner is redeeming the unit, the notice of redemption \"must\" be accompanied by \"a certified copy of the deed to the unit....\" NRS 116.31166(4)(a). Markey did not provide a certified copy of his deed in conjunction with his redemption notice.\nSaticoy Bay argues that because the redemption statute's notice provision includes the word \"must,\" strict compliance with the statute is required and Markey failed to comply when he did not provide a certified copy of the deed, which rendered the redemption invalid. See NRS 116.31166(4). It also argues that NRS 116.31166(4) mandates strict compliance in order to give \"each sentence, phrase, and word\" of the subsection independent meaning. Bd. of Cty. Comm'rs of Clark Cty. v. CMC of Nev., Inc., 99 Nev. 739, 744, 670 P.2d 102, 105 (1983). Further, Saticoy Bay argues that because this court previously held that a statute requiring the provision of a certified copy of a deed of trust warrants strict compliance in the foreclosure mediation context, the same should be required in the HOA foreclosure redemption context.\n\"To determine whether a statute and rule require strict compliance or substantial compliance, this court looks at the language used and policy and equity considerations.\" Leyva v. Nat'l Default Servicing Corp ., 127 Nev. 470, 475-76, 255 P.3d 1275, 1278 (2011). \"In so doing, [this court] examine[s] whether the purpose of the statute or rule can be adequately served in a manner other than by technical compliance with the statutory or rule language.\" Id. at 476, 255 P.3d at 1278. This court has recognized as a \"general tenet that Time and manner' requirements are strictly construed, whereas substantial compliance may be sufficient for *435'form and content' requirements.\" Leven , 123 Nev. at 408, 168 P.3d at 718. Moreover, \"[s]ubstantial compliance may be sufficient to avoid harsh, unfair[,] or absurd consequences.\" Leyva , 127 Nev. at 475, 255 P.3d at 1278 (internal quotation omitted). Substantial compliance requires that a party (1) have actual knowledge, and (2) not suffer prejudice. Hardy Cos., Inc. v. SNMARK, LLC , 126 Nev. 528, 536, 245 P.3d 1149, 1155 (2010). In the context of NRS 116.31166(4), actual knowledge entails knowledge of the unit owner's intent to redeem and knowledge of the unit owner's authority to redeem.\nTo be sure, in the foreclosure mediation context, we have held that the statutory requirement to produce a certified copy of a deed of trust mandates strict compliance (analyzing the requirements of NRS 107.086(5)-(6) ); Leyva, 127 Nev. at 476, 255 P.3d at 1279 ; Pasillas v. HSBC Bank USA, 127 Nev. 462, 465-67, 255 P.3d 1281, 1284-85 (2011). The Leyva court reasoned that strict compliance was required because NRS 107.086(5) states that the beneficiary of the deed of trust (i.e., lender) \"shall\" bring the deed of trust to the mediation. Leyva , 127 Nev. at 476, 255 P.3d at 1279 ; see also FMR 13.7(a). Also, that \"[t]he legislative intent behind requiring a party to produce the assignments of the deed of trust ... is to ensure that whoever is foreclosing actually owns the note.\" Leyva, 127 Nev. at 476, 255 P.3d at 1279 (internal quotations omitted). Indeed, in Leyva, the bank attempting to participate in the mediation was not the original named beneficiary on the deed of trust and did not provide a written assignment but was nonetheless attempting to foreclose on the property. Id. Evidence of the identity of the deed of trust beneficiary was therefore crucial to ensuring that the bank was authorized to foreclose on the property, so much so that in the foreclosure mediation context, a foreclosing party's failure to strictly comply with the statute and ''bring the required documents to the mediation is a sanctionable offense under NRS 107.086 and the [Foreclosure Mediation Rules].\" Id. at 480, 255 P.3d at 1281 (emphasis added).\nConversely, no equivalent ramification is evident in NRS Chapter 116 when a certified copy of a deed is not provided during redemption. Rather, the remedies suggest strict compliance is not necessary in that \"[t]he remedies provided by [NRS Chapter 116] must be liberally administered to the end that the aggrieved party is put in as good a position as if the other party had fully performed.\" NRS 116.1114. In this sense, NRS 107.086 and the applicable Foreclosure Mediation Rules are construed against the lenders (i.e., beneficiaries of the deed of trust) attempting to foreclose on a home, see Leyva , 127 Nev. at 476, 255 P.3d at 1279 (concluding that \" NRS 107.086 and the FMRs necessitate strict compliance\" to adequately serve the purpose of the statute and rules), while NRS Chapter 116's redemption statute is construed in favor of the unit owner attempting to redeem his or her property. See Hearing on S.B. 306 Before the Senate Judiciary Comm., 78th Leg. (Nev., Apr. 7, 2015) (statement of Senator Aaron D. Ford); see also Hearing on S.B. 306 Before the Assembly Judiciary Comm., 78th Leg. (Nev., Apr. 28, 2015) (statement of Jonathan Gedde, Chairman, Board of Governors, Nevada Mortgage Lenders Association) (\"Nevada homeowners benefit by the changes made in this bill as well. Taking away someone's property that is worth hundreds of thousands of dollars is not a matter that should be taken lightly and there are quite a few consumer protections in this bill.\"). Further, if a unit owner substantially complies with the redemption statute's notice provision, the purchaser is \"put in as good a position as if the other party had fully performed,\" NRS 116.1114, because a successful redemption results in the purchaser receiving repayment of the purchase price, reimbursement for other costs and assessments, and also payment of monthly interest on the purchase price. NRS 116.31166(3). We conclude that substantial compliance with NRS Chapter 116's redemption statute's notice requirement is sufficient because \"the purpose of [ NRS 116.31166(4) ] can be adequately served in a manner other than by technical compliance with the statutory or rule language.\" Leyva , 127 Nev. at 476, 255 P.3d at 1278.\nTurning to the case before us, Saticoy Bay had actual knowledge of Markey's intent to redeem the property when NAS emailed Saticoy *436Bay of Markey's intent. Further, Saticoy Bay does not argue on appeal that Markey is not the unit owner of the property; rather Saticoy Bay merely argues that Markey did not strictly comply with NRS 116.31166(4) by providing a certified copy of the deed. Saticoy Bay also has not demonstrated that it was prejudiced by Markey's failure to provide a certified copy of the deed. First, the only time Saticoy Bay communicated any objection to Markey's notice of redemption and the lack of a certified copy of the deed was the day after the 60-day redemption period expired, despite the fact that Saticoy Bay had been communicating with NAS about Markey's intent to redeem for almost a month. Second, Saticoy Bay failed to articulate how the lack of a certified copy of the deed caused it harm, except that it was unable to frustrate Markey's redemption on the ground that he did not strictly comply with the statute. This objection too is unavailing, as successful redemption by Markey resulted in Saticoy Bay receiving all of the benefits of redemption pursuant to NRS 116.31166, namely the payment of its purchase price and interest at the rate of one percent per month. Accordingly, we conclude that Markey substantially complied with NRS 116.31166(4) and that his substantial compliance was sufficient to satisfy the statute's requirements. Hardy Cos. , 126 Nev. at 536, 245 P.3d at 1155.\nBased on the above, we find no error in the district court's ruling below, and we affirm the district court's summary judgment.\nWe concur:\nHardesty, J.\nSilver, J.\n\nAll ensuing references to the statutes in NRS Chapter 116 are to the 2015 versions of those statutes.\n\n\nMeaning, \"[t]he amount of any assessment, taxes or payments toward liens which were created before the purchase and which the purchaser may have paid thereon after the purchase, and interest on such amount.\" NRS 116.31166(3)(a)(1).\n\n\nPursuant to the redemption statute, Saticoy Bay was entitled to receive a certificate of sale after the sale took place, but it was not entitled to receive the foreclosure deed until the redemption period expired without the property being redeemed. Compare NRS 116.31166(2), with NRS 116.31166(7).\n\n\nThe redemption statute is effective only as to foreclosure sales that occurred after October 1, 2015. See 2015 Nev. Stat., ch. 266, §§ 6, 9, at 1342, 1349. The HOA foreclosure sale here occurred on November 20, 2015.\n\n\nSaticoy Bay does not argue on appeal that a certificate of sale was not delivered pursuant to NRS 116.31166(2), and the record contains a certificate of foreclosure sale subject to redemption that was recorded on November 23, 2015.\n\n\nSimilarly, Saticoy Bay lacks standing to assert its alternative argument that NAS was required to release the proceeds of the sale to Markey after the sale regardless of NRS 116.31164(7)(b) 's distribution order and only then would Markey be free to submit the redemption payment personally to Saticoy Bay using the funds. See Beazer Homes Holding Corp ., 128 Nev. at 731, 291 P.3d at 133. In any event, Saticoy Bay rejected a check coming \"from\" Markey when NAS sent the second check in his name. Forderer v. Schmidt , 154 F. 475, 477 (9th Cir. 1907) (explaining that tender I made by a third party at a debtor's request is sufficient tender).\n\n\nSaticoy Bay argues that Ditech was not the servicer of the loan at the time of the redemption period because the assignment of the deed of trust from Quicken Loans (the original owner of the loan) to Ditech was not recorded until April 2016. It argues that because Ditech was not the servicer when Ditech authorized Markey to use any funds, Ditech did not have the authority to make such authorization. However, Saticoy Bay waived the right to argue this issue because Saticoy Bay failed to raise it below. See Old Aztec Mine , Inc. v. Brown , 97 Nev. 49, 52, 623 P.2d 981, 983 (1981) (\"A point not urged in the trial court, unless it goes to the jurisdiction of that court, is deemed to have been waived and will not be considered on appeal.\").\n\n\nSaticoy Bay does not reasonably challenge that the checks were sent or received. Rather, Saticoy Bay merely argues that the checks are not included in the record on appeal. However, the record does contain emails from Saticoy Bay's counsel to NAS's counsel dated January 15, 2016, where Saticoy Bay references the January 15 check that was delivered by NAS. Further, in a January 20 email from NAS's counsel to Saticoy Bay's counsel, NAS's counsel explained that the January 19 check had been returned by Saticoy Bay's office that evening.\n\n\nWe further conclude that NAS was permitted to tender the redemption amount on Markey's behalf. It is well-settled that tender \"need not be made by [a debtor] personally. If made by a third person at his request it is sufficient.....\" Forderer v. Schmidt , 154 F. 475, 477 (9th Cir. 1907) (quoting 2 Parsons on Contract 639 (9th ed.)); see also NRS 116.1108 (stating that supplemental general principles of law are applicable to NRS Chapter 116); Restatement (Third) of Prop.: Mortgages § 6.4(a), (e) &amp; cmt. a (Am. Law Inst. 1997) (explaining that the full payment of a mortgage by a nonassuming grantee nevertheless extinguishes the mortgage).\n\n\nSaticoy Bay also argues that if Markey and Ditech claim that excess proceeds of the sale could be used to redeem the property, they would therefore be estopped from attacking the validity of the sale. However, we need not reach this issue, as Markey's redemption does not attack the validity of the sale.\n\n",
+            "ocr": true,
+            "opinion_id": 6536477
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 228703,
+      "row": {
+        "id": 7852738,
+        "judges": null,
+        "date_filed": "2022-07-08",
+        "date_filed_is_approximate": false,
+        "slug": "in-re-estate-of-harris",
+        "case_name_short": null,
+        "case_name": "In Re: Estate Of Harris",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": "https://caseinfo.nvsupremecourt.us/document/view.do?csNameID=64303&csIID=64303&deLinkID=864525&onBaseDocumentNumber=22-21520",
+            "author_id": null,
+            "opinion_text": "\n\n\n\n\n\t84948: Case View\n\t\n\t\n\t\n\t\n\t\n\t\t\n\n\t\n\t\n\t\n\t\n\n\t\n\t\t\n\t\n\t\n\t\n     \n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\n\t\n\t\n\t \n\t\n\n\n\n\n\n\n\n\t\n\n\n\n\t\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\n\n\n\n\tNevada\n\tAppellate Courts\n\n\n\n\n\n\n\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\n\n\t\n\t\t\n\t\t\tAppellate Case Management System\n\t\t\n\t\n\t\n\t\t\n\t\t\tC-Track, the browser based CMS for Appellate Courts\n\t\t\n\t\n\t\n\t\t\n\t\t\t\n\n\n\t\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\t\n\t\n\t\n\n\n\n\n\t\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\tCase Search\n\t\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\tParticipant Search\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\t\n\n\t\t\n\t\n\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\n\n\t\t\n\t\n\t\n\t\n\t\t\n\t\t\n\t\n\t\n\t\n\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\n\n\n\t\n\t\t\n\t\t\t\n\t\t\t\tCases\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\tCase Search\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\tParticipant Search\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\t\n\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\n\n\n\n\t\n\t\n\t\t22-21520: This document is currently unavailable. If you need a copy of this document, please contact Clerk's Office at (775)684-1600.\t\n\t\n\t\n\n\tDisclaimer: The information and documents available here should not be relied upon as an official record of action.Only filed documents can be viewed.  Some documents received in a case may not be available for viewing.Some documents originating from a lower court, including records and appendices, may not be available for viewing.For official records, please contact the Clerk of the Supreme Court of Nevada at (775) 684-1600.\n\n\n\n\t\n\t\n\t\n\t\n\nCase Information: 84948\n\n\nShort Caption:IN RE: ESTATE OF HARRISCourt:Supreme Court\n\n\nLower Court Case(s):Douglas Co. - Ninth Judicial District - 2021-PB-00034Classification:Civil Appeal - General - Proper Person\n\n\nDisqualifications:Case Status:Disposition Filed\n\n\nReplacement:Panel Assigned:\n\t\t\t\t\tPanel\n\t\t\t\t\t\n\n\nTo SP/Judge:SP Status:\n\n\nOral Argument:Oral Argument Location:\n\n\nSubmission Date:How Submitted:\n\n\n\n\n\n\t\n\n\t\n\t\t\n\n+\n\t\t\t\t\t\tParty Information\n\t\t\t\t\t\n\n\nRoleParty NameRepresented By\n\n\nAppellantTodd Robben\n\t\t\t\t\tIn Proper Person\n\t\t\t\t\n\n\nRespondentTara FlanaganPatrick R. Millsap\n\t\t\t\t\t\t\t(Wallace &amp; Millsap LLC)\n\t\t\t\t\t\tFred M. Wallace\n\t\t\t\t\t\t\t(Wallace &amp; Millsap LLC)\n\t\t\t\t\t\t\n\n\n\t\t\n\t\n\n\t\n\t\t\n\n+\n\t\t\t\t\t\tDue Items\n\t\t\t\t\t\n\n\nDue DateStatusDue ItemDue From\n\n\n08/02/2022OpenRemittitur\n\n\n\t\t\n\t\n\t\n\t\n\t\t\n\nDocket Entries\n\n\nDateTypeDescriptionPending?Document\n\n\n06/29/2022Filing FeeAppeal Filing Fee Waived.  In Forma Pauperis. (SC)\n\n\n06/29/2022Notice of Appeal DocumentsFiled Notice of Appeal/Proper Person. Appeal docketed in the Supreme Court this day. (SC)22-20590\n\n\n\n\n06/29/2022Notice/OutgoingIssued Notice Regarding Deadlines. (SC)22-20593\n\n\n\n\n07/08/2022Order/DispositionalFiled Order Dismissing Appeal. \"ORDERS this appeal DISMISSED.\"  NNP22-AS/EC/KP  (SC)22-21520\n\n\n\n\n\t\n\n\n\t\n\t\n\t\t\n\t\t\tCombined Case View\n\t\t\t\n\t\n\n\n\n\t\t\t\t\t\t \n\t\t\t\t\t \n\t\t\t\t \n\t\t\t \n\t\t\n\t\n \n\n\n\n\n",
+            "ocr": false,
+            "opinion_id": 7796604
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 228993,
+      "row": {
+        "id": 7860309,
+        "judges": null,
+        "date_filed": "2022-08-19",
+        "date_filed_is_approximate": false,
+        "slug": "plummer-milton-v-warden",
+        "case_name_short": "Warden",
+        "case_name": "Plummer (Milton) v. Warden",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": "https://caseinfo.nvsupremecourt.us/document/view.do?csNameID=64529&csIID=64529&deLinkID=869188&onBaseDocumentNumber=22-25939",
+            "author_id": null,
+            "opinion_text": "\n\n\n\n\n\t85112: Case View\n\t\n\t\n\t\n\t\n\t\n\t\t\n\n\t\n\t\n\t\n\t\n\n\t\n\t\t\n\t\n\t\n\t\n     \n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\n\t\n\t\n\t \n\t\n\n\n\n\n\n\n\n\t\n\n\n\n\t\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\n\n\n\n\tNevada\n\tAppellate Courts\n\n\n\n\n\n\n\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\n\n\t\n\t\t\n\t\t\tAppellate Case Management System\n\t\t\n\t\n\t\n\t\t\n\t\t\tC-Track, the browser based CMS for Appellate Courts\n\t\t\n\t\n\t\n\t\t\n\t\t\t\n\n\n\t\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\t\n\t\n\t\n\n\n\n\n\t\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\tCase Search\n\t\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\tParticipant Search\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\t\n\n\t\t\n\t\n\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\n\n\t\t\n\t\n\t\n\t\n\t\t\n\t\t\n\t\n\t\n\t\n\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\n\n\n\t\n\t\t\n\t\t\t\n\t\t\t\tCases\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\tCase Search\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\tParticipant Search\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\t\n\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\n\n\n\n\t\n\t\n\t\t22-25939: This document is currently unavailable. If you need a copy of this document, please contact Clerk's Office at (775)684-1600.\t\n\t\n\t\n\n\tDisclaimer: The information and documents available here should not be relied upon as an official record of action.Only filed documents can be viewed.  Some documents received in a case may not be available for viewing.Some documents originating from a lower court, including records and appendices, may not be available for viewing.For official records, please contact the Clerk of the Supreme Court of Nevada at (775) 684-1600.\n\n\n\n\t\n\t\n\t\n\t\n\nCase Information: 85112\n\n\nShort Caption:PLUMMER (MILTON) VS. WARDENCourt:Supreme Court\n\n\nRelated Case(s):82181, 82335, 82335-COA\n\n\nLower Court Case(s):Pershing Co. - Eleventh Judicial District - 27CV-WR1-2018-0025Classification:Criminal Appeal - Other - Post-Conviction/Proper Person\n\n\nDisqualifications:Case Status:Disposition Filed\n\n\nReplacement:Panel Assigned:\n\t\t\t\t\tPanel\n\t\t\t\t\t\n\n\nTo SP/Judge:SP Status:\n\n\nOral Argument:Oral Argument Location:\n\n\nSubmission Date:How Submitted:\n\n\n\n\n\n\t\n\n\t\n\t\t\n\n+\n\t\t\t\t\t\tParty Information\n\t\t\t\t\t\n\n\nRoleParty NameRepresented By\n\n\nAppellantMilton David Plummer\n\t\t\t\t\tIn Proper Person\n\t\t\t\t\n\n\nRespondentRenee BakerAaron D. Ford\n\t\t\t\t\t\t\t(Attorney General/Carson City)\n\t\t\t\t\t\tSheryl Serreze\n\t\t\t\t\t\t\t(Attorney General/Carson City)\n\t\t\t\t\t\t\n\n\n\t\t\n\t\n\n\t\n\t\t\n\n+\n\t\t\t\t\t\tDue Items\n\t\t\t\t\t\n\n\nDue DateStatusDue ItemDue From\n\n\n09/13/2022OpenRemittitur\n\n\n\t\t\n\t\n\t\n\t\n\t\t\n\nDocket Entries\n\n\nDateTypeDescriptionPending?Document\n\n\n08/03/2022Filing FeeAppeal Filing Fee Waived.  Criminal. (SC)\n\n\n08/03/2022Notice of Appeal DocumentsFiled Notice of Appeal/Proper Person. Appeal docketed in the Supreme Court this day. (SC)22-24294\n\n\n\n\n08/19/2022Order/DispositionalFiled Order Dismissing Appeal.  \"ORDERS this appeal DISMISSED.\"  NNP22-AS/EC/KP  (SC)22-25939\n\n\n\n\n\t\n\n\n\t\n\t\n\t\t\n\t\t\tCombined Case View\n\t\t\t\n\t\n\n\n\n\t\t\t\t\t\t \n\t\t\t\t\t \n\t\t\t\t \n\t\t\t \n\t\t\n\t\n \n\n\n\n\n",
+            "ocr": false,
+            "opinion_id": 7804175
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 234617,
+      "row": {
+        "id": 8085833,
+        "judges": "Maupin",
+        "date_filed": "2004-09-02",
+        "date_filed_is_approximate": false,
+        "slug": "heller-v-give-nevada-a-raise-inc",
+        "case_name_short": "Heller",
+        "case_name": "Heller v. Give Nevada A Raise, Inc.",
+        "case_name_full": "DEAN HELLER, SECRETARY OF STATE NEVADA STATE MEDICAL ASSOCIATION AND LAS VEGAS CHAMBER OF COMMERCE v. GIVE NEVADA A RAISE, INC. DANNY THOMPSON PEOPLE FOR A BETTER NEVADA, a Nevada Non-Profit Corporation and CARMEN CASHMAN",
+        "attorneys": "Brian Sandoval, Attorney General, Jeff E. Parker, Solicitor General, and Victoria Thimmesch Oldenburg, Senior Deputy Attorney General, Carson City, for Appellant Secretary of State Dean Heller., McMullen & Cain and E. Joe Cain and Samuel P. McMullen, Henderson, for Appellant Las Vegas Chamber of Commerce., Michael A. Rosenauer, Reno, for Appellant Nevada State Medical Association., Crowell Susich Owen & Taches and Robert L. Crowell, Carson City, for Respondents People for a Better Nevada and Carmen Cashman., McCracken Stemerman Bowen & Holsberry and Andrew J. Kahn, Richard G. McCracken, and Eric B. Myers, Las Vegas, for Respondents Give Nevada A Raise, Inc., and Danny Thompson.",
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "120 Nev. 481",
+          "96 P.3d 732"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n*483OPINION\n\nPer Curiam:\n\nArticle 19, Section 3(1) of the Nevada Constitution requires, among other things, that each document of a ballot-initiative petition be accompanied by an affidavit, executed under oath by a person who signed the document, attesting that the document’s signatures are genuine and that the signatories were, at the time of signing, registered voters in the county in which they reside. Respondents submitted documents comprising two initiative petitions to the Nevada Secretary of State for inclusion on the November 2004 general election ballot. The Secretary then discounted thousands of signatures in the documents for failure to comply with Section 3(1) and disqualified the initiatives from the ballot. Consequently, respondents sought relief in the district court, which declared Section 3(l)’s affidavit requirements unconstitutional under the First Amendment to the United States Constitution, and ordered the Secretary to qualify the previously disqualified signatures and place the initiatives on the ballot. We affirm because Section 3(1)’s requirement that an initiative-petition document be accompanied by a signatory’s affidavit imper-missibly burdens political speech by either compelling the use of only registered voters as circulators or compelling unregistered cir-culators to be accompanied by a registered voter who is willing to sign a petition booklet and execute an affidavit under oath authenticating that booklet’s signatures.\n\nBACKGROUND\n\nIn full, Article 19, Section 3(1) of the Nevada Constitution reads, with emphasis added:\nEach referendum petition and initiative petition shall include the full text of the measure proposed. Each signer shall affix thereto his or her signature, residence address and the name *484of the county in which he or she is a registered voter. The petition may consist of more than one document, but each document shall have affixed thereto an affidavit made by one of the signers of such document to the effect that all of the signatures are genuine and that each individual who signed such document was at the time of signing a registered voter in the county of his or her residence. The affidavit shall be executed before a person authorized by law to administer oaths in the State of Nevada.1\nIn 1966, this court interpreted Section 3(1) to mean that an initiative-petition document, such as a signature booklet, must be excluded if it is not authenticated by a signer’s affidavit.2 Thus, if a person circulating an initiative petition wishes to authenticate a booklet’s signatures, he or she must sign the booklet and execute an affidavit under oath stating that all signatures are genuine and that all signatories were, at the time of signing, registered voters. But therein lies the problem at the heart of this case: The Nevada Constitution permits only registered voters to sign an initiative petition;3 consequently, in order for a circulator to authenticate signatures, he or she must be a registered voter. In 1999, however, the United States Supreme Court held in Buckley v. American Constitutional Law Foundation, Inc.4 that the First Amendment prohibits states from requiring petition circulators to be registered voters, because such a requirement impermissibly burdens political speech by reducing the pool of potential circulators. Decisions of the United States Supreme Court are binding on Nevada courts under Article 1, Section 2 of the Nevada Constitution.\nIn an attempt to reconcile Section 3(1) and Buckley, the Secretary requires by regulations that each signature booklet be accompanied by a signer’s affidavit and a circulator’s affidavit.5 Under the Secretary’s official interpretation of the regulations, if the circulator is not a registered voter, he or she must have one of *485the persons signing the booklet execute a Section 3(1) affidavit, attesting that the booklet’s signatures are genuine and that each signer was a registered voter in the county of his or her residence at the time of signing.6 The unregistered circulator must then execute a circulator’s affidavit, also attesting to genuineness and residency, and adding the circulator’s address, that the circulator is eighteen years of age or older and personally circulated the document, and that all signatures were affixed in the circulator’s presence. To alleviate the difficulty inherent in an unregistered circu-lator having to retain a different registered voter throughout the course of each booklet’s signing, the Secretary’s interpretation provides that a booklet signer may sign multiple booklets (on the first signature line) and accompanying affidavits, and need not be present as others sign the booklets, so long as the affiant’s genuineness and residency beliefs are based on “the uncontradicted assertion of the circulator.’ ’7 With the initiative-petition framework explained, the factual background of this case follows.\nRespondents Give Nevada A Raise, Inc., and Danny Thompson (collectively, GNR) sponsored a ballot initiative calling for an increase in Nevada’s minimum wage. Although GNR gathered more than the 51,337 signatures needed to ensure placement on the November 2004 general election ballot, the Secretary discounted thousands of signatures in booklets that were not each accompanied by “a valid affidavit signed by a registered voter who had signed that particular [booklet].” Consequently, GNR lacked sufficient signatures to qualify its ballot initiative. Respondents People for a Better Nevada and Carmen Cashman (collectively, PBN) also lost necessary qualifying signatures for their “Stop Frivolous Lawsuits and Protect Your Legal Rights Act” ballot initiative due to omitted signers’ affidavits.\nOn July 12, 2004, GNR filed a complaint for declaratory, in-junctive and writ relief against the Secretary, seeking to compel the minimum-wage initiative’s placement on the ballot. GNR alleged that, although its petition circulators had not signed the petition, they had signed affidavits authenticating booklet signatures, and that requiring affidavits executed by booklet signers violates the First Amendment. PBN intervened against the Secretary, stating that it had lost signatures under the same circumstances as GNR, and that it was adopting GNR’s complaint. The Nevada State Medical Association and the Las Vegas Chamber of Commerce *486also intervened, identifying an interest in defeating PBN’s initiative petition.\nFollowing a bench trial, the district court concluded that Section 3(l)’s affidavit requirements could withstand neither Buckley’s strict scrutiny nor a “lesser standard of review.” Consequently, the district court declared the Section 3(1) affidavit requirements unconstitutional, and ordered the Secretary to qualify the signatures he had stricken from GNR’s and PBN’s initiative petitions and to place the initiatives on the ballot. The Secretary, Medical Association and Chamber of Commerce appealed.8\n\nDISCUSSION\n\n\nI. Buckley v. American Constitutional Law Foundation, Inc.\n\nThe First Amendment to the United States Constitution protects speech, which, as observed in Buckley, includes the circulation of initiative petitions.9 The parties, however, dispute Buckley’s applicability to the instant case. In Buckley, the Supreme Court considered the constitutionality of a state statute that, among other things, required initiative-petition circulators to be registered voters.10 In deeming this requirement unconstitutional, the Supreme Court noted that petition circulation is “core political speech, because it involves interactive communication concerning political change,”11 and that “First Amendment protection for such interaction ... is at its zenith.”12 The Court rejected the state’s argument that the registration requirement only slightly limited speech because it is “exceptionally easy to register,” reasoning that ease of registration “does not lift the burden on speech at petition circulation time,” *487and that circulators may wish to remain unregistered as a form of “political thought and expression.”13 Additionally, the Court observed that the statute’s requirement of a circulator’s affidavit was responsive to the state’s concern “in policing lawbreakers among petition circulators.”14 Finally, the Court stated that it was applying traditional strict scrutiny analysis: “state regulations imposing] severe burdens on speech . . . [must] be narrowly tailored to serve a compelling state interest.”15 Accordingly, the Court concluded that, notwithstanding a state’s “considerable leeway” in “protecting] the integrity and reliability of the initiative process,”16 the registration requirement violated the First Amendment by limiting the number of voices available to convey the initiative proponents’ message, thereby reducing the size of the reachable audience without furthering the state’s interests in administrative efficiency, fraud detection and informing voters.17\nConsequently, if Section 3(1) severely burdens political speech, we apply strict scrutiny; otherwise, “less exacting review” is warranted and “important regulatory interests will usually be enough to justify reasonable, nondiscriminatory restrictions.”18\n\nII. Section 3(1) severely burdens political speech\n\nWe begin our Section 3(1) analysis cognizant that a state, although it has “considerable leeway to protect the integrity and reliability of the initiative process,”19 may not, after Buckley, require circulators to be registered voters. We also recognize that Section 3(1), on its face, contains no such direct requirement. But the reality of Section 3(l)’s operation tells a different story. In Nevada, registered voters may circulate initiative petitions and provide the necessary Section 3(1) affidavits. Unregistered persons may also circulate petitions, but to obtain the Section 3(1) affidavits, they must (1) convince a registered voter who signed a particular petition booklet to execute an affidavit, attesting that the booklet’s signatures are genuine and that the signatories were, at the time of signing, registered voters in their county of residence; and (2) arrange for execution to take place before a notary. These extra *488steps, required in the Section 3(1) process for unregistered circu-lators, impose a burden on political speech that is no less severe than the direct registration requirement invalidated in Buckley. Specifically, if the Section 3(1) affidavit is to have any value at all as a means of ensuring the integrity and reliability of the circulation process, it must be executed by someone who participated in gathering the signatures. Thus, unregistered circulators must be accompanied at all times by a registered voter who is willing to sign the petition booklet and execute a Section 3(1) affidavit under oath for that booklet, attesting that the signatures are genuine and that the signatories were, at the time of signing, registered voters in the county of their residence.\nUnder Section 3(1), then, circulation may be accomplished either by a registered voter or a two-person team composed of an unregistered person and a registered voter. In either instance, Section 3(1) mandates the use of circulators who are registered voters and who are willing to sign the petition. If unregistered circulators are unable to locate a registered-voter companion, their only alternative, if they wish to participate in the circulation process, is to register to vote. Requiring a circulator to be a registered voter is expressly precluded by Buckley, and requiring an unregistered circulator to be accompanied by a registered voter fails under Buckley’s reasoned disapproval of circulation restrictions that “significantly inhibit communication with voters about proposed political change.”20 Requiring two persons to circulate each booklet of an initiative petition cuts in half the number of voices available to convey the initiative-petition’s political message and reduces the size of the reachable audience.21 This point is buttressed by evidence offered in the district court that initiative-petition sponsors are unlikely to use circulators who need a companion to authenticate signatures.\nAt least one other court has found a severe burden in a two-person circulation-team requirement. In Morrill v. Weaver,22 the federal district court interpreted a Pennsylvania statute that required signature booklets for a candidate’s nomination to be authenticated by the affidavit of a “qualified elector” who resided in the electoral district in which signatures were being gathered. The district court ruled that if “qualified elector” were interpreted to mean “registered voter,” then both unregistered circulators and registered circulators from other districts would be unable to authenticate booklets unless accompanied by a registered voter from *489the proper electoral district.23 The district court concluded that a resident-companion requirement would constitute a severe burden on speech that was not necessary to achieve any compelling state interest. Accordingly, the district court declared that “qualified electors” “need not be registered voters” and invalidated the residency restriction.24\nAs to Section 3(1), we similarly conclude that a team-circulation option is severely burdensome. But unlike the statute in Morrill, Section 3(1)’s affidavit requirement is not capable of a constitutional construction.25 We note, too, that the severity of Section 3(1)’s burden on speech is exacerbated by NRS 295.055(2), which states, “Each document of the petition must bear the name of a county, and only registered voters of that county may sign the document.” As Section 3(1) requires an affi-ant to be a registered voter in the county of his or her residence, the tandem effect of Section 3(1) and NRS 295.055(2) is to permit only voters registered in the county of circulation to serve as Section 3(1) affiants. Thus, the registered-voter member of a two-person circulation team must be from the county of circulation, not merely from anywhere in Nevada. Even a registered circulator needs a companion to provide a Section 3(1) affidavit if the circu-lator is gathering signatures in a county in which she does not reside. Consequently, we conclude that Section 3(1) severely burdens *490political speech, and that the burden is exacerbated by NRS 295.055(2).\nAlthough we fully recognize our duty to construe the Nevada Constitution in a manner that will preserve that venerable document’s text,26 the Secretary’s official interpretation does little to alleviate the burden on speech. When that interpretation is inserted into the mix of Section 3(1) and NRS 295.055(2), a circulator who is not registered to vote need not be accompanied by a registered voter, so long as the circulator can locate a registered voter from the county of circulation who is willing to sign all of the circulator’s booklets and provide authenticating affidavits based solely on the circulator’s representations of genuineness and residency. Even if, as appellants urge, we could somehow interpret Section 3(1) as permitting an affidavit only on information and belief, based solely on the circulator’s representations, such an affidavit would be meaningless and contrary to the reason for Section 3(l)’s amendment in 1958, which was to “make the requirements to commence and carry through an initiative petition more strict.”27 Finally, we note that requiring a circulator to convince a booklet signer, who may be a complete stranger, uncertain about the initiative-petition circulation process, with absolutely no familiarity with the booklet’s signatories, to execute an authenticating affidavit under oath imposes a severe burden in itself.\nWe therefore apply strict scrutiny: Section 3(1) must be narrowly tailored to serve a compelling state interest.\n\nIII. Section 3(1) is not narrowly tailored\n\nAppellants identify, as compelling, Nevada’s interests in ensuring “that the initiative signature gathering process is fair, honest, reliable and verifiable.” For purposes of this appeal, we will assume that “policing the integrity” of the initiative-petition process is a compelling state interest.28 Consequently, our inquiry is limited to determining whether Section 3(1) is narrowly tailored. Regulation of constitutionally protected speech is considered narrowly tailored only if it burdens no more speech than is necessary to achieve a compelling interest.29 Thus, we must consider the alternatives to Section 3(l)’s burdens and the degree to which those burdens achieve, serve or advance the State’s interest.30\n*491In Buckley, the Supreme Court noted that Colorado had measures in place that would have protected the integrity of the initiative petition process without requiring circulators to be registered voters. For instance, Colorado required a circulator to submit an affidavit reciting the circulator’s address, criminalized the forging of initiative petitions, voided initiative-petition signatures if the cir-culator violated circulation laws, and required initiative sponsors to disclose who pays circulators and how much.31 Nevada has implemented many of these measures,32 including the circulator’s affidavit,33 which reveals more identifying information than a Section 3(1) affidavit.34 Thus, less restrictive alternatives exist to ensure the petition process’s integrity than requiring a Section 3(1) affidavit.\nAs to the degree to which a signer’s affidavit advances the State’s interest in guarding against corruption of the initiative process, appellants do not address the fact that the person most competent to attest to the genuineness of signatures and the residency of signatories may be an unregistered circulator (or a registered, nonresident circulator), who cannot sign the Section 3(1) affidavit. And even if we were to follow appellants’ suggestion that Section 3(1) be somehow interpreted to allow a Section 3(1) affi-ant to rely on the “uncontradicted assertion of the circulator” as to genuineness and residency, the value of an affidavit not based on personal knowledge is, as noted above, highly suspect and directly contravenes the voters’ desire in 1958 to “make the requirements to commence and carry through an initiative petition more strict.” Thus, based upon the record before us, Section 3(1)’s requirement that each petition booklet be accompanied by the affidavit of a registered voter who signed that booklet does not tangibly advance the State’s interests in ensuring the integrity and reliability of the initiative process and therefore is not narrowly tailored.\n\nCONCLUSION\n\nArticle 19, Section 3(l)’s requirement that an initiative-petition document be accompanied by a signatory’s affidavit severely bur*492dens speech by either compelling the use of only registered voters as circulators or compelling unregistered circulators to be accompanied by a registered voter who is willing to sign a petition booklet and execute an affidavit under oath authenticating that booklet’s signatures. The burden is neither alleviated by the Secretary’s official interpretation nor warranted by the State’s interest in ensuring the integrity and reliability of the initiative-petition process given that (1) the State has other measures in place to guard the process from corruption, and (2) the State’s interests are not tangibly advanced by the Section 3(1) affidavit. Consequently, Section 3(1) does not survive strict constitutional scrutiny.35\nAccordingly, we affirm the district court’s judgment ordering the Secretary to qualify previously disqualified signatures and to place GNR’s and PBN’s initiatives on the ballot.\n\n This version of Section 3(1) was proposed and passed by the 1960 and 1961 Legislatures and approved and ratified by voters in the 1962 general election. The need for an accompanying affidavit originated in the 1958 version as part of an initiative-originated amendment intended to “make the requirements to commence and carry through an initiative petition more strict.” Propositions to be Voted Upon in State of Nevada at General Election, November 4, 1958, at 6.\n\n\nLundberg v. Koontz, 82 Nev. 360, 418 P.2d 808 (1966); see also Stumpf v. Lau, 108 Nev. 826, 839 P.2d 120 (1992) (observing that a Section 3(1) affidavit may only be executed by a registered voter who signed the petition document).\n\n\nNev. Const. art. 19, § 2(2); id. § 3(1).\n\n\n 525 U.S. 182, 194 (1999).\n\n\n NAC 293.182; NAC 295.020.\n\n\n interpretation of the Secretary of State #00-01 (Jan. 24, 2000).\n\n\nThe Secretary’s interpretation directly conflicts with NRS 295.150(2) when the Section 3(1) affidavit is for a referendum petition on a legislative act pertaining to a particular county. In that instance, the statute requires that the affidavit be based on “information and belief,” and the signatures must have been executed in the affiant’s “presence.”\n\n\nAs the district court issued declaratory and permanent injunctive relief in the absence of any factual dispute, we review the district court’s judgment de novo. See University System v. DR Partners, 117 Nev. 195, 18 P.3d 1042 (2001) (stating that, in the absence of disputed facts, preliminary and permanent injunctions are reviewed de novo); County of Clark v. Upchurch, 114 Nev. 749, 961 P.2d 754 (1998) (observing that a district court’s decision to render a determination in a declaratory relief action is reviewed for abuse of discretion, but that a district court’s issuance of declaratory relief based on statutory construction is reviewed de novo).\n\n\n 525 U.S. at 186-87. The First Amendment applies to the states through the Fourteenth Amendment. Goldstein v. Chestnut Ridge Volunteer Fire Co., 218 F.3d 337, 340 n.1 (4th Cir. 2000).\n\n\nThe registration requirement originated from a voter-approved amendment to the Colorado Constitution. Buckley, 525 U.S. at 190.\n\n\n Id. at 186 (quotation marks omitted).\n\n\n Id. at 187 (quotation marks omitted).\n\n\n Id. at 195.\n\n\n Id. at 196.\n\n\n Id. at 192 n.12 (quotation marks omitted) (alternation in original).\n\n\n Id. at 191.\n\n\n Id. at 194-95.\n\n\n Timmons v. Twin Cities Area New Party, 520 U.S. 351, 358 (1997) (quotation marks omitted).\n\n\nBuckley, 525 U.S. at 191.\n\n\n 525 U.S. at 192.\n\n\n See id. at 194-95.\n\n\n 224 F. Supp. 2d 882, 886, 900 (E.D. Pa. 2002).\n\n\nId. at 894, 898.\n\n\n Id. at 900, 902; accord Chandler v. City of Arvada, Colorado, 292 F.3d 1236 (10th Cir. 2002) (declaring unconstitutional a city ordinance limiting initiative, referendum and recall petition circulation to city residents); Molinari v. Powers, 82 F. Supp. 2d 57, 75-76 (E.D.N.Y. 2000) (invalidating a New York statute that allowed a circulator to witness signatures only in the political subdivision of his or her residence, unless the circulator was a notary public or commissioner of deeds), cited approvingly in Lerman v. Board of Elections in City of New York, 232 F.3d 135 (2d Cir. 2000); KZPZ Broadcasting v. Black Canyon Citizens, 13 P.3d 772 (Ariz. Ct. App. 2000) (invalidating a local residency restriction on referendum petition circulation).\n\n\n In addition to declaring Section 3(1)’s affidavit requirements unconstitutional, the district court offered a construction that would purportedly avoid any conflict with the First Amendment. In relevant part, Section 3(1) states:\nThe petition may consist of more than one document, but each document shall have affixed thereto an affidavit made by one of the signers of such document ....\n(Emphasis added.) The district court proposed construing “ ‘signers of such document’ to include someone who has signed one of two affidavits at the end of the petition rather than having signed the body of the petition.” But this construction poses a circular exercise, as it requires each document to be accompanied by “an affidavit made by one of the signers of such [affidavit].” Further, “such document” clearly refers to documents that comprise the petition, and not to “affidavit[s].”\n\n\nState ex rel. Herr v. Laxalt, 84 Nev. 382, 441 P.2d 687 (1968).\n\n\n Propositions to be Voted Upon in State of Nevada at General Election, November 4, 1958, at 6. See generally supra note 1.\n\n\n Chandler, 292 F.3d at 1241.\n\n\n Krislov v. Rednour, 226 F.3d 851, 863 (7th Cir. 2000).\n\n\n See Burk v. Augusta-Richmond County, 365 F.3d 1247 (11th Cir. 2004).\n\n\n Buckley, 525 U.S. at 196, 205.\n\n\n See, e.g., NRS 205.125 (criminalizing the forgery of signatures on referendum and initiative petitions); NRS 294A.150 (requiring initiative sponsors to report contributions over $100); NRS 294A.220 (requiring initiative sponsors to report expenditures over $100).\n\n\nThe parties have not challenged and we do not comment on the validity of the Secretary’s regulations that require a circulator’s affidavit.\n\n\n Compare Nev. Const. art. 19, § 3(1) (requiring a signer’s affidavit attesting to genuineness of signatures and residency of signatories), with NAC 293.182 (requiring a circulator’s affidavit revealing the circulator’s address and recitations concerning genuineness of signatures, residency of signatories, the *492circulator’s age of majority, and fact of personal circulation), and NAC 295.020(2)(b) (same).\n\n\nWe note that local residency requirements, like the one found in NRS 295.055(2), are constitutionally infirm. See supra note 24.\n\n",
+            "ocr": true,
+            "opinion_id": 8045700
+          },
+          {
+            "author_str": "Maupin",
+            "per_curiam": false,
+            "type": "030concurrence",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nMaupin, J.,\nconcurring:\nRecognizing that political speech is the most vital ingredient to a healthy and evolving democracy, and following the dictates of the United States Supreme Court in Buckley v. American Constitutional Law Foundation, Inc.,1 I agree with the majority that Nevada’s initiative petition verification requirements, in their practical application, run afoul of the First Amendment.\nI write separately to address statements in the record below apparently ridiculing the administrative measures taken by the Secretary of State to comply with the exacting dictates of Buckley. To me, the severity of the criticism was not justified. It was incumbent upon the Secretary to attempt to effect compliance with a very strict ruling handed down by the United States Supreme Court. It was also incumbent upon him to test the validity of these measures before this court. Given the restraints imposed by the Buckley decision, and given the express language of Article 19, Section 3(1) of the Nevada Constititution, the task of effecting compliance was fraught with considerable difficulty. In my view, the ingenuity and vigor of the legal arguments offered in support of and in opposition to these measures demonstrate that the measures were neither unintelligent nor unwise. They simply fell short of federal constitutional muster.\n\n 525 U.S. 182, 194 (1999).\n\n",
+            "ocr": true,
+            "opinion_id": 8045701
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 238867,
+      "row": {
+        "id": 8240309,
+        "judges": null,
+        "date_filed": "2022-09-09",
+        "date_filed_is_approximate": false,
+        "slug": "tonopah-solar-energy-llc-v-brahma-grp-inc",
+        "case_name_short": null,
+        "case_name": "Tonopah Solar Energy, Llc v. Brahma Grp., Inc.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "https://caseinfo.nvsupremecourt.us/document/view.do?csNameID=54507&csIID=54507&deLinkID=871579&onBaseDocumentNumber=22-28234",
+            "author_id": null,
+            "opinion_text": "SUPREME COURT\nOF\nNevapa\n\nCLERK’S ORDER\n(Cy (997 ERB\n\nIN THE SUPREME COURT OF THE STATE OF NEVADA\n\nTONOPAH SOLAR ENERGY, LLC, A No. 78092\nDELAWARE LIMITED LIABILITY tig i\nCOMPANY, LL. E\nAppellant,\nPP SEP,09 2022\n\nvs.\nBRAHMA GROUP, INC., A NEVADA\nCORPORATION,\n\n \n\n \n\nRespondent.\n\n \n\nORDER DISMISSING APPEAL\n\nPursuant to the stipulation of the parties, and cause appearing,\nthis appeal is dismissed. The parties shall bear their own costs and attorney\nfees. NRAP 42(b).\n\nIt is so ORDERED.\n\nCLERK OF THE SUPREME COURT\nELIZABETH A. B tL.\nBY:\n\ncc: Chief Judge, The Fifth Judicial District Court\nHon. Steven Elliott, Senior Judge\nLansford W. Levitt, Settlement Judge\nWeinberg, Wheeler, Hudgins, Gunn & Dial, LLC/Las Vegas\nPeel Brimley LLP/Henderson\nNye County Clerk\n\n22-2 8234\n\n \n\n \n\n \n\f",
+            "ocr": true,
+            "opinion_id": 8205572
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 238881,
+      "row": {
+        "id": 8243678,
+        "judges": null,
+        "date_filed": "2022-09-13",
+        "date_filed_is_approximate": false,
+        "slug": "5550-painted-mirage-rd-llc-v-travelers-prop-cas-co-of-am",
+        "case_name_short": null,
+        "case_name": "5550 Painted Mirage Rd., Llc v. Travelers Prop. Cas. Co. Of Am.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": "https://caseinfo.nvsupremecourt.us/document/view.do?csNameID=62219&csIID=62219&deLinkID=871913&onBaseDocumentNumber=22-28567",
+            "author_id": null,
+            "opinion_text": "\n\n\n\n\n\t83413: Case View\n\t\n\t\n\t\n\t\n\t\n\t\t\n\n\t\n\t\n\t\n\t\n\n\t\n\t\t\n\t\n\t\n\t\n     \n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\n\t\n\t\n\t \n\t\n\n\n\n\n\n\n\n\t\n\n\n\n\t\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\n\n\n\n\tNevada\n\tAppellate Courts\n\n\n\n\n\n\n\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\n\n\t\n\t\t\n\t\t\tAppellate Case Management System\n\t\t\n\t\n\t\n\t\t\n\t\t\tC-Track, the browser based CMS for Appellate Courts\n\t\t\n\t\n\t\n\t\t\n\t\t\t\n\n\n\t\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\t\n\t\n\t\n\n\n\n\n\t\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\tCase Search\n\t\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\tParticipant Search\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\t\n\n\t\t\n\t\n\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\n\n\t\t\n\t\n\t\n\t\n\t\t\n\t\t\n\t\n\t\n\t\n\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\n\n\n\t\n\t\t\n\t\t\t\n\t\t\t\tCases\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\tCase Search\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\tParticipant Search\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\t\n\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\n\n\n\n\t\n\t\n\t\t22-28567: This document is currently unavailable. If you need a copy of this document, please contact Clerk's Office at (775)684-1600.\t\n\t\n\t\n\n\tDisclaimer: The information and documents available here should not be relied upon as an official record of action.Only filed documents can be viewed.  Some documents received in a case may not be available for viewing.Some documents originating from a lower court, including records and appendices, may not be available for viewing.For official records, please contact the Clerk of the Supreme Court of Nevada at (775) 684-1600.\n\n\n\n\t\n\t\n\t\n\t\n\nCase Information: 83413\n\n\nShort Caption:5550 PAINTED MIRAGE RD., LLC VS. TRAVELERS PROP. CAS. CO. OF AM.Court:Supreme Court\n\n\nLower Court Case(s):Clark Co. - Eighth Judicial District - A803425Classification:Civil Appeal - General - Other\n\n\nDisqualifications:Case Status:Disposition Filed/Case Closed\n\n\nReplacement:Panel Assigned:\n\t\t\t\t\tPanel\n\t\t\t\t\t\n\n\nTo SP/Judge:09/13/2021 / Paustian, KathleenSP Status:Completed\n\n\nOral Argument:Oral Argument Location:\n\n\nSubmission Date:How Submitted:\n\n\n\n\n\n\t\n\n\t\n\t\t\n\n+\n\t\t\t\t\t\tParty Information\n\t\t\t\t\t\n\n\nRoleParty NameRepresented By\n\n\nAppellant5550 Painted Mirage Rd., LLCMitchell D. Stipp\n\t\t\t\t\t\t\t(Law Office of Mitchell Stipp)\n\t\t\t\t\t\t\n\n\nRespondentTravelers Property Casualty Company of AmericaLee H. Gorlin\n\t\t\t\t\t\t\t(Clyde &amp; Co US LLP/Las Vegas)\n\t\t\t\t\t\tAmy M. Samberg\n\t\t\t\t\t\t\t(Clyde &amp; Co US LLP/Las Vegas)\n\t\t\t\t\t\t\n\n\n\t\t\n\t\n\n\t\n\t\n\t\n\t\t\n\nDocket Entries\n\n\nDateTypeDescriptionPending?Document\n\n\n08/24/2021Filing FeeFiling Fee due for Appeal. (SC)\n\n\n08/24/2021Notice of Appeal DocumentsFiled Notice of Appeal. Appeal docketed in the Supreme Court this day. (SC)21-24691\n\n\n\n\n08/24/2021Notice/OutgoingIssued Notice to Pay Supreme Court Filing Fee. No action will be taken on this matter until filing fee is paid. Due Date: 10 days. (SC)21-24694\n\n\n\n\n09/07/2021Filing FeeE-Payment $250.00 from Mitchell D. Stipp. (SC)\n\n\n09/07/2021Notice/OutgoingIssued Notice of Referral to Settlement Program. This appeal may be assigned to the settlement program.  Timelines for requesting transcripts and filing briefs are stayed. Docketing Statement mailed to counsel for appellant - due: 21 days. (SC)21-25925\n\n\n\n\n09/09/2021MotionFiled Respondent's Motion to Dismiss Appeal. (SC)21-26136\n\n\n\n\n09/10/2021Settlement Order/ProceduralFiled Order Denying Motion. Respondent has filed a motion requesting this court to dismiss this appeal for lack of jurisdiction. The motion is denied. (SC)21-26212\n\n\n\n\n09/13/2021Settlement NoticeIssued Notice: Assignment to Settlement Program. Issued Assignment Notice to NRAP 16 Settlement Program.  Settlement Judge: Kathleen M. Paustian. (SC).21-26401\n\n\n\n\n09/29/2021Notice/OutgoingIssued Notice to File Docketing Statement. Due date: 10 days. (SC)21-27958\n\n\n\n\n10/11/2021Docketing StatementFiled Appellant's Civil Docketing Statement. (SC)21-29121\n\n\n\n\n10/15/2021Settlement Program ReportFiled ECAR/Appropriate for Settlement Program. This case is appropriate for mediation and a settlement conference is scheduled for January 3, 2022, at 9:00 AM. (SC)21-29636\n\n\n\n\n10/18/2021Docketing StatementFiled Respondent's Response to Docketing Statement. (SC)21-29826\n\n\n\n\n01/28/2022Settlement Program ReportFiled Final Report/No Settlement. The parties were unable to agree to a settlement of this matter. (SC)22-02996\n\n\n\n\n01/31/2022Settlement Program Motion/StipulationFiled Respondent's Renewed Motion to Dismiss Appeal Following Conclusion of Settlement Program. (SC)22-03105\n\n\n\n\n02/03/2022Settlement Order/ProceduralFiled Order: No Settlement/Briefing Reinstated. The parties were unable to agree to a settlement.  Appellant(s): 14 days transcript request; 90 days opening brief and appendix. (SC)22-03715\n\n\n\n\n02/07/2022MotionFiled Appellant's Response to Renewed Motion to Dismiss Appeal following Conclusion of Settlement Program. (SC)22-04026\n\n\n\n\n02/14/2022MotionFiled Respondent's Reply in Support of Respondent's Renewed Motion to Dismiss Appeal Following Conclusion of Settlement Program. (SC)22-04875\n\n\n\n\n02/22/2022Order/ProceduralFiled Order to Show Cause. Mirage shall have 30 days from the date of this order within which to show cause why this appeal should not be dismissed for lack of jurisdiction. Travelers may file any reply within 14 days from the date that Mirage's response is served. Briefing is suspended. fn1 [Traveler's motion to dismiss the appeal on the ground that the notice of appeal was untimely or that the filing fee was untimely filed is denied. NRAP 4(a)(1) (\"a notice of appeal must be filed after entry of a written judgment or order, and no later than 30 days after the date that written notice of entry of the judgment or order appealed from is served\").] (SC)22-05661\n\n\n\n\n03/23/2022MotionFiled Appellant's Response to Order to Show Cause. (SC)22-09150\n\n\n\n\n04/21/2022Order/ProceduralFiled Order Reinstating Briefing.  Appellant:  Transcript Request Form due:  14 days;  Opening Brief and Appendix due:  90 days.  (SC)22-12583\n\n\n\n\n05/05/2022Transcript RequestFiled Appellant's Certificate of No Transcript Request. (SC)22-14457\n\n\n\n\n05/18/2022Transcript RequestFiled Respondent's Request for Transcript of Proceedings. Transcripts requested: 6/24/21. To Court Reporter: Christine Erickson. (REJECTED OER NOTICE ISSUED 5/18/22) (SC)\n\n\n05/18/2022Notice/OutgoingIssued Notice of Rejection of Deficient Transcript Request. (SC)22-15731\n\n\n\n\n05/18/2022Transcript RequestFiled Respondent's Request for Transcript of Proceedings. Transcripts requested: 6/24/21. To Court Reporter: Christine Erickson. (SC)22-15739\n\n\n\n\n06/24/2022TranscriptFiled Notice from Court Reporter. Christine Erickson stating that the requested transcripts were delivered.  Dates of transcripts: 6/24/21. (SC)22-20136\n\n\n\n\n07/19/2022Order/Clerk'sFiled Order Granting Telephonic Extension.  Appellant's Opening Brief and Appendix due:  August 3, 2022.  (SC)22-22679\n\n\n\n\n08/02/2022MotionFiled Appellant's Motion for Extension of Time to File Opening Brief. (SC)22-24229\n\n\n\n\n09/07/2022MotionFiled Respondent's Motion to Dismiss Appeal for Failure to File Opening Brief. (SC)22-28067\n\n\n\n\n09/09/2022MotionFiled Appellant's Response to Motion to Dismiss. (SC)22-28346\n\n\n\n\n09/13/2022Order/DispositionalFiled Order/Voluntary Dismissal. Order Dismissing Appeal.  Appellants have now filed a motion for a voluntary dismissal of this appeal.  The motion is granted and this appeal is dismissed.  fn1[Appellant's motion for an extension of time to file the opening brief and appendix, and respondent's motion to dismiss this appeal are denied as moot.]  Case Closed/No Remittitur Issued.  (SC)22-28567\n\n\n\n\n\t\n\n\n\t\n\t\n\t\t\n\t\t\tCombined Case View\n\t\t\t\n\t\n\n\n\n\t\t\t\t\t\t \n\t\t\t\t\t \n\t\t\t\t \n\t\t\t \n\t\t\n\t\n \n\n\n\n\n",
+            "ocr": false,
+            "opinion_id": 8208941
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 238882,
+      "row": {
+        "id": 8243684,
+        "judges": null,
+        "date_filed": "2022-09-12",
+        "date_filed_is_approximate": false,
+        "slug": "ed-freedom-pac-v-rogers-ballot-issue",
+        "case_name_short": null,
+        "case_name": "Ed. Freedom Pac v. Rogers (Ballot Issue)",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": "https://caseinfo.nvsupremecourt.us/document/view.do?csNameID=64015&csIID=64015&deLinkID=871775&onBaseDocumentNumber=22-28429",
+            "author_id": null,
+            "opinion_text": "\n\n\n\n\n\t84735: Case View\n\t\n\t\n\t\n\t\n\t\n\t\t\n\n\t\n\t\n\t\n\t\n\n\t\n\t\t\n\t\n\t\n\t\n     \n\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\t\n\n\t\n\t\n\t \n\t\n\n\n\n\n\n\n\n\t\n\n\n\n\t\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\n\n\n\n\tNevada\n\tAppellate Courts\n\n\n\n\n\n\n\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\n\n\t\n\t\t\n\t\t\tAppellate Case Management System\n\t\t\n\t\n\t\n\t\t\n\t\t\tC-Track, the browser based CMS for Appellate Courts\n\t\t\n\t\n\t\n\t\t\n\t\t\t\n\n\n\t\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\n\t\t\t\n\t\t\n\t\t\n\t\t\n\t\n\t\n\n\n\n\n\t\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\tCase Search\n\t\t\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\tParticipant Search\n\t\t\t\t\n\t\t\t\n\t\t\t\n\t\t\n\t\t\n\t\n\t\n\n\t\t\n\t\n\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\n\n\t\t\n\t\n\t\n\t\n\t\t\n\t\t\n\t\n\t\n\t\n\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\n\n\n\t\n\t\t\n\t\t\t\n\t\t\t\tCases\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\tCase Search\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\tParticipant Search\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\n\t\t\t\n\t\t\n\t\n\t\n\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\n\n\n\n\t\n\t\n\t\t22-28429: This document is currently unavailable. If you need a copy of this document, please contact Clerk's Office at (775)684-1600.\t\n\t\n\t\n\n\tDisclaimer: The information and documents available here should not be relied upon as an official record of action.Only filed documents can be viewed.  Some documents received in a case may not be available for viewing.Some documents originating from a lower court, including records and appendices, may not be available for viewing.For official records, please contact the Clerk of the Supreme Court of Nevada at (775) 684-1600.\n\n\n\n\t\n\t\n\t\n\t\n\nCase Information: 84735\n\n\nShort Caption:ED. FREEDOM PAC VS. ROGERS (BALLOT ISSUE)Court:Supreme Court\n\n\nRelated Case(s):84736\n\n\nLower Court Case(s):Carson City - First Judicial District - 22OC000271BClassification:Civil Appeal - General - Other\n\n\nDisqualifications:Case Status:Disposition Filed\n\n\nReplacement:Panel Assigned:\n\t\t\t\t\tEn Banc\n\t\t\t\t\t\n\n\nTo SP/Judge:SP Status:Exempt\n\n\nOral Argument:Oral Argument Location:\n\n\nSubmission Date:08/19/2022How Submitted:On Briefs\n\n\n\n\n\n\t\n\n\t\n\t\t\n\n+\n\t\t\t\t\t\tParty Information\n\t\t\t\t\t\n\n\nRoleParty NameRepresented By\n\n\nAmicus CuriaeAmerican Civil Liberties Union of NevadaPaul S. Kellogg\n\t\t\t\t\t\t\t(Ropes &amp; Gray LLP/Boston)\n\t\t\t\t\t\tAndrew B. McCall\n\t\t\t\t\t\t\t(Ropes &amp; Gray LLP/NY)\n\t\t\t\t\t\tKaitlin R. O'Donnell\n\t\t\t\t\t\t\t(Ropes &amp; Gray LLP/NY)\n\t\t\t\t\t\tKayla Ann Snyder\n\t\t\t\t\t\t\t(Ropes &amp; Gray LLP/Boston)\n\t\t\t\t\t\tDon Springmeyer\n\t\t\t\t\t\t\t(Kemp Jones, LLP)\n\t\t\t\t\t\tJeremiah Williams\n\t\t\t\t\t\t\t(Ropes &amp; Gray LLP/Wash DC)\n\t\t\t\t\t\t\n\n\nAmicus CuriaePublic Funds of Public SchoolsPaul S. Kellogg\n\t\t\t\t\t\t\t(Ropes &amp; Gray LLP/Boston)\n\t\t\t\t\t\tAndrew B. McCall\n\t\t\t\t\t\t\t(Ropes &amp; Gray LLP/NY)\n\t\t\t\t\t\tKaitlin R. O'Donnell\n\t\t\t\t\t\t\t(Ropes &amp; Gray LLP/NY)\n\t\t\t\t\t\tKayla Ann Snyder\n\t\t\t\t\t\t\t(Ropes &amp; Gray LLP/Boston)\n\t\t\t\t\t\tDon Springmeyer\n\t\t\t\t\t\t\t(Kemp Jones, LLP)\n\t\t\t\t\t\tJeremiah Williams\n\t\t\t\t\t\t\t(Ropes &amp; Gray LLP/Wash DC)\n\t\t\t\t\t\t\n\n\nAmicus CuriaeWashoe Education AssociationPaul S. Kellogg\n\t\t\t\t\t\t\t(Ropes &amp; Gray LLP/Boston)\n\t\t\t\t\t\tAndrew B. McCall\n\t\t\t\t\t\t\t(Ropes &amp; Gray LLP/NY)\n\t\t\t\t\t\tKaitlin R. O'Donnell\n\t\t\t\t\t\t\t(Ropes &amp; Gray LLP/NY)\n\t\t\t\t\t\tKayla Ann Snyder\n\t\t\t\t\t\t\t(Ropes &amp; Gray LLP/Boston)\n\t\t\t\t\t\tDon Springmeyer\n\t\t\t\t\t\t\t(Kemp Jones, LLP)\n\t\t\t\t\t\tJeremiah Williams\n\t\t\t\t\t\t\t(Ropes &amp; Gray LLP/Wash DC)\n\t\t\t\t\t\t\n\n\nAppellantEducation Freedom PACJason D. Guinasso\n\t\t\t\t\t\t\t(Hutchison &amp; Steffen, LLC/Reno)\n\t\t\t\t\t\tAstrid Alondra Perez\n\t\t\t\t\t\t\t(Hutchison &amp; Steffen, LLC/Reno)\n\t\t\t\t\t\tAlexander R. Velto\n\t\t\t\t\t\t\t(Hutchison &amp; Steffen, LLC/Reno)\n\t\t\t\t\t\t\n\n\nRespondentBarbara K. CegavskeAaron D. Ford\n\t\t\t\t\t\t\t(Attorney General/Carson City)\n\t\t\t\t\t\tCraig A. Newby\n\t\t\t\t\t\t\t(Attorney General/Las Vegas)\n\t\t\t\t\t\tLaena St Jules\n\t\t\t\t\t\t\t(Attorney General/Carson City)\n\t\t\t\t\t\t\n\n\nRespondentBeverly RogersDaniel Bravo\n\t\t\t\t\t\t\t(Wolf, Rifkin, Shapiro, Schulman &amp; Rabkin, LLP/Las Vegas)\n\t\t\t\t\t\tJohn M. Samberg\n\t\t\t\t\t\t\t(Wolf, Rifkin, Shapiro, Schulman &amp; Rabkin, LLP/Reno)\n\t\t\t\t\t\tBradley S. Schrager\n\t\t\t\t\t\t\t(Wolf, Rifkin, Shapiro, Schulman &amp; Rabkin, LLP/Las Vegas)\n\t\t\t\t\t\t\n\n\nRespondentRory ReidDaniel Bravo\n\t\t\t\t\t\t\t(Wolf, Rifkin, Shapiro, Schulman &amp; Rabkin, LLP/Las Vegas)\n\t\t\t\t\t\tJohn M. Samberg\n\t\t\t\t\t\t\t(Wolf, Rifkin, Shapiro, Schulman &amp; Rabkin, LLP/Reno)\n\t\t\t\t\t\tBradley S. Schrager\n\t\t\t\t\t\t\t(Wolf, Rifkin, Shapiro, Schulman &amp; Rabkin, LLP/Las Vegas)\n\t\t\t\t\t\t\n\n\n\t\t\n\t\n\n\t\n\t\t\n\n+\n\t\t\t\t\t\tDue Items\n\t\t\t\t\t\n\n\nDue DateStatusDue ItemDue From\n\n\n10/07/2022OpenRemittitur\n\n\n\t\t\n\t\n\t\n\t\n\t\t\n\nDocket Entries\n\n\nDateTypeDescriptionPending?Document\n\n\n05/20/2022Filing FeeFiling Fee due for Appeal.  Filing fee will be forwarded by the District Court. (SC)\n\n\n05/20/2022Notice of Appeal DocumentsFiled Notice of Appeal. Appeal docketed in the Supreme Court this day. (Docketing statement mailed to counsel for appellant.) (SC)22-16001\n\n\n\n\n05/20/2022Notice/OutgoingIssued Notice of Referral to Settlement Program. This appeal may be assigned to the settlement program.  Timelines for requesting transcripts and filing briefs are stayed. (SC)22-16003\n\n\n\n\n05/20/2022Notice/OutgoingIssued Notice of Exemption from Settlement Program/File Documents. Transcript request due: 14 days.  Opening brief due: 120 days. (SC)22-16005\n\n\n\n\n05/24/2022Filing FeeFiling Fee Paid. $250.00 from Hutchison &amp; Steffen, PLLC. Check no. 2060. (SC)\n\n\n06/02/2022Transcript RequestFiled Request for Transcript of Proceedings. Transcripts requested: 3/29/22. To Court Reporter: Clerk of Court, First Judicial. (SC)22-17571\n\n\n\n\n06/03/2022Notice of Appeal DocumentsFiled District Court Docket Entries. (SC)22-17782\n\n\n\n\n06/08/2022Docketing StatementFiled Docketing Statement Civil Appeals. (SC)22-18248\n\n\n\n\n07/07/2022MotionFiled Stipulation Shortening Briefing Schedule. (SC)22-21388\n\n\n\n\n07/08/2022Order/ProceduralFiled Order Granting Motion.  Appellant shall have until July 8, 2022, to file and serve the opening brief. Respondents shall have until July 18, 2022, to file and serve the answering brief. Appellant's reply brief shall be due on July 25, 2022.  (SC)22-21512\n\n\n\n\n07/08/2022MotionFiled Appellant's Motion to Expedite Appeal on Order Shortening Time. (SC)22-21635\n\n\n\n\n07/08/2022BriefFiled Appellant's Opening Brief. (SC)22-21636\n\n\n\n\n07/08/2022AppendixFiled Appellant's Appendix to Opening Brief. Vol. 1. (SC)22-21637\n\n\n\n\n07/18/2022Notice/IncomingFiled Respondent Barbara Cegavske's Notice of Association of Counsel for Laena St-Jules. (SC).22-22429\n\n\n\n\n07/18/2022BriefFiled Respondent Barbara Cegavske's Limited Answering Brief. (SC)22-22430\n\n\n\n\n07/18/2022BriefFiled Respondent Beverly Rogers and Rory Reid's Answering Brief. (SC)22-22550\n\n\n\n\n07/25/2022Order/ProceduralFiled Order.  On July 8, 2022, this court entered an order expediting the briefing schedule according to the dates the parties requested in their stipulation filed on July 7, 2022.  Appellant's motion to expedite the disposition of this appeal is granted to the following extent. This court will expedite the disposition of this appeal to the extent this court's docket permits.  (SC)22-23258\n\n\n\n\n07/25/2022BriefFiled Brief Of Amici Curiae Public Funds Public Schools, American Civil Liberties Union Of Nevada, And Washoe Education Association In Support Of Respondents And Affirmance. (STRICKEN PER 8/9/22 ORDER). (SC)22-23324\n\n\n\n\n07/25/2022MotionFiled Motion To File Amici Curiae Brief Of Public Funds Public Schools, American Civil Liberties Union Of Nevada, And Washoe Education Association In Support Of Respondents And Affirmance. (SC)22-23325\n\n\n\n\n07/25/2022BriefFiled Appellant's Reply Brief.  (SC)22-23390\n\n\n\n\n07/25/2022AppendixFiled Appellant's Appendix to Reply Brief.  (SC)22-23391\n\n\n\n\n07/26/2022Case Status UpdateBriefing Completed/To Screening.  (SC)\n\n\n08/09/2022Order/ProceduralFiled Order. Proposed amici Public Funds Public Schools (PFPS), the American Civil Liberties Union of Nevada (ACLU), and the Washoe Education Association (WEA) have filed a motion for leave to file an amicus curiae brief in support of respondents. The motion is granted. The clerk of this court shall strike the amicus brief filed on July 25, 2022.  Conforming amicus brief due: 7 days. Appellant's response to the amicus brief due: 14 days. (SC)22-24917\n\n\n\n\n08/11/2022BriefFiled Amicus Brief Of Amici Curiae Public Funds Public Schools, American Civil Liberties Union Of Nevada, And Washoe Education Association In Support Of Respondents And Affirmance. (SC)22-25143\n\n\n\n\n08/18/2022BriefFiled Appellant's Reply Brief to Brief on Amici Curiae. (SC)22-25904\n\n\n\n\n08/19/2022Order/ProceduralFiled Order Submitting for Decision Without Oral Argument.  (SC)22-25953\n\n\n\n\n08/24/2022Notice of Appeal DocumentsFiled District Court Docket Entries. (SC)22-26410\n\n\n\n\n09/12/2022Order/DispositionalFiled Order of Affirmance. \"ORDER the judgment of the district court AFFIRMED.\" EN BANC. (SC)22-28429\n\n\n\n\n\t\n\n\n\t\n\t\n\t\t\n\t\t\tCombined Case View\n\t\t\t\n\t\n\n\n\n\t\t\t\t\t\t \n\t\t\t\t\t \n\t\t\t\t \n\t\t\t \n\t\t\n\t\n \n\n\n\n\n",
+            "ocr": false,
+            "opinion_id": 8208947
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 238905,
+      "row": {
+        "id": 8250097,
+        "judges": null,
+        "date_filed": "2018-03-15",
+        "date_filed_is_approximate": false,
+        "slug": "rodney-holdings-llc-v-us-bank-natl-assn",
+        "case_name_short": null,
+        "case_name": "Rodney Holdings, LLC v. U.S. Bank Nat'l Ass'n",
+        "case_name_full": "RODNEY HOLDINGS, LLC v. U.S. BANK NATIONAL ASSOCIATION, a Trustee FOR STRUCTURED ASSET INVESTMENT LOAN TRUST, MORTGAGE PASS-THROUGH CERTIFICATES SERIES 2003-BC13",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "414 P.3d 810"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "REVERSED. REMAND.",
+            "ocr": true,
+            "opinion_id": 8215360
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 238910,
+      "row": {
+        "id": 8251038,
+        "judges": null,
+        "date_filed": "2018-06-22",
+        "date_filed_is_approximate": false,
+        "slug": "brown-v-state",
+        "case_name_short": "Brown",
+        "case_name": "Brown v. State",
+        "case_name_full": "Mark BROWN v. The STATE of Nevada",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "420 P.3d 566"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "DISMISSED.",
+            "ocr": true,
+            "opinion_id": 8216301
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 238912,
+      "row": {
+        "id": 8251304,
+        "judges": null,
+        "date_filed": "2018-07-02",
+        "date_filed_is_approximate": false,
+        "slug": "weiss-v-tait",
+        "case_name_short": "Weiss",
+        "case_name": "Weiss v. Tait",
+        "case_name_full": "Max WEISS v. Chandra TAIT",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "421 P.3d 797"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "Dismissed.",
+            "ocr": true,
+            "opinion_id": 8216567
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 840,
+  "num_rows_per_page": 100,
+  "partial": true
+}

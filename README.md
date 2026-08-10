@@ -3,6 +3,101 @@
 Reproducible pipeline for comparing how input language may shift legal knowledge
 sources and reasoning-unit distributions in LLM-generated liability analysis.
 
+The original Korean/California pilot is preserved unchanged under `legacy/`.
+Commands and outputs in that directory describe the earlier experiment only.
+
+## Revised KR–U.S. State-Law Corpus v2
+
+The v2 pipeline builds a separate 200-case research corpus without running the
+later judgment-generation, PCA, marker, or statistical experiments. Its source
+window is `2000-01-01` through `2025-12-31` for both countries.
+
+### Sources and inclusion rules
+
+- Korea: `lbox/lbox_open`, config `precedent_corpus` (CC BY-NC 4.0). A final
+  record must have mutually reinforcing Korean Supreme Court evidence, a civil
+  Supreme Court case number, and a high-confidence decision date. The cached
+  source revision is recorded in the collection summary.
+- United States: `harvard-lil/cold-cases`, config `default` (CC0 1.0). The
+  source revision is pinned in `us_state_selection.json`. Main-corpus records
+  require structured `court_type == "S"`; `SA`, `ST`, and every federal type
+  are excluded. The controlling opinion preference is `010combined`,
+  `015unamimous`, `020lead`, then `080onthemerits`. Concurrences and dissents
+  remain separate, and plurality records require review.
+
+The full U.S. availability audit projects only metadata columns from every
+COLD Parquet shard. It computes state-high-court and domain availability for
+all represented states without downloading 32 GB of opinion text. Consequently
+`usable_full_text_count` is explicitly marked as deferred in the metadata audit;
+actual opinion usability is checked record-by-record during candidate
+collection. Five states are then frozen deterministically using availability,
+domain coverage, publication metadata, and regional diversity. Candidate
+collection uses a pinned leading-shard sampling frame and records that frame in
+its summary; it never changes the frozen state set based on downstream results.
+
+Every candidate is classified into the four core domains plus
+`other_civil_liability`. Finalization first attempts the 40/20/20/20 shared
+allocation. If unavailable, a max-flow calculation derives one common KR/US
+allocation without weakening court, date, source-grounding, or QC gates. The
+U.S. side is constrained to exactly 20 records from each frozen state.
+
+### Family linkage and neutral facts
+
+`link_case_families_v2.py` accepts only exact case numbers, source IDs, or
+structured history/cross-reference identifiers. Fuzzy title similarity is not
+sufficient. The highest-court opinion always remains the reference judgment;
+linked lower-court text is supplied only as a separately labeled factual
+supplement when the seven-category fact-sufficiency gate fails.
+
+Neutral facts are built in three distinct stages:
+
+1. `extract_neutral_facts_v2.py` extracts atomic fact units with source spans,
+   epistemic status, stable placeholders, and normalization metadata in the
+   source language.
+2. `translate_neutral_facts_v2.py` translates only those units and preserves
+   fact IDs, placeholders, numbers, units, negation, and epistemic status.
+3. `qc_neutral_facts_v2.py` runs deterministic grounding, leakage, alignment,
+   and sufficiency checks, followed optionally by a separate evidence-bearing
+   LLM audit. LLM QC proposes corrections but never edits facts silently.
+
+The API stages use the official OpenAI Python SDK and Responses API with strict
+JSON Schema. They read credentials only from `OPENAI_API_KEY`; the model must be
+provided by `--model` or `FACT_EXTRACTION_MODEL`. Each request key includes the
+case ID, stage, prompt version, input hash, and model. Raw responses, request
+IDs, returned model IDs, timestamps, usage, hashes, errors, and bounded retries
+are retained under `outputs_v2/raw_api_responses/`. `--resume` skips successful
+requests. `--mock-response-dir` and `--dry-run` provide no-API smoke paths.
+
+### Reproduction commands
+
+```powershell
+& .venv\Scripts\python.exe -m pip install -r requirements-v2.txt
+& .venv\Scripts\python.exe collect_kr_supreme_cases_v2.py --start-date 2000-01-01 --end-date 2025-12-31 --candidate-target 300 --seed 20260810 --output-dir outputs_v2
+& .venv\Scripts\python.exe audit_us_state_cases_v2.py --start-date 2000-01-01 --end-date 2025-12-31 --source-mode parquet --output-dir outputs_v2
+& .venv\Scripts\python.exe collect_us_state_highcourt_cases_v2.py --states-from outputs_v2/us_state_selection.json --candidate-target 300 --source-mode parquet --parquet-shards 3 --seed 20260810 --output-dir outputs_v2
+& .venv\Scripts\python.exe link_case_families_v2.py --input outputs_v2/kr_supreme_candidates.jsonl --input outputs_v2/us_state_highcourt_candidates.jsonl --output-dir outputs_v2
+& .venv\Scripts\python.exe extract_neutral_facts_v2.py --input outputs_v2/candidates_with_family_links.jsonl --model "$env:FACT_EXTRACTION_MODEL" --output-dir outputs_v2 --resume
+& .venv\Scripts\python.exe translate_neutral_facts_v2.py --input outputs_v2/neutral_facts_source.jsonl --model "$env:FACT_EXTRACTION_MODEL" --output-dir outputs_v2 --resume
+& .venv\Scripts\python.exe qc_neutral_facts_v2.py --input outputs_v2/neutral_facts_bilingual.jsonl --llm-model "$env:FACT_EXTRACTION_MODEL" --output-dir outputs_v2 --resume
+& .venv\Scripts\python.exe finalize_case_sample_v2.py --kr-target 100 --us-target 100 --seed 20260810 --output-dir outputs_v2
+& .venv\Scripts\python.exe -m pytest -q tests/test_v2_pipeline.py
+```
+
+Existing outputs are never replaced unless `--overwrite` is explicit. Use
+`--limit --dry-run` for collection plans and small deterministic diagnostics.
+
+### Output relationships
+
+Candidate JSONL files retain raw and main opinions; their QC CSV companions
+contain auditable exclusions without duplicating long text. Family-link outputs
+feed source extraction. Source fact units feed source-language neutral facts,
+which feed aligned bilingual facts and QC. Only QC-passing records reach the
+matched finalizer. Final case files preserve `full_opinion_text` and
+`main_opinion_text`; final fact-pattern files are separate. The manifest holds
+provenance, split, salience, QC, and SHA-256 fields. `collection_summary.json`
+contains the actual funnel and every final invariant, including explicit false
+values when a source or API shortfall prevents finalization.
+
 Experiment runbooks are in `EXP1_GUIDE.md` and `EXP2_GUIDE.md`. Experiment 2
 reuses the Experiment 1 pipeline and adds only an explicit, language-matched
 jurisdiction instruction; its outputs are isolated under `outputs/exp2`.

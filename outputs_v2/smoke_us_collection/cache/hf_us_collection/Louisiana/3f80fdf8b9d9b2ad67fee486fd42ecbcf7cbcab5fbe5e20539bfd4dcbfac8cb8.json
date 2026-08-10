@@ -1,0 +1,771 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 56585,
+      "row": {
+        "id": 5012747,
+        "judges": "Grant, Hughes",
+        "date_filed": "2016-01-08",
+        "date_filed_is_approximate": true,
+        "slug": "state-v-hampton",
+        "case_name_short": "Hampton",
+        "case_name": "State v. Hampton",
+        "case_name_full": "STATE of Louisiana v. David L. HAMPTON",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "184 So. 3d 695"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nIn re State of Louisiana, Department of Children and Family Services, Child Support Enforcement; — Plaintiff; Applying For Writ of Certiorari and/or Review, Parish of Ouachita, 4th Judicial District Court Div. C, No. 93-NSF-000182; to the Court of Appeal, Second Circuit, No. 50,118-CA.\nDenied.\nHUGHES, J., would grant.\n",
+            "ocr": true,
+            "opinion_id": 4825317
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56589,
+      "row": {
+        "id": 5013378,
+        "judges": null,
+        "date_filed": "2016-02-19",
+        "date_filed_is_approximate": true,
+        "slug": "munson-v-utlx-manufacturing-llc",
+        "case_name_short": "Munson",
+        "case_name": "Munson v. UTLX Manufacturing, LLC",
+        "case_name_full": "William MUNSON v. UTLX MANUFACTURING, LLC",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "187 So. 3d 462"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nIn re UTLX Manufacturing, LLC; — Defendant; Applying For Supervisory and/or Remedial Writs Office of Workers’ Compensation, District 2, No. 15-04387; to the Court of Appeal, Third Circuit, No. WCW 15-01044.\nDenied.\n",
+            "ocr": true,
+            "opinion_id": 4826019
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56661,
+      "row": {
+        "id": 5013610,
+        "judges": null,
+        "date_filed": "2016-04-04",
+        "date_filed_is_approximate": true,
+        "slug": "state-v-reeves",
+        "case_name_short": "Reeves",
+        "case_name": "State v. Reeves",
+        "case_name_full": "STATE of Louisiana v. Jason M. REEVES",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "188 So. 3d 257"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nPER CURIAM.\nh Denied. Relator fails to show the district court erred in its determination that he did not prove by a preponderance of the evidence the existence of intellectual disability rendering him ineligible for execution. We attach hereto and make a part hereof the District Court’s written reasons denying relator’s application.\nThe case is remanded to the district court for a determination of whether there exist outstanding post-conviction claims and, if so, for the issuance of a ruling thereupon within 90 days of this order.\n*258[[Image here]]\nJUDGMENT\n⅜⅛0!\nOn. December 13,2001, Mr, Jas do Reeves (Referred to hereafter as “the petitioner\") was initiated, for first degree murder, a violation ofLSA-R.S, 14:30. The State filed its Notice of Intent to Seek fee Death Penalty on January 7,2002. The first trial began on October 27,2003, but was deolared a mistrial after fee jury was unable to meet a unanimous verdict The second trial began on October 12,2004, and the jury fcundfee petitioner guilty of first degree murder on November 5,2004. The jury unanimously recommended a sentence of death onNovember 8, 2004, OnDecember 10,2004; this Court sentenced the petitioner to doath by lethal injection, The sentence was affirmed, by fee Louisiana Supreme Court, State v. Reeves, 2006-2419 (La.03/05/09), 11 So.3d 1031. The United States Supreme Court denied fee petitioner’s certiorari petition on November 16, 2009, Reeves v. Louisiana, 130 S.Ct. 637 (2009),\n. The petitioner filed, a “Petition, for Post-Conviction Relief and Request for Counsel\" on December 23,2009. The petitioner raised twelve claims, but none were briefed, In addition, none of the claims related to the petitioner’s competency to staUd trial or be sentenced to death. On March 19,\"2010, Mr. Gary P, Clements of the Capita! Post-Conviction Project of Louisiana filed a “Motion and Order to Enroll as Counsel of record,” which was signed by this Court on March 24, ⅞0 i 0. On May 31,2012, the State filed for a death warrant for the petitioner’s execution. Petitioner filed a “Motion to Recall the Warrant and Stay the Execution.” The warrant was then reoalled,\n. On March 4/2013. the petitioner amended Ms “Petition for Post-Conviction Relief\" and filed amotion to enroll Mr. Alan Freedman as co-coimsel. The State then timely filed its procedural abjections to the petitioner’s application for post-convictionretief.\nA heating was held to address the defendant’s intellectual disability/menta! retardation (Referred to hereafter as intellectual disability) and competency claims. The petitioner asserted that he has made a prima facie showing that he was intellectually disabled, and feus was entitled *259to an expert pane] appointed by the trial oourt. Att expert panel was assembled, and a bearing was held on the petitioner's intellectual disability and oorapotenoy datas tora March 2 through Marfch 6,2015. The State, Defendant, and Court engaged experts who testified at the hearing.\n*2581\n*259Afterwards, the State and Defense subsequently filed post-hearing briefe,\n\nLefia! Standard and CrittrM\n\nThe United States Supreme Court has held that execution of a mentally retarded individual violated the Eighth. Amendment’s right against cruel and unusual punishment Atkins v. Virginia, 122 S.Ct. 2242 (2002). Pursuant to LSA-C.Cr.P. Art 930.3, this gives valid grounds for post-conviction relief; LSA-R.S, 15:567,1 controls theptocedure to assess an intellectual disability claim in post-trial contexts. The definition of intellectual disability, however, is found inLSA-C.Cr.P. Art 905.5.1(H). In State v Dunn, 2001-1635 (La.5/11/10), 41 So.3d 454, the Louisiana Supreme Court determined that a Defendant must establish he orshe is intellectually disabled by [¡.preponderance oftoe evidence.\nIn orderto estahlish that he or she is intellectually disabled, the petitioner must prove by a preponderance of the evidence three separate components: 1) significant limitations to intellectual fhnctiontogi 2) significant limitations in adaptive behavior as expressed to conceptual, social, and practical adaptive skill; and 3) origination of the disability before the age of eighteen. State v. Williams, 831 So.2d 835 (La.2002), American Psyohiatrio Association.\nQXttXi).Diagnostic and statistical manual ofmental disorders (4th ed.),\n\nExpert Reports\n\nThe Court notes the inherent bias that can exist when, parties are allowed to retain their own experts, the Court believes thus bins showed itself in both the State’s and Petitioner’s experts. These experts focused primarily on data that supported their party’s, stance, while discounting and ignoring data that contradicted their opinion, sometimos egregiously so. As such, the Court only considered fee portions of the State’s and Petitioner’s expert opinions that were supported historically and objectively by a review of Mr, Reeves’ past.\nThe Court, however, does find Dr, Patrick Hayes’ opinion compelling. Dr. Hayes \\ extensively reviewed all of the faotore.nnd evaluated the totality of information hofere coming to his unbiased expert opinion. Dr. Hayes testified that, during his 100 hours of reviewing date, he found no evidence to suggest the petitioner was intellectually disabled, He believes thepetltlor.er suffers tom anti-social personality disorder. Conduct disorders are signs of at least some level of social acumen. Social disability is a key area of concern when determining intellectual disability. *260As such, individuals rarely have both conduct disorders, and intellectual disabilities. Dr. Hayes was confident in his determination that, while he has a below average intelieot, the petitioner is not intellectually disabled.\n*2592\n\n*260\nCourt's View afFlmñnes and Criteria\n\nIn applying the facts of this case to the legal criteria set out above, the Court relies heavily upon the expert opinion of Dr. Hayes. As previously described, Dr. Hayes painstakingly examined all the evidence etnd determined that the petitioner does not establish by a preponderance of the evidence any of the components' necessary to diagnose an intellectual disability. In addition prior to this claim, which occurred only after the State requested a death warrant and nearly eight years after sentencing, no individual, including experts in capital sentencing, had ever suggested, reported, or claimed the petitioner suffered from an intellectual disability. This Court has dealt with the petitioner, Mr. Reeves, since his arrest and has never observed the deficiencies alleged in this application for post-conviction relief. There were no prior findings of intellectual disability during the petitioner’s trial or sentencing despite the involvement of defense expert witnesses, whioh included capital sentencing experts post-Ate;-. There has also been no evidence of intellectual disability during the petitioner’s incarceration.\n• No significant limitations in intellectual functioning\nThe Court does not find the petitioner suffers significant limitations in intellectual ftationing. While the petitioner is of low to average intelligence, he does not show significant limitations of intellectual function,\nThe Court’s position is thapetittoner’s poor academic record is evidence of a behavioral disorder, nofintelleotuai disability. No individual that had contact with the petitioner during this time sawany evidence to .suggest he was intellectually disabled, Specifically, Jason Reeves’ mother, who worked and had experience with intellectually disabled individuals, never suggested to anyone that her sonmight be intellectually disabled. His poor academic record is easily explained, however, by his .truancy, chronic substance abuse, and general lack of interest in school.\nWhile the Court notes the petitioner’s inconsistent IQ scores from mid-VOs to mld-80s, the Court does not feel this range leads to a finding of an-intellectual disability. White at best the .tests established, the petitioner may be of low to average intelligence, it does not lead one to believe that the petitioner suffers from significant limitations te intellectual functioning.\n3\n*261» No significant limitations In adaptive behavior\nThe Court does not find the petitioner suffers from significant limitations in adaptive behavior. While fee petitioner may suffer from a conduct disorder, ho does not stow significant limitations in adaptive behavior. The petitioner has shown a significant level of ability to navigate fee social system of prison. He's also been able to usehis understanding offee prison system’s rules to maximize his quality of life. The recorded telephone calls also demonstrate fee sophistication offee defendant\n• No origination of the disability before feo age of eighteen\nSince there is a finding that the petitioner has never suffered ftom an intellectual disability, there was no evidence to prove such a disability originated prior to the age of eighteen. There has also been no mechanism of brain damage since that time as per medical testing ordered by Dr. Hayes,\n\nConclusion\n\nThe petitioner has failed to establish by a preponderance offee evidence that he is Intellectually disabled as defined by William, 831 So.2d 835, and the American Psychiatric Association’s DSM-IV-TR. The Jury verdict of “death by lethal injection” will be maintained.\nTHEREFORE, IT IS HEREBY ORDERED feat Petitioner, Jason Reeves, does not suffer ftem an intellectual disability,\nTT IS FURTHER HEREBY ORDERED Juty verdict of “death by lethal injection” will be maintained.\n[[Image here]]\n4\n",
+            "ocr": true,
+            "opinion_id": 4826281
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56667,
+      "row": {
+        "id": 5014801,
+        "judges": null,
+        "date_filed": "2016-06-15",
+        "date_filed_is_approximate": true,
+        "slug": "state-v-johnson",
+        "case_name_short": null,
+        "case_name": "State v. Johnson",
+        "case_name_full": "STATE of Louisiana v. Freddie JOHNSON",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "192 So. 3d 761"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nIn re State of Louisiana; — Plaintiff; Applying For Supervisory and/or Remedial Writs, Parish of Orleans, Criminal District Court Div. G, No. 521-533; to the Court of Appeal, Fourth Circuit, No. 2016-K-0614.\nStay denied; Writ denied.\n",
+            "ocr": true,
+            "opinion_id": 4827591
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56818,
+      "row": {
+        "id": 5015750,
+        "judges": "Grant, Hughes, Writ",
+        "date_filed": "2016-09-06",
+        "date_filed_is_approximate": true,
+        "slug": "state-ex-rel-quatrevingt-v-state",
+        "case_name_short": null,
+        "case_name": "State ex rel. Quatrevingt v. State",
+        "case_name_full": "STATE ex rel. Steve QUATREVINGT v. STATE of Louisiana",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "198 So. 3d 123"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nPER CURIAM.\nh Denied. ■ With respect to relator’s claims of ineffective assistance of counsel and an erroneous jury instruction, the application was not timely filed in the district court, and relator fails to carry his burden to show that an exception applies. La. C.Cr.P. art. 930.8; State ex rel. Glover v. State, 93-2330 (La.9/5/95), 660 So.2d 1189. Moreover, these claims are repetitive. La. C.Cr.P; art. 930.4(D).. As to the remaining claims, even assuming they are cognizable on collateral review, relator does not satisfy his post-conviction burden of proof. La. C.Cr.P. art. 930.2; State v. Conway, 01-2808 (La.4/12/02); 816 So.2d 290.\nRelator has now fully litigated two applications for post-conviction relief in state court. Similar to federal habeas relief, see 28 U.S.C. § 2244, Louisiana post-conviction procedure envisions the filing of a second or successive application only under the narrow circumstances provided in La.C.Cr.P. art. 930.4 and within the limitations period as set out in La.C.Cr.P. art. 930.8. Notably, the Legislature in 2013 La, Acts 251 amended La.C,Cr.P. art. 930.4 to make the procedural bars against successive filings mandatory. Relator’s claims have now been fully litigated in state collateral proceedings in accord with La.C,Cr.P. art. • 930.6, and |2this' denial is final. Hereafter, unless he can show that one of the narrow exceptions authorizing the filing of a successive application applies, relator has exhausted his right to state collateral review. The District Court is ordered to record a minute entry consistent with this per- curiam.\nHUGHES, J., would grant the writ.\n",
+            "ocr": true,
+            "opinion_id": 4828726
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56823,
+      "row": {
+        "id": 5016632,
+        "judges": null,
+        "date_filed": "2016-10-19",
+        "date_filed_is_approximate": true,
+        "slug": "in-re-kitchens",
+        "case_name_short": "In re Kitchens",
+        "case_name": "In re Kitchens",
+        "case_name_full": "IN RE: Roger Wayne KITCHENS",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "202 So. 3d 989"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nORDER\nh Considering the Petition for Interim Suspension for Threat of Harm filed by the Office of Disciplinary Counsel and Respondent’s Consent to the Petition,\nIT IS ORDERED that respondent, Roger Wayne Kitchens, Louisiana Bar Roll number 25130, be and he hereby is suspended from the practice of law on an interim basis pursuant to Supreme Court Rule XIX, § 19.2, pending further orders of this court. Pursuant to Supreme Court Rule XIX, § 26(E), this order is effective immediately.\nIT IS FURTHER ORDERED that the Office of Disciplinary Counsel may seek the appointment of a trustee(s) to protect the interests of respondent’s clients pursuant to the provisions of Supreme Court Rule XIX, § 27, if appropriated\nFOR THE COURT:\nJUSTICE, SUPREME COURT OF LOUISIANA\n",
+            "ocr": true,
+            "opinion_id": 4829727
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56839,
+      "row": {
+        "id": 5019274,
+        "judges": null,
+        "date_filed": "2009-11-06",
+        "date_filed_is_approximate": true,
+        "slug": "roberson-advertising-service-llc-v-lafayette-insurance-co",
+        "case_name_short": null,
+        "case_name": "Roberson Advertising Service, LLC v. Lafayette Insurance Co.",
+        "case_name_full": "ROBERSON ADVERTISING SERVICE, LLC d/b/a St. Bernard News v. LAFAYETTE INSURANCE COMPANY",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "21 So. 3d 307"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nIn re Lafayette Insurance Company;— Defendant; Applying For Supervisory and/or Remedial Writs, Parish of St. Bernard, 34th Judicial District Court Div. E, *308No. 106-767; to the Court of Appeal, Fourth Circuit, No. 2009-C-0987.\nDenied.\n",
+            "ocr": true,
+            "opinion_id": 4832467
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56844,
+      "row": {
+        "id": 5021069,
+        "judges": null,
+        "date_filed": "2017-02-10",
+        "date_filed_is_approximate": true,
+        "slug": "state-ex-rel-ledet-v-state",
+        "case_name_short": null,
+        "case_name": "State ex rel. Ledet v. State",
+        "case_name_full": "STATE EX REL. Felton James LEDET v. STATE of Louisiana",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "210 So. 3d 801"
+        ],
+        "opinions": [
+          {
+            "author_str": "Per Curiam",
+            "per_curiam": true,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nPER CURIAM:\n| denied. Relator’s application was not timely filed in the district court, and he has failed to carry his burden to show that an exception applies. La.C.Cr.P. art. 930.8; State ex rel. Glover v. State, 93-2330 (La. 9/5/95), 660 So.2d 1189. His application is also repetitive. La.C.Cr.P. art. 930.4.\nRelator has now fully litigated at least three applications for post-conviction relief in state court. Similar to federal habeas relief, see 28 U.S.C. § 2244, Louisiana post-conviction procedure envisions the filing of a second or successive application only under the narrow circumstances provided in La.C.Cr.P. art. 930.4 and within the limitations period as set out in La. C.Cr.P. art. 930.8. Notably, the Legislature in 2013 La. Acts 251 amended that article to make the procedural bars against successive filings mandatory. Relator’s claims have now been fully litigated in accord with La.C.Cr.P. art. 930.6, and this denial is final. Hereafter, unless he can show that one of the narrow exceptions authorizing the filing of a successive application applies, relator has exhausted his right to state collateral review. The district court is ordered to record a minute entry consfe tent with this per curiam.\n",
+            "ocr": true,
+            "opinion_id": 4834293
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56848,
+      "row": {
+        "id": 5021807,
+        "judges": "Grant, Hughes, Weimer",
+        "date_filed": "2016-12-05",
+        "date_filed_is_approximate": true,
+        "slug": "st-john-the-baptist-parish-school-board-v-state",
+        "case_name_short": null,
+        "case_name": "St. John the Baptist Parish School Board v. State",
+        "case_name_full": "ST. JOHN THE BAPTIST PARISH SCHOOL BOARD v. STATE of Louisiana, The Louisiana State Board of Elementary & Secondary Education, and the State of Louisiana through the Department of Education",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "211 So. 3d 390"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nApplying For Writ of Certiorari and/or Review, Parish of E. Baton Rouge, 19th Judicial District Court Div. I, No. 622,693; to the Court of Appeal, First Circuit, No. 2015 CA 0264.\n| denied.\nWEIMER, J., would grant. HUGHES, J., would grant.\n",
+            "ocr": true,
+            "opinion_id": 4835050
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56861,
+      "row": {
+        "id": 5024360,
+        "judges": null,
+        "date_filed": "2017-02-17",
+        "date_filed_is_approximate": true,
+        "slug": "state-ex-rel-lewis-v-state",
+        "case_name_short": null,
+        "case_name": "State ex rel. Lewis v. State",
+        "case_name_full": "STATE EX REL. Quierza LEWIS v. STATE of Louisiana",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "216 So. 3d 49"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nApplying for Reconsideration of this Court’s action dated November 7, 2016, *50Parish of Webster, 26th Judicial District Court Div. F, No. 73,177 and 71,568; to the Court of Appeal, Second Circuit, No. 50,-828-KH\n|, Reconsideration denied.\n",
+            "ocr": true,
+            "opinion_id": 4837751
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 3333,
+  "num_rows_per_page": 100,
+  "partial": true
+}

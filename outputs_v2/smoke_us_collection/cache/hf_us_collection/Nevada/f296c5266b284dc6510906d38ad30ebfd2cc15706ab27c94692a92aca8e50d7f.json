@@ -1,0 +1,790 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 98904,
+      "row": {
+        "id": 8251799,
+        "judges": null,
+        "date_filed": "2018-09-07",
+        "date_filed_is_approximate": false,
+        "slug": "canterbury-v-us-marshal-serv",
+        "case_name_short": "Canterbury",
+        "case_name": "Canterbury v. U.S. Marshal Serv.",
+        "case_name_full": "Richard Lee CANTERBURY v. UNITED STATES MARSHAL SERVICE United States Marshal Carpenter and Health Care Unit Physician or Contract Physician, Dr. Ruben Saavedra",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "425 P.3d 383"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "DISMISSED.",
+            "ocr": true,
+            "opinion_id": 8217062
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 98909,
+      "row": {
+        "id": 8252281,
+        "judges": null,
+        "date_filed": "2018-10-19",
+        "date_filed_is_approximate": false,
+        "slug": "wagner-v-marino",
+        "case_name_short": "Wagner",
+        "case_name": "Wagner v. Marino",
+        "case_name_full": "Tiffany WAGNER v. Mark MARINO",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "429 P.3d 298"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "DISMISSED.",
+            "ocr": true,
+            "opinion_id": 8217544
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 98912,
+      "row": {
+        "id": 8253124,
+        "judges": null,
+        "date_filed": "2018-12-20",
+        "date_filed_is_approximate": false,
+        "slug": "sharples-v-state",
+        "case_name_short": "Sharples",
+        "case_name": "Sharples v. State",
+        "case_name_full": "John SHARPLES, Husband as Joint Tenant and Bonnie Sharples, Wife as Joint Tenant v. The State of Nevada, DEPARTMENT OF TRANSPORTATION, John Sharples, Husband as Joint Tenant and Bonnie Sharples, Wife as Joint Tenant v. The State of Nevada, Department of Transportation",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "432 P.3d 742"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "AFFIRMED.",
+            "ocr": true,
+            "opinion_id": 8218387
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 98913,
+      "row": {
+        "id": 8253147,
+        "judges": null,
+        "date_filed": "2019-01-08",
+        "date_filed_is_approximate": false,
+        "slug": "nev-dept-of-corr-v-am-civil-liberties-union-of-nev-found",
+        "case_name_short": null,
+        "case_name": "Nev. Dep't of Corr. v. Am. Civil Liberties Union of Nev. Found.",
+        "case_name_full": "The State of Nevada DEPARTMENT OF CORRECTIONS and James Dzurenda, in His Official Capacity as Director v. The AMERICAN CIVIL LIBERTIES UNION OF NEVADA FOUNDATION, a Non-Profit Organization",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "432 P.3d 760"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "DISMISSED.",
+            "ocr": true,
+            "opinion_id": 8218410
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 98915,
+      "row": {
+        "id": 8253542,
+        "judges": null,
+        "date_filed": "2019-01-28",
+        "date_filed_is_approximate": false,
+        "slug": "carlsen-v-ionescu",
+        "case_name_short": "Carlsen",
+        "case_name": "Carlsen v. Ionescu",
+        "case_name_full": "Scott CARLSEN, an Individual v. Dumitru D. IONESCU, an Individual Mirela Ionescu, an Individual and 048 Realty, Inc., a Nevada Corporation",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "433 P.3d 1254"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "Dismissed.",
+            "ocr": true,
+            "opinion_id": 8218805
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 98918,
+      "row": {
+        "id": 8254991,
+        "judges": null,
+        "date_filed": "2019-05-15",
+        "date_filed_is_approximate": false,
+        "slug": "estate-v-cnty-of-clark",
+        "case_name_short": "Estate",
+        "case_name": "Estate v. Cnty. of Clark",
+        "case_name_full": "ESTATE OF Anthony Michael VIOLA Ellen Viola, Individually, and as Special Administrator of the Estate of Anthony Michael Viola and Louis Viola, an Individual v. COUNTY OF CLARK, a Political Subdivision of the State of Nevada Clark County Public Works, a Local Government Entity and Political Subdivision of the State of Nevada the State of Nevada City of Las Vegas, a Local Government Entity and Political Subdivision of the State of Nevada Parsons Transportation Group, Inc., a Nevada Corporation VTN Nevada, a Nevada Corporation and Meadow Valley Contractors, Inc., a Nevada Corporation",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "441 P.3d 85"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "Dismissed.",
+            "ocr": true,
+            "opinion_id": 8220254
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 98921,
+      "row": {
+        "id": 8255393,
+        "judges": null,
+        "date_filed": "2019-06-26",
+        "date_filed_is_approximate": false,
+        "slug": "anoruo-v-valley-health-sys-llc",
+        "case_name_short": "Anoruo",
+        "case_name": "Anoruo v. Valley Health Sys., LLC",
+        "case_name_full": "Joseph ANORUO v. VALLEY HEALTH SYSTEM, LLC, d/b/a Summerlin Hospital and Medical Center",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "443 P.3d 549"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "Dismissed.",
+            "ocr": true,
+            "opinion_id": 8220656
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 112279,
+      "row": {
+        "id": 9439645,
+        "judges": null,
+        "date_filed": "2023-09-21",
+        "date_filed_is_approximate": false,
+        "slug": "patterson-v-las-vegas-mun-court",
+        "case_name_short": "Patterson",
+        "case_name": "Patterson v. Las Vegas Mun. Court",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 6,
+            "download_url": "https://caseinfo.nvsupremecourt.us/document/view.do?csNameID=65907&csIID=65907&deLinkID=917200&onBaseDocumentNumber=23-31041",
+            "author_id": null,
+            "opinion_text": "                                                       139 Nev., Advance Opinion   35\n                       IN THE SUPREME COURT OF THE STATE OF NEVADA\n\n\n                 KELLY WAYNE PATTERSON,                                    No. 86108\n                 Petitioner,\n                 vs.\n                 LAS VEGAS MUNICIPAL COURT; AND\n                 THE HONORABLE CEDRIC A. KERNS,                            FILED\n                 Respondents,\n                   and                                                      SEP 21 2023\n                 CITY OF LAS VEGAS,                                     ELI\n                                                                                                RT\n                                                                      CLER\n                 Real Party in Interest.                              BY\n                                                                             IEF DEPUTY CLERK\n\n\n\n\n                           Original petition for a writ of mandamus challenging a\n                municipal court order denying a motion for attorney fees and litigation\n                expenses under NRS 41.0393.\n                           Petition denied.\n\n\n                Stephen P. Stubbs, Henderson,\n                for Petitioner.\n\n                Bryan K. Scott, City Attorney, and Bobby Anderlik, Deputy City Attorney,\n                Las Vegas,\n                for Real Party in Interest City of Las Vegas.\n\n                American Civil Liberties Union (ACLU) of Nevada and Christopher M.\n                Peterson, Las Vegas,\n                for Amicus Curiae ACLU of Nevada.\n\n                Randolph M. Fiedler, Las Vegas,\n                for Arnicus Curiae Nevada Attorneys for Criminal Justice.\n\n\n\n\n                BEFORE THE SUPREME COURT, STIGLICH, C.J., and LEE and BELL,\n                JJ.\nSUPREME COURT\n         OF\n      NEVADA                                                                   23 - 3 117 4 (\nc.0) I947A\n\f                                                 OPINION\n\n                By the Court, STIGLICH, C.J.\n                            NRS 41.0393 permits the award of attorney fees and litigation\n                expenses to a criminal defendant, as the prevailing party, in limited\n                circumstances. Petitioner Kelly Patterson faced criminal charges in Las\n                Vegas Municipal Court. After the charges were dismissed and withdrawn,\n                Patterson sought attorney fees and litigation expenses as the prevailing\n                party under NRS 41.0393.       The municipal court denied that request,\n\n                concluding that it lacked authority to award such fees and expenses.\n                Because NRS 41.0393(8) specifically defines the courts that may award such\n                fees and expenses as district courts and justice courts, we agree with the\n                municipal court that it lacked authority to award attorney fees and\n                litigation expenses.    Accordingly, we deny Patterson&#x27;s writ petition\n                challenging the municipal court&#x27;s decision.&#x27;\n                                    FACTS AND PROCEDURAL HISTORY\n                            Patterson runs a website that posts videos of Las Vegas police\n                officers performing their duties. While filming a police officer, Patterson\n                was arrested and charged with obstructing a police officer and a traffic\n                violation. Patterson successfully moved to dismiss the obstruction charge,\n                and thereafter, real party in interest City of Las Vegas withdrew the traffic\n                violation charge.\n                            Patterson then filed an application for attorney fees and\n\n                litigation expenses under NRS 41.0393, which the• City opposed.         The\n\n\n\n                      &#x27;Patterson additionally brought this petition against the Las Vegas\n                Metropolitan Police Department. We previously denied the petition as to\n                that party.\nSUPREME COURT\n        OF\n     NEVADA\n\n                                                     2\n(01 1947A\n\f                municipal court denied Patterson&#x27;s request, concluding that municipal\n                courts lack authority to award fees and expenses under NRS 41.0393.\n                Patterson appealed the decision to the district court, which agreed with the\n                municipal court and denied Patterson&#x27;s appeal.              Patterson filed the\n\n                immediate writ petition, and the City filed an answer in opposition.2\n                Additionally, the American Civil Liberties Union of Nevada and Nevada\n                Attorneys for Criminal Justice were permitted to brief the issue as amici\n                curiae, and we considered that briefing in resolving this matter except to\n                the extent that amici raised issues •that were not raised in Patterson&#x27;s writ\n                petition.\n                                                 DISCUSSION\n                We exercise our discretion to entertain the writ petition\n                            &quot;This court    has    original jurisdiction     to issue writs of\n\n                mandamus.&quot; Gardner v. Eighth Judicial Dist. Court, 133 Nev. 730, 732,\n                405 P.3d 651, 653 (2017) (internal quotation marks omitted). A writ of\n                mandamus is available to compel the performance of an act that the law\n                requires or to control an arbitrary or capricious exercise of discretion. Int&#x27;l\n                Game Tech., Inc. v. Second Judicial Dist. Court, 124 Nev. 193, 197, 179 P.3d\n                556, 558 (2008); NRS 34:160. &quot;Writ relief is an extraordinary remedy that\n                is only available if a petitioner does not have a plain, speedy and adequate\n                remedy in th.e ordinary course of law.&quot; In re WilliarnJ. Raggio Family Tr.,\n\n\n\n\n                      2 Patterson&#x27;s petition for a writ of mandamus also a ddre.sses a\n                vindictive-prosecution claim that he raised in district court. Given that the\n                Criminal case against him has been dismissed, we conclude that no further\n                remedy is available to Patterson as to the vindictive-prosecution claim. See\n                People v. Kun Lee, 954 N.E.2d 338, 342 (Ill. App. Ct. 2011) (&quot;A finding of\n                prosecutorial vindictiveness is remedied through dismissal of the criminal.\n                charges brought against a clefenda.nt.&quot;).\nSUPREME COURT\n         OF\n      NEVADA\n\n                                                      3\n( 0) 194 7A\n\f                136 Nev. 172, 175, 460 .P.3d 969, 972 (2020) (internal quotation marks\n                omitted); see also NRS 34.170. &quot;This court has considered writ petitions\n                when doing so will clarify a substantial issue of public policy or precedential\n                value, and where the petition presents a matter of first impression and\n                considerations of judicial economy support its review.&quot; Washoe Cty. Human\n                Servs. Agency v. Second Judicial Dist. Court, 138 Nev., Adv. Op. 87, 521\n                P.3d 1199, 1203 (2022) (internal citations and quotation marks omitted).\n                            Patterson availed himself of an available alternative remedy—\n                an appeal to the district court. In similar circumstances, we generally have\n                declined to entertain a writ petition so as not to undermine the district\n                court&#x27;s appellate jurisdiction.   See State v. Eighth Judicial Dist. Court\n\n                (Hedland), 116 Nev. 127, 134, 994 P.2d 692, 696 (2000). Nevertheless, we\n                have considered such petitions in limited circumstances, particularly when\n                a significant issue otherwise will evade this court&#x27;s review. See Bildt v.\n                Eighth Judicial Dist. Court, 137 Nev. 121, 123, 483 P.3d 526, 529 (2021).\n                We conclude that the issue of first impression raised by Patterson&#x27;s\n                petition—whether municipal courts can award fees and expenses under\n                NRS 41.0393—presents such a circumstance and, thus, judicial economy\n                supports our consideration of this petition.\n                Municipal courts cannot award fees and expenses under NRS 41.0393\n                            When interpreting a statute, we first look to its plain language.\n                Smith v. Zilverberg, 137 Nev. 65, 72, 481 P.3d 1222, 1230 (2021). &quot;Mt is\n                well settled that where the language of a statue is plain and unambiguous\n                and its meaning clear and unmistakable, there is no room for construction.&quot;\n                Local Gov&#x27;t Ernp.-Mgmt. Relations Bd. v. Educ. Support Emps. Ass&#x27;n, 134\n                Nev. 716, 721, 429 P.3d 658, 662-63 (2018) (internal quotation marks\n                omitted).\n\nSUPREME COURT\n        OF\n     NEVADA\n\n                                                      4\n(0) 1947A\n\f                            The plain language of NRS 41.0393 is clear and unmistakable.\n                NRS 41.0393(1) provides that &quot;[a] court may, in a criminal action, award to\n                a prevailing party, other than the State, reasonable attorney&#x27;s fees and\n                litigation expenses incurred by the party in the criminal action if the court\n                finds that the position of the State was vexatious, frivolous or in bad faith.&quot;\n                NRS 41.0393(8) further provides that, as used in this statute, &quot;`[c]ourt&#x27;\n                means a district court or justice court.&quot;      Accordingly, under the plain\n\n                language of NRS 41.0393, the authority to award attorney fees and\n                litigation expenses to the prevailing party in a criminal action is specifically\n                limited to district courts and justice courts. As a result, we need not look\n                past the plain language of the statute to the legislative history or public\n                policy in our interpretation of NRS 41.0393, as Patterson requests. See, e.g.,\n                McGrath v. State, Dep&#x27;t of Pub. Safety, 123 Nev. 120, 123-24, 159 P.3d 239,\n                241 (2007) (explaining that this court need only consider legislative intent\n                and public policy in interpreting a statute if the statute is ambiguous).\n                            Further, we are not persuaded by Patterson&#x27;s argument that\n                other statutes compel a different result. In particular, Patterson points to\n                NRS 5.073 and NRS 266.550. NRS 5.073(1) provides that &quot;[t]he practice\n                and proceedings in the municipal court must conform, as nearly as\n                practicable, to the practice and proceedings of justice courts in similar\n                cases. .. . The municipal court must be treated and considered as a justice\n                court whenever the proceedings thereof are called into question.&quot;         NRS\n\n                266.550(1) provides that &quot;[t]he municipal court shall have such powers and\n                jurisdiction in the city as are now provided by law for justice cOurts . . . .&quot;\n                These two statutes generally treat the municipal courts the same as justice\n                courts and address the powers of municipal courts in general, but they do\n                not control whether municipal courts have authority to award attorney fees\n\nSUPREME COURT\n          OF\n       NEVADA\n\n                                                      5\n(o)   1947A\n\f                        and costs to the prevailing party in a criminal action because the more\n                        specific statute, NRS 41.0393, governs this issue. See State, Tax Comm&#x27;n,\n                        ex rel. Nev. Dep&#x27;t of Taxation v. Am. Home Shield of Nev., Inc., 127 Nev. 382,\n                        388, 254 P.3d 601, 605 (2011) (&quot;A specific statute controls over a general\n                        statute.&quot;). Thus, we cannot look past the plain language of NRS 41.0393 to\n                        either NRS 5.073 or NRS 266.550 for a different result.\n                                                      CONCLUSION\n                                      The plain language of NRS 41.0393 limits the courts that may\n                        award attorney fees and litigation expenses in a criminal action to district\n                        courts and justice courts.   Municipal courts were not included in NRS\n                        41.0393(8)&#x27;s definition of the term &quot;court.&quot;       Thus, we conclude that\n                        municipal courts lack authority under NRS 41.0393 to award attorney fees\n                        and litigation expenses to the prevailing party in a criminal action.\n                        Therefore, the municipal court correctly denied Patterson&#x27;s request for fees\n                        and expenses, and the district court properly denied Patterson&#x27;s appea1.3\n                        Accordingly, we deny Patterson&#x27;s petition for a writ of mandamus.\n\n\n                                                                                         , C.J.\n                                                            Stiglich\n\n\n\n\n                                                       J.\n\n\n\n\n                              3This  opinion does not foreclose any other remedies that may be\n                        available to Patterson, as it impacts only the relief he sought under NRS\n                        41.0393.\nSUPREME COURT\n        OF\n    NEVADA\n\n\n01 1947A                                                      6\n      NIA4 .    4gri.\n\f",
+            "ocr": false,
+            "opinion_id": 9897470
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 112280,
+      "row": {
+        "id": 9439652,
+        "judges": null,
+        "date_filed": "2023-09-07",
+        "date_filed_is_approximate": false,
+        "slug": "jorrin-v-state-empt-sec-div",
+        "case_name_short": "Jorrin",
+        "case_name": "Jorrin v. State, Emp't Sec. Div.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 7,
+            "download_url": "https://caseinfo.nvsupremecourt.us/document/view.do?csNameID=64610&csIID=64610&deLinkID=915326&onBaseDocumentNumber=23-29239",
+            "author_id": null,
+            "opinion_text": "                                                          139 Nev., Advance Opinion 0 6:1\n\n                          IN THE SUPREME COURT OF THE STATE OF NEVADA\n\n\n                    HELEN JORRIN,                                          No. 85155\n                    Appellant,\n                    vs.\n                    THE STATE OF NEVADA\n                    EMPLOYMENT SECURITY DIVISION;                             FILE\n                    LYNDA PARVEN, IN HER CAPACITY\n                    AS ADMINISTRATOR OF THE                                    SEP 07 20\n                    EMPLOYMENT SECURITY DIWSION;                              ELI     H A. BROWN\n                                                                                     UP     E GRT\n\n                    J. THOMAS SUSICH, IN HIS                             BY\n                                                                                IEF DEPUTY CLERK\n                    CAPACITY AS THE CHAIRPERSON OF\n                    THE EMPLOYMENT SECURITY\n                    BOARD OF REVIEW; AND CLARK\n                    COUNTY SCHOOL DISTRICT,\n                    Respondents.\n\n\n\n                              Appeal from a district court order dismissing a petition for\n                   judicial review in an administrative law case.    Eighth Judicial District\n                   Court, Clark County; Adriana Escobar, Judge.\n                              Affirmed.\n\n\n                   Nevada Legal Services and Kristopher S. Pre, Las Vegas,\n                   for Appellant.\n\n                   Clark County School District, Office of the General Counsel and Patrick J.\n                   Murch, Las Vegas,\n                   for Respondent Clark County School District.\n\n                   State of Nevada/DETR and Carolyn M. Broussard and David Kalo Neidert,\n                   Carson City,\n                   for Respondents Lynda Parven, J. Thomas Susich, and the State of Nevada\n                   Employment Security Division.\n\n\n\nSUPREME COURT\n      OF\n    NEVADA\n                                                                                    73- vi231\n((Y) I947A .4D,&quot;\n\f                    BEFORE  THE     SUPREME              COURT,       HERNDON,         LEE,     and\n                    PARRAGUIRRE, JJ.\n\n                                                      OPINION\n\n                    PER CURIAM:\n                                We have previously noted that the former version of NRCP 6(d),\n                    which adds three days to certain time periods when service is made by mail,\n                    applied to the time period for filing a petition for judicial review challenging\n                    a decision by the Nevada Employment Security Division&#x27;s (NESD) Board of\n                    Rev,iew under NRS 612.530(1). Kame v. Emp&#x27;t Sec. Dep&#x27;t, 105 Nev. 22, 23\n                    n.1: 769 P.2d 66, 67 n.1 (1989) (citing former NRCP 6). In revisiting this\n                    issue, we now conclude that, based on its plain language, NRCP 6(d)&#x27;s three-\n                    day mailing rule does not apply to extend the time period for filing a petition\n                    for judicial review under NRS 612.530(1) and overrule Kame to the exteht\n                    it holds otherwise. In this case, because the petition was filed beyond the\n                    statutory time period, the district court properly dismissed the petition, and\n                    we therefore affirm.\n                                                        FACTS\n                                Appellant Helen Jorrin sought and was denied unemployment\n                    benefits. Aft.er an appeals referee confirmed the denial of benefits, she\n                    sought relief from NESD&#x27;s Board of Review. The letter denying the request\n                    was mailed on August 27, 2021, stating that the Board •of Review&#x27;s decision\n                    becine final as of September 7, 2021. It further stated that Jorrin had until\n                    SePtember 20, 2021, to appeal that decision. Jorrin filed her appeal, a\n                    petition for judicial review to the district court, on September 21, 2021.\n                    NESD moved for dismissal, arguing that the untimeliness of Jorrin&#x27;s\n                    petition stripped the district court of jurisdiction over the case. The district\n                    court granted NESD&#x27;s motion, finding that it lacked jurisdiction over the•\nSUPREME COURT\n       OF\n   &#x27; NEVADA\n                                                           2\n(0) I 947A .(*.•&gt;\n\f                petition because jorrin had filed it a day late. The district court also denied\n                Jortin&#x27;s motion to alter or amend the judgment, and Jorrin now appeal,s.\n                                               DISCUSSION\n                            Jorrin asserts that her petition was timely because NESD\n                served its decision by mail and thus NRCP 6(d) provided three additional\n                days to file the petition.     •She therefóre argues that she had until.\n\n                September 23 to file her petition and the district court erred in dismissing\n                her petition as untimely. NESD argues that NRCP 6(d) does not apply and\n                the.district court correctly granted dismissal because it lacked jurisdiction\n                over Jorrin&#x27;s untimely petition.    Because this case present§ an issue of\n\n                statutory construction, our review is de novo. See Hardin v. Jones, 102 Nev.\n                469, 470, 727 P.2d 551, 552 (1986) (reviewing the proper Construction of a\n                statutory- appeal period de novo because it presents &quot;a legal, rather than a\n                factual, question&quot;).\n                            NRCP 6(d) provides that &quot;[w]hen a party may •or must act\n                within a specified time after being served and service is made [by mail], 3\n                days are added after the period would otherwise expire under Rule 6(a).&quot;\n                The rule thus applies only when service triggers the time for a party to act.\n                See. id. The former version of the rule, NRCP 6(e) (1953), amended by ADkT\n                522 (Order Amending the Rules of Civil Procedure, the Rules of Appellate\n                Procedure, and the Nevada Electronic Filing and Comiersion Rules, Dec. 31,\n                2018), similarly based its application on service, stating that &quot;[w]henevet a\n                party has the right or is required to do some act within a proscribed period\n                after service of a notice . . . upon him and the notice. . is served upon him\n                by mail, 3 days shall be added to the prescribed period.&quot; We have therefore\n                applied the former version of NRCP 6(d) to extend deadlines in\n                adininistrative cases where a statute specifies that a party has to act within\n                a certain time after being served.    For example, we applied the former\nSUPREME COURT\n         OF\n      N EVADA\n\n                                                      3\n(0) I 947A\n\f                NRCP 6(d) to extend the tiine to administratively apPeal the initial.. denial\n                of unemployment benefits to an appeal referee under NRS 612.495(1)\n                (1981), arnended by A.B. 502, 73d Leg. (Nev. 2005), which provided &quot;Nile\n                appeal must be filed within 10 days after the date of mailing, electronic\n                transmission or personal service of the -?notice of determination or\n                redetermination.&quot; See Hardin, 102 Nev. at 2170 n.2, 471, 727 P.2d at 551\n                ri.2, 552.1 We also applied the former version of NRCP 6(d) to the 30-day\n                time period to file a petition for judicial review of an agency decision under\n                NRS 233B.130(2)(c) (2005), amended by A.B. 94, 74th Leg. (Nev. 2007),\n                where the 30-day period begins &quot;after service of the final agency decision.&quot;\n                See. Mikohn Gaming v. Espinosa, 122 Nev. 593, 598, 137 P.3d 1150, 1154\n                (2006).2\n                              In this case, the statute setting the time to file a petition for\n                judicial review from the NESD Board of Review&#x27;s determination is NRS\n                612.530(1).     We have held that NRS 612.530(1)&#x27;s requirements &quot;are\n                jurisdictional and mandatory.&quot; Bd. of Review, Nev. Dep&#x27;t of Emp&#x27;t, Training\n                &amp; Rehab. v. Second Judicial Di.st. Court, 133 Nev. 253, 255, 396 P.3d 795,\n                797&#x27;r (2017). Under that statute, a party has &quot;11 days after the deciSion of\n                the [NESD] Board of Review has become final&quot; to file a petition for judicial\n                   ,\n                review. NRS 612.530(1). Because the statute uses the date the decision\n                becennes final, rather than the decision&#x27;s service date, to trigger the time to\n\n\n\n                     &#x27;The amendment to NRS 612.495 changed the time to\n                administratively appeal from 10 days to 11, but the relevant language\n                remains the same. NRS 612.495(1).\n\n                      2 Theamendment to NRS 233B.130 changed the numbering of the\n                subsections, but the relevant language remains the same.    NRS\n                233B.130(2)(d).\nSUPREME COURT\n        OF\n     NEVADA\n\n                                                       4\n(0) I947A\n\f                    file a petition, NRCP 6(d) does not apply by its plain language. See Leven\n                    v. Frey, 123 Nev. 399, 403, 168 P.3d 712, 715 (2007) (&quot;[W]hen a statute&#x27;s\n                    language is plain and its meaning clear, the courts will apply that plain\n                    language.&quot;). Jorrin&#x27;s reliance on Hardin and Mikohn is unavailing because•\n                    the triggering statutes in those cases were based on the service of the\n                    agency&#x27;s decision, as noted above. Indeed, the differences in the statutory\n                    language between those statutes and NRS 612.530(1) lend further support\n                    to dur conclusion. See State, Dep&#x27;t of Bus: &amp; Indus. v. Titlemax of Nev., Inc.,\n                    137 Nev. 540, 545, 495 P.3d 506, 510 (2021) (stating that, when discussing\n                    statutory interpretation, &quot;this court presume[s] that the variation in•\n                    language [between statutes] indicates a variation in meaning&quot; (internal\n                    quotation marks omitted) (first alteration in original)). And we note that\n                    the time between the mailing of the decision letter, August 27, and the date\n                    the decision became final, triggering the 11-day timeline to file a petition\n                    for judicial review, September 7, allowed more time for mailing than the 3\n                    days provided by NRCP 6(d).\n                                We recognize that we previously applied the former version of\n                    NRCP 6(d) to extend the time to file a petition for judicial review of an\n                    NESD Board of Review decision. See Kame, 105 Nev. at 23 n.1, 769 P.2d at\n                    67 n.1.   The main issue in that case, however, was whether filing the\n                    petition in an incorrect format tolled the time for filing, and the opinion did\n                    not address former NRCP 6(d)&#x27;s service language or that the time to file a\n                    petition under NRS 612.530(1) is based on the date the decision becomes\n                    final rather than when it is served. See generally id. As the issue of whether\n                    the three-day mailing rule applied to NRS 612.530(1) was not squarely&#x27;\n                    presented to or decided by the court in Kame, that decision does not &quot;hold\n                    [a] position[] of permanence in this court&#x27;s jurisprudence&quot; such that the\n\nSUPREME COURT\n        OF\n     NEVADA\n\n                                                          5\n(0) /947A    410z\n\f                   stare decisis doctrine would compel against revisiting it. See Miller v. Burk,\n                   124 Nev. 579, 597-97 &amp; p.65 188 P.3d 1112, 1124 &amp; n.65 (2008) (discussing\n\n                   when the stare decisis doctrine applies such that the previous decision\n                   should not be overruled without &quot;weighty and conclusive reasons&quot; for doing\n                   so (internal quotation marks omitted)).       Even if we concluded Kame&#x27;s\n\n                   application of the three-day &#x27;nailing rule constituted stare deciSis,\n                   overruling the decision is appropriate, as it was &quot;badly reasoned&quot; for the\n                   reasons Stated above. Egan v. Chambers, 129 Nev. 239; 243, 299 P.3d 364,\n                   367 (2013) (quoting Payne v. Tennessee, 501 U.S. - 808;            827 (1991)).\n\n                   Therefore, to the extent Karne can be read to hold that the three-day mailing\n                   rule under NRCP 6(d) can apply to extend the time tO file a petition for\n                   judicial review under NRS 612.530(1), we explicitly overrule it.\n                               Here, as stated in NESD&#x27;s decision letter, its decision became\n                   final on September 7, such that any petition for judicial review had tò be\n                   filed by. September 20.3 NRCP 6(d) does not apply to extend that deadline.\n                   Thus, Jorrin&#x27;s petition was untimely, and the district court properly\n                                                                             • &#x27;33 Nev. at 255, 396\n                   dismissed it for lack of jurisdiction. See Bd. of Review, 1\n                   P.3d at 797. As the district court correctly dismissed the petition, it also did\n                   not: abuse its discretion in denying Jorrin&#x27;s motion to alter or amend. the\n                   dismissal order. See AA Primo Builders, LLC v. Washington, 126 Nev. 578,\n                   589, 245 P.3d 1190, 1197 (2010) (reYiewing an order denying suet&#x27; relief for\n                   an abuse of discretion).\n\n\n\n                       . 3The 11-day time period ended on September 18, a Saturday, and was\n                   therefore extended to the following Monday.          See NRCP 6(a)(1)(C)\n                   (providing that, when a statute does not provide how to compute time, if the\n                   last day of the period &quot;is a Saturday, Sunday, or legal holiday, the period\n                   continues to run until the end of the next day that is not a Saturday,\n                   Sunday, or legal holiday&quot;).\nSUPREME COURT\n        OF\n     NEVADA\n\n                                                          6\n(0) I947A    4E*\n\f                                               CONCLUSION\n                             We overrule Kame v. Employment Security Department, 105\n\n                Nev. 22, 769 P.2d 66 (1989), to the extent it holds that NRCP 6(d)&#x27;s three-\n                day mailing period can extend the deadline to file a petition for judicial\n                review under NRS 612.530(1). The district court did not apply NRCP 6(d)\n                in this case and correctly determined that it lacked jurisdiction over Jorrin&#x27;s\n                untimely petition for judicial review. We therefore affirm the district court&#x27;s\n                orders.4\n\n\n\n                                                                      J.\n\n\n\n\n                Lee.                                        Parraguirre\n\n\n\n\n                       4 This opinion has been circulated among all justicOs of this court, any\n\n                two of whom under IOP 13(b) may request en banc review of a case. The\n                two votes needed to require en banc review in the first instance of the\n                question of overruling Kame were not cast.\nSUPREME COURT\n        OF\n     NEVADA\n                                                       7\n(0) 1947A\n\f",
+            "ocr": false,
+            "opinion_id": 9897477
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 113494,
+      "row": {
+        "id": 2622559,
+        "judges": "Shearing, Agosti and Rose",
+        "date_filed": "2001-09-17",
+        "date_filed_is_approximate": false,
+        "slug": "state-v-quinn",
+        "case_name_short": "Quinn",
+        "case_name": "State v. Quinn",
+        "case_name_full": "The STATE OF NEVADA, Appellant, v. GREGORY LYNN QUINN, Respondent",
+        "attorneys": "Frankie Sue Del Papa, Attorney General, Carson City; Richard A. Gammick, District Attorney, and Terrence P McCarthy and Daniel J. Greco, Deputy District Attorneys, Washoe County, for Appellant., Michael R. Specchio, Public Defender, John Reese Petty, Chief Deputy Public Defender, and Vaun B. Hall, Deputy Public Defender, Washoe County, for Respondent.",
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 10,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<parties id=\"b745-2\">\n    THE STATE OF NEVADA, Appellant, v. GREGORY LYNN QUINN, Respondent.\n   </parties><br><docketnumber id=\"b745-4\">\n    No. 35795\n   </docketnumber><br><decisiondate id=\"b745-5\">\n    September 17, 2001\n   </decisiondate><citation id=\"AsS\">\n    30 P.3d 1117\n   </citation><br><attorneys id=\"b745-9\">\n<em>\n     Frankie Sue Del Papa,\n    </em>\n    Attorney General, Carson City;\n    <em>\n     Richard A. Gammick,\n    </em>\n    District Attorney, and\n    <em>\n     Terrence P McCarthy\n    </em>\n    and\n    <em>\n     Daniel J. Greco,\n    </em>\n    Deputy District Attorneys, Washoe County, for Appellant.\n   </attorneys><br><attorneys id=\"b745-10\">\n<em>\n     Michael R. Specchio,\n    </em>\n    Public Defender,\n    <em>\n     John Reese Petty,\n    </em>\n    Chief Deputy Public Defender, and\n    <em>\n     Vaun B. Hall,\n    </em>\n    Deputy Public Defender, Washoe County, for Respondent.\n   </attorneys><br><judges id=\"b746-11\">\n<span citation-index=\"1\" class=\"star-pagination\" label=\"710\"> \n     *710\n     </span>\n    Before Shearing, Agosti and Rose, JJ.\n   </judges>",
+        "citations": [
+          "30 P.3d 1117",
+          "117 Nev. 709"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n30 P.3d 1117 (2001)\nThe STATE of Nevada, Appellant,\nv.\nGregory Lynn QUINN, Respondent.\nNo. 35795.\nSupreme Court of Nevada.\nSeptember 17, 2001.\n*1118 Frankie Sue Del Papa, Attorney General, Carson City; Richard A. Gammick, District Attorney, and Terrence P. McCarthy and Daniel J. Greco, Deputy District Attorneys, Washoe County, for Appellant.\nMichael R. Specchio, Public Defender, John Reese Petty, Chief Deputy Public Defender, and Vaun B. Hall, Deputy Public Defender, Washoe County, for Respondent.\nBefore SHEARING, AGOSTI and ROSE, JJ.\n\nOPINION\nPER CURIAM:\n\nSUMMARY\nThis case presents the issue of what constitutes \"discovery\" of a sexual crime against a child \"committed in a secret manner\" for purposes of triggering the criminal statute of limitations contained at NRS 171.095(1)(a). We conclude that \"discovery\" of a crime occurs when any person other than the wrongdoer (or someone acting in pari delicto with the wrongdoer) has knowledge of the act and its criminal nature, unless the person with knowledge: (1) fails to report out of fear induced by threats made by the wrongdoer or by anyone acting in pari delicto with the wrongdoer; or (2) is a child-victim under eighteen years of age who fails to report for the reasons discussed in Walstrom v. State.[1]\n\nFACTS\nOn December 17, 1998, the State filed a criminal complaint against Gregory Lynn *1119 Quinn (\"Gregory\") for committing acts of lewdness and exposing himself to his stepdaughter on numerous occasions between January 1, 1993, and December 12, 1996. The information that was ultimately filed against Gregory charged him with two counts of lewdness with a child under the age of fourteen years, a felony, and four counts of indecent exposure, a gross misdemeanor.\nShortly before trial, Gregory filed a motion to dismiss all of the indecent exposure charges because they were filed after the two-year limitation period for prosecuting gross misdemeanors had run. The district court then conducted a hearing on the matter.\nAt the hearing, the district court heard Gregory's offer of proof that the child told her mother, Christine Quinn (\"Christine\"), of Gregory's activities on December 12, 1996[2] just over two years prior to the filing of the complaint. The district court also heard evidence that on this same day, Christine informed her pastor about her child's allegations. In its written order, however, the district court accepted only the offer of proof that Christine was informed at this time and made no mention of the pastor. Therefore, there has been no factual finding regarding the pastor and whether he knew of the crime on December 12, 1996. Accordingly, Gregory argued that NRS 171.095(1)(a), which provides that the two-year limitation period for prosecuting gross misdemeanors committed in secrecy begins to run at the time of a crime's \"discovery,\" barred prosecution of the indecent exposure claims.\nThe State, on the other hand, presented evidence that the child first reported the crimes to law enforcement authorities on November 2, 1998just two months before the criminal complaint was filed. In contrast to Gregory's position, the State argued that the crimes were not \"discovered\" for purposes of NRS 171.095(1)(a) purposes until the child reported the incidents to law enforcement authorities. Accordingly, the State argued that Gregory's prosecution was not barred by the limitation period and urged the district court to deny his motion.\nThe court ultimately ruled in favor of Gregory and found that although the alleged instances of indecent exposure were committed in secrecy, they were \"`discover[ed]' within the meaning of NRS 171.095(1)(a) when the child reported the allegations to her mother.\"\nThe State now appeals the order.\n\nDISCUSSION\n\nI. The underlying statutes\n\nThis court has consistently held that with respect to limitation periods and tolling statutes, the statutes in effect at the time of the offense control.[3] Therefore, the relevant statutes in this matter are those that were in effect from January 1, 1993, to December 12, 1996. During this time, NRS 201.220(1) provided that indecent exposure was a gross misdemeanor for the first offense, and a felony for subsequent offenses.[4] For gross misdemeanors, the relevant period of limitations in which the State could file a charging document was two years.[5]\nAlthough NRS 171.095 was amended on October 31, 1993, that portion of the statute which is relevant to this matter was not materially altered. Specifically, NRS 171.095(1)(a) provided:\nIf a felony, gross misdemeanor or misdemeanor is committed in a secret manner, an indictment for the offense must be found, or an information or complaint filed, within the periods of limitation prescribed in NRS 171.085 and 171.090 after the discovery of the offense unless a longer period is allowed by paragraph (b).[6]\nParagraph (b) of NRS 171.095(1) then provided for longer tolling periods if the *1120 offense constituted \"sexual abuse of a child, as defined in NRS 432B.100.\"[7] Importantly, these extended tolling periods do not apply to the facts of this case because indecent exposure was not included among those offenses constituting sexual abuse under NRS 432B.100.\n\nII. Principles of statutory construction\n\nThe parties ask us to construe the meaning of \"discovery\" as the term is used in NRS 171.095(1). The construction of a statute is a question of law that we review independently.[8]\nWhen construing a statute, we first inquire whether an ambiguity exists in the language of the statute. If the words of the statute have a definite and ordinary meaning, this court will not look beyond the plain language of the statute, unless it is clear that this meaning was not intended.[9] In this case, an ambiguity clearly exists because the statute does not specify by whom the crime must be discovered, and is thus open to several interpretations.\nIf a statute is ambiguous, we then focus on the intent of the legislature, which is discernible through an examination of \"the context and spirit of the statute in question, together with the subject matter and policy involved.\"[10] Our interpretation \"should be in line with what reason and public policy would indicate the legislature intended, and should avoid absurd results.\"[11]\nOur interpretation is also guided by the applicable interpretive canon which requires that exemptions to criminal statutes of limitations be narrowly construed and read in the light most favorable to the accused and by our prior case law.[12]\n\nIII. The meaning of \"discovery\" as used in NRS 171.095(1)\n\nAlthough the precise issue we are considering here is one of first impression, our prior case law interpreting other aspects of NRS 171.095 is highly instructive.[13] Beginning in 1988 with Walstrom v. State,[14] this court addressed the \"secret manner\" tolling provision of NRS 171.095 for crimes involving the sexual abuse or assault of children. In Walstrom, the defendant had committed child sexual abuse crimes that went undiscovered for eight years.\nWalstrom argued that prosecution for the crimes was barred by the limitation period because the crimes were not committed in a \"secret manner.\" Specifically, Walstrom contended that a crime against a person could not be secret because the crime, by its very nature, involved a victim who remained alive and had knowledge of the criminal act.[15]*1121 This court, however, rejected Walstrom's argument and instead focused on the vulnerability of the child-victim and the child's likely reluctance to report the abuse. This reluctance, we noted, often resulted from either the threats or coercive tactics of the perpetrator or from the child's personal fear of not being believed.[16] This court noted that because sexual abuse crimes are inherently repugnant in nature, they are almost always intended to be kept secret.[17] Accordingly, the court concluded that crimes against children, such as lewdness, could be committed in a \"secret manner\" for purposes of NRS 171.095(1):\n[A] crime is done in a secret manner, under NRS 171.095, when it is committed in a deliberately surreptitious manner that is intended to and does keep all but those committing the crime unaware that an offense has been committed. Therefore normally, if a crime of physical abuse, or a related crime, is committed against a victim who remains alive, it would not be committed in a secret manner under the statute. The victim is aware of the crime and has a responsibility to report it. However, given the inherently vulnerable nature of a child, we conclude that the crime of lewdness with a minor can be committed in a secret manner, even though a victim is involved.[18]\nIn reaching this conclusion, however, the court recognized that exceptions to criminal statutes of limitations are to be narrowly construed and read in a light most favorable to the accused.[19] Accordingly, it placed the burden of proving that a crime was committed in a secret manner upon the State.[20]\nIn 1995, the theoretical limitations of the Walstrom decision were tested in Houtz v. State.[21] The victim in Houtz was molested as a teenager by his band teacher, but repressed his memories of the events for years. At age twenty-five, a broken relationship triggered recollections of the molestations and the State filed charges against the teacher ten years after the events occurred.[22]\nThe State argued that because the crime was committed in a secret manner as in Walstrom, the limitation period was tolled until the victim revealed the crimes over a decade later. This court, however, rejected this limitless interpretation of Walstrom and held that the \"secret manner\" provisions of NRS 171.095(1) did not toll the limitation period for crimes involving children beyond the victim's eighteenth birthday, the age of majority.[23]\nIn reaching this decision, the court relied on two principal arguments. First, the court noted that the legislative intent in enacting a statute of limitations is \"to protect defendants from the unfairness of prosecution when evidence is stale and witnesses are unavailable.\"[24] Second, the court noted that the legislature had never included child sexual abuse among those offenses that are not subject to a statute of limitations.[25] Thus, an interpretation that would nullify the statute and theoretically allow for limitless prosecutions would be unreasonable and absurd.[26]\nAs in Walstrom and Houtz, our interpretation of the term \"discovery\" in NRS 171.095 must balance the realities of child sexual abuse crimes against the important fairness interests which underlie criminal statutes of limitation. Accordingly, for purposes of tolling the statute of limitations under the \"secret manner\" provision of NRS 171.095, discovery occurs when any person including the victim other than the wrongdoer (or someone acting in pari delicto with *1122 the wrongdoer) has knowledge of the act and its criminal nature, unless the person with knowledge: (1) fails to report out of fear induced by threats made by the wrongdoer or by anyone acting in pari delicto with the wrongdoer; or (2) is a child-victim under eighteen years of age and fails to report for the reasons discussed in Walstrom.[27] Under this rule, then, a crime can remain undiscovered even if multiple persons know about it so long as the silence is induced by the wrongdoer's threats.\nThis approach is highly consistent with our decisions in Walstrom and Houtz. By applying the secret manner exception to crimes involving children, Walstrom recognized the realities of child abuse crimes and the silence that may be induced. Similarly, our approach here realistically recognizes that a wrongdoer can perpetrate a secret crime by threatening anyone with knowledge to remain silent about a crime and prevents the wrongdoer from unfairly manipulating the statute of limitations to his advantage. Further, by broadly defining \"discovery\" to include all those with knowledge of the act and its criminal nature, our approach is consistent with the fairness principles advanced in Houtz, which recognizes the legislature's intent in enacting criminal statutes of limitations, and our interpretative canon requiring criminal statutes of limitation to be construed narrowly.\n\nCONCLUSION\nWe conclude that for purposes of the \"secret manner\" provisions of NRS 171.095, \"discovery\" occurs when any person other than the wrongdoer (or someone acting in pari delicto with the wrongdoer) has knowledge of the act and its criminal nature, unless the person with knowledge: (1) fails to report out of fear induced by threats made by the wrongdoer or by anyone acting in pari delicto with the wrongdoer; or (2) is a child-victim under eighteen years of age and fails to report for the reasons discussed in Walstrom.\nIn this case, it remains unsettled as to whether Christine was induced into silence out of fear induced by Gregory and whether Christine's pastor had knowledge of the events at a time that would bar prosecution. Accordingly, we reverse and remand this matter to the district court for further proceedings consistent with this opinion.\nSHEARING, J., concurring.\nI agree that this case should be remanded for certain factual determinations, but I disagree with the majority's analysis and conclusion as to when a crime committed against a child in a secret manner is \"discovered\" for purposes of the statute of limitations.\nI agree with the majority that NRS 171.095(1)(a) is ambiguous as to when a crime committed in a secret manner is \"discovered,\" and that we must, therefore, focus on the intent of the Legislature, which is discernible through an examination of the \"the context and spirit of the statute in question, together with the subject matter and policy involved.\"[1]\nI also agree with the majority that our interpretation of the term \"discovery\" must balance the reality of the circumstances surrounding crimes against children against the important fairness interests of the defendant/accused which underlie criminal statutes of limitations. It is not fair to subject a person to criminal liability indefinitely with virtually no time limit. On the other hand, neither is it fair to impose upon an already traumatized and susceptible child the burden of reporting to authorities an embarrassing and traumatic event. This court recognized these principles in Walstrom v. State[2] and Houtz v. State.[3] But these cases did not resolve the question of when a crime committed against a child in a secret manner is deemed to be discovered.\nThe majority concludes that discovery of the crime occurred in this case when the child told her mother, unless her mother *1123 failed to report \"out of fear induced by the wrongdoer.\" I believe that this standard reflects neither the reality of the circumstances surrounding crimes against children, especially crimes of a sexual nature, nor the policies established by the Legislature.\nOne of the realities of crimes against children is that parents very often do not believe their children when they report crimes of a sexual nature committed against them. The parent often either chooses to believe the perpetrator or condones the perpetrator's actions for a variety of reasons other than fear induced by the wrongdoer, such as economic, social or psychological dependence. This is particularly the case in situations such as this, where the alleged perpetrator is the spouse of the parent to whom the child reports.\nIn NRS 432B.220, the Legislature established the policy that certain responsible adults, not including parents, are required to report known or suspected child abuse or neglect to either a law enforcement agency or child protective services.[4] I would hold that a secret crime against children is \"discovered\" when a person who is required under NRS 432B.220 to report the abuse to the authorities knows or has reasonable cause to believe that abuse has been committed, not when persons who have no legal duty to report the abuse have knowledge.[5]\nThe evidence in this case indicates that the child-victim reported the abuse to her mother on December 12, 1996, and on the same day the mother told her pastor. NRS 432B.220(3)(d) provides that a \"clergyman, practitioner of Christian Science or religious healer, unless he has acquired the knowledge of the abuse or neglect from the offender during a confession\" is required to report the abuse or neglect to law enforcement or child protective services. Thus, it appears that the pastor was a required reporter and the disclosure to him occurred more than two years before the criminal complaint was filed. However, since there was no finding by the trial court on the issue of when the pastor was told and whether the pastor actually falls within the statute as a required reporter, I would remand the case for this factual determination.\nNOTES\n[1]  104 Nev. 51, 752 P.2d 225 (1988), overruled on other grounds by Hubbard v. State, 110 Nev. 671, 877 P.2d 519 (1994).\n[2]  Defense counsel made it clear that it was likely that the child made earlier reports to Christine about Gregory's indecent exposure, but accepted this date as the latest possible date such disclosure was made. Because an earlier reporting date would not change the analysis, we will use December 12, 1996, as the date on which the child told Christine of Gregory's activities.\n[3]  See, e.g., Houtz v. State, 111 Nev. 457, 461, 893 P.2d 355, 357 (1995); Walstrom, 104 Nev. at 53, 752 P.2d at 227.\n[4]  See NRS 201.220(1) (1991).\n[5]  See NRS 171.090(1) (1991).\n[6]  (Emphasis added.) In the pre-amendment version of the statute, the emphasized language was identical but appeared in a different subsection. See NRS 171.095(1) (1991) (amended 1993).\n[7]  See NRS 432B.100 (1991) (amended 1997) (listing only incest, lewdness, annoyance or molestation, sado-masochistic abuse, sexual assault, statutory sexual seduction, and open or gross lewdness as crimes constituting \"sexual abuse\" of a child).\n[8]  Anthony Lee R., A Minor v. State, 113 Nev. 1406, 1414, 952 P.2d 1, 6 (1997).\n[9]  See State v. State, Employees Assoc., 102 Nev. 287, 289, 720 P.2d 697, 698 (1986) (\"When a statute uses words which have a definite and plain meaning, the words will retain that meaning unless it clearly appears that such meaning was not so intended.\").\n[10]  Gallagher v. City of Las Vegas, 114 Nev. 595, 599-600, 959 P.2d 519, 521 (1998). While legislative histories are often helpful in this regard, no history was available regarding the \"discovery\" language of NRS 171.095(1)(a) because it was originally added to Nevada's statutes as part of the Criminal Procedure Act of 1911 and has remained materially unchanged ever since.\n[11]  Id.\n[12]  See State v. Merolla, 100 Nev. 461, 464, 686 P.2d 244, 246 (1984) (holding that criminal statutes of limitation should be construed in favor of the accused); Grotts v. Zahner, 115 Nev. 339, 342, 989 P.2d 415, 417 (1999) (Rose, J., dissenting) (reviewing principles of stare decisis).\n[13]  In Hubbard v. State, 110 Nev. 671, 877 P.2d 519 (1994), we noted that the sexual crimes involved were \"discovered\" for purposes of NRS 171.095 by someone who had a duty to report them. In Hubbard, however, we did not squarely address the question of what constitutes \"discovery.\" Therefore, any inference that may drawn from that case is nonbinding dicta.\n[14]  104 Nev. 51, 752 P.2d 225 (1988), overruled on other grounds by Hubbard, 110 Nev. 671, 877 P.2d 519.\n[15]  See id. at 52-53, 55-56, 752 P.2d at 226, 228.\n[16]  See id.\n[17]  Id. at 57, 752 P.2d at 229.\n[18]  Id. at 56, 752 P.2d at 228.\n[19]  Id. at 53-55, 752 P.2d at 227-28.\n[20]  Id.\n[21]  111 Nev. 457, 893 P.2d 355 (1995).\n[22]  Id. at 457-58, 893 P.2d at 355-56.\n[23]  Id. at 461-62, 893 P.2d at 357-58. Houtz also noted that the extended tolling periods provided for in NRS 171.095(2) did not apply because it was not in effect at the time of the crime. See id. at 460 n. 5, 893 P.2d at 357 n. 5.\n[24]  Id. at 461, 893 P.2d at 357-58.\n[25]  Id. at 461-62, 893 P.2d at 358.\n[26]  See id. at 461, 893 P.2d at 358.\n[27]  This rule is substantially similar to the one announced in State v. Day, 882 P.2d 1096 (Okla. Crim.App.1994).\n[1]  Gallagher v. City of Las Vegas, 114 Nev. 595, 599, 959 P.2d 519, 521 (1998).\n[2]  104 Nev. 51, 752 P.2d 225 (1988).\n[3]  111 Nev. 457, 893 P.2d 355 (1995).\n[4]  Under NRS 432B.220, people who are required to report include, among others, medical professionals, hospital personnel, social workers, teachers, counselors and law enforcement personnel.\n[5]  This is also the rule adopted by the Ohio Supreme Court in State v. Hensley, 59 Ohio St. 3d 136, 571 N.E.2d 711 (1991).\n\n",
+            "ocr": false,
+            "opinion_id": 2622559
+          },
+          {
+            "author_str": "Per Curiam",
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nOPINION\n\nPer Curiam:\n\n\nSUMMARY\n\nThis case presents the issue of what constitutes “discovery” of a sexual crime against a child “committed in a secret manner” for purposes of triggering the criminal statute of limitations contained at NRS 171.095(l)(a). We conclude that “discovery” of a crime occurs when any person other than the wrongdoer (or someone acting in pari delicto with the wrongdoer) has knowledge of the act and its criminal nature, unless the person with knowledge: (1) fails to report out of fear induced by threats made by the wrongdoer or by anyone acting in pari delicto with the wrongdoer; or (2) is a child-victim under eighteen years of age who fails to report for the reasons discussed in Walstrom v. State.1\n\nFACTS\n\nOn December 17, 1998, the State filed a criminal complaint against Gregory Lynn Quinn (“Gregory”) for committing acts of *711lewdness and exposing himself to his stepdaughter on numerous occasions between January 1, 1993, and December 12, 1996. The information that was ultimately filed against Gregory charged him with two counts of lewdness with a child under the age of fourteen years, a felony, and four counts of indecent exposure, a gross misdemeanor.\nShortly before trial, Gregory filed a motion to dismiss all of the indecent exposure charges because they were filed after the two-year limitation period for prosecuting gross misdemeanors had run. The district court then conducted a hearing on the matter.\nAt the hearing, the district court heard Gregory’s offer of proof that the child told her mother, Christine Quinn (“Christine”), of Gregory’s activities on December 12, 19962 — just over two years prior to the filing of the complaint. The district court also heard evidence that on this same day, Christine informed her pastor about her child’s allegations. In its written order, however, the district court accepted only the offer of proof that Christine was informed at this time and made no mention of the pastor. Therefore, there has been no factual finding regarding the pastor and whether he knew of the crime on December 12, 1996. Accordingly, Gregory argued that NRS 171.095(l)(a), which provides that the two-year limitation period for prosecuting gross misdemeanors committed in secrecy begins to run at the time of a crime’s “discovery,” barred prosecution of the indecent exposure claims.\nThe State, on the other hand, presented evidence that the child first reported the crimes to law enforcement authorities on November 2, 1998 — just two months before the criminal complaint was filed. In contrast to Gregory’s position, the State argued that the crimes were not “discovered” for purposes of NRS 171.095(l)(a) purposes until the child reported the incidents to law enforcement authorities. Accordingly, the State argued that Gregory’s prosecution was not barred by the limitation period and urged the district court to deny his motion.\nThe court ultimately ruled in favor of Gregory and found that although the alleged instances of indecent exposure were committed in secrecy, they were “ ‘discovered]’ within the meaning of NRS 171.095(l)(a) when the child reported the allegations to her mother.’ ’\nThe State now appeals the order.\n\n*712\nDISCUSSION\n\nI. The underlying statutes\nThis court has consistently held that with respect to limitation periods and tolling statutes, the statutes in effect at the time of the offense control.3 Therefore, the relevant statutes in this matter are those that were in effect from January 1, 1993, to December 12, 1996. During this time, NRS 201.220(1) provided that indecent exposure was a gross misdemeanor for the first offense, and a felony for subsequent offenses.4 For gross misdemeanors, the relevant period of limitations in which the State could file a charging document was two years.5\nAlthough NRS 171.095 was amended on October 31, 1993, that portion of the statute which is relevant to this matter was not materially altered. Specifically, NRS 171.095(l)(a) provided:\nIf a felony, gross misdemeanor or misdemeanor is committed in a secret manner, an indictment for the offense must be found, or an information or complaint filed, within the periods of limitation prescribed in NRS 171.085 and 171.090 after the discovery of the offense unless a longer period is allowed by paragraph (b).6\nParagraph (b) of NRS 171.095(1) then provided for longer tolling periods if the offense constituted “sexual abuse of a child, as defined in NRS 432B.100.”7 Importantly, these extended tolling periods do not apply to the facts of this case because indecent exposure was not included among those offenses constituting sexual abuse under NRS 432B.100.\nII. Principles of statutory construction\nThe parties ask us to construe the meaning of “discovery” as the term is used in NRS 171.095(1). The construction of a statute is a question of law that we review independently.8\n*713When construing a statute, we first inquire whether an ambiguity exists in the language of the statute. If the words of the statute have a definite and ordinary meaning, this court will not look beyond the plain language of the statute, unless it is clear that this meaning was not intended.9 In this case, an ambiguity clearly exists because the statute does not specify by whom the crime must be discovered, and is thus open to several interpretations.\nIf a statute is ambiguous, we then focus on the intent of the legislature, which is discernible through an examination of “the context and spirit of the statute in question, together with the subject matter and policy involved.”10 Our interpretation “should be in line with what reason and public policy would indicate the legislature intended, and should avoid absurd results.”11\nOur interpretation is also guided by the applicable interpretive canon which requires that exemptions to criminal statutes of limitations be narrowly construed and read in the light most favorable to the accused and by our prior case law.12\nm. The meaning of “discovery” as used in NRS 171.095(1)\nAlthough the precise issue we are considering here is one of first impression, our prior case law interpreting other aspects of NRS 171.095 is highly instructive.13 Beginning in 1988 with Walstrom v. State,14 this court addressed the “secret manner” *714tolling provision of NRS 171.095 for crimes involving the sexual abuse or assault of children. In Walstrom, the defendant had committed child sexual abuse crimes that went undiscovered for eight years.\nWalstrom argued that prosecution for the crimes was barred by the limitation period because the crimes were not committed in a “secret manner.” Specifically, Walstrom contended that a crime against a person could not be secret because the crime, by its very nature, involved a victim who remained alive and had knowledge of the criminal act.15 This court, however, rejected Walstrom’s argument and instead focused on the vulnerability of the child-victim and the child’s likely reluctance to report the abuse. This reluctance, we noted, often resulted from either the threats or coercive tactics of the perpetrator or from the child’s personal fear of not being believed.16 This court noted that because sexual abuse crimes are inherently repugnant in nature, they are almost always intended to be kept secret.17 Accordingly, the court concluded that crimes against children, such as lewdness, could be committed in a “secret manner” for purposes of NRS 171.095(1):\n[A] crime is done in a secret manner, under NRS 171.095, when it is committed in a deliberately surreptitious manner that is intended to and does keep all but those committing the crime unaware that an offense has been committed. Therefore normally, if a crime of physical abuse, or a related crime, is committed against a victim who remains alive, it would not be committed in a secret manner under the statute. The victim is aware of the crime and has a responsibility to report it. However, given the inherently vulnerable nature of a child, we conclude that the crime of lewdness with a minor can be committed in a secret manner, even though a victim is involved.18\nIn reaching this conclusion, however, the court recognized that exceptions to criminal statutes of limitations are to be narrowly construed and read in a light most favorable to the accused.19 Accordingly, it placed the burden of proving that a crime was committed in a secret manner upon the State.20\nIn 1995, the theoretical limitations of the Walstrom decision *715were tested in Houtz v. State.21 The victim in Houtz was molested as a teenager by his band teacher, but repressed his memories of the events for years. At age twenty-five, a broken relationship triggered recollections of the molestations and the State filed charges against the teacher ten years after the events occurred.22\nThe State argued that because the crime was committed in a secret manner as in Walstrom, the limitation period was tolled until the victim revealed the crimes over a decade later. This court, however, rejected this limitless interpretation of Walstrom and held that the “secret manner” provisions of NRS 171.095(1) did not toll the limitation period for crimes involving children beyond the victim’s eighteenth birthday, the age of majority.23\nIn reaching this decision, the court relied on two principal arguments. First, the court noted that the legislative intent in enacting a statute of limitations is ‘ ‘to protect defendants from the unfairness of prosecution when evidence is stale and witnesses are unavailable.”24 Second, the court noted that the legislature had never included child sexual abuse among those offenses that are not subject to a statute of limitations.25 Thus, an interpretation that would nullify the statute and theoretically allow for limitless prosecutions would be unreasonable and absurd.26\nAs in Walstrom and Houtz, our interpretation of the term “discovery” in NRS 171.095 must balance the realities of child sexual abuse crimes against the important fairness interests which underlie criminal statutes of limitation. Accordingly, for purposes of tolling the statute of limitations under the “secret manner” provision of NRS 171.095, discovery occurs when any person-including the victim — other than the wrongdoer (or someone acting in pari delicto with the wrongdoer) has knowledge of the act and its criminal nature, unless the person with knowledge: (1) fails to report out of fear induced by threats made by the wrongdoer or by anyone acting in pari delicto with the wrongdoer; or (2) is a child-victim under eighteen years of age and fails to report for the reasons discussed in Walstrom.27 Under this rule, then, a *716crime can remain undiscovered even if multiple persons know about it so long as the silence is induced by the wrongdoer’s threats.\nThis approach is highly consistent with our decisions in Walstrom and Houtz. By applying the secret manner exception to crimes involving children, Walstrom recognized the realities of child abuse crimes and the silence that may be induced. Similarly, our approach here realistically recognizes that a wrongdoer can perpetrate a secret crime by threatening anyone with knowledge to remain silent about a crime and prevents the wrongdoer from unfairly manipulating the statute of limitations to his advantage. Further, by broadly defining “discovery” to include all those with knowledge of the act and its criminal nature, our approach is consistent with the fairness principles advanced in Houtz, which recognizes the legislature’s intent in enacting criminal statutes of limitations, and our interpretative canon requiring criminal statutes of limitation to be construed narrowly.\n\nCONCLUSION\n\nWe conclude that for purposes of the “secret manner” provisions of NRS 171.095, “discovery” occurs when any person other than the wrongdoer (or someone acting in pari delicto with the wrongdoer) has knowledge of the act and its criminal nature, unless the person with knowledge: (1) fails to report out of fear induced by threats made by the wrongdoer or by anyone acting in pari delicto with the wrongdoer; or (2) is a child-victim under eighteen years of age and fails to report for the reasons discussed in Walstrom.\nIn this case, it remains unsettled as to whether Christine was induced into silence out of fear induced by Gregory and whether Christine’s pastor had knowledge of the events at a time that would bar prosecution. Accordingly, we reverse and remand this matter to the district court for further proceedings consistent with this opinion.\n\n 104 Nev. 51, 752 P.2d 225 (1988), overruled, on other grounds by Hubbard v. State, 110 Nev. 671, 877 P.2d 519 (1994).\n\n\nDefense counsel made it clear that it was likely that the child made earlier reports to Christine about Gregory’s indecent exposure, but accepted this date as the latest possible date such disclosure was made. Because an earlier reporting date would not change the analysis, we will use December 12, 1996, as the date on which the child told Christine of Gregory’s activities.\n\n\nSee, e.g., Houtz v. State, 111 Nev. 457, 461, 893 P.2d 355, 357 (1995); Walstrom, 104 Nev. at 53, 752 P.2d at 227.\n\n\nSee NRS 201.220(1) (1991).\n\n\nSee NRS 171.090(1) (1991).\n\n\n(Emphasis added.) In the pre-amendment version of the statute, the emphasized language was identical but appeared in a different subsection. See NRS 171.095(1) (1991) (amended 1993).\n\n\nSee NRS 432B.100 (1991) (amended 1997) (listing only incest, lewdness, annoyance or molestation, sado-masochistic abuse, sexual assault, statutory sexual seduction, and open or gross lewdness as crimes constituting “sexual abuse” of a child).\n\n\nAnthony Lee R,, A Minor v. State, 113 Nev. 1406, 1414, 952 P.2d 1, 6 (1997).\n\n\nSee State v. State, Employees Assoc., 102 Nev. 287, 289, 720 P.2d 697, 698 (1986) (“When a statute uses words which have a definite and plain meaning, the words will retain that meaning unless it clearly appears that such meaning was not so intended.”).\n\n\nGallagher v. City of Las Vegas, 114 Nev. 595, 599-600, 959 P.2d 519, 521 (1998). While legislative histories are often helpful in this regard, no history was available regarding the “discovery” language of NRS 171.095(l)(a) because it was originally added to Nevada’s statutes as part of the Criminal Procedure Act of 1911 and has remained materially unchanged ever since.\n\n\n\nId.\n\n\n\nSee State v. Merolla, 100 Nev. 461, 464, 686 P.2d 244, 246 (1984) (holding that criminal statutes of limitation should be construed in favor of the accused); Grotts v. Zahner, 115 Nev. 339, 342, 989 P.2d 415, 417 (1999) (Rose, J., dissenting) (reviewing principles of stare decisis).\n\n\nIn Hubbard v. State, 110 Nev. 671, 877 P.2d 519 (1994), we noted that the sexual crimes involved were “discovered” for purposes of NRS 171.095 by someone who had a duty to report them. In Hubbard, however, we did not squarely address the question of what constitutes “discovery.” Therefore, any inference that may be drawn from that case is nonbinding dicta.\n\n\n 104 Nev. 51, 752 P.2d 225 (1988), overruled on other grounds by Hubbard, 110 Nev. 671, 877 P.2d 519.\n\n\nSee id. at 52-53, 55-56, 752 P.2d at 226, 228.\n\n\n\nSee id.\n\n\n\nId. at 57, 752 P.2d at 229.\n\n\nId. at 56, 752 P.2d at 228.\n\n\nId. at 53-55, 752 P.2d at 227-28.\n\n\n\nId.\n\n\n\nT11 Nev. 457, 893 P.2d 355 (1995).\n\n\nId. at 457-58, 893 P.2d at 355-56.\n\n\nId. at 461-62, 893 P.2d at 357-58. Houtz also noted that the extended tolling periods provided for in NRS 171.095(2) did not apply because it was not in effect at the time of the crime. See id. at 460 n.5, 893 P.2d at 357 n.5.\n\n\nId. at 461, 893 P.2d at 357-58.\n\n\nId. at 461-62, 893 P.2d at 358.\n\n\nSee id. at 461, 893 P.2d at 358.\n\n\nThis rule is substantially similar to the one announced in State v. Day, 882 P.2d 1096 (Okla. Crim. App. 1994).\n\n",
+            "ocr": false,
+            "opinion_id": 9795390
+          },
+          {
+            "author_str": "Shearing",
+            "per_curiam": false,
+            "type": "030concurrence",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nShearing, J.,\nconcurring:\nI agree that this case should be remanded for certain factual determinations, but I disagree with the majority’s analysis and conclusion as to when a crime committed against a child in a secret manner is “discovered” for purposes of the statute of limitations.\nI agree with the majority that NRS 171.095(l)(a) is ambiguous as to when a crime committed in a secret manner is “discovered,” and that we must, therefore, focus on the intent of the Legislature, which is discernible through an examination of the “the context *717and spirit of the statute in question, together with the subject matter and policy involved.”1\nI also agree with the majority that our interpretation of the term “discovery” must balance the reality of the circumstances surrounding crimes against children against the important fairness interests of the defendant/accused which underlie criminal statutes of limitations. It is not fair to subject a person to criminal liability indefinitely with virtually no time limit. On the other hand, neither is it fair to impose upon an already traumatized and susceptible child the burden of reporting to authorities an embarrassing and traumatic event. This court recognized these principles in Walstrom v. State2 and Houtz v. State.3 But these cases did not resolve the question of when a crime committed against a child in a secret manner is deemed to be discovered.\nThe majority concludes that discovery of the crime occurred in this case when the child told her mother, unless her mother failed to report “out of fear induced by the wrongdoer.” I believe that this standard reflects neither the reality of the circumstances surrounding crimes against children, especially crimes of a sexual nature, nor the policies established by the Legislature.\nOne of the realities of crimes against children is that parents very often do not believe their children when they report crimes of a sexual nature committed against them. The parent often either chooses to believe the perpetrator or condones the perpetrator’s actions for a variety of reasons other than fear induced by the wrongdoer, such as economic, social or psychological dependence. This is particularly the case in situations such as this, where the alleged perpetrator is the spouse of the parent to whom the child reports.\nIn NRS 432B.220, the Legislature established the policy that certain responsible adults, not including parents, are required to report known or suspected child abuse or neglect to either a law enforcement agency or child protective services.4 I would hold that a secret crime against children is “discovered” when a person who is required under NRS 432B.220 to report the abuse to the authorities knows or has reasonable cause to believe that abuse has been committed, not when persons who have no legal duty to report the abuse have knowledge.5\n*718The evidence in this case indicates that the child-victim reported the abuse to her mother on December 12, 1996, and on the same day the mother told her pastor. NRS 432B.220(3)(d) provides that a ‘ ‘clergyman, practitioner of Christian Science or religious healer, unless he has acquired the knowledge of the abuse or neglect from the offender during a confession” is required to report the abuse or neglect to law enforcement or child protective services. Thus, it appears that the pastor was a required reporter and the disclosure to him occurred more than two years before the criminal complaint was filed. However, since there was no finding by the trial court on the issue of when the pastor was told and whether the pastor actually falls within the statute as a required reporter, I would remand the case for this factual determination.\n\nGallagher v. City of Las Vegas, 114 Nev. 595, 599, 959 P.2d 519, 521 (1998).\n\n\n 104 Nev. 51, 752 P.2d 225 (1988).\n\n\n 111 Nev. 457, 893 P.2d 355 (1995).\n\n\nUnder NRS 432B.220, people who are required to report include, among others, medical professionals, hospital personnel, social workers, teachers, counselors and law enforcement personnel.\n\n\nThis is also the rule adopted by the Ohio Supreme Court in State v. Hensley, 571 N.E.2d 711 (Ohio 1991).\n\n",
+            "ocr": false,
+            "opinion_id": 9795391
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 840,
+  "num_rows_per_page": 100,
+  "partial": true
+}

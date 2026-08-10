@@ -1,0 +1,40 @@
+{
+  "collection_version": "kr-us-highcourt-corpus-v2.0",
+  "source_dataset": "lbox/lbox_open",
+  "source_config": "precedent_corpus",
+  "source_revision": "10429acf7e13d7ef2ea4187ffbd685490289a82c",
+  "date_window": [
+    "2000-01-01",
+    "2025-12-31"
+  ],
+  "candidate_target": 300,
+  "seed": 20260810,
+  "partial_run": false,
+  "funnel": {
+    "source_scanned": 1100,
+    "civil_liability_candidate": 300,
+    "date_court_eligible": 0,
+    "adequate_opinion_text": 259,
+    "fact_sufficient": 270,
+    "strict_source_eligible": 0
+  },
+  "court_level_counts": {
+    "unknown|low": 260,
+    "supreme|medium": 40
+  },
+  "domain_counts": {
+    "general_negligence_personal_injury": 164,
+    "medical_professional_liability": 89,
+    "other_civil_liability": 38,
+    "employer_supervisory_vicarious_liability": 9
+  },
+  "exclusion_counts": {
+    "not_high_confidence_supreme": 300,
+    "decision_date_unknown": 300,
+    "not_civil_liability_candidate": 125,
+    "incidental:criminal_case": 117,
+    "opinion_text_too_short": 41,
+    "fact_insufficient_before_supplementation": 30,
+    "incidental:administrative_only": 8
+  }
+}

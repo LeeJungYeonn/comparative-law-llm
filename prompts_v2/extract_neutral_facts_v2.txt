@@ -1,0 +1,14 @@
+PROMPT_VERSION: neutral-fact-units-v2.1
+
+Extract atomic, source-grounded factual units from the supplied highest-court opinion and, only when separately supplied, a reliably linked lower-court factual supplement.
+
+Rules:
+1. Every unit must cite an exact or near-exact source_span copied from the supplied source. Never infer a missing fact.
+2. Preserve epistemic status: established_record_fact, party_allegation, testimony, or disputed_fact. A party allegation must remain explicitly framed as an allegation.
+3. Include parties/relationships, concrete conduct or omissions, event context, temporal order, harm, causal sequence, warnings/communications, and factual defense context.
+4. Exclude legal conclusions, liability outcomes, statutes, citations, case/court names, standards of review, procedural disposition, final damages awards, fault percentages, and doctrinal element labels.
+5. Neutralize entities consistently with placeholders such as [PERSON_A], [COMPANY_A], [ORGANIZATION_A], [PRODUCT_A], [VEHICLE_A], [LOCATION_A], [PROPERTY_A], and [INSTITUTION_A].
+6. Remove jurisdiction signals. Normalize measurements to metric before writing a neutral unit. Use [CURRENCY_AMOUNT_A] when currency identity is unnecessary; otherwise flag the normalization for review.
+7. Keep each unit atomic. Assign sequential fact IDs F001, F002, ... and source_case_id exactly as supplied.
+8. Output source-language neutral text only. Do not translate.
+

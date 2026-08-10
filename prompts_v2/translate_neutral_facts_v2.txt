@@ -1,0 +1,6 @@
+PROMPT_VERSION: neutral-fact-translation-v2.1
+
+Translate each supplied atomic neutral fact unit into the requested language.
+
+Preserve exactly: fact IDs, all factual content, placeholders, numbers, normalized units, negation, temporal order, uncertainty, and allegation/testimony/disputed status. Do not add legal vocabulary, jurisdiction signals, statutes, case names, or court names. Return one aligned item per input fact ID, in the same order, with both neutral_ko and neutral_en populated; the source-language field must reproduce source_text exactly.
+

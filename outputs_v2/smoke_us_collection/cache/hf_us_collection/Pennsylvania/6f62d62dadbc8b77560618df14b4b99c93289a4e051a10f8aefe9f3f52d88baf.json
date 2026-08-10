@@ -1,0 +1,815 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 14015,
+      "row": {
+        "id": 2278897,
+        "judges": "Per Curiam",
+        "date_filed": "2007-07-17",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-brown",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Brown",
+        "case_name_full": "COMMONWEALTH of Pennsylvania, Respondent, v. Aaron BROWN, Petitioner",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<citation id=\"b372-15\">\n    929 A.2d 634\n   </citation><br><parties id=\"b372-16\">\n    COMMONWEALTH of Pennsylvania, Respondent, v. Aaron BROWN, Petitioner.\n   </parties><docketnumber id=\"A2\">\n    No. 84 EM 2007.\n   </docketnumber><br><court id=\"b372-19\">\n    Supreme Court of Pennsylvania.\n   </court><br><decisiondate id=\"b372-20\">\n    July 17, 2007.\n   </decisiondate>",
+        "citations": [
+          "929 A.2d 634",
+          "593 Pa. 320"
+        ],
+        "opinions": [
+          {
+            "author_str": "Per Curiam",
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n929 A.2d 634 (2007)\nCOMMONWEALTH of Pennsylvania, Respondent,\nv.\nAaron BROWN, Petitioner.\nNo. 84 EM 2007.\nSupreme Court of Pennsylvania.\nJuly 17, 2007.\n\nORDER\nPER CURIAM.\nAND NOW, this 17th day of July, 2007, the Petition for Leave to File an Allocatur Petition Nunc Pro Tunc is granted. Petitioner is directed to file a petition for allowance of appeal within forty-five (45) days of the date of this order.\n",
+            "ocr": false,
+            "opinion_id": 2278897
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 14556,
+      "row": {
+        "id": 2355782,
+        "judges": null,
+        "date_filed": "2008-04-16",
+        "date_filed_is_approximate": false,
+        "slug": "henderson-bros-inc-v-unemployment-compensation-bd-",
+        "case_name_short": null,
+        "case_name": "HENDERSON BROS. INC. v. Unemployment Compensation Bd. of Review",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "946 A.2d 689"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n946 A.2d 689 (2008)\nHENDERSON BROS. INC.\nv.\nUNEMPLOYMENT COMPENSATION BD. OF REVIEW.\nNo. 537 WAL (2007).\nSupreme Court of Pennsylvania.\nApril 16, 2008.\nDisposition of petition for allowance of appeal. Denied.\n",
+            "ocr": false,
+            "opinion_id": 2355782
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 17487,
+      "row": {
+        "id": 1562806,
+        "judges": null,
+        "date_filed": "2008-11-12",
+        "date_filed_is_approximate": false,
+        "slug": "national-city-bank-v-pennsy",
+        "case_name_short": "PENNSY",
+        "case_name": "National City Bank v. PENNSY",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "960 A.2d 841"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n960 A.2d 841 (2008)\nNATIONAL CITY BANK\nv.\nPENNSY.\nNo. 369 WAL (2008).\nSupreme Court of Pennsylvania.\nNovember 12, 2008.\nDisposition of petition for allowance of appeal. Denied.\n",
+            "ocr": false,
+            "opinion_id": 1562806
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 18214,
+      "row": {
+        "id": 1495483,
+        "judges": "Cappy, Castille, Eakin, Former, Newman, Nigro, Saylor, Zappala",
+        "date_filed": "2003-06-02",
+        "date_filed_is_approximate": false,
+        "slug": "borough-of-ellwood-city-v-ellwood-city-police-department-wage-policy",
+        "case_name_short": null,
+        "case_name": "Borough of Ellwood City v. Ellwood City Police Department Wage & Policy Unit",
+        "case_name_full": "BOROUGH OF ELLWOOD CITY, a Municipal Corporation, Appellee, v. ELLWOOD CITY POLICE DEPARTMENT WAGE AND POLICY UNIT, Appellant",
+        "attorneys": "Sean Thomas Welby, Gary M. Lightman, Harrisburg, for Ellwood City Police Dept. Wage and Policy Unit., Richard D. Miller, Edward Leymarie, Ellwood City, for Borough of Ellwood City, a Municipal Corp.",
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": "Argued Sept. 11, 2002.",
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 12,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<citation id=\"b555-13\">\n    825 A.2d 617\n   </citation><br><parties id=\"b555-14\">\n    BOROUGH OF ELLWOOD CITY, a Municipal Corporation, Appellee, v. ELLWOOD CITY POLICE DEPARTMENT WAGE AND POLICY UNIT, Appellant.\n   </parties><br><court id=\"b555-17\">\n    Supreme Court of Pennsylvania.\n   </court><br><otherdate id=\"b555-18\">\n    Argued Sept. 11, 2002.\n   </otherdate><br><decisiondate id=\"b555-19\">\n    Decided June 2, 2003.\n   </decisiondate><br><attorneys id=\"b556-10\">\n<span citation-index=\"1\" class=\"star-pagination\" label=\"354\"> \n     *354\n     </span>\n    Sean Thomas Welby, Gary M. Lightman, Harrisburg, for Ellwood City Police Dept. Wage and Policy Unit.\n   </attorneys><br><attorneys id=\"b556-11\">\n    Richard D. Miller, Edward Leymarie, Ellwood City, for Borough of Ellwood City, a Municipal Corp.\n   </attorneys><br><judges id=\"b556-12\">\n    Before ZAPPALA, C.J., and CAPPY, CASTILLE, NIGRO, NEWMAN, SAYLOR and EAKIN, JJ.\n   </judges>",
+        "citations": [
+          "825 A.2d 617",
+          "573 Pa. 353"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n825 A.2d 617 (2003)\nBOROUGH OF ELLWOOD CITY, a Municipal Corporation, Appellee,\nv.\nELLWOOD CITY POLICE DEPARTMENT WAGE AND POLICY UNIT, Appellant.\nSupreme Court of Pennsylvania.\nArgued September 11, 2002.\nDecided June 2, 2003.\nSean Thomas Welby, Gary M. Lightman, Harrisburg, for Ellwood City Police Dept. Wage and Policy Unit.\n*618 Richard D. Miller, Edward Leymarie, Ellwood City, for Borough of Ellwood City, a Municipal Corp.\nBefore ZAPPALA, C.J., and CAPPY, CASTILLE, NIGRO, NEWMAN, SAYLOR and EAKIN, JJ.\n\nOPINION\nJustice SAYLOR.\nIn the arena of municipal police pension contributions and funding, we consider an asserted conflict between the terms of a collective bargaining agreement and requirements of the Police Pension Fund and Municipal Pension Plan Funding Standard and Recovery Acts.\nIn January of 1999, the Borough of Ellwood City (the \"Borough\") began withholding, via payroll deduction, contributions to the police pension plan from its employee police officers, at a rate of five and six-tenths percent of each officer's gross monthly wages. Such action was based upon an actuarial valuation report for the plan, prepared pursuant to the Borough's obligations under the Municipal Pension Plan Funding Standard and Recovery Act,[1] also known as Act 205. The report indicated that there was a shortfall of monies available to meet annual obligations in the amounts of approximately $14,000 for 1998 and $28,000 for 1999, and that to meet financial requirements, members must contribute five and six-tenths percent of their salaries for 1999. The report also reflected a prevailing surplus, measured by comparison of the actuarial value of plan assets with actuarially accrued liabilities. Significantly, despite such a surplus, a pension fund may be incapable of meeting present obligations absent an infusion of monies, since Act 205 effectively caps the amount of a surplus that can be utilized to meet financial requirements in any given year at ten percent. See 53 P.S. § 895.302(c).\nThe bargaining unit for Ellwood City's police officers, the Ellwood City Police Department's Wage and Policy Unit (the \"Bargaining Unit\"), filed a grievance pursuant to the statutory provisions relating to collective bargaining by police officers and fire fighters, known as Act 111.[2] The grievance challenged the contributions on the ground that they violated the parties' 1998 collective bargaining agreement (the \"CBA\"), which precludes employee contributions to the police pension fund absent a determination that the fund is actuarially unsound.[3] In this regard, the Bargaining Unit asserted that: the term \"actuarial soundness\" had been equated to the enjoyment *619 of an \"existing negative unfunded actuarial liability\" in a previous grievance arbitration that occurred in 1992; such decision was made part of the CBA via a general incorporation of awards provision;[4] and, accordingly, the prevailing surplus (or negative unfunded actuarial liability) unequivocally established the actuarial soundness of the pension plan. In response, the Borough relied on the provisions of the Police Pension Fund Act (Act 600), see supra note 1, requiring police pension fund members to contribute an amount between five and eight percent of their monthly compensation, prior to contribution of the remainder of needed annual contributions (as determined by an actuary) by the municipality. See 53 P.S. § 772. While Act 600 does authorize reduction or elimination of member contributions, the Borough emphasized the limited conditions under which Act 600 authorizes this to occur, as follows:\n(c) If an actuarial study shows that the condition of the police pension fund of any borough, town, township or regional police department is such that payments into the fund by members may be reduced below the minimum percentages hereinbefore prescribed, or eliminated, and that if such payments are reduced or eliminated contributions by the borough, town, township or regional police department will not be required to keep the fund actuarially sound, the governing body of the borough, town, township or regional police department may, on an annual basis, by ordinance or resolution, reduce or eliminate payments into the fund by members.\n53 P.S. § 772(c). Pursuant to this provision, a term of the CBA requiring Act 600 compliance,[5] the limiting provision of Act 205, see 53 P.S. § 895.302(c), and the prescription of Act 205 that its terms control notwithstanding any agreement or directive to the contrary,[6] the Borough contended that the elimination of employee contributions was statutorily proscribed.\nThe dispute proceeded to arbitration, at which, following a hearing, an award was issued sustaining the grievance. In his decision, the arbitrator adopted the Bargaining Unit's position that the interpretation of actuarial soundness from the 1992 arbitrationfocusing solely upon the predomination of actuarially determined assets over liabilitiescontrolled.[7] In this regard, the arbitrator emphasized that, since the issuance of the 1992 arbitration award, the relevant terms of the CBA had been reaffirmed on multiple occasions via the collective bargaining process. He therefore determined that the members of the Bargaining Unit could not be required *620 to contribute to the pension fund in the circumstances presented.\nThe Borough then filed a petition to vacate the award in the court of common pleas, contending that the arbitrator exceeded his authority, because Act 600 and Act 205 prohibit the elimination of police officer contributions to a pension where Borough contributions are required to maintain actuarial soundness on broader terms than the mere maintenance of assets exceeding liabilities. The common pleas court, however, denied relief on the petition, indicating that the record did not demonstrate that the arbitrator's award directed the Borough to make contributions. See, e.g., Borough of Ellwood City v. Ellwood City Police Dep't Wage and Policy Unit, No. 10904 of 1999, slip op. at 13 (C.P. Lawrence Dec. 21, 2000) (\"Based on the understanding that a pension plan with a surplus of assets over liabilities, resulting in a negative unfunded actuarial liability of more than $60,000.00 would require no contributions for the year, the [c]ourt concludes that the arbitrator's award did not violate Act 600 nor did it mandate any illegal action by the Borough\").\nIn its further appeal to the Commonwealth Court, the Borough maintained its position that the arbitrator exceeded his authority by mandating what was tantamount to an illegal act in eliminating employee contributions to the plan, thereby forcing the municipality to supply the necessary funding. In this regard, the Borough highlighted that the common pleas court's decision gave no account for Act 205's effective proscription against utilization of more than ten percent of surpluses in meeting annual financial requirements of the plan. The Commonwealth Court agreed that the existence of a surplus in the pension fund by itself is insufficient as a basis for reducing or eliminating employee contributions; rather, it found that such action must be grounded upon an actuarial report prepared in accordance with Act 205, which sets forth the minimum funding requirements for municipal pension plans. See Borough of Ellwood City v. Ellwood City Police Dep't Wage and Policy Unit, 786 A.2d 342, 348 (Pa.Cmwlth.2001). In this regard, the Commonwealth Court cited its previous decision in Borough of Doylestown v. Doylestown Borough Police Assoc., 732 A.2d 701, 704 (Pa.Cmwlth.1999) (recognizing that \"[b]y mandating that only Act 205 reports are to be used to determine a [p]lan's financial soundness and its financial requirements, [Section 302 of Act 205, 53 P.S. § 895.302] required that the `actuarial study' used in Act 600 be used to determine if member contributions could be reduced or eliminated.\"). The court also highlighted Act 205's admonition that its provisions control notwithstanding an agreement to the contrary. See Borough of Ellwood City, 786 A.2d at 346-47 (citing 53 P.S. § 895.301(a)). Distinguishing a line of cases addressing the principle that a party cannot object to the legality of a provision to which it voluntarily agreed during the collective bargaining process under Act 111, see, e.g., Fraternal Order of Police v. Hickey, 499 Pa. 194, 452 A.2d 1005 (1982) (plurality opinion); Grottenthaler v. Pennsylvania State Police, 488 Pa. 19, 410 A.2d 806 (1980); Upper Chichester Twp. v. PLRB, 153 Pa.Cmwlth. 446, 621 A.2d 1134 (1993), the Commonwealth Court reasoned that where Act 600 and Act 111 apply, the provisions of the former serve to limit the authority granted under the latter respecting arbitration. See id. at 347-48 (citing Swatara Twp. v. Swatara Twp. Police Dep't, 164 Pa. Cmwlth. 378, 382, 642 A.2d 660, 662 (1994)). The court thus concluded that the arbitrator had exceeded his authority by issuing an award inconsistent with the relevant statutory framework, reversed the *621 common pleas court's order, and vacated the arbitration award. See id.\nThis Court allowed appeal to examine a municipality's statutory obligations in conjunction with a long-standing term of a collective bargaining agreement that has been interpreted through arbitration. Per this Court's prior decisions, our review is in the nature of narrow certiorari, which limits the inquiry to matters implicating the jurisdiction and authority of the arbitrator, the regularity of the proceedings, and the vindication of constitutional rights. See Pennsylvania State Police v. Pennsylvania State Troopers' Ass'n (Betancourt), 540 Pa. 66, 71, 656 A.2d 83, 85 (1995).\nGenerally, Act 111 establishes a right to collectively bargain concerning the terms and conditions of employment, see 43 P.S. § 217.1, and is designed to alleviate labor strife in occupations involving critical government functions by, inter alia, providing an expedited means of dispute resolution, with limited judicial intervention. See 43 P.S. § 217.7(a). As the Commonwealth Court observed, in a series of decisions, this Court has found this and similar policies associated with other labor law legislation to be of sufficient magnitude that they may, in certain circumstances, vest authority in judicial and quasi-judicial tribunals to enforce a collective bargaining agreement containing a provision that is not fully in accordance with other requirements of the law.\nFor example, in Pittsburgh Joint Collective Bargaining Comm. v. City of Pittsburgh, 481 Pa. 66, 391 A.2d 1318 (1978), the Court held that a city was precluded from asserting that a grievance arbitration procedure to which it had agreed in a collective bargaining agreement conflicted with various provisions of the Second Class City Civil Service Act, 53 P.S. §§ 23431-23457, and the Public Employee Relations Act of 1970, 43 P.S. §§ 1101.101-1101.2301, despite a provision of the latter enactment proscribing effectuation or implementation by the parties of a conflicting agreement. See 43 P.S. § 1101.703 (\"The parties to the collective bargaining process shall not effect or implement a provision in a collective bargaining agreement if the implementation of that provision would be in violation of, or inconsistent with, or in conflict with any statute or statutes enacted by the General Assembly of the Commonwealth of Pennsylvania or the provisions of municipal home rule charters.\"). Stressing the importance of grievance arbitration in facilitating the development and maintenance of harmonious relationships between the public employer and employee, the Court explained:\nTo permit an employer to enter into agreements and include terms such as grievance arbitration which raise the expectations of those concerned, and then to subsequently refuse to abide by those provisions on the basis of its lack of capacity would invite discord and distrust and create an atmosphere wherein a harmonious relationship would virtually be impossible to maintain.\nGood faith bargaining would require that questions as to the legality of the proposed terms of a collective bargaining agreement should be resolved by the parties to the agreement at the bargaining stage. For instance, the section 703 question should have been raised by the [public employer] during the ... contract negotiations.\nPittsburgh Joint Collective Bargaining Comm., 481 Pa. at 74-75, 391 A.2d at 1322-23.\nAgain in Hickey, 499 Pa. at 194, 452 A.2d at 1005, an Act 111 case in which the Court considered whether a provision of a collective bargaining agreement was within the legitimate subject-matter scope of bargaining, the plurality drew a critical distinction *622 between circumstances in which an arbitration panel attempts to mandate a governing body, over its objection, to carry out an illegal act, and situations in which the public employer \"attempts to belatedly avoid compliance with a term of a bargaining agreement it voluntarily agreed to during the bargaining process and thereby secure an unfair advantage in the bargaining process.\" Id. at 199, 452 A.2d at 1008.\nIn Grottenthaler, 488 Pa. at 19, 410 A.2d at 806, also an Act 111 case, the Court extended the reasoning of Pittsburgh Joint Collective Bargaining Comm. to a substantially different context. Grottenthaler determined that certain pension-related provisions of a collective bargaining agreement would be enforced despite countervailing terms of the State Employees' Retirement Code, 71 Pa.C.S. §§ 5101-5956, and its requirement that \"[p]ension rights of State employees shall be determined solely by this part or any amendment thereto, and no collective bargaining agreement ... shall be construed to change any of the provisions herein.\" See id at 22, 410 A.2d at 807 (quoting 71 Pa.C.S. § 5955). While recognizing that the purport of this section was clearly to remove pension rights as a bargainable item under the provisions of Act 111, the Court nonetheless framed the question raised in the case as \"whether the Commonwealth is to be permitted to ignore its own mandate to secure an advantage in the bargaining process and then escape liability thereunder by asserting the illegality of the provision.\" Id. at 25, 410 A.2d at 809. Taking into account the policies underlying both the State Employees' Retirement Code and Act 111, see id. at 25, 410 A.2d at 809 (\"We are well aware of the State's interest in the actuarial soundness of the retirement system provided for its employees, but we also recognize that the integrity of the bargaining process in the public sector is of equal importance.\"), the Court invoked the reasoning of Pittsburgh Joint Collective Bargaining Comm., finding this to be particularly appropriate in the instance in which the Commonwealth was itself the public employer. See Grottenthaler, 488 Pa. at 26, 410 A.2d at 809 (\"To permit the Commonwealth to ignore its mandate with impunity in two successive bargaining contracts following the promulgation of Section 5955, and then to assert it as a bar to a claim for recovery under the bargaining agreement would be manifestly unfair[;][t]he demoralizing effect of such a result on the relationship between employer and employee in the public sector is readily apparent.\" (footnote omitted)).\nIn none of these decisions, however, was Act 205's directive that its provisions apply notwithstanding contrary provisions of law or agreement, see 53 P.S. § 895.301(a), at issue. This prescription, in contrast to those at issue in Pittsburgh Joint Collective Bargaining Comm. and Hickey, does not merely prohibit the making of a contrary agreement or one that exceeds the permissible subject-matter scope of bargaining.[8] Rather, Act 205 requires that, in the event of an actual conflict between the statute and a collective bargaining agreement, the statute must be given effect; indeed, relief in mandamus is expressly authorized to this end. See 53 P.S. § 895.306(b). While Grottenthaler concerned a more closely analogous statutory provision,[9] the decision is also distinguishable *623 since, as noted, the Court's reasoning emphasized the identity of the employer as the Commonwealth in and of itself, as opposed to a political subdivision such as the Borough. See Grottenthaler, 488 Pa. at 26, 410 A.2d at 809. Therefore, we do not deem it controlling in the circumstances presently before us.[10]\nThus, although we are cognizant of the emphasis given to the sanctity of the bargaining process in the Pittsburgh Joint Collective Bargaining Comm. line of cases, in this instance, we conclude that the Legislature's express decision to subordinate such policy to the consistent application of minimum funding standards for municipal pension plans manifested in Act 205, directed to the pernicious consequences of under-funding, should be respected.[11]See generally Conner v. Quality Coach, Inc., 561 Pa. 397, 417, 750 A.2d 823, 834 (2000) (observing that the weighing of competing social policy concerns is a task best suited to the legislature).\nCertainly, aspects of pension plans and their funding remain cognizable within the collective bargaining scheme under Act 111, see 43 P.S. § 217.1, as expressly recognized in Act 205. See, e.g., 53 P.S. § 895.607(c)(6) (outlining remedies for distressed pension plans and noting that member contributions are within the scope of collective bargaining). See generally Butler, 780 A.2d at 855 (reviewing the statutory structure and discussing Act 205 in connection with the bargaining of pension issues). However, within the statutory framework, the General Assembly has bounded bargaining over and modification of pension benefits by a requirement of *624 actuarial soundness as contemplated by Act 205 and its interrelationship with Act 600 in police pension funding cases, see, e.g., 53 P.S. § 895.202 (setting forth the contents of actuarial reports); 53 P.S. § 895.302 (denoting minimum funding standards); 53 P.S. § 772(c) (incorporating the concept of actuarial soundness in delineating circumstances in which member contributions may be eliminated), and has constrained the power of the judiciary accordingly.\nThus, whatever potential there may be for rescission of a collective bargaining agreement on appropriate challenge (thereby returning the parties to the bargaining table) where a political subdivision secures material advantage by way of promises that the Legislature has rendered incapable of enforcement,[12] judicial and quasi-judicial tribunals lack authority to require fulfillment of such promises in the first instance. In this case, therefore, the Commonwealth Court was correct in determining that the arbitrator's decision defining actuarial soundness in a manner inconsistent with the relevant statutory funding requirements exceeded his powers, and the resulting award was properly vacated.\nThe order of the Commonwealth Court is affirmed.\nFormer Chief Justice ZAPPALA did not participate in the decision of this case.\nJustice NIGRO files a concurring opinion.\nJustice NEWMAN files a concurring opinion.\nJustice CASTILLE files a concurring and dissenting opinion.\nJustice NIGRO, concurring.\nAlthough I agree with the majority's ultimate conclusion that Act 205 requires its provisions to apply notwithstanding an agreement to the contrary, and thus compels the conclusion that the arbitrator exceeded his authority in this case, I disagree with its treatment of Grottenthaler v. Pennsylvania State Police, 488 Pa. 19, 410 A.2d 806 (1980). Specifically, I cannot concur with the majority's reasoning that Grottenthaler is distinguishable from this case because the Grottenthaler court \"emphasized the identity of the employer as the Commonwealth in and of itself, as opposed to a political subdivision such as the Borough.\" Slip op. at 10-11. In my view, this does not constitute a principled reason for distinguishing Grottenthaler because that case did not hinge on such a distinction, as evidenced by the fact that the Grottenthaler court specifically relied on a collective bargaining case involving a municipal employer to support its conclusion that the Commonwealth was barred from asserting the applicable statutory prohibition. See Grottenthaler, 410 A.2d at 809 (citing Pittsburgh Joint Collective Bargaining Comm. v. City of Pittsburgh, 481 Pa. 66, 391 A.2d 1318 (1978)). Absent a logical explanation for holding Commonwealth employers to a different collective bargaining standard than municipal employers, I do not believe that the majority's holding can be reconciled with Grottenthaler. Instead, I would overrule Grottenthaler to achieve the result commanded by Act 205.\nJustice NEWMAN, concurring.\nI join the Opinion of the Majority, which correctly determined that the finding contained *625 in the Act 205 Actuarial Report, that the Pension Fund was unsound, required the Bargaining Unit members to contribute to the Fund, despite the existence of an arbitrator's definition of actuarial soundness as being one in which Fund assets exceed Fund liabilities. However, I write separately to note that (1) there is no provision in either Act 600 or Act 205 that supports this definition, and (2) the CBA explicitly recognizes that member contributions are required when an actuary determines that the Fund is unsound.\nFirst, neither Act 600 nor Act 205 permits the elimination of employee contributions to a municipal pension plan merely because the Fund's assets exceed its liabilities. Instead, both Acts require that an independent actuary in an Act 205 Actuarial Report make the determination of actuarial soundness. 53 P.S. § 895.201(a), (b); 55 P.S. § 772(c). At the time of the 1992 McDaniel Award, we cannot tell whether the Pension Fund was actuarially sound; we only are aware of the fact that the arbitrator was called upon to make that determination.\nThe Bargaining Unit asserts that the definition of actuarial soundness is set forth in the 1992 McDaniel Arbitral Award and controls any determination concerning whether member contributions are required. It further states that its position is supported by the fact that the 1993, 1995, and 1997 successor agreements made no change to the definition and these agreements limit the meaning of the term. However, this issue was previously challenged by the Bargaining Unit and resolved against it. Indeed, in 1995, the Borough implemented an eight percent pension contribution because an Act 205 Actuarial Report called the actuarial soundness of the Pension Fund into question. The Bargaining Unit challenged the authority of the Borough to implement this contribution before the Pennsylvania Labor Relations Board (PLRB). It claimed that the interpretation of the McDaniel Award controlled and that the Borough had not bargained the 1995 agreement in good faith because it had included a contribution requirement. The PLRB dismissed the complaint, rejecting the arguments of the Bargaining Unit. The Bargaining Unit failed to appeal this determination.\nSecond, pursuant to Section 6 of Act 600,[1] only the Borough has the authority to eliminate or reduce member contributions based on the soundness of the Fund. 55 P.S. § 772(c). That authority is discretionary. Section 6 provides that \"the borough may, on an annual basis ... reduce or eliminate payments into the fund by its members.\" 53 P.S. § 772(c) (emphasis added). The exercise of the Borough's discretion to eliminate or reduce member contributions is governed primarily by the Act 205 Actuarial Report. When the actuary determines that the Pension Fund is actuarially unsound, and so states in the Act 205 Actuarial Report, the Borough has no discretion to either reduce or eliminate member contributions. It is only when the Pension Fund is actuarially sound that the *626 Borough may exercise its discretion to alter those contributions.\nIn the instant matter, the CBA explicitly recognizes that member contributions must be made when an actuary determines that the Fund is unsound. Article V, Section G(3) of the CBA provides:\n(3) In the event it is actuarially determined that the amount of annual contribution is not keeping the Plan actuarially sound, then such contribution shall be increased at a percentage necessary to make the Pension fund again actuarially sound.\n(Emphasis added). Because the actuary in this case determined that the Fund was unsound and mandated that member contributions be required in the amount of 5.6%, the Bargaining Unit members must contribute. The language of the CBA itself requires an actuarial determination, not a Borough or arbitral determination, that member contributions are required. Thus, I do not believe that the McDaniel Award is applicable, but is reserved for those instances in which the actuary has not declared the Pension Fund unsound and the Borough has not reduced the contributions required. That is not the factual predicate before us; here, it was \"actuarially determined\" that contributions were required.\nFinally, I observe that the basis for our decision today is that the imposition of a 5.6% Pension Fund contribution is consistent with Act 205, Act 600, and the CBA. There is no term of employment set forth in the CBA in this case that was agreed to by the Borough to obtain a favorable bargaining position. The Bargaining Unit has always been required to accept the imposition of member contributions to the Pension Fund when it is \"actuarially determined\" that such contributions are required.\nJustice CASTILLE, concurring and dissenting.\nI agree with the Majority Opinion that Act 205 precludes this Court from affirming the arbitration award because, in the realm in which the Act applies, the Act clearly controls over any contrary provision in a collective bargaining agreement (CBA). I respectfully dissent, however, from the Court's mandate, which simply affirms the Commonwealth Court's reversal of the trial court and vacatur of the arbitration award. In my view, there is a middle ground, adverted to by the Majority, Slip op. at 12, which should inform our mandate. I would hold that, where a party to a CBA invokes a pre-existing statute to avoid the consequences of a provision included in the CBA, and where the issue involves a core employment term such as wages, hours, pensions, or conditions of employment, then the CBA should be rescinded and the bargaining status quo ante restored. Accordingly, I would mold our mandate to direct the parties to return to the bargaining table to effect a knowing agreement that accounts for the commands and consequences of Act 205.\nI come to this view because, while I agree that a grievance arbitration award that conflicts with Act 205 cannot be upheld, I also believe that the salutary principles animating cases such as Grottenthaler v. Pennsylvania State Police, 488 Pa. 19, 410 A.2d 806 (1980) and Pittsburgh Joint Collective Bargaining Comm. v. City of Pittsburgh, 481 Pa. 66, 391 A.2d 1318 (1978) should be applicable to this Court's analysis of the consequences arising from a conflict between the Act and a CBA. I believe it is fundamentally unfair to permit an employer, or a bargaining unit for that matter, to gain a retroactive advantage when an existing statute is later found by the courts to operate to alter a fundamental term of a labor agreement reached *627 after arms' length bargaining. As this Court noted in Pittsburgh Joint Collective Bargaining Comm., and as the Majority echoes here:\nWe have already stressed the importance of grievance arbitration in facilitating the development and maintenance of harmonious relationships between the public employer and employee. It is even more supportive of a favorable employment climate where this dispute resolution mechanism arises from the good faith bargaining of the parties rather than being required by statute. To permit an employer to enter into agreements and include terms such as grievance arbitration which raise the expectations of those concerned, and then to subsequently refuse to abide by those provisions on the basis of its lack of capacity would invite discord and distrust and create an atmosphere wherein a harmonious relationship would virtually be impossible to maintain.\nGood faith bargaining would require that questions as to the legality of the proposed terms of a collective bargaining agreement should be resolved by the parties to the agreement at the bargaining stage.\n391 A.2d at 1322-23. Accord Grottenthaler, 410 A.2d at 809 (\"To permit the Commonwealth to ignore its mandate with impunity in two successive bargaining contracts following the promulgation of [the statute at issue], and then to assert it as a bar to a claim for recovery under the bargaining agreement would be manifestly unfair. The demoralizing effect of such a result on the relationship between employer and employee in the public sector is readily apparent.\") (footnote omitted). These observations are as instructive today as they were when uttered by this Court a quarter of a century ago, and I believe they should still play a role in our analysis.\nThis is not to say that I would embrace the other extreme in Act 205 cases and hold that the employer here should be deemed estopped from invoking the Act as a basis to avoid the consequences of a bargained-for term, as occurred in the Pittsburgh Joint Collective Bargaining Comm. case, or that the employer should be deemed to have waived the statutory argument, as occurred in the Grottenthaler case. In addition to ignoring the very plain statutory command here, such a course would ignore the fact that not all of these disputes involve circumstances where a party could be fairly accused of overreaching or bad faith. It may well be that the parties did not perceive, or did not fully perceive, the complication which arose; or the area in issue was unsettled; or the parties had conflicting but reasonable interpretations of their bargaining authority over a particular question. Indeed, in this very case, the employer has forwarded a cogent argument based upon the plain language of Act 205, while the bargaining unit has forwarded a logical argument based upon the essentially equitable analysis that controlled cases like Pittsburgh Joint Collective Bargaining Comm. and Grottenthaler. Thus, I do not view the issue as a simple matter of identifying good and bad faith in the bargaining process: our task may also involve an obligation to protect the parties from the consequences of a material, apparent mutual mistake in the bargaining process concerning a core employment matter.\nAccordingly, although I would not estop employer from invoking Act 205, neither would I suggest that employer is entitled to have Act 205 essentially amend to the employer's advantage an otherwise controlling CBA. Instead of permitting the employer to unilaterally reap the unintended *628 benefit of a perhaps unforeseen and certainly unaccounted-for circumstance in a situation such as this, I would return the parties to the bargaining table to negotiate a new CBA which may account for that circumstance. Thus, although I concur in most of the Majority's analysis, including its conclusion that Act 205 precludes approval of the arbitration award as entered, I would remand the matter to permit the parties to return to the bargaining table.\nNOTES\n[1]  Act of Dec. 18, 1984, P.L. 1005, No. 205, §§ 101-803 (as amended 53 P.S. §§ 895.101-895.803) (\"Act 205\"). Pursuant to Act 205, municipalities maintaining pension funds must have actuarial valuations performed at least biennially. See 53 P.S. § 895.302(b). Although municipal police pensions are, in the first instance, administered pursuant to the Police Pension Fund Act, Act of May 29, 1956, P.L. (1955) 1804, §§ 1-12 (as amended 53 P.S. §§ 767-778) (\"Act 600\"), the General Assembly has directed that the terms of Act 205 control over any other provision of law or pension plan agreement. See 53 P.S. § 895.301.\n[2]  Act of June 24, 1968, P.L. 237, No. 111, §§ 1-10 (as amended 43 P.S. §§ 217.1-217.10) (\"Act 111\").\n[3]  Section G of the CBA, entitled \"Employee Contributions,\" provides, inter alia:\n\n1. Employees of the Ellwood City Police department shall not contribute any wages to the pension fund.\n* * *\n3. In the event that it is actuarially determined that the amount of annual contribution is not keeping the Plan actuarially sound, then such contribution shall be increased at a percentage necessary to make the Pension fund again actuarially sound.\nCBA, Art. V ¶ (G)(1), (3).\n[4]  See CBA amend. no. 1 (\"All prior arbitration awards and agreements are hereinafter incorporated by reference and the provisions of the awards and agreements shall be applicable, except as modified herein or by mutual written agreements between the parties.\").\n[5]  See CBA, Art. V ¶ (A)(1) (\"The Borough of Ellwood City Police Pension Fund shall comply with Act 600, Police Pension Act, and Borough Ordinances # 1264, enacted January 10, 1957, and # 1349, enacted November 6, 1958, attached hereto and incorporated herein, with subsequent amendments.\").\n[6]  See 53 P.S. § 895.301(a) (\"Notwithstanding any provision of law, municipal ordinance, municipal resolution, municipal charter, pension plan agreement or pension plan contract to the contrary, the applicable provisions of this chapter shall apply to any municipality which has established and maintains, directly or indirectly, a pension plan for the benefit of its employees, irrespective of the manner in which the pension plan is administered, and to the respective pension plan.\").\n[7]  It is not clear from the 1992 decision whether the Borough had presented an actuarial report indicating the necessity of member contributions.\n[8]  Like Hickey, the Commonwealth Court's decision in Upper Chichester Twp., 153 Pa. Cmwlth. at 446, 621 A.2d at 1134, focused on the question of the scope of arbitrability, and is distinguishable in that Act 205's proscription against enforcement of agreements contrary to its terms does not appear to have been invoked.\n[9]  Compare 71 Pa.C.S. § 5955 (\"[P]ension rights of State employees shall be determined solely by this part or any amendment thereto, and no collective bargaining agreement ... between the Commonwealth and its employees... shall be construed to change [the State Retirement Code's] provisions ....\"), with 53 P.S. § 895.301(a) (\"Notwithstanding any ... pension plan agreement or pension plan contract to the contrary, the applicable provisions of this chapter shall apply....\").\n[10]  Whether Grottenthaler should retain continuing vitality on its facts is beyond the scope of this opinion, particularly as no party to this appeal has advocated its overruling. Certainly, the Commonwealth must remain wary of the appearance of bad-faith bargaining associated with reneging on its labor agreements in reliance on pre-existing statutory pronouncements. Nevertheless, we also recognize the emphasis that the Legislature has placed on, and the measures it has taken to implement, fiscal soundness of police pension plans in the Commonwealth. See infra note 11 and accompanying text.\n[11]  See 53 P.S. § 895.306(a) (declaring the legislative finding that the failure to adhere to Act 205 requirements \"threatens serious injury to the affected municipal pension plan, to the entire system of public employee pension plans in the Commonwealth and to the Commonwealth itself.\"); Pennsylvania State Lodge of Fraternal Order of Police v. Hafer, 525 Pa. 265, 270, 579 A.2d 1295, 1298 (1990); Legis. J.House at 2361 (Nov. 27, 1984) (noting that the Public Employee Retirement Study Commission found that a significant number of municipal pensions were under-funded and that such liability threatened the well-being of the funds, the payments to the pensioners, and the fiscal health of the municipalities); City of Butler v. City of Butler Police Dep't, Fraternal Order of Police, Lodge No. 32, 780 A.2d 847, 854 (Pa.Cmwlth.) (explaining that the purpose of Act 205 was to \"strengthen municipal pension plans `by requiring actuarially-based current funding standards'\" (citation omitted)), appeal denied, 568 Pa. 620, 792 A.2d 1255 (2001); Doylestown, 732 A.2d at 704 (\"By mandating that only Act 205 reports are to be used to determine a Plan's financial soundness and its financial requirements, this provision required that the `actuarial study' used in Act 600 be used to determine if member contributions could be reduced or eliminated.\").\n\nWhile Act 205 does extend a certain amount of latitude to municipalities by allowing benefit plan modification, it mandates that such change be preceded by a cost estimate describing the impact upon the plan. See 53 P.S. § 895.305(a), (e).\n[12]  The difficulty with the position advocated by Mr. Justice Castille in his concurring and dissenting opinion is that it would require the Court to sua sponte frame and answer an entirely new claim based upon contract rescission. Indeed, the parties have not requested such relief and may not desire it.\n[1]  Section 6 of Act 600 provides, in pertinent part:\n\n(c) If an actuarial study shows that the condition of the police pension fund of any borough ... police department is such that the payments into the fund by members may be reduced below the minimum percentages hereinbefore prescribed, or eliminated, and that if such payments are reduced or eliminated contributions by the borough ... will not be required to keep the fund actuarially sound[,] the governing body of the borough ... may, on an annual basis, by ordinance or resolution reduce or eliminate payments into the fund by its members.\n55 P.S. § 772(c).\n\n",
+            "ocr": false,
+            "opinion_id": 1495483
+          },
+          {
+            "author_str": "Nigro",
+            "per_curiam": false,
+            "type": "030concurrence",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nJustice NIGRO,\nconcurring.\nAlthough I agree with the majority’s ultimate conclusion that Act 205 requires its provisions to apply notwithstanding an agreement to the contrary, and thus compels the conclusion that the arbitrator exceeded his authority in this case, I disagree with its treatment of Grottenthaler v. Pennsylvania State Police, 488 Pa. 19, 410 A.2d 806 (1980). Specifically, I cannot concur with the majority’s reasoning that Grottenthaler is distinguishable from this case because the Grottenthaler court “emphasized the identity of the employer as the Commonwealth in and of itself, as opposed to a political subdivision such as the Borough.” Slip op. at 10-11. In my view, this does not constitute a principled reason for distinguishing Grottenthaler because that case did not hinge on such a distinction, as evidenced by the fact that the Grottenthaler court specifically relied on a collective bargaining case involving a municipal employer to support its conclusion that the Commonwealth was barred from asserting the applicable statutory prohibition. See Grottenthaler, 410 A.2d at 809 (citing *366Pittsburgh Joint Collective Bargaining Comm. v. City of Pittsburgh, 481 Pa. 66, 391 A.2d 1318 (1978)). Absent a logical explanation for holding Commonwealth employers to a different collective bargaining standard than municipal employers, I do not believe that the majority’s holding can be reconciled with Grottenthaler. Instead, I would overrule Grottenthaler to achieve the result commanded by Act 205.\n",
+            "ocr": false,
+            "opinion_id": 9640440
+          },
+          {
+            "author_str": "Newman",
+            "per_curiam": false,
+            "type": "030concurrence",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nJustice NEWMAN,\nconcurring.\nI join the Opinion of the Majority, which correctly determined that the finding contained in the Act 205 Actuarial Report, that the Pension Fund was unsound, required the Bargaining Unit members to contribute to the Fund, despite the existence of an arbitrator’s definition of actuarial soundness as being one in which Fund assets exceed Fund liabilities. However, I write separately to note that (1) there is no provision in either Act 600 or Act 205 that supports this definition, and (2) the CBA explicitly recognizes that member contributions are required when an actuary determines that the Fund is unsound.\nFirst, neither Act 600 nor Act 205 permits the elimination of employee contributions to a municipal pension plan merely because the Fund’s assets exceed its liabilities. Instead, both Acts require that an independent actuary in an Act 205 Actuarial Report make the determination of actuarial soundness. 53 P.S. § 895.201(a), (b); 55 P.S. § 772(c). At the time of the 1992 McDaniel Award, we cannot tell whether the Pension Fund was actuarially sound; we only are aware of the fact that the arbitrator was called upon to make that determination.\nThe Bargaining Unit asserts that the definition of actuarial soundness is set forth in the 1992 McDaniel Arbitral Award and controls any determination concerning whether member contributions are required. It further states that its position is supported by the fact that the 1993, 1995, and 1997 successor agreements made no change to the definition and these agreements limit the meaning of the term. However, this issue was previously challenged by the Bargaining Unit and *367resolved against it. Indeed, in 1995, the Borough implemented an eight percent pension contribution because an Act 205 Actuarial Report called the actuarial soundness of the Pension Fund into question. The Bargaining Unit challenged the authority of the Borough to implement this contribution before the Pennsylvania Labor Relations Board (PLRB). It claimed that the interpretation of the McDaniel Award controlled and that the Borough had not bargained the 1995 agreement in good faith because it had included a contribution requirement. The PLRB dismissed the complaint, rejecting the arguments of the Bargaining Unit. The Bargaining Unit failed to appeal this determination.\nSecond, pursuant to Section 6 of Act 600,1 only the Borough has the authority to eliminate or reduce member contributions based on the soundness of the Fund. 55 P.S. § 772(c). That authority is discretionary. Section 6 provides that “the borough may, on an annual basis ... reduce or eliminate payments into the fund by its members.” 53 P.S. § 772(c) (emphasis added). The exercise of the Borough’s discretion to eliminate or reduce member contributions is governed primarily by the Act 205 Actuarial Report. When the actuary determines that the Pension Fund is actuarially unsound, and so states in the Act 205 Actuarial Report, the Borough has no discretion to either reduce or eliminate member contributions. It is only when the Pension Fund is actuarially sound that the Borough may exercise its discretion to alter those contributions.\nIn the instant matter, the CBA explicitly recognizes that member contributions must be made when an actuary deter*368mines that the Fund is unsound. Article V, Section G(3) of the CBA provides:\n(3) In the event it is actuarially determined that the amount of annual contribution is not keeping the Plan actuarially sound, then such contribution shall be increased at a percentage necessary to make the Pension fund again actuarially sound.\n(Emphasis added). Because the actuary in this case determined that the Fund was unsound and mandated that member contributions be required in the amount of 5.6%, the Bargaining Unit members must contribute. The language of the CBA itself requires an actuarial determination, not a Borough or arbitral determination, that member contributions are required. Thus, I do not believe that the McDaniel Award is applicable, but is reserved for those instances in which the actuary has not declared the Pension Fund unsound and the Borough has not reduced the contributions required. That is not the factual predicate before us; here, it was “actuarially determined” that contributions were required.\nFinally, I observe that the basis for our decision today is that the imposition of a 5.6% Pension Fund contribution is consistent with Act 205, Act 600, and the CBA. There is no term of employment set forth in the CBA in this case that was agreed to by the Borough to obtain a favorable bargaining position. The Bargaining Unit has always been required to accept the imposition of member contributions to the Pension Fund when it is “actuarially determined” that such contribu-' tions are required.\n\n. Section 6 of Act 600 provides, in pertinent part:\n(c) If an actuarial study shows that the condition of the police pension fund of any borough ... police department is such that the payments into the fund by members may be reduced below the minimum percentages hereinbefore prescribed, or eliminated, and that if such payments are reduced or eliminated contributions by the borough .. . will not be required to keep the fund actuarially sound[,] the governing body of the borough ... may, on an annual basis, by ordinance or resolution reduce or eliminate payments into the fund by its members.\n55 P.S. § 772(c).\n\n",
+            "ocr": false,
+            "opinion_id": 9640441
+          },
+          {
+            "author_str": "Castille",
+            "per_curiam": false,
+            "type": "035concurrenceinpart",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nJustice CASTILLE,\nconcurring and dissenting.\nI agree with the Majority Opinion that Act 205 precludes this Court from affirming the arbitration award because, in the realm in which the Act applies, the Act clearly controls over any contrary provision in a collective bargaining agreement (CBA). I respectfully dissent, however, from the Court’s mandate, which simply affirms the Commonwealth Court’s reversal of the trial court and vacatur of the arbitration award. In my view, there is a middle ground, adverted to *369by the Majority, Slip op. at 12, which should inform our mandate. I would hold that, where a party to a CBA invokes a pre-existing statute to avoid the consequences of a provision included in the CBA, and where the issue involves a core employment term such as wages, hours, pensions, or conditions of employment, then the CBA should be rescinded and the bargaining status quo ante restored. Accordingly, I would mold our mandate to direct the parties to return to the bargaining table to effect a knowing agreement that accounts for the commands and consequences of Act 205.\nI come to this view because, while I agree that a grievance arbitration award that conflicts with Act 205 cannot be upheld, I also believe that the salutary principles animating cases such as Grottenthaler v. Pennsylvania State Police, 488 Pa. 19, 410 A.2d 806 (1980) and Pittsburgh Joint Collective Bargaining Comm. v. City of Pittsburgh, 481 Pa. 66, 391 A.2d 1318 (1978) should be applicable to this Court’s analysis of the consequences arising from a conflict between the Act and a CBA. I believe it is fundamentally unfair to permit an employer, or a bargaining unit for that matter, to gain a retroactive advantage when an existing statute is later found by the courts to operate to alter a fundamental term of a labor agreement reached after arms’ length bargaining. As this Court noted in Pittsburgh Joint Collective Bargaining Comm., and as the Majority echoes here:\nWe have already stressed the importance of grievance arbitration in facilitating the development and maintenance of harmonious relationships between the public employer and employee. It is even more supportive of a favorable employment climate where this dispute resolution mechanism arises from the good faith bargaining of the parties rather than being required by statute. To permit an employer to enter into agreements and include terms such as grievance arbitration which raise the expectations of those concerned, and then to subsequently refuse to abide by those provisions on the basis of its lack of capacity would invite discord and distrust and create an atmosphere where*370in a harmonious relationship would virtually be impossible to maintain.\nGood faith bargaining would require that questions as to the legality of the proposed terms of a collective bargaining agreement should be resolved by the parties to the agreement at the bargaining stage.\n391 A.2d at 1322-23. Accord Grottenthaler, 410 A.2d at 809 (“To permit the Commonwealth to ignore its mandate with impunity in two successive bargaining contracts following the promulgation of [the statute at issue], and then to assert it as a bar to a claim for recovery under the bargaining agreement would be manifestly unfair. The demoralizing effect of such a result on the relationship between employer and employee in the public sector is readily apparent.”) (footnote omitted). These observations are as instructive today as they were when uttered by this Court a quarter of a century ago, and I believe they should still play a role in our analysis.\nThis is not to say that I would embrace the other extreme in Act 205 cases and hold that the employer here should be deemed estopped from invoking the Act as a basis to avoid the consequences of a bargained-for term, as occurred in the Pittsburgh Joint Collective Bargaining Comm, case, or that the employer should be deemed to have waived the statutory argument, as occurred in the Grottenthaler case. In addition to ignoring the very plain statutory command here, such a course would ignore the fact that not all of these disputes involve circumstances where a party could be fairly accused of overreaching or bad faith. It may well be that the parties did not perceive, or did not fully perceive, the complication which arose; or the area in issue was unsettled; or the parties had conflicting but reasonable interpretations of their bargaining authority over a particular question. Indeed, in this very case, the employer has forwarded a cogent argument based upon the plain language of Act 205, while the bargaining unit has forwarded a logical argument based upon the essentially equitable analysis that controlled cases like Pittsburgh Joint Collective Bargaining Comm, and Grottenthaler. Thus, I do not view the issue as a simple matter of identifying good and *371bad faith in the bargaining process: our task may also involve an obligation to protect the parties from the consequences of a material, apparent mutual mistake in the bargaining process concerning a core employment matter.\nAccordingly, although I would not estop employer from invoking Act 205, neither would I suggest that employer is entitled to have Act 205 essentially amend to the employer’s advantage an otherwise controlling CBA. Instead of permitting the employer to unilaterally reap the unintended benefit of a perhaps unforeseen and certainly unaccounted-for circumstance in a situation such as this, I would return the parties to the bargaining table to negotiate a new CBA which may account for that circumstance. Thus, although I concur in most of the Majority’s analysis, including its conclusion that Act 205 precludes approval of the arbitration award as entered, I would remand the matter to permit the parties to return to the bargaining table.\n",
+            "ocr": false,
+            "opinion_id": 9640442
+          },
+          {
+            "author_str": "Saylor",
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n\n*355\nOPINION\n\nJustice SAYLOR.\nIn the arena of municipal police pension contributions and funding, we consider an asserted conflict between the terms of a collective bargaining agreement and requirements of the Police Pension Fund and Municipal Pension Plan Funding Standard and Recovery Acts.\nIn January of 1999, the Borough of Ellwood City (the “Borough”) began withholding, via payroll deduction, contributions to the police pension plan from its employee police officers, at a rate of five and six-tenths percent of each officer’s gross monthly wages. Such action was based upon an actuarial valuation report for the plan, prepared pursuant to the Borough’s obligations under the Municipal Pension Plan Funding Standard and Recovery Act,1 also known as Act 205. The report indicated that there was a shortfall of monies available to meet annual obligations in the amounts of approximately $14,000 for 1998 and $28,000 for 1999, and that to meet financial requirements, members must contribute five and six-tenths percent of their salaries for 1999. The report also reflected a prevailing surplus, measured by comparison of the actuarial value of plan assets with actuarially accrued liabilities. Significantly, despite such a surplus, a pension fund may be incapable of meeting present obligations absent an infusion of monies, since Act 205 effectively caps the amount of a surplus that can be utilized to meet financial requirements in any given year at ten percent. See 53 P.S. § 895.302(c).\nThe bargaining unit for Ellwood City’s police officers, the Ellwood City Police Department’s Wage and Policy Unit (the *356“Bargaining Unit”), filed a grievance pursuant to the statutory-provisions relating to collective bargaining by police officers and fire fighters, known as Act 111.2 The grievance challenged the contributions on the ground that they violated the parties’ 1998 collective bargaining agreement (the “CBA”), which precludes employee contributions to the police pension fund absent a determination that the fund is aetuarially unsound.3 In this regard, the Bargaining Unit asserted that: the term “actuarial soundness” had been equated to the enjoyment of an “existing negative unfunded actuarial liability” in a previous grievance arbitration that occurred in 1992; such decision was made part of the CBA via a general incorporation of awards provision;4 and, accordingly, the prevailing surplus (or negative unfunded actuarial liability) unequivocally established the actuarial soundness of the pension plan. In response, the Borough relied on the provisions of the Police Pension Fund Act (Act 600), see supra note 1, requiring police pension fund members to contribute an amount between five and eight percent of their monthly compensation, prior to contribution of the remainder of needed annual contributions (as determined by an actuary) by the municipality. See 58 P.S. § 772. While Act 600 does authorize reduction or elimination of member contributions, the Borough emphasized the limited conditions under which Act 600 authorizes this to occur, as follows:\n*357(c) If an actuarial study shows that the condition of the police pension fund of any borough, town, township or regional police department is such that payments into the fund by members may be reduced below the minimum percentages hereinbefore prescribed, or eliminated, and that if such payments are reduced or eliminated contributions by the borough, town, township or regional police department will not be required to keep the fund aetuarially sound, the governing body of the borough, town, township or regional police department may, on an annual basis, by ordinance or resolution, reduce or eliminate payments into the fund by members.\n53 P.S. § 772(c). Pursuant to this provision, a term of the CBA requiring Act 600 compliance,5 the limiting provision of Act 205, see 53 P.S. § 895.302(c), and the prescription of Act 205 that its terms control notwithstanding any agreement or directive to the contrary,6 the Borough contended that the elimination of employee contributions was statutorily proscribed.\nThe dispute proceeded to arbitration, at which, following a healing, an award was issued sustaining the grievance. In his decision, the arbitrator adopted the Bargaining Unit’s position that the interpretation of actuarial soundness from the 1992 arbitration—focusing solely upon the predomination of actuarially determined assets over liabilities—controlled.7 In this *358regard, the arbitrator emphasized that, since the issuance of the 1992 arbitration award, the relevant terms of the CBA had been reaffirmed on multiple occasions via the collective bargaining process. He therefore determined that the members of the Bargaining Unit could not be required to contribute to the pension fund in the circumstances presented.\nThe Borough then filed a petition to vacate the award in the court of common pleas, contending that the arbitrator exceeded his authority, because Act 600 and Act 205 prohibit the elimination of police officer contributions to a pension where Borough contributions are required to maintain actuarial soundness on broader terms than the mere maintenance of assets exceeding liabilities. The common pleas court, however, denied relief on the petition, indicating that the record did not demonstrate that the arbitrator’s award directed the Borough to make contributions. See, e.g., Borough of Ellwood City v. Ellwood City Police Dep’t Wage and Policy Unit, No. 10904 of 1999, slip op. at 13 (C.P. Lawrence Dec. 21, 2000) (“Based on the understanding that a pension plan with a surplus of assets over liabilities, resulting in a negative unfunded actuarial liability of more than $60,000.00 would require no contributions for the year, the [c]ourt concludes that the arbitrator’s award did not violate Act 600 nor did it mandate any illegal action by the Borough”).\nIn its further appeal to the Commonwealth Court, the Borough maintained its position that the arbitrator exceeded his authority by mandating what was tantamount to an illegal act in eliminating employee contributions to the plan, thereby forcing the municipality to supply the necessary funding. In this regard, the Borough highlighted that the common pleas court’s decision gave no account for Act 205’s effective proscription against utilization of more than ten percent of surpluses in meeting annual financial requirements of the plan. The Commonwealth Court agreed that the existence of a surplus in the pension fund by itself is insufficient as a basis for reducing or eliminating employee contributions; rather, it found that such action must be grounded upon an actuarial report prepared in accordance with Act 205, which sets forth *359the minimum funding requirements for municipal pension plans. See Borough of Ellwood City v. Ellwood City Police Dep’t Wage and Policy Unit, 786 A.2d 342, 348 (Pa.Cmwlth.2001). In this regard, the Commonwealth Court cited its previous decision in Borough of Doylestoum v. Doylestoum Borough Police Assoc., 732 A.2d 701, 704 (Pa.Cmwlth.1999) (recognizing that “[b]y mandating that only Act 205 reports are to be used to determine a [p]lan’s financial soundness and its financial requirements, [Section 302 of Act 205, 53 P.S. § 895.302] required that the ‘actuarial study’ used in Act 600 be used to determine if member contributions could be reduced or eliminated.”). The court also highlighted Act 205’s admonition that its provisions control notwithstanding an agreement to the contrary. See Borough of Ellwood City, 786 A.2d at 346-47 (citing 53 P.S. § 895.301(a)). Distinguishing a line of cases addressing the principle that a party cannot object to the legality of a provision to which it voluntarily agreed during the collective bargaining process under Act 111, see, eg., Fraternal Order of Police v. Hickey, 499 Pa. 194, 452 A.2d 1005 (1982) (plurality opinion); Grottenthaler v. Pennsylvania State Police, 488 Pa. 19, 410 A.2d 806 (1980); Upper Chichester Twp. v. PLRB, 153 Pa.Cmwlth. 446, 621 A.2d 1134 (1993), the Commonwealth Court reasoned that where Act 600 and Act 111 apply, the provisions of the former serve to limit the authority granted under the latter respecting arbitration. See id. at 347-48 (citing Swatara Twp. v. Swatara Twp. Police Dep’t, 164 Pa.Cmwlth. 378, 382, 642 A.2d 660, 662 (1994)). The court thus concluded that the arbitrator had exceeded his authority by issuing an award inconsistent with the relevant statutory framework, reversed the common pleas court’s order, and vacated the arbitration award. See id.\nThis Court allowed appeal to examine a municipality’s statutory obligations in conjunction with a long-standing term of a collective bargaining agreement that has been interpreted through arbitration. Per this Court’s prior decisions, our review is in the nature of narrow certiorari, which limits the inquiry to matters implicating the jurisdiction and authority of the arbitrator, the regularity of the proceedings, and the *360vindication of constitutional rights. See Pennsylvania State Police v. Pennsylvania State Troopers’ Ass’n (Betancourt), 540 Pa. 66, 71, 656 A.2d 83, 85 (1995).\nGenerally, Act 111 establishes a right to collectively bargain concerning the terms and conditions of employment, see 43 P.S. § 217.1, and is designed to alleviate labor strife in occupations involving critical government functions by, inter alia, providing an expedited means of dispute resolution, with limited judicial intervention. See 43 P.S. § 217.7(a). As the Commonwealth Court observed, in a series of decisions, this Court has found this and similar policies associated with other labor law legislation to be of sufficient magnitude that they may, in certain circumstances, vest authority in judicial and quasi-judicial tribunals to enforce a collective bargaining agreement containing a provision that is not fully in accordance with other requirements of the law.\nFor example, in Pittsburgh Joint Collective Bargaining Comm. v. City of Pittsburgh, 481 Pa. 66, 391 A.2d 1318 (1978), the Court held that a city was precluded from asserting that a grievance arbitration procedure to which it had agreed in a collective bargaining agreement conflicted with various provisions of the Second Class City Civil Service Act, 53 P.S. §§ 23431-23457, and the Public Employee Relations Act of 1970, 43 P.S. §§ 1101.101-1101.2301, despite a provision of the latter enactment proscribing effectuation or implementation by the parties of a conflicting agreement. See 43 P.S. § 1101.703 (“The parties to the collective bargaining process shall not effect or implement a provision in a collective bargaining agreement if the implementation of that provision would be in violation of, or inconsistent with, or in conflict with any statute or statutes enacted by the General Assembly of the Commonwealth of Pennsylvania or the provisions of municipal home rule charters.”). Stressing the importance of grievance arbitration in facilitating the development and maintenance of harmonious relationships between the public employer and employee, the Court explained:\nTo permit an employer to enter into agreements and include terms such as grievance arbitration which raise the expecta*361tions of those concerned, and then to subsequently refuse to abide by those provisions on the basis of its lack of capacity would invite discord and distrust and create an atmosphere wherein a harmonious relationship would virtually be impossible to maintain.\nGood faith bargaining would require that questions as to the legality of the proposed terms of a collective bargaining agreement should be resolved by the parties to the agreement at the bargaining stage. For instance, the section 703 question should have been raised by the [public employer] during the ... contract negotiations.\nPittsburgh Joint Collective Bargaining Comm., 481 Pa. at 74-75, 391 A.2d at 1322-23.\nAgain in Hickey, 499 Pa. at 194, 452 A.2d at 1005, an Act 111 case in which the Court considered whether a provision of a collective bargaining agreement was within the legitimate subject-matter scope of bargaining, the plurality drew a critical distinction between circumstances in which an arbitration panel attempts to mandate a governing body, over its objection, to carry out an illegal act, and situations in which the public employer “attempts to belatedly avoid compliance with a term of a bargaining agreement it voluntarily agreed to during the bargaining process and thereby secure an unfair advantage in the bargaining process.” Id. at 199, 452 A.2d at 1008.\nIn Grottenthaler, 488 Pa. at 19, 410 A.2d at 806, also an Act 111 case, the Court extended the reasoning of Pittsburgh Joint Collective Bargaining Comm, to a substantially different context. Grottenthaler determined that certain pension-related provisions of a collective bargaining agreement would be enforced despite countervailing terms of the State Employees’ Retirement Code, 71 Pa.C.S. §§ 5101-5956, and its requirement that “[pjension rights of State employees shall be determined solely by this part or any amendment thereto, and no collective bargaining agreement ... shall be construed to change any of the provisions herein.” See id at 22, 410 A.2d at 807 (quoting 71 Pa.C.S. § 5955). While recognizing that the purport of this section was clearly to remove pension *362rights as a bargainable item under the provisions of Act 111, the Court nonetheless framed the question raised in the case as “whether the Commonwealth is to be permitted to ignore its own mandate to secure an advantage in the bargaining process and then escape liability thereunder by asserting the illegality of the provision.” Id. at 25, 410 A.2d at 809. Taking into account the policies underlying both the State Employees’ Retirement Code and Act 111, see id. at 25, 410 A.2d at 809 (“We are well aware of the State’s interest in the actuarial soundness of the retirement system provided for its employees, but we also recognize that the integrity of the bargaining process in the public sector is of equal importance.”), the Court invoked the reasoning of Pittsburgh Joint Collective Bargaining Comm., finding this to be particularly appropriate in the instance in which the Commonwealth was itself the public employer. See Grottenthaler, 488 Pa. at 26, 410 A.2d at 809 (“To permit the Commonwealth to ignore its mandate with impunity in two successive bargaining contracts following the promulgation of Section 5955, and then to assert it as a bar to a claim for recovery under the bargaining agreement would be manifestly unfair[;][t]he demoralizing effect of such a result on the relationship between employer and employee in the public sector is readily apparent.” (footnote omitted)).\nIn none of these decisions, however, was Act 205’s directive that its provisions apply notwithstanding contrary provisions of law or agreement, see 53 P.S. § 895.301(a), at issue. This prescription, in contrast to those at issue in Pittsburgh Joint Collective Bargaining Comm, and Hickey, does not merely prohibit the making of a contrary agreement or one that exceeds the permissible subject-matter scope of bargaining.8 Rather, Act 205 requires that, in the event of an actual conflict between the statute and a collective bargaining agreement, the statute must be given effect; indeed, relief in mandamus is expressly authorized to this end. See 53 P.S. § 895.306(b). *363While Grottenthaler concerned a more closely analogous statutory provision,9 the decision is also distinguishable since, as noted, the Court’s reasoning emphasized the identity of the employer as the Commonwealth in and of itself, as opposed to a political subdivision such as the Borough. See Grottenthaler, 488 Pa. at 26, 410 A.2d at 809. Therefore, we do not deem it controlling in the circumstances presently before us.10\nThus, although we are cognizant of the emphasis given to the sanctity of the bargaining process in the Pittsburgh Joint Collective Bargaining Comm, line of cases, in this instance, we conclude that the Legislature’s express decision to subordinate such policy to the consistent application of minimum funding standards for municipal pension plans manifested in Act 205, directed to the pernicious consequences of under-funding, should be respected.11 See generally Conner v. Quality *364Coach, Inc., 561 Pa. 397, 417, 750 A.2d 823, 834 (2000) (observing that the weighing of competing social policy concerns is a task best suited to the legislature).\nCertainly, aspects of pension plans and their funding remain cognizable within the collective bargaining scheme under Act 111,, see 43 P.S. § 217.1, as expressly recognized in Act 205. See, e.g., 53 P.S. § 895.607(c)(6) (outlining remedies for distressed pension plans and noting that member contributions are within the scope of collective bargaining). See generally Butler, 780 A.2d at 855 (reviewing the statutory structure and discussing Act 205 in connection with the bargaining of pension issues). However, within the statutory framework, the General Assembly has bounded bargaining over and modification of pension benefits by a requirement of actuarial soundness as contemplated by Act 205 and its interrelationship with Act 600 in police pension funding cases, see, e.g., 53 P.S. § 895.202 (setting forth the contents of actuarial reports); 53 P.S. § 895.302 (denoting minimum funding standards); 53 P.S. § 772(c) (incorporating the concept of actuarial soundness in delineating circumstances in which member contributions may be eliminated), and has constrained the power of the judiciary accordingly.\nThus, whatever potential there may be for rescission of a collective bargaining agreement on appropriate challenge (thereby returning the parties to the bargaining table) where a political subdivision secures material advantage by way of promises that the Legislature has rendered incapable of enforcement,12 judicial and quasi-judicial tribunals lack authority *365to require fulfillment of such promises in the first instance. In this case, therefore, the Commonwealth Court was correct in determining that the arbitrator’s decision defining actuarial soundness in a manner inconsistent with the relevant statutory funding requirements exceeded his powers, and the resulting award was properly vacated.\nThe order of the Commonwealth Court is affirmed.\nFormer Chief Justice ZAPPALA did not participate in the decision of this case.\nJustice NIGRO files a concurring opinion.\nJustice NEWMAN files a concurring opinion.\nJustice CASTILLE files a concurring and dissenting opinion.\n\n. Act of Dec. 18, 1984, P.L. 1005, No. 205, §§ 101-803 (as amended 53 P.S. §§ 895.101-895.803) (\"Act 205”). Pursuant to Act 205, municipalities maintaining pension funds must have actuarial valuations performed at least biennially. See 53 P.S. § 895.302(b). Although municipal police pensions are, in the first instance, administered pursuant to the Police Pension Fund Act, Act of May 29, 1956, P.L. (1955) 1804, §§ 1-12 (as amended 53 P.S. §§ 767-778) (\"Act 600”), the General Assembly has directed that the terms of Act 205 control over any other provision of law or pension plan agreement. See 53 P.S. § 895.301.\n\n\n. Act of June 24, 1968, P.L. 237, No. Ill, §§ 1-10 (as amended 43 P.S. §§ 217.1-217.10) (\"Act 111”).\n\n\n. Section G of the CBA, entitled \"Employee Contributions,” provides, inter alia:\n1. Employees of the Ellwood City Police department shall not contribute any wages to the pension fund.\n3. In the event that it is aetuarially determined that the amount of annual contribution is not keeping the Plan aetuarially sound, then such contribution shall be increased at a percentage necessary to make the Pension fund again aetuarially sound.\nCBA, Art. V ¶ (G)(1), (3).\n\n\n. See CBA amend, no. 1 (\"All prior arbitration awards and agreements are hereinafter incorporated by reference and the provisions of the awards and agreements shall be applicable, except as modified herein or by mutual written agreements between the parties.”).\n\n\n. See CBA, Art. V ¶ (A)(1) (“The Borough of Ellwood City Police Pension Fund shall comply with Act 600, Police Pension Act, and Borough Ordinances # 1264, enacted January 10, 1957, and # 1349, enacted November 6, 1958, attached hereto and incorporated herein, with subsequent amendments.”).\n\n\n. See 53 P.S. § 895.301(a) (\"Notwithstanding any provision of law, municipal ordinance, municipal resolution, municipal charter, pension plan agreement or pension plan contract to the contrary, the applicable provisions of this chapter shall apply to any municipality which has established and maintains, directly or indirectly, a pension plan for the benefit of its employees, irrespective of the manner in which the pension plan is administered, and to the respective pension plan.”).\n\n\n. It is not clear from the 1992 decision whether the Borough had presented an actuarial report indicating the necessity of member contributions.\n\n\n. Like Hickey, the Commonwealth Court's decision in Upper Chichester Twp., 153 Pa.Cmwlth. at 446, 621 A.2d at 1134, focused on the question of the scope of arbitrability, and is distinguishable in that Act 205's proscription against enforcement of agreements contrary to its terms does not appear to have been invoked.\n\n\n. Compare 71 Pa.C.S. § 5955 (\"[P]ension rights of State employees shall be determined solely by this part or any amendment thereto, and no collective bargaining agreement ... between the Commonwealth and its employees ... shall be construed to change [the State Retirement Code’s] provisions ....”), with 53 P.S. § 895.301(a) (\"Notwithstanding any ... pension plan agreement or pension plan contract to the contrary, the applicable provisions of this chapter shall apply....”).\n\n\n. Whether Grottenthaler should retain continuing vitality on its facts is beyond the scope of this opinion, particularly as no party to this appeal has advocated its overruling. Certainly, the Commonwealth must remain wary of the appearance of bad-faith bargaining associated with reneging on its labor agreements in reliance on pre-existing statutory pronouncements. Nevertheless, we also recognize the emphasis that the Legislature has placed on, and the measures it has taken to implement, fiscal soundness of police pension plans in the Commonwealth. See infra note 11 and accompanying text.\n\n\n. See 53 P.S. § 895.306(a) (declaring the legislative finding that the failure to adhere to Act 205 requirements \"threatens serious injury to the affected municipal pension plan, to the entire system of public employee pension plans in the Commonwealth and to the Commonwealth itself.”); Pennsylvania State Lodge of Fraternal Order of Police v. Hafer, 525 Pa. 265, 270, 579 A.2d 1295, 1298 (1990); Legis. L—House at 2361 (Nov. 27, 1984) (noting that the Public Employee Retirement Study Commission found that a significant number of municipal pensions were under-funded and that such liability threatened the well-being of the funds, the payments to the pensioners, and the fiscal health of the municipalities); City of Butler v. City of Butler Police Dep’t, Fraternal Order of Police, Lodge No. 32, 780 A.2d 847, 854 (Pa.Cmwlth.) (explaining that the purpose of Act 205 was to “strengthen municipal pension plans 'by requiring actuarially-based current funding stan*364dards’ ” (citation omitted)), appeal denied, 568 Pa. 620, 792 A.2d 1255 (2001); Doylestown, 732 A.2d at 704 (\"By mandating that only Act 205 reports are to be used to determine a Plan’s financial soundness and its financial requirements, this provision required that the 'actuarial study’ used in Act 600 be used to determine if member contributions could be reduced or eliminated.”).\nWhile Act 205 does extend a certain amount of latitude to municipalities by allowing benefit plan modification, it mandates that such change be preceded by a cost estimate describing the impact upon the plan. See 53 P.S. § 895.305(a), (e).\n\n\n. The difficulty with the position advocated by Mr. Justice Castille in his concurring and dissenting opinion is that it would require the Court *365to sua sponte frame and answer an entirely new claim based upon contract rescission. Indeed, the parties have not requested such relief and may not desire it.\n\n",
+            "ocr": false,
+            "opinion_id": 9640439
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 19541,
+      "row": {
+        "id": 1470656,
+        "judges": null,
+        "date_filed": "2008-07-01",
+        "date_filed_is_approximate": false,
+        "slug": "com-v-smith",
+        "case_name_short": "Com.",
+        "case_name": "Com. v. Smith",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "951 A.2d 1163"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n951 A.2d 1163 (2008)\nCOM.\nv.\nSMITH.\nNo. 517 WAL (2007).\nSupreme Court of Pennsylvania.\nJuly 1, 2008.\nDisposition of petition for allowance of appeal. Denied.\n",
+            "ocr": false,
+            "opinion_id": 1470656
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 21220,
+      "row": {
+        "id": 1548459,
+        "judges": null,
+        "date_filed": "2010-04-13",
+        "date_filed_is_approximate": false,
+        "slug": "in-re-adoption-of-jwh",
+        "case_name_short": "In Re Adoption of Jwh",
+        "case_name": "In Re Adoption of Jwh",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "992 A.2d 889"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n992 A.2d 889 (2010)\nIN RE ADOPTION OF J.W.H.\nIN RE E.D.H.-T.\nNo. 112 WAL (2010).\nSupreme Court of Pennsylvania.\nApril 13, 2010.\nDisposition of Petition for Allowance of Appeal Denied.\n",
+            "ocr": false,
+            "opinion_id": 1548459
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 21450,
+      "row": {
+        "id": 1563211,
+        "judges": null,
+        "date_filed": "2008-10-30",
+        "date_filed_is_approximate": false,
+        "slug": "com-v-sutton",
+        "case_name_short": "Com.",
+        "case_name": "Com. v. Sutton",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "960 A.2d 456"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n960 A.2d 456 (2008)\nCOM.\nv.\nSUTTON.\nNo. 309 WAL (2008).\nSupreme Court of Pennsylvania.\nOctober 30, 2008.\nDisposition of petition for allowance of appeal. Denied.\n",
+            "ocr": false,
+            "opinion_id": 1563211
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 21452,
+      "row": {
+        "id": 1563626,
+        "judges": null,
+        "date_filed": "2008-10-28",
+        "date_filed_is_approximate": false,
+        "slug": "com-v-rivera",
+        "case_name_short": "Com.",
+        "case_name": "Com. v. Rivera",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "960 A.2d 455"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n960 A.2d 455 (2008)\nCOM.\nv.\nRIVERA.\nNo. 210 MAL (2008).\nSupreme Court of Pennsylvania.\nOctober 28, 2008.\nDisposition of petition for allowance of appeal. Denied.\n",
+            "ocr": false,
+            "opinion_id": 1563626
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 21453,
+      "row": {
+        "id": 1563734,
+        "judges": null,
+        "date_filed": "2008-11-17",
+        "date_filed_is_approximate": false,
+        "slug": "com-v-williams",
+        "case_name_short": "Com.",
+        "case_name": "Com. v. Williams",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 1,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "960 A.2d 840"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n960 A.2d 840 (2008)\nCOM.\nv.\nWILLIAMS.\nNo. 275 WAL (2008).\nSupreme Court of Pennsylvania.\nNovember 17, 2008.\nDisposition of petition for allowance of appeal. Denied.\n",
+            "ocr": false,
+            "opinion_id": 1563734
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 22160,
+      "row": {
+        "id": 2731952,
+        "judges": "Per Curiam",
+        "date_filed": "2014-09-10",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-artist-a",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Artist, A.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/140EAL2014 - 1019374892596579.pdf",
+            "author_id": null,
+            "opinion_text": "lN THE SUPREME COURT OF PENNSYLVANlA\nEASTERN D|STR|CT\n\nCO|\\/||\\/|ONWEALTH OF PENNSYLVAN|A, 1 NO. 140 EAL 2014\n\nRespondent :\n: Petition for A||owahce of Appea| from the\n: Order of the Superior Court\n\nv. :\nALEXANDER ART|ST,\nPetitioner\n\nORDER\n\nPER CUR|AM\nAND NOW, this 'IOth day of September, 2014, the Petition for A||owahce of\n\nAppea| is DEN|ED.\n\n",
+            "ocr": true,
+            "opinion_id": 2731952
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 2600,
+  "num_rows_per_page": 100,
+  "partial": true
+}

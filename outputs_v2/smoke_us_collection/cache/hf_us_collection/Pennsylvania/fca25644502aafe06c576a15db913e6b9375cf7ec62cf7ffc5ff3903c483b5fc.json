@@ -1,0 +1,774 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 31936,
+      "row": {
+        "id": 2550810,
+        "judges": null,
+        "date_filed": "2011-05-25",
+        "date_filed_is_approximate": false,
+        "slug": "com-v-grimsley",
+        "case_name_short": "Com.",
+        "case_name": "Com. v. Grimsley",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "21 A.3d 1190"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n21 A.3d 1190 (2011)\nCOM.\nv.\nGRIMSLEY.\nNo. 670 EAL (2010).\nSupreme Court of Pennsylvania.\nMay 25, 2011.\nDisposition of Petition for Allowance of Appeal Denied.\n",
+            "ocr": false,
+            "opinion_id": 2550810
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 31958,
+      "row": {
+        "id": 2555463,
+        "judges": null,
+        "date_filed": "2010-09-24",
+        "date_filed_is_approximate": false,
+        "slug": "com-v-tucker",
+        "case_name_short": "Com.",
+        "case_name": "Com. v. Tucker",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "8 A.3d 345"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n8 A.3d 345 (2010)\nCOM.\nv.\nTUCKER.\nNo. 170 EAL (2010).\nSupreme Court of Pennsylvania.\nSeptember 24, 2010.\nDisposition of Petition for Allowance of Appeal Denied.\n",
+            "ocr": false,
+            "opinion_id": 2555463
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 32036,
+      "row": {
+        "id": 2560269,
+        "judges": "Baer, Castille, Eakin, McCAFFERY, Melvin, Orie, Saylor, Todd",
+        "date_filed": "2011-04-11",
+        "date_filed_is_approximate": false,
+        "slug": "in-re-dauphin-county-fourth-investigating-grand-jury",
+        "case_name_short": "In Re Dauphin County Fourth Investigating",
+        "case_name": "In Re Dauphin County Fourth Investigating Grand Jury",
+        "case_name_full": "In Re DAUPHIN COUNTY FOURTH INVESTIGATING GRAND JURY. Report of Special Prosecutor Albert G. Blakey",
+        "attorneys": "Sal Cognetti, Jr., Foley, Cognetti, Comerford, Cimini & Cummins, for petitioner., Francis T. Chardo III, Dauphin County District Attorney’s Office, Edward Michael Marsico, Jr., for respondent.",
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 14,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<citation id=\"b356-8\">\n    19 A.3d 491\n   </citation><br><parties id=\"b356-9\">\n    In re DAUPHIN COUNTY FOURTH INVESTIGATING GRAND JURY. Report of Special Prosecutor Albert G. Blakey.\n   </parties><br><court id=\"b356-11\">\n    Supreme Court of Pennsylvania.\n   </court><br><decisiondate id=\"b356-12\">\n    April 11, 2011.\n   </decisiondate><br><attorneys id=\"b358-9\">\n<span citation-index=\"1\" class=\"star-pagination\" label=\"298\"> \n     *298\n     </span>\n    Sal Cognetti, Jr., Foley, Cognetti, Comerford, Cimini &amp; Cummins, for petitioner.\n   </attorneys><br><attorneys id=\"b359-3\">\n<span citation-index=\"1\" class=\"star-pagination\" label=\"299\"> \n     *299\n     </span>\n    Francis T. Chardo III, Dauphin County District Attorney’s Office, Edward Michael Marsico, Jr., for respondent.\n   </attorneys><br><judges id=\"b359-4\">\n    CASTILLE, C.J., SAYLOR, EAKIN, BAER, TODD, McCAFFERY, ORIE MELVIN, JJ.\n   </judges>",
+        "citations": [
+          "19 A.3d 491",
+          "610 Pa. 296"
+        ],
+        "opinions": [
+          {
+            "author_str": "Castille",
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": 5522,
+            "opinion_text": "\n19 A.3d 491 (2011)\nIn re DAUPHIN COUNTY FOURTH INVESTIGATING GRAND JURY.\nReport of Special Prosecutor Albert G. Blakey.\nNos. 13 MM 2008, 28 MM 2008.\nSupreme Court of Pennsylvania.\nApril 11, 2011.\n*492 Sal Cognetti, Jr., Foley, Cognetti, Comerford, Cimini &amp; Cummins, for petitioner.\nFrancis T. Chardo III, Dauphin County District Attorney's Office, Edward Michael Marsico, Jr., for respondent.\nCASTILLE, C.J., SAYLOR, EAKIN, BAER, TODD, McCAFFERY, ORIE MELVIN, JJ.\n\nOPINION\nChief Justice CASTILLE.\nThis matter arises from proceedings that were undertaken during the course of an investigation into allegations of disclosures of protected information relating to the Dauphin County Fourth Investigating Grand Jury.\nOn May 4, 2006, the District Attorney of Dauphin County, Edward M. Marsico, Jr., filed an Application to impanel an Investigating Grand Jury. The application to investigate concerned certain matters relating to the licensing application filed on behalf of Louis A. DeNaples and Mount Airy # 1, LLC (herein \"Petitioners\"[1]) for a Category 2 slot machine license, pursuant to the Pennsylvania Race Horse Development and Gaming Act, 4 Pa.C.S. § 1101 et seq., and the Pennsylvania Gaming Control Board's decision to award a license to Petitioners.[2] On June 2, 2006, the Honorable *493 Richard A. Lewis, then President Judge of the Dauphin County Court of Common Pleas, granted the District Attorney's application. President Judge Lewis appointed the Honorable Todd A. Hoover as the supervising judge of the grand jury.\nOn May 3, 2007, the grand jury issued three subpoenas duces tecum to the Gaming Control Board and its Executive Director, directing them to produce documents relating to Petitioners' gaming application and licenses. Petitioners filed a Petition to Intervene, to Stay Grand Jury Subpoenas, and for Access to Notice of Submission. On July 6, 2007, Supervising Judge Hoover ordered the District Attorney to provide Petitioners with a copy of the Notice of Submission, which had been amended. On that date, a subpoena duces tecum was served on Petitioner DeNaples, directing him to appear before the grand jury.\nOn July 18, 2007, Petitioners filed an Omnibus Motion to Quash Grand Jury Investigation and Omnibus Motion to Quash Grand Jury Subpoenas. A stay of enforcement was entered by Supervising Judge Hoover. On July 23, 2007, Supervising Judge Hoover heard argument on the Petitioners' Petition to Intervene, to Stay Grand Jury Subpoenas, and for Access to Notice of Submission. During the proceeding, Petitioners' counsel argued to Supervising Judge Hoover that protected information regarding the grand jury investigation had been improperly disclosed. Specifically, Petitioners' counsel related that the Gaming Control Board had been contacted and questioned whether it had received subpoenas from an investigating grand jury. First Assistant District Attorney Francis T. Chardo indicated that he had alerted Supervising Judge Hoover that he had received calls from the Philadelphia Daily News and The Associate Press inquiring about grand jury subpoenas.\nOn July 26, 2007, Supervising Judge Hoover conducted an in camera conference to address newspaper articles that were published on that same date by the Philadelphia Inquirer, the Philadelphia Daily News, and the Associated Press. The news articles reported the existence of a grand jury investigation involving Petitioner DeNaples.\nThe articles claimed that \"sources close to the investigation\" had disclosed that the grand jury investigation involved whether Petitioner DeNaples had lied in connection with his application for a casino license, and reported that the Dauphin County District Attorney's Office had issued a subpoena to the Gaming Control Board. The articles indicated that the reporters had contacted the Gaming Control Board to inquire whether the Board had been subpoenaed for documents or the testimony of its staff, but that a Board spokesman had declined to comment. Furthermore, specific witnesses who had appeared to testify before the grand jury were identified in the articles.\nSupervising Judge Hoover requested that a written motion be filed by Petitioners' counsel, after which a hearing would be scheduled. On July 31, 2007, Petitioners filed a Motion for an Evidentiary Hearing Regarding Violation of Grand Jury Secrecy, alleging that the many media reports of the grand jury proceedings demonstrated a breach of secrecy.\nOn September 20, 2007, Supervising Judge Hoover entered several orders pertaining to Petitioners' Omnibus Motion to Quash Grand Jury Investigation and Omnibus Motion to Quash Grand Jury Subpoenas. One of the orders denied Petitioners' Motion to Quash for Violations of the Grand Jury Act and their request for *494 disqualification of the Dauphin County District Attorney's Office.\nOn October 1, 2007, Petitioners filed an Emergency Application for Review Pursuant to 42 Pa.C.S. § 722(5) and Pa.R.A.P. 3331(a) with this Court, challenging the District Attorney's authority to investigate alleged crimes arising out of the gaming licensing application process. Petitioners also raised claims that (1) the application for impanelment of the grand jury was invalid; (2) the grand jury investigation usurped the Gaming Board's investigatory authority and discretion; (3) the confidentiality provisions of the Gaming Act had been violated; (4) the notice of submission was invalid; and (5) subpoenas duces tecum issued to the Gaming Board and its executive director for documents relating to Petitioners' gaming applications and license were legally flawed. Petitioners' request for a stay was granted by this Court in order to maintain the status quo and to allow the District Attorney to respond to Petitioners' allegations.\nOn December 10, 2007, this Court issued an opinion in In Re Dauphin County Fourth Investigating Grand Jury, 596 Pa. 378, 943 A.2d 929 (2007), summarily denying Petitioners' Application for Review with respect to most issues because the claims did not involve final orders or warrant immediate review pursuant to 42 Pa. C.S. § 726, except for Petitioners' challenge to the District Attorney's authority/jurisdiction to conduct the grand jury investigation into the licensing process. With respect to the violations of grand jury secrecy, we noted:\nThe Application does little more than reference alleged breaches of Grand Jury secrecy, citing newspaper articles that discuss information relating to the on-going investigation which is in the public realm (e.g. judicial orders, subpoenas, etc.). Petitioners identify nothing that threatens to expose the \"sanctity\" of the Grand Jury's inner-workings. Furthermore, with the exception of the prosecutorial authority claim discussed below, petitioners' claims do not implicate \"an issue of immediate public importance\" that would require this Court to take extraordinary steps to \"enter a final order or otherwise cause right and justice to be done.\" See 42 Pa.C.S. § 726. This Court will not exercise extraordinary jurisdiction to consider any and every challenge to the Grand Jury process, challenges that are properly reviewable in the ordinary course, only once a final order issues.\n943 A.2d at 935-936.[3]\nWe exercised extraordinary jurisdiction, however, over the challenge pertaining to the authority of the District Attorney to convene a grand jury under the Gaming Act. The issue involved the interpretation of Section 1517(d) of the Gaming Act (relating to investigations and enforcement), which states in relevant part:\n(d) Criminal action.\n(1) The district attorneys of the several counties shall have authority to investigate and to institute criminal proceedings for a violation of [the Gaming Act].\n(2) In addition to the authority conferred upon the Attorney General under *495... the Commonwealth Attorneys Act, the Attorney General shall have the authority to investigate and, following consultation with the appropriate district attorney, to institute criminal proceedings for a violation of [the Gaming Act]....\n4 Pa.C.S. § 1517(d).\nPetitioners acknowledged that Section 1517(d) explicitly provides district attorneys with the authority to investigate violations under the Gaming Act, but argued that the authority of a district attorney should be deemed to be subordinate to that of the Attorney General. The Dauphin County District Attorney contended that the Gaming Act did not place any limitation on the powers and duties of district attorneys, and did not purport to vest exclusive jurisdiction over criminal violations of the Act in the Attorney General. As amicus curiae, the Attorney General posited that nothing in the Act rendered the authority of district attorneys subordinate to that of the Attorney General, and that the prosecutorial authority of district attorneys was concurrent.\nWe found the Attorney General's position to be persuasive, stating:\nSection 1517 of the Act plainly confers authority upon county district attorneys to prosecute violations of the Act and does not subordinate that authority to that of the Attorney General. Nor does Section 1517 purport to limit that authority to post-licensing crimes. Just as importantly, nothing in the Act purports to remove or limit the existing general authority of county district attorneys to investigate crimes occurring in their jurisdiction.\n943 A.2d at 938.\nWe determined that \"[t]he types of possible criminal violations being investigated by the District Attorney in this casefalse statements/perjury relating to the licensing process, which occurred within his territorial jurisdictionare clearly within the scope of veracity-based crimes recognized by the Gaming Act.\" 943 A.2d at 938, citing 4 Pa.C.S. § 1518(a)(1). Neither the Gaming Act nor the Investigating Grand Jury Act appeared to limit the District Attorney's use of the investigating grand jury under the circumstances of the case. On that basis, we rejected Petitioners' challenge to the Dauphin County District Attorney's authority, holding that \"county district attorneys share concurrent jurisdiction with the Attorney General to investigate criminal violations of the Gaming Act, and that the Gaming Act does not limit the existing authority of local prosecutors.\" 943 A.2d at 938.\nWhile this Court was considering Petitioners' challenge to the authority of the District Attorney, Supervising Judge Hoover deferred consideration of Petitioners' Motion for Evidentiary Hearing Regarding Violation of Grand Jury Secrecy, which had been filed on July 31, 2007. After this Court issued its opinion, the District Attorney requested that Supervising Judge Hoover deny the pending motion. Petitioners opposed the request and asked Supervising Judge Hoover to conduct a hearing.\nOn January 2, 2008, Petitioners provided Supervising Judge Hoover with copies of newspaper articles that had been published after the pending motion had been filed. The articles referred to specific matters that were purportedly under investigation by the grand jury, described information about those grand jury matters as having been provided by \"sources familiar with the case,\" and identified witnesses who had appeared before the grand jury. The submitted articles included the following:\n August 29, 2007 Philadelphia Daily News article, referring to witnesses *496 before the grand jury, including that (1) \"Philadelphia labor leader Sam Staten Sr. testified before the grand jury in Harrisburg probing whether the state's first slots licensee lied during the application process about ties to organized crime;\" (2) \"[p]rior to Staten's grand jury appearance, James Decker, a former Lackawanna County chief clerk, testified for about 30 minutes;\" and (3) \"[a]nother witness yesterday identified himself to an official in the hallway as Thomas Joseph, owner of a Mountain Top, Luzerne County, property that was searched during an investigation of [William] D'Elia and associates in 2001.\"\n August 29, 2007 Allentown Morning Call article stating that \"[t]he grand jury in part is investigating whether DeNaples has had ties to William D'Elia, a reputed Scranton mobster who is awaiting trial on federal charges of soliciting a murder and laundering drug money. State gaming law prohibits a casino licensee from having ties to organized crime.\"\n August 30, 2007 Philadelphia Daily News article, stating \"[y]esterday, the Rev. Joe Sica and former assistant U.S. attorney Sal Cognetti, Jr. turned up at the Dauphin County Courthouse, where a grand jury is investigating whether DeNaples has ties to organized crime or lied in the process of winning that casino license.\"\n September 25, 2007 The [Scranton] Times-Tribune article stating that \"[a] grand jury in Harrisburg is investigating whether DeNaples misled the gaming board about alleged mob ties according to sources familiar with the case who spoke on condition of anonymity because of the confidentiality of grand jury matters.\"\n September 27, 2007 Philadelphia Inquirer article, stating that \"[a] person familiar with the probe has told the Associated Press that the grand jury is looking into information on DeNaples that grew out of a long state and federal investigation into alleged Scranton-area mobster William D'Elia.\"\n September 27, 2007 Philadelphia Daily News article, stating that (1) \"Shawn Fordham, Mayor Street's onetime top aide and gaming advisor, testified yesterday before a grand jury in Harrisburg;\" (2) \"[a]nother Philadelphia-area grand jury witness, Barry Shapiro, president of BudTel Inc., a telecommunications company, said after his testimony that `I installed a pay phone on [DeNaples] property. They wanted to know about that;'\" and (3) \"[t]hree other witnesses, a couple in their early 60s, and a white-haired, heavyset man also testified before the grand jury yesterday.\"\n October 5, 2007 Philadelphia Inquirer article stating that \"[a] person familiar with the probe has told The Associated Press that the grand jury is looking into information on DeNaples that grew out of a long state and federal investigation into alleged Scranton-area mobster William D'Elia. The person spoke on condition of anonymity because of the sensitivity of the case. As part of that investigation, authorities are looking into the accuracy of DeNaples' application for a slot-machine license, in which he told state regulators he had no connections to organized crime, the person said.\"\n October 18, 2007 Philadelphia Inquirer article stating that \"[a] person *497 familiar with the probe has told The Associated Press that the grand jury is looking into the accuracy of DeNaples' assurances that he has no connections to organized crime.\"\n October 24, 2007 Philadelphia Inquirer article stating that \"[a] person familiar with the probe has told The Associated Press that the grand jury is looking into the accuracy of DeNaples' assurances that he has no connections to organized crime. The person spoke on condition on anonymity because of the sensitivity of the grand jury investigation which is cloaked in secrecy.\"\nThe grand jury issued a presentment against Father Joseph F. Sica recommending criminal charges, which was accepted by Supervising Judge Hoover on December 28, 2007. On January 22, 2008, Sica filed a Petition for Review Pursuant to Pa.R.A.P. 3331 with this Court, which was docketed at 13 MM 2008. On January 23, 2008, the grand jury issued a presentment against DeNaples and Mt. Airy, which was accepted by the Supervising Judge by a final order dated January 28, 2008. On February 11, 2008, DeNaples and Mount Airy filed a Renewed Application for Review Pursuant to 42 Pa.C.S. § 722(5) and Pa.R.A.P. 3331(a) and Application for a Stay of Proceedings Pending Review with this Court. These pleadings were docketed at 28 MM 2008. The Petition raised several claims and renewed their assertion that there had been violations of the secrecy of the grand jury investigation. The Petitioners requested the appointment of a master to investigate the alleged violations and sought a stay of the proceedings.\nOn May 2, 2008, this Court entered a Per Curiam Order at docket numbers 13 &amp; 28 MM 2008, granting the request for the exercise of extraordinary jurisdiction pursuant to 42 Pa.C.S. § 726, but limited to the question of alleged violations of grand jury secrecy. The order further provided that:\nThe matter is remanded to Supervising Judge Todd A. Hoover for the purpose of conducting an expedited evidentiary hearing relating to the allegations of violations of the secrecy provisions of the Investigating Grand Jury Act, 42 Pa.C.S. § 4541 et seq. At the conclusion of the hearing, Supervising Judge Hoover is directed to consider whether a special prosecutor should be appointed to pursue the allegations and to forward an opinion setting forth his findings and recommendations to this Court within ninety days of the date of this order. The remaining claims presented in the Renewed Application for Review, and the request for a stay are denied. Jurisdiction is retained.\nOur retention of jurisdiction was explicitly limited to the issue of grand jury secrecy.\nOn May 7, 2008, Supervising Judge Hoover held a conference with District Attorney Marsico, First Assistant District Attorney Chardo, and counsel for DeNaples and Sica to address this Court's order. On June 6, 2008, Supervising Judge Hoover entered an order scheduling a hearing for June 30, 2008. The order further stated:\nThe Court shall conduct the questioning of the witnesses subpoenaed by counsel. Counsel shall provide to the Court the names of witnesses to be subpoenaed and the proposed questions to be asked of each witness to the Court on or before June 20, 2008.\nThe newspaper articles and the documentation of matters which allegedly occurred on the second floor public area of the Dauphin County Courthouse, submitted to the Court by way of previous filings, shall be made part of the evidentiary record unless there is written objection *498 within ten (10) days of this Order.\nOn June 27, 2008, Supervising Judge Hoover entered an order, directing that the evidentiary hearing was to be closed. The proceedings were then conducted on June 30 and July 1, 2008.\nOn August 4, 2008, Supervising Judge Hoover issued a \"Report and Recommendations of the Supervising Judge of Fourth Investigating Grand Jury,\" which was filed with this Court under seal. The issuance of the Supervising Judge's Report and Recommendations was followed by the filing of various applications and responses thereto that also were filed under seal by the parties, and for this Court's review and consideration of the same.\nOn February 24, 2009, this Court entered a Per Curiam Order directing as follows:\n(1) the matter is remanded to the President Judge of the Dauphin County Court of Common Pleas with direction to appoint a special prosecutor to conduct further inquiry into the allegations of violations of the secrecy provisions of the Investigating Grand Jury Act, 42 Pa.C.S. § 4541 et seq., and to oversee such inquiry; and\n(2) the documents obtained by Petitioners' counsel following the issuance of the subpoena attached as Exhibit B to the Petitioners' Application for Review Pursuant to 42 Pa.C.S. § 722(5) and Pa. R.A.P. 3331(a) of Order Denying Motion for Return of Seized Property shall be returned to Petitioners' counsel, but only after the President Judge of Dauphin County considers and determines any claims of privileged information by the District Attorney's Office and law enforcement personnel; and\n(3) the Application for Release of Transcripts of Evidentiary Hearing held on June 30, 2008 and July 1, 2008 is granted; and\n(4) Petitioners' counsel is to be provided with a copy of the August 4, 2008 Report and Recommendations of Supervising Judge of Fourth Investigating Grand Jury; and\nFurthermore, in accordance with this Court's May 2, 2008 Order, which, inter alia, granted Petitioners' request for the exercise of plenary jurisdiction pursuant to 42 Pa.C.S. § 726 \"limited to the question of alleged violations of grand jury secrecy,\" and which denied Petitioners' request for a stay of the criminal proceedings pending before the Dauphin County Common Pleas Court, it is further ordered as follows:\nThis Court shall continue to retain jurisdiction for the sole purpose of completing the inquiry into the question of alleged violations of grand jury secrecy. The retention of jurisdiction for this limited purpose shall not be construed as a stay by this Court of any criminal prosecution.\nSee 13 MM 2008 and 28 MM 2008.\nOn April 14, 2009, after consideration of an application filed by the Associated Press, Supervising Judge Hoover entered an order unsealing his Report and Recommendations regarding the appointment of a special prosecutor. The order further provided that a copy was to be transmitted to the Associated Press' counsel, and that the Clerk of Courts was to make the Report and Recommendations open for public inspection.[4]\nOn April 17, 2009, District Attorney Marsico entered a nolle prosequi of the charges filed against DeNaples. District *499 Attorney Marsico also did not proceed with the charges filed against Sica.\nOn May 14, 2009, then President Judge Richard A. Lewis issued an order appointing Albert G. Blakey, Esquire, who formerly had served with distinction as a Judge of the York County Common Pleas Court, to serve as the special prosecutor. The order provided as follows:\n(1) Albert Blakey, Esquire, shall be and hereby is appointed Special Prosecutor with authority to conduct inquiry into allegations of violations of the secrecy provisions of the Investigating Grand Jury Act, 42 Pa.C.S.A. § 4541, et, [sic] seq., during the grand jury investigation which resulted in the issuance of a Presentment in the above captioned matters;\n(2) Upon prior approval of this Court, Mr. Blakey is authorized to retain reasonable investigative, clerical and secretarial services to facilitate the discharge of his duties. As with the Special Prosecutor, any such individuals retained shall be sworn to secrecy as provided for under the Investigating Grand Jury Act;\n(3) Transcripts of the proceedings conducted into the allegations of improper disclosure of grand jury information conducted by the Honorable Todd A. Hoover on June 30 and July 1, 2008 together with the Report and Recommendations provided by Judge Hoover to the Supreme Court of Pennsylvania shall be provided by the Court to Mr. Blakey;\n(4) Upon application pursuant to Pa. R.Crim. P., Rule 230(c), and after administration of the required secrecy oath, the Court will provide such transcripts and physical evidence presented to the Fourth Dauphin County Investigating Grand Jury in connection with Notice No. 04-2006-17 as deemed necessary for the proper investigation of this matter.\n(5) In the event that discharge of the duties described herein requires that testimony be compelled and/or documents produced, Mr. Blakey shall petition this Court for (a) the issuance of subpoenas, and (b) the scheduling of a hearing at which, with due process rights, testimony and other evidence can be compelled. Upon receipt of such Petition(s), this Court will direct that the Court Administrator of the Dauphin County Court of Common Pleas request that the Administrative Office of Pennsylvania Courts to [sic] appoint a visiting judge from outside of Dauphin [C]ounty to preside at such hearing. At any hearing conducted hereunder, anyone subpoenaed to appear thereat shall be afforded all due process rights that would be available to them at a criminal trial except that, since such a hearing will inevitably involve grand jury matters, it shall be conducted in private (to be attended only by witness, special prosecutor[,] counsel of witness if applicable, and court reporter);\n(6) Mr. Blakey shall report on the status of his investigation to the undersigned no less than every forty-five (45) days;\n(7) At the completion of his investigation, Mr. Blakey shall present the undersigned with a final report which includes his findings and the reasons therefor; and\n(8) All matters presented by any party to this matter to any judge of this court including those who may be specially presiding, shall include a sealing Order, be treated as integrally related to the underlying Grand Jury investigation in this matter, and, as such, be filed with the Clerk of Court under Seal.\nOn May 5, 2010, Special Prosecutor Blakey submitted a copy of his Report of the Special Prosecutor (\"Report\") to now President Judge Todd A. Hoover. On May 27, *500 2010, the Supreme Court Prothonotary's Office received a copy of the confidential Report that had been forwarded under seal by President Judge Hoover for docketing and review by this Court.\nFollowing his appointment, Special Prosecutor Blakey undertook preliminary review of documents from the underlying grand jury proceedings. Transcripts of the testimony before the grand jury, depositions of witnesses whose testimony was read to the grand jury, and transcripts of in-chamber proceedings before Supervising Judge Todd Hoover were reviewed. Special Prosecutor Blakey reviewed the petitions, answers, briefs and orders relating to ancillary proceedings during the grand jury proceedings. Exhibits attached to the filings included newspaper articles that allegedly established that the secrecy provision of the Investigating Grand Jury Act had been violated when information was conveyed to reporters who authored the articles. Special Prosecutor Blakey also reviewed the transcript of hearings conducted on June 30, 2008, and July 1, 2008, before Supervising Judge Hoover, concerning his investigation into the allegations of a breach of grand jury secrecy.\nSpecial Prosecutor Blakey noted that his preliminary review indicated that the reporters had a great deal of knowledge about what was occurring before the grand jury on a daily basis, stating:\n[the reporters] clearly knew what witnesses were called and when, and reported other information some of which, in the opinion of the undersigned, was subject to Grand Jury secrecy. A good example of the latter is the initial articles which reported not only that the purpose of the proceedings was to see if DeNaples had committed perjury, but specifically that he committed perjury in his application and testimony to the Gaming Board, with respect to his alleged ties to William D'Elia and other members of organized crime. Further, evidence of leaks of Grand Jury information is contained in newspaper articles themselves, as the reporters acknowledged that they received information from persons familiar with the probe or from anonymous sources.\nReport of Special Prosecutor at 3.\nSpecial Prosecutor Blakey reasoned that \"[t]he most likely source of the information provided to the various reporters was Pennsylvania State Troopers Richard Weinstock and David Swartz and Assistant District Attorney Fran Chardo, all of whom had extensive contact with various reporters during the course of the Grand Jury proceedings as established by telephone records.\" Report at 3. The three individuals identified by Special Prosecutor Blakey were directly involved in the grand jury investigation. Assistant District Attorney Chardo conducted the proceedings. Trooper Swartz attended all of the proceedings that were conducted in Harrisburg, while Trooper Weinstock was involved in the investigation, the depositions of other witnesses, and guarding the door to the grand jury room when witnesses were called and questioned.\nThe referenced telephone records disclosed that Trooper Weinstock had 38 calls to or from Matthew Birkbeck, a reporter for The Morning Call, during the period from August 22, 2007 to January 16, 2008. Trooper Swartz had 13 telephone calls with reporters during the relevant time period, and Assistant District Attorney Chardo spoke to various reporters 20 times during the period from January 5, 2007 to January 3, 2008.\nSpecial Prosecutor Blakey subpoenaed Assistant District Attorney Chardo and Troopers Weinstock and Swartz, requesting the production of any notes that may *501 have been made of their conversations with the reporters. Trooper Swartz had prepared a State Police Report in which he memorialized the results of his investigation on a daily basis. E-mails to and from Assistant District Attorney Chardo were examined. The witnesses testified that they had no other written materials. The witnesses further uniformly claimed that they did not recall the substance of their conversations with reporters. Special Prosecutor Blakey stated that while \"he maintained a healthy skepticism as to complete denial of all three that they had divulged any information as to Grand Jury proceedings, he also concluded each of these three were impressive witnesses who appeared to be striving to tell the truth.\" Report at 4.\nSpecial Prosecutor Blakey subpoenaed the reporters who had been contacted, Matthew Birkbeck, Kitty Caparelli and Chris Brennan of the Philadelphia Inquirer, and Marc Levy of The Associated Press. After negotiations with counsel for the reporters, and the filing of a motion to compel, the reporters' counsel agreed to allow Special Prosecutor Blakey to review the few notes that the reporters claimed to have made, after redacting portions purportedly unrelated to the grand jury investigation. The redacted notes \"offered nothing of substance with respect to the conversations at issue to confirm or deny the reporters' contentions that no information about the Grand Jury proceedings was divulged.\" Report at 5. Special Prosecutor Blakey expressed his skepticism of Matthew Birkbeck's claimed inability to recall a 20-minute conversation with Trooper Weinstock, but indicated that the information obtained from the reporters and the testimony of Assistant District Attorney Chardo and Troopers Weinstock and Swartz were insufficient to establish that they had divulged information from the grand jury proceedings.\nSpecial Prosecutor Blakey further observed that his investigation was impeded by the Pennsylvania Shield Law, citing the Superior Court's decision in Castellani v. The Scranton Times, 916 A.2d 648 (Pa.Super.2007), aff'd 598 Pa. 283, 956 A.2d 937 (2008). Reporters, including Marc Levy, had admitted that they had received information about the grand jury investigation from confidential sources. The confidential sources were frequently described as \"persons familiar with the probe.\" The reporters refused to answer questions about how they gained factual information that was published in their newspapers, citing confidential and anonymous sources. Because he was unable to pursue key questions regarding the source of the information reported in the newspapers, Special Prosecutor Blakey acknowledged that he had not developed any credible evidence to establish the source of the grand jury leaks that were reported, and that further interrogation of the uncooperative reporters would be futile.\nOf importance to this Court's present consideration, Special Prosecutor Blakey was able to determine, however, that there were \"serious problems with respect to the manner in which the Grand Jury hearings proceeded\", and those problems were conducive to the breaches in secrecy that followed.\nFirst of all, the District Attorney posted the dates and times that the hearings would be held on the District Attorney's website, declaring that this was for the convenience of the Grand Jurors. Of course, such posting also informed all reporters and anyone else who was interested as to when and where these proceedings would be held. This was compounded by the practice of having the witnesses and their counsel wait in the hall outside of the Grand Jury room *502 where they rubbed shoulders with reporters who gathered to learn what they could learn. And finally, the names of the witnesses were called out as they were summoned inside to the hearing room. The combination of these factors was that the reporters in the hall knew who was being called, and had the opportunity before and after the witnesses testified to inquire of the persons who were not sworn to secrecy, as to what went on in the hearing room.\nReport at 5. Special Prosecutor Blakey found that these procedures, apparently adopted by the Office of the District Attorney and left uncorrected by the Supervising Judge, were inappropriate and set the stage for improper disclosures. The procedures were particularly inexplicable as there was access to the hearing room from the District Attorney's Office on a separate floor through a private elevator that would have permitted the witnesses to enter the hearing room without being seen or contacted by the reporters.\nSpecial Prosecutor Blakey ultimately found that his investigation into the leaks had been inconclusive and unsatisfactory as the Pennsylvania Shield Law prevented him from asking the reporters directly for the sources of the information they had received and elected to publicize. Special Prosecutor Blakey then set forth the following specific findings regarding the disclosure of information about the grand jury proceedings:\nh. The manner in which the Grand Jury proceedings were conducted was seriously flawed. The reporters were advised by the District Attorney website of when hearings would be held. The reporters and the witnesses gathered in the hallway of the Dauphin County Courthouse while testimony was taken before the Grand Jury. The witnesses were identified as they were called to testify. The reporters were not sworn to secrecy and had access to the witnesses who were not sworn to secrecy before and after the witnesses testified.\ni. The proceedings could have been handled to prevent the reporters from having contact with the witnesses or knowing who was being called to testify.\nj. It is reasonable to conclude that much of the information that the reporters had about the Grand Jury proceedings came as a result of their contact with the witnesses who were made available to them as stated above.\nk. However, it is also reasonable to conclude that this contact was not the sole source of reporter information as these witnesses cannot be reasonably described as persons familiar with the probe.\nl. The undersigned does not know who those persons are and does not believe that further investigation will disclose the same.\nReport at 8. As a result, Special Prosecutor Blakey recommended that his \"investigation be abandoned, as inconclusive and unsatisfactory, as it has been.\" Id.\nThe significance of Special Prosecutor Blakey's inquiry cannot be overstated. Although Special Prosecutor Blakey proved unable to identify with reasonable certitude the source(s) of the leaks, he did expose a grand jury process, external to the actual investigation and deliberation of the grand jury, which was avoidable, inexplicable, and created an atmosphere where a breach of grand jury secrecy became all but inevitable.\nIn Pennsylvania, grand jury proceedings have traditionally been conducted in secrecy, and for a salutary reason. The secrecy of grand jury proceedings is \"indispensable to the effective functioning of a grand jury.\" In re Investigating Grand *503 Jury of Philadelphia Co. (Appeal of Philadelphia Rust Proof Company), 496 Pa. 452, 437 A.2d 1128, 1130 (1981). The grand jury serves multiple critical purposes:\n(1) [t]o prevent the escape of those whose indictment may be contemplated; (2) to insure the utmost freedom to the grand jury in its deliberations, and to prevent persons subject to indictment or their friends from importuning the grand jurors; (3) to prevent subornation of perjury or tampering with the witnesses who may testify before grand jury and later appear at the trial of those indicted by it; (4) to encourage free and untrammeled disclosures by persons who have information with respect to the commission of crimes; (5) to protect innocent accused who is exonerated from disclosure of the fact that he has been under investigation, and from the expense of standing trial where there was no probability of guilt.\nId.; Accord Pirillo v. Takiff, 462 Pa. 511, 341 A.2d 896, 905 (1975) (\"The secrecy surrounding grand jury proceedings is a mechanism to ensure the safety and reputation of witnesses and grand jurors.\")\nIn enacting the Investigating Grand Jury Act, 42 Pa.C.S. § 4541 et seq., the General Assembly sought to preserve the traditional rule of secrecy in grand jury proceedings. The Act provides, in relevant part:\n(b) Disclosure of proceedings by participants other than witnesses.  Disclosure of matters occurring before the grand jury other than its deliberations and the vote of any juror may be made to the attorneys for the Commonwealth for use in the performance of their duties. The attorneys for the Commonwealth may with the approval of the supervising judge disclose matters occurring before the investigating grand jury including transcripts of testimony to local, State, other state or Federal law enforcement or investigating agencies to assist them in investigating crimes under their investigative jurisdiction. Otherwise a juror, attorney, interpreter, stenographer, operator of a recording device, or any typist who transcribes recorded testimony may disclose matters occurring before the grand jury only when directed to do so by the court. All such persons shall be sworn to secrecy, and shall be in contempt of court if they reveal any information which they are sworn to keep secret.\n42 Pa.C.S. § 4549(b). Furthermore, although grand jury witnesses are generally permitted to disclose their testimony to others, the supervising judge may prohibit such disclosure \"for cause shown.\" 42 Pa. C.S. § 4549(d). This Court has adopted procedural rules to ensure the secrecy of such proceedings. Specifically, Pa. R.Crim.P. 231(C) states that \"[a]ll persons who are to be present while the grand jury is in session shall be identified in the record, shall be sworn to secrecy as provided in these rules, and shall not disclose any information pertaining to the grand jury except as provided by law.\"\nThe very power of the grand jury, and the secrecy in which it must operate, call for a strong judicial hand in supervising the proceedings. The seminal role of the supervising judge of a grand jury was recognized by this Court in In Re Twenty-Fourth Statewide Investigating Grand Jury, 589 Pa. 89, 907 A.2d 505 (2006):\nWe are cognizant that the substantial powers exercised by investigating grand juries, as well as the secrecy in which the proceedings are conducted, yield[] the potential for abuses. The safeguards against such abuses are reflected in the statutory scheme of regulation, *504 which recognizes the essential role of the judiciary in supervising grand jury functions.\n907 A.2d at 512 (citation omitted). Thus, \"Pennsylvania's grand jury process is `strictly regulated,' and the supervising judge has the singular role in maintaining the confidentiality of grand jury proceedings.\" Camiolo v. State Farm Fire and Casualty Co., 334 F.3d 345, 356 (3rd Cir. 2003) (citation omitted). \"The supervising judge has the continuing responsibility to oversee grand jury proceedings, a responsibility which includes insuring the solemn oath of secrecy is observed by all participants.\" In re June 1979 Allegheny County Investigating Grand Jury, 490 Pa. 143, 415 A.2d 73, 78 (1980).\nWhen there are colorable allegations or indications that the sanctity of the grand jury process has been breached and those allegations warrant investigation, the appointment of a special prosecutor to conduct such an investigation is appropriate. And, even where the investigations of special prosecutors do not lead to prosecutable breaches of secrecy, they may provide insight into the often-competing values at stake, as well as guidance and context so that prosecutors and supervising judges conducting future proceedings may learn from the examples. Two recent instances are illustrative.\nIn Re: County Investigating Grand Jury VIII, 2003, 2005 WL 3985351 (Lack. Com.Pl.2005) involved a motion to quash the presentment issued by a Lackawanna County Grand Jury, recommending that criminal charges be filed against four Lackawanna County prison guards for conduct relating to abuse of inmates. In the motion to quash the presentment, allegations were made that the Lackawanna County District Attorney's Office had exchanged e-mail communications with a newspaper reporter that divulged grand jury information, and that a grand jury witness was contacted by the reporter shortly after the witness appeared before the grand jury and was questioned about private matters that had been disclosed only to the grand jury.\nAn initial review of the allegations by the common pleas court judge confirmed the existence, but not the substance, of e-mails that were exchanged between the reporter and a member of the District Attorney's office during the time period that the grand jury was investigating the county prison. The review also confirmed that newspaper articles referenced testimony purportedly given by grand jury witnesses, that witnesses had complained that the reporter had appeared at the courthouse on dates that the grand jury was considering the county prison investigation, and that one witness had been contacted at home by the reporter before the witness was subpoenaed to testify before the grand jury. Based upon its review, the common pleas court appointed a special prosecutor to investigate the allegations of a grand jury leak.\nThe special prosecutor focused his investigation on the allegations that: (1) the reporter was informed in advance of the dates when the grand jury was scheduled to hear testimony concerning the probe into the county prison; and (2) information regarding the proceedings before the grand jury were divulged to the reporter by the District Attorney's office. The special prosecutor obtained copies of the relevant e-mails and articles authored by the reporter. Interviews of the authors and recipients of the e-mails, the reporter, attorneys and other staff employed by the District Attorney's office, an attorney who represented an individual charged in the presentment, and grand jury witnesses were conducted by the special prosecutor. At the conclusion of the investigation, the *505 special prosecutor submitted a report and recommendation that were filed under seal.\nThe common pleas court reviewed the special prosecutor's report and recommendation in considering the motion to quash the presentment. The court noted that the reporter had submitted to two interviews by the special prosecutor and had voluntarily disclosed the sources for the information contained in her articles about the grand jury proceedings. During the first interview, the reporter identified a court reporter as one of her sources for information about the scheduling of grand jury proceedings. Since the court reporter had died prior to the dates of two of the grand jury sessions, the court reporter could not have been the source of that information. When the reporter was questioned again during the second interview, she indicated that other sources and \"courthouse gadflies\" had advised her of the scheduled dates. Members of the District Attorney's Office acknowledged during interviews that if the reporter had asked for the grand jury's schedule of sessions, the staff likely would have provided the information.\nThe common pleas court concluded that, even assuming that a member of the District Attorney's office intentionally or unwittingly had disclosed the grand jury's schedule of sessions to the reporter, such conduct would not justify dismissal of the presentment because Section 4549(b) of the Investigating Grand Jury Act, 42 Pa. C.S. § 4549(b), prohibits only the disclosure of \"matters occurring before the grand jury.\" The court reasoned that \"ministerial information relating to the date of a grand jury session did not constitute disclosure of `matters occurring before a grand jury'\" because the information did not reveal testimony, documentary evidence or other matters that took place within the secret confines of the grand jury room; the court was careful to note, however, that it was not condoning the dissemination of the grand jury's schedule.\nThe court further observed that the reporter's articles contained discussions of grand jury testimony and other \"matters occurring before the grand jury,\" including statements from prison inmates regarding their grand jury testimony. In her interview with the special prosecutor, the reporter denied that any member of the District Attorney's Office was the source for her accounts of the grand jury testimony or other information discussed in the news articles. The reporter stated that she was present in the courthouse hallway when the witnesses appeared to testify, and would approach the witnesses for comment as they exited the grand jury hearing room. The published articles appeared to contain information that the reporter could have gathered from the inmates or from her own visual observations.\nThe court noted that the grand jury itself had taken exception to the presence of the reporter, and the grand jury's report expressed its significant concerns about the reporter sitting in the hallway outside of the grand jury room. Although the court noted that the dissemination of the grand jury's session dates did not constitute an improper disclosure of matters occurring before the grand jury, the court was critical of the practice. The court observed that grand jury secrecy affords protection to innocent, cooperating witnesses from the stigma associated with being identified as someone who has appeared before a grand jury. The court cautioned that greater efforts should be made in the future to insure that the grand jury's schedule would not be revealed to the media or the public.\nDuring the special prosecutor's investigation, the reporter denied that she had *506 discussed grand jury testimony with the prosecutor. With respect to the claim that she had contacted a grand jury witness shortly after the witness' appearance, the reporter indicated that her telephone call was precipitated by two letters to the newspaper's editor that were submitted by the witness for publication. The reporter stated that the witness voluntarily spoke to her about his grand jury appearance.\nThe common pleas court noted that the members of the District Attorney's office who were interviewed by the special prosecutor denied that they ever provided the reporter with any information regarding the proceedings in the grand jury room. With respect to the exchange of e-mail messages, the special prosecutor found that their explanations were adequate to explain the references to the grand jury witnesses in the e-mails and to establish that the e-mails did not contain clear and unequivocal improper references to grand jury evidence.\nThe common pleas court concluded that, even if such an improper disclosure had occurred, quashal of the presentment would not have been appropriate unless the defendant could demonstrate actual prejudice by establishing that such misconduct substantially influenced the grand jury's decision to issue a presentment and to recommend the filing of criminal charges. The court determined that there was no evidence that any purported grand jury leak or any information contained in the reporter's articles substantially influenced the grand jury's decision to issue a presentment, or caused actual prejudice to the defendant. The court noted that a lengthy cautionary instruction had been given to the grand jury after the articles were published, informing the grand jury that the media reports of the investigation were to be ignored. After the instruction was given, the grand jurors assured the court that they had not reviewed or considered any of the articles, and that they would continue to disregard any future media reports.\nThe common pleas court found that the special prosecutor's investigation had not proven that matters of secrecy occurring before the grand jury had been disclosed to the reporter by the prosecution. The court found also that the defendant had not established the prejudice required to warrant the dismissal of the presentment. The court observed that the defendant would be entitled to a preliminary hearing following the filing of criminal charges based upon the presentment under the Investigating Grand Jury Act, 42 Pa.C.S. § 4551(e), which would further ameliorate any alleged prejudice suffered by him. Since the defendant had failed to establish prejudice, the court concluded that there was no basis upon which to quash the grand jury's presentment.\nA second instance involving appointment of a special prosecutor in connection with alleged grand jury leaks, and in explication of the complex interests and values implicated, is reflected in Castellani v. Scranton Times, 598 Pa. 283, 956 A.2d 937 (2008). In that case, the supervising judge of a grand jury appointed a separate special prosecutor to investigate allegations of grand jury leaks with respect to the statewide investigating grand jury impaneled to investigate allegations of abuse of county prisoners by Lackawanna County prison guards. Two county commissioners appeared to testify before the grand jury in response to subpoenas issued by the Attorney General's Office. Newspaper articles were published subsequently, claiming that the commissioners were evasive and un-cooperative. The articles claimed that the commissioners' testimony had irritated the jurors and opined that the jurors \"were ready to take out the big hook and yank *507 each of them out of the witness chair.\" The articles attributed the information about the grand jury proceedings to an unnamed source close to the investigation.\nAfter the articles were published, the commissioners' counsel presented a petition for sanctions to the supervising judge based on the alleged disclosures of the grand jury proceedings to the newspapers. The supervising judge denied the petition due to lack of standing, but appointed a special prosecutor to investigate the source of the alleged unlawfully disclosed materials. The report submitted by the special prosecutor concluded that there was no breach of secrecy by any agent of the Attorney General's Office, finding that the newspaper reports were completely at variance with transcripts of the grand jury proceedings. The supervising judge concurred with the special prosecutor that the reports were not borne out by the record of the proceedings, and concluded that the source of the reporter's information was not the Attorney General's Office.\nThe appellants subsequently filed a civil complaint against the reporter and the newspapers, claiming that the news articles were false and contained defamatory statements. The appellants requested that the newspapers disclose the identity of the articles' source, which the appellees refused, citing the Pennsylvania Shield Law and the First Amendment of the U.S. Constitution. The appellants filed a motion to compel with the trial court and served interrogatories on the appellees seeking the identity of the source.\nThe Shield Law addresses confidential communications to news reporters as follows:\n(a) General rule.  No person engaged or connected with, or employed by any newspaper of general circulation or any press association or any radio or television station, or any magazine of general circulation, for the purpose of gathering, procuring, compiling, editing or publishing news, shall be required to disclose the source of any information procured or obtained by such person, in any legal proceeding, trial or investigation before any government unit.\n(b) Exception.  The provisions of subsection (a) insofar as they relate to radio or television stations shall not apply unless the radio or television station maintains and keeps open for inspection, for a period of at least one year from the date of the actual broadcast or telecast, an exact recording, transcription, kinescopic film or certified written transcript of the actual broadcast or telecast.\n42 Pa.C.S. § 5942. The trial court granted the appellants' motion, concluding that the privileges afforded reporters under the Shield Law and the First Amendment should not be asserted to the detriment of the grand jury system and an individual's state constitutional right to vindicate his reputation. The appellees were ordered to disclose the identity of their source. The appellees filed a notice of appeal pursuant to Pa.R.A.P. 313 (collateral order rule). The Superior Court reversed the trial court's order, concluding that the Shield Law did not recognize an exception where a crime may have occurred due to an alleged disclosure of grand jury information.\nOn appeal, we addressed the issue of \"whether the Shield Law protects media defendants in a defamation case from the court-ordered disclosure of the confidential source of an allegedly defamatory newspaper article, where the plaintiffs allege that the media defendants and the source were direct participants in the criminal disclosure of grand jury proceedings.\" Id. at 943.\nThe plaintiffs/appellants argued, inter alia, that the Shield Law should not protect *508 the appellees from disclosure because the communication between the reporter and her alleged source violated the Investigating Grand Jury Act, and was a criminal act. The appellants urged this Court to recognize a crime-fraud exception to the Shield Law to compel disclosure of a reporter's source where the communication was criminal or fraudulent. The appellants argued that a reporter should not be permitted to use the Shield Law to obstruct criminal or civil inquiries into the illegal disclosure and publication of false and/or defamatory information.\nThe appellees contended that this Court had repeatedly held that the Shield Law unambiguously provided an absolute privilege against the compelled disclosure of the identity of confidential sources or any information that could lead to such disclosure. The appellees asserted that the plain language of the Shield Law precluded the creation of a crime-fraud exception, and that the statutory protection against compelled disclosure must be applied even if the protections of the Shield Law would operate to conceal evidence of a crime. The appellees argued that overriding the Shield Law's protections in the context of the libel action would not vindicate the interests advanced by the secrecy provisions of the Investigating Grand Jury Act because the question whether there had been a violation of grand jury secrecy was incidental to the appellants' defamation action.\nThis Court reaffirmed that \"the Shield Law prohibits the compelled disclosure of a confidential source's identity, or any information which could expose the source's identity.\" Id. at 954. In rejecting the appellants' arguments, we stated that:\n[o]ur Shield Law jurisprudence has consistently recognized the statute's absolute protection of a source's identity from compelled disclosure. For that reason alone, we cannot simply engraft upon the statute an exception which would not only contradict the well-established public policy underlying the Shield Law, but, as importantly, would contravene the statute's unambiguous text. The Shield Law has been reenacted three times since it was first enacted in 1937, and twice since this Court interpreted its text in [In re] Taylor [412 Pa. 32, 193 A.2d 181 (1963)]. If the General Assembly disagreed with our interpretation, or wished to establish a crime-fraud exception to the Shield Law, it could have easily done so.\n956 A.2d at 950 (citation omitted).\nWe determined that \"the public's interest in the free flow of information to the news media [was] not presently in conflict with the public's interest in grand jury secrecy.\" We stated:\n\"Notably, it appears that the alleged criminal violations of the Grand Jury Act in the present case were adequately investigated by the authorities without implicating the Shield law. Following the allegations of a breach of grand jury secrecy involving appellee [reporter] Henn, the supervising judges of both the Statewide Grand Jury and the County Grand Jury appointed special prosecutors to investigate the leaks. After receiving the prosecutors' reports, both were satisfied that the integrity of their respective Grand Juries had been maintained (though the reports only addressed potential breaches by the District Attorney's Office and the Attorney General's Office).\" Thus, the statewide special prosecutors['] investigation and report did not reveal, and appellants have not proven, that the alleged violations took place.\n956 A.2d at 952-953 (footnote omitted).\nWe observed, however, that:\n\n*509 [w]ere a situation to arise, such as that hypothesized by the concurrence below, where the Commonwealth sought a reporter's evidence concerning the source of a grand jury leak in a criminal investigation or prosecution of that leak, then the Shield Law and the secrecy provision of the Grand Jury Act would be more directly in conflict. That question, however, is not before us and we save its consideration for another day. Put another way, we need not determine whether there is any situation where the absolute language of the Shield Law would have to yield to a competing, constitutional value.\nId. at 953 n. 14.[5]\nThis case is unlike Castellani, in that Special Prosecutor Blakey conducted an inquiry into allegations that grand jury secrecy had been violated during the course of the grand jury investigation in the context of potential criminal proceedings; the inquiry did not arise during defamation proceedings or proceedings civil in nature. In conducting his inquiry, Special Prosecutor Blakey sought to elicit the cooperation of the reporters in possession of information that may have been a product of possible criminal violations of grand jury proceedings. The reporters provided limited cooperation, thereby forestalling a definitive resolution by Special Prosecutor Blakey.\nThe foreseeable situation described in Castellani  the tension that might arise where the Commonwealth sought to obtain a reporter's evidence concerning the source of a grand jury leak in a criminal investigation or prosecution of that leak  is again not squarely before us due to the limited inquiry ultimately undertaken by Special Prosecutor Blakey, who did not force the issue directly. Thus, the question of whether the protections afforded by the Shield Law may yield to the governmental interests in the investigation of alleged violations of grand jury secrecy again need not be resolved at this juncture.[6]\nIn this instance, we are satisfied that Special Prosecutor Blakey need not be directed to do more to force the issue. We arrive at this determination for two primary reasons. First, Special Prosecutor Blakey's investigation and report has already served a salutary purpose by identifying the procedural misjudgments in this case which created an atmosphere *510 that invited a breach of secrecy; this case should serve as a reminder to prosecutors and supervising judges to avoid such measures. As Castellani and In Re: County Investigating Grand Jury VIII, 2003 confirm, the secrecy essential to grand jury proceedings and the imperatives and incentives of the free press often are in tension. The primary duty of judicial officers and officers of the Court, in this instance, is to assure the proper functioning of the grand jury. The convening of a grand jury is not an occasion for prosecutorial grandstanding. The overarching purpose of the grand jury process is to seek the truth, and in that pursuit there is an equally important obligation to craft measures that preserve grand jury secrecy. There generally is no legitimate reason, consistent with the imperative of grand jury secrecy, for the District Attorney to publicize the date, time and place of the proceeding. There generally is no legitimate reason, consistent with the imperative of grand jury secrecy, for the District Attorney to take measures that obviously provide the opportunity for members of the media to identify and interact with grand jury witnesses  such as here, where Special Prosecutor Blakey found that:\nThe reporters were advised by the District Attorney website of when hearings would be held. The reporters and the witnesses gathered in the [same] hallway of the Dauphin County Courthouse while testimony was taken before the Grand Jury [and notwithstanding that the District Attorney had available a separate, private access for the witnesses.] The witnesses were identified as they were called to testify. The reporters were not sworn to secrecy and had access to the witnesses who were not sworn to secrecy before and after the witnesses testified. [] The proceedings could have been handled to prevent the reporters from having contact with the witnesses or knowing who was being called to testify.\nHad the District Attorney's Office been more attentive to its obligation to preserve secrecy, and had the supervising judge exercised a firmer hand, the question of a breach of secrecy may well never have arisen.\nSecond, Special Prosecutor Blakey's ultimate inability to determine the source of any breach of grand jury secrecy does not necessarily end the matter. Special Prosecutor Blakey's investigation and report does not foreclose further inquiry by an appropriate investigative or prosecutorial body that may wield the authority to obtain the reporters' evidence, and that of other individuals, concerning the alleged violations of grand jury secrecy. We leave it to those entities to determine whether further investigation or action is required.\nFor these reasons, we direct the Supreme Court Prothonotary Office to unseal the Report of the Special Prosecutor, and we further direct the Prothonotary to forward a copy of the Report and this Opinion to the Office of the Attorney General for any action deemed appropriate by that entity.\nJurisdiction is relinquished.\nJustice SAYLOR did not participate in the consideration or decision of this case.\nJustices EAKIN, BAER, TODD, McCAFFERY and ORIE MELVIN join the opinion.\nNOTES\n[1]  We employ the term \"Petitioners\" for ease of reference only. The underlying petitions at Nos. 13 and 28 MM 2008 have been resolved. This Opinion concerns only the Report of the Special Prosecutor.\n[2]  The Gaming Control Board's licensing determination was subsequently upheld on direct appeal to this Court. Pocono Manor Investors, L.P. v. PGCB, 592 Pa. 625, 927 A.2d 209 (2007).\n[3]  Former Chief Justice Cappy filed a concurring opinion joining in the result reached by the Majority, that the Act provides for county district attorneys to share concurrent authority with the Attorney General in investigating and prosecuting criminal violations of the Act, but expressing his concerns that perils may arise in enhancing the authority of a county district attorney merely due to the geographical circumstance that he presides in the county in which the gaming legislation was enacted.\n[4]  The order was docketed at CP-22-MD-0000165-2008.\n[5]  In a Dissenting Opinion, Mr. Justice McCaffery indicated that he would have held that the constitutional interests in the protection of a defamation plaintiff's reputation should outweigh the Shield Law's protections under the unique circumstance presented in Castellani. 956 A.2d at 954-55 (McCaffery, J., dissenting).\n[6]  This Court acknowledges the role of a vigorous free press and its importance in our society, harking back to the seminal case of John Peter Zenger in the eighteenth century. See Pap's A.M. v. City of Erie, 571 Pa. 375, 812 A.2d 591, 605 (2002), quoting In re Mack, 386 Pa. 251, 126 A.2d 679, 683-84 (1956) (Bell, C.J., concurring and dissenting) (discussing 1735 Zenger trial). But, we would be remiss if we did not recognize that the improper disclosure of grand jury testimony constitutes criminal conduct and that by seeking protected grand jury information, members of the free press are encouraging, if not abetting, conduct that is criminal in nature. As a consequence, the important policies pertaining to the powerful investigative tool of the grand jury are being undermined.\n\nLikewise, the Commonwealth's investigatory and prosecutorial agencies should heed these important policies. Simply stated, and in relevance to the matter sub judice, certain individuals who appeared before this grand jury will forever be associated with an alleged organized crime figure, even though there may not be one iota of proof of such association. Clearly, and unfortunately, that is precisely what occurred as a result of the disclosures in this matter.\n\n",
+            "ocr": false,
+            "opinion_id": 2560269
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 33288,
+      "row": {
+        "id": 2357502,
+        "judges": null,
+        "date_filed": "2008-04-22",
+        "date_filed_is_approximate": false,
+        "slug": "com-v-bishop",
+        "case_name_short": "Com.",
+        "case_name": "Com. v. Bishop",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "948 A.2d 802"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n948 A.2d 802 (2008)\nCOM.\nv.\nBISHOP.[3]\nNo. 659 EAL (2007).\nSupreme Court of Pennsylvania.\nApril 22, 2008.\nDisposition of petition for allowance of appeal. Denied.\nNOTES\n[3]  Justice TODD did not participate in the consideration or decision of this matter.\n\n",
+            "ocr": false,
+            "opinion_id": 2357502
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 33425,
+      "row": {
+        "id": 2320384,
+        "judges": null,
+        "date_filed": "2011-07-25",
+        "date_filed_is_approximate": false,
+        "slug": "com-v-palmer",
+        "case_name_short": "Com.",
+        "case_name": "Com. v. Palmer",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "24 A.3d 864"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n24 A.3d 864 (2011)\nCOM.\nv.\nPALMER[4].\nNo. 14 WAL (2011).\nSupreme Court of Pennsylvania.\nJuly 25, 2011.\nDisposition of Petition for Allowance of Appeal Denied.\nNOTES\n[4]  Justice ORIE MELVIN did not participate in the consideration or decision of this matter.\n\n",
+            "ocr": false,
+            "opinion_id": 2320384
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 33500,
+      "row": {
+        "id": 2294104,
+        "judges": null,
+        "date_filed": "2009-05-13",
+        "date_filed_is_approximate": false,
+        "slug": "com-v-hinkledire",
+        "case_name_short": "Com.",
+        "case_name": "Com. v. HINKLEDIRE",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "971 A.2d 492"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n971 A.2d 492 (2009)\nCOM.\nv.\nHINKLEDIRE.\nNo. 31 WAL (2009).\nSupreme Court of Pennsylvania.\nMay 13, 2009.\nDisposition of petition for allowance of appeal. Denied.\n",
+            "ocr": false,
+            "opinion_id": 2294104
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 33542,
+      "row": {
+        "id": 1994125,
+        "judges": "Greenspan",
+        "date_filed": "2009-10-27",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-booker",
+        "case_name_short": "Com.",
+        "case_name": "Commonwealth v. Booker",
+        "case_name_full": "COMMONWEALTH of Pennsylvania, Petitioner v. Terrance BOOKER, Respondent",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<parties id=\"b1257-15\">\n    COMMONWEALTH of Pennsylvania, Petitioner v. Terrance BOOKER, Respondent.\n   </parties><br><court id=\"b1257-18\">\n    Supreme Court of Pennsylvania.\n   </court><br><decisiondate id=\"b1257-19\">\n    Oct. 27, 2009.\n   </decisiondate>",
+        "citations": [
+          "982 A.2d 1221"
+        ],
+        "opinions": [
+          {
+            "author_str": "Per Curiam",
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n982 A.2d 1221 (2009)\nCOMMONWEALTH of Pennsylvania, Petitioner\nv.\nTerrance BOOKER, Respondent.\nNo. 233 EAL 2008\nSupreme Court of Pennsylvania.\nOctober 27, 2009.\n\nORDER\nPER CURIAM.\nAND NOW, this 27th day of October 2009, the Respondent's Counsel's Motion to Withdraw as Counsel is GRANTED. The trial court is directed to appoint new counsel to represent the Respondent. The Petition for Allowance of Appeal is GRANTED. The Superior Court's Order is REVERSED and this matter is REMANDED to the Superior Court for action consistent with our recent decision in Commonwealth v. Liston, 977 A.2d 1089 (Pa.2009).\nJustice GREENSPAN did not participate in the consideration or decision of this matter.\n",
+            "ocr": false,
+            "opinion_id": 1994125
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 33548,
+      "row": {
+        "id": 2557078,
+        "judges": null,
+        "date_filed": "2011-04-26",
+        "date_filed_is_approximate": false,
+        "slug": "com-v-mahaffey",
+        "case_name_short": "Com.",
+        "case_name": "Com. v. Mahaffey",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "21 A.3d 1191"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n21 A.3d 1191 (2011)\nCOM.\nv.\nMAHAFFEY.[10]\nNo. 587 WAL (2010).\nSupreme Court of Pennsylvania.\nApril 26, 2011.\nDisposition of Petition for Allowance of Appeal Denied.\nNOTES\n[10]  Justice ORIE MELVIN did not participate in the consideration or decision of this matter.\n\n",
+            "ocr": false,
+            "opinion_id": 2557078
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 33906,
+      "row": {
+        "id": 2293837,
+        "judges": "Per Curiam",
+        "date_filed": "2009-05-06",
+        "date_filed_is_approximate": false,
+        "slug": "lusick-v-abraham",
+        "case_name_short": "LUSICK",
+        "case_name": "LUSICK v. Abraham",
+        "case_name_full": "David George LUSICK, Petitioner v. Lynne ABRAHAM, Lynn Herbert O’Connor, John Hunter Bennett, Ronald Eisenberg, Thomas Delgornous, Arnold Gordon, Elizabeth Varkis Jolies and City of Philadelphia, Respondents",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 1,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<citation id=\"b171-12\">\n    971 A.2d 1122\n   </citation><br><parties id=\"b171-13\">\n    David George LUSICK, Petitioner v. Lynne ABRAHAM, Lynn Herbert O’Connor, John Hunter Bennett, Ronald Eisenberg, Thomas Delgornous, Arnold Gordon, Elizabeth Varkis Jolies and City of Philadelphia, Respondents.\n   </parties><br><docketnumber id=\"b171-15\">\n    No. 22 EM 2009.\n   </docketnumber><br><court id=\"b171-16\">\n    Supreme Court of Pennsylvania.\n   </court><br><decisiondate id=\"b171-17\">\n    May 6, 2009.\n   </decisiondate>",
+        "citations": [
+          "971 A.2d 1122",
+          "601 Pa. 97"
+        ],
+        "opinions": [
+          {
+            "author_str": "Per Curiam",
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n971 A.2d 1122 (2009)\nDavid George LUSICK, Petitioner\nv.\nLynne ABRAHAM, Lynn Herbert O'Connor, John Hunter Bennett, Ronald Eisenberg, Thomas Delgornous, Arnold Gordon, Elizabeth Varkis Jolies and City of Philadelphia, Respondents.\nNo. 22 EM 2009.\nSupreme Court of Pennsylvania.\nMay 6, 2009.\n\nORDER\nPER CURIAM.\nAND NOW, this 6th day of May, 2009, the \"Petition for Exercise of the Court's Kings Bench Powers\" is DENIED.\n",
+            "ocr": false,
+            "opinion_id": 2293837
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 33918,
+      "row": {
+        "id": 1886104,
+        "judges": "Per Curiam",
+        "date_filed": "2009-07-01",
+        "date_filed_is_approximate": false,
+        "slug": "george-v-unemployment-compensation-board-of-review",
+        "case_name_short": "George",
+        "case_name": "George v. Unemployment Compensation Board of Review",
+        "case_name_full": "Andrea J. GEORGE, Petitioner v. UNEMPLOYMENT COMPENSATION BOARD OF REVIEW, Respondent",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<citation id=\"b642-4\">\n    975 A.2d 1079\n   </citation><br><parties id=\"b642-5\">\n    Andrea J. GEORGE, Petitioner v. UNEMPLOYMENT COMPENSATION BOARD OF REVIEW, Respondent.\n   </parties><br><docketnumber id=\"b642-8\">\n    No. 53 EM 2009.\n   </docketnumber><br><court id=\"b642-9\">\n    Supreme Court of Pennsylvania.\n   </court><br><decisiondate id=\"b642-10\">\n    July 1, 2009.\n   </decisiondate>",
+        "citations": [
+          "975 A.2d 1079",
+          "601 Pa. 568"
+        ],
+        "opinions": [
+          {
+            "author_str": "Per Curiam",
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n975 A.2d 1079 (2009)\nAndrea J. GEORGE, Petitioner\nv.\nUNEMPLOYMENT COMPENSATION BOARD OF REVIEW, Respondent.\nNo. 53 EM 2009.\nSupreme Court of Pennsylvania.\nJuly 1, 2009.\n\nORDER\nPER CURIAM.\nAND NOW, this 1st day of July, 2009, the Petition for Allowance of Appeal, treated as a Petition for Review, is DENIED.\n",
+            "ocr": false,
+            "opinion_id": 1886104
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 2600,
+  "num_rows_per_page": 100,
+  "partial": true
+}

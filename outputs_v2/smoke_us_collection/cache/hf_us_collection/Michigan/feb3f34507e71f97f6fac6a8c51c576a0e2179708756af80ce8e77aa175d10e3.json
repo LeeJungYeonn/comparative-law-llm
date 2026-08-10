@@ -1,0 +1,765 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 24336,
+      "row": {
+        "id": 840307,
+        "judges": null,
+        "date_filed": "2008-02-19",
+        "date_filed_is_approximate": false,
+        "slug": "people-v-arnold",
+        "case_name_short": "Arnold",
+        "case_name": "People v. Arnold",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "744 N.W.2d 146"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20080219_S135215_63_135215_2008-02-19_or.pdf",
+            "author_id": null,
+            "opinion_text": "\n744 N.W.2d 146 (2008)\nPEOPLE of the State of Michigan, Plaintiff-Appellee,\nv.\nBrandon Allen ARNOLD, Defendant-Appellant.\nDocket No. 135215. COA No. 271511.\nSupreme Court of Michigan.\nFebruary 19, 2008.\nOn order of the Court, the application for leave to appeal the September 25, 2007 judgment of the Court of Appeals is considered, and it is DENIED, because we are not persuaded that the questions presented should be reviewed by this Court.\n",
+            "ocr": false,
+            "opinion_id": 840307
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 24401,
+      "row": {
+        "id": 847533,
+        "judges": null,
+        "date_filed": "2005-12-16",
+        "date_filed_is_approximate": false,
+        "slug": "police-officers-assn-of-michigan-v-ottawa-county-s",
+        "case_name_short": null,
+        "case_name": "Police Officers Ass'n of Michigan v. Ottawa County Sheriff",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "706 N.W.2d 743"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20051216_S127503_46_127503_2005-12-16_or.pdf",
+            "author_id": null,
+            "opinion_text": "\n706 N.W.2d 743 (2005)\nPOLICE OFFICERS ASS'N OF MICHIGAN v. OTTAWA COUNTY SHERIFF.\nNo. 127503.\nSupreme Court of Michigan.\nDecember 16, 2005.\nApplication for leave to appeal.\nSC: 127503, COA: 244919.\nOn order of the Court, the application for leave to appeal the October 14, 2004 judgment of the Court of Appeals is considered, and we direct the Clerk to schedule oral argument on whether to grant the application or take other peremptory action. MCR 7.302(G)(1). We DIRECT the parties to file supplemental briefs within 28 days of the date of this order, addressing (1) whether the Act 312 arbitration panel identified the economic issues in dispute and properly rejected plaintiff's request to add new issues in accordance with the plain language of MCL 423.238, and (2) whether a reviewing court has authority to direct the arbitration panel to reconsider its determination of the \"economic issues in dispute\" in light of the conclusive authority granted to the arbitration panel in MCL 423.238. The motion for leave to file late reply is DENIED. The motions for leave to file brief amicus curiae are GRANTED.\n",
+            "ocr": false,
+            "opinion_id": 847533
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 25108,
+      "row": {
+        "id": 837663,
+        "judges": null,
+        "date_filed": "2009-01-30",
+        "date_filed_is_approximate": false,
+        "slug": "petersen-v-magna-corporation",
+        "case_name_short": "Petersen",
+        "case_name": "Petersen v. MAGNA CORPORATION",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 1,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "759 N.W.2d 404"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20090130_S136542_101_136542_cjord.pdf",
+            "author_id": null,
+            "opinion_text": "\n759 N.W.2d 404 (2009)\nRick PETERSEN, Plaintiff-Appellee,\nv.\nMAGNA CORPORATION and Midwest Employers Casualty Company, Defendants-Appellants, and\nBCN Transportation Services, Inc.; Koleaseco, Inc. and Citizens Insurance Company of America; Koleaseco, Inc. and Accident Fund of America; BCN Transportation Services and TIG Insurance Company; Magna Corporation and TIG Insurance Company; and Serta Restokraft Mattress Company, Inc. and Harleysville Lake States Insurance Company, Defendants-Appellees.\nDocket Nos. 136542, 136543. COA Nos. 273293, 273294.\nSupreme Court of Michigan.\nJanuary 30, 2009.\n\nOrder\nOn order of the Chief Justice, motions by the Michigan Workers' Compensation Placement Facility, the Accident Fund Insurance Company, the Michigan Self-Insurers Association, St. Paul Fire &amp; Marine Insurance Company, the Michigan State Medical Society, Michigan Health &amp; Hospital Association, the Michigan Association for Justice, and the American Insurance Association for leave to file briefs amicus curiae in this case are considered and they are GRANTED.\n",
+            "ocr": false,
+            "opinion_id": 837663
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 25281,
+      "row": {
+        "id": 2744970,
+        "judges": null,
+        "date_filed": "2014-10-22",
+        "date_filed_is_approximate": false,
+        "slug": "people-of-michigan-v-larry-devel-stewart",
+        "case_name_short": null,
+        "case_name": "People of Michigan v. Larry Devel Stewart",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20141022_S149293_60_01_149293_2014-10-22_or.pdf",
+            "author_id": null,
+            "opinion_text": "Order                                                                                        Michigan Supreme Court\n                                                                                                   Lansing, Michigan\n\n  October 22, 2014                                                                                     Robert P. Young, Jr.,\n                                                                                                                 Chief Justice\n\n  149293                                                                                               Michael F. Cavanagh\n                                                                                                       Stephen J. Markman\n                                                                                                           Mary Beth Kelly\n                                                                                                            Brian K. Zahra\n                                                                                                    Bridget M. McCormack\n  PEOPLE OF THE STATE OF MICHIGAN,                                                                        David F. Viviano,\n            Plaintiff-Appellee,                                                                                       Justices\n\n  v                                                                 SC: 149293\n                                                                    COA: 313097\n                                                                    Macomb CC: 2012-000569-FC\n  LARRY DEVEL STEWART,\n           Defendant-Appellant.\n\n  _________________________________________/\n\n        On order of the Court, the application for leave to appeal the March 25, 2014\n  judgment of the Court of Appeals is considered, and it is DENIED, because we are not\n  persuaded that the questions presented should be reviewed by this Court.\n\n\n\n\n                           I, Larry S. Royster, Clerk of the Michigan Supreme Court, certify that the\n                     foregoing is a true and complete copy of the order entered at the direction of the Court.\n                           October 22, 2014\n           t1015\n                                                                               Clerk\n\f",
+            "ocr": false,
+            "opinion_id": 2744970
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 25789,
+      "row": {
+        "id": 1278846,
+        "judges": null,
+        "date_filed": "2005-04-26",
+        "date_filed_is_approximate": false,
+        "slug": "churchs-builder-wholesale-v-homeowner-const-lien-r",
+        "case_name_short": null,
+        "case_name": "Church's Builder Wholesale v. Homeowner Const. Lien Recovery Fund",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "695 N.W.2d 70"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n695 N.W.2d 70 (2005)\nCHURCH'S BUILDER WHOLESALE\nv.\nHOMEOWNER CONST. LIEN RECOVERY FUND.\nNo. 127114.\nSupreme Court of Michigan.\nApril 26, 2005.\nSC: 127114. COA: 255116.\nOn order of the Court, the application for leave to appeal the July 23, 2004 order of the Court of Appeals is considered, and it is DENIED, because we are not persuaded that the questions presented should be reviewed by this Court.\n",
+            "ocr": false,
+            "opinion_id": 1278846
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 25795,
+      "row": {
+        "id": 2741485,
+        "judges": null,
+        "date_filed": "2014-10-07",
+        "date_filed_is_approximate": false,
+        "slug": "people-of-michigan-v-randall-scott-overton",
+        "case_name_short": null,
+        "case_name": "People of Michigan v. Randall Scott Overton",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20141007_S148347_46_01_148347_2014-10-07_cj_or.pdf",
+            "author_id": null,
+            "opinion_text": "Order                                                                                       Michigan Supreme Court\n                                                                                                  Lansing, Michigan\n\n  October 7, 2014                                                                                     Robert P. Young, Jr.,\n                                                                                                                Chief Justice\n\n                                                                                                      Michael F. Cavanagh\n                                                                                                      Stephen J. Markman\n  148347(43)                                                                                              Mary Beth Kelly\n                                                                                                           Brian K. Zahra\n                                                                                                   Bridget M. McCormack\n                                                                                                         David F. Viviano,\n                                                                                                                     Justices\n  PEOPLE OF THE STATE OF MICHIGAN,\n            Plaintiff-Appellee,\n  v                                                                SC: 148347\n                                                                   COA: 308999\n                                                                   Wayne CC: 11-002103-FC\n  RANDALL SCOTT OVERTON,\n           Defendant-Appellant.\n\n  _________________________________________/\n\n        On order of the Chief Justice, the motion of amicus curiae Prosecuting Attorneys\n  Association of Michigan to extend the time for filing its amicus curiae brief is\n  GRANTED. The brief submitted on September 26, 2014, is accepted for filing.\n\n\n\n\n                          I, Larry S. Royster, Clerk of the Michigan Supreme Court, certify that the\n                    foregoing is a true and complete copy of the order entered at the direction of the Court.\n                                 October 7, 2014\n                                                                              Clerk\n\f",
+            "ocr": false,
+            "opinion_id": 2741485
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 26367,
+      "row": {
+        "id": 841773,
+        "judges": null,
+        "date_filed": "2007-09-21",
+        "date_filed_is_approximate": false,
+        "slug": "in-re-ollie",
+        "case_name_short": "In Re Ollie",
+        "case_name": "In Re Ollie",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "738 N.W.2d 236"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20070921_S134796_86_134796_2007-09-21_or.pdf",
+            "author_id": null,
+            "opinion_text": "\n738 N.W.2d 236 (2007)\nIn re Emerson OLLIE, Minor.\nDepartment of Human Services, f/k/a Family Independence Agency, and Oakland County Prosecutor's Office, Petitioners-Appellees,\nv.\nKatherine Ollie, a/k/a Katherine Fessler, Respondent-Appellant.\nDocket No. 134796. COA No. 269029.\nSupreme Court of Michigan.\nSeptember 21, 2007.\nOn order of the Court, the application for leave to appeal the June 14, 2007 judgment of the Court of Appeals is considered, and it is DENIED, because we are not persuaded that the questions presented should be reviewed by this Court.\n",
+            "ocr": false,
+            "opinion_id": 841773
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 26633,
+      "row": {
+        "id": 838410,
+        "judges": null,
+        "date_filed": "2008-10-27",
+        "date_filed_is_approximate": false,
+        "slug": "braverman-v-pierce",
+        "case_name_short": "Braverman",
+        "case_name": "Braverman v. Pierce",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "757 N.W.2d 103"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20081027_S136788_95_136788_2008-10-27_or.pdf",
+            "author_id": null,
+            "opinion_text": "\n757 N.W.2d 103 (2008)\nEric BRAVERMAN, Conservator of the Estate of Jamall Duffey, a Minor, Plaintiff-Appellant,\nv.\nKasiem PIERCE and Amtech Lighting Services, Defendants-Appellees, and\nCity of Detroit, Defendant.\nDocket No. 136788. COA No. 274165.\nSupreme Court of Michigan.\nOctober 27, 2008.\n\nOrder\nOn order of the Court, the application for leave to appeal the May 29, 2008 order of the Court of Appeals is considered, and it is DENIED, because we are not persuaded that the question presented should be reviewed by this Court.\n",
+            "ocr": false,
+            "opinion_id": 838410
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 26641,
+      "row": {
+        "id": 823543,
+        "judges": null,
+        "date_filed": "2012-11-20",
+        "date_filed_is_approximate": false,
+        "slug": "people-of-michigan-v-geoffrey-lavar-lawson",
+        "case_name_short": null,
+        "case_name": "People of Michigan v. Geoffrey Lavar Lawson",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20121120_S145709_86_145709_2012-11-20_or.pdf",
+            "author_id": null,
+            "opinion_text": "Order                                                                                       Michigan Supreme Court\n                                                                                                  Lansing, Michigan\n\n  November 20, 2012                                                                                   Robert P. Young, Jr.,\n                                                                                                                Chief Justice\n\n  145709                                                                                              Michael F. Cavanagh\n                                                                                                            Marilyn Kelly\n                                                                                                      Stephen J. Markman\n                                                                                                      Diane M. Hathaway\n                                                                                                          Mary Beth Kelly\n  PEOPLE OF THE STATE OF MICHIGAN,                                                                        Brian K. Zahra,\n            Plaintiff-Appellee,                                                                                      Justices\n\n  v                                                                SC: 145709\n                                                                   COA: 302128\n                                                                   Genesee CC: 08-024090-FC\n  GEOFFREY LAVAR LAWSON,\n           Defendant-Appellant.\n\n  _________________________________________/\n\n        On order of the Court, the application for leave to appeal the June 26, 2012\n  judgment of the Court of Appeals is considered, and it is DENIED, because we are not\n  persuaded that the questions presented should be reviewed by this Court.\n\n\n\n\n                          I, Corbin R. Davis, Clerk of the Michigan Supreme Court, certify that the\n                    foregoing is a true and complete copy of the order entered at the direction of the Court.\n                          November 20, 2012                   _________________________________________\n           t1113                                                              Clerk\n\f",
+            "ocr": false,
+            "opinion_id": 823543
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 26648,
+      "row": {
+        "id": 842570,
+        "judges": null,
+        "date_filed": "2007-06-26",
+        "date_filed_is_approximate": false,
+        "slug": "people-v-hunter",
+        "case_name_short": "Hunter",
+        "case_name": "People v. Hunter",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "732 N.W.2d 925"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20070626_S133530_69_133530_2007-06-26_or.pdf",
+            "author_id": null,
+            "opinion_text": "\n732 N.W.2d 925 (2007)\nPEOPLE of the State of Michigan, Plaintiff-Appellee,\nv.\nRoederick Martin HUNTER, Defendant-Appellant.\nDocket No. 133530. COA No. 264367.\nSupreme Court of Michigan.\nJune 26, 2007.\nOn order of the Court, the application for leave to appeal the February 8, 2007 judgment of the Court of Appeals is considered, and it is DENIED, because we are not persuaded that the questions presented should be reviewed by this Court.\n",
+            "ocr": false,
+            "opinion_id": 842570
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 2136,
+  "num_rows_per_page": 100,
+  "partial": true
+}

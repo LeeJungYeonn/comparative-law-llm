@@ -1,0 +1,751 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 49136,
+      "row": {
+        "id": 2798088,
+        "judges": "Per Curiam",
+        "date_filed": "2015-05-01",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-smith-m",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Smith, M.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/528WAL2014 - 1021984833425581.pdf",
+            "author_id": null,
+            "opinion_text": "                IN THE SUPREME COURT OF PENNSYLVANIA\n                           WESTERN DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA, : No. 528 WAL 2014\n                              :\n              Respondent      :\n                              : Petition for Allowance of Appeal from the\n                              : Order of the Superior Court\n         v.                   :\n                              :\n                              :\nMARCUS SMITH,                 :\n                              :\n              Petitioner      :\n\n\n                                   ORDER\n\n\nPER CURIAM\n\n     AND NOW, this 1st day of May, 2015, the Petition for Allowance of Appeal is\n\nDENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 2798088
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 49145,
+      "row": {
+        "id": 2799411,
+        "judges": "Per Curiam",
+        "date_filed": "2015-05-07",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-williams-c",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Williams, C.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/829MAL2014 - 1022053933447699.pdf",
+            "author_id": null,
+            "opinion_text": "                IN THE SUPREME COURT OF PENNSYLVANIA\n                           MIDDLE DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA, : No. 829 MAL 2014\n                              :\n                Respondent    :\n                              : Petition for Allowance of Appeal from the\n                              : Order of the Superior Court\n          v.                  :\n                              :\n                              :\nCOREY L. WILLIAMS,            :\n                              :\n                Petitioner    :\n\n\n                                   ORDER\n\n\nPER CURIAM\n\n     AND NOW, this 7th day of May, 2015, the Petition for Allowance of Appeal is\n\nDENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 2799411
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 49147,
+      "row": {
+        "id": 2799690,
+        "judges": "Per Curiam",
+        "date_filed": "2015-05-07",
+        "date_filed_is_approximate": false,
+        "slug": "odc-v-kathy-laurino-yeatter",
+        "case_name_short": "ODC",
+        "case_name": "ODC v. Kathy Laurino Yeatter",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/2093DD3 - 1022052983447437.pdf",
+            "author_id": null,
+            "opinion_text": "                   IN THE SUPREME COURT OF PENNSYLVANIA\n\n\nOFFICE OF DISCIPLINARY COUNSEL,           :   No. 2093 Disciplinary Docket No. 3\n                Petitioner                :\n                                          :   No. 130 DB 2014\n              v.                          :\n                                          :   Attorney Registration No. 92367\nKATHY LAURINO YEATTER,                    :\n               Respondent                 :   (Lebanon County)\n\n\n\n\n                                      ORDER\n\n\nPER CURIAM:\n\n\n\n              AND NOW, this 7th day of May, 2015, upon consideration of the\n\nRecommendation of the Three-Member Panel of the Disciplinary Board dated April 6,\n\n2015, the Joint Petition in Support of Discipline on Consent is hereby granted pursuant\n\nto Pa.R.D.E. 215(g), and it is\n\n       ORDERED that Kathy Laurino Yeatter is suspended on consent from the Bar of\n\nthis Commonwealth for a period of three years, and she shall comply with all the\n\nprovisions of Pa.R.D.E. 217.\n\f",
+            "ocr": false,
+            "opinion_id": 2799690
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 49168,
+      "row": {
+        "id": 2807117,
+        "judges": "Per Curiam",
+        "date_filed": "2015-06-10",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-wilson-t",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Wilson, T.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/66MAL2015 - 1022447814865343.pdf",
+            "author_id": null,
+            "opinion_text": "                IN THE SUPREME COURT OF PENNSYLVANIA\n                           MIDDLE DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA, : No. 66 MAL 2015\n                              :\n               Respondent     :\n                              : Petition for Allowance of Appeal from the\n                              : Order of the Superior Court\n          v.                  :\n                              :\n                              :\nTYREEK WILSON,                :\n                              :\n               Petitioner     :\n\n\n                                    ORDER\n\n\nPER CURIAM\n\n     AND NOW, this 10th day of June, 2015, the Petition for Allowance of Appeal is\n\nDENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 2807117
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 49184,
+      "row": {
+        "id": 2812015,
+        "judges": "Per Curiam",
+        "date_filed": "2015-06-25",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-wilson-c-pet",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Wilson, C., Pet",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/54WAL2015 - 1022637024948560.pdf",
+            "author_id": null,
+            "opinion_text": "                IN THE SUPREME COURT OF PENNSYLVANIA\n                           WESTERN DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA, : No. 54 WAL 2015\n                              :\n              Respondent      :\n                              : Petition for Allowance of Appeal from the\n                              : Order of the Superior Court\n          v.                  :\n                              :\n                              :\nCLINTON EDWARD WILSON,        :\n                              :\n              Petitioner      :\n\n\n                                    ORDER\n\n\nPER CURIAM\n\n     AND NOW, this 25th day of June, 2015, the Petition for Allowance of Appeal is\n\nDENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 2812015
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 49234,
+      "row": {
+        "id": 2822070,
+        "judges": "Per Curiam",
+        "date_filed": "2015-07-30",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-styen-j-pet",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Styen, J., Pet",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/139WAL2015 - 1023045725156656.pdf",
+            "author_id": null,
+            "opinion_text": "                IN THE SUPREME COURT OF PENNSYLVANIA\n                           WESTERN DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA, : No. 139 WAL 2015\n                              :\n             Respondent       :\n                              : Petition for Allowance of Appeal from the\n                              : Order of the Superior Court\n          v.                  :\n                              :\n                              :\nJAMES STYEN,                  :\n                              :\n             Petitioner       :\n\n\n                                    ORDER\n\n\nPER CURIAM\n\n     AND NOW, this 30th day of July, 2015, the Petition for Allowance of Appeal is\n\nDENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 2822070
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 49362,
+      "row": {
+        "id": 2829880,
+        "judges": "Per Curiam",
+        "date_filed": "2015-08-21",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-irvin-j",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Irvin, J.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/190EAL2015 - 1023307965264948.pdf",
+            "author_id": null,
+            "opinion_text": "                 IN THE SUPREME COURT OF PENNSYLVANIA\n                            EASTERN DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA, : No. 190 EAL 2015\n                              :\n              Respondent      :\n                              : Petition for Allowance of Appeal from the\n                              : Order of the Superior Court\n           v.                 :\n                              :\n                              :\nJAMAL IRVIN,                  :\n                              :\n              Petitioner      :\n\n\n                                     ORDER\n\n\nPER CURIAM\n\n     AND NOW, this 21st day of August, 2015, the Petition for Allowance of Appeal is\n\nDENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 2829880
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 52414,
+      "row": {
+        "id": 3005274,
+        "judges": "Per Curiam",
+        "date_filed": "2015-09-28",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-ortiz-diaz-a",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Ortiz-Diaz, A.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/187MAL2015 - 1023738105427147.pdf",
+            "author_id": null,
+            "opinion_text": "                 IN THE SUPREME COURT OF PENNSYLVANIA\n                             MIDDLE DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA,          : No. 187 MAL 2015\n                                       :\n                    Respondent         :\n                                       : Petition for Allowance of Appeal from\n                                       : the Order of the Superior Court\n            v.                         :\n                                       :\n                                       :\nADRIAN ORTIZ-DIAZ,                     :\n                                       :\n                    Petitioner         :\n\n\n                                   ORDER\n\n\n\nPER CURIAM\n\n      AND NOW, this 28th day of September, 2015, the Petition for Allowance of\n\nAppeal is DENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 3005274
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 54066,
+      "row": {
+        "id": 3157745,
+        "judges": "Per Curiam",
+        "date_filed": "2015-11-24",
+        "date_filed_is_approximate": false,
+        "slug": "haggerty-l-pet-v-ccp-indiana",
+        "case_name_short": null,
+        "case_name": "Haggerty, L., Pet v. CCP Indiana",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/76WM2015 - 1024485785740922.pdf",
+            "author_id": null,
+            "opinion_text": "                  IN THE SUPREME COURT OF PENNSYLVANIA\n                             WESTERN DISTRICT\n\n\nLONNIE D. HAGGERTY,                        : No. 76 WM 2015\n                                           :\n                   Petitioner              :\n                                           :\n                                           :\n             v.                            :\n                                           :\n                                           :\nCOURT OF COMMON PLEAS OF                   :\nINDIANA COUNTY,                            :\n                                           :\n                   Respondent              :\n\n\n                                       ORDER\n\n\n\nPER CURIAM\n\n      AND NOW, this 24th day of November, 2015, the Application for Leave to File\n\nOriginal Process is GRANTED, and the Petition for Writ of Prohibition, the Application\n\nfor an Immediate Hearing, and the Petition to Strike a Void Judgment are DENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 3157745
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 54078,
+      "row": {
+        "id": 3161698,
+        "judges": "Per Curiam",
+        "date_filed": "2015-12-10",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-brooks-r",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. Brooks, R.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://www.pacourts.us/assets/opinions/Supreme/out/500MAL2015 - 1024658675808195.pdf",
+            "author_id": null,
+            "opinion_text": "                 IN THE SUPREME COURT OF PENNSYLVANIA\n                             MIDDLE DISTRICT\n\n\nCOMMONWEALTH OF PENNSYLVANIA,          : No. 500 MAL 2015\n                                       :\n                    Respondent         :\n                                       : Petition for Allowance of Appeal from\n                                       : the Order of the Superior Court\n            v.                         :\n                                       :\n                                       :\nRANDALL D. BROOKS,                     :\n                                       :\n                    Petitioner         :\n\n\n                                  ORDER\n\n\n\nPER CURIAM\n\n      AND NOW, this 10th day of December, 2015, the Petition for Allowance of\n\nAppeal is DENIED.\n\f",
+            "ocr": false,
+            "opinion_id": 3161698
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 2600,
+  "num_rows_per_page": 100,
+  "partial": true
+}

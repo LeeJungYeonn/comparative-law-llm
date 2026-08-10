@@ -1,0 +1,767 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 21862,
+      "row": {
+        "id": 825558,
+        "judges": null,
+        "date_filed": "2011-12-28",
+        "date_filed_is_approximate": false,
+        "slug": "people-of-michigan-v-marchris-leonard-bates",
+        "case_name_short": null,
+        "case_name": "People of Michigan v. Marchris Leonard Bates",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20111228_S143209_22_143209_2011-12-28_or.pdf",
+            "author_id": null,
+            "opinion_text": "Order                                                                                         Michigan Supreme Court\n                                                                                                    Lansing, Michigan\n\n  December 28, 2011                                                                                     Robert P. Young, Jr.,\n                                                                                                                  Chief Justice\n\n  143209 & (16)(17)                                                                                     Michael F. Cavanagh\n                                                                                                              Marilyn Kelly\n                                                                                                        Stephen J. Markman\n                                                                                                        Diane M. Hathaway\n                                                                                                            Mary Beth Kelly\n  PEOPLE OF THE STATE OF MICHIGAN,                                                                          Brian K. Zahra,\n            Plaintiff-Appellee,                                                                                        Justices\n\n  v                                                                  SC: 143209\n                                                                     COA: 302845\n                                                                     Kent CC: 07-005355-FC\n  MARCHRIS LEONARD BATES,\n             Defendant-Appellant.\n  _________________________________________/\n\n          On order of the Court, the application for leave to appeal the May 27, 2011 order\n  of the Court of Appeals is considered, and it is DENIED, because the defendant has\n  failed to meet the burden of establishing entitlement to relief under MCR 6.508(D). The\n  motions to remand are DENIED.\n\n\n\n\n                            I, Corbin R. Davis, Clerk of the Michigan Supreme Court, certify that the\n                      foregoing is a true and complete copy of the order entered at the direction of the Court.\n                            December 28, 2011                   _________________________________________\n         y1219                                                                  Clerk\n\f",
+            "ocr": false,
+            "opinion_id": 825558
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 22167,
+      "row": {
+        "id": 829429,
+        "judges": null,
+        "date_filed": "2010-12-22",
+        "date_filed_is_approximate": false,
+        "slug": "christopher-lee-duncan-v-state-of-michigan",
+        "case_name_short": null,
+        "case_name": "Christopher Lee Duncan v. State of Michigan",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 10,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20101222_S139345_119_139345_2010-12-22_or.pdf",
+            "author_id": null,
+            "opinion_text": "Order                                                         Michigan Supreme Court\n                                                                    Lansing, Michigan\n\n  December 22, 2010                                                         Marilyn Kelly,\n                                                                                Chief Justice\n\n  139345-7 (113)                                                     Michael F. Cavanagh\n                                                                       Maura D. Corrigan\n  CHRISTOPHER LEE DUNCAN, BILLY JOE                                   Robert P. Young, Jr.\n                                                                      Stephen J. Markman\n  BURR, JR., STEVEN CONNOR, ANTONIO                                   Diane M. Hathaway\n  TAYLOR, JOSE DAVILA, JENNIFER                                      Alton Thomas Davis,\n  O’SULLIVAN, CHRISTOPHER MANIES, and                                                Justices\n  BRIAN SECREST,\n              Plaintiffs-Appellees,\n  v                                            SC: 139345\n                                               COA: 278652\n                                               Ingham CC: 07-000242-CZ\n  STATE OF MICHIGAN and GOVERNOR OF\n  MICHIGAN,\n            Defendants-Appellants.\n\n  _________________________________________/\n  CHRISTOPHER LEE DUNCAN, BILLY JOE\n  BURR, JR., STEVEN CONNOR, ANTONIO\n  TAYLOR, JOSE DAVILA, JENNIFER\n  O’SULLIVAN, CHRISTOPHER MANIES, and\n  BRIAN SECREST,\n              Plaintiffs-Appellees,\n  v                                            SC: 139346\n                                               COA: 278858\n                                               Ingham CC: 07-000242-CZ\n  STATE OF MICHIGAN and GOVERNOR OF\n  MICHIGAN,\n            Defendants-Appellants.\n\n  _________________________________________/\n  CHRISTOPHER LEE DUNCAN, BILLY JOE\n  BURR, JR., STEVEN CONNOR, ANTONIO\n  TAYLOR, JOSE DAVILA, JENNIFER\n  O’SULLIVAN, CHRISTOPHER MANIES, and\n  BRIAN SECREST,\n              Plaintiffs-Appellees,\n  v                                            SC: 139347\n                                               COA: 278860\n                                               Ingham CC: 07-000242-CZ\n  STATE OF MICHIGAN and GOVERNOR OF\n\f                                                                                          2\n\nMICHIGAN,\n               Defendants-Appellants.\n\n_________________________________________/\n\n      This Court’s order of November 30, 2010, will be published with the following\nstatements attached.\n\n         KELLY, C.J. (concurring).\n\n       I concur in the order granting plaintiffs’ motion for reconsideration and reinstating\nour order of April 30, 2010. I write separately to avoid the confusion that I believe is\nlikely given the history of this case and the statements of the dissenting justices.\n\n       The dissenters have yet to raise a single argument of which the Court was unaware\nwhen it originally decided this case eight months ago. Indeed, Justice MARKMAN’s\ndissenting statement consists almost entirely of a series of quotations from the Court of\nAppeals dissenting opinion. He also claims that it is not premature to make a final\ndecision on this case because the issues involved are fully laid out on the face of the\ncomplaint. We rejected that precise argument in our April order.\n\n       Nor are Justices CORRIGAN, YOUNG and MARKMAN correct that our July 16, 2010\norder granting reconsideration was warranted because our April order failed to articulate\na governing standard for the trial court. Our April order affirmed only the result reached\nby the Court of Appeals. Such orders are hardly earth-shattering occurrences;1 hence, all\nJustices were clearly aware at the time our April order entered that we were not\narticulating a governing standard for the trial court.2 Yet no one on the Court stated a\nneed for one. Nothing happened between April and July that gave rise to a need for the\nCourt to articulate a governing standard.\n\n       Moreover, the thrust of the dissenters’ position is that our failure to articulate a\nstandard somehow makes summary disposition for defendants a more suitable outcome.\nIn my view, such a conclusion is tantamount to throwing up one’s hands in futility in the\nface of a thorny legal question. If the dissenters’ concerns are genuine, why would not\nthe proper remedy be to grant reconsideration and issue an opinion or order setting such a\nstandard?\n\n\n1\n See, e.g., Andres v Brown, 482 Mich 985 (2008) (affirming the result reached by the\nCourt of Appeals for different reasons); Citizens Protecting Michigan’s Constitution v\nSecretary of State, 482 Mich 960 (2008) (affirming the result only of the Court of\nAppeals judgment without further explanation).\n2\n    See Duncan v State of Michigan, 486 Mich 1071, 1074 (2010) (KELLY, C.J., dissenting).\n\f                                                                                         3\n\n       Finally, Justice CORRIGAN states that issuing our November 30, 2010 order\nwithout her dissenting statement constitutes an “unprecedented” act.3 She is incorrect.\nSuch action has in fact occurred in the past.4 The same action was warranted in this\nunique case because the case (1) involves issues important to this State’s jurisprudence,\n(2) is three years old despite the fact that discovery has not even begun, and (3) has\nlanguished in this Court for almost a year (two motions for reconsideration have been\nbrought).\n\n       In sum, our April order was correct then and it is correct now. Therefore, I concur\nin the order granting plaintiffs’ motion for reconsideration and reinstating our April\norder.\n\n         CORRIGAN, J. (dissenting).\n\n       I join Justice MARKMAN’s dissenting statement in full. I would deny plaintiffs’\nmotion for reconsideration of the July 16, 2010 order. I write separately to point out the\nprocedural history that has brought us to this juncture and to further make clear the\ndefects in the initial April 30, 2010 order that necessitated the grant of defendants’\nmotion for reconsideration.\n\n       In this case, indigent criminal defendants in three Michigan counties brought\nclaims alleging that they, as well as future indigent defendants, were being denied their\nconstitutional rights to counsel and the effective assistance of counsel. After the trial\ncourt denied defendants’ motion for summary disposition and granted class certification,\ndefendants sought leave to appeal in the Court of Appeals. The Court of Appeals granted\nleave, and on June 11, 2009, it affirmed the trial court’s denial of defendants’ motion for\nsummary disposition and the grant of class certification in a 2-1 decision. Duncan v State\nof Michigan, 284 Mich App 246 (2009). We subsequently granted leave. Duncan v State\nof Michigan, 485 Mich 1003 (2009). After hearing oral arguments in April 2010, we\nissued an order on April 30, 2010, vacating the trial court’s grant of class certification\nand remanding for consideration of class certification in light of Henry v Dow Chemical\nCo, 484 Mich 483 (2009). Duncan v State of Michigan, 486 Mich 906 (2010). In regard\nto defendants’ motion for summary disposition, we affirmed only the result of the Court\nof Appeals majority for different reasons based on the rationale that it was premature to\nmake a decision on the substantive issues based solely on plaintiffs’ pleadings. Id.\n\n3\n    Post at ___.\n4\n  See, e.g., People v Limmer, 461 Mich 974 (2000). In Limmer, we issued an order on\nMarch 8, 2000 denying leave to appeal but stating that then-Chief Justice WEAVER and\nJustices CORRIGAN and MARKMAN would grant leave to appeal and dissenting statements\nwould follow. The order was amended April 18, 2000 to add a dissenting statement by\nJustice CORRIGAN, joined by then-Chief Justice WEAVER and Justice MARKMAN.\n\f                                                                                          4\n\nDefendants then filed a motion for reconsideration, which we granted by a vote of 4-3 on\nJuly 16, 2010. Duncan v State of Michigan, 486 Mich 1071 (2010). On August 6, 2010,\nplaintiffs filed a motion for reconsideration of the July 16, 2010 order, which the majority\nnow grants.5 Despite my objection,6 the majority issued the order granting plaintiffs’\nmotion for reconsideration on November 30, 2010, without my dissent in an act virtually\nunprecedented in the 11 years I have served on this Court.7 8\n5\n  In the interim between plaintiffs’ motion and the order issued here, Justice WEAVER,\nwho voted in favor of defendants’ prior motion for reconsideration, resigned, and Justice\nDAVIS, who now votes in favor of plaintiffs’ motion for reconsideration, was appointed\nto take her seat on the Court.\n6\n    My objection included with the November 30, 2010 order stated:\n         I object to the release of the Court’s order without my dissenting statement\n         and I reserve the right to file one as soon as I can. The majority has\n         decided to grant the motion for reconsideration, and to reverse our previous\n         order, without affording disagreeing Justices sufficient time to adequately\n         respond to this decision. Instead, the majority has now decided to expedite\n         the release of its order regardless of the fact that I have worked in a timely\n         fashion to prepare a dissenting statement, but have not yet completed such a\n         statement. This is contrary to our practice during the 11 years I have served\n         on this Court. The Court’s decision to suddenly expedite this case seems\n         designed to prevent the new Court after January 1, 2011 from considering a\n         motion for reconsideration.\n7\n  I am aware of only one other instance in which this course of action was taken in regard\nto dissenting statements during my time on this Court. See People v Limmer, 461 Mich\n974 (2000). The circumstances of Limmer, however, are far different from the\ncircumstances here. In that case, the dissenting Justices did not object but concurred in\nthe delayed release due to the evident emergency based on the application for leave to\nappeal occurring in the midst of trial. Further, the order denying leave with dissenting\nstatements to follow was issued within three days of the prosecution filing its emergency\napplication. Similar circumstances are clearly not present here. The initial order denying\nleave in Limmer stated:\n\n                On order of the Court, the application for leave to appeal from the\n         March 6, 2000 decision of the Court of Appeals is considered, and it is\n         DENIED, because we are not persuaded that the question presented should\n         be reviewed by this Court. The motion to waive production of transcript is\n         thereby moot and is DENIED. The stay order entered March 7, 2000 is\n         VACATED.\n\n                WEAVER, C.J., and CORRIGAN and MARKMAN, JJ., would grant\n         leave to appeal and dissenting statements will follow. [Id.]\n\f                                                                                        5\n\n\n\nThe subsequent amended order in Limmer stated:\n\n            In an order dated March 8, 2000, this Court denied leave to appeal.\n      Several members of the Court indicated that they would grant leave to\n      appeal and that dissenting statements would follow. The dissenting\n      statement, as joined in by two members of the Court, reads as follows:\n\n             CORRIGAN, J. Under the current governing standards in Michigan,\n      the prosecution's application cannot succeed. Nonetheless, I would grant\n      leave to appeal to revisit this Court's conclusion in People v Nix, 453 Mich\n      619 (1996), that a directed verdict granted on the basis of an error of law is\n      nevertheless an acquittal for purposes of double jeopardy.\n\n              The Double Jeopardy Clause of the Fifth Amendment of the United\n      States Constitution bars further prosecution after a judgment of acquittal,\n      whether based on a jury verdict of not guilty or a ruling by the court that\n      insufficient evidence existed to convict. United States v Scott, 437 US 82,\n      91, (1978); Sanabria v United States, 437 US 54, 68-69, 98 (1978); United\n      States v Martin Linen Supply Co, 430 US 564, 570 (1977); Fong Foo v\n      United States, 369 US 141, 143 (1962). That the trial court characterized\n      its ruling as a directed verdict does not control its classification. Scott,\n      supra at 96. “Rather, a defendant is acquitted only when ‘the ruling of the\n      judge, whatever its label, actually represents a resolution [in the defendant's\n      favor], correct or not, of some or all of the factual elements of the offense\n      charged . . . .’” Id. at 97, quoting Martin Linen, supra at 571.\n\n             In this case, as in Nix, supra, the trial court apparently granted a\n      directed verdict on the basis of an erroneous legal ruling that defendant\n      could not be convicted because he owed no legal duty to the victim. Nix\n      improperly characterized such a ruling as a determination that insufficient\n      evidence existed to support a conviction. Unlike Smalis v Pennsylvania,\n      476 US 140, 144, n 7 (1986), the trial court's error of law in this case did\n      not involve an actual element of the crime. Rather, the trial court\n      erroneously determined that the offense included an additional element-a\n      duty. Because the trial court’s legal determination did not involve an\n      essential element of the offense charged, it did not necessarily constitute an\n      acquittal for double jeopardy purposes. United States v Maker, 751 F2d\n      614, 622 (CA3, 1984). For these reasons, I would grant the prosecution's\n      application for leave to appeal.\n\n           WEAVER, C.J., and MARKMAN, J., concur with the statement of\n      CORRIGAN, J. [Id. (Footnote omitted).]\n\f                                                                                            6\n\n\n       I believe, as Justice MARKMAN sets forth, that we properly granted defendant’s\nmotion for reconsideration of the initial order and that defendants are entitled to summary\ndisposition. I write to emphasize that the majority’s decision to reinstate the initial order\ndoes not rectify our failure to articulate any governing standards in the initial order.\nRather, the majority revives this palpable error, placing the trial court in the same\nquandary of operating without any governing standards in deciding plaintiffs’ claims.9\n\n       The initial order contained an internal inconsistency because it vacated the Court\nof Appeals opinion without offering any alternative analysis. All future actions in this\ncase depend on an articulation of the standard for pre-conviction Sixth Amendment\nclaims, which the initial order did not provide. Specifically, the governing standard for\nwhat constitutes effective assistance of counsel in this context is necessary for this case to\nproperly proceed. In fact, the trial court conceded the lack of clarity in regard to whether\nthe Strickland v Washington, 466 US 668 (1984), standard applies to plaintiffs’ pre-\nconviction claims of inadequate representation. Transcript of Motions for Summary\nDisposition and Class Certification, May 15, 2007, p 34. Further, the order the majority\nnow reinstates has recently been cited as illustrating the “state of confusion created by the\nlack of a clear standard to which courts can look when adjudicating these types of\nsystemic reform cases.” Chiang, Indigent Defense Invigorated: A Uniform Standard for\nAdjudicating Pre-conviction Sixth Amendment Claims, 19 Temp Pol & Civ Rts L R 443,\n461 (2010).10 Additionally, similar class action cases have generated conflicting opinions\n8\n  Chief Justice KELLY’S rationalizations for expediting the release of this order without\nmy dissent are unpersuasive. The existence of jurisprudentially significant issues in this\ncase does not distinguish it from the bulk of cases we decide to hear. Further, the age of\nthis case and the time this case has been before this Court are not adequate reasons for\ntreating this case differently when these characteristics are present in many of the cases\nwe consider. In addition, these reasons simply do not explain why the majority felt\ncompelled to suddenly expedite the release of the order when I acted in a timely fashion\nto prepare a dissenting statement.\n9\n  The cases cited by Chief Justice KELLY as instances where we affirmed only the result\nof the Court of Appeals do not justify the failure to articulate a governing standard here.\nContrary to the order here, the orders in Andres v Brown, 482 Mich 985 (2008) and\nCitizens Protecting Michigan’s Constitution v Secretary of State, 482 Mich 960 (2008),\ndid not result in the continuation of those cases. Rather, in Andres, we affirmed the grant\nof summary disposition, while in Citizens Protecting Michigan’s Constitution, we\naffirmed the rejection of an initiative petition.\n10\n     The article discusses the order the majority now reinstates as follows:\n\n                 Meanwhile, the Michigan Supreme Court similarly permitted\n         plaintiffs’ suit to proceed but issued only a two paragraph order noting that\n         it was affirming “the result only of the Court of Appeals majority for\n\f                                                                                          7\n\non the appropriate constitutional standards. See Hurrell-Harring v State of New York, 15\nNY3d 8 (2010) (reversing the holding of the Appellate Division that the claims of a class\nof indigent defendants were not justiciable and reinstating the plaintiffs’ complaint\nbecause it “contained[ed] numerous plain allegations that in specific cases counsel simply\nwas not provided at critical stages of the proceedings.”); Platt v Indiana, 664 NE2d 357,\n363 (Ind App, 1996) (affirming the dismissal of the claims of a class of indigent\ndefendants challenging a county indigent defense system, concluding that the claims were\nnot reviewable because “a violation of a Sixth Amendment right will arise only after a\ndefendant has shown he was prejudiced by an unfair trial.”); Kennedy v Carlson, 544\nNW2d 1, 8 (Minn, 1996) (reversing the decision of the district court granting the plaintiff\npublic defender summary disposition, concluding that the plaintiff had failed to show an\ninjury-in-fact because his claims of constitutional violations were “too speculative and\nhypothetical” where there was no evidence of inadequate assistance in any particular case\nor that the plaintiff “faced professional liability as a result of his office’s substandard\nservices.”); Luckey v Harris, 896 F2d 479, 480 (CA 11, 1989) (Edmonson, J., dissenting)\n(criticizing the panel’s holding that “deficiencies that do not meet the ‘ineffectiveness’\nstandard may nonetheless violate a defendant’s rights under the sixth amendment” as\n“inconsistent with the language and rationale of both Strickland v Washington, 466 US\n668, 687; 104 S Ct 2052, 2064; 80 L Ed 2d 674 (1984), and United States v Cronic, 466\nUS 648, 659; 104 S Ct 2039, 2047; 80 L Ed 2d 657 (1984).”).\n\n        Yet the majority permits this case to continue without providing any guidance to\nthe trial court and the litigants concerning the legal standards that will govern discovery\nor subsequent motions. In particular, the class certification question is inextricably\nintertwined with the issue of what is the proper standard for evaluating systemic pre-\nconviction claims of ineffective assistance of counsel. Determining how many have or\nwill suffer actual injury hinges entirely on what constitutes this type of injury; what type\nof proofs are necessary to show harm; and whether the putative plaintiffs are adequate\nclass representatives. Thus, without a standard to form the basis for the class action\nanalysis under Henry, it appears the trial court cannot properly make any determination\nunder Henry. Moreover, plaintiffs’ motion for reconsideration has not presented\n\n       different reasons. This case is at its earliest stages and, based solely on the\n       plaintiffs’ pleadings in this case, it is premature to make a decision on the\n       substantive issues.” Many of the remaining cases filed since Platt and prior\n       to Hurrell-Harring and Duncan have proven at least partially successful,\n       resulting either in judicially mandated reform or in settlement agreements\n       designed to reform the public defense system in question. Unfortunately,\n       as evidenced by the murky opinions issued in Hurrell-Harring and Duncan\n       many of the positive decisions lack clarity as to the standard to which\n       plaintiffs are held, decreasing their precedential value for successive\n       litigants and courts. [Chiang, supra, 19 Temp Pol & Civ Rts L R at 462\n       (Internal footnote omitted).]\n\f                                                                                        8\n\nanything that changes my view of these problems with the initial order. The majority\nsimply brushes these problems aside by reinstating the initial order. I would deny\nplaintiffs’ motion for reconsideration.\n\n      YOUNG and MARKMAN, JJ., join the statement of CORRIGAN, J.\n\n      MARKMAN, J. (dissenting).\n\n        I dissent from the order granting plaintiffs’ motion for reconsideration, vacating\nthis Court’s July 16, 2010 order, and reinstating this Court’s April 30, 2010 order. The\nJuly 16 order vacated the April 30 order and held that “[t]he defendants are entitled to\nsummary disposition because, as the Court of Appeals dissenting opinion recognized, the\nplaintiffs’ claims are not justiciable.” In a concurring statement, I explained that our\nApril 30 order was erroneous for two reasons:\n\n      First, as defendants observe, this order vacated the Court of Appeals\n      opinion without articulating any governing standards. Second, it is not\n      premature to decide this case because the precise issue presented is whether\n      plaintiffs have stated a claim on which relief can be granted, and this, as\n      well as the threshold justiciability issues, can be determined on the face of\n      the complaint. [Duncan v State of Michigan, 486 Mich 1071 (2010)\n      (MARKMAN, J., concurring).]\n\nIn addition, I concluded that defendants are entitled to summary disposition for the\nfollowing reasons set forth in the Court of Appeals’ dissent:\n\n             (1) The U.S. Supreme Court in Gideon v Wainwright, 372 US 335\n      (1963), and Strickland v Washington, 466 US 668 (1984), “was concerned\n      with results, not process. It did not presume to tell the states how to assure\n      that indigent criminal defendants receive effective assistance of counsel.”\n      284 Mich App 246, 357 (2009).\n             (2) Plaintiffs’ claims would have “the judiciary override the\n      Michigan system of local control and funding of legal services for indigent\n      criminal defendants,” despite the absence here of any constitutional\n      violation. Id. at 358.\n             (3) Plaintiffs’ claims are not sufficient to create a presumption of\n      either prejudice, or prejudice per se, that would warrant either declaratory\n      or injunctive relief. Id. at 361.\n              (4) Plaintiffs lack standing, and, therefore, their claims are not\n      justiciable. Id. at 371.\n\f                                                                                    9\n\n        (5) Plaintiffs’ claims are not ripe for adjudication, and, therefore,\ntheir claims are not justiciable. Id. at 371, 376.\n       (6) Plaintiffs’ claims are not justiciable and, therefore, the relief they\nseek should not be granted. Id. at 385.\n       (7) In finding a justiciable controversy, the Court of Appeals erred in\nadopting a number of assumptions that are conjectural and hypothetical,\nincluding assumptions that plaintiffs and the class they purport to represent\nwill be convicted of the crimes with which they are charged, that such\nconvictions will result from prejudice stemming from ineffective assistance\nof counsel, that such ineffective assistance will be attributable to the\ninaction of defendants, and that trial and appellate judges will be unable or\nunwilling to afford relief for such violations of the Sixth Amendment. Id.\nat 368-370.\n        (8) There is no constitutional precedent that “guarantees an indigent\ndefendant a particular attorney” or an “attorney of a particular level of\nskill” [as long as the attorney is not “so deficient as to cause prejudice”];\nthat requires a “predetermined amount of outside resources be available to\nan attorney”; or that requires that there be a “meaningful relationship with\ncounsel.” Id. at 370[, 384].\n       (9) The Court of Appeals assertions that affording plaintiffs\ninjunctive relief “could potentially entail a cessation of criminal\nprosecutions against indigent defendants,” id. at 273, and “that nothing in\nthis opinion should be read as foreclosing entry of an order granting the\ntype of relief so vigorously challenged by defendants,” id. at 281,\naccurately describe the potential consequences of its opinion, which\nconsequences would constitute an altogether unwarranted, improper, and\nexcessive response to plaintiffs’ claims. Id. at 380-385.\n       (10) The Court of Appeals has “issued an open invitation to the trial\ncourt to assume ongoing operational control over the systems for providing\ndefense counsel to indigent criminal defendants in Berrien, Genesee and\nMuskegon counties.” And with that invitation comes a “blank check” on\nthe part of the judiciary to “force sufficient state level legislative\nappropriations and executive branch acquiescence” in assuming similar\ncontrol over the systems in every county in this state, while “nullifying the\nprovisions” of the criminal defense act and “superseding the authority of\nthe Supreme Court and the State Court Administrator.” Id. at 383-384.\n[Duncan, 486 Mich at 1072 (MARKMAN, J., concurring).]\n\f                                                                                                               10\n\n\n       Because plaintiffs have not presented anything in the present motion for\nreconsideration that causes me to believe that the above reasons do not continue to justify\nour decision to reverse the Court of Appeals, I would deny plaintiffs’ motion for\nreconsideration. I also join Justice CORRIGAN’s dissenting statement in full, and resubmit\nthe remainder of this statement in order that it may be read alongside the CHIEF JUSTICE’s\nresponse to this statement.\n\n      CORRIGAN and YOUNG, JJ., join the statement of MARKMAN, J.\n\n\n\n\n                         I, Corbin R. Davis, Clerk of the Michigan Supreme Court, certify that the\n                   foregoing is a true and complete copy of the order entered at the direction of the Court.\n                         December 22, 2010                   _________________________________________\n        1222                                                                 Clerk\n\f",
+            "ocr": false,
+            "opinion_id": 829429
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 22295,
+      "row": {
+        "id": 836031,
+        "judges": null,
+        "date_filed": "2009-08-06",
+        "date_filed_is_approximate": false,
+        "slug": "in-re-priscilla-m-ward-revocable-trust",
+        "case_name_short": "In Re Priscilla M. Ward Revocable Trust",
+        "case_name": "In Re Priscilla M. Ward Revocable Trust",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 1,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "769 N.W.2d 690"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20090806_S138817_24_138817_2009-08-06_or.pdf",
+            "author_id": null,
+            "opinion_text": "\n769 N.W.2d 690 (2009)\nIn re PRISCILLA M. WARD REVOCABLE TRUST.\nSusan R. Ward-Tenbroeke, Trustee, Appellant,\nv.\nMackenzie's Animal Sanctuary, Inc. and Doctors Without Borders USA, Inc., Appellees.\nDocket Nos. 138817. COA No. 289622.\nSupreme Court of Michigan.\nAugust 6, 2009.\n\nOrder\nOn order of the Court, the motion for immediate consideration is GRANTED. The application for leave to appeal the February 18, 2009 order of the Court of Appeals is considered, and it is DENIED, because we are not persuaded that the questions presented should be reviewed by this Court.\n",
+            "ocr": false,
+            "opinion_id": 836031
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 22296,
+      "row": {
+        "id": 836044,
+        "judges": null,
+        "date_filed": "2009-08-06",
+        "date_filed_is_approximate": false,
+        "slug": "people-v-barnes",
+        "case_name_short": "Barnes",
+        "case_name": "People v. Barnes",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "769 N.W.2d 698"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20090806_S138907_43_138907_2009-08-06_or.pdf",
+            "author_id": null,
+            "opinion_text": "\n769 N.W.2d 698 (2009)\nPEOPLE of the State of Michigan, Plaintiff-Appellee,\nv.\nSonya BARNES, Defendant-Appellant.\nDocket No. 138907. COA No. 284886.\nSupreme Court of Michigan.\nAugust 6, 2009.\n\nOrder\nOn order of the Court, the application for leave to appeal the May 5, 2009 judgment of the Court of Appeals is considered, and it is DENIED, because we are not persuaded that the question presented should be reviewed by this Court.\n",
+            "ocr": false,
+            "opinion_id": 836044
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 22305,
+      "row": {
+        "id": 836758,
+        "judges": null,
+        "date_filed": "2009-06-23",
+        "date_filed_is_approximate": false,
+        "slug": "people-v-dobson",
+        "case_name_short": "Dobson",
+        "case_name": "People v. Dobson",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "766 N.W.2d 818"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20090623_S138536_43_138536_2009-06-23_or.pdf",
+            "author_id": null,
+            "opinion_text": "\n766 N.W.2d 818 (2009)\nPEOPLE of the State of Michigan, Plaintiff-Appellee,\nv.\nAlmyron Gordon DOBSON, Defendant-Appellant.\nDocket No. 138536. COA No. 280598.\nSupreme Court of Michigan.\nJune 23, 2009.\n\nOrder\nOn order of the Court, the application for leave to appeal the February 12, 2009 judgment of the Court of Appeals is considered, and it is DENIED, because we are not persuaded that the questions presented should be reviewed by this Court.\n",
+            "ocr": false,
+            "opinion_id": 836758
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 22435,
+      "row": {
+        "id": 837468,
+        "judges": null,
+        "date_filed": "2009-03-18",
+        "date_filed_is_approximate": false,
+        "slug": "adair-v-utica-community-schools",
+        "case_name_short": "Adair",
+        "case_name": "Adair v. UTICA COMMUNITY SCHOOLS",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 1,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "762 N.W.2d 160"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20090318_S138115_26_138115_2009-03-18_or.pdf",
+            "author_id": null,
+            "opinion_text": "\n762 N.W.2d 160 (2009)\nRobert ADAIR, Plaintiff-Appellee,\nv.\nUTICA COMMUNITY SCHOOLS, Defendant, and\nUtica Skilled Trades Association, Defendant-Appellant.\nDocket No. 138115. COA No. 288286.\nSupreme Court of Michigan.\nMarch 18, 2009.\n\nOrder\nOn order of the Court, the motion for immediate consideration is GRANTED. *161 The application for leave to appeal the December 11, 2008 order of the Court of Appeals is considered, and it is DENIED, because we are not persuaded that the questions presented should be reviewed by this Court. This denial is without prejudice to the defendant's ability to file a motion requesting that the Macomb Circuit Court set the dollar amount of a stay bond in an amount adequate to protect the opposite party, pursuant to MCR 7.209(B)(1).\n",
+            "ocr": false,
+            "opinion_id": 837468
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 22772,
+      "row": {
+        "id": 832053,
+        "judges": null,
+        "date_filed": "2010-02-11",
+        "date_filed_is_approximate": false,
+        "slug": "people-v-houthoofd",
+        "case_name_short": "HOUTHOOFD",
+        "case_name": "People v. HOUTHOOFD",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "778 N.W.2d 75"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20100211_S138959_147_138959-cjord.pdf",
+            "author_id": null,
+            "opinion_text": "\n778 N.W.2d 75 (2010)\nPEOPLE of The State of Michigan, Plaintiff-Appellant,\nv.\nTod Kevin HOUTHOOFD a/k/a Todd Kevin Houthoofd, Defendant-Appellee.\nPeople of The State of Michigan, Plaintiff-Appellee,\nv.\nTod Kevin Houthoofd a/k/a Todd Kevin Houthoofd, Defendant-Appellant.\nDocket Nos. 138959, 138969. COA No. 269505.\nSupreme Court of Michigan.\nFebruary 11, 2010.\n\nOrder\nOn order of the Chief Justice, the motion by defendant-appellee for extension to January 29, 2010 of the time for filing his brief is considered and it is GRANTED.\n",
+            "ocr": false,
+            "opinion_id": 832053
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 22787,
+      "row": {
+        "id": 832269,
+        "judges": null,
+        "date_filed": "2010-01-27",
+        "date_filed_is_approximate": false,
+        "slug": "auto-club-insurance-association-v-department-of-tr",
+        "case_name_short": null,
+        "case_name": "Auto Club Insurance Association v. Department of Treasury",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "778 N.W.2d 68"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20100127_S139813_55_139813_2010-01-27_or.pdf",
+            "author_id": null,
+            "opinion_text": "\n778 N.W.2d 68 (2010)\nAUTO CLUB INSURANCE ASSOCIATION, Plaintiff-Appellant,\nv.\nDEPARTMENT OF TREASURY, Revenue Division of the Department of Treasury, and The Commissioner of Revenue, Defendants-Appellees.\nDocket No. 139813. COA No. 286600.\nSupreme Court of Michigan.\nJanuary 27, 2010.\n\nOrder\nOn order of the Court, the motion for leave to file brief amici curiae is GRANTED. The application for leave to appeal the July 14, 2009 judgment of the Court of Appeals is considered, and it is DENIED, because we are not persuaded that the questions presented should be reviewed by this Court.\n",
+            "ocr": false,
+            "opinion_id": 832269
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 22811,
+      "row": {
+        "id": 834076,
+        "judges": null,
+        "date_filed": "2009-10-26",
+        "date_filed_is_approximate": false,
+        "slug": "wilcoxson-bey-v-providence-hosp",
+        "case_name_short": "Wilcoxson-Bey",
+        "case_name": "Wilcoxson-Bey v. Providence Hosp.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 1,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "773 N.W.2d 717"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20091026_S138033_86_138033_2009-10-26_or.pdf",
+            "author_id": null,
+            "opinion_text": "\n773 N.W.2d 717 (2009)\nRoyce WILCOXSON-BEY, by Next Friend Pepper Wilcoxson-Bey, and Roxy Wilcoxson-Bey, a Stillborn Child, by Pepper Wilcoxson-Bey, Personal Representative, and Pepper Wilcoxsonbey, Individually, Plaintiffs-Appellants,\nv.\nPROVIDENCE HOSPITAL &amp; MEDICAL CENTERS, INC., Defendant-Appellee, and\nDebra Wright, M.D., and St. John Health Systems, Inc., Defendants.\nDocket No. 138033. COA: No. 279146.\nSupreme Court of Michigan.\nOctober 26, 2009.\n\nOrder\nOn order of the Court, the motion for reconsideration of this Court's May 29, 2009 order is considered, and it is DENIED, *718 because it does not appear that the order was entered erroneously.\nCORRIGAN, J, would grant reconsideration.\n",
+            "ocr": false,
+            "opinion_id": 834076
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 24220,
+      "row": {
+        "id": 837909,
+        "judges": null,
+        "date_filed": "2008-12-30",
+        "date_filed_is_approximate": false,
+        "slug": "people-v-riley",
+        "case_name_short": "Riley",
+        "case_name": "People v. Riley",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "758 N.W.2d 567"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 1,
+            "download_url": "http://publicdocs.courts.mi.gov:81/SCT/PUBLIC/ORDERS/20081230_S137218_16_137218_2008-12-30_or.pdf",
+            "author_id": null,
+            "opinion_text": "\n758 N.W.2d 567 (2008)\nPEOPLE of the State of Michigan, Plaintiff-Appellee,\nv.\nDeandre RILEY, Defendant-Appellant.\nDocket No. 137218. COA No. 286150.\nSupreme Court of Michigan.\nDecember 30, 2008.\n\nOrder\nOn order of the Court, the application for leave to appeal the July 30, 2008 order of the Court of Appeals is considered, and it is DENIED, because we are not persuaded that the questions presented should be reviewed by this Court.\n",
+            "ocr": false,
+            "opinion_id": 837909
+          }
+        ],
+        "court_short_name": "Michigan Supreme Court",
+        "court_full_name": "Michigan Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Michigan, MI"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 2136,
+  "num_rows_per_page": 100,
+  "partial": true
+}

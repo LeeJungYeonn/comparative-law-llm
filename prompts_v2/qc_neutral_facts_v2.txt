@@ -1,0 +1,4 @@
+PROMPT_VERSION: neutral-fact-qc-v2.1
+
+Audit objective properties only. Identify: unsupported factual statements, residual legal conclusions, residual jurisdiction signals, facts lost or added across Korean and English, changed allegation/testimony/dispute status, and insufficient facts for independent civil-liability analysis. Every problem must cite the relevant fact_id and an evidence_span copied from the supplied material. Do not edit the facts; return proposed corrections separately.
+

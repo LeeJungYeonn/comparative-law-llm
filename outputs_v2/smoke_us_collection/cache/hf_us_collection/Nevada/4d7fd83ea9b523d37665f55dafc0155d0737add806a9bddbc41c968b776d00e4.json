@@ -1,0 +1,767 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 45870,
+      "row": {
+        "id": 2572817,
+        "judges": null,
+        "date_filed": "2007-03-09",
+        "date_filed_is_approximate": false,
+        "slug": "laird-v-laird",
+        "case_name_short": "Laird",
+        "case_name": "Laird v. Laird",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "210 P.3d 744"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n210 P.3d 744 (2007)\nLAIRD\nv.\nLAIRD.\nNo. 48411.\nSupreme Court of Nevada.\nMarch 9, 2007.\nDecision without published opinion. Affirmed.\n",
+            "ocr": false,
+            "opinion_id": 2572817
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 45873,
+      "row": {
+        "id": 2573222,
+        "judges": null,
+        "date_filed": "2007-05-11",
+        "date_filed_is_approximate": false,
+        "slug": "bacon-v-bank-of-america",
+        "case_name_short": "Bacon",
+        "case_name": "Bacon v. Bank of America",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "210 P.3d 706"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n210 P.3d 706 (2007)\nBACON\nv.\nBANK OF AMERICA.\nNo. 48987.\nSupreme Court of Nevada.\nMay 11, 2007.\nDecision without published opinion. Affirmed.\n",
+            "ocr": false,
+            "opinion_id": 2573222
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 45876,
+      "row": {
+        "id": 2573926,
+        "judges": null,
+        "date_filed": "2007-06-08",
+        "date_filed_is_approximate": false,
+        "slug": "bryant-v-bryant",
+        "case_name_short": "Bryant",
+        "case_name": "Bryant v. Bryant",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "210 P.3d 712"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n210 P.3d 712 (2007)\nBRYANT\nv.\nBRYANT.\nNo. 47909.\nSupreme Court of Nevada.\nJune 8, 2007.\nDecision without published opinion. Affirmed.\n",
+            "ocr": false,
+            "opinion_id": 2573926
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 45877,
+      "row": {
+        "id": 2574244,
+        "judges": null,
+        "date_filed": "2007-06-12",
+        "date_filed_is_approximate": false,
+        "slug": "merit-homes-v-kreitlein",
+        "case_name_short": "Kreitlein",
+        "case_name": "MERIT HOMES v. Kreitlein",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "210 P.3d 751"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n210 P.3d 751 (2007)\nMERIT HOMES\nv.\nKREITLEIN.\nNo. 48723.\nSupreme Court of Nevada.\nJune 12, 2007.\nDecision without published opinion. Dismissed-Voluntary.\n",
+            "ocr": false,
+            "opinion_id": 2574244
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 45880,
+      "row": {
+        "id": 2574306,
+        "judges": null,
+        "date_filed": "2007-12-13",
+        "date_filed_is_approximate": false,
+        "slug": "board-of-regents-v-dist-ct",
+        "case_name_short": null,
+        "case_name": "Board of Regents v. DIST. CT.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "210 P.3d 710"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n210 P.3d 710 (2007)\nBOARD OF REGENTS\nv.\nDIST. CT. (HARRIS).\nNo. 48208.\nSupreme Court of Nevada.\nDecember 13, 2007.\nDecision without published opinion. Petition Granted in Part.\n",
+            "ocr": false,
+            "opinion_id": 2574306
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 46428,
+      "row": {
+        "id": 2573268,
+        "judges": null,
+        "date_filed": "2007-02-08",
+        "date_filed_is_approximate": false,
+        "slug": "galofaro-v-dist-ct",
+        "case_name_short": "Galofaro",
+        "case_name": "Galofaro v. Dist. Ct.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "210 P.3d 727"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n210 P.3d 727 (2007)\nGALOFARO\nv.\nDIST. CT. (SPONDER).\nNo. 48744.\nSupreme Court of Nevada.\nFebruary 8, 2007.\nDecision without published opinion. Petition Denied.\n",
+            "ocr": false,
+            "opinion_id": 2573268
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 52416,
+      "row": {
+        "id": 3005378,
+        "judges": null,
+        "date_filed": "2015-09-28",
+        "date_filed_is_approximate": false,
+        "slug": "scrase-v-georges-tire-and-auto-repair",
+        "case_name_short": "Scrase",
+        "case_name": "Scrase v. George's Tire and Auto Repair",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Unpublished",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 2,
+            "download_url": "http://caseinfo.nvsupremecourt.us/document/view.do?csNameID=36383&csIID=36383&deLinkID=524189&sireDocumentNumber=15-29254",
+            "author_id": null,
+            "opinion_text": "\f                    expired in this case on August 12, 2013. Accordingly, we conclude that we\n                    lack jurisdiction over this appeal and we\n                                ORDER this appeal DISMISSED.\n\n\n\n\n                                            Parraguirre\n\n\n                                istral° j.                               Ch941-7 J.\n                    Douglas                                     Cherry\n\n\n\n\n                    cc:   Hon. Jessie Elizabeth Walsh, District Judge\n                          Judith Scrase\n                          Valarie I. Fujii & Associates\n                          Eighth District Court Clerk\n\n\n\n\nSUPREME COURT\n        OF\n     NEVADA\n\n\n             veep\n                                                          2\n(0) I947A\n\f",
+            "ocr": false,
+            "opinion_id": 3005378
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 54292,
+      "row": {
+        "id": 3169699,
+        "judges": null,
+        "date_filed": "2016-01-14",
+        "date_filed_is_approximate": false,
+        "slug": "principal-investments-v-harrison",
+        "case_name_short": "Harrison",
+        "case_name": "Principal Investments v. Harrison",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "2016 NV 2"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 23,
+            "download_url": "http://caseinfo.nvsupremecourt.us/document/view.do?csNameID=27998&csIID=27998&deLinkID=537133&sireDocumentNumber=16-01246",
+            "author_id": null,
+            "opinion_text": "                                                     132 Net, Advance Opinion 2.\n                         IN THE SUPREME COURT OF THE STATE OF NEVADA\n\n\n                  PRINCIPAL INVESTMENTS, INC.,                        No. 59837\n                  D/B/A RAPID CASH; GRANITE\n                  FINANCIAL SERVICES, INC., D/B/A\n                  RAPID CASH; FMMR INVESTMENTS,\n                  INC., D/B/A RAPID CASH; PRIME\n                                                                            FILE\n                  GROUP, INC., D/B/A RAPID CASH;                             JAN 1 4 2016\n                  AND ADVANCE GROUP, INC., D/B/A                          TRA 1E K. LINDEMAN\n                                                                        CLERK F UP E\n                  RAPID CASH,                                          BY          I         AP\n                  Appellants,                                               C 1E       bEi    CL\n\n\n                  vs.\n                  CASSANDRA HARRISON;\n                  CONCEPCION QUINTINO; AND MARY\n                  DUNGAN, INDIVIDUALLY AND ON\n                  BEHALF OF ALL PERSONS\n                  SIMILARLY SITUATED,\n                  Respondents.\n\n\n\n                             Appeal from a district court order denying a motion to compel\n                  arbitration. Eighth Judicial District Court, Clark County; Elizabeth Goff\n                  Gonzalez, Judge.\n                             Affirmed.\n\n\n                  Lewis Roca Rothgerber, LLP, and Daniel F. Polsenberg, Joel D. Henriod,\n                  and Ryan T. O'Malley, Las Vegas; Gordon Silver and Mark S. Dzarnoski\n                  and William M. Noall, Las Vegas,\n                  for Appellants.\n\n                  Kemp, Jones & Coulthard, LLP, and J. Randall Jones, Jennifer C. Dorsey,\n                  and Carl L. Harris, Las Vegas; Legal Aid Center of Southern Nevada, Inc.,\n                  and Dan L. Wulz, Venicia Considine, and Sophia A. Medina, Las Vegas,\n                  for Respondents.\n\n\n\nSUPREME COURT\n     OF\n    NEVADA\n\n(0) 1947A 4(4ew                                                                         co D\n\f                 BEFORE THE COURT EN BANC.'\n\n                                                  OPINION\n                 By the Court, PICKERING, J.:\n                             This is an appeal from an order denying a motion to compel\n                 arbitration. The district court held that the moving party waived its right\n                 to arbitrate by litigating collection claims against its borrowers to default\n                 judgment in justice court. We must decide whether the district court erred\n                 in addressing waiver, instead of referring the question to the arbitrator.\n                 We hold that litigation-conduct waiver is presumptively for the court to\n                 decide, unless the arbitration agreement clearly commits the question to\n                 the arbitrator, which the agreements here do not. On the merits, we\n                 uphold the district court's finding of waiver and therefore affirm\n                                                       I.\n                                                      A.\n                             Appellant Rapid Cash is a payday loan company that provided\n                 short-term, high-interest loans to the named plaintiffs Mary Dungan,\n                 Cassandra Harrison, and Concepcion Quintino, among others. 2 The\n                 named plaintiffs and other borrowers did not repay their loans, prompting\n                 Rapid Cash, over a seven-year period, to file more than 16,000 individual\n                 collection actions in justice court in Clark County, Nevada. Rapid Cash\n                 hired Maurice Carroll, d/b/a On-Scene Mediations, as its process server.\n                 Relying on On-Scene's affidavits of service, Rapid Cash secured thousands\n\n\n                       'The Honorable Ron D. Parrag -uirre, Chief Justice, voluntarily\n                 recused himself from participation in the decision of this matter.\n\n                       We refer to appellants collectively as \"Rapid Cash,\" the name by\n                       2\n                 which they are all alleged to do business.\n\nSUPREME COURT\n        OF\n     NEVADA\n                                                       2\n(0) 1947A    e\n\f                  of default judgments against the named plaintiffs and other borrowers\n                  who failed to appear and defend the collection lawsuits.\n                              At some point, a justice of the peace noticed that On-Scene's\n                  affidavits attested to an improbably high number of same-day receipts and\n                  service of process, and initiated an investigation. The investigation\n                  revealed that Carroll and On-Scene had engaged in \"sewer service\"—the\n                  practice of accepting summonses and complaints for service, failing to\n                  serve them, then falsely swearing in court-filed affidavits that service had\n                  been made when it was not. Carroll and On-Scene were cited for serving\n                  process without a license, and a cease and desist order was entered\n                  against them. Ultimately, Carroll was charged with and convicted of 17\n                  counts of forgery and offering false instruments.\n                              Carroll's criminal convictions involved false affidavits of\n                  service for clients other than Rapid Cash. Nonetheless, Carroll and On-\n                  Scene were Rapid Cash's exclusive agent for service of process in southern\n                  Nevada, and the named plaintiffs sued Rapid Cash, On-Scene, and others\n                  in district court, alleging that Rapid Cash improperly obtained its default\n                  judgments against them and other similarly situated borrowers without\n                  their knowledge via On-Scene's \"sewer service.\" The first amended\n                  complaint is styled as a class action and asserts claims for fraud upon the\n                  court, abuse of process, negligent hiring/supervision/retention, negligence,\n                  civil conspiracy, and violation of Nevada's fair debt collection laws. The\n                  relief requested includes declaratory relief deeming the justice court\n                  default judgments void and uncollectable; injunctive relief; disgorgement,\n                  restitution, or a constructive trust for funds already collected; forfeiture by\n                  Rapid Cash of all loan amounts; return of all principal, interest, charges,\n                  or fees associated with the loans; punitive damages and statutory\n\nSUPREME COURT\n        OF\n     NEVADA\n\n                                                         3\n(0) 1947A    0-\n\f                penalties; and attorney fees and costs. The first amended complaint\n                disavows claims for individual tort or consequential damages, stating:\n                            This Class action does not seek to, nor will it,\n                            actually litigate any additional claims for\n                            compensatory damage, which may include but not\n                            be limited to damage to credit reputation, fear,\n                            anxiety, mental and emotional distress, nor\n                            damages arising from wrongful garnishment or\n                            attachment, such as bank fees, bounced check\n                            fees, finance charges or interest on bills which\n                            would have otherwise been paid, and the like.\n                                                     B.\n                            Rapid Cash moved to compel arbitration based on the\n                arbitration provisions in its loan agreements, which take one of two forms,\n                depending on the date of the loan. The Dungan/Harrison form of\n                agreement provides that either party may elect binding arbitration of any\n                \"Claim,\" and broadly defines \"Claim\" as follows:\n                                   2. DEFINITION OF \"CLAIM.\" The term\n                            \"Claim\" means any claim, dispute or controversy\n                            between you and us (including \"related parties\"\n                            identified below) that arises from or relates in any\n                            way to Services you request or we provide, now, in\n                            the past or in the future; the Application (or any\n                            prior or future application); any agreement\n                            relating to Services (\"Services Agreement\"); any of\n                            our marketing, advertising, solicitations and\n                            conduct relating to your request for Services; our\n                            collection of any amounts you owe; our disclosure\n                            of or failure to protect any information about you;\n                            or the validity, enforceability or scope of this\n                            Arbitration Provision. \"Claim\" is to be given the\n                            broadest possible meaning and includes claims of\n                            every kind and nature, including but not limited\n                            to, initial claims, counterclaims, cross-claims and\n                            third-party claims, and claims based on any\n                            constitution, statute, regulation, ordinance,\n                            common law rule (including rules relating to\nSUPREME COURT\n      OF\n   NEVADA\n                                                     4\n0 1947A\n\f                               contracts, negligence, fraud or other intentional\n                               wrongs) and equity. It includes disputes that seek\n                               relief of any type, including damages and/or\n                               injunctive, declaratory or other equitable relief.\n                   The Dungan/Harrison form of agreement specifies that litigating one claim\n                   does not waive arbitration as to other claims:\n                               Even if all parties have elected to litigate a Claim\n                               in court, you or we may elect arbitration with\n                               respect to any Claim made by a new party or any\n                               new Claim asserted in that lawsuit, and nothing\n                               in that litigation shall constitute a waiver of any\n                               rights under this Arbitration Provision.\n                               Quintino's form of agreement differs.            It includes a\n                   preliminary \"Mediation Agreement,\" requiring that before either party\n                   proceeds with arbitration or litigation, the party must submit all\n                   \"Claims . . . to neutral, individual (and not class) mediation.\" If mediation\n                   does not resolve the dispute, then the \"Arbitration Agreement\" controls:\n                               If you and we are not able to resolve a Claim in\n                               mediation, then you and we agree that such Claim\n                               will be resolved by neutral, binding individual\n                               (and not class) arbitration. You and we may not\n                               initiate arbitration proceedings without first\n                               complying with the Mediation Agreement.\n                   The Quintino form of agreement also defines \"Claims\" broadly:\n                               \"Claims\" means any and all claims, disputes or\n                               controversies that arise under common law,\n                               federal or state statute or regulation, or otherwise,\n                               and that we or our servicers or agents have\n                               against you or that you have against us, our\n                               servicers, agents, directors, officers and\n                               employees. \"Claims\" also includes any and all\n                               claims that arise out of (i) the validity, scope\n                               and/or applicability of this Mediation Agreement\n                               or the Arbitration Agreement appearing below,\n                               (ii) your application for a Loan, (iii) the\n                               Agreement, (iv) any prior agreement between you\nSUPREME COURT\n        OF\n     NEVADA\n                                                         5\nKO) 1947A    cep\n\f                             and us, including any prior loans we have made to\n                             you[,] or (v) our collection of any Loan. \"Claims\"\n                             also includes all claims asserted as a\n                             representative, private attorney general, member\n                             of a class or in any other representative capacity,\n                             and all counterclaims, cross-claims and third\n                             party claims.\n                 The Quintino agreement specifies that either party may \"bring a Claim in\n                 a small claims or the proper Las Vegas Justice Court, as long as the Claim\n                 is within the jurisdictional limits of that court,\" without submitting the\n                 claim to mediation or arbitration, but that \"[a] 1l Claims that cannot be\n                 brought in small claims court or Las Vegas Justice Court . .. must be\n                 resolved consistent with. . . the Arbitration Agreement.\"\n                             Both forms of agreement state that they are \"made pursuant\n                 to a transaction involving interstate commerce\" and shall \"be governed by\n                 the Federal Arbitration Act, 9 U.S.C. Sections 1-16, as amended,\" or the\n                 \"FAA.\" They also include class-action and class-arbitration waivers.\n                             The district court denied Rapid Cash's motions to compel\n                 arbitration of the claims asserted in the original and first amended\n                 complaints. It held that Rapid Cash waived its right to an arbitral forum\n                 by bringing collection actions in justice court, employing Carroll and On-\n                 Scene as its agent for service of process, and obtaining default judgments\n                 allegedly based on On-Scene's falsified affidavits of service. Rapid Cash\n                 appeals. We have jurisdiction under NRS 38.247(1)(a) and 9 U.S.C. §\n                 16(a)(1)(B) (2012), which allow interlocutory appeals from orders denying\n                 motions to compel arbitration, and affirm.\n\n\n                                                      A.\n                             As the loan documents stipulate, the arbitration agreements\n                 evidence transactions involving commerce, so the Federal Arbitration Act\nSUPREME COURT\n        OF\n     NEVADA\n                                                      6\n(0) 1947A    e\n\f                (FAA) applies. See Tallman v. Eighth Judicial Dist. Court, 131 Nev., Adv.\n                Op. 71, 359 P.3d 113, 121-22 (2015). Under the FAA, arbitration\n                agreements \"shall be valid, irrevocable, and enforceable, save upon such\n                grounds as exist at law or in equity for the revocation of any contract.\" 9\n                U.S.C. § 2 This provision expresses \"both a liberal federal policy favoring\n                arbitration, and the fundamental principle that arbitration is a matter of\n                contract.\" 3 AT&T Mobility LLC v. Concepcion,    563 U.S. 333, 339 (2011)\n                (quotations and internal citations omitted). Because arbitration is\n                fundamentally a matter of contract, \"[w]hether enforcing an agreement to\n                arbitrate or construing an arbitration clause, courts and arbitrators must\n                'give effect to the contractual rights and expectations of the parties.\"\n                Stolt-Nielsen S.A. v. AnimalFeeds Intl Corp.,    559 U.S. 662, 682 (2010)\n                (quoting Volt Info. Scis., Inc. v. Bd. of Trs. of Leland Stanford Junior\n                Univ., 489 U.S. 468, 479 (1989)).\n                            The right to enforce an agreement to arbitrate, like any\n                contract right, can be waived. But the FAA \"establishes that, as a matter\n                of federal law, any doubts concerning the scope of arbitrable issues should\n                be resolved in favor of arbitration, whether the problem at hand is the\n                construction of the contract language itself or an allegation of waiver,\n                delay, or a like defense to arbitrability.\" Moses H. Cone Mena Hosp. v.\n\n\n                      3 Nevada has adopted the Uniform Arbitration Act of 2000 (UAA), see\n                NRS 38.206, which expresses Nevada's similarly fundamental policy\n                favoring the enforceability of arbitration agreements as written. See NRS\n                38.219(1); Tallman, 131 Nev., Adv. Op. 71, 359 P.3d at 119 (\"As a matter\n                of public policy, Nevada courts encourage arbitration and liberally\n                construe arbitration clauses in favor of granting arbitration.\" (quoting\n                State ex rel. Masto v. Second Judicial Dist. Court, 125 Nev. 37, 44, 199\n                P.3d 828, 832 (2009))).\n\nSUPREME COURT\n        OF\n     NEVADA\n                                                     7\n(0) 1947A\n\f                Mercury Constr. Corp., 460 U.S. 1, 24-25 (1983). Given the \"strong\n                presumption in favor of arbitration[J . . . waiver of the right to arbitration\n                is not to be lightly inferred.\"    Coca-Cola Bottling Co. v. Soft Drink &\n                Brewery Workers Union Local 812, 242 F.3d 52, 57 (2d Cir. 2001) (internal\n                quotations omitted); accord Tallman, 131 Nev., Adv. Op. 71, 359 P.3d at\n                123 (quoting Clark Cty. v. Blanchard Constr. Co., 98 Nev. 488, 491, 653\n                P.2d 1217, 1219 (1982)). Under the FAA, \"any doubts concerning whether\n                there has been a waiver are resolved in favor of arbitration.\"            Louis\n                Dreyfus Negoce S.A. v. Blystad Shipping & Trading Inc., 252 F.3d 218, 229\n                (2d Cir. 2001) (quoting Leadertex, Inc. v. Morganton Dyeing & Finishing\n                Corp., 67 F.3d 20, 25 (2d Cir. 1995)).\n                                                         B.\n                             We must decide whether Rapid Cash waived its right to\n                arbitrate the named plaintiffs' equitable, common-law and statutory\n                claims against them by its litigation activities in justice court. Before we\n                can do so, we must address the threshold issue of who decides the question\n                of waiver-by-litigation-conduct—the court or the arbitrator? The answer\n                depends on presumptions the Supreme Court has developed to guide\n                division-of-labor determinations under the FAA and the text of the\n                arbitration agreements themselves.            See BG Grp. PLC v. Republic of\n                Argentina, 572 U.S. „ 134 S. Ct. 1198, 1206-07 (2014) (stating that\n                since arbitration is a matter of contract, \"it is up to the parties to\n                determine whether a particular matter is primarily for arbitrators or for\n                courts to decide. . . . If the contract is silent on the matter of who primarily\n                is to decide 'threshold' questions about arbitration, courts determine the\n                parties' intent with the help of presumptions.\"); First Options of Chi., Inc.\n                v. Kaplan, 514 U.S. 938, 944-45 (1995).\n\nSUPREME COURT\n        OF\n     NEVADA\n                                                         8\n(0) 1947A\n\f                             Despite the FAA's robust pro-arbitration presumption, Moses\n                 H. Cone, 460 U.S. at 24-25, the Supreme Court has instructed that certain\n                 issues—the kind that \"contracting parties would likely have expected a\n                 court to have decided\"—are presumptively for the court, not the arbitrator,\n                 to resolve. Howsam v. Dean Witter Reynolds, Inc., 537 U.S. 79, 83 (2002).\n                 These court-committed issues involve gateway questions of arbitrability,\n                 \"such as 'whether the parties are bound by a given arbitration clause,' or\n                 'whether an arbitration clause in a concededly binding contract applies to\n                 a particular type of controversy.\" BG Grp., 572 U.S. at , 134 S. Ct. at\n                 1206 (quoting Howsam, 537 U.S. at 84). Because \"courts presume that the\n                 parties intend courts, not arbitrators, to decide [gateway questions ofl\n                 arbitrability,\" id., these gateway questions are for the court to decide,\n                 unless the parties' agreement (or, possibly, conduct) provides \"clear and\n                 unmistakable evidence\" that they intended to commit the questions to the\n                 arbitrator in the first instance.   First Options, 514 U.S. at 944 (internal\n                 quotation omitted). But the Supreme Court applies an exactly opposite set\n                 of rules to procedural gateway matters: \"On the other hand, courts\n                 presume that the parties intend arbitrators, not courts, to decide disputes\n                 about the meaning and application of particular procedural preconditions\n                 for the use of arbitration.\" BG Grp., 572 U.S. at , 134 S. Ct. at 1207.\n                 Procedural gateway matters \"include the satisfaction of prerequisites such\n                 as time limits, notice, laches, estoppel, and other conditions precedent to\n                 an obligation to arbitrate.\" Id. (internal quotations omitted).\n                             In Howsam, and again in BG Group, the Supreme Court\n                 characterized \"waiver\" as a procedural gateway question, not a gateway\n                 \"question of arbitrability,\" stating that, under the FAA, the arbitrator\n                 presumptively \"should decide `allegation[s] of waiver, delay, or a like\n\nSUPREME COURT\n        OF\n     NEVADA\n\n                                                        9\n(0) 1947A    e\n\f                defense to arbitrability.\" 537 U.S. at 84 (emphasis added) (alteration in\n                original) (quoting Moses H. Cone, 460 U.S. at 25); BG Grp., 572 U.S. at\n                , 134 S. Ct. at 1207. These pronouncements have generated\n                uncertainty in the lower courts as to who decides litigation-conduct\n                waiver. See Thomas J. Lilly, Jr., Participation in Litigation as a Waiver of\n                the Contractual Right to Arbitrate: Toward a Unified Theory, 92 Neb, L.\n                Rev. 86, 100-01 (2013). Before Howsam, most courts held that, under the\n                FAA, litigation-conduct waiver challenges were for the court to resolve.\n                Marie v. Allied Home Mortg. Corp., 402 F.3d 1, 11-12 (1st Cir. 2005)\n                (noting the First Circuit's \"long history of deciding such waiver claims\n                itself' and observing that \"[t]his was in accord with the overwhelming\n                weight of pre-Howsam authority, which held that waiver due to litigation\n                conduct was generally for the court and not for the arbitrator\"); see Nev.\n                Gold & Casinos, Inc. v. Am. Heritage, Inc., 121 Nev. 84, 90, 110 P.3d 481,\n                485 (2005) (judicially addressing litigation-conduct waiver without\n                questioning whether the arbitrator should have decided the matter); see\n                also Tallman, 131 Nev., Adv. Op. 71, 359 P.3d at 123 (upholding order\n                rejecting litigation-conduct waiver claim but noting that all parties\n                assumed \"that waiver was for the court, not the arbitrator to decide\").\n                After Howsam, courts have divided on who decides litigation-conduct\n                waiver. Compare Marie, 402 F.3d at 14 (\"We hold that the Supreme Court\n                in Howsam . . . did not intend to disturb the traditional rule that waiver\n                by conduct, at least where due to litigation-related activity, is\n                presumptively an issue for the court.\"), Ehleiter v. Grapetree Shores, Inc.,\n                482 F.3d 207, 221 (3d Cir. 2007) (\"[W]aiver of the right to arbitrate based\n                on litigation conduct remains presumptively an issue for the court to\n                decide [even] in the wake of Howsam.\"), and Grigsby & Assocs., Inc. v. M\n\nSUPREME COURT\n        OF\n     NEVADA\n\n                                                    10\n(0) I947A\n\f                  Sec. Inv., 664 F.3d 1350, 1353 (11th Cr. 2011) (\"[I]t is presumptively for\n                  the courts to adjudicate disputes about whether a party, by earlier\n                  litigating in court, has waived the right to arbitrate.\"), with Nat'l Am. Ins.\n                  Co. v. Transamerica Occidental Life Ins. Co., 328 F.3d 462, 466 (8th Cir.\n                  2003) (summarily holding that Howsam mandates that the court refer all\n                  waiver challenges to the arbitrator, even litigation-conduct waiver).\n                              Howsam considered a procedural rule of the contractually\n                  chosen arbitral forum, the National Association of Securities Dealers\n                  (NASD), which provided that \"no dispute 'shall be eligible for submission\n                  to arbitration ... where six (6) years have elapsed from the occurrence or\n                  event giving rise to the ... dispute.\"     Howsam, 537 U.S. at 81 (quoting\n                  NASD Code of Arbitration Procedure § 10304 (1984)). The \"waiver\"\n                  Howsam deemed the province of the arbitrator, not the court, thus did not\n                  grow out of litigation conduct but, rather, delay in initiating arbitration, a\n                  procedural matter the NASD rules controlled. The courts that have\n                  retained the traditional rule that litigation-conduct waivers are for the\n                  court to decide have distinguished Howsam by limiting its waiver\n                  pronouncement to the context in which it arose, specifically, waiver\n                  \"arising from non-compliance with contractual conditions precedent to\n                  arbitration.\"   Grigsby, 664 F.3d at 1353 (internal quotation marks\n                  omitted). That Howsam presumed the arbitrator would decide the NASD\n                  time-limit bar makes sense: The NASD arbitrator was \"comparatively\n                  better able to interpret and to apply\" the NASD's procedural rule, so the\n                  parties would have expected that issue to go to the arbitrator as the\n                  decision-maker with the better comparative expertise. Howsam, 537 U.S.\n\n\n\n\nSUPREME COURT\n        OF\n     NEVADA\n\n                                                        11\n(0) 1947A    ce\n\f                at 85. 4 But litigation-conduct \"waiver implicates courts' authority to\n                control judicial procedures or to resolve issues . . . arising from judicial\n                conduct.\" Ehleiter, 482 F.3d at 219. Arbitrators are not comparatively\n                better able than courts to interpret and to apply litigation-conduct waiver\n                defenses, see Grigsby, 664 F.3d at 1354 (stating that a court is \"the\n                decisionmaker with greater expertise in recognizing and controlling\n                abusive forum-shopping\"), and, thus, it is reasonable to assume that\n                \"parties would expect the court to decide [litigation-conduct waiver] itself.\"\n                Ehleiter, 482 F.3d at 219.\n                             Litigation-conduct waiver questions commonly arise out of\n                proceedings before the court being asked to compel arbitration. Having\n                the court assess waiver not only comports with party expectations but also\n                is more efficient than reconstructing the litigation history before the\n                arbitrator and deferring the question to the arbitral forum, only to have\n                the dispute return if the arbitrator finds waiver.\n                             Questions of litigation-conduct waiver are best\n                             resolved by a court that \"has inherent power to\n                             control its docket and to prevent abuse in its\n                             proceedings (i.e. forum shopping),\" which has\n                             \"more expertise in recognizing such abuses, and in\n\n\n                      4The  Court's quotation of Howsam's waiver language in BG Group,\n                572 U.S. at , 134 S. Ct. at 1207, is not inconsistent with the distinction\n                Grigsby and other post-Howsam cases have drawn between waiver by\n                litigation-conduct and waiver by failure to comply with procedural\n                prerequisites to arbitration. In BG Group, the Supreme Court deemed a\n                foreign sovereign's local litigation provision the province of the arbitrators\n                because it constituted \"a purely procedural requirement—a claims-\n                processing rule that governs when the arbitration may begin, but not\n                whether it may occur or what its substantive outcome will be on the issues\n                in dispute.\" Id. at , 134 S. Ct. at 1207.\n\nSUPREME COURT\n        OF\n     NEVADA\n\n                                                      12\n(01 1947A\n\f                                  controlling ... them,\" and which could most\n                                  efficiently and economically decide the issue as\n                                  \"where the issue is waiver due to litigation\n                                  activity, by its nature the possibility of litigation\n                                  remains, and referring the question to an\n                                  arbitrator would be an additional, unnecessary\n                                  step.\"\n                   See Am. Gen. Home Equity, Inc. v. Kestel,         253 S.W.3d 543, 551-52 (Ky.\n                   2008) (internal footnote omitted) (quoting David LeFevre, Note, Whose\n                   Finding Is It Anyway?: The Division of Labor Between Courts and\n                   Arbitrators With Respect to Waiver,          2006 J. Disp. Resol. 305, 313-14\n                   (2006)); see UAA of 2000, § 6, cmt. 5, 7 U.L.A., part 1A 28 (2009) (stating\n                   that litigation-conduct \"[w]aiver is one area where courts, rather than\n                   arbitrators, often make the decision as to enforceability of an arbitration\n                   clause,\" and noting that \"[a]llowing the court to decide this issue of\n                   arbitrability comports with the separability doctrine because in most\n                   instances waiver concerns only the arbitration clause itself and not an\n                   attack on the underlying contract\" and that \"[it is also a matter of judicial\n                   economy to require that a party, who pursues an action in a court\n                   proceeding but later claims arbitrability, be held to a decision of the court\n                   on waiver\").\n                                  We therefore hold, as the majority of courts have, that\n                   Howsam's reference to \"waiver, delay, or a like defense\" being for the\n                   arbitrator encompasses \"defenses arising from non-compliance with\n                   contractual conditions precedent to arbitration, such as the NASD time\n                   limit rule at issue in that case, [but] not ... claims of waiver based on\n                   active litigation in court.\" Ehleiter, 482 F.3d at 219 (internal quotations\n                   omitted); see Marie, 402 F.3d at 14. A party to an arbitration agreement\n                   likely would expect a court to determine whether the opposing party's\n                   conduct in a judicial setting amounted to waiver of the right to arbitrate.\nSUPREME COURT\n      OF\n    NEVADA\n\n                                                           13\n(0) 1947A 420110\n\f                Thus, even post-Howsam, litigation-conduct waiver remains a matter\n                presumptively for the court to decide.\n                                                      C.\n                            We still must consider Rapid Cash's argument that its\n                arbitration agreements provide for the arbitrator to decide litigation-\n                conduct waiver, notwithstanding any presumption to the contrary.          See\n                First Options, 514 U.S. at 943 (\"Just as the arbitrability of the merits of a\n                dispute depends upon whether the parties agreed to arbitrate that\n                dispute, so the question 'who has the primary power to decide\n                arbitrability' turns upon what the parties agreed about that matter.\"\n                (internal citations omitted)). In this regard, the Dungan/Harrison form of\n                agreement requires arbitration of \"any claim, dispute or\n                controversy. . . that arises from or relates in any way to. . . the validity,\n                enforceability or scope of this Arbitration Provision,\" while the Quintino\n                form of agreement requires the parties to arbitrate \"any and all claims\n                that arise out of. . . the validity, scope and/or applicability             of\n                this. . . Arbitration Agreement.\" (Emphases added.)\n                            Rapid Cash argues that the district court's finding of\n                litigation-conduct waiver defeats the \"enforceability\" of its arbitration\n                agreements and so, at minimum, Dungan's and Harrison's waiver\n                challenge should have been referred to the arbitrator under First Options\n                and its progeny. See Rent-A-Center, W., Inc. v. Jackson, 561 U.S. 63, 66\n                (2010) (upholding district court's referral of substantive unconscionability\n                defense to the arbitrator based on a delegation clause that sent to the\n                arbitrator questions as to the \"applicability, enforceability or formation of\n                this Agreement including, but not limited to any claim that all or any part\n                of this Agreement is void or voidable\" (internal quotation omitted)). Rapid\n                Cash argues that Quintino's agreement, too, delegates litigation-conduct\nSUPREME COURT\n         OF\n      NEVADA\n\n                                                     14\n(0) I 947A\n\f                waiver to the arbitrator, since Quintino's waiver challenge amounts to a\n                defense to the \"applicability\" of her arbitration agreement. We do not\n                agree.\n                             \"An issue that is presumptively for the court to decide will be\n                referred to the arbitrator for determination only where the parties'\n                arbitration agreement contains 'clear and unmistakable evidence' of such\n                an intent.\" Ehleiter, 482 F.3d at 221 (quoting First Options, 514 U.S. at\n                944); see also Rent-A-Center, 561 U.S. at 70 n.1. The general language in\n                both forms of Rapid Cash agreements falls short of the \"clear and\n                unmistakable evidence\" required to overcome the presumption that\n                litigation-conduct waiver is for the court to decide. The presumption that\n                courts decide litigation-conduct waiver is rooted in presumed party intent\n                and probable expectations. The agreements between Rapid Cash and its\n                borrowers provide specifically for litigation of some claims in some courts\n                without loss of the right to arbitrate other claims in other courts, yet are\n                silent on the issue of who decides on which side of the line such later-\n                asserted claims fall. A corollary of the First Options rule requiring \"clear\n                and unmistakable evidence\" of contrary intent to overcome a division-of-\n                labor presumption is the rule that \"silence or ambiguity\" is resolved\n                against the party seeking to overcome the presumption.        First Options,\n                514 U.S. at 944-45. Had Rapid Cash intended to delegate litigation-\n                conduct waiver to the arbitrator, rather than the court, the agreements\n                could and should have been written to say that explicitly. Absent an\n                explicit delegation, litigation-conduct waiver remains a matter for the\n                court to resolve.   See Marie, 402 F.3d at 15 (declining to interpret\n                agreement delegating \"arbitrability\" determinations to the arbitrator as\n                \"evinc[ing] a clear and unmistakable intent to have waiver issues decided\n\nSUPREME COURT\n        OF\n     NEVADA\n                                                     15\n(0) 1947A\n\f                by the arbitrator\" and holding that \"[n]either party should be forced to\n                arbitrate the issue of waiver by conduct without a clearer indication in the\n                agreement that they have agreed to do so\"). 5\n                            Here, as in Ehleiter, \"fflitigants would expect the court, not an\n                arbitrator, to decide the question of waiver based on litigation conduct,\n                and the Agreement. . . does not manifest a contrary intent.\" 482 F.3d at\n                222. We thus \"cannot interpret the Agreement's silence regarding who\n                decides the waiver issue here 'as giving the arbitrators that power, for\n                doing so . . . [would] force [an] unwilling part [y] to arbitrate a matter he\n                reasonably would have thought a judge, not an arbitrator, would decide.\"\n                Id. (alteration in original) (quoting First Options, 514 U.S. at 945).\n                                                      D.\n                            We turn to Rapid Cash's contention that the district court\n                erred in finding it waived its right to arbitrate. Waiver is not a favored\n                finding and should not be lightly inferred. Coca-Cola Bottling, 242 F.3d at\n                57; Clark Cty., 98 Nev. at 491, 653 P.2d at 1219. \"A party seeking to prove\n                the waiver of a right to arbitrate must demonstrate these elements:\n                knowledge of an existing right to compel arbitration; acts inconsistent\n                with that existing right; and prejudice to the party opposing arbitration\n\n\n                      5Rent-A-Center   is not to the contrary. In Rent-A-Center, the party\n                opposing arbitration conceded that the text of the delegation clause—\n                referring to the arbitrator claims that the arbitration agreement was \"void\n                or voidable\" and so not enforceable or applicable—encompassed his\n                substantive unconscionability challenge. See Rent-A-Center, 561 U.S. at\n                66 (internal quotation omitted). In this case, by contrast, the parties\n                opposing arbitration hotly contest the delegation clauses in their\n                agreements, which, unlike the Rent-A-Center                 clause, stop at\n                \"enforceability\" and \"applicability\" without adding a description of what\n                the term means.\n\nSUPREME COURT\n         OF\n      NEVADA\n                                                      16\n(ll) 1947A\n\f                  resulting from such inconsistent acts.\" 3 Thomas H. Oehmke, Commercial\n                  Arbitration § 50:28, at 28-29 (3d ed. Supp. 2015); see Nev. Gold, 121 Nev.\n                  at 90, 110 P.3d at 485.\n                              Rapid Cash knew of its arbitration rights and acknowledges\n                  that it waived its right to arbitrate its collection claims by bringing them\n                  in justice court. Its point is that the claims the named plaintiffs have\n                  asserted against Rapid Cash in district court are separate and distinct\n                  from the collection claims Rapid Cash sued on in justice court. Especially\n                  since its arbitration agreements permit it to litigate a collection claim in\n                  justice court without losing the right to arbitrate other, distinct claims,\n                  Rapid Cash sees no inconsistency in enforcing arbitration of the named\n                  plaintiffs' claims despite its prior litigation in justice court. Rapid Cash\n                  also disputes whether the class representatives have made a sufficient\n                  showing of prejudice to justify a finding of waiver.\n                              Consistent with the policy disfavoring waiver, caselaw teaches\n                  that \"only prior litigation of the same legal and factual issues as those the\n                  party now wants to arbitrate results in waiver of the right to arbitrate.\"\n                  Doctor's Assocs., Inc. v. Distajo, 107 F.3d 126, 133 (2d Cir. 1997); see\n                  MicroStrategy, Inc. v. Lauricia, 268 F.3d 244, 250 (4th Cir. 2001); Subway\n                  Equip. Leasing Corp. v. Forte, 169 F.3d 324, 328 (5th Cir. 1999);\n                  Cottonwood Fin., Ltd. v. Estes, 810 N.W.2d 852, 860-61 (Wis. Ct. App.\n                  2012). The reasoning underlying these cases is that litigating one claim is\n                  not necessarily inconsistent with seeking to arbitrate another, separate\n                  claim and does not prejudice rights of the opposing party that the\n                  arbitration agreement protects.     See Distajo, 107 F.3d at 133 (\"Finding\n                  waiver where a party has previously litigated an unrelated yet arbitrable\n                  dispute would effectively abrogate an arbitration clause once a party had\n\nSUPREME COURT\n      OF\n    NEVADA\n                                                        17\n(0) 1947A aterD\n\f                 litigated any issue relating to the underlying contract containing the\n                 arbitration clause.\"). Thus, the franchisor in Distajo did not waive its\n                 right to arbitrate its franchisees' claims for breach of the franchise\n                 agreement by obtaining eviction orders against its franchisees in state\n                 court because the eviction actions did not prejudice rights secured by the\n                 arbitration agreement, as required to find waiver of arbitration rights\n                 under the FAA. 107 F.3d at 134 (\"[Pirejudice as defined by our [waiver]\n                 cases refers to the inherent unfairness—in terms of delay, expense, or\n                 damage to a party's legal position—that occurs when the party's opponent\n                 forces it to litigate an issue and later seeks to arbitrate that same issue.\").\n                 Similarly, the payday lender in Cottonwood Financial did not waive its\n                 right to compel arbitration of its borrower's counterclaim alleging violation\n                 of the Wisconsin Consumer Act by bringing a collection action in small\n                 claims court; the arbitration agreement provided that a small claims\n                 action did not waive the right to compel arbitration of other claims and the\n                 borrower's counterclaim converted the case from a small to a large claims\n                 action, triggering the arbitration agreement. 810 N.W.2d at 860-61; see\n                 Fid. Nat'l Corp. v. Blakely, 305 F. Supp. 2d 639, 642 (S.D. Miss. 2003)\n                 (holding lender's state-court collection action did not waive its right to\n                 seek arbitration of counterclaim asserting tort claims associated with the\n                 transaction).\n                                 This case differs from the cases just cited in one crucial\n                 respect: The claims the named plaintiffs have asserted in district court\n                 arise out of, and are integrally related to, the litigation Rapid Cash\n                 conducted in justice court. By initiating a collection action in justice court,\n                 Rapid Cash waived its right to arbitrate to the extent of inviting its\n                 borrower to appear and defend on the merits of that claim. The entry of\n\nSUPREME COURT\n        OF\n     NEVADA\n                                                        18\n(0) 1947A    e\n\f                   default judgment based on a falsified affidavit of service denied the\n                   defendant borrower that invited opportunity to appear and defend.\n                   Allowing the borrower to litigate its claim to set aside the judgment and\n                   be heard on the merits comports with the waiver Rapid Cash initiated. If\n                   the judgment Rapid Cash obtained was the product of fraud or criminal\n                   misconduct and is unenforceable for that reason, it would be unfairly\n                   prejudicial to the judgment debtor to require arbitration of claims seeking\n                   to set that judgment aside, to enjoin its enforcement, and otherwise to\n                   remediate its improper entry. We recognize that the arbitration\n                   agreements specify that bringing one claim does not result in waiver of the\n                   right to arbitrate another, but a no-waiver clause can itself be waived, see\n                   Silver Dollar Club v. Cosgriff Neon Co., 80 Nev. 108, 111, 389 P.2d 923,\n                   924 (1964), and should not be applied to sanctify a fraud upon the court\n                   allegedly committed by the party who itself elected a litigation forum for\n                   its claim. Cf. S & R Co. of Kingston v. Latona Trucking, Inc., 159 F.3d 80,\n                   86 (2d Cir. 1998) (declining to enforce a \"no waiver\" clause where to do so\n                   would hamper a judge's authority to control the proceedings and correct\n                   any abuse in them); Gen. Elec. Capital Corp. v. Bio-Mass Tech, Inc., 136\n                   So. 3d 698, 703 (Fla. Dist. Ct. App. 2014) (holding that an \"antiwaiver or\n                   'no waiver' provision is not itself determinative and does not operate as a\n                   complete bar to finding a waiver of the right to arbitration\").\n                                                         E.\n                               Rapid Cash urges us to differentiate among the claims the\n                   named plaintiffs have brought, arguing that the named plaintiffs have an\n                   adequate remedy under Rule 60(c) of the Nevada Justice Court Rules of\n                   Civil Procedure, which provides:\n\n\n\nSUPREME COURT\n        OF\n     NEVADA\n                                                         19\n(0) 1947A    ((e\n\f                            When a default judgment shall have been taken\n                            against any party who was not personally served\n                            with summons and complaint, either in the State\n                            of Nevada or in any other jurisdiction, and who\n                            has not entered a general appearance in the\n                            action, the court, after notice to the adverse party,\n                            upon motion made within six months after the\n                            date of service of written notice of entry of such\n                            judgment may vacate such judgment and allow\n                            the party or the party's legal representatives to\n                            answer to the merits of the original action,\n                and that all other claims should be dismissed or sent to arbitration. Rapid\n                Cash did not make this argument to the district court before that court\n                entered its order denying Rapid Cash's second motion to compel\n                arbitration, and thus, this argument is not properly before us on appeal.\n                See Old Aztec Mine, Inc. v. Brown, 97 Nev. 49, 52, 623 P.2d 981, 983 (1981)\n                (\"A point not urged in the trial court. . . is deemed to have been waived\n                and will not be considered on appeal.\"). 6 More to the point, while we do\n                not pass upon the validity of any of the named plaintiffs' claims and we\n                recognize that the FAA \"requires that we rigorously enforce agreements to\n                arbitrate, even if the result is 'piecemeal' litigation,\"       Dean Witter\n                Reynolds, Inc. v. Byrd, 470 U.S. 213, 221 (1985), we do not accept Rapid\n                Cash's view of their separability for waiver purposes. The named\n                plaintiffs' claims all concern, at their core, the validity of the default\n                judgments Rapid Cash obtained against them in justice court, as to which\n\n\n\n                      6A  separate proceeding regarding this issue whereby Rapid Cash\n                seeks original writ relief from the district court's orders partially granting\n                class certification and declining to dismiss certain claims for relief is\n                pending before this court as Principal Investments, Inc. v. Eighth Judicial\n                District Court, Docket No. 61581.\n\nSUPREME COURT\n        OF\n     NEVADA\n\n                                                     20\n(0) 1947A\n\f                   issue the district court correctly concluded that Rapid Cash waived its\n                   right to an arbitral forum.\n                                   We therefore affirm.\n\n\n\n\n                   We concur:\n\n\n\n                              C4      ert.\n                   Hardesty\n\n\n\n\n                   Gibbons\n\n\n\n\nSUPREME COURT\n      OF\n    NEVADA\n                                                          21\n(0) 1947A cf4e).\n\f                  SAITTA, J., concurring:\n                              In large part, I agree with the majority's opinion. However, I\n                  disagree with the majority's inclusion as dicta of two cases, Cottonwood\n                  Financial, Ltd. v. Estes, 810 N.W.2d 852 (Wis. Ct. App. 2012), and Fidelity\n                  National Corp. v. Blakely, 305 F. Supp. 2d 639 (S.D. Miss. 2003). The\n                  Cottonwood court based its decision on its interpretation of the arbitration\n                  clause in that case and did not perform an analysis of whether the \"same\n                  legal and factual issues\" were at issue in the lender's collection action as\n                  the borrower's counterclaim. Compare Cottonwood Financial, 810 N.W.2d\n                  at 860-61, with Majority Opinion at 17-18 (holding that 'only prior\n                  litigation of the same legal and factual issues as those the party now\n                  wants to arbitrate results in waiver of the right to arbitrate.\" (quoting\n                  Doctor's Assocs., Inc. v. Distajo,   107 F.3d 126, 133 (2d Cir. 1997))).\n                  Therefore, I believe that Cottonwood is inapposite to the majority's\n                  analysis under the standard it set out in its opinion.\n                              In the case of Blakely, I respectfully note that the holding in\n                  that case directly contradicts the majority's holding in the current case.\n                  Compare Blakely, 305 F. Supp. 2d at 642 (holding lender's state court\n                  collection action did not waive its right to seek arbitration of counterclaim\n                  asserting tort claims associated with the transaction), with Majority\n                  Opinion at 20-21 (holding that lender's state-court collection action waived\n                  its right to seek arbitration of claims associated with the transaction).\n                  Therefore, I am puzzled by its inclusion in the majority's opinion.\n                              Lastly, I note that the above caselaw originates from the\n                  Wisconsin Court of Appeals and a federal district court in Mississippi.\n                  Thus, beyond the issue of their applicability to the current case, I question\n\n\n\nSUPREME COURT\n         OF\n      NEVADA\n\n\n(0) I 947A    e\n\f                their persuasiveness as authority in Nevada. Therefore, although I concur\n                with most of the majority's opinion, I do not join with them as to the use of\n                those two cases as dicta.\n\n\n\n\n                                                                                    J.\n                                                   Saitta\n\n\n\n\nSUPREME COURT\n        OF\n     NEVADA\n                                                      2\n(0) I947A\n\f",
+            "ocr": false,
+            "opinion_id": 3169699
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 68368,
+      "row": {
+        "id": 4238476,
+        "judges": null,
+        "date_filed": "2016-07-13",
+        "date_filed_is_approximate": false,
+        "slug": "willis-v-fed-national-mortg-assn",
+        "case_name_short": "Willis",
+        "case_name": "Willis v. Fed. National Mortg. Ass'n.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Unpublished",
+        "arguments": null,
+        "headmatter": null,
+        "citations": null,
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": 4,
+            "download_url": "http://caseinfo.nvsupremecourt.us/document/view.do?csNameID=34484&csIID=34484&deLinkID=559729&sireDocumentNumber=16-21854",
+            "author_id": null,
+            "opinion_text": "                       IN THE SUPREME COURT OF THE STATE OF NEVADA\n\n\n                CLARENCE WILLIS; AND THOMAS                           No. 66286\n                WILLIS,\n                Appellants,\n                vs.\n                                                                            FILED\n                FEDERAL NATIONAL MORTGAGE                                   JUL 1 3 2016\n                ASSOCIATION,\n                Respondent.\n\n                                        ORDER OF AFFIRMANCE\n                            This is an appeal from a district courtS summary judgment in\n                an unlawful detainer and real property action.' Eighth Judicial District\n                Court, Clark County; Adriana Escobar, Judge.\n                            Appellants first contend that the district court lacked\n                jurisdiction over the underlying matter because respondent did not\n                transfer the case from justice court in compliance with EDCR 7.85. We\n                disagree.   See Ogawa v. Ogawa, 125 Nev. 660, 667, 221 P.3d 699, 704\n                (2009) (\"Subject matter jurisdiction is a question of law subject to de novo\n                review.\"). 2 As respondent points out, EDCR 7.85's mandatory dismissal\n\n\n\n                       'Having considered the parties' arguments on the issue, we conclude\n                that jurisdiction over this appeal is proper. Because appellants' defenses\n                were treated as de facto counterclaims, the underlying matter was not\n                simply an unlawful detainer action. Thus, appellants' July 28, 2014,\n                motion for reconsideration effectively tolled the time for appealing the\n                district court's July 8, 2014, final judgment. See AA Primo Builders, LLC\n                v. Washington, 126 Nev. 578, 585, 245 P.3d 1190, 1195 (2010).\n\n                      2 Because appellants' argument regarding EDCR 7.85 fails for the\n                reasons set forth in this order, we assume without deciding that EDCR\n                                                                continued on next page...\n\n\nSUPREME COURT\n        OF\n     NEVADA\n\n\n(0) 1947A\n                                                                                    VC1\n\f                   provision is applicable only when one of two conditions is satisfied.\n                   Because it does not appear from the record that either condition was\n                   satisfied and because appellants have failed to address the issue, we\n                   conclude that jurisdiction in the district court was proper.   See Ogawa, 125\n                   Nev. at 667, 221 P.3d at 704; cf. Ozawa v. Vision Airlines, Inc., 125 Nev.\n                   556, 563, 216 P.3d 788, 793 (2009) (treating a party's failure to respond to\n                   an argument as a concession that the argument is meritorious).\n                               Appellants next contend that the district court erred in\n                   granting summary judgment based on claim and issue preclusion. We\n                   need not determine whether the district court properly applied claim and\n                   issue preclusion because even if appellants' de facto counterclaims were\n                   construed as an \"action\" challenging the November 2010 trustee's sale\n                   under NRS 107.080(5) (2010), that action was time-barred by NRS\n                   107.080(5)(b) (2010). Specifically, appellants did not raise their argument\n                   regarding the chain of beneficial interest (which appears to be the basis for\n                   their de facto counterclaims) until after 90 days from the November 2010\n                   sale. 3 Thus, summary judgment on appellants' counterclaim for wrongful\n                   foreclosure was proper, and because appellants' counterclaim for quiet\n                   title was predicated on the purported invalidity of the trustee's sale,\n\n\n                   ...continued\n                   7.85 implicates the district court's jurisdiction and that appellants' two-\n                   year delay in raising the argument did not amount to a waiver.\n\n                         3 Even if appellants' initial filing in justice court were construed as\n                   the \"action\" for purposes of NRS 107.080(5)(b)'s 90-day limitation period,\n                   they failed to comply with NRS 107.080(5)(c)'s requirement that a lis\n                   pendens be recorded within 30 days after the action is commenced.\n\n\n\n\nSUPREME COURT\n        OF\n     NEVADA\n                                                         2\n(0) 1947A    Cep\n\f                  summary judgment on the quiet title counterclaim was likewise proper. 4\n                  See Rosenstein v. Steele, 103 Nev. 571, 575, 747 P.2d 230, 233 (1987)\n                  (\"[T]his court will affirm the order of the district court if it reached the\n                  correct result, albeit for different reasons.\").\n                               Appellants also contend that the district court should have\n                  dismissed the underlying matter because respondent (1) did not timely file\n                  an opposition to one of appellants' motions, (2) did not hold an NRCP 16.1\n                  case conference, (3) violated Local Justice Court Rule of Practice 17 when\n                  submitting the proposed transfer order to the justice court judge, (4)\n                  violated Local Justice Court Rule of Civil Procedure 5(b) upon the transfer\n                  order's entry, or (5) lacked standing to institute the underlying action\n                  based on a failure to comply with NRS 80.055 and NRCP 7.1. We conclude\n                  that none of these arguments warrant reversal because, among other\n                  reasons (1) the district court was not obligated under EDCR 2.20 to grant\n                  appellants' motion, (2) the district court had discretion under NRCP\n                  16.1(e) to not dismiss the underlying action, (3) appellants have not\n                  identified any authority suggesting that a purported violation of Rule 17\n                  would have warranted dismissal, (4) appellants have not identified any\n                  authority suggesting that a purported violation of Rule 5(b) would have\n                  warranted dismissal, and (5) appellants have not cogently argued that\n                  respondent is an entity that would need to comply with NRS 80.055 and\n\n\n\n                        4Although appellants argue on appeal that they should have been\n                  permitted to conduct discovery, they did not provide the district court with\n                  an affidavit articulating a specific issue that warranted discovery or why\n                  they had not been able to procure that discovery. See NRCP 56(f).\n\n\n\n\nSUPREME COURT\n      OF\n    NEVADA\n                                                           3\n(0) 1947A citto\n\f                   NRCP 7.1, see Edwards v. Emperor's Garden Rest., 122 Nev. 317, 330 n.38,\n                   130 P.3d 1280, 1288 n.38 (2006); cf. Arnold v. Kip, 123 Nev. 410, 417, 168\n                   P.3d 1050, 1054 (2007) (noting that this court will not entertain an\n                   argument made for the first time in a motion for reconsideration when the\n                   district court did not entertain the motion on its merits). Accordingly, we\n                               ORDER the judgment of the district court AFFIRMED.\n\n\n\n\n                                                               Cherry\n\n\n                                                                                             ,J.\n\n\n\n                                                                                                 J.\n                                                                Gibbons\n\n\n\n\n                   cc:   Hon. Adriana Escobar, District Judge\n                         Robert F. Saint-Aubin, Settlement Judge\n                         Kurth Law Office\n                         Wright, Finlay & Zak, LLP/Las Vegas\n                         Eighth District Court Clerk\n\n\n\n\nSUPREME COURT\n        OF\n     NEVADA\n                                                         4\n(0) 1947A    ce)\n\f",
+            "ocr": false,
+            "opinion_id": 4015737
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 70646,
+      "row": {
+        "id": 4394609,
+        "judges": null,
+        "date_filed": "2017-05-25",
+        "date_filed_is_approximate": false,
+        "slug": "iliescu-v-steppan",
+        "case_name_short": "Iliescu",
+        "case_name": "Iliescu v. Steppan",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "2017 NV 25"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": "http://caseinfo.nvsupremecourt.us/document/view.do?csNameID=36555&csIID=36555&deLinkID=600500&sireDocumentNumber=17-17514",
+            "author_id": null,
+            "opinion_text": "\r\n\r\n\r\n    \r\n\r\n\r\n\r\n\tC-Track E-Filing\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n     \r\n\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\r\n\t \r\n\t\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\r\n\tThe Supreme Court\r\n\tof Nevada\r\n\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\r\n\t\t\r\n\t\t\tAppellate Case Management System\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\tC-Track, the browser based CMS for Appellate Courts\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tCase Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\tParticipant Search\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\r\n\t\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\r\n\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\r\n\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\r\n\t\t\t\r\n\t\t\r\n\t\r\n\t\r\n\t\t\r\n\t\t\t\r\n\t\t\t\t\r\n\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\t\r\n\r\n\r\n\r\n\t\r\n\t\r\n\r\n\t\r\n\t\t\r\n\t\r\n\r\n\r\n\r\n\r\n\t\t\t\t\t\t \r\n\t\t\t\t\t \r\n\t\t\t\t \r\n\t\t\t \r\n\t\t\r\n\t\r\n \r\n\r\n\r\n",
+            "ocr": false,
+            "opinion_id": 4171862
+          }
+        ],
+        "court_short_name": "Nevada Supreme Court",
+        "court_full_name": "Nevada Supreme Court",
+        "court_type": "S",
+        "court_jurisdiction": "Nevada, NV"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 840,
+  "num_rows_per_page": 100,
+  "partial": true
+}

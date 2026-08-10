@@ -1,0 +1,775 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 284,
+      "row": {
+        "id": 1914521,
+        "judges": null,
+        "date_filed": "2009-07-29",
+        "date_filed_is_approximate": false,
+        "slug": "com-v-hills",
+        "case_name_short": "Com.",
+        "case_name": "Com. v. Hills",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "981 A.2d 217"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n981 A.2d 217 (2009)\nCOM.\nv.\nHILLS.\nNo. 824 MAL (2008).\nSupreme Court of Pennsylvania.\nJuly 29, 2009.\nDisposition of Petition for Allowance of Appeal Denied.\n",
+            "ocr": false,
+            "opinion_id": 1914521
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 316,
+      "row": {
+        "id": 2085549,
+        "judges": "Per Curiam",
+        "date_filed": "2009-06-03",
+        "date_filed_is_approximate": false,
+        "slug": "abov-v-ward",
+        "case_name_short": "ABOV",
+        "case_name": "ABOV v. Ward",
+        "case_name_full": "Yosef ABOV, Petitioner v. Geraldine WARD, Respondent",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<citation id=\"b459-3\">\n    973 A.2d 413\n   </citation><br><parties id=\"b459-4\">\n    Yosef ABOV, Petitioner v. Geraldine WARD, Respondent.\n   </parties><br><docketnumber id=\"b459-6\">\n    No. 6 EM 2009.\n   </docketnumber><br><court id=\"b459-7\">\n    Supreme Court of Pennsylvania.\n   </court><br><decisiondate id=\"b459-8\">\n    June 3, 2009.\n   </decisiondate>",
+        "citations": [
+          "973 A.2d 413",
+          "601 Pa. 385"
+        ],
+        "opinions": [
+          {
+            "author_str": "Per Curiam",
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n973 A.2d 413 (2009)\nYosef ABOV, Petitioner\nv.\nGeraldine WARD, Respondent.\nNo. 6 EM 2009.\nSupreme Court of Pennsylvania.\nJune 3, 2009.\n\nORDER\nPER CURIAM.\nAND NOW, this 3rd day of June, 2009, the \"Petition for Review of Superior Court Order Denying Application for Stay Pending Appeal\" is DENIED.\n",
+            "ocr": false,
+            "opinion_id": 2085549
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 376,
+      "row": {
+        "id": 2098830,
+        "judges": null,
+        "date_filed": "2010-06-15",
+        "date_filed_is_approximate": false,
+        "slug": "com-v-tilley",
+        "case_name_short": "Com.",
+        "case_name": "Com. v. Tilley",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "996 A.2d 1068"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n996 A.2d 1068 (2010)\nCOM.\nv.\nTILLEY.\nNo. 62 EAL (2010).\nSupreme Court of Pennsylvania.\nJune 15, 2010.\nDisposition of Petition for Allowance of Appeal Denied.\n",
+            "ocr": false,
+            "opinion_id": 2098830
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 1128,
+      "row": {
+        "id": 2446529,
+        "judges": null,
+        "date_filed": "2010-09-09",
+        "date_filed_is_approximate": false,
+        "slug": "com-v-ortiz",
+        "case_name_short": "Com.",
+        "case_name": "Com. v. Ortiz",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "5 A.3d 819"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n5 A.3d 819 (2010)\nCOM.\nv.\nORTIZ.\nNo. 235 MAL (2010).\nSupreme Court of Pennsylvania.\nSeptember 9, 2010.\nDisposition of Petition for Allowance of Appeal Denied.\n",
+            "ocr": false,
+            "opinion_id": 2446529
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 1276,
+      "row": {
+        "id": 2293189,
+        "judges": "Per Curiam",
+        "date_filed": "2012-03-28",
+        "date_filed_is_approximate": false,
+        "slug": "office-of-disciplinary-counsel-v-mcgogney",
+        "case_name_short": "McGOGNEY",
+        "case_name": "Office of Disciplinary Counsel v. McGOGNEY",
+        "case_name_full": "OFFICE OF DISCIPLINARY COUNSEL, Petitioner v. Glenn D. McGOGNEY, Respondent",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": "Submitted Nov. 30, 2011.",
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<parties id=\"b873-10\">\n    OFFICE OF DISCIPLINARY COUNSEL, Petitioner v. Glenn D. McGOGNEY, Respondent.\n   </parties><br><court id=\"b873-14\">\n    Supreme Court of Pennsylvania.\n   </court><br><otherdate id=\"b873-15\">\n    Submitted Nov. 30, 2011.\n   </otherdate><br><decisiondate id=\"b873-16\">\n    Decided March 26, 2012.\n   </decisiondate>",
+        "citations": [
+          "41 A.3d 851"
+        ],
+        "opinions": [
+          {
+            "author_str": "Per Curiam",
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nOFFICE OF DISCIPLINARY COUNSEL, Petitioner\nv.\nGLENN D. McGOGNEY, Respondent\nNos. 1713 DD3, 194 DB 2009\nSupreme Court of Pennsylvania, Western District.\nSubmitted: November 30, 2011.\nMarch 28, 2012.\n\nORDER\nPER CURIAM\nAND NOW, this 28th day of March, 2012, the order dated March 26, 2012 is vacated. Upon consideration of the parties' briefs, the record, and the report and recommendation of the Disciplinary Board, respondent, Glenn D. McGogney, is hereby disbarred. Respondent shall comply with all the provisions of Rule 217, Pa. R.D.E. It is further ordered that respondent shall pay costs to the Disciplinary Board pursuant to Rule 208(g), Pa. R.D.E.\n",
+            "ocr": false,
+            "opinion_id": 2293189
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 2367,
+      "row": {
+        "id": 2405178,
+        "judges": null,
+        "date_filed": "2010-07-28",
+        "date_filed_is_approximate": false,
+        "slug": "com-v-getchell",
+        "case_name_short": "Com.",
+        "case_name": "Com. v. Getchell",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "999 A.2d 1246"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n999 A.2d 1246 (2010)\nCOM.\nv.\nGETCHELL.\nNo. 768 MAL (2009).\nSupreme Court of Pennsylvania.\nJuly 28, 2010.\nDisposition of Petition for Allowance of Appeal Denied.\n",
+            "ocr": false,
+            "opinion_id": 2405178
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 3139,
+      "row": {
+        "id": 2323031,
+        "judges": "Per Curiam",
+        "date_filed": "2011-09-26",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-druss",
+        "case_name_short": "Commonwealth",
+        "case_name": "Commonwealth v. DRUSS",
+        "case_name_full": "COMMONWEALTH of Pennsylvania, Respondent v. Jay J. DRUSS, Petitioner",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 1,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<citation id=\"b150-7\">\n    30 A.3d 380\n   </citation><br><parties id=\"b150-8\">\n    COMMONWEALTH of Pennsylvania, Respondent v. Jay J. DRUSS, Petitioner.\n   </parties><br><court id=\"b150-10\">\n    Supreme Court of Pennsylvania.\n   </court><br><decisiondate id=\"b150-11\">\n    Sept. 26, 2011.\n   </decisiondate>",
+        "citations": [
+          "30 A.3d 380",
+          "612 Pa. 106"
+        ],
+        "opinions": [
+          {
+            "author_str": "Per Curiam",
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n30 A.3d 380 (2011)\nCOMMONWEALTH of Pennsylvania, Respondent\nv.\nJay J. DRUSS, Petitioner.\nNo. 452 MAL 2009\nSupreme Court of Pennsylvania.\nSeptember 26, 2011.\n\nORDER\nPER CURIAM.\nAND NOW, this 26th day of September, the Petition for Allowance of Appeal is hereby GRANTED, and the decision of the Superior Court is VACATED. The matter is REMANDED to the Superior Court for consideration of Petitioner's sentencing claim in light of this Court's decision *381 in Commonwealth v. Foster, 17 A.3d 332 (Pa.2011) (plurality).\n",
+            "ocr": false,
+            "opinion_id": 2323031
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 5673,
+      "row": {
+        "id": 1487913,
+        "judges": "Baer, Cappy, Castille, Eakin, Newman, Nigro, Saylor",
+        "date_filed": "2005-08-15",
+        "date_filed_is_approximate": false,
+        "slug": "commonwealth-v-karetny",
+        "case_name_short": "Com.",
+        "case_name": "Commonwealth v. Karetny",
+        "case_name_full": "COMMONWEALTH of Pennsylvania, Appellant, v. Eli KARETNY, Appellee; Commonwealth of Pennsylvania, Appellant, v. Michael Asbell, Appellee",
+        "attorneys": "Hugh J. Burns, Philadelphia, for Commonwealth of Pennsylvania., Frank DeSimone, Leonard Sosnov, Glenside, Thomas A. Bergstrom, Malvern, for Eli Karetny, Michael Asbell.",
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": "Argued May 16, 2005.",
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 117,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<citation id=\"b708-5\">\n    880 A.2d 505\n   </citation><br><parties id=\"b708-6\">\n    COMMONWEALTH of Pennsylvania, Appellant, v. Eli KARETNY, Appellee. Commonwealth of Pennsylvania, Appellant, v. Michael Asbell, Appellee.\n   </parties><br><court id=\"b708-11\">\n    Supreme Court of Pennsylvania.\n   </court><br><otherdate id=\"b708-12\">\n    Argued May 16, 2005.\n   </otherdate><br><decisiondate id=\"b708-13\">\n    Decided Aug. 15, 2005.\n   </decisiondate><br><attorneys id=\"b711-7\">\n<span citation-index=\"1\" class=\"star-pagination\" label=\"517\"> \n     *517\n     </span>\n    Hugh J. Burns, Philadelphia, for Commonwealth of Pennsylvania.\n   </attorneys><br><attorneys id=\"b711-8\">\n    Frank DeSimone, Leonard Sosnov, Glenside, Thomas A. Bergstrom, Malvern, for Eli Karetny, Michael Asbell.\n   </attorneys><br><judges id=\"b711-9\">\n    Before: CAPPY, C.J., CASTILLE, NEWMAN, SAYLOR, EAKIN, BAER, JJ.\n   </judges>",
+        "citations": [
+          "880 A.2d 505",
+          "583 Pa. 514"
+        ],
+        "opinions": [
+          {
+            "author_str": "Castille",
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n880 A.2d 505 (2005)\nCOMMONWEALTH of Pennsylvania, Appellant,\nv.\nEli KARETNY, Appellee.\nCommonwealth of Pennsylvania, Appellant,\nv.\nMichael Asbell, Appellee.\nSupreme Court of Pennsylvania.\nArgued May 16, 2005.\nDecided August 15, 2005.\n*507 Hugh J. Burns, Philadelphia, for Commonwealth of Pennsylvania.\nFrank DeSimone, Leonard Sosnov, Glenside, Thomas A. Bergstrom, Malvern, for Eli Karetny, Michael Asbell.\nBefore: CAPPY, C.J., CASTILLE, NEWMAN, SAYLOR, EAKIN, BAER, JJ.\n\nOPINION\nJustice CASTILLE.\nThe primary issue in this appeal is whether the Commonwealth made out a prima facie case of risking a catastrophe, 18 Pa.C.S. § 3302, as to appellees, who are co-defendants in the underlying criminal prosecution. For the following reasons, we hold that it did, and accordingly, we reverse the Superior Court's order, vacate the trial court's order quashing that charge, and remand this matter for trial.\nDuring the years between 1994 and 2000, appellees leased Pier 34 on the Delaware River in the city of Philadelphia, and owned and operated various facilities located on the pier, including a parking lot, a banquet hall, and an open-air nightclub called \"Heat.\" Appellees also owned and operated a floating ship/restaurant, called the \"Moshulu,\" which was docked on the river near the pier.\nSometime during 1994, certain inshore portions of Pier 34 collapsed, and in December 1994, appellees hired Hudson Engineers to evaluate the damage. In a written report submitted to appellee Asbell and dated January 17, 1995, Vincent Carita, one of the engineers who conducted the evaluation, noted that although the portion of the pier structure that had not collapsed was in generally fair condition, there were a \"number of deficient front row piles along the upriver side and outshore end of the pier.\" N.T., 11/14/01, at p.10. Accordingly, the report recommended a \"comprehensive maintenance and repair plan\" and a \"thorough and comprehensive condition survey ... in order to fully detail the exact nature and extent of required repairs.\" Id. While the inshore portion of the pier that had collapsed was eventually repaired with a \"concrete high deck structure,\" appellees ignored the recommendation that the remainder of the pier be further evaluated at that time. Id. at 14.\nBy October of 1995, new cracks in the pier had opened up and became \"very serious, very quickly.\" Id. at 166. As a result, appellees once again employed Hudson Engineers to conduct emergency repairs and also to evaluate Pier 34 for the purpose of bringing the vessel containing the Moshulu Restaurant from Camden, New Jersey, across the river, and docking it at the pier. Mark Klein, an engineer employed by Hudson at the time, conducted the investigation and concluded, consistent with Carita's opinion ten months earlier, that the pier's pilings were \"leaning in an outshore direction\" and that the pier was \"no longer intact.\" Id. at 25-26.[1] On November 1, 1995, Klein, along with Sam Hudson, President of Hudson Engineers, and Rob Hudson, President of J.E. Brenneman and Company, (collectively, the \"engineers\") met with appellees to discuss Klein's findings.[2] Rob Hudson advised appellees *508 that the pier \"wants to fall over and all of the fill wants to leak out.\" Id. at 172. The group recommended to appellees that the pier be rebuilt in its entirety, but appellees rejected that recommendation because the estimated cost of such an extensive project was too high. Instead, appellees opted merely to have the pier \"stabilized.\" Id. at 34. However, notwithstanding the engineers' urging that the pier be monitored and continuously reassessed during the stabilization process, appellees ceased the monitoring in December of 1995 because of the significant cost. Id. at 174. Indeed, the engineers undertook to do \"the least amount to stop the pier or hold it in place.\" Id. at 36. The stabilization work was completed in April of 1996. Id. at 176.\nIn May of 1999, a barge owned by appellee Karetny came loose from its moorings and wedged underneath the pier, and Rob Hudson was summoned to Pier 34 once again. While Hudson was there, Karetny requested that he view some cracks that had developed in the parking lot area. Hudson found that the parking lot area was stable, but was alarmed by one large crack that had appeared on the pier, just outside the doorway of the banquet building. Upon further inspection, Hudson noticed that the ceiling inside the building was beginning to separate. N.T., 11/14/01, at 180. Hudson cautioned appellees that an intact pier would move only \"microscopically,\" but that, in his estimation, Pier 34 had moved a distance of about one and one-half of an inch. Id. at 182.[3] Hudson once again recommended that the pier be surveyed, or monitored, on a continual basis, and once again, appellees rejected that suggestion. Specifically, appellee Asbell replied that monitoring the pier would not result in uncovering anything he did not \"already know.\" Id. at 181. No repairs were undertaken at that time.\nIn October of 1999, Charles Ascher, who had installed the original carpeting inside appellees' banquet hall, was summoned to the pier by Karetny to attend to the crack outside the banquet building, which had opened up to approximately one and a half to two inches wide and fifteen inches long. Ascher filled and patched the crack. On January 20, 2000, Ascher was again called to the pier by Karetny in order to address a split in the carpeting that had been caused by that portion of the crack which was extending inside of the building. Ascher, while in the presence of Karetny, cut the carpeting and observed that the crack was approximately eight feet long and three inches deep in some places. N.T., 11/13/01, at 174; 177. At the direction of a third person to whom he was introduced by Karetny, Ascher cemented the crack and repaired the carpeting to conceal it.\nOn May 9, 2000, John Jones of Suburban Propane was called to the pier to investigate a gas odor. He was met by Karetny and found a gas pipe that ran along a railing on the side of the pier. The pipe had bent, and Jones repaired it the following day. Karetny explained to Jones that the reason the pipe had bent was \"probably from the pier moving.\" Id. at 142.\nOn May 15, 2000, appellees met with Jess Tyson, who then was employed by Commerce Construction, in order to investigate \"bouncy flooring at the outshore end of the pier\" at the nightclub. N.T., 12/11/01, at 11.[4] Asbell had portions of the *509 flooring removed for Tyson's inspection, and Tyson concluded that \"fill\"i.e., material used to support the floor and floor joistsmight be \"leaking out\" from within the pier. Id. at 13. Tyson employed a diver to examine the underwater structure of the pier. The diver arrived early the next day and, before diving, took appellees out on his boat and showed them that certain steel pilings, which had been installed as reinforcements, were \"twisting.\" Id. at 14. During the dive, the diver reported to Tyson and appellees that, in fact, fill had been leaking out from small openings in the underside of the horizontal pier structure and that the rows of pilings were \"out of plumb on the top leaning toward New Jersey.\" Id. at 16. On that same occasion, appellees also asked Tyson to investigate the crack in and outside of the banquet building. Tyson informed appellees that the separation was, in fact, not a \"crack,\" but a construction joint. Tyson observed that the joint had opened to approximately three inches both inside and outside the building, and he also witnessed two of appellees' employees pouring sand and gravel into the joint.\nOn May 16, 2000, Tyson called Asbell, who had left at some point during the inspection the day before, to inform him of the diver's findings. Tyson also noted for Asbell that \"old piers do collapse\" and pointed out that fifty feet of pier had recently collapsed on the New Jersey side of the Delaware River. Tyson also remarked that appellees had no safety equipment available on the pier, to which Asbell replied, \"I had them out there but people stole them so the hell with them.\" Id. at 21.\nThat same day, Karetny met with Maria Cucciniello, an independent contractor who had been hired by Karetny to promote events and parties at appellees' nightclub.[5] While meeting with Karetny, Cucciniello inquired about the presence of yellow caution tape around the bar area near the rear of the nightclub, where floor boards had been removed for Tyson's inspection the day before. Karetny told Cucciniello that the holes in the floor should be \"of no *510 concern\" to her and that they were merely \"raising the pier from underneath.\" N.T., 11/13/01, at 87-88.\nOn the morning of May 18, 2000, Karetny called Tyson and asked him to come to the pier immediately because \"the old cracks\" had become \"much bigger\" and there were \"new cracks that [were] real big.\" N.T., 12/11/01, at 22. Karetny also noticed that \"the bottom of the building [was] pushing out.\" Id. When Tyson arrived at the pier, appellees called his attention to a plate in the seawall that had been secured by bolts, and which was not meant to move at all. The plate had moved, along with the wall, over six inches, shearing off the heads of the bolts that had secured it. Tyson also noted that the construction joint extending through the banquet building, which had been open three inches a few days earlier, was now open to approximately seven inches. Finally, Tyson noted a new, three-inch-wide crack near the outshore end of the ballroom in the banquet building and that the door to that building was jammed shut because the doorjamb had shifted. Tyson concluded that the pier had moved approximately eight inches from May 16 to May 18. Id. at 28, 29.\nTyson asked appellees when they first noticed that the old cracks had grown and new cracks had appeared, and appellees answered that they had observed the new cracking at around 8:30 a.m. on the morning of May 18. Tyson concluded that \"that would have been about the time that the river was going down below [from the tide] and it would be leaving the underside of that structural deck and therefore, the river wouldn't be helping to hold up the pier. . . .\" Id. at 30. Tyson admonished appellees in no uncertain terms: \"[Y]our pier is in a state of failure.... [It] will probably collapse tonight between 8 and 9 o'clock ... If it doesn't happen on tonight's tide, it [will] sure as hell happen by tomorrow morning's tide but it is going to collapse.\" Id. at 30-32.[6] In response, Asbell departed and Karetny expressed dismay because a bar mitzvah was scheduled to be held in the banquet hall sometime in the near future. Karetny instructed several employees to lay steel plates over the openings in the deck, fold a rug over the plates, and put large flowerpots on the rugs so that no one would walk on them. Id. at 32.\nOn the evening of May 18, 2000, a twelve-inch-wide crack had appeared and extended across the floor of the ballroom in the banquet building, tearing the rug. The crack extended from the ballroom to the edge of the pier. Lawrence Price, a security guard on duty at the building that evening, was instructed by a night club manager to assist in covering the gaping crack with plates of sheet metal. N.T., 11/13/01, at 51. In fulfillment of Tyson's prediction, later that evening when the tide receded, at approximately 8 p.m., the pier collapsed, and the entire nightclub and a portion of the ballroom building fell into the Delaware River. Three young women, DeAnn White, Jean Marie Ferraro, and Monica Rodriguez, were tragically killed in the collapse, and forty-three others, including several rescue personnel, were injured. Id. at 6, 11. Among those who were plunged into the river was Ms. Cucciniello, appellees' nightclub promoter, who had earlier expressed concern about the yellow caution tape. Including employees, there were forty or fifty people present at the night club that evening immediately prior to the pier collapsing. *511 Id. at 49. Apparently, neither Asbell nor Karetny were in the nightclub or on the pier at the time of the collapse.\nA county grand jury was charged to investigate the collapse of Pier 34, and during the next fourteen months, over fifty witnesses were sworn and testified. On August 16, 2001, the grand jury submitted a Presentment to the Honorable Anne E. Lazarus, the supervising judge, recommending that appellees be arrested and charged criminally in connection with the pier's collapse. Accordingly, the Commonwealth requested arrest warrants, which the court issued on August 20, 2001, and appellees surrendered the next day. Bail was set and posted, and on September 20, 2001, the Commonwealth moved to file bills of information without a preliminary hearing. The trial court denied that motion on October 4, 2001.\nFollowing a lengthy preliminary hearing held on November 13 and 14 and December 11 and 13, 2001, before the Philadelphia Municipal Court Judge Eric L. Lillian, appellees were each held on three counts of involuntary manslaughter, 18 Pa. C.S. § 2504; forty-three counts of recklessly endangering another person, 18 Pa. C.S. § 2705; one count of causing or risking a catastrophe, 18 Pa.C.S. § 3302(b); one count of failure to prevent a catastrophe, 18 Pa.C.S. § 3303; and criminal conspiracy, 18 Pa.C.S. § 903. On December 20, 2001, appellees filed identical motions to quash in the Philadelphia Court of Common Pleas. Both motions alleged, generally, that \"the Commonwealth has failed to establish the defendant has committed any crime, even on a prima facie level,\" and therefore, that \"each and every charge ... should be dismissed.\" Karetny's Motion to Quash/Motion for Writ of Habeas Corpus at 2; Asbell's Motion to Quash/Motion for Writ of Habeas Corpus at 2 (collectively, \"Motions to Quash\"). The motions specifically urged quashal of the risking a catastrophe and conspiracy charges, both felonies, apparently because they were the most serious charges for which appellees were held. Following a hearing, held on March 5, 2002, before Judge Benjamin J. Lerner, the trial court entered an oral order denying appellees' motions to quash.\nOn April 3, 2002, Karetny filed an application to amend the trial court's interlocutory order to include a written statement, pursuant to 42 Pa.C.S. § 702(b) (interlocutory appeal by permission) and on that same date also filed a motion to reconsider. On April 22, 2002, pending a hearing on those motions, Leonard Sosnov, Esq., who joined in representing Karetny, filed a supplemental motion and memorandum of law in support of a writ of habeas corpus on appellee's behalf.\nOn April 29, 2002, the trial court held a hearing on the application and motion, and on June 4, 2002, the court granted the motions to quash as to the felony charges of risking a catastrophe and conspiracy. Specifically, the trial court concluded that \"the Commonwealth [must] show a particular type of an act in order to\" make a prima facie showing of risking a catastrophe under Section 3302(b). N.T., 6/04/02, at 13 (emphasis added).\nOn July 1, 2002, the Commonwealth filed a notice of appeal, and on July 8, 2002, the trial court directed the Commonwealth to submit a Statement of Matters Complained of on Appeal, pursuant to Pa. R.A.P.1925. The Commonwealth filed its statement on July 17, 2002, and the trial court issued an opinion. On appeal, a divided panel of the Superior Court affirmed in a published opinion, concluding that \"Judge Lerner did not abuse his discretion by dismissing the charge of risking a catastrophe.\" Commonwealth v. Karetny, 837 A.2d 474, 479 (Pa.Super.2003). This Court granted allocatur to address: *512 the proof necessary to establish a prima facie case of \"risking a catastrophe,\" and the attendant charge of conspiracy; whether the Superior Court panel majority erred in applying the \"general-specific\" rule of statutory construction and holding that the Commonwealth could not prosecute appellees for the supposed general crime of risking a catastrophe where the more specific crime of failure to prevent a catastrophe covered the circumstances; and whether the Superior Court erred in applying an abuse of discretion standard. Following our grant of review, we further directed that the parties brief the preliminary question of whether this Court has jurisdiction over the appeal, or more appropriately, whether the Commonwealth was properly permitted to appeal the trial court order in question. We will address the jurisdictional question first.\nThe Superior Court panel majority, in an opinion by the Honorable Richard B. Klein, agreed with appellees that, \"[t]he order in question is clearly not final\" under Pa.R.A.P. 341(b), thus implying that the order was not appealable as of right under Rule 341(a). Karetny, 837 A.2d at 475. However, the majority found that, \"[i]f the Commonwealth were forced to wait to seek review, it could be unable to try the defendants on the felony charge under the ... Double Jeopardy principle.\" Id. at 476. Accordingly, the majority concluded that the Commonwealth had the right to appeal here, pursuant to Pa.R.A.P. 311(d), because the Commonwealth \"appropriately certified that the order quashing the felony charge would terminate or substantially handicap the prosecution.\" Karetny, 837 A.2d at 477.[7]\nThe Commonwealth argues that its appeal right, and this Court's jurisdiction over this matter, is clearly established by our case law. Appellees counter that the Commonwealth's appeal should be quashed for several reasons: the order was not appealable as of right as a \"final\" order under Pa.R.A.P. 341 (final orders); the order was not appealable as of right under Rule 311(d), because of the decision in Commonwealth v. Cosnek, 575 Pa. 411, 836 A.2d 871, 877 (2003), where we limited \"the application of Rule 311(d) to `those circumstances provided by law' in which a pretrial ruling results in the suppression, preclusion, or exclusion of Commonwealth evidence\"; and the order was not appealable as an appeal of an interlocutory order by permission, under Pa.R.A.P. 1311(a), because the Commonwealth failed to petition the trial court to certify the order, as required by Rule 1311(b) in conjunction with 42 Pa.C.S. § 702(b). We agree with the Commonwealth that, under the circumstances, it had the right to appeal and that our jurisdiction is secure.\nRule 311(d) explains that:\nIn a criminal case, under the circumstances provided by law, the Commonwealth may take an appeal as of right from an order that does not end the entire case where the Commonwealth certifies in the notice of appeal that the order will terminate or substantially handicap the prosecution.\nPa.R.A.P. 311(d). Here, the Commonwealth certified that the court's quashal of the charged felonies would substantially handicap its prosecution. See Notice of Appeal, 7/1/02. Furthermore, the Commonwealth is correct that an order quashing a charge is unquestionably \"final\" as to that charge because a trial on the remaining charges would permanently preclude *513 trial on the quashed charge. See Commonwealth's Supplemental Brief at 2 (citing Commonwealth v. Hughes, 468 Pa. 502, 364 A.2d 306, 308 n. 2 (1976)). Indeed, a quashal order quite definitively terminates the prosecution as to the quashed charge, and the Commonwealth aptly notes that like suppression orders, which are undeniably appealable by the Commonwealth, see Commonwealth v. Bosurgi, 411 Pa. 56, 190 A.2d 304 (1963); Commonwealth v. Dugger 506 Pa. 537, 486 A.2d 382 (1985), a quashal \"imposes a handicap that the prosecution cannot overcome without a pretrial appeal.\" Commonwealth's Supplemental Brief at 8. Consequently, this Court's jurisdiction over the instant appeal, which challenges the propriety of the trial court's order quashing two charged crimes, is secure. See Commonwealth v. Santos, 876 A.2d 360, 363 n. 6 (Pa.2005) (\"It is well established that the Commonwealth may appeal from a trial court's order dismissing a felony charge based on a pre-trial petition for writ of habeas corpus.\") (collecting cases); Commonwealth v. Huggins, 575 Pa. 395, 836 A.2d 862, 865 n. 2 (2003) (citing Commonwealth v. Hess, 489 Pa. 580, 414 A.2d 1043, 1047 (1980) (\"the Commonwealth may appeal from an order discharging the defendant upon a writ of habeas corpus\")); Hughes, 364 A.2d at 308 n. 2 (trial court's order quashing only one of three grand jury indictments was \"without question a final order\" as to that indictment).\nWe now turn to the substantive claims raised by the Commonwealth's appeal: that the evidence was sufficient to make out a prima facie case of risking a catastrophe; that the Superior Court erred in holding that the Commonwealth was barred from prosecuting appellees for the felony of risking a catastrophe due to the \"general-specific\" rule of statutory construction; and that the Superior Court applied an erroneous standard of review. Because it requires little discussion, we will address and dispose of the latter claim first, and each of the remaining two seriatim.\n\nI. STANDARD OF REVIEW\nThe Superior Court panel majority stated that it would reverse the quashal order only if the trial court had abused its discretion and then ultimately concluded that there was no abuse of discretion. See Karetny, 837 A.2d at 477 n. 2, 479. However, it is settled that the evidentiary sufficiency, or lack thereof, of the Commonwealth's prima facie case for a charged crime is a question of law as to which an appellate court's review is plenary. See Huggins, 836 A.2d at 865. Indeed, the trial court is afforded no discretion in ascertaining whether, as a matter of law and in light of the facts presented to it, the Commonwealth has carried its pre-trial, prima facie burden to make out the elements of a charged crime. The panel majority misapprehended the governing standard in holding otherwise. As a practical matter, however, because this Court has accepted an appeal claim challenging the result reached by the lower court and because we pass on that claim below, the Superior Court's error in this regard is of no dispositive moment. To properly dispose of this appeal, we must proceed to examine the merits of the underlying substantive issues under the correct standardi.e., we will engage in plenary review of both claims as questions of law. See Huggins, 836 A.2d at 865; Commonwealth v. Lussi, 562 Pa. 621, 757 A.2d 361, 362 n. 2 (2000).\n\nII. SUFFICIENCY OF EVIDENCE FOR PRIMA FACIE CASE\nAt the preliminary hearing stage of a criminal prosecution, the Commonwealth *514 need not prove the defendant's guilt beyond a reasonable doubt, but rather, must merely put forth sufficient evidence to establish a prima facie case of guilt. Huggins, 836 A.2d at 866 (citing Commonwealth v. McBride, 528 Pa. 153, 595 A.2d 589, 591 (1991)). A prima facie case exists when the Commonwealth produces evidence of each of the material elements of the crime charged and establishes probable cause to warrant the belief that the accused committed the offense. McBride, 595 A.2d at 591 (citing Commonwealth v. Wojdak, 502 Pa. 359, 466 A.2d 991 (1983)). Furthermore, the evidence need only be such that, if presented at trial and accepted as true, the judge would be warranted in permitting the case to be decided by the jury. Huggins, 836 A.2d at 866.\nA single section of the Pennsylvania Crimes Code, Section 3302, addresses the related crimes of \"Causing or risking catastrophe.\" Section 3302 reads, in relevant part, as follows:\n(a) Causing catastrophe.A person who causes a catastrophe by explosion, fire, flood, avalanche, collapse of building, release of poison gas, radioactive material or other harmful or destructive force or substance, or by any other means of causing potentially widespread injury or damage, including selling, dealing in or otherwise providing licenses or permits to transport hazardous materials, commits a felony of the first degree if he does so intentionally or knowingly, or a felony of the second degree if he does so recklessly.\n(b) Risking catastrophe.A person is guilty of a felony of the third degree if he recklessly creates a risk of catastrophe in the employment of fire, explosives or other dangerous means listed in subsection (a) of this section.\n18 Pa.C.S. § 3302. The next section of the Code, Section 3303, then addresses the misdemeanor of \"Failure to prevent catastrophe,\" and it reads as follows:\nA person who knowingly or recklessly fails to take reasonable measures to prevent or mitigate a catastrophe, when he can do so without substantial risk to himself, commits a misdemeanor of the second degree if:\n(1) he knows that he is under an official, contractual or other legal duty to take such measures; or\n(2) he did or assented to the act causing or threatening the catastrophe.\n18 Pa.C.S. § 3303. In Hughes, this Court noted that, \"in accordance with the fair import of its terms the word `catastrophe' is intended to be synonymous with `widespread injury or damage.'\" Id. at 311 (construing Section 3302(b)).\nHere, the trial court found that the Commonwealth had not made out a prima facie case of risking a catastrophe for the following reasons:\n[T]he Commonwealth asserts that by opening Club Heat in the face of a specific warning that the pier probably would collapse that night, the defendants acted recklessly, thereby causing death and injury. As to these assertions, the Commonwealth has clearly made out a prima facie case. But, these assertions are not sufficient under 18 Pa.C.S. § 3302(b), because there is simply no evidence that [appellees'] acts involved the \"reckless use\" or \"reckless handling\" of any of the forces or substances enumerated in § 3302.\nTrial Court Slip op. at 9. The Superior Court majority affirmed. In conducting its review, the majority inexplicably found it unnecessary to discuss any of the specific facts of the case. Instead, the majority summarily reasoned as follows:\n\n*515 [S]ince the defendants are not alleged to have done anything that caused the pier to collapse, but merely ignored the natural forces and age of the pier and failed to prevent it from collapsing, they cannot be held to have \"employ[ed] ... collapse of building,\" which resulted in the tragic event.\nKaretny, 837 A.2d at 477-78 (quoting 18 Pa.C.S. § 3302).[8]\nOn appeal to this Court, the Commonwealth points out that the trial court acknowledged appellees' recklessness and submits that its evidence satisfied the remaining elements of the crimei.e., creating a risk of catastrophe by the employment of any means of causing potentially widespread injury or damage. The crux of the Commonwealth's position is that the trial court erred in finding that the enumerated \"means\" for causing/risking catastrophe in Section 3302(a) are exclusive and also in finding that appellees did not \"employ\" any dangerous forces or substances. Indeed, quoting the actual language of Section 3302(a), the Commonwealth submits that a person is liable under the statute when he \"causes\" or \"creates the risk of catastrophe\" not only through the use of any of the enumerated \"forces\" or \"substances\" but also \"by any other means of causing potentially widespread injury or damage.\" 18 Pa.C.S. § 3302(a). Thus, the Commonwealth explains that \"the statute is broadly drawn to include all possible destructive forces within the capacity of human ingenuity.\" Commonwealth's Brief at 18. Furthermore, the Commonwealth argues that appellees, in fact, \"employed\" a dangerous force: i.e., they made a collapsing pier open to the public for their own profit, knowing it was about to fail, while actively concealing the danger from their unsuspecting victims. Finally, the Commonwealth argues that the trial court's ruling failed to take into account the evidence presented in the light most favorable to the Commonwealth, as it was required to do.\nAppellees counter that their conduct was not covered by any of the enumerated means or forces listed in Section 3302(a). Appellees further argue that, because Section 3302 does not plainly and unambiguously cover their conduct, this Court must give the statute the most reasonable construction consistent with legislative intentwhich, they say, is that the statute was meant to cover more egregious conduct than what occurred here. Appellees submit that their conductwhich they pose as an omission rather than an actis covered exclusively by Section 3303 (failure to prevent catastrophe) and that to hold otherwise would make Section 3303 mere surplusage. Furthermore, appellees invoke the principle of esjudem generis, *516 which provides that general expressions in a statute are restricted to things and persons similar to those specifically enumerated in the language preceding the general expression. Appellees imply that the catch-all phraseology in Section 3302(a) i.e., \"other harmful or destructive force or substance, or by any other means of causing potentially widespread injury or damage\"should be construed, in light of the more specific preceding languagei.e., \"explosion, fire, flood, avalanche, collapse of building, release of poison gas, radioactive material\"to criminalize only a very narrow scope of dangerous activities. Finally, appellees urge application of the rule of lenity, such that any ambiguity in the text of Section 3302 should be resolved in their favor.\nNeither the Commonwealth nor appellees point to a controlling case in support of their respective positions. Indeed, our research uncovers no instance where this Court has considered whether facts similar to those sub judice properly amount to \"employment\" under the risking a catastrophe statute. Nor have we ever decided the proper scope of the catch-all phraseology of Section 3302(a). As all parties and the lower courts apparently concede, however, there is no question that the evidence below was sufficient to prove that appellees' conducthowever it is ultimately characterizedwas at least reckless. The sole question here is whether appellees' reckless conduct involved \"employment\" of \"dangerous means.\" For the following reasons, we agree with the Commonwealth that it did, for purposes of establishing a prima facie case.\nThe Superior Court panel majority misapprehended the controlling facts, for purposes of prima facie evidence review, when it concluded that appellees \"merely ignored the natural forces and age of the pier and failed to prevent it from collapsing.\" The actual evidence, which we have been careful to set forth at the beginning of this Opinion, tended to show that, for approximately five and one half years, appellees allowed the structural soundness of their pier to steadily decline in large part because of the cost to repair it satisfactorily. According to such evidence, not only did appellees ignore or discount their own observations of the severity of the pier's decline, they also repeatedly and consistently disregarded assessments and warnings from their engineers that put appellees on notice of the increasing likelihood of the pier's collapse. Indeed, this evidence, if believed, shows that, on the morning of the very day that the pier collapsed, their engineer predicted the approximate tide-related time at which and the manner in which the pier would collapse. Appellees disregarded that warning. It would be one thing if appellees, faced with the prospect of the pier collapsing, simply allowed it to happen under circumstances where it would affect nothing but the continued existence of the pier. But, under the Commonwealth's evidence, appellees did not simply abandon the collapsing structure to the inexorable effect of \"natural forces.\" Nor did appellees abandon the structure while posting warning signs to keep persons away from the danger, or alert them to what appellees knew. Instead, the evidence adduced at the hearing would support a finding that appellees persisted in promoting the nightclub, booking in advance events at their several facilities on the pier. Moreover, this evidence plainly advances the Commonwealth's position that, on the night of the collapse, appellees engaged in what amounted to a literal \"cover-up\": they ordered that the ever-growing crack in the floor of their banquet buildingtell-tale evidence of the very real calamity awaiting any person who ventured onto the premisesbe concealed.\n*517 In short, the Commonwealth adduced substantial evidence indicating that appellees, after having been made specifically aware of the imminent danger that the pier posed to human life, took affirmative measures to keep that knowledge to themselves and, at the same time, took affirmative steps that exposed others to the risk. The evidence of appellees' conduct in this case was sufficient to warrant a jury in finding the reckless creation of a risk of catastrophe. Furthermore, while appellees' knowing disregard of the inevitable may not, in and of itself, amount to the \"employment\" of a means, substance, or force in risking the catastrophe, their action in continuing to advertise, promote, and hold open their facilities to the public, coupled with the act of concealing the fact of inevitable collapse from their patrons, is sufficient to warrant a jury in finding affirmative \"employment\" on appellees' part. While appellees can offer contrary evidence at trial and/or argue to the jury that they were guilty only of \"inaction,\" the jury is not obliged to accept such position in the face of the above-referenced evidence. Instead, the totality of the aforementioned factors would support a jury in finding that appellees' conduct and response amounted to \"employment\" of a means and created the risk.\nAs to appellees' contention that the Commonwealth's evidence did not prove the use of any of the statutorily enumerated \"means,\" and that the openended \"any other means\" clause in the statute must be circumscribed to include only \"inherently dangerous\" means, we disagree. The language of the statute could not be clearer: Section 3302(b) states that a risk of catastrophe can be created by \"other dangerous means listed in subsection (a)\" and Section 3302(a) criminalizes, inter alia, \"any other means of causing potentially widespread injury or damage.\" 18 Pa.C.S. § 3302(a) (emphasis added). The Commonwealth is correct that, just as in Hughes (defendant dropped cigarette, igniting flammable materials and causing catastrophic fire) and Commonwealth v. Scatena, 508 Pa. 512, 498 A.2d 1314 (1985) (defendants discharged industrial and chemical waste into mine, from which chemical waste escaped into river), the means by which the catastrophe is risked in a given case need not be specifically enumerated in the statute nor must they be per se dangerous in the absence of other factors. On the contrary, it is only required that the \"means\" in a given case have the potential to cause a catastrophe. In writing the statute in this open-ended fashion, the General Assembly obviously accounted for the fact that a \"catastrophe\" (i.e., widespread injury or damage) can be caused and/or risked by innumerable means. Here, under the Commonwealth's evidence, appellees' persistence in promoting the nightclub; keeping it open to the public for business; taking no measures to inform, warn, or protect the public; and affirmatively concealing the very visible evidence of the pier's impending collapse had the potential to causeand indeed, did causethe catastrophic death of three young women and injuries to forty-three others.\nFor these reasons, we hold that the evidence presented by the Commonwealth was sufficient to make a prima facie showing that appellees \"recklessly created a risk of catastrophe in the employment\" of \"any other means of causing potentially widespread injury or damage.\" Furthermore, the evidence was likewise sufficient to make out the charge of criminal conspiracy to the extent that the object of that charged conspiracy was risking a catastrophe.\n\nIII. GENERAL STATUTE VERSUS SPECIFIC STATUTE\nWe now turn to the independent reason cited by the Superior Court panel *518 majority for upholding the trial court's quashal orderi.e., that, pursuant to 1 Pa.C.S. § 1933 of the Statutory Construction Act, Sections 3302 and 3303 of the Crimes Code are in \"irreconcilable\" conflict and that the more specific statute, Section 3303, controls here and therefore precludes prosecution under the more general, Section 3302. We note at the outset that the trial court never passed upon the \"general-specific\" question. The Superior Court panel majority, however, cited to the doctrine and held that the Commonwealth was barred from prosecuting appellees for the \"general\" crime of risking a catastrophe because their conduct was also covered by the more \"specific\" crime of failure to prevent a catastrophe. The panel majority reasoned as follows:\nThis is not a case where one or both of the crimes contains elements that the other does not. Although the two crimes on their face do not conflict, as alleged in this case they do. It is simply a matter of how one characterizes what the defendants did (or did not do). . . . [O]ne can just as easily say that the defendants did not act when they should have, as state that they failed to prevent a catastrophe. Since we can recharacterize the defendants' alleged acts to fit into the actus reus of either crime, we find the statutes in conflict.\nBecause the Assembly specifically criminalized failing to prevent a catastrophe, we cannot presume that the legislature intended under these facts that the prosecution be able to proceed under either or both statutes.\nKaretny, at 837 A.2d at 478-79.\nOn appeal to this Court, the Commonwealth notes that the enactment of 42 Pa. C.S. § 9303 has abrogated operation of the Section 1933 \"general-specific\" rule of statutory construction in the context of criminal prosecutions.[9] In the alternative, the Commonwealth argues that the crimes of risking a catastrophe and failure to prevent a catastrophe are not in irreconcilable conflict because each contains an element that the other does not.[10] Appellees respond that Section 9303, which went into effect following the commencement of the prosecution in this case, cannot apply retroactively here because the General Assembly indicated no intention for it to operate retroactively or, in the alternative, because applying the statute retroactively would violate the prohibition against ex post facto laws found in both the United States and Pennsylvania Constitutions.[11]\n*519 Because this Court seeks to avoid constitutional issues if the claim may be resolved on alternative grounds, see Commonwealth v. Hughes, 865 A.2d 761, 783 n. 24 (Pa. 2004); In re Fiori, 543 Pa. 592, 673 A.2d 905, 909 (1996), we will put aside the question of the applicability of Section 9303 and appellees' responsive ex post facto argument and examine first whether, under the state of our jurisprudence at the time appellees were charged, a proper application of the general-specific construction principle would have prevented the Commonwealth from proceeding upon charges of both risking a catastrophe and failure to prevent a catastrophe. For the following reasons, we conclude that the Commonwealth was, and is, empowered to prosecute appellees under both provisions of the Crimes Code.\nThe general-specific construction principle is set forth in the Statutory Construction Act as follows:\nWhenever a general provision in a statute shall be in conflict with a special provision in the same or another statute, the two shall be construed, if possible, so that effect may be given to both. If the conflict between the two provisions is irreconcilable, the special provisions shall prevail and shall be construed as an exception to the general provision, unless the general provision shall be enacted later and it shall be the manifest intention of the General Assembly that such general provision shall prevail.\n1 Pa.C.S. § 1933. This precept of construction was not aimed primarily, or only, at criminal statutes, but at all statutes. By its terms, Section 1933 does not speak to the propriety of government pursuing prosecutions under concurrently-applicable criminal statutes. That consequence of the provision has arisen solely from the case law.\nIn Commonwealth v. Brown, 346 Pa. 192, 29 A.2d 793 (1943), the two defendants circulated nominating papers of the Communist Party and allegedly appended false affidavits to them.[12] The defendants were tried separately and convicted of several counts of perjury under the former Penal Code, 18 P.S. § 4322, and false statements under the former Election Code, 25 P.S. § 3513f. The defendants' appeals were consolidated, and the Superior Court affirmed, reasoning that the Commonwealth was permitted to prosecute under both statutes, just as it is permitted to charge lesser and greater included offenses in separate counts of the same indictment \"with the proviso, of course, that in case of conviction, only one sentence may be pronounced,\" alluding to the principle of merger, which protects a defendant's double jeopardy rights. Id. This Court reversed, reasoning as follows:\nThere is no reason why these general terms [of the perjury provision in the former Penal Code] should be made available for the prosecution of these [defendants], for the offense charged against them was the offense specifically provided for in ... the Election Code. It *520 is not to be presumed ... that the legislation intended to provide for two different prosecutions for the same identical offense, prosecutions which provide widely divergent penalties in the event of convictions. The same act which is a misdemeanor in the Election Code is made a felony under the Penal Code, if that code is held to be applicable to specific cases such as this. . . . To hold that defendants charged as were these [defendants], are for the same act, subject to prosecutions under penal provisions of both these two separate acts is to eschew the ideal of precision in criminal law and criminal penalties. . . .\nId. at 796. The Court expressly rejected the rationale of the Superior Court regarding lesser-included offenses and sentencing merger and commented that \"the question is ... not one of criminal law pleading but one of the construction of statutes.\" Id.\nOver forty years later, in Commonwealth v. Warner, 504 Pa. 600, 476 A.2d 341 (1984), this Court revisited the general-specific issue raised in Brown, and took a somewhat different approach. In Warner, the defendant applied for welfare and represented truthfully that she was at the time unemployed. The defendant secured employment four months later, yet continued to cash her welfare checks and did so for approximately four months thereafter, at which point the local board of assistance undertook to re-evaluate her eligibility. At the initial re-evaluation interview, the defendant expressly denied that she was earning any income and repeated that denial at two subsequent hearings held over the course of the next year. The defendant was charged with theft by deception under of the Crimes Code, 18 Pa.C.S. § 3922(a), as well as making false statements under a former version of what is now Section 481 of the Public Welfare Code, 62 P.S. The trial court granted the defendant's motion to dismiss, holding that she could be prosecuted only under the more specific public welfare statute. The Superior Court affirmed. On appeal to this Court, we noted that, \"[o]nly if the conflict between the general and specific provisions is irreconcilable does the special provision prevail and act as an exception to the general provision under 1 Pa.C.S. § 1933.\" Warner, 476 A.2d at 343. Reversing the Superior Court, we held as follows:\nTheft by deception and the false statements section of the Welfare Code involve distinct elements. There is no irreconcilable conflict between them on their face, and any actual conflict between them can only be determined when the facts of the case are fully developed. It may well appear that the same acts on [the defendant's] part constituted violations of both statutes. If so, prosecution under the [more specific provision under the] Welfare Code alone is permitted. On the other hand, different acts by [the defendant] may have violated each statute independently. In either case, post-trial motions in arrest of judgment are an adequate vehicle for challenging the propriety of the prosecutions.\nId. at 345-46.\nIn a still later case, Lussi, 562 Pa. 621, 757 A.2d 361, this Court followed Brown. The defendant in Lussi, a locally elected township tax collector, was tried and convicted of both theft by failure to make required disposition of funds under the Crimes Code, 18 Pa.C.S. § 3927, and embezzlement under the Local Tax Collection Law, 72 P.S. § 5511.39. The Superior Court affirmed, finding no bar to the Commonwealth prosecuting the defendant for both crimes. This Court reversed, noting the policy announced in Brown that the law does not permit \"prosecutions under *521 the general provisions of a penal code when there are applicable special penal provisions available.\" Id. at 362. The Lussi Court held that the two statutes at issue were irreconcilably in conflict, that the local tax law was more specific, and that prosecution under the theft provision of the Crimes Code was, accordingly, barred.[13] Although the Lussi Court did not cite or discuss, much less purport to overrule or disapprove of the decision in Warner, it did take issue with the approach in Warner. Thus, the Lussi Court reasoned:\nIn determining how to effectuate the policy articulated in Brown where the same set of facts constitute more than one criminal offense, an analysis that focuses solely on the distinguishing elements of the various penal provisions misses the mark. A comparison of statutes, element by element, is a review more appropriate to application of the merger doctrine for purposes of sentencing. See, Commonwealth v. Anderson, 538 Pa. 574, 650 A.2d 20 (1994). Instead, the focus should be on whether or not the Legislature in proscribing certain conduct has chosen to set forth a particular and specific penal provision which addresses a distinct subset of circumstances within a general category of criminal activity.\n757 A.2d at 364.[14]\nBy its terms, Section 1933 is addressed to statutory provisions that are in irreconcilable conflict, and it is clear from the above cases that this Court has enforced the proscription in the criminal arena by way of precluding prosecution under a general provision where two statutes cover the same conduct and one statute is general and the other specific. Brown, Warner and Lussi all involved situations where the defendants were charged with overlapping crimes arising under both the general title governing criminal conduct (the 1939 Penal Code, which was succeeded by the Crimes Code of 1972), and more specialized statutes which were not merely or even primarily criminal in nature, but included penal provisions relating to the specialized topic. See Brown (penal code and election code); Warner (crimes code and public welfare code); and Lussi (crimes code and tax code). In each of these scenarios, the Penal or Crimes Code, of course, was deemed the \"general\" statute and the election, welfare, and tax code the specialized provisions. The case sub judice is entirely distinct. Sections 3302 and 3303 are both part of the \"general\" criminal statute, the Crimes Code, appearing in sequence. Moreover, the provisions were enacted in the same session of the General Assembly, became effective on the same date, and, as both parties appear to acknowledge, criminalize distinct conduct. The foregoing factors rebut any suggestion that the General Assembly intended one of these two Crimes Code provisions to exist as a specific exception to the other.\n*522 More fundamentally, we do not believe that these back-to-back provisions of the Crimes Code can be said to be in \"irreconcilable conflict\" with one another. The offense of risking a catastrophe requires proof, at a minimum, of the \"employment of ... other dangerous means,\" which include \"any ... means of causing potentially widespread injury or damage.\" 18 Pa. C.S. § 3302. In contrast, the offense of failing to prevent a catastrophe requires proof of the failure to \"take reasonable measures to prevent or mitigate a catastrophe\" if the actor \"did the act causing or threatening the catastrophe.\" See 18 Pa. C.S. 3303. By the plain language of the provisions, a person can be guilty of risking a catastrophe even where no catastrophe occurs, while a person can be guilty of failure to prevent a catastrophe only where the catastrophe actually occurs; moreover, as appellees vehemently argue, it appears that the former offense requires something more affirmative than the mere omission which would satisfy the latter.\nIt may well be that the same underlying conduct here can be argued to satisfy both provisions. But that is not unusual under the Crimes Code nor does it mean that separate provisions of the Code should be said to be in facial, irreconcilable conflict with each other. It is not at all uncommon for the Crimes Code to define related criminal conduct according to gradations, which depend upon the actor's mental state and level of culpability, or the severity of the consequence of the criminal conduct. It is not a conflict in the sub-provisions that creates a potential overlap at the charging stage, but the reality that the elements of offenses are subject to factual contest. Indeed, many criminal prosecutions proceed to trial not to establish who was the perpetrator, but for a factfinder to determine exactly what it isthat is, what type or level of offensethat the actor has perpetrated. To deem the inter-related provisions irreconcilable on their face, as appellees would have us do, would require us to lose sight of the practical reality that the General Assembly, in enacting the Code, of necessity attempted to be comprehensive.\nIn this case, the evidence of appellees' advertising, promotion, and opening of their facilities to the public, while taking active measures to conceal the visible evidence of the pier's severe deterioration and concomitant imminent danger, and while failing to provide any warning to their patrons of the danger awaiting them, were facts sufficient to make out a prima facie charge under Section 3302. Certainly, if and when the matter proceeds to trial, appellees are free to argue to the factfinder that that same conduct, at most, proves a failure to prevent a catastrophe. The existence of these provisions does not reveal an act of legislative duplication, but an intent to account for all potentially culpable conduct in this area. Accordingly, we conclude that the Commonwealth is not barred from prosecuting appellees for both risking a catastrophe and failure to prevent a catastrophe, nor is it barred from prosecuting appellees for criminal conspiracy to the extent the object of the conspiracy was to commit either of those crimes.\nFor the foregoing reasons, we reverse the order of the Superior Court, vacate the trial court's quashal order, and remand this matter for trial. Jurisdiction is relinquished.\nJustice NIGRO did not participate in the consideration or decision of this case.\nNOTES\n[1]  Klein had also assisted in preparation of the 1994 evaluation and report.\n[2]  It appears from the record that Hudson Engineers was a subcontractor for J.E. Brenneman.\n[3]  Hudson's assessment was based, in part, upon his finding that a particular bolt, which at the time was securing a plate at the end of the pier, showed \"new\" rusting, which indicated that the pier had shifted more than microscopically. N.T., 11/14/01, at 180-82.\n[4]  Appellees had begun consulting with Jess Tyson in 1996, at which time he was the Vice-President of J.E. Brenneman. Tyson had extensive experience in marine construction and on one or more occasions prior to May of 2000, advised appellees that the pier was \"moving\" and that \"they were going to have to keep their eye on it or they were going to have to do something with it.\" N.T., 12/11/01, at 10.\n[5]  Cucciniello was hired, via contract, to promote parties and events that were scheduled, or were in the process of being scheduled, for the then-upcoming summer months. N.T., 11/13/01, at 83-84. During the spring of 2000, Karetny and Cucciniello met weekly to discuss, schedule, and plan those events, and Cucciniello advertised for the events via the radio, newspaper, mass emails, and printed flyers distributed to the general public. Specifically, Cucciniello booked two happy hour parties for two separate groups, which took place on May 18, 2000, the night of the collapse. She received approval from Karetny as she was contractually required to dofor her advance promotion of those events, which promotion included the distribution of printed flyers, radio commercials, and a mass emailing, which went to approximately 500 people. Sometime during the several days immediately prior to May 18, 2000, Cucciniello informed Karetny that she expected a crowd of between three hundred to five hundred people at the nightclub on May 18.\n\nApparently the only event that took place at the nightclub that was not scheduled or promoted, at least in part, by Ms. Cucciniello was the grand opening, which occurred on May 10, 2000, and was handled by a separate public relations firm. In addition to the nightclub activities that had been scheduled, there were at least several other future events that had been scheduled at the pier's banquet buildinga gathering of the Presbyterian Society, a bar mitzvah, and a weddingalthough it does not appear that Cucciniello was involved in the scheduling of these events.\n[6]  Indeed, Tyson predicted with uncanny accuracy almost the precise time that the pier would collapse and explained in great detail, and apparently with great urgency, the manner in which it would fall into the river when the tide went out. N.T., 12/11/01, 23-33.\n[7]  In his concurring and dissenting opinion, the Honorable Correale F. Stevens agreed with the majority that the Commonwealth had the right to appeal under Rule 311(d) and that the Superior Court's jurisdiction over the appeal was correspondingly secure.\n[8]  Although the majority obviously agreed with the trial court's construction of the statute, it is not clear whether the majority actually decided the appeal on that ground. Indeed, immediately following its comment regarding the sufficiency of the evidence, the majority noted Judge Stevens' concurring and dissenting opinion, in which he opined that appellees' conduct fell into the catch-all phraseology of Section 3302i.e., causing a catastrophe by \"any other means.\" See 18 Pa.C.S. § 3302(a). The majority opined that the \"any other means\" language was taken \"out of context\" and quoted the entirety of the subsection, although it did not explain what it perceived as the import of the entire quoted text. The majority then commented that although the dissent cited no authority for appellees' \"alleged duty to act,\" the majority would \"assume they had such a duty\" but that, \"[i]n any event ... because both [Section 3302(b) and 3303] might irreconcilably apply to this case, Pennsylvania law permits prosecution on failure to prevent a catastrophe only.\" Karetny, 837 A.2d at 478 n. 4. As noted in our discussion below, the panel majority then appeared to affirm the trial court on the \"general-specific\" ground. Id. at 478-79.\n[9]  Section 9303 sets forth the following:\n\nNotwithstanding the provisions of 1 Pa.C.S. § 1933 ... or any other statute to the contrary, where the same conduct of a defendant violates more than one criminal statute, the defendant may be prosecuted under all available criminal provisions without regard to the generality or specificity of the statutes.\n42 Pa.C.S. § 9303.\n[10]  The Commonwealth also argues that the Superior Court erred in raising and deciding this issue sua sponte. Appellees did not raise the \"general-specific\" argument in their dual motions to quash or at oral argument on those motions. See Motions to Quash, 12/20/01; Transcript, 3/5/02, at 6-10, 17. However, appellees belatedly advanced the argument in their application for amendment of the trial court's interlocutory order; in the supplemental motion and memorandum of law; at oral argument on the motion for reconsideration; and, albeit very cursorily, in their appellate brief to the Superior Court. See Application, at 4; Supplemental Motion, at 8; Transcript, 4/29/02, at 17; and Appellees' Consolidated Superior Court Brief, at 29 (citing Lussi, 757 A.2d at 363). Accordingly, we do not agree that the panel majority improperly raised the issue sua sponte.\n[11]  Appellees also argue that the Commonwealth waived this claim, having failed to raise it in its brief to the Superior Court. It appears that the Commonwealth did not, in fact, raise an argument regarding 42 Pa. C.S. § 9303 on appeal to the Superior Court. However, the Commonwealth was the appellant below, and it was not faced with a finding or holding by the trial court on the general-specific construction issue. The Commonwealth became aggrieved on this point only when the Superior Court majority seized upon the one-line argument in appellees' brief on the point as an independent basis for affirming the trial court. In pressing appellate claims, no party is required to predict, identify, and rebut all new or alternative theories that might be invoked by the appellate court. There is no waiver.\n[12]  Brown involved the predecessor to Section 1933, which was 46 P.S. § 563. The provisions are identical in material respect.\n[13]  We emphasize that these cases involve constraints found in the statute, and not in the Constitution. The constitutional right against double jeopardy protects against being sentenced for both a greater and a lesser-included offense, as such a result would punish a defendant twice for the same conduct. See Commonwealth v. Buffington, 574 Pa. 29, 828 A.2d 1024, 1029-31 (2003). However, it has also long been settled that, upon an indictment or information for a particular charge, a defendant may be convicted for any lesser-included offense. See Commonwealth v. Soudani, 398 Pa. 546, 159 A.2d 687, 688 n. 1 (1960) (per curiam); Hunter v. Commonwealth, 79 Pa. 503, 21 Am.Rep. 83 (Pa.1875).\n[14]  Madame Justice Newman, joined by this author, dissented in Lussi, arguing that the analysis in Warner should control. 757 A.2d at 365-66 (Newman, J., joined by Castille, J., dissenting).\n\n",
+            "ocr": false,
+            "opinion_id": 1487913
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 6019,
+      "row": {
+        "id": 2362167,
+        "judges": "Per Curiam",
+        "date_filed": "2001-05-01",
+        "date_filed_is_approximate": false,
+        "slug": "mckinney-v-workers-compensation-appeal-board",
+        "case_name_short": "McKinney",
+        "case_name": "McKinney v. Workers' Compensation Appeal Board",
+        "case_name_full": "Dorothy McKINNEY v. WORKERS’ COMPENSATION APPEAL BOARD (DECISION DATA). Petition of Decision Data",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 3,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<citation id=\"b799-3\">\n    770 A.2d 326\n   </citation><parties id=\"AlZ\">\n    Dorothy McKINNEY v. WORKERS’ COMPENSATION APPEAL BOARD (DECISION DATA). Petition of Decision Data.\n   </parties><br><court id=\"b799-6\">\n    Supreme Court of Pennsylvania.\n   </court><br><decisiondate id=\"b799-7\">\n    May 1, 2001.\n   </decisiondate>",
+        "citations": [
+          "770 A.2d 326",
+          "564 Pa. 669"
+        ],
+        "opinions": [
+          {
+            "author_str": "Per Curiam",
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n770 A.2d 326 (2001)\nDorothy McKINNEY\nv.\nWORKERS' COMPENSATION APPEAL BOARD (DECISION DATA).\nPetition of Decision Data.\nSupreme Court of Pennsylvania.\nMay 1, 2001.\n\nORDER\nPER CURIAM.\nAND NOW, this 1st day of May, 2001, the Petition for Allowance of Appeal is granted. The order of the Commonwealth Court is reversed based upon the decision in Philadelphia Newspapers, Inc. v. Workmen's Compensation Appeal Board, (Andrew Guaracino), 544 Pa.203, 675 A.2d 1213 (1996).\nThe Petition to Stay Pending Action on Petition of Decision Data for Allowance of Appeal is denied as moot.\n",
+            "ocr": false,
+            "opinion_id": 2362167
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 12342,
+      "row": {
+        "id": 1549154,
+        "judges": null,
+        "date_filed": "2010-04-07",
+        "date_filed_is_approximate": false,
+        "slug": "lawson-v-pennsylvania-bd-of-probation-and-parole",
+        "case_name_short": "Lawson",
+        "case_name": "Lawson v. Pennsylvania Bd. of Probation and Parole",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 1,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "992 A.2d 890"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n992 A.2d 890 (2010)\nLAWSON\nv.\nPENNSYLVANIA BD. OF PROBATION AND PAROLE.\nNo. 492 MAL (2009).\nSupreme Court of Pennsylvania.\nApril 7, 2010.\nDisposition of Petition for Allowance of Appeal Denied.\n",
+            "ocr": false,
+            "opinion_id": 1549154
+          }
+        ],
+        "court_short_name": "Supreme Court of Pennsylvania",
+        "court_full_name": "Supreme Court of Pennsylvania",
+        "court_type": "S",
+        "court_jurisdiction": "Pennsylvania, PA"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 2600,
+  "num_rows_per_page": 100,
+  "partial": true
+}

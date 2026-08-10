@@ -1,0 +1,782 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 56397,
+      "row": {
+        "id": 4990063,
+        "judges": "Deny, Guidry, Johnson",
+        "date_filed": "2013-04-01",
+        "date_filed_is_approximate": true,
+        "slug": "state-v-swanzy",
+        "case_name_short": "Swanzy",
+        "case_name": "State v. Swanzy",
+        "case_name_full": "STATE of Louisiana v. Donald K. SWANZY",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "110 So. 3d 549"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nPER CURIAM.\n_JjThe state and defendant have filed cross applications seeking review of the Fifth Circuit’s decision affirming defendant’s conviction and sentence on one count of felony theft over $500 in violation of La.R.S. 14:67, but reversing his conviction and sentence on a second count of felony theft over $500. We deny defendant’s application in 12-K-1281, but grant the state’s application in 12-K-1297. For reasons that follow, we reinstate the conviction and sentence vacated by the court of appeal.\nThe state charged defendant by bill of information with theft of $6,500 from Lloyd Michell, and in a second count with theft of $25,000 from Charles McGowan, by means of fraudulent conduct, practices, or representations. The charges stemmed from the post-Katrina, 2007 demolition of the TwiRopa Mill, originally a twine rope *550manufacturing facility later remodeled as a nightclub, on Tchoupitoulas Street in New Orleans. The demolition project brought Terry |2Kutcher, owner of Chisholm Trail Construction in Cashion, Oklahoma, to Louisiana in the spring of 2007, with associated heavy construction equipment, including a John Deere backhoe excavator and a John Deere 850 bulldozer. According to the state, defendant, owner of Diesel Truck Service on Destrahan Boulevard in Gretna and the original general contractor on the TwiRopa project, misappropriated both pieces of heavy machinery, sold them to Michell and McGowan, and then refused repayment after the equipment was seized by the police as stolen property.\nAfter trial by jury in August 2009, defendant was found guilty as charged on both counts. The trial court sentenced him to concurrent terms of six years’ imprisonment at hard labor on each count, suspended, with two years’ active probation and three years’ inactive probation. By the time of sentencing, and at the direction of the trial court, defendant had made full restitution to both victims. On appeal, addressing defendant’s single assignment of error challenging sufficiency of the evidence, the Fifth Circuit affirmed defendant’s conviction and sentence on count two charging the theft of $25,000 from Charles McGowan but reversed defendant’s conviction and sentence for the theft of $6,500 from Lloyd Michell. State v. Swanzy, 11-0882 (La.App. 5 Cir. 5/8/12), 96 So.3d 498. The instant cross applications to this Court followed.\nTestimony at trial indicated that the relationship between Terry Kutcher and defendant began well enough in the early spring of 2007, when Kutcher signed on as a subcontractor to demolish the TwiRopa facility and collect the remaining lumber and bricks in good condition for salvage. At the time, defendant was the general contractor on the project, and among the heavy equipment brought to Louisiana, Kutcher delivered to defendant’s shop, Diesel Truck Service, in April 2007, a balky John Deere 850 bulldozer for an estimate to repair a damaged |sengine. Kutcher testified at trial and emphatically stated that he had asked defendant only for an estimate, not for actual repair of the bulldozer, although he also conceded it was possible, given that he was traveling back and forth to Louisiana from Oklahoma, someone else in his employ, although not authorized to order the repairs, might have done so anyway. Nevertheless, defendant sent a letter to Kutcher in Oklahoma at the end of June 2007 demanding payment of all outstanding invoices. Among the invoices were bills from Hydraulic Equipment Service, Inc. for building a dirt and concrete ramp to off-load the bulldozer at Diesel Truck Service and to repair two batteries. Kutcher testified that he had not personally authorized any repairs to the bulldozer and that the trailer on which it was delivered to defendant had its own ramp to off-load the equipment.\nOn the morning of July 28, 2007, or less than a month after defendant sent his demand letter to Terry Kutcher, Timothy Gooch, one of Kutcher’s employees from Oklahoma who was living in a trailer across from the TwiRopa site, awoke to the sound of defendant knocking on his door. Defendant informed Gooch he was removing the equipment from the site but would give Gooch until the night to pack up and leave because he “needed to lock the place up.” Gooch testified that when he told defendant “you can’t take this equipment, it’s not yours,” defendant “basically said I’m going to do what I’m going to do. I can do whatever I want to do.” Gooch recalled that defendant “had several trucks there picking stuff up, and I wasn’t going to get in the way of nobody.” *551Among the equipment removed by defendant from the job site was a 690 John Deere excavator belonging to Kuteher, a smaller John Deere Skid Steer, and at least one Dodge pickup, also belonging to Kuteher. The Skid Steer and Dodge truck had been picked up by Dale’s Towing, a wrecker service located in Gretna and owned by Lloyd Miehell, and taken to | ^defendant at Diesel Truck Service. Gooch called the police, who responded but informed him the missing equipment was a civil matter and then left.\nIn the fall of 2007, the excavator, sitting in the lot at Diesel Truck Service, caught the eye of Charles McGowan, who was working across the street on a job at the Harvey Canal. When McGowan inquired about buying the excavator, defendant informed him that it was not for sale at that moment but he was working on a letter and would be able to sell it in within a month. Defendant had already placed a notice in The Times-Picayune on September 14, 2007 that he would obtain a permit to sell several pieces of equipment, including the 690 John Deere excavator, the 850 John Deere bulldozer, and the John Deere Skid Steer, if payment of repairs and storage fees were not made by October 25, 2007. Defendant had then sent a facsimile transmission to Kuteher on October 19, 2007 indicating that Kuteher owed repair and storage fees in an amount of $8,700 for the bulldozer and $5,500 for the excavator. A demand letter accompanied the bill indicating that defendant had the necessary permits to sell the equipment if he did not receive payment. Kuteher testified that he never received the transmission because it was sent to the wrong number but he had received by October 2007 at least five other invoices for storage and repairs of both the excavator and bulldozer in addition to the original invoices for the offloading of the bulldozer and the servicing of the batteries at Diesel Truck Service in April 2007. In particular, one invoice, dated September 12, 2007, charged nearly $2,500 for towing and storage fees for the bulldozer. For the most part, the additional invoices came from Hydraulic Equipment Service, Inc. Kuteher testified that the invoices surprised him as he had not authorized repairs to either piece of equipment, or agreed to any storage fees, let alone towing fees for the bulldozer he had delivered to Diesel Truck Service in April 2007.\n| ¿Kuteher informed jurors that he began working on recovery of his equipment immediately after he received the report of the taking from the TwiRopa job site and that after his efforts to secure a police report of the incident proved futile, he recruited private individuals to help him, including Jerry Blake, whom he sent as an emissary to defendant with a check to pay the invoices for the excavator and bulldozer and recover that much of his equipment. Kuteher testified defendant rejected the offer because “[h]e didn’t want to release the excavator and dozer without releasing all of the equipment that he had on his lot.” That equipment included the John Deere Skid Steer removed from the Twi-Ropa site on July 28, 2007. Kuteher acknowledged that his relationship with defendant deteriorated over the spring of 2007 as both sides began submitting invoices to each other that neither side paid, and that the TwiRopa site was then shut down, only 75% completed, “for nonpayment.” Kuteher further acknowledged that the contract disputes arising from the TwiRopa project remained unresolved at the time of trial. But he flatly denied that the contract authorized defendant to seize any of his equipment if there were disputes over amounts owed.\nThree weeks after their initial discussions about the excavator, defendant informed McGowan that he had the right to *552sell it and asked for $30,000. The two men agreed on a price of $25,000 in cash and the sale took place in defendant’s office on November 6, 2007. McGowan used $8,000 of his own money and $17,000 borrowed from his lifelong friend, Lloyd Michell. A month later, McGowan purchased a 1981 LoBoy trailer from defendant to use in transporting the excavator. Timothy Gooch did not identify the trailer as one of the three pieces of heavy equipment removed from the TwiRopa site but it, too, belonged to Terry Kutcher, and for this transaction, defendant had gone through Total Recovery | ^Professionals of Louisiana [TRPL] to obtain a permit to sell the trailer from the Office of Motor Vehicles.1\nMichell knew defendant personally and in discussions about the excavator, defendant informed him that he had obtained a mechanics lien on the machine and that he was selling it because “somebody had abandoned it on him.” When Michell expressed interest in the John Deere 850 bulldozer sitting on the lot at Diesel Truck Service, defendant claimed that it, too, had been abandoned and that he was selling the bulldozer for non-payment of repairs and storage fees. Defendant initially asked for $30,000, but readily accepted Michell’s counter offer of $6,500, a steep discount that reflected the poor condition of the bulldozer’s engine. The sale took place on December 20, 2007, but Michell refused to sign the bill of sale because a notary was not present. On the following day, another trucking service delivered the bulldozer to property owned by Michell across the parish line in Plaquemines Parish. Michell testified that taking the machine off the 17trailer took nearly two hours, as the engine would “stop and kill and stop and kill,” and they had to restart it by “jumping the batteries off of the battery charger.” He then determined that the engine had a cracked head gasket. At the time, Michell was unaware of any connection between the excavator in which he was a part investor and the bulldozer.\nShortly after the sale of the bulldozer, McGowan called Michell and informed him *553that his newly-purchased excavator had disappeared. McGowan reported the apparent theft to the police, but in looking around for the excavator on his own he learned that “the guy who owned the machine had stole it back from me.” In fact, Kutcher had used some self-help and recovered the excavator on his own with the aid of J.G. Trulan. The excavator eventually made its way to Dale’s Towing, where it was recovered by State Trooper Andrew Pratt on July 24, 2008, after a meeting with Terry Kutcher, who had satisfied the trooper that he was the owner of the equipment. Ultimately, Kutcher allowed McGowan to use the excavator on a job for a couple of weeks and then reclaimed it and returned the excavator to Oklahoma.\nIn December 2008, Terry Kutcher contacted Trooper Pratt about his John Deere 850 bulldozer and satisfied the officer he also owned that piece of heavy equipment. By then, J.C. Trulan, with the aid of a deputy sheriff, had recovered the bulldozer from Michell’s yard in Plaquemine’s Parish and removed it to a location a couple miles away. On December 19, 2008, Pratt executed a search warrant for the location and recovered the bulldozer. Defendant’s arrest followed. With the agreement of Terry Kutcher, the bulldozer was returned to Michell for storage.\nAfter learning that the police were in the process of recovering stolen property from him, an irate Michell insisted on obtaining a notarized bill of sale | Rfrom defendant for the bulldozer. They executed that document in the office of a local attorney, backdating it to December 20, 2007. Michell also insisted that defendant produce paperwork to prove that he actually obtained possession of the bulldozer through a mechanics lien. The men met in defendant’s office and defendant handed Michell a thick file relating to the bulldozer for him to copy. Among the papers was an application to TRPL relating to storage of the bulldozer, although Michell knew from his own extensive experience in the trade that permits to sell do not issue for off-road, unregistered heavy equipment. The file also included a copy of the newspaper notice demanding payment for repairs to the excavator, bulldozer, and Skid Steer by October 25, 2007, and invoices relating to the excavator purchased by Charles McGowan with the help of Michell. After inspecting the documents, Michell realized for the first time the connection between the excavator and bulldozer because “both of them ... came from the same fellow in Oklahoma.”\nDefendant insisted the sale was legal, but Michell hired a private investigator to look into matters and the investigator eventually put him in contact with Terry Kutcher, who cooperated in the return of the bulldozer to Michell for storage. Mic-hell testified that he asked for his money back on both the excavator, for which he had paid the majority of the price, and for the bulldozer, but defendant refused, insisting that he “had done it right.” In fact, defendant had sent a letter to Lieutenant Terry Poche in the auto theft division of the Jefferson Parish Sheriffs Office, “mainly to have the necessary paper trial” for his records, stating that he had followed all of the legal requirements for taking possession of the equipment in his yard on Destrahan Avenue, including an advertisement placed in The Times-Picayune providing notice of the bills associated with the machines in his possession to all responsible parties, and asking Poche to contact him “to 19discuss the best way ... to handle this situation,” as he needed “to be certain before selling or disposing of this machinery that we have followed all rules and ... completed all necessary steps to obtain this equipment both legally and professionally.” The letter is dated November 7, 2007, or one day after defen*554dant sold the excavator to Charles McGowan.\nDefendant did not testify at trial but his defense emerged in the testimony of Valerie Oxner, an attorney who had represented him for 15 years and who had set up several of his corporations for which he served as the director. Oxner assured jurors that both sales had been lawful and that because she and defendant were fully aware TRPL would not process the necessary paperwork for issuing permits to sell off-road, non-titled machines, she advised defendant to follow the procedures for executing mechanics liens provided by La.R.S. 9:4502. “As far as I know,” Oxner told jurors, “he followed all the proper procedures and he did it exactly as the law provided for, and it was legal.”2 Oxner also testified about extensive correspondence with Terry Kutcher and Chisholm Trail Construction and emphasized that no claim had ever been made by Kutcher in the course of the paper trail that any equipment had been stolen from him. In fact, investigation of the sales as a criminal matter began in July 2008, a full year after the excavator had been removed from the TwiRopa site and over a year after Terry Kutcher had delivered the bulldozer to Diesel Truck Service. On the other hand, Kutcher never 110paid on invoices totaling $48,190 for repairs and storage fees accumulated from April to November 2007, a ruinous situation for defendant, who had “spent money buying parts and supplies to repair these vehicles and this equipment ... it was disastrous for him.” Oxner also underscored that no one involved in the investigation of the dispute between Terry Kutcher and defendant as a criminal matter had come to her for a statement and that the documentary evidence in her possession had thus never come to light before defendant was charged with misappropriation of Kutcher’s equipment and theft of the cash provided by Michell and McGowan. Oxner indicated that she was “in the process of filing a civil suit against the parties to this matter to recoup the money” they owed defendant. On cross-examination, Oxner acknowledged that of various corporations she had set up for defendant, some of them had had their licenses revoked by the state for failure to submit annual reports. Among them was Hydraulic Equipment Service, Inc., which, as documented by the state at trial, had its license revoked in 2005.\nReviewing all of this evidence on appeal, the Fifth Circuit panel concluded that with respect to the excavator, rational jurors could have found defendant had the requisite specific intent to commit theft by misappropriating the equipment and then selling it for cash to Charles McGowan. The lynchpin of that finding was the unrebut-ted testimony of Timothy Gooch who “specifically told defendant he could not take the equipment” from the TwiRopa site, “but defendant did so anyway.” Swanzy, 11-0882, p. 8, 96 So.3d at 502. The de*555fense had no answer to that testimony and the court noted “[t]he fact that defendant attempted to obtain a repairman’s lien on the excavator after seizing it does not negate the fact he took the excavator without permission with the intent to permanently deprive the owner of the excavator ... [and] then misrepresented to Mr. McGowan that he had the authority to sell the excavator, which he took without permission.” Swanzy, 11-0882 at 8, 96 So.3d at 502. Defendant had further refused to refund the $25,000 paid in cash for the excavator even after his “authority to sell ... was questioned and the excavator was seized as stolen property.” Id.\nOn the other hand, the court of appeal noted that unlike the excavator, Terry Kutcher had voluntarily delivered the bulldozer to defendant in April 2007, at least for an estimate for repairs, and thereafter never attempted to reclaim the machine before receiving an invoice in September 2007 for storage fees and before defendant then sold it to Lloyd Michell in December 2007, after he had run newspaper notices of his intent and consulted with the Jefferson Parish Sheriffs Office. The court of appeal further noted that “[t]he documentary and testimonial evidence shows defendant consulted an attorney, communicated verbally and in writing with Mr. Kutcher and other representatives of Chisholm Trail about the outstanding invoices and his intent to sell the bulldozer under a lien, and advertis[ed] his intent to sell the bulldozer under a lien in the newspaper.” Swanzy, 11-0882 at 11, 96 So.3d at 504. Although “cognizant that we may not substitute our judgment for that of the jury,” the court of appeal also observed that “the jury’s conclusion cannot stand if the evidence is such that reasonable jurors must have a reasonable doubt.” Id., 11-0882 at 11-12, 96 So.3d at 504 (citing State v. Mussall, 523 So.2d 1305, 1311 (La.1988)). The court ultimately concluded that “reasonable jurors must have a reasonable doubt as to defendant’s specific intent to commit theft” involving the bulldozer, as opposed to theft involving the excavator, because “the evidence shows nothing more than a personal dispute between the parties.” Id.\nWe agree with the court of appeal that the evidence presented at trial supported the jury’s guilty verdict with respect to theft of the $25,000 paid by Charles McGowan for the excavator and, thus, defendant’s application does not 112warrant the exercise of our supervisory authority. The application in 12-K-1281 is therefore denied. We find merit, however, in the state’s application in 12-K-1297 that the court of appeal erred in setting aside defendant’s conviction for the theft of $6,500 from Lloyd Michell because, even as it disclaimed any intent to do so, the court of appeal ultimately substituted its own appreciation of the evidence for that of the fact finder in concluding a rational trier of fact would necessarily have a reasonable doubt with respect to the specific intent necessary to convict defendant of theft. State v. Captville, 448 So.2d 676, 680 (La.1984) (“When a case involves circumstantial evidence, and the jury reasonably rejects the hypothesis of innocence presented by the defendant ] ... that hypothesis falls, and the defendant is guilty unless there is another hypothesis.... sufficiently reasonable that a rational juror could not ‘have found proof beyond a reasonable doubt.’ ”) (quoting Jackson v. Virginia, 443 U.S. 307, 99 S.Ct. 2781, 61 L.Ed.2d 560 (1979)). A jury acting as the fact finder may reasonably reject the hypothesis of innocence offered by the defendant unless that hypothesis “is sufficiently reasonable and sufficiently strong [that] a reasonable trier of fact must necessarily entertain a reasonable doubt about guilt.” *556Captville, 448 So.2d at 678, n. 2 (internal quotation marks and citation omitted).\nThe circumstances involving the sale of Terry Kutcher’s excavator and bulldozer, brought to Louisiana in support of the TwiRopa demolition project, were so inextricably intertwined that even in separate trials, the evidence would have been virtually the same to provide a narrative completeness “with power not only to support conclusions but to sustain the willingness of jurors to draw the inferences, whatever they may be, necessary to reach an honest verdict.” Old Chief v. United States, 519 U.S. 172, 187, 117 S.Ct. 644, 653, 136 L.Ed.2d 574 (1997). In assessing whether defendant had the requisite fraudulent intent with |13regard to the sale of Terry Kutcher’s bulldozer, following the previous sale of Kutcher’s excavator to Charles McGowan, rational jurors could take into account the testimony of Kutcher that he began working on the recovery of his equipment immediately after its removal from the TwiRopa job site and attempted to recover both his excavator and the bulldozer from defendant by sending his emissary to Diesel Truck Services with a check to pay the disputed invoices on those two pieces of equipment. Kutcher testified without objection that defendant had rebuffed that effort with a demand that he pay all invoices or free up none of his equipment. Kutcher was not specific as to dates, but rational jurors could find that the effort to reclaim the equipment took place before defendant sold either the excavator or the bulldozer, and find that evidence completely at odds with defendant’s representations to Charles McGowan and Lloyd Michell that the equipment had been “abandoned” by its owner. Thus, although the bulldozer and excavator had traveled different routes to the same place at Diesel Truck Services, rational jurors could find that defendant had no more right to assert a claim of privilege in the bulldozer after Kutcher unsuccessfully tendered payment for it, and then represent that claim as a basis for selling the equipment to satisfy storage and repair costs, than he did in the excavator, which the evidence established had been removed without authority from the TwiRopa job site.\nIn addition, rational jurors could also take into account the supposed repairs of the bulldozer were performed on behalf of a corporation, Hydraulic Equipment Service, Inc., that had lost its license in 2005, that the repairs in no way addressed the problem of the cracked head gasket plaguing the bulldozer, and that at least some of the repairs may not have been performed at all, as Michell had to boost the batteries from a battery charger to off-load the sputtering bulldozer from its trailer. Rational jurors could thus take defendant at his word when he wrote to the 114Jefferson Parish Sheriffs Office in November 2007, after he had already sold the excavator, that he was doing so “mainly” to create a paper trial, which was no more a reliable indicator of his subjective intent than the invoices were a reliable indicator of repair and storage fees for both the excavator and the bulldozer, or, for that matter, the towing fees for the bulldozer assessed by Hydraulic Equipment Service, Inc., for a piece of equipment that had been delivered to Diesel Truck Service.\nRational jurors could thus find that the evidence in its entirety supported a finding that defendant converted not only Terry Kutcher’s excavator but also his bulldozer to his own use in a fraudulent scheme to sell the heavy equipment to unsuspecting buyers on assurances the equipment had been “abandoned.” Rational jurors could thus conclude that whatever the civil ramifications of the case arising out of the unsettled contractual issues, the count involving the bulldozer, as well as the count *557involving the excavator, did not stem from only a personal dispute between the parties but properly charged defendant with felony theft in that, \"with the specific intent to deprive Lloyd Michell of his money permanently, he took something of value from Michell “by means of fraudulent conduct, practices, or representations.” La. R.S. 14:67(A).\nAccordingly, the state’s application is granted, the court of appeal decision is reversed in part, and defendant’s conviction and sentence on count one for the theft of $6,500 from Lloyd Michell are hereby reinstated.\nJOHNSON, C.J., would deny.\nGUIDRY, J., recused.\n\n. Testimony at trial established that Towing and Recovery Professionals of Louisiana is a nonprofit trade association that serves as an agent of the Office of Motor Vehicles to process paperwork for storage facilities in the state, including towing companies, body shops, repair shops \"that basically store[] vehicles or titled movables to go through procedures to report to legally charged storage and notify the owners of the property and, if the owners do not come and claim it, the owner and/or lien holder, then [TRPL] help[s] them go through the procedures to obtain a permit to sell.” The permit to sell is issued by the Officer of Motor Vehicles and allows the storage facility to sell the vehicle as if it had title to it. The testimony also made clear that the procedure for obtaining a permit to sell encompasses only registered vehicles capable of traveling on the highway and thus does not govern disposition of unregistered farm or heavy construction equipment. Diesel Truck Services is one of TRPL's customers and was involved in the permit to sell issued by the Office of Motor Vehicles for the sale of the 1981 LoBoy trailer that qualified although it is not a motorized vehicle. As explained by Jennifer Wall, a TRPL representative, the disposition of unclaimed heavy construction equipment by a storage facility is something of a grey area in Louisiana. She supposed that the facility would hold the equipment for at least 90 days and then run notices for it in the newspaper and “after that they would just contact counsel for legal advice on how they would pursue for disposal of something.” She made clear that TRPL would not be involved in that process and would not give that legal advice with respect to liens or writs of seizure, based on the assumption that at some point the courts would have to become involved. She also made clear, with respect to the 1981 LoBoy, that the permit to sell did not validate the lawful ownership of the equipment but meant only that Diesel Truck Service had complied with the procedures necessary to dispose of the equipment on a claim that its fees for storage and repair had not been satisfied.\n\n\n. As provided in La.R.S. 9:4502(A)(1), \"[a]ny person engaged in the making or repairing of ... machinery ... or movable objects or movable property of any type or description, has a privilege on the thing for the debt due him for materials furnished or labor performed ... [and] such privilege continues as long as such thing remains in such place of business.” The statute further provides that when the machinery or movable remains in the place of business, the holder of the privilege may sell \"such property at private sale and without appraisement, after advertising such property for ten days as provided by law in case of judicial sales of movables.” La.R.S. 9:4502(C). During deliberations, jurors requested a copy of the statute along with all of the documentary exhibits introduced at trial and inspected by them at the close of the state’s case in chief. At the urging of both state and defense, the trial court declined the request and committed jurors to memory in deciding the case.\n\n",
+            "ocr": true,
+            "opinion_id": 4800174
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56409,
+      "row": {
+        "id": 4992026,
+        "judges": null,
+        "date_filed": "2013-05-20",
+        "date_filed_is_approximate": true,
+        "slug": "state-ex-rel-foreman-v-state",
+        "case_name_short": null,
+        "case_name": "State ex rel. Foreman v. State",
+        "case_name_full": "STATE ex rel. Eddie FOREMAN, Jr. v. STATE of Louisiana",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "116 So. 3d 656"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nIn re Foreman Jr., Eddie; — Plaintiff; Applying For Supervisory and/or Remedial Writs, Parish of E. Baton Rouge, 19th Judicial District Court Div. L, No. 65,685.\nRelator represents that the district court has failed to act timely on an application for post-conviction relief and motion to recuse trial judge with petition and order for judge ad hoc to try motion to recuse filed on or about November 7, 2012. If relator’s representation is correct, the district court is ordered to consider and act on the applications. If relator’s representation is incorrect, the district court is ordered to accept, file and act upon the pleading which is herewith transferred to the district court. The district court is ordered to provide this Court with a copy of its judgment.\n",
+            "ocr": true,
+            "opinion_id": 4802356
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56415,
+      "row": {
+        "id": 4992831,
+        "judges": null,
+        "date_filed": "2013-05-31",
+        "date_filed_is_approximate": true,
+        "slug": "state-ex-rel-williams-v-state",
+        "case_name_short": null,
+        "case_name": "State ex rel. Williams v. State",
+        "case_name_full": "STATE ex rel. Antoine WILLIAMS v. STATE of Louisiana",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "118 So. 3d 392"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nIn re Williams, Antoine; — Plaintiff; Applying For Supervisory and/or Remedial Writs, Parish of Tangipahoa, 21st Judicial District Court Div. G, No. 97243; to the *393Court of Appeal, First Circuit, No. 2012 KW 1479.\nDenied.\n",
+            "ocr": true,
+            "opinion_id": 4803216
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56420,
+      "row": {
+        "id": 4994496,
+        "judges": null,
+        "date_filed": "2013-10-11",
+        "date_filed_is_approximate": true,
+        "slug": "cambre-v-st-john-the-baptist-parish",
+        "case_name_short": "Cambre",
+        "case_name": "Cambre v. St. John the Baptist Parish",
+        "case_name_full": "Philip J. CAMBRE v. ST. JOHN THE BAPTIST PARISH",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "123 So. 3d 1227"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nIn re Cambre, Philip J.; Dutch Bayou Development, Co., Inc.; — Plaintiff(s); Applying For Writ of Certiorari and/or Review, Parish of St. John, 40th Judicial District Court Div. B, No. 54,197; to the Court of Appeal, Fifth Circuit, No. 12-CA-590.\nDenied.\n",
+            "ocr": true,
+            "opinion_id": 4805059
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56515,
+      "row": {
+        "id": 4996963,
+        "judges": null,
+        "date_filed": "2013-12-06",
+        "date_filed_is_approximate": true,
+        "slug": "in-re-stampley",
+        "case_name_short": "In re Stampley",
+        "case_name": "In re Stampley",
+        "case_name_full": "In re Gilbert E. STAMPLEY",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "129 So. 3d 527"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nIn re Disciplinary Counsel; Stampley, Gilbert E.; — Other(s); Applying For Joint Petition for Consent Discipline Pursuant to Rule XIX, Section 20.\nJoint petition for consent discipline accepted.\n",
+            "ocr": true,
+            "opinion_id": 4807750
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56517,
+      "row": {
+        "id": 4997220,
+        "judges": "Clark, Reasons",
+        "date_filed": "2013-11-01",
+        "date_filed_is_approximate": true,
+        "slug": "in-re-leavoy",
+        "case_name_short": "In re Leavoy",
+        "case_name": "In re Leavoy",
+        "case_name_full": "In re Leslie R. LEAVOY, Jr.",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "130 So. 3d 291"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n*292ATTORNEY DISCIPLINARY PROCEEDINGS\nPER CURIAM.\n_[jThis disciplinary matter arises from formal charges filed by the Office of Disciplinary Counsel (“ODC”) against respondent, Leslie R. Leavoy, Jr., an attorney licensed to practice law in Louisiana. '\nUNDERLYING FACTS\n\nCount I\n\nIn October 2003, Mary McRae retained DeRidder attorney Tony Bennett to represent her in a suit against her former husband alleging that he had breached a confidentiality clause in their divorce agreement. Ms. McRae paid Mr. Bennett a $5,000 advance minimum fee to handle the matter. Several months later, Mr. Bennett determined that he could no longer represent Ms. McRae due to a conflict of interest, and respondent agreed to assume her representation. In May 2004, Mr. Bennett transferred the $5,000 advance fee.paid by Ms. McRae to respondent.\nRespondent represented ‘ Ms. McRae through the fall of 2005, but failed to move her case forward and failed to communicate with her regarding the status of the matter. Indeed, when pressed by his client for information, respondent either ignored her inquiries or misled her by providing false information. For example, respondent told Ms. McRae that he had filed her breach of contract lawsuit, but she subsequently learned from the clerk of court’s office that no suit was pending. Thereafter, Ms. McRae recorded a telephone conversation with respondent in 12which he told her that her former husband had a “spy” in the clerk of court’s office and that the lawsuit he had prepared was either sitting on someone’s desk un-filed or it had been assigned a new docket number. Respondent then promised to file a new lawsuit for Ms. McRae the following day, but he failed to do so.\nIn October 2005, Ms. McRae discharged respondent and requested that her file and fees be returned. When respondent did not comply with this request, Ms. McRae lodged a complaint against him with the ODC in December 2005. Respondent ultimately did not refund Ms. McRae’s $5,000 fee until February 2006, and she did not receive her file until June 2006.\nThe ODC alleged that respondent’s conduct in the McRae matter violated the following provisions of the Rules of Professional Conduct: Rules 1.3 (failure to act with reasonable diligence and promptness in representing a client), 1.4 (failure to communicate with a client), 1.16(d) (obligations upon termination of the representation), and 8.4(c) (engaging in conduct involving dishonesty, fraud, deceit, or misrepresentation).\n\nCount II\n\nOn January 7, 2010, respondent was arrested in Rapides Parish and charged with DWI, careless operation of a motor vehi-*293ele, and obstruction of a court order. On October 4, 2010, respondent voluntarily admitted himself to an inpatient substance abuse treatment program at the Palmetto Addiction Recovery Center in Rayville, Louisiana. Respondent was discharged from Palmetto on January 11, 2011 with a diagnosis of alcohol dependence. Following his discharge, the Palmetto staff recommended that respondent enter into a recovery agreement with the Lawyers Assistance Program (“LAP”); however, respondent “didn’t see any reason” to execute the contract and thus did not do so.\n3In March 2011, respondent pleaded guilty to the DWI charge pursuant to the provisions of La.Code Crim. P. art. 894; the remaining charges were dismissed. Respondent was placed on unsupervised probation for one day and ordered to pay a fíne and court costs.\nThe ODC learned of respondent’s DWI conviction in April 2011 and commenced an investigation. In May 2011, the ODC notified respondent that a complaint had been opened against him, and instructed him to contact LAP to arrange for a substance abuse evaluation. On June 8, 2011, respondent and his counsel met with the Executive Director of LAP, J.E. “Buddy” Stockwell, III. On June 13, 2011, Mr. Stockwell advised respondent that he would be required to undergo a three-day inpatient professional assessment at Palmetto before entering into a LAP contract. Respondent did not schedule the evaluation with Palmetto at that time.\nApproximately two weeks later, on July 1, 2011, respondent gave a sworn statement to the ODC. During the statement, respondent admitted that he had not been evaluated by Palmetto since receiving Mr. Stockwell’s June 13th letter, nor had he contacted Palmetto to arrange for an evaluation, as directed by Mr. Stockwell. Asked whether he had any intention of doing so, respondent replied, “I have no intentions what — one way or the other.” Later during the sworn statement, respondent testified he was willing to go to Palmetto for an evaluation. He thereafter scheduled the evaluation twice but can-celled both times, citing family emergencies.\nMeanwhile, on August 15, 2011, the ODC received a letter from Judge C. Kerry Anderson of the 36th Judicial District Court for the Parish of Beauregard, where respondent was then a public defender, concerning respondent’s persistent abuse of alcohol. Judge Anderson reported that respondent was scheduled to appear in his court at 9:00 a.m. on August 5, 2011 for “felony pre-trial day.” There |4were 42 cases set for hearing on that day, and respondent was counsel of record in 11 of the cases. When court recessed shortly after 10:00 a.m., respondent still had not made an appearance, so Judge Anderson inquired of respondent’s secretary whether she knew his whereabouts. The secretary reported that she had spoken with respondent at 8:45 a.m., when he had said he was on his way to court, but that she had been unable to reach him since then. Concerned for respondent’s well-being, Judge Anderson dispatched the Chief Public Defender to check on respondent. A while later, Judge Anderson received a report that respondent had been located at his house, but that he was in no condition to appear in court that day because he was “in an intoxicated condition, passed out, partially-clothed, half-conscious in his bedroom.” 1\n*294Judge Anderson also advised the ODC that there had been other occasions when he suspected respondent had been drinking when he appeared in court, and that such occurrences “have become more frequent over the last couple of months.” Judge Anderson stated that he had twice called respondent into his office to warn him “that his further appearance under the influence of alcohol would not be tolerated.” On August 10, 2011, Judge Anderson signed an order directing the Public Defender’s Office to reassign all pending criminal and juvenile cases assigned to respondent.2\n|sOn August 23, 2011, respondent was admitted to Palmetto for a three-day inpatient substance abuse evaluation. Following his evaluation, respondent was diagnosed as suffering from alcohol dependence with relapse. Respondent remained at Palmetto for relapse treatment until October 24, 2011. Subsequent to his discharge from treatment, respondent entered into a five-year LAP recovery agreement dated November 28, 2011. Respondent has been in full compliance with the requirements of his LAP agreement since that time.\nThe ODC alleged that respondent’s conduct violated the following provisions of the Rules of Professional Conduct: Rules 8.4(b) (commission of a criminal act that reflects adversely on the lawyer’s honesty, trustworthiness, or fitness as a lawyer) and 8.4(d) (engaging in conduct prejudicial to the administration of justice).\nDISCIPLINARY PROCEEDINGS\nIn April 2012, the ODC filed two counts of formal charges against respondent. Respondent answered the formal charges, and the matter was set for a formal hearing before the hearing committee. Prior to the hearing, respondent and the ODC entered into a joint stipulation of facts and rule violations. In this document, respondent stipulated to the essential facts alleged by the ODC and admitted that he violated the Rules of Professional Conduct as charged, except that respondent did not stipulate to a violation of Rule 8.4(c) in the McRae matter.\n\nHearing Committee Report\n\nThe hearing committee conducted a hearing in October 2012. This was primarily a hearing in mitigation; however, the parties did present evidence and testimony concerning the few disputed issues which remain. In addition, respondent presented witnesses who confirmed that he is in full, sustained | (¡remission from chemical dependency and that he has been very compliant with his recovery.\nConsidering the evidence and testimony presented at the hearing, as well as the parties’ stipulations, the hearing committee made factual findings consistent with the underlying facts set forth above. In Count I of the formal charges, respondent misled Ms. McRae regarding the status of *295her case in order to conceal his lack of diligence in failing to file her lawsuit. Furthermore, after Ms. McRae dismissed respondent for failing to move her case forward, he did not promptly refund the fees she had paid or return her file in a timely manner. In connection with Count II, respondent was convicted of DWI and was too intoxicated to appear in court for a felony pre-trial hearing day. The committee found this conduct violated the Rules of Professional Conduct as charged in the formal charges.\nRespondent stipulated that he violated duties owed to his clients, the public, and the legal system, causing potential harm. He also stipulated that he acted knowingly, if not intentionally, in Count I, and that he acted knowingly in Count II. The committee determined that the applicable baseline sanction in this matter is suspension.\nIn aggravation, the committee found multiple offenses and substantial experience in the practice of law (admitted 1979). The committee found the following mitigating factors are present: absence of a prior disciplinary record,3 full and free disclosure to the disciplinary board and a cooperative attitude toward the proceedings, character or reputation, and chemical dependency.4\nThe committee concluded:\n|7Because of Respondent’s successful rehabilitation to date, his cooperation in the disciplinary proceeding, minimal harm to clients and no record of previous misconduct, this committee recommends that the Respondent be suspended from the practice of law for a period of 18 months with all but six months deferred, subject to Respondent’s successful completion of the following supervisions:\n1. The completion of all terms and conditions of his contract with the Lawyers Assistance Program;\n2. Respondent’s continued participation in Alcoholics Anonymous for the period of his Lawyers Assistance Program contract; and\n3. Respondent successfully complying with the requirements of both programs and payment of all costs associated with this matter.\nRespondent filed an objection to the hearing committee’s report and recommendation, asserting that the committee erred in failing to find certain mitigating factors and in its assessment of the weight to be given to the mitigating circumstances. Respondent also contended that the actual period of suspension recommended by the committee is too harsh, and that the appropriate sanction in this matter is a fully deferred period of suspension with probation and continued LAP monitoring. For its part, the ODC generally agreed with the hearing committee’s report, although it did take issue with some of the findings relating to aggravating and mitigating factors.\n\nDisciplinary Board Recommendation\n\nAfter review, the disciplinary board found that the hearing committee’s factual findings are not manifestly erroneous, as they are largely based upon respondent’s *296stipulations. The board also found respondent violated the Rules of Professional Conduct as alleged in the formal charges.\n|sThe board determined that respondent knowingly and intentionally violated duties owed to his clients, the public, and the profession. Respondent caused actual injury, albeit minimal, and further there was a substantial risk of harm to the public and the profession if his alcoholism remained unchecked and his conduct continued. According to the ABA’s Standards for Imposing Lawyer Sanctions, the applicable baseline sanction in this matter is suspension.\nIn aggravation, the board found a dishonest or selfish motive, multiple offenses, and substantial experience in the practice of law. In mitigation, the board' found the following factors: absence of a prior disciplinary record, personal or emotional problems, character or reputation, chemical dependency, delay in the disciplinary proceedings (as to Count I only), and remorse.\nTurning to the issue of an appropriate sanction, the board acknowledged that the sanction recommended by the hearing committee (an eighteen-month suspension with all but six months deferred) is within the range of appropriate sanctions for the misconduct at issue here. However, the board felt a lengthier but fully deferred suspension is warranted in this case based upon the mitigating circumstances present, most notably the “compelling” evidence of respondent’s rehabilitation from alcoholism.\nBased on this reasoning, the board recommended that respondent be suspended from the practice of law for two years, fully deferred, subject to respondent’s successful completion of a period of probation coinciding with a new five-year LAP agreement. The board also recommended that respondent be assessed with the costs and expenses of this matter.\nNeither respondent nor the ODC filed an objection to the disciplinary board’s recommendation.\n[ .DISCUSSION\nBar disciplinary matters fall within the original jurisdiction of this court. La. Const. art. V, § 5(B). Consequently, we act as triers of fact and conduct an independent review of the record to determine whether the alleged misconduct has been proven by clear and convincing evidence. In re: Banks, 09-1212 (La.10/2/09), 18 So.3d 57. While we are not bound in any way by the findings and recommendations of the hearing committee and disciplinary board, we have held the manifest error standard is applicable to the committee’s factual findings. See In re: Caulfield, 96-1401 (La.11/25/96), 683 So.2d 714; In re: Pardue, 93-2865 (La.3/11/94), 633 So.2d 150.\nThe record supports a finding that respondent misled his client regarding the status of her case in order to conceal his lack of diligence in failing to file her lawsuit. Furthermore, after the client discharged respondent for failing to move her case forward, he did not promptly refund the fees she had paid or return her file in a timely manner. In connection with Count II, respondent was convicted of DWI and was too intoxicated to appear in court for a felony pre-trial hearing day. Based on these facts, respondent has violated the Rules of Professional Conduct as found by the disciplinary board.\n Having found evidence of professional misconduct, we now turn to a determination of the appropriate sanction for respondent’s actions. In determining a sanction, we are mindful that disciplinary proceedings are designed to maintain high *297standards of conduct, protect the public, preserve the integrity of the profession, and deter future misconduct. Louisiana State Bar Ass’n v. Reis, 513 So.2d 1173 (La.1987). The discipline to be imposed depends upon the facts of each case and the seriousness of the offenses involved considered in light of any aggravating and mitigating circumstances. Louisiana State Bar Ass’n v. Whittington, 459 So.2d 520 (La.1984).\n| inRespondent has stipulated that his conduct was both knowing and intentional and caused both actual and potential harm. The applicable baseline sanction in this matter is suspension.\nThe following aggravating factors are present: a dishonest or selfish motive, multiple offenses, and substantial experience in the practice of law (admitted 1979). The following mitigating factors are supported by the record: personal or emotional problems, character or reputation, chemical dependency, and remorse.\nIn determining the appropriate sanction in this case, we begin with the well-recognized proposition that chemical dependency may cause a lawyer to commit acts of professional misconduct that would not have occurred but for his impairment. Louisiana State Bar Ass’n v. Longenecker, 538 So.2d 156, 163 (La.1988) (on rehearing). When there is an obvious causal connection between the substance abuse and the misconduct, and the lawyer has made meaningful efforts to address his problem, we have often chosen to impose a more lenient sanction than would otherwise be called for. See, e.g., In re: Williams, 10-1972 (La.1/7/11), 52 So.3d 864 (lawyer suspended from the practice of law for three years, with eighteen months deferred, for misconduct including his conviction of possession of cocaine; the lawyer’s drug addiction contributed to his misconduct, but he sought treatment and signed a LAP contract); In re: Steinhardt, 04-0011 (La.9/9/04), 883 So.2d 404 (lawyer suspended for three years, with two years deferred, following her conviction of possession of marijuana; the mitigating circumstances included her successful recovery from her marijuana addiction and her entry into a recovery agreement with LAP); In re: Doyle, 07-2015 (La.4/4/08), 978 So.2d 904 (baseline sanction for the lawyer’s misconduct, including conversion of client and third-party funds, was unquestionably disbarment, but the mitigating circumstances surrounding his successful recovery from an addiction to |n drugs and alcohol warranted a downward deviation from the baseline to a three-year suspension).\nHere, it is abundantly clear that respondent’s misconduct (his alcohol-related criminal conviction and failure to appear for court as well as his neglect of a client matter) is directly related to his substance dependence. However, respondent has demonstrated a meaningful and sustained period of successful rehabilitation from his chemical dependency, and his recovery has made a recurrence of his misconduct very unlikely. Notably, respondent has been sober for more than two years since completing the treatment program at Palmetto. He has also been subject to a LAP agreement since November 2011, and the director of the program reports that respondent’s performance under the agreement has been exemplary to date.\nAccordingly, we will accept the board’s recommendation and suspend respondent from the practice of law for two years, fully deferred, subject to his successful completion of a period of probation to coincide with a newly executed five-year LAP agreement. We caution respondent that any violation of the conditions of probation, or any misconduct during the probationary period, may be grounds for mak*298ing the deferred suspension executory, or imposing additional discipline, as appropriate.\nDECREE\nUpon review of the findings and recommendations of the hearing committee and disciplinary board, and considering the record, it is ordered that Leslie R. Leavoy, Jr., Louisiana Bar Roll number 8186, be and he hereby is suspended from the practice of law for two years. This suspension shall be deferred in its entirety, subject to respondent’s successful completion of a period of probation governed by the conditions set forth in this opinion. All costs and expenses in the matter are 112assessed against respondent in accordance with Supreme Court Rule XIX, § 10.1, with legal interest to commence thirty days from the date of finality of this court’s judgment until paid.\nCLARK, J., dissents and assigns reasons.\n\n. Upon learning this information, Judge Anderson asked other attorneys from the Public Defender's Office to meet with respondent’s clients, and the defendants either proceeded to enter guilty pleas or had their cases re-fixed to a later date. As a result of these *294efforts by others, respondent's clients were not specifically harmed by his failure to appear in court on August 5, 2011, although respondent did stipulate that he had wasted the time and resources of the trial court.\n\n\n. On August 18, 2011, the ODC filed a petition for interim suspension for threat of harm to the public based upon the foregoing facts. After deferring consideration of the petition for several months to determine the progress of respondent’s treatment at Palmetto, we ultimately denied the petition on December 16, 2011. However, our order specifically instructed respondent to “fully and completely adhere to all terms of the recovery agreement he executed with the Lawyers Assistance Program, and such other conditions as may be imposed upon him by the Lawyers Assistance Program,” or face the possibility of further proceedings. In re: Leavoy, 11-1824 (La. 12/16/11), 76 So.3d 422.\n\n\n. Respondent was issued a formal private reprimand in 1990, and thus it cannot be said that he has no prior discipline for purposes of mitigation. Nevertheless, the ODC acknowledges that due to the remoteness of this disciplinary offense, it should not be considered an aggravating factor.\n\n\n. The committee was favorably impressed by respondent’s efforts at recovery from his alcoholism, and found in mitigation that he has demonstrated interim rehabilitation from chemical dependency. We note, however, that interim rehabilitation is no longer recognized as a mitigating factor in the ABA Standards.\n\n",
+            "ocr": true,
+            "opinion_id": 4808036
+          },
+          {
+            "author_str": "Clark",
+            "per_curiam": false,
+            "type": "040dissent",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nCLARK, Justice.\nU respectfully dissent from the sanction imposed.\nWhile I applaud the respondent’s successful rehabilitation from his substance dependency, I agree with the Hearing Committee’s recommendation for discipline in this matter. The Hearing Committee, which heard the evidence and reviewed all the exhibits, recommended that the baseline sanction of suspension should be imposed. Taking into account the cause of the attorney’s misconduct, the Hearing Committee recommended all but a small portion of that suspension should be deferred. However, the Hearing Committee found the respondent should serve a short term of suspension. I agree.\nAs found by the majority, it is abundantly clear the respondent’s alcohol-related criminal conviction and failure to appear for court, as well as his neglect of a client matter, is directly related to his former substance dependence. Respondent has stipulated his conduct was both knowing and intentional, and caused both actual and potential harm. The record additionally shows the respondent was twice warned that his conduct would not be tolerated.\nEven the cases cited by the majority in support of greater leniency in sanctions where there has been a causal connection between substance abuse and attorney misconduct have required the attorneys to serve some term of suspension. See In re: Williams, 2010-1972 (La.1/7/11); 52 So.3d 864 (suspension of three years with eighteen months deferred); In re: Steinhardt, 2004-0011 (La.9/9/04); 888 So.2d 404 (three year suspension with two years deferred); and In re: Doyle, 2007-2015 (La.4/4/08); 978 So.2d 904 (downward deviation from baseline of |2disbarment to three years suspension).\nConsidering both the respondent’s conduct and his rehabilitation to date, I feel the proper sanction in this case was that recommended by the Hearing Committee, ie. suspension of the practice of law for eighteen months with all but six months deferred, followed by a period of probation with conditions.\n",
+            "ocr": true,
+            "opinion_id": 4808037
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56518,
+      "row": {
+        "id": 4997973,
+        "judges": null,
+        "date_filed": "2014-02-07",
+        "date_filed_is_approximate": true,
+        "slug": "wallace-v-penn-ex-rel-houstons-pride-glory-horse-ranch",
+        "case_name_short": "Wallace",
+        "case_name": "Wallace v. Penn ex rel. Houston's Pride & Glory Horse Ranch",
+        "case_name_full": "Cassandra WALLACE, Michael Wallace, Jamone Bradford, Lakosia Fisher and Williams Fisher v. Houston T. PENN, and on Behalf of HOUSTON'S PRIDE AND GLORY HORSE RANCH, and XYZ Insurance Company",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "132 So. 3d 399"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nIn re Penn, Houston T.; — Defendant; Applying For Supervisory and/or Remedial Writs, Parish of E. Baton Rouge, 19th Judicial District Court Div. O, No. 541,040; to the Court of Appeal, First Circuit, No. 2013 CW 2085.\nStay denied. Writ denied\n",
+            "ocr": true,
+            "opinion_id": 4808854
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56526,
+      "row": {
+        "id": 5000384,
+        "judges": null,
+        "date_filed": "2014-04-25",
+        "date_filed_is_approximate": true,
+        "slug": "state-v-hollins",
+        "case_name_short": "Hollins",
+        "case_name": "State v. Hollins",
+        "case_name_full": "STATE of Louisiana v. Henry L. HOLLINS",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "138 So. 3d 642"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nIn re Hollins, Henry L.; — Defendant; Applying For Writ of Certiorari and/or Review, Parish of Orleans, Criminal District Court Div. C, No. 493-992; to the Court of Appeal, Fourth Circuit, No. 2011-KA-1435.\nDenied.\n",
+            "ocr": true,
+            "opinion_id": 4811473
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56527,
+      "row": {
+        "id": 5001137,
+        "judges": null,
+        "date_filed": "2014-05-23",
+        "date_filed_is_approximate": true,
+        "slug": "state-ex-rel-torregano-v-state",
+        "case_name_short": null,
+        "case_name": "State ex rel. Torregano v. State",
+        "case_name_full": "STATE ex rel. Deshaun TORREGANO v. STATE of Louisiana",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "140 So. 3d 721"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nIn re Torregano, Deshaun; — Plaintiff; Applying For Supervisory and/or Remedial Writs, Parish of Orleans, Criminal District Court Div. D, No. 487-799; to the Court of Appeal, Fourth Circuit, No. 2013-K-1278.\nDenied.\n",
+            "ocr": true,
+            "opinion_id": 4812296
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 56533,
+      "row": {
+        "id": 5002546,
+        "judges": null,
+        "date_filed": "2014-08-25",
+        "date_filed_is_approximate": true,
+        "slug": "blanchard-v-linder-oil-co",
+        "case_name_short": "Blanchard",
+        "case_name": "Blanchard v. Linder Oil Co.",
+        "case_name_full": "Nancy BLANCHARD and Park Plantation, L.L.C. v. LINDER OIL COMPANY, a Partnership Tortuga Operating Co. and Blanchard 1986 Ltd., a Limited Partnership",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "147 So. 3d 1117"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nIn re Maclean, Paul; — Other; Applying For Writ of Certiorari and/or Review, Parish of Jefferson, 24th Judicial District *1118Court Div. J, No. 606-555; to the Court of Appeal, Fifth Circuit, No. 13-CA-737.\nDenied.\n",
+            "ocr": true,
+            "opinion_id": 4813976
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 3333,
+  "num_rows_per_page": 100,
+  "partial": true
+}

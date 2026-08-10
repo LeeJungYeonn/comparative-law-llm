@@ -1,0 +1,793 @@
+{
+  "features": [
+    {
+      "feature_idx": 0,
+      "name": "id",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 1,
+      "name": "judges",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 2,
+      "name": "date_filed",
+      "type": {
+        "dtype": "date32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 3,
+      "name": "date_filed_is_approximate",
+      "type": {
+        "dtype": "bool",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 4,
+      "name": "slug",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 5,
+      "name": "case_name_short",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 6,
+      "name": "case_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 7,
+      "name": "case_name_full",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 8,
+      "name": "attorneys",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 9,
+      "name": "nature_of_suit",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 10,
+      "name": "posture",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 11,
+      "name": "syllabus",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 12,
+      "name": "headnotes",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 13,
+      "name": "summary",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 14,
+      "name": "disposition",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 15,
+      "name": "history",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 16,
+      "name": "other_dates",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 17,
+      "name": "cross_reference",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 18,
+      "name": "correction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 19,
+      "name": "citation_count",
+      "type": {
+        "dtype": "int32",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 20,
+      "name": "precedential_status",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 21,
+      "name": "arguments",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 22,
+      "name": "headmatter",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 23,
+      "name": "citations",
+      "type": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 24,
+      "name": "opinions",
+      "type": {
+        "feature": {
+          "author_str": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "per_curiam": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "type": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "page_count": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "download_url": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "author_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          },
+          "opinion_text": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "ocr": {
+            "dtype": "bool",
+            "_type": "Value"
+          },
+          "opinion_id": {
+            "dtype": "int32",
+            "_type": "Value"
+          }
+        },
+        "_type": "List"
+      }
+    },
+    {
+      "feature_idx": 25,
+      "name": "court_short_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 26,
+      "name": "court_full_name",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 27,
+      "name": "court_type",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    {
+      "feature_idx": 28,
+      "name": "court_jurisdiction",
+      "type": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    }
+  ],
+  "rows": [
+    {
+      "row_idx": 3249,
+      "row": {
+        "id": 2496693,
+        "judges": null,
+        "date_filed": "2011-06-03",
+        "date_filed_is_approximate": false,
+        "slug": "in-re-appeal-of-decision-of-disciplinary-board-no-",
+        "case_name_short": "In RE APPEAL OF DECISION OF DISCIPLINARY BOARD No. 10-PDB-111.",
+        "case_name": "In RE APPEAL OF DECISION OF DISCIPLINARY BOARD No. 10-PDB-111.",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "63 So. 3d 1017"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n63 So.3d 1017 (2011)\nIn re APPEAL OF the DECISION OF the DISCIPLINARY BOARD No. 10-PDB-111.\nNo. 2011-OB-0785.\nSupreme Court of Louisiana.\nJune 3, 2011.\nLeave to appeal denied.\n",
+            "ocr": false,
+            "opinion_id": 2496693
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 4457,
+      "row": {
+        "id": 1921191,
+        "judges": null,
+        "date_filed": "2008-06-06",
+        "date_filed_is_approximate": false,
+        "slug": "state-v-scott",
+        "case_name_short": "Scott",
+        "case_name": "State v. Scott",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 1,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "983 So. 2d 926"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n983 So. 2d 926 (2008)\nSTATE of Louisiana\nv.\nKareem SCOTT.\nNo. 2008-KK-1068.\nSupreme Court of Louisiana.\nJune 6, 2008.\nIn re State of Louisiana;  Plaintiff; Applying for Supervisory, and/or Remedial Writs, Parish of Orleans, Criminal District Court Div. L, No. 471-408; to the Court of Appeal, Fourth Circuit, No. 2008-K-0458.\nDenied.\n",
+            "ocr": false,
+            "opinion_id": 1921191
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 4605,
+      "row": {
+        "id": 1587371,
+        "judges": "Johnson, Weimer",
+        "date_filed": "2010-02-06",
+        "date_filed_is_approximate": false,
+        "slug": "state-v-anderson",
+        "case_name_short": "Anderson",
+        "case_name": "State v. Anderson",
+        "case_name_full": "STATE of Louisiana, v. Michael ANDERSON",
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": "<parties id=\"b930-9\">\n    STATE of Louisiana, v. Michael ANDERSON.\n   </parties><docketnumber id=\"Agnh\">\n    No. 2010-KK-292.\n   </docketnumber><br><court id=\"b930-12\">\n    Supreme Court of Louisiana.\n   </court><br><decisiondate id=\"b930-13\">\n    Feb. 6, 2010.\n   </decisiondate>",
+        "citations": [
+          "33 So. 3d 882"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "020lead",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nIn re Anderson, Michael; — defendant; Applying for Supervisory and/or Remedial Writs, Parish of Orleans, Criminal District Court Div. B, No. 472-217; to the Court of Appeal, Fourth Circuit, No. 2010-K-0170.\nStay denied; writ denied.\nJOHNSON, J., would grant the stay and writ, and assigns reasons.\n",
+            "ocr": false,
+            "opinion_id": 9656625
+          },
+          {
+            "author_str": "Weimer",
+            "per_curiam": false,
+            "type": "030concurrence",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\nWEIMER, J.,\nconcurs in part and dissents in part. I concur in the denial of the requested stay, but dissent from the denial of the defendant’s writ application. I would grant that application and order the trial court to conduct an in camera inspection to determine if there is additional undisclosed Brady material in the District Attorney’s file.\nJOHNSON, J. would grant the writ application for the following reasons.\nGiven the serious nature of both the alleged misconduct of the State and the gravity of the sentence imposed, I would grant the defendant’s writ application, and order the trial court to conduct an in camera inspection of the District Attorney’s file to determine whether it contains additional undisclosed Brady1 material.\nClearly, there is no “work product” exception for Brady material in either federal or state law. The accused has a constitutional right to exculpatory material that supersedes state legislative statutory privilege. Considering the recently disclosed evidence of the sole eyewitness’ visual impairments, I would grant a stay to allow the defendant his right to compulsory process in order to develop his claims in support of his motion for New Trial. Where a “witness may labor under a deficiency,” the defense should be afforded some latitude” in exploring the deficiency in order to satisfy the Sixth Amendment.2\n\n. Brady v. Maryland, 373 U.S. 83, 83 S.Ct. 1194, 10 L.Ed.2d 215 (1963).\n\n\n. State v. Robinson, 817 So.2d 1131, 1137 (La.2002).\n\n",
+            "ocr": false,
+            "opinion_id": 9656626
+          },
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": 4583,
+            "opinion_text": "\n33 So.3d 882 (2010)\nSTATE of Louisiana,\nv.\nMichael ANDERSON.\nNo. 2010-KK-292.\nSupreme Court of Louisiana.\nFebruary 6, 2010.\nStay denied; writ denied.\nJOHNSON, J., would grant the stay and writ, and assigns reasons.\nWEIMER, J., concurs in part and dissents in part.\nI concur in the denial of the requested stay, but dissent from the denial of the defendant's writ application. I would grant that application and order the trial court to conduct an in camera inspection to determine if there is additional undisclosed Brady material in the District Attorney's file.\nJOHNSON, J. would grant the writ application for the following reasons.\nGiven the serious nature of both the alleged misconduct of the State and the gravity of the sentence imposed, I would grant the defendant's writ application, and order the trial court to conduct an in camera inspection of the District Attorney's file to determine whether it contains additional undisclosed Brady[1] material.\nClearly, there is no \"work product\" exception for Brady material in either federal or state law. The accused has a constitutional right to exculpatory material that supersedes state legislative statutory privilege. Considering the recently disclosed evidence of the sole eyewitness' visual impairments, I would grant a stay to allow the defendant his right to compulsory process in order to develop his claims in support of his motion for New Trial. Where a \"witness may labor under a deficiency,\" the defense should be afforded some latitude\" in exploring the deficiency in order to satisfy the Sixth Amendment.[2]\nNOTES\n[1]  Brady v. Maryland, 373 U.S. 83, 83 S.Ct. 1194, 10 L.Ed.2d 215 (1963).\n[2]  State v. Robinson, 817 So.2d 1131, 1137 (La.2002).\n\n",
+            "ocr": false,
+            "opinion_id": 1587371
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 5076,
+      "row": {
+        "id": 1837116,
+        "judges": null,
+        "date_filed": "2003-05-02",
+        "date_filed_is_approximate": false,
+        "slug": "state-v-perez",
+        "case_name_short": "Perez",
+        "case_name": "State v. Perez",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "842 So. 2d 1100"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n842 So.2d 1100 (2003)\nSTATE of Louisiana\nv.\nJose PEREZ.\nNo. 2003-K-0221.\nSupreme Court of Louisiana.\nMay 2, 2003.\nDenied.\n",
+            "ocr": false,
+            "opinion_id": 1837116
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 6578,
+      "row": {
+        "id": 1699129,
+        "judges": "Victory",
+        "date_filed": "2004-10-29",
+        "date_filed_is_approximate": false,
+        "slug": "duong-v-salas",
+        "case_name_short": "Duong",
+        "case_name": "Duong v. Salas",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 2,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "885 So. 2d 590"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": 4601,
+            "opinion_text": "\n885 So.2d 590 (2004)\nCong DUONG and Yen Nguyen\nv.\nCarolina SALAS, Allstate Insurance Company and U.S. Agencies Casualty Insurance Company.\nNo. 2004-C-1840.\nSupreme Court of Louisiana.\nOctober 29, 2004.\nDenied.\nVICTORY, J., would grant the writ.\n",
+            "ocr": false,
+            "opinion_id": 1699129
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 6684,
+      "row": {
+        "id": 1636129,
+        "judges": null,
+        "date_filed": "2010-02-12",
+        "date_filed_is_approximate": false,
+        "slug": "infirmary-v-american-maritime-officer",
+        "case_name_short": "Infirmary",
+        "case_name": "Infirmary v. American Maritime Officer",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 1,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "27 So. 3d 857"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n27 So. 3d 857 (2010)\nTOURO INFIRMARY\nv.\nAMERICAN MARITIME OFFICER, Amerihealth Administrators, Amerihealth New Jersey, Benefit Planners Limited, L.L.P., Brokerage Concepts Inc./Universal Health, Coresource Inc./Susquehanna Health, Coresource Inc./Formosa Plastics, Golden Rule Insurance Company, et al.\nNo. 2009-C-2661.\nSupreme Court of Louisiana.\nFebruary 12, 2010.\nDenied.\n",
+            "ocr": false,
+            "opinion_id": 1636129
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 11990,
+      "row": {
+        "id": 1091205,
+        "judges": "Victory",
+        "date_filed": "2005-12-12",
+        "date_filed_is_approximate": false,
+        "slug": "lane-v-kennan",
+        "case_name_short": "Lane",
+        "case_name": "Lane v. Kennan",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "917 So. 2d 1084"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": 4601,
+            "opinion_text": "\n917 So.2d 1084 (2005)\nHerman LANE\nv.\nMargaret KENNAN, State Farm Insurance Agency, and Their XYZ Insurance Carrier.\nNo. 2005-C-1417.\nSupreme Court of Louisiana.\nDecember 12, 2005.\n*1085 In re Kennan, Margaret et al.; State Farm Insurance Agency;  Defendant(s); Applying for Writ of Certiorari and/or Review, Parish of Orleans, Civil District Court Div. N N, No. 2004-01194; to the Court of Appeal, Fourth Circuit, No. 2004-CA-2118.\nDenied.\nVICTORY, J., would grant.\nTRAYLOR, J., would grant.\n",
+            "ocr": false,
+            "opinion_id": 1091205
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 13072,
+      "row": {
+        "id": 1788292,
+        "judges": null,
+        "date_filed": "2006-01-09",
+        "date_filed_is_approximate": false,
+        "slug": "iwamoto-v-wilcox",
+        "case_name_short": "Iwamoto",
+        "case_name": "Iwamoto v. Wilcox",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 1,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "918 So. 2d 1050"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n918 So. 2d 1050 (2006)\nDean IWAMOTO\nv.\nJames M. WILCOX, et al.\nNo. 2005-C-1624.\nSupreme Court of Louisiana.\nJanuary 9, 2006.\nIn re Wilcox, James M. et al.; Cournyea, Trudy Estate of; Wilcox Poultry Farm; Buckwheat Game Farm;Defendant(s); Applying for Writ of Certiorari and/or Review, Parish of St. Landry, 27th Judicial District Court Div. B, No. 01-C-4387; to the Court of Appeal, Third Circuit, No. 04-1592.\nDenied.\n",
+            "ocr": false,
+            "opinion_id": 1788292
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 14323,
+      "row": {
+        "id": 1648471,
+        "judges": "Per Curiam",
+        "date_filed": "2001-01-05",
+        "date_filed_is_approximate": false,
+        "slug": "sallinger-v-robichaux",
+        "case_name_short": "Sallinger",
+        "case_name": "Sallinger v. Robichaux",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 3,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "775 So. 2d 437"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": true,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n775 So.2d 437 (2001)\nMichael SALLINGER\nv.\nGlenn ROBICHAUX, d/b/a Robichaux Quick Stop, et al.\nNo. 00-C-2269.\nSupreme Court of Louisiana.\nJanuary 5, 2001.\nPER CURIAM.\nGranted in part, otherwise denied. The Court of Appeal concluded that it was legal error for the jury to award the plaintiff special damages for medical expenses yet decline to make any award for general damages. Because it had found legal error, the Court of Appeal then conducted a de novo review of the record and determined that the plaintiff was entitled to general damages of $65,000.00. This de novo review by the Court of Appeal was improper. Our recent decision in Wainwright v. Fontenot, 774 So.2d 70 (La.2000), makes it clear that it is not necessarily legal error for a jury to award medical expenses without awarding general damages for pain and suffering. Rather, a Court of Appeal faced with such a verdict must review the jury's factual findings as to damages under the normal manifest error standard. Coco v. Winston Industries, Inc., 341 So.2d 332 (La.1976).\nBecause the Court of Appeal conducted its review of damages de novo rather than under the proper abuse of discretion standard, we vacate the award of $65,000.00 in general damages and remand the case to the Court of Appeal. In so doing, we make no comment as to the jury's determination of damages. We rather direct the court below to review the jury's verdict under the appropriate abuse of discretion standard as dictated by Wainwright. Accordingly, the Court of Appeal's award of damages is VACATED, and the case is REMANDED to the Court of Appeal for it to review the jury's verdict under an abuse of discretion standard.\n",
+            "ocr": false,
+            "opinion_id": 1648471
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    },
+    {
+      "row_idx": 20314,
+      "row": {
+        "id": 1575081,
+        "judges": null,
+        "date_filed": "2009-08-12",
+        "date_filed_is_approximate": false,
+        "slug": "state-ex-rel-smith-v-state",
+        "case_name_short": null,
+        "case_name": "STATE EX REL. SMITH v. State",
+        "case_name_full": null,
+        "attorneys": null,
+        "nature_of_suit": null,
+        "posture": null,
+        "syllabus": null,
+        "headnotes": null,
+        "summary": null,
+        "disposition": null,
+        "history": null,
+        "other_dates": null,
+        "cross_reference": null,
+        "correction": null,
+        "citation_count": 0,
+        "precedential_status": "Published",
+        "arguments": null,
+        "headmatter": null,
+        "citations": [
+          "17 So. 3d 379"
+        ],
+        "opinions": [
+          {
+            "author_str": null,
+            "per_curiam": false,
+            "type": "010combined",
+            "page_count": null,
+            "download_url": null,
+            "author_id": null,
+            "opinion_text": "\n17 So. 3d 379 (2009)\nSTATE ex rel. Willie Lee SMITH\nv.\nSTATE of Louisiana.\nNo. 2008-KH-2388.\nSupreme Court of Louisiana.\nAugust 12, 2009.\nDenied.\n",
+            "ocr": false,
+            "opinion_id": 1575081
+          }
+        ],
+        "court_short_name": "Supreme Court of Louisiana",
+        "court_full_name": "Supreme Court of Louisiana",
+        "court_type": "S",
+        "court_jurisdiction": "Louisiana, LA"
+      },
+      "truncated_cells": []
+    }
+  ],
+  "num_rows_total": 3333,
+  "num_rows_per_page": 100,
+  "partial": true
+}
