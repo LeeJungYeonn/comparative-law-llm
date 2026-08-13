@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import urllib.request
 from collections import Counter, defaultdict
@@ -18,6 +19,8 @@ def parser() -> argparse.ArgumentParser:
     result.add_argument("--start-date", default=DATE_START)
     result.add_argument("--end-date", default=DATE_END)
     result.add_argument("--output-dir", type=Path, default=Path("outputs_v2"))
+    result.add_argument("--preserve-states-from", type=Path, help="Keep a previously frozen five-state set if every state remains viable after the full audit.")
+    result.add_argument("--reuse-complete-audit", type=Path, help="Reuse a previously generated complete revised-taxonomy audit CSV without rescanning remote shards.")
     result.add_argument("--page-size", type=int, default=20)
     result.add_argument("--min-opinion-chars", type=int, default=1200)
     result.add_argument("--source-mode", choices=("parquet", "datasets-server"), default="parquet")
@@ -75,11 +78,10 @@ def parquet_audit(start_date: str, end_date: str) -> tuple[list[dict[str, Any]],
           WHERE court_type = 'S' AND date_filed BETWEEN DATE '{start_date}' AND DATE '{end_date}'
         ), tagged AS (
           SELECT *,
-            regexp_matches(search_text, 'neglig|injur|death|malpractice|professional|product|defect|warn|vicarious|respondeat|supervis|damage|liability|tort') AS civil,
+            regexp_matches(search_text, 'neglig|injur|death|malpractice|professional|product|defect|warn|vicarious|respondeat|supervis|damage|liability|tort|premises|defamation|privacy|nuisance|conversion') AS civil,
             CASE
               WHEN regexp_matches(search_text, 'malpractice|medical|physician|hospital|professional neglig') THEN 'medical_professional_liability'
               WHEN regexp_matches(search_text, 'product|defect|failure to warn') THEN 'product_liability'
-              WHEN regexp_matches(search_text, 'vicarious|respondeat|supervis|scope of employment') THEN 'employer_supervisory_vicarious_liability'
               WHEN regexp_matches(search_text, 'neglig|injur|death|premises|damage|tort') THEN 'general_negligence_personal_injury'
               ELSE 'other_civil_liability' END AS domain
           FROM base
@@ -90,7 +92,8 @@ def parquet_audit(start_date: str, end_date: str) -> tuple[list[dict[str, Any]],
           count(*) FILTER (WHERE civil AND domain='general_negligence_personal_injury') AS general_negligence_count,
           count(*) FILTER (WHERE civil AND domain='medical_professional_liability') AS medical_professional_count,
           count(*) FILTER (WHERE civil AND domain='product_liability') AS product_liability_count,
-          count(*) FILTER (WHERE civil AND domain='employer_supervisory_vicarious_liability') AS employer_supervision_count,
+          count(*) FILTER (WHERE civil AND domain='other_civil_liability') AS other_civil_liability_count,
+          count(*) FILTER (WHERE civil AND regexp_matches(search_text, 'vicarious|respondeat|supervis|scope of employment')) AS employer_supervision_tag_count,
           count(*) FILTER (WHERE publication LIKE '%published%' AND publication NOT LIKE '%unpublished%') AS published_count
         FROM tagged GROUP BY court_jurisdiction ORDER BY court_jurisdiction
     """
@@ -106,7 +109,7 @@ def parquet_audit(start_date: str, end_date: str) -> tuple[list[dict[str, Any]],
         row.update({key: int(raw[key]) for key in columns if key != "court_jurisdiction"})
         row["usable_full_text_count"] = 0
         row["usable_full_text_count_method"] = "deferred_to_candidate_collection; metadata audit does not download nested opinion text"
-        row["domain_coverage_count"] = sum(row[key] > 0 for key in ("general_negligence_count", "medical_professional_count", "product_liability_count", "employer_supervision_count"))
+        row["domain_coverage_count"] = sum(row[key] > 0 for key in ("general_negligence_count", "medical_professional_count", "product_liability_count", "other_civil_liability_count"))
         row["selection_score"] = row["civil_liability_candidate_count"] + row["published_count"] // 10 + row["domain_coverage_count"] * 25
         rows.append(row)
     return rows, revision, sum(row["total_state_supreme_cases"] for row in rows)
@@ -120,7 +123,24 @@ def main(argv: list[str] | None = None) -> int:
     if args.resume and audit_path.exists() and selection_path.exists():
         print(f"resume: frozen state selection retained at {selection_path}")
         return 0
-    if args.source_mode == "parquet":
+    if args.reuse_complete_audit:
+        with args.reuse_complete_audit.open(encoding="utf-8-sig", newline="") as handle:
+            audit_rows = list(csv.DictReader(handle))
+        numeric_fields = {
+            "total_state_supreme_cases", "civil_liability_candidate_count", "general_negligence_count",
+            "medical_professional_count", "product_liability_count", "other_civil_liability_count",
+            "employer_supervision_tag_count", "published_count", "usable_full_text_count",
+            "domain_coverage_count", "selection_score",
+        }
+        for row in audit_rows:
+            for key in numeric_fields:
+                if key in row and row[key] != "":
+                    row[key] = int(row[key])
+        prior = json.loads(args.preserve_states_from.read_text(encoding="utf-8")) if args.preserve_states_from else {}
+        revision = prior.get("source_revision", "complete-audit-revision-unresolved")
+        scanned = sum(int(row["total_state_supreme_cases"]) for row in audit_rows)
+        partial_seen = False
+    elif args.source_mode == "parquet":
         if args.limit:
             raise ValueError("--limit is available only with --source-mode datasets-server")
         audit_rows, revision, scanned = parquet_audit(args.start_date, args.end_date)
@@ -159,7 +179,7 @@ def main(argv: list[str] | None = None) -> int:
             "general_negligence_count": "general_negligence_personal_injury",
             "medical_professional_count": "medical_professional_liability",
             "product_liability_count": "product_liability",
-            "employer_supervision_count": "employer_supervisory_vicarious_liability",
+            "other_civil_liability_count": "other_civil_liability",
         }
         for state, bucket in metrics.items():
             row: dict[str, Any] = {"state": state, "region": REGION.get(state, "Unknown")}
@@ -170,6 +190,21 @@ def main(argv: list[str] | None = None) -> int:
             row["selection_score"] = row["usable_full_text_count"] * 3 + row["civil_liability_candidate_count"] + row["domain_coverage_count"] * 25
             audit_rows.append(row)
     selected, rule = choose_states(audit_rows)
+    if args.preserve_states_from:
+        frozen_payload = json.loads(args.preserve_states_from.read_text(encoding="utf-8"))
+        frozen_names = [entry["state"] for entry in frozen_payload.get("selected_states", [])]
+        by_state = {row["state"]: row for row in audit_rows}
+        preserved = [by_state[state] for state in frozen_names if state in by_state]
+        viable = all(
+            row["civil_liability_candidate_count"] >= 30
+            and row["published_count"] >= 25
+            and row["domain_coverage_count"] >= 3
+            for row in preserved
+        )
+        if len(preserved) != 5 or not viable:
+            raise RuntimeError("Previously frozen states are not all viable under the complete revised audit; inspect evidence before changing them")
+        selected = preserved
+        rule = "preserved previously frozen five-state set after complete revised-taxonomy audit confirmed >=30 liability candidates, >=25 published records, and >=3 primary domains for every state"
     if args.source_mode != "parquet":
         revision = "unresolved"
         try:
@@ -180,8 +215,8 @@ def main(argv: list[str] | None = None) -> int:
     payload = {
         "collection_version": VERSION, "source_dataset": "harvard-lil/cold-cases", "source_config": "default",
         "source_revision": revision, "date_window": [args.start_date, args.end_date], "court_type_required": "S",
-        "selection_rule": rule, "audit_source_mode": args.source_mode, "partial_audit": bool(args.limit) or partial_seen, "source_rows_scanned": scanned,
-        "selected_states": [{key: row[key] for key in ("state", "region", "primary_court_jurisdiction", "selection_score", "total_state_supreme_cases", "civil_liability_candidate_count", "usable_full_text_count", "general_negligence_count", "medical_professional_count", "product_liability_count", "employer_supervision_count")} for row in selected],
+        "selection_rule": rule, "audit_source_mode": "reused-complete-parquet-audit" if args.reuse_complete_audit else args.source_mode, "partial_audit": bool(args.limit) or partial_seen, "source_rows_scanned": scanned,
+        "selected_states": [{key: row[key] for key in ("state", "region", "primary_court_jurisdiction", "selection_score", "total_state_supreme_cases", "civil_liability_candidate_count", "usable_full_text_count", "general_negligence_count", "medical_professional_count", "product_liability_count", "other_civil_liability_count")} for row in selected],
     }
     print(json.dumps(payload, ensure_ascii=False, indent=2))
     if not args.dry_run:

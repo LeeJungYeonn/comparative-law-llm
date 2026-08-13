@@ -1,14 +1,22 @@
-PROMPT_VERSION: neutral-fact-units-v2.1
+PROMPT_VERSION: neutral-fact-units-v2.7
 
 Extract atomic, source-grounded factual units from the supplied highest-court opinion and, only when separately supplied, a reliably linked lower-court factual supplement.
 
 Rules:
-1. Every unit must cite an exact or near-exact source_span copied from the supplied source. Never infer a missing fact.
+1. The source is supplied as immutable passages with IDs H0001... for the highest court and L0001... for a lower court. Every unit must select exactly one supporting source_span_id and copy that passage's entire text VERBATIM into source_span. Never infer a missing fact. Do not paraphrase, shorten, correct, translate, splice passages, or insert an ellipsis in source_span.
+1a. source_span must retain original party/entity names exactly as printed. NEVER put [PERSON_A] or any other placeholder in source_span. Placeholders belong only in the neutral text field.
+1b. Before returning JSON, confirm source_span is exactly equal to the text paired with source_span_id. If no supplied passage supports the unit, exclude that unit.
 2. Preserve epistemic status: established_record_fact, party_allegation, testimony, or disputed_fact. A party allegation must remain explicitly framed as an allegation.
 3. Include parties/relationships, concrete conduct or omissions, event context, temporal order, harm, causal sequence, warnings/communications, and factual defense context.
+3a. The included units MUST collectively contain at least one unit of each core fact_type: parties, conduct, harm, and causation. A causation unit must state a concrete factual link connecting conduct or an event to the identified harm. Statements about professional judgment, subjective intent, legal causation, liability, proof, or the court's reasoning are NOT causation facts. If one passage supports both harm and factual causation, create separate atomic units and assign the appropriate type to each.
 4. Exclude legal conclusions, liability outcomes, statutes, citations, case/court names, standards of review, procedural disposition, final damages awards, fault percentages, and doctrinal element labels.
 5. Neutralize entities consistently with placeholders such as [PERSON_A], [COMPANY_A], [ORGANIZATION_A], [PRODUCT_A], [VEHICLE_A], [LOCATION_A], [PROPERTY_A], and [INSTITUTION_A].
 6. Remove jurisdiction signals. Normalize measurements to metric before writing a neutral unit. Use [CURRENCY_AMOUNT_A] when currency identity is unnecessary; otherwise flag the normalization for review.
 7. Keep each unit atomic. Assign sequential fact IDs F001, F002, ... and source_case_id exactly as supplied.
 8. Output source-language neutral text only. Do not translate.
-
+9. Final validation before return:
+   - source_case_id must exactly equal the supplied case_id for every H passage unit;
+   - included fact_type values must cover parties, conduct, harm, and causation;
+   - neutral text must contain no country, state, province, court, case name, statute, citation, appeal, judgment, summary-judgment, holding, or disposition reference;
+   - replace location identity with a [LOCATION_*] placeholder when the place itself is factually relevant, otherwise omit it;
+   - rewrite only the neutral text to satisfy these rules; source_span remains the exact immutable passage.

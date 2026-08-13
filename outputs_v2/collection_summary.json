@@ -1,36 +1,91 @@
 {
   "collection_version": "kr-us-highcourt-corpus-v2.0",
-  "status": "shortfall",
+  "status": "complete",
   "seed": 20260810,
   "eligible_pool": {
-    "KR": 0,
-    "US": 0
+    "KR": 100,
+    "US": 100
   },
   "allocation_report": {
-    "kr_available": {},
-    "us_available": {},
+    "kr_available": {
+      "medical_professional_liability": 28,
+      "other_civil_liability": 5,
+      "general_negligence_personal_injury": 55,
+      "product_liability": 12
+    },
+    "us_available": {
+      "medical_professional_liability": 28,
+      "general_negligence_personal_injury": 55,
+      "product_liability": 12,
+      "other_civil_liability": 5
+    },
+    "us_available_by_state_domain": {
+      "Pennsylvania": {
+        "general_negligence_personal_injury": 12,
+        "medical_professional_liability": 13,
+        "product_liability": 0,
+        "other_civil_liability": 2
+      },
+      "Michigan": {
+        "general_negligence_personal_injury": 7,
+        "medical_professional_liability": 15,
+        "product_liability": 2,
+        "other_civil_liability": 0
+      },
+      "Louisiana": {
+        "general_negligence_personal_injury": 16,
+        "medical_professional_liability": 0,
+        "product_liability": 3,
+        "other_civil_liability": 0
+      },
+      "Nevada": {
+        "general_negligence_personal_injury": 10,
+        "medical_professional_liability": 0,
+        "product_liability": 4,
+        "other_civil_liability": 2
+      },
+      "West Virginia": {
+        "general_negligence_personal_injury": 10,
+        "medical_professional_liability": 0,
+        "product_liability": 3,
+        "other_civil_liability": 1
+      }
+    },
     "shared_caps": {
-      "general_negligence_personal_injury": 0,
-      "medical_professional_liability": 0,
-      "product_liability": 0,
-      "employer_supervisory_vicarious_liability": 0,
-      "other_civil_liability": 0
+      "general_negligence_personal_injury": 55,
+      "medical_professional_liability": 28,
+      "product_liability": 12,
+      "other_civil_liability": 5
     },
-    "initial_target": {
-      "general_negligence_personal_injury": 40,
-      "medical_professional_liability": 20,
-      "product_liability": 20,
-      "employer_supervisory_vicarious_liability": 20,
-      "other_civil_liability": 0
+    "preference_ranges": {
+      "general_negligence_personal_injury": [
+        40,
+        55
+      ],
+      "medical_professional_liability": [
+        20,
+        30
+      ],
+      "product_liability": [
+        10,
+        25
+      ],
+      "other_civil_liability": [
+        5,
+        30
+      ]
     },
-    "revised_allocation_used": true,
-    "max_flow": 0,
+    "candidate_allocations_considered": 1,
+    "state_bounds": {
+      "minimum": 10,
+      "maximum": 30
+    },
+    "max_flow": 100,
     "allocation": {
-      "general_negligence_personal_injury": 0,
-      "medical_professional_liability": 0,
-      "product_liability": 0,
-      "employer_supervisory_vicarious_liability": 0,
-      "other_civil_liability": 0
+      "general_negligence_personal_injury": 55,
+      "medical_professional_liability": 28,
+      "product_liability": 12,
+      "other_civil_liability": 5
     }
   },
   "frozen_states": [
@@ -43,42 +98,74 @@
   "deterministic_collection": {
     "KR": {
       "collection_version": "kr-us-highcourt-corpus-v2.0",
-      "source_dataset": "lbox/lbox_open",
-      "source_config": "precedent_corpus",
-      "source_revision": "10429acf7e13d7ef2ea4187ffbd685490289a82c",
+      "source_dataset": "legalize-kr/precedent-kr",
+      "source_config": "git-markdown",
+      "source_repository": "https://github.com/legalize-kr/precedent-kr",
+      "source_revision": "d4a9982a272518e83312184c584f6a3542c9ce23",
       "date_window": [
         "2000-01-01",
         "2025-12-31"
       ],
-      "candidate_target": 300,
+      "candidate_target": 1200,
       "seed": 20260810,
       "partial_run": false,
+      "candidate_target_met": true,
       "funnel": {
-        "source_scanned": 1100,
-        "civil_liability_candidate": 300,
-        "date_court_eligible": 0,
-        "adequate_opinion_text": 259,
-        "fact_sufficient": 270,
-        "strict_source_eligible": 0
+        "source_scanned": 11807,
+        "civil_liability_candidate": 6030,
+        "date_court_eligible": 6030,
+        "adequate_opinion_text": 5834,
+        "core_fact_sufficient": 4145,
+        "fact_sufficient": 4145,
+        "preferred_fact_sufficient_5_of_7": 4145,
+        "strict_source_eligible": 1955
       },
       "court_level_counts": {
-        "unknown|low": 260,
-        "supreme|medium": 40
+        "supreme|high": 6025,
+        "supreme|low": 5
       },
-      "domain_counts": {
-        "general_negligence_personal_injury": 164,
-        "medical_professional_liability": 89,
-        "other_civil_liability": 38,
-        "employer_supervisory_vicarious_liability": 9
+      "primary_domain_counts": {
+        "other_civil_liability": 2904,
+        "general_negligence_personal_injury": 1577,
+        "medical_professional_liability": 1535,
+        "product_liability": 14
+      },
+      "strict_primary_domain_counts": {
+        "general_negligence_personal_injury": 607,
+        "medical_professional_liability": 428,
+        "other_civil_liability": 908,
+        "product_liability": 12
+      },
+      "liability_theory_counts": {
+        "premises_liability": 86,
+        "comparative_fault": 495,
+        "intentional_misconduct": 365,
+        "vicarious_liability": 158,
+        "negligent_supervision": 77,
+        "wrongful_death": 233,
+        "punitive_or_multiple_damages_salient": 4
       },
       "exclusion_counts": {
-        "not_high_confidence_supreme": 300,
-        "decision_date_unknown": 300,
-        "not_civil_liability_candidate": 125,
-        "incidental:criminal_case": 117,
-        "opinion_text_too_short": 41,
-        "fact_insufficient_before_supplementation": 30,
-        "incidental:administrative_only": 8
+        "substantive_civil_liability_not_confirmed": 3580,
+        "core_fact_insufficient_before_supplementation": 1885,
+        "contract_only": 583,
+        "insurance_only": 125,
+        "administrative_only": 140,
+        "opinion_text_too_short": 196,
+        "criminal_case": 213,
+        "not_structured_supreme_court": 5
+      },
+      "saved_candidate_pool": {
+        "count": 1200,
+        "strict_source_eligible": 960,
+        "rejected": 240,
+        "primary_domain_counts": {
+          "general_negligence_personal_injury": 540,
+          "other_civil_liability": 346,
+          "medical_professional_liability": 300,
+          "product_liability": 14
+        },
+        "selection": "deterministic 80% strict / 20% rejected with preferred primary-domain stratification and hash fill"
       }
     },
     "US": {
@@ -97,69 +184,116 @@
         "Nevada",
         "West Virginia"
       ],
-      "candidate_target": 300,
+      "candidate_target": 750,
       "partial_run": false,
       "source_mode": "parquet",
-      "parquet_shards": 3,
-      "source_filter_partial": true,
+      "parquet_shards": 0,
+      "source_filter_partial": false,
       "seed": 20260810,
       "scanned_by_state": {
-        "Louisiana": 81,
-        "Michigan": 75,
-        "Nevada": 70,
-        "Pennsylvania": 81,
-        "West Virginia": 81
+        "Louisiana": 203,
+        "Michigan": 203,
+        "Nevada": 203,
+        "Pennsylvania": 203,
+        "West Virginia": 203
       },
       "candidate_by_state": {
-        "Louisiana": 78,
-        "Michigan": 72,
-        "Nevada": 70,
-        "Pennsylvania": 77,
-        "West Virginia": 80
+        "Louisiana": 132,
+        "Michigan": 125,
+        "Nevada": 128,
+        "Pennsylvania": 92,
+        "West Virginia": 115
       },
       "funnel": {
-        "source_scanned": 388,
-        "civil_liability_candidate": 377,
-        "date_court_eligible": 377,
-        "adequate_opinion_text": 359,
-        "fact_sufficient": 258,
-        "strict_source_eligible": 211
+        "source_scanned": 1015,
+        "civil_liability_candidate": 592,
+        "date_court_eligible": 592,
+        "adequate_opinion_text": 575,
+        "core_fact_sufficient": 376,
+        "fact_sufficient": 376,
+        "preferred_fact_sufficient_5_of_7": 376,
+        "strict_source_eligible": 164
       },
-      "domain_counts": {
-        "medical_professional_liability": 138,
-        "general_negligence_personal_injury": 190,
-        "employer_supervisory_vicarious_liability": 16,
-        "product_liability": 21,
-        "other_civil_liability": 12
+      "primary_domain_counts": {
+        "general_negligence_personal_injury": 309,
+        "product_liability": 29,
+        "other_civil_liability": 64,
+        "medical_professional_liability": 190
+      },
+      "strict_primary_domain_counts": {
+        "product_liability": 14,
+        "general_negligence_personal_injury": 65,
+        "medical_professional_liability": 80,
+        "other_civil_liability": 5
+      },
+      "liability_theory_counts": {
+        "wrongful_death": 74,
+        "punitive_or_multiple_damages_salient": 42,
+        "intentional_misconduct": 32,
+        "respondeat_superior": 17,
+        "vicarious_liability": 40,
+        "comparative_fault": 47,
+        "premises_liability": 16,
+        "negligent_supervision": 13
       },
       "exclusion_counts": {
-        "fact_insufficient_before_supplementation": 119,
-        "not_civil_liability_candidate": 59,
-        "criminal_case": 50,
-        "no_usable_controlling_opinion": 18,
-        "insurance_only": 4,
-        "administrative_only": 9,
-        "contract_only": 4
+        "substantive_civil_liability_not_confirmed": 305,
+        "core_fact_insufficient_before_supplementation": 216,
+        "not_civil_liability_candidate": 85,
+        "criminal_case": 79,
+        "contract_only": 2,
+        "no_usable_controlling_opinion": 17,
+        "administrative_only": 6
       }
     }
   },
-  "shortfall": {
+  "final_counts": {
     "KR": 100,
-    "US": 100,
-    "matched_state_domain_flow_shortfall": 100
+    "US": 100
+  },
+  "state_counts": {
+    "Pennsylvania": 27,
+    "Michigan": 24,
+    "Louisiana": 19,
+    "Nevada": 16,
+    "West Virginia": 14
+  },
+  "primary_domain_counts": {
+    "KR": {
+      "general_negligence_personal_injury": 55,
+      "medical_professional_liability": 28,
+      "product_liability": 12,
+      "other_civil_liability": 5
+    },
+    "US": {
+      "general_negligence_personal_injury": 55,
+      "medical_professional_liability": 28,
+      "other_civil_liability": 5,
+      "product_liability": 12
+    }
+  },
+  "analysis_splits": {
+    "KR": {
+      "development": 20,
+      "confirmatory": 80
+    },
+    "US": {
+      "confirmatory": 80,
+      "development": 20
+    }
   },
   "sanity_checks": {
-    "len_final_KR_100": false,
-    "len_final_US_100": false,
-    "all_KR_supreme": false,
-    "all_US_court_type_S": false,
-    "all_dates_in_window": false,
-    "unique_case_id": false,
-    "unique_family_within_country": false,
-    "all_qc_pass": false,
-    "all_bilingual_nonempty": false,
-    "us_state_counts_20_each": false,
-    "matched_domain_counts": false,
-    "split_20_80_each": false
+    "len_final_KR_100": true,
+    "len_final_US_100": true,
+    "all_KR_supreme": true,
+    "all_US_court_type_S": true,
+    "all_dates_in_window": true,
+    "unique_case_id": true,
+    "unique_family_within_country": true,
+    "all_qc_pass": true,
+    "all_bilingual_nonempty": true,
+    "all_five_US_states_10_to_30": true,
+    "matched_domain_counts": true,
+    "split_20_80_each": true
   }
 }

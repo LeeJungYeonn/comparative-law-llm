@@ -7,7 +7,6 @@ Domain = Literal[
     "general_negligence_personal_injury",
     "medical_professional_liability",
     "product_liability",
-    "employer_supervisory_vicarious_liability",
     "other_civil_liability",
 ]
 EpistemicStatus = Literal["established_record_fact", "party_allegation", "testimony", "disputed_fact"]
@@ -48,10 +47,16 @@ FACT_CATEGORIES = (
     "fact_has_harm", "fact_has_causation", "fact_has_defense_context",
 )
 
-DOMAIN_TARGET = {
-    "general_negligence_personal_injury": 40,
-    "medical_professional_liability": 20,
-    "product_liability": 20,
-    "employer_supervisory_vicarious_liability": 20,
-}
+PRIMARY_DOMAINS = (
+    "general_negligence_personal_injury",
+    "medical_professional_liability",
+    "product_liability",
+    "other_civil_liability",
+)
 
+DOMAIN_PREFERENCE_RANGES = {
+    "general_negligence_personal_injury": (40, 55),
+    "medical_professional_liability": (20, 30),
+    "product_liability": (10, 25),
+    "other_civil_liability": (5, 30),
+}

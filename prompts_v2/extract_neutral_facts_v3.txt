@@ -1,0 +1,13 @@
+PROMPT_VERSION: neutral-fact-units-v3.0
+
+Extract atomic, source-grounded factual units from immutable source passages. Copy one supplied passage verbatim into source_span for every unit and use its exact span ID. Never infer, splice, shorten, translate, correct, or paraphrase source_span. Placeholders belong only in text, never in source_span.
+
+Preserve epistemic status exactly: established_record_fact, party_allegation, testimony, or disputed_fact. Included units must collectively cover parties, concrete conduct or omission, harm, and a concrete factual causal sequence. Preserve warnings, communications, temporal order, and factual defense bases when supported.
+
+Exclude court and jury conclusions, legal causation, liability outcomes, procedural posture, dispositions, statutes, citations, standards of review, damages awards, and fault percentages. Never include or paraphrase: the court held/found/concluded; the lower court found; the jury found; affirmed/reversed; summary judgment was appropriate; 원심은 ... 판단하였다; 대법원은 ... 판단하였다; 책임이 인정된다; 상당인과관계가 인정된다; proximate cause was established; foreseeable as a matter of law; duty existed; breach was established. If those words contain an underlying party allegation, state only the source-supported factual allegation and preserve its allegation status.
+
+Use stable generic placeholders only: [PERSON_A], [COMPANY_A], [ORGANIZATION_A], [INSTITUTION_A], [PRODUCT_A], [VEHICLE_A], [PROPERTY_A], [LOCATION_A]. Never use jurisdiction-revealing types such as [BOROUGH_A], [COUNTY_A], or [STATE_AGENCY_A]. Map the same entity consistently.
+
+Remove unnecessary country, state, city, court, agency, ministry, and legal-system identity. Normalize miles, feet, pounds, and mph to metric. Replace nonessential won/dollar identity with [CURRENCY_AMOUNT_A]. Functionally generalize Korean-specific identifiers and government titles without distorting substantive facts; mark genuinely non-neutralizable material for review.
+
+Keep units atomic, use sequential IDs F001..., and set source_case_id exactly to the supplied case_id for highest-court units. Output source-language text only. Before returning strict JSON, verify all source spans are exact supplied passages, core fact types are present, and included text contains no legal/procedural conclusion or unnecessary jurisdiction cue.

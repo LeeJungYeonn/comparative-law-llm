@@ -61,8 +61,8 @@ def evaluate_kr_row(row: dict[str, Any], *, start_date: str, end_date: str, min_
     exclusions.extend(f"incidental:{item}" for item in incidental_exclusions if item in {"criminal_case", "administrative_only"})
     if len(raw) < min_chars:
         exclusions.append("opinion_text_too_short")
-    if not sufficiency["factual_background_sufficient"]:
-        exclusions.append("fact_insufficient_before_supplementation")
+    if not sufficiency["core_fact_sufficient"]:
+        exclusions.append("core_fact_insufficient_before_supplementation")
     raw_hash = sha256_text(raw)
     record: dict[str, Any] = {
         "case_id": stable_id("KR", "lbox/lbox_open", source_id, raw_hash),
@@ -104,6 +104,8 @@ def evaluate_us_row(row: dict[str, Any], *, start_date: str, end_date: str, min_
     metadata_text = "\n".join(normalized_whitespace(row.get(key)) for key in ("case_name", "case_name_full", "nature_of_suit", "posture", "summary", "syllabus", "headnotes") if row.get(key))
     classification_text = f"{metadata_text}\n{main_text}"
     civil, include_evidence, incidental_exclusions = civil_liability_candidate(classification_text)
+    metadata_civil, metadata_evidence, metadata_exclusions = civil_liability_candidate(metadata_text)
+    substantive_central = metadata_civil or len(include_evidence) >= 2
     domain = classify_domain(classification_text)
     sufficiency = assess_fact_sufficiency(main_text)
     exclusions: list[str] = []
@@ -117,12 +119,18 @@ def evaluate_us_row(row: dict[str, Any], *, start_date: str, end_date: str, min_
         exclusions.append("decision_date_out_of_range")
     if not civil:
         exclusions.append("not_civil_liability_candidate")
+    elif not substantive_central:
+        exclusions.append("substantive_civil_liability_not_confirmed")
     if any(value in {"criminal_case", "administrative_only"} for value in incidental_exclusions):
         exclusions.extend(incidental_exclusions)
+    if "insurance_only" in metadata_exclusions:
+        exclusions.append("insurance_only")
+    if "contract_only" in metadata_exclusions and not metadata_civil:
+        exclusions.append("contract_only")
     if not opinion["main_opinion_usable"]:
         exclusions.append("no_usable_controlling_opinion")
-    if not sufficiency["factual_background_sufficient"]:
-        exclusions.append("fact_insufficient_before_supplementation")
+    if not sufficiency["core_fact_sufficient"]:
+        exclusions.append("core_fact_insufficient_before_supplementation")
     source_id = normalized_whitespace(row.get("id"))
     full_text = "\n\n".join(normalized_whitespace(op.get("opinion_text") or op.get("text") or op.get("ocr")) for op in (row.get("opinions") or []) if isinstance(op, dict))
     raw_hash = sha256_text(full_text)
@@ -141,7 +149,8 @@ def evaluate_us_row(row: dict[str, Any], *, start_date: str, end_date: str, min_
         "precedential_status": normalized_whitespace(row.get("precedential_status")),
         "nature_of_suit": normalized_whitespace(row.get("nature_of_suit")),
         **opinion, **domain, **sufficiency,
-        "civil_liability_evidence": include_evidence,
+        "civil_liability_evidence": include_evidence, "metadata_civil_liability_evidence": metadata_evidence,
+        "substantive_civil_liability_central": substantive_central,
         "full_opinion_text": full_text, "raw_text_sha256": raw_hash, "raw_text_chars": len(full_text),
         "strict_source_eligible": not exclusions, "exclusion_reasons": list(dict.fromkeys(exclusions)),
         "lower_court_supplemented": False, "lower_court_case_ids": [],
@@ -160,6 +169,8 @@ def collection_funnel(records: list[dict[str, Any]], scanned: int) -> dict[str, 
         "civil_liability_candidate": len(records),
         "date_court_eligible": sum(not any(reason in row["exclusion_reasons"] for reason in ("not_high_confidence_supreme", "court_type_not_S_or_federal", "decision_date_unknown", "decision_date_out_of_range")) for row in records),
         "adequate_opinion_text": sum("opinion_text_too_short" not in row["exclusion_reasons"] and "no_usable_controlling_opinion" not in row["exclusion_reasons"] for row in records),
-        "fact_sufficient": sum(row.get("factual_background_sufficient") is True for row in records),
+        "core_fact_sufficient": sum(row.get("core_fact_sufficient") is True for row in records),
+        "fact_sufficient": sum(row.get("core_fact_sufficient") is True for row in records),
+        "preferred_fact_sufficient_5_of_7": sum(row.get("preferred_fact_sufficiency") is True for row in records),
         "strict_source_eligible": sum(row.get("strict_source_eligible") is True for row in records),
     }

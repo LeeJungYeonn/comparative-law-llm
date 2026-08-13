@@ -16,17 +16,29 @@ DATE_START, DATE_END = date(2000, 1, 1), date(2025, 12, 31)
 
 DOMAIN_SIGNALS: dict[str, tuple[str, ...]] = {
     "medical_professional_liability": (
-        r"의료(?:과오|사고)|의사|병원|수술|진료|투약|간호|medical malpractice|professional negligence|physician|hospital|surgery",
+        r"손해배상\(의\)|의료(?:과오|사고)|의사|병원|수술|진료|투약|간호|medical malpractice|professional negligence|physician|hospital|surgery",
     ),
     "product_liability": (
-        r"제조물책임|제품.{0,20}(?:결함|위험)|결함.{0,20}제품|product(?:s)? liability|strict products liability|defective product|failure to warn",
-    ),
-    "employer_supervisory_vicarious_liability": (
-        r"사용자책임|피용자|업무집행|감독.{0,20}(?:과실|책임)|vicarious liability|respondeat superior|negligent (?:hiring|retention|supervision)|scope of employment",
+        r"손해배상\(제\)|제조물책임|제품.{0,20}(?:결함|위험)|결함.{0,20}제품|product(?:s)? liability|strict products liability|defective product|failure to warn",
     ),
     "general_negligence_personal_injury": (
-        r"과실|주의의무|안전배려의무|교통사고|추락|상해|사망|negligence|personal injury|wrongful death|premises liability|duty of care",
+        r"손해배상\((?:자|산)\)|과실|주의의무|안전배려의무|교통사고|추락|상해|사망|자동차|추돌|충돌|보행자|negligen(?:ce|t|tly)|personal injury|wrongful death|premises liability|duty of care",
     ),
+    "other_civil_liability": (
+        r"손해배상|불법행위|위자료|명예훼손|프라이버시|일조권|부당이득|방해|구상금|"
+        r"civil liability|civil damages|tort|defamation|privacy|nuisance|intentional infliction|conversion",
+    ),
+}
+
+SECONDARY_TAG_SIGNALS: dict[str, str] = {
+    "vicarious_liability": r"사용자책임|피용자.{0,40}업무집행|vicarious liability|scope of employment",
+    "respondeat_superior": r"respondeat superior",
+    "negligent_supervision": r"감독.{0,20}(?:과실|책임)|negligent (?:hiring|retention|supervision)",
+    "premises_liability": r"공작물.{0,30}책임|영조물|점유자.{0,30}책임|premises liability",
+    "wrongful_death": r"사망.{0,30}손해배상|유족|wrongful death",
+    "comparative_fault": r"과실상계|과실비율|비교과실|comparative (?:fault|negligence)|contributory negligence",
+    "intentional_misconduct": r"고의.{0,20}(?:불법행위|가해)|intentional (?:tort|misconduct)|willful misconduct",
+    "punitive_or_multiple_damages_salient": r"징벌적 손해배상|배액배상|punitive damages|treble damages|multiple damages",
 }
 
 CORE_LIABILITY_RE = re.compile(
@@ -163,18 +175,22 @@ def classify_domain(text: str) -> dict[str, Any]:
         for pattern in patterns:
             hits = list(re.finditer(pattern, sample, re.I))
             if hits:
-                # Specific liability domains outrank generic injury/negligence
-                # vocabulary when both describe the same case.
-                weight = 1 if domain == "general_negligence_personal_injury" else 2
+                # Medical and product signals outrank generic injury vocabulary.
+                weight = 2 if domain in {"medical_professional_liability", "product_liability"} else 1
                 scores[domain] += min(len(hits), 5) * weight
                 evidence[domain].extend(normalized_whitespace(hit.group(0)) for hit in hits[:4])
     if not scores:
         domain = "other_civil_liability"
-        return {"case_domain": domain, "case_domain_confidence": "low", "case_domain_evidence": []}
+        return {"primary_domain": domain, "case_domain": domain, "case_domain_confidence": "low", "case_domain_evidence": [], "liability_theories": [], "secondary_tags": []}
     domain, score = sorted(scores.items(), key=lambda item: (-item[1], list(DOMAIN_SIGNALS).index(item[0])))[0]
     second = scores.most_common(2)[1][1] if len(scores) > 1 else 0
     confidence = "high" if score >= 3 and score >= second + 2 else "medium" if score >= 2 else "low"
-    return {"case_domain": domain, "case_domain_confidence": confidence, "case_domain_evidence": unique(evidence[domain])[:8]}
+    tags = [tag for tag, pattern in SECONDARY_TAG_SIGNALS.items() if re.search(pattern, sample, re.I)]
+    return {
+        "primary_domain": domain, "case_domain": domain, "case_domain_confidence": confidence,
+        "case_domain_evidence": unique(evidence[domain])[:8], "liability_theories": tags,
+        "secondary_tags": tags,
+    }
 
 
 FACT_PATTERNS = {
@@ -192,7 +208,20 @@ def assess_fact_sufficiency(text: str) -> dict[str, Any]:
     sample = text[:80000]
     values = {key: any(re.search(pattern, sample, re.I) for pattern in patterns) for key, patterns in FACT_PATTERNS.items()}
     score = sum(values.values())
-    return {**values, "fact_sufficiency_score": score, "factual_background_sufficient": score >= 5 and values["fact_has_conduct"] and values["fact_has_harm"]}
+    mandatory = ("fact_has_parties", "fact_has_conduct", "fact_has_harm", "fact_has_causation")
+    missing = [key for key in mandatory if not values[key]]
+    core = not missing
+    return {
+        **values,
+        "fact_has_causal_sequence": values["fact_has_causation"],
+        "mandatory_fact_dimensions": {key: values[key] for key in mandatory},
+        "missing_mandatory_fact_dimensions": missing,
+        "core_fact_sufficient": core,
+        "fact_sufficiency_score": score,
+        "preferred_fact_sufficiency": core and score >= 5,
+        # Backward-compatible name; eligibility now means the mandatory four, not 5/7.
+        "factual_background_sufficient": core,
+    }
 
 
 def normalize_opinion_type(value: object, per_curiam: bool = False) -> str:
@@ -298,17 +327,70 @@ def source_span_grounding(source: str, span: str) -> tuple[str, int | None, int 
     return "fail", None, None
 
 
-PLACEHOLDER_RE = re.compile(r"\[(?:PERSON|COMPANY|ORGANIZATION|PRODUCT|VEHICLE|LOCATION|PROPERTY|INSTITUTION|CURRENCY_AMOUNT)_[A-Z]+\]")
-NUMBER_RE = re.compile(r"(?<![A-Za-z])[-+]?\d+(?:[.,]\d+)?")
+PLACEHOLDER_RE = re.compile(r"\[(?:PERSON|GROUP|COMPANY|ORGANIZATION|PRODUCT|VEHICLE|LOCATION|PROPERTY|INSTITUTION|CURRENCY_AMOUNT)_[A-Z]+\]")
+NUMBER_RE = re.compile(r"(?<![A-Za-z0-9.])[-+]?\d+(?:[.,]\d+)?")
 NEGATION_KO = re.compile(r"않|아니|없|못")
-NEGATION_EN = re.compile(r"\b(?:not|no|never|without|didn't|did not|couldn't|could not)\b", re.I)
+NEGATION_EN = re.compile(
+    r"\b(?:not|no|never|without|didn't|did not|couldn't|could not|stop(?:ped|ping)?|ceas(?:e|ed|ing)|"
+    r"fail(?:ed|ing)?|lack(?:ed|ing)?|omit(?:ted|ting)?|mis(?:read(?:ing)?|diagnos(?:e|ed|is)|interpret(?:ed|ation)?))\b",
+    re.I,
+)
+EN_NUMBER_WORDS = {
+    "zero": "0", "one": "1", "first": "1", "two": "2", "second": "2", "three": "3", "third": "3",
+    "four": "4", "fourth": "4", "five": "5", "fifth": "5", "six": "6", "sixth": "6",
+    "seven": "7", "seventh": "7", "eight": "8", "eighth": "8", "nine": "9", "ninth": "9",
+    "ten": "10", "tenth": "10", "eleven": "11", "eleventh": "11", "twelve": "12", "twelfth": "12",
+}
+EN_MONTHS = {
+    "January": "1", "February": "2", "March": "3", "April": "4", "May": "5", "June": "6",
+    "July": "7", "August": "8", "September": "9", "October": "10", "November": "11", "December": "12",
+}
+
+
+def numeric_concepts(text: str) -> Counter[str]:
+    """Normalize Arabic numerals, English number words, ordinals, and month names."""
+    values = list(NUMBER_RE.findall(text))
+    word_matches = re.findall(
+        r"\b(?:" + "|".join(EN_NUMBER_WORDS) + r")\b", text, re.I
+    )
+    values.extend(EN_NUMBER_WORDS[word.lower()] for word in word_matches)
+    for month, value in EN_MONTHS.items():
+        values.extend(value for _ in re.finditer(rf"\b{month}\b", text))
+    # Korean counters often spell one as 한 while English renders it as one.
+    korean_one_counter = re.compile(
+        r"한쪽|한\s+(?:방향|대|명|개|곳|차례|번)(?:에는?|으로|에서|은|을|를|이|가|의|와|과|로|만|도)?(?=\s|$|[.,])"
+    )
+    values.extend("1" for _ in korean_one_counter.finditer(text))
+    korean_counter_words = {
+        "1": r"(?<![가-힣])한\s+(?:명|개|대|곳|차례|번)(?:에는?|으로|에서|은|을|를|이|가|의|와|과|로|만|도)?(?=\s|$|[.,])",
+        "2": r"(?<![가-힣])두\s+(?:명|개|대|곳|차례|번)(?:에는?|으로|에서|은|을|를|이|가|의|와|과|로|만|도)?(?=\s|$|[.,])",
+        "3": r"(?<![가-힣])세\s+(?:명|개|대|곳|차례|번)(?:에는?|으로|에서|은|을|를|이|가|의|와|과|로|만|도)?(?=\s|$|[.,])",
+        "4": r"(?<![가-힣])네\s+(?:명|개|대|곳|차례|번)(?:에는?|으로|에서|은|을|를|이|가|의|와|과|로|만|도)?(?=\s|$|[.,])",
+    }
+    for value, pattern in korean_counter_words.items():
+        values.extend(value for _ in re.finditer(pattern, text))
+    # Avoid double-counting the legacy one-counter rule above.
+    if any(re.finditer(korean_counter_words["1"], text)):
+        legacy_ones = len(korean_one_counter.findall(text))
+        for _ in range(min(legacy_ones, values.count("1"))):
+            values.remove("1")
+    # "A and six others" denotes seven people/entities, not the number six.
+    for match in re.finditer(r"\band\s+(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\s+others\b", text, re.I):
+        other = EN_NUMBER_WORDS[match.group(1).lower()]
+        try:
+            values.remove(other)
+        except ValueError:
+            pass
+        values.append(str(int(other) + 1))
+    return Counter(values)
 
 
 def translation_equivalence_checks(source: str, translated: str, source_language: str) -> dict[str, Any]:
-    source_placeholders = Counter(PLACEHOLDER_RE.findall(source))
-    translated_placeholders = Counter(PLACEHOLDER_RE.findall(translated))
-    source_numbers = Counter(NUMBER_RE.findall(source))
-    translated_numbers = Counter(NUMBER_RE.findall(translated))
+    # Repetition can legitimately change with pronouns or possessives; entity identity may not.
+    source_placeholders = set(PLACEHOLDER_RE.findall(source))
+    translated_placeholders = set(PLACEHOLDER_RE.findall(translated))
+    source_numbers = numeric_concepts(source)
+    translated_numbers = numeric_concepts(translated)
     source_neg = len((NEGATION_KO if source_language == "ko" else NEGATION_EN).findall(source))
     translated_neg = len((NEGATION_EN if source_language == "ko" else NEGATION_KO).findall(translated))
     unit_patterns = {
@@ -318,28 +400,71 @@ def translation_equivalence_checks(source: str, translated: str, source_language
     source_units = Counter(key for key, pattern in unit_patterns.items() for _ in re.finditer(pattern, source, re.I))
     translated_units = Counter(key for key, pattern in unit_patterns.items() for _ in re.finditer(pattern, translated, re.I))
     issues = []
+    warnings = []
     if source_placeholders != translated_placeholders:
         issues.append("placeholder_mismatch")
     if source_numbers != translated_numbers:
-        issues.append("number_mismatch")
+        warnings.append("number_mismatch")
     if source_units != translated_units:
-        issues.append("unit_mismatch")
+        warnings.append("unit_mismatch")
     if bool(source_neg) != bool(translated_neg):
-        issues.append("negation_presence_mismatch")
-    return {"translation_equivalence_status": "pass" if not issues else "fail", "translation_equivalence_issues": issues}
+        warnings.append("negation_presence_mismatch")
+    return {
+        "translation_equivalence_status": "pass" if not issues else "fail",
+        "translation_equivalence_issues": issues,
+        "translation_equivalence_warnings": warnings,
+    }
 
 
 KR_LEGAL_LEAK = re.compile(r"민법\s*제?\d+조|대법원|원심판결|상고|판결|불법행위책임이 성립|책임을 인정|과실비율", re.I)
-EN_LEGAL_LEAK = re.compile(r"Cal\. Civ\. Code|Restatement|Supreme Court|Court of Appeals|held that|as a matter of law|summary judgment|\baffirmed\b|\breversed\b|\b\d+\s+[A-Z][A-Za-z.]+\s+\d+\b", re.I)
+EN_LEGAL_LEAK = re.compile(
+    r"Cal\. Civ\. Code|Restatement|Supreme Court|Court of Appeals|held that|as a matter of law|summary judgment|"
+    r"\baffirmed\b|\breversed\b|\b(?:default\s+|final\s+)?judgment\b|"
+    r"\b\d+\s+(?:U\.S\.|S\.\s?Ct\.|F\.\s?(?:2d|3d|4th)|A\.\s?(?:2d|3d)|N\.E\.\s?(?:2d|3d)|N\.W\.\s?(?:2d|3d)|S\.E\.\s?(?:2d|3d)|S\.W\.\s?(?:2d|3d)|P\.\s?(?:2d|3d))\s+\d+\b",
+    re.I,
+)
 JURISDICTION_LEAK = re.compile(
-    r"대한민국|한국|Korea|Korean|United States|U\.S\.|미국|" + "|".join(re.escape(state) for state in sorted(US_STATES, key=len, reverse=True)), re.I
+    r"대한민국|한국|미국|(?<![A-Za-z])(?:Korea|Korean|United States|U\.S\.|"
+    + "|".join(re.escape(state) for state in sorted(US_STATES, key=len, reverse=True))
+    + r")(?![A-Za-z])",
+    re.I,
 )
 STATE_ABBR_LEAK = re.compile(r"\b(?:" + "|".join(sorted(set(US_STATES.values()))) + r")\b")
+GROUP_IDENTITY = re.compile(r"\b(?:African[- ]American|American)s?\b|아프리카계\s*미국인", re.I)
+
+
+def state_abbreviation_matches(text: str) -> list[re.Match[str]]:
+    return [
+        match for match in STATE_ABBR_LEAK.finditer(text)
+        if not (
+            match.group(0) == "CT" and (
+                re.match(r"\s+(?:scan|촬영|검사)\b", text[match.end():], re.I)
+                or re.search(r"(?:brain|뇌)\s*$", text[max(0, match.start() - 12):match.start()], re.I)
+            )
+        )
+    ]
+
+
+def neutralize_jurisdiction_signals(text: str) -> tuple[str, list[str]]:
+    """Replace explicit jurisdiction identity in neutral text while preserving source spans."""
+    group_evidence = [match.group(0) for match in GROUP_IDENTITY.finditer(text)]
+    text = GROUP_IDENTITY.sub("[GROUP_A]", text)
+    abbreviation_matches = state_abbreviation_matches(text)
+    evidence = unique([
+        *group_evidence,
+        *(match.group(0) for match in JURISDICTION_LEAK.finditer(text)),
+        *(match.group(0) for match in abbreviation_matches),
+    ])
+    neutralized = text
+    for match in reversed(abbreviation_matches):
+        neutralized = neutralized[:match.start()] + "[LOCATION_JURISDICTION]" + neutralized[match.end():]
+    neutralized = JURISDICTION_LEAK.sub("[LOCATION_JURISDICTION]", neutralized)
+    return neutralized, evidence
 
 
 def leakage_checks(text: str) -> dict[str, Any]:
     legal = unique(match.group(0) for pattern in (KR_LEGAL_LEAK, EN_LEGAL_LEAK) for match in pattern.finditer(text))
-    jurisdiction = unique([*(match.group(0) for match in JURISDICTION_LEAK.finditer(text)), *(match.group(0) for match in STATE_ABBR_LEAK.finditer(text))])
+    jurisdiction = unique([*(match.group(0) for match in JURISDICTION_LEAK.finditer(text)), *(match.group(0) for match in state_abbreviation_matches(text))])
     return {
         "legal_leakage_status": "pass" if not legal else "fail",
         "legal_leakage_evidence": legal,

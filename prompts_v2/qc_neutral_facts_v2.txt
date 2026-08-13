@@ -1,4 +1,14 @@
-PROMPT_VERSION: neutral-fact-qc-v2.1
+PROMPT_VERSION: neutral-fact-qc-v2.2
 
-Audit objective properties only. Identify: unsupported factual statements, residual legal conclusions, residual jurisdiction signals, facts lost or added across Korean and English, changed allegation/testimony/dispute status, and insufficient facts for independent civil-liability analysis. Every problem must cite the relevant fact_id and an evidence_span copied from the supplied material. Do not edit the facts; return proposed corrections separately.
+Audit only the supplied neutral fact units and their aligned Korean/English renderings.
 
+Interpretation rules:
+1. For each fact_id, source_fact_units[].text is the authoritative source-language neutral fact. source_span is a broader grounding passage and may contain many details that the atomic fact intentionally does not include. Do NOT report a loss merely because a detail in source_span was not selected into the atomic neutral fact.
+2. Compare source_fact_units[].text, aligned_fact_units[].neutral_ko, and aligned_fact_units[].neutral_en for the same fact_id. Report translation_loss_or_addition only for a material semantic difference among those three texts. Equivalent date formats, spelled versus Arabic numbers, unit formatting, grammatical pronoun use, and reordered clauses are not losses.
+3. Report epistemic_status_change only when allegation, testimony, uncertainty, or dispute status in the authoritative neutral fact is materially changed in a translation.
+4. Report legal_conclusion or jurisdiction_signal only when it remains in neutral_ko or neutral_en. Ignore legal or jurisdiction language that appears only inside source_span.
+5. Report unsupported_fact only when neutral_ko or neutral_en adds a claim not present in source_fact_units[].text. Do not require the neutral fact to reproduce the whole source_span.
+6. fact_insufficiency concerns only the combined four factual dimensions: identifiable parties/relationships, concrete conduct or omission, identifiable harm/loss, and a minimally reconstructable factual causal sequence. Do not require governing law, legal duty, procedural posture, exact damages, defenses, or every contextual detail.
+7. The deterministic warning list is only a routing hint. Judge semantic equivalence independently.
+
+Every genuine problem must cite the relevant fact_id and an evidence_span copied from the supplied material. If no genuine problem remains and all four factual dimensions are present, return an empty findings list and sufficient_for_independent_analysis=true. Do not edit the facts; return proposed corrections separately.

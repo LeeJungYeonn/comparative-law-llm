@@ -1,51 +1,51 @@
-﻿state,region,primary_court_jurisdiction,total_state_supreme_cases,civil_liability_candidate_count,general_negligence_count,medical_professional_count,product_liability_count,employer_supervision_count,published_count,usable_full_text_count,usable_full_text_count_method,domain_coverage_count,selection_score
-Alabama,South,"Alabama, AL",8571,31,0,1,19,0,8571,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,2,938
-Alaska,West,"Alaska, AK",2519,26,2,4,3,0,2519,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,352
-Arizona,West,"Arizona, AZ",1185,68,0,6,4,25,1161,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,259
-Arkansas,South,"Arkansas, AR",6117,161,29,14,17,11,6117,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,872
-California,West,"California, CA",3241,24,1,0,7,5,3241,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,423
-Colorado,West,"Colorado, CO",2392,88,10,7,12,4,2392,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,427
-Connecticut,Northeast,"Connecticut, CT",8853,20,2,0,11,3,8853,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,980
-Delaware,South,"Delaware, DE",10219,78,5,3,12,4,10219,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,1199
-Florida,South,"Florida, FL",10407,44,7,11,6,0,10407,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,1159
-Georgia,South,"Georgia, GA",8306,17,0,0,7,0,8306,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,1,872
-Hawaii,West,"Hawaii, HI",4796,33,2,4,2,2,4796,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,612
-Idaho,West,"Idaho, ID",3254,248,2,13,9,1,3254,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,673
-Illinois,Midwest,"Illinois, IL",10314,52,0,0,12,2,10167,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,2,1118
-Indiana,Midwest,"Indiana, IN",8408,46,6,0,12,18,8408,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,961
-Iowa,Midwest,"Iowa, IA",4202,137,9,3,7,22,4202,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,657
-Kansas,Midwest,"Kansas, KS",5757,17,0,0,11,0,5729,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,1,614
-Kentucky,South,"Kentucky, KY",4783,28,9,2,6,0,2721,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,375
-Louisiana,South,"Louisiana, LA",66339,707,9,67,233,155,66339,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,7440
-Maine,Northeast,"Maine, ME",4175,18,0,1,6,0,4175,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,2,485
-Maryland,South,"Maryland, MD",10559,34,7,3,3,15,10559,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,1189
-Massachusetts,Northeast,"Massachusetts, MA",4794,14,0,0,4,0,4794,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,1,518
-Michigan,Midwest,"Michigan, MI",42637,154,4,5,62,7,42637,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,4517
-Minnesota,Midwest,"Minnesota, MN",3533,35,6,5,7,0,3533,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,463
-Mississippi,South,"Mississippi, MS",7781,211,74,29,19,64,7781,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,1089
-Missouri,Midwest,"Missouri, MO",1861,35,20,3,7,0,1861,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,296
-Montana,West,"Montana, MT",19089,613,0,1,7,5,10945,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,1782
-Nebraska,Midwest,"Nebraska, NE",27672,108,2,0,5,29,27672,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,2950
-Nevada,West,"Nevada, NV",16797,413,100,11,26,2,12841,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,1797
-New Hampshire,Northeast,"New Hampshire, NH",3032,14,0,1,4,0,3032,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,2,367
-New Jersey,Northeast,"New Jersey, NJ",14870,156,12,10,25,8,14870,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,1743
-New Mexico,West,"New Mexico, NM",2964,25,4,0,9,0,2943,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,2,369
-New York,Northeast,"New York, NY",22825,245,6,7,42,105,22825,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,2627
-North Carolina,South,"North Carolina, NC",23816,146,27,1,40,9,23816,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,2627
-North Dakota,Midwest,"North Dakota, ND",7066,139,44,17,20,20,7066,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,945
-Ohio,Midwest,"Ohio, OH",27325,58,0,0,27,2,27325,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,2,2840
-Oklahoma,South,"Oklahoma, OK",6036,204,61,26,65,1,6036,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,907
-Oregon,West,"Oregon, OR",13544,234,2,2,18,168,13544,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,1688
-Pennsylvania,Northeast,"Pennsylvania, PA",50959,501,17,38,139,153,50959,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,5696
-Rhode Island,Northeast,"Rhode Island, RI",3475,16,1,4,4,1,3403,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,456
-South Carolina,South,"South Carolina, SC",4192,34,4,5,17,1,4192,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,553
-South Dakota,Midwest,"South Dakota, SD",3308,53,7,2,9,4,3308,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,483
-Tennessee,South,"Tennessee, TN",1941,93,3,1,4,0,1941,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,362
-Texas,South,"Texas, TX",7844,106,7,7,61,1,7844,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,990
-Utah,West,"Utah, UT",3167,80,1,1,10,0,3167,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,471
-Vermont,Northeast,"Vermont, VT",4645,34,0,0,5,13,4495,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,2,533
-Virginia,South,"Virginia, VA",2436,61,1,0,7,42,2436,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,379
-Washington,West,"Washington, WA",11024,28,3,0,6,0,11024,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,2,1180
-West Virginia,South,"West Virginia, WV",11667,2511,2330,41,92,0,11107,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,3696
-Wisconsin,Midwest,"Wisconsin, WI",6329,133,3,9,14,6,6329,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,865
-Wyoming,West,"Wyoming, WY",3815,323,14,4,35,5,3815,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,804
+﻿state,region,primary_court_jurisdiction,total_state_supreme_cases,civil_liability_candidate_count,general_negligence_count,medical_professional_count,product_liability_count,other_civil_liability_count,employer_supervision_tag_count,published_count,usable_full_text_count,usable_full_text_count_method,domain_coverage_count,selection_score
+Alabama,South,"Alabama, AL",8571,31,0,1,19,11,0,8571,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,963
+Alaska,West,"Alaska, AK",2519,26,2,4,3,17,1,2519,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,377
+Arizona,West,"Arizona, AZ",1185,68,0,6,4,58,25,1161,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,259
+Arkansas,South,"Arkansas, AR",6117,161,29,14,17,101,12,6117,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,872
+California,West,"California, CA",3241,24,1,0,7,16,5,3241,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,423
+Colorado,West,"Colorado, CO",2392,91,11,8,12,60,4,2392,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,430
+Connecticut,Northeast,"Connecticut, CT",8853,20,2,0,11,7,3,8853,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,980
+Delaware,South,"Delaware, DE",10219,78,5,3,12,58,4,10219,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,1199
+Florida,South,"Florida, FL",10407,47,7,11,6,23,0,10407,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,1187
+Georgia,South,"Georgia, GA",8306,17,0,0,7,10,0,8306,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,2,897
+Hawaii,West,"Hawaii, HI",4796,33,2,4,2,25,2,4796,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,612
+Idaho,West,"Idaho, ID",3254,250,4,13,9,224,1,3254,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,675
+Illinois,Midwest,"Illinois, IL",10314,52,0,0,12,40,2,10167,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,2,1118
+Indiana,Midwest,"Indiana, IN",8408,46,6,0,12,28,18,8408,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,961
+Iowa,Midwest,"Iowa, IA",4202,137,9,3,7,118,22,4202,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,657
+Kansas,Midwest,"Kansas, KS",5757,17,0,0,11,6,0,5729,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,2,639
+Kentucky,South,"Kentucky, KY",4783,29,9,2,6,12,0,2721,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,401
+Louisiana,South,"Louisiana, LA",66339,708,10,67,233,398,175,66339,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,7441
+Maine,Northeast,"Maine, ME",4175,18,0,1,6,11,0,4175,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,510
+Maryland,South,"Maryland, MD",10559,35,7,3,3,22,15,10559,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,1190
+Massachusetts,Northeast,"Massachusetts, MA",4794,14,0,0,4,10,0,4794,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,2,543
+Michigan,Midwest,"Michigan, MI",42637,154,4,5,62,83,7,42637,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,4517
+Minnesota,Midwest,"Minnesota, MN",3533,35,6,5,7,17,0,3533,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,488
+Mississippi,South,"Mississippi, MS",7781,211,74,29,19,89,66,7781,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,1089
+Missouri,Midwest,"Missouri, MO",1861,35,20,3,7,5,0,1861,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,321
+Montana,West,"Montana, MT",19089,614,1,1,7,605,5,10945,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,1808
+Nebraska,Midwest,"Nebraska, NE",27672,108,2,0,5,101,29,27672,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,2950
+Nevada,West,"Nevada, NV",16797,413,100,11,26,276,2,12841,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,1797
+New Hampshire,Northeast,"New Hampshire, NH",3032,14,0,1,4,9,0,3032,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,392
+New Jersey,Northeast,"New Jersey, NJ",14870,156,12,10,25,109,8,14870,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,1743
+New Mexico,West,"New Mexico, NM",2964,25,4,0,9,12,0,2943,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,394
+New York,Northeast,"New York, NY",22825,246,6,7,42,191,105,22825,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,2628
+North Carolina,South,"North Carolina, NC",23816,146,27,1,40,78,9,23816,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,2627
+North Dakota,Midwest,"North Dakota, ND",7066,140,45,17,20,58,21,7066,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,946
+Ohio,Midwest,"Ohio, OH",27325,58,0,0,27,31,2,27325,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,2,2840
+Oklahoma,South,"Oklahoma, OK",6036,204,61,26,65,52,20,6036,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,907
+Oregon,West,"Oregon, OR",13544,235,3,2,18,212,168,13544,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,1689
+Pennsylvania,Northeast,"Pennsylvania, PA",50959,502,18,38,139,307,153,50959,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,5697
+Rhode Island,Northeast,"Rhode Island, RI",3475,17,1,4,4,8,1,3403,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,457
+South Carolina,South,"South Carolina, SC",4192,35,4,5,17,9,1,4192,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,554
+South Dakota,Midwest,"South Dakota, SD",3308,59,12,2,9,36,4,3308,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,489
+Tennessee,South,"Tennessee, TN",1941,94,3,1,4,86,0,1941,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,388
+Texas,South,"Texas, TX",7844,109,7,7,61,34,1,7844,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,993
+Utah,West,"Utah, UT",3167,80,1,1,10,68,0,3167,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,496
+Vermont,Northeast,"Vermont, VT",4645,34,0,0,5,29,13,4495,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,2,533
+Virginia,South,"Virginia, VA",2436,61,1,0,7,53,42,2436,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,379
+Washington,West,"Washington, WA",11024,28,3,0,6,19,0,11024,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,3,1205
+West Virginia,South,"West Virginia, WV",11667,2513,2332,41,92,48,0,11107,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,3723
+Wisconsin,Midwest,"Wisconsin, WI",6329,134,3,9,14,108,6,6329,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,866
+Wyoming,West,"Wyoming, WY",3815,323,14,4,35,270,5,3815,0,deferred_to_candidate_collection; metadata audit does not download nested opinion text,4,804

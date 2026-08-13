@@ -67,7 +67,8 @@ def main(argv: list[str] | None = None) -> int:
     qc_rows = []
     enriched = []
     for row in high:
-        need = not row.get("factual_background_sufficient")
+        # Lower-court text is a rescue path only when a mandatory core dimension is missing.
+        need = not row.get("core_fact_sufficient", row.get("factual_background_sufficient", False))
         cited = cited_identifiers(row)
         matches = []
         evidence = []
@@ -82,7 +83,8 @@ def main(argv: list[str] | None = None) -> int:
         lower_text = selected[0].get("main_opinion_text") or selected[0].get("full_opinion_text") or "" if selected else ""
         combined_facts = assess_fact_sufficiency(f"{row.get('main_opinion_text', '')}\n{lower_text}") if supplemented else assess_fact_sufficiency(row.get("main_opinion_text", ""))
         status = "not_needed" if not need else "supplemented" if supplemented else "not_found"
-        family_id = stable_id("FAM", row["case_id"], *(match["case_id"] for match in selected), length=16)
+        # Preserve the collector's citation/case-number family key so linkage does not erase deduplication.
+        family_id = row.get("case_family_id") or stable_id("FAM", row["case_id"], length=16)
         updated = dict(row)
         updated.update({
             "case_family_id": family_id, "highest_court_case_id": row["case_id"],
@@ -90,12 +92,15 @@ def main(argv: list[str] | None = None) -> int:
             "lower_court_supplementation_status": status, "lower_court_link_confidence": "high" if supplemented else "none",
             "lower_court_link_evidence": evidence, "lower_court_fact_text": lower_text if supplemented else "",
             "fact_sufficiency_after_supplementation": combined_facts["fact_sufficiency_score"],
+            "core_fact_sufficient_after_supplementation": combined_facts["core_fact_sufficient"],
+            "missing_mandatory_fact_dimensions_after_supplementation": combined_facts["missing_mandatory_fact_dimensions"],
         })
-        if need and combined_facts["factual_background_sufficient"]:
-            updated["exclusion_reasons"] = [reason for reason in updated.get("exclusion_reasons", []) if reason != "fact_insufficient_before_supplementation"]
+        if need and combined_facts["core_fact_sufficient"]:
+            updated.update(combined_facts)
+            updated["exclusion_reasons"] = [reason for reason in updated.get("exclusion_reasons", []) if reason not in {"fact_insufficient_before_supplementation", "core_fact_insufficient_before_supplementation"}]
             updated["strict_source_eligible"] = not updated["exclusion_reasons"]
         links.append({key: updated[key] for key in ("case_family_id", "highest_court_case_id", "lower_court_case_ids", "lower_court_supplemented", "lower_court_link_confidence", "lower_court_link_evidence", "lower_court_supplementation_status")})
-        qc_rows.append({"case_id": row["case_id"], "origin_country": row.get("origin_country"), "supplementation_needed": need, "attempted": need, "candidate_identifiers": sorted(cited), "reliably_linked": supplemented, "successfully_supplemented": supplemented and combined_facts["factual_background_sufficient"], "still_fact_insufficient": not combined_facts["factual_background_sufficient"], "status": status, "link_evidence": evidence})
+        qc_rows.append({"case_id": row["case_id"], "origin_country": row.get("origin_country"), "supplementation_needed": need, "attempted": need, "candidate_identifiers": sorted(cited), "reliably_linked": supplemented, "successfully_supplemented": supplemented and combined_facts["core_fact_sufficient"], "still_fact_insufficient": not combined_facts["core_fact_sufficient"], "status": status, "link_evidence": evidence})
         enriched.append(updated)
     print(json.dumps({"high_court_cases": len(high), "supplementation_attempted": sum(row["attempted"] for row in qc_rows), "reliably_linked": sum(row["reliably_linked"] for row in qc_rows), "successfully_supplemented": sum(row["successfully_supplemented"] for row in qc_rows), "still_fact_insufficient": sum(row["still_fact_insufficient"] for row in qc_rows)}, ensure_ascii=False, indent=2))
     if not args.dry_run:
@@ -107,4 +112,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

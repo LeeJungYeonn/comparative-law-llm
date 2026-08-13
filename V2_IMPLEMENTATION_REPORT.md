@@ -1,89 +1,94 @@
-# Revised corpus v2 — implementation and run report
+# Revised corpus v2.2 implementation report
 
 Run date: 2026-08-10 (Asia/Seoul)
 
-## Repository audit
+## Scope of the revision
 
-Reusable legacy components were the atomic/checkpoint output pattern, stable
-hashing, COLD opinion-type handling, factual-sufficiency categories, and
-deterministic leakage checks. The old Korean collector explicitly targeted
-appellate records and excluded Supreme Court records. The old U.S. collector
-targeted California `court_type=SA`, not multiple state courts of last resort.
-The old rule-based fact builder is useful for cleanup and QC but is not a final
-source-grounded extractor. All old code and pilot artifacts remain under
-`legacy/`.
+This revision starts from commit `7a6e804bea471247bbecc5f110deadd03508668b`.
+The legacy Korean/California pilot remains unchanged. Stable hashing, atomic
+outputs, controlling-opinion selection, deterministic leakage checks, and
+request checkpoint concepts are retained; source and eligibility assumptions
+that caused the prior shortfall are replaced.
 
-## Actual sources and run results
+## Letsur configuration
 
-- KR: `lbox/lbox_open`, `precedent_corpus`, cached revision
-  `10429acf7e13d7ef2ea4187ffbd685490289a82c`, CC BY-NC 4.0.
-- U.S.: `harvard-lil/cold-cases`, `default`, revision
-  `5d8d0d8457ef63b6463af9737da21d3badd924ad`, CC0 1.0.
-- Window: 2000-01-01 through 2025-12-31.
+The v2 runtime now matches the successful legacy configuration:
 
-The full U.S. metadata audit covered 544,841 `court_type=S` records and froze:
+- gateway: `https://gw.letsur.ai/v1/chat/completions`;
+- bearer credential name: `LETSUR_API_KEY`;
+- `.env` loading through `python-dotenv` without environment override;
+- default previously used model identifier: `gpt-5.6-luna`;
+- JSON Schema, JSON-object, then JSON-only compatibility modes.
 
-| State | Region | Total S | Metadata liability candidates | General | Medical | Product | Employer |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| Pennsylvania | Northeast | 50,959 | 501 | 17 | 38 | 139 | 153 |
-| Michigan | Midwest | 42,637 | 154 | 4 | 5 | 62 | 7 |
-| Louisiana | South | 66,339 | 707 | 9 | 67 | 233 | 155 |
-| Nevada | West | 16,797 | 413 | 100 | 11 | 26 | 2 |
-| West Virginia | South | 11,667 | 2,511 | 2,330 | 41 | 92 | 0 |
+The credential value is never emitted or persisted. A one-request connectivity
+smoke passed using JSON Schema. Raw response, request ID, returned model ID,
+usage, hashes, and gateway identifier were retained without the credential.
 
-`usable_full_text_count` is zero/deferred in this metadata-only audit by design;
-opinion text was not downloaded for all 544,841 records. Actual full-text
-usability was checked during candidate collection. The frozen choice was not
-revised afterward.
+## Korean structured source
 
-### Deterministic funnels
+The strict collector now uses `legalize-kr/precedent-kr`, a Git Markdown corpus
+derived from the Korean National Law Information Center API. The pinned sparse
+snapshot is `d4a9982a272518e83312184c584f6a3542c9ce23`. Eligibility requires the
+structured `사건종류=민사`, `법원명=대법원`, `법원등급=대법원`, an in-window
+`선고일자`, and usable `판례내용`. LBox is not used to infer court or date.
 
-KR: 1,100 source rows scanned → 300 broad candidates → 0 high-confidence
-court/date eligible → 259 adequate-length opinions → 270 heuristic
-fact-sufficient (overlapping gate) → 0 strict source eligible.
+For 2000-01-01 through 2025-12-31 the full structured path contained 11,807
+records. Broad retrieval retained 6,030 candidates; 5,834 had adequate text,
+4,145 satisfied all four mandatory fact dimensions, and 1,955 passed every
+deterministic strict-source gate. Strict primary-domain counts were:
 
-U.S.: 544,841 records in the full state audit; a pinned three-shard collection
-frame returned 388 SQL-prefiltered rows → 377 Python-confirmed broad candidates
-→ 377 date/court eligible → 359 usable controlling opinions → 258 heuristic
-fact-sufficient → 211 strict source eligible.
+| Primary domain | Count |
+|---|---:|
+| general negligence / personal injury | 607 |
+| medical / professional liability | 428 |
+| product liability | 12 |
+| other civil liability | 908 |
 
-Strict U.S. pool by state: Louisiana 48, Michigan 37, Nevada 34,
-Pennsylvania 36, West Virginia 56. Strict pool by domain: general 105,
-medical 81, product 12, employer 7, other 6. Thus the original 40/20/20/20
-target is already unavailable on the U.S. strict pool before fact extraction.
+Thus the Korean source no longer creates a 100-case source shortage in the
+primary window. The window has not been extended.
 
-### Lower-court supplementation
+## Revised rules
 
-KR had no high-confidence highest-court record on which to attempt linkage.
-U.S. attempted 119 fact-insufficient cases; exact identifiers produced 0
-reliable links, 0 successful supplements, and 119 still fact-insufficient
-records. No fuzzy-title link or inferred fact was accepted.
+Fact sufficiency now requires parties/relationships, concrete conduct or
+omission, harm, and a minimally reconstructable causal/event sequence.
+Context/location, detailed chronology, and defense facts are optional; 5/7 is
+preferred. Lower-court lookup is attempted only to rescue a missing mandatory
+dimension, using exact identifiers only.
 
-## Blocking evidence
+The primary taxonomy is general, medical/professional, product, and other civil
+liability. Vicarious liability, respondeat superior, negligent supervision,
+premises liability, wrongful death, comparative fault, intentional misconduct,
+and punitive/multiple damages are nonexclusive secondary tags.
 
-The cached LBox `precedent_corpus` exposes only `id` and `precedent`. In the 300
-saved broad candidates, every record lacked a high-confidence decision date and
-none had enough mutually reinforcing metadata/header evidence for
-high-confidence Supreme Court status (40 were medium, 260 low/unknown). The
-pipeline therefore correctly admitted zero Korean records rather than relaxing
-the specification.
+Final U.S. state totals may vary from 10 through 30. A lower-bound/upper-bound
+circulation enforces five-state representation and one identical KR/U.S.
+primary-domain allocation. The allocation is derived after collection rather
+than hard-coded.
 
-`OPENAI_API_KEY` was absent. A three-case extraction smoke exercised the
-failure/checkpoint path and recorded three explicit failures; it made no API
-request. Consequently source extraction, translation, LLM-assisted QC, and the
-final 100+100 sample were not fabricated. `collection_summary.json` records
-status `shortfall` and false final invariants.
+## Validation status
 
-## Files added
+The focused v2 suite currently contains 23 passing tests, including structured
+Korean Markdown parsing, mandatory-four fact sufficiency, secondary employer
+tags, full court-type checks, source grounding, bilingual invariants, flexible
+state bounds, and final 100+100 invariants on a sufficient synthetic pool.
 
-- `pipeline_v2/`: schemas, deterministic rules, IO, Hugging Face access,
-  collection evaluators, and resumable Responses runtime.
-- `collect_kr_supreme_cases_v2.py`, `audit_us_state_cases_v2.py`,
-  `collect_us_state_highcourt_cases_v2.py`, `link_case_families_v2.py`.
-- `extract_neutral_facts_v2.py`, `translate_neutral_facts_v2.py`,
-  `qc_neutral_facts_v2.py`, `finalize_case_sample_v2.py`.
-- `prompts_v2/`, `requirements-v2.txt`, and `tests/test_v2_pipeline.py`.
-- README v2 documentation and this report.
+The all-32-shard U.S. run scanned 544,841 in-window `court_type=S` metadata
+rows. The five preserved states produced 592 broad opinion candidates, 575
+adequate controlling opinions, 376 core-fact-sufficient records, and 164 strict
+records (163 after family deduplication). Strict domains were general 65,
+medical 79, product 14, and other 5. The preserved states remained feasible.
 
-The temporary diagnostic helper used while validating remote Parquet access is
-not part of the production pipeline.
+Before bulk calls, `pre_llm_feasibility.json` confirmed KR 960 and US 163
+strict deduplicated candidates and a feasible 100+100 bounded flow. The 3+3
+Letsur smoke then passed extraction, grounding, bilingual alignment, leakage,
+and mandatory-four QC for all six cases.
+
+The frozen final allocation is identical in both countries: general 55,
+medical 28, product 12, and other 5. U.S. state totals are Pennsylvania 27,
+Michigan 24, Louisiana 19, Nevada 16, and West Virginia 14. Bulk extraction,
+translation, deterministic QC, and warning-routed secondary Letsur semantic QC
+all reached 200/200 final eligibility. Twenty-five records retain a transparent
+currency/unit normalization review flag, but all passed semantic QC and the
+final hard checks. `collection_summary.json` has status `complete`; every
+court, date, family, bilingual, QC, state, domain, and 20/80 split invariant is
+true. The 2000-2025 window was not extended.

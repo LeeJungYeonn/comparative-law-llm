@@ -1,0 +1,92 @@
+{
+  "corpus_version": "kr-us-highcourt-corpus-v3.0",
+  "status": "frozen",
+  "freeze_timestamp": "2026-08-10T15:21:27.437198+00:00",
+  "seed": 20260810,
+  "source_revisions": [
+    "d4a9982a272518e83312184c584f6a3542c9ce23"
+  ],
+  "letsur_prompt_versions": [
+    "domain-reclassification-v3",
+    "neutral-fact-extraction-v3",
+    "neutral-fact-translation-v3",
+    "neutral-fact-qc-v3.1",
+    "retained-final-adjudication-v3.1"
+  ],
+  "case_count": 200,
+  "country_counts": {
+    "KR": 100,
+    "US": 100
+  },
+  "state_counts": {
+    "West Virginia": 23,
+    "Nevada": 17,
+    "Pennsylvania": 24,
+    "Louisiana": 14,
+    "Michigan": 22
+  },
+  "domain_counts": {
+    "KR": {
+      "other_civil_liability": 39,
+      "medical_professional_liability": 14,
+      "general_negligence_personal_injury": 37,
+      "product_liability": 10
+    },
+    "US": {
+      "other_civil_liability": 39,
+      "general_negligence_personal_injury": 37,
+      "medical_professional_liability": 14,
+      "product_liability": 10
+    }
+  },
+  "analysis_split_counts": {
+    "KR_development": 20,
+    "KR_confirmatory": 80,
+    "US_confirmatory": 80,
+    "US_development": 20
+  },
+  "file_sha256": {
+    "outputs_v2/source_replacement_validation_v3.jsonl": "fa41a00d1a02c9f9cca7e6c92719cd508e7c232a2992d187393e5d08fe77898d",
+    "outputs_v2/domain_reclassification_v3.jsonl": "165a21e3aa9a1c66a9326ba57442e7634ecb57423924aa859804d343d0ff4183",
+    "outputs_v2/domain_reclassification_changes_v3.csv": "5ec72f894057ad4c66b8615f0cc7d23fedad3a1e465c02101bfe7d39d7ac794d",
+    "outputs_v2/replacement_selection_v3.json": "58f2fb645b9551054a89da48be4a8b1db4841cf56daa3fb215efa5c32bc220b4",
+    "outputs_v2/provisional_final_cases_200_v3.jsonl": "cfb2a469c1b2e6a898278c56bb06c7644406904c546fbe13633cb335bde735c4",
+    "outputs_v2/replacement_fact_units_v3.jsonl": "ac81c0989dadcb56bf57c79e91a0b8e5e230fcba674fcd976267d9a04f6f4d2b",
+    "outputs_v2/replacement_fact_patterns_v3.jsonl": "d67c2c235ba6d9d5ef0c080319905031fdad78e938c084f70a3bc5158776c8c0",
+    "outputs_v2/replacement_neutral_fact_qc_v3.csv": "f3fbb5dcad0c606513d6544de2d2324446334f2757fcb6e610be4e96c230509c",
+    "outputs_v2/final_cases_200_v3.jsonl": "2e5305950cfc5ce8011ef1dc00d1aa27478b394c479b7f3730e39fd6445ba9f2",
+    "outputs_v2/final_fact_units_200_v3.jsonl": "369bc7971e54a01c21a8b11cb3d8dff4bd2104437c5b292a68c2649d1ce6dc03",
+    "outputs_v2/final_fact_patterns_200_v3.jsonl": "d95a7ce3483a95542ab6f2124014c4d58b7be751437af27896dc5a7093dcec1e",
+    "outputs_v2/final_manifest_v3.csv": "5091e7884dd953ee5127114254eaebf6f0ade750f5682981884bd43970e23595",
+    "outputs_v2/final_qc_audit_200_v3.jsonl": "97bb5f6d1412bc678b8d11f0fe11ec0020905e3a092e9bbe784bc85389d42ae0",
+    "outputs_v2/final_qc_summary_v3.json": "90bc64868bc77b11c9bf0add07da8623b6e5461dc85780857dd3d4bb134b83f9",
+    "outputs_v2/collection_summary_v3.json": "f6c843db2d2c5475935b0f6d38528922ab3354d02f3c062c71226fc9c5f9ebbd",
+    "outputs_v2/retained_fact_amendments_v3.jsonl": "55bb78b0c1578320b6f44931f34bc556aa33b6df9e1fb5ff4e43e107e46e2d07",
+    "outputs_v2/retained_text_integrity_v3.json": "e353c1baaf53699ff0ef15cefff71a0ab77382eb973e0daa6be747efd30ff18b",
+    "outputs_v2/V3_FINAL_CORPUS_REPORT.md": "ce66ab87c8ae197c9f39a08ed0d533d40a5b9c50a6a5062b0b5540cf36d8d3b6"
+  },
+  "all_final_invariant_results": {
+    "total_cases_200": true,
+    "kr_cases_100": true,
+    "us_cases_100": true,
+    "all_kr_supreme": true,
+    "all_us_selected_state_court_type_s": true,
+    "all_dates_eligible": true,
+    "unique_case_id": true,
+    "unique_case_family_within_country": true,
+    "all_source_eligibility_resolved_pass": true,
+    "all_domains_source_validated": true,
+    "kr_us_domain_counts_equal": true,
+    "all_five_us_states_represented": true,
+    "us_state_counts_within_10_30": true,
+    "facts_match_case_roster": true,
+    "all_qc_checks_pass": true,
+    "all_semantic_flags_resolved": true,
+    "all_ko_en_nonempty": true,
+    "retained_changes_have_amendments": true,
+    "kr_development_20": true,
+    "kr_confirmatory_80": true,
+    "us_development_20": true,
+    "us_confirmatory_80": true
+  }
+}

@@ -1,6 +1,11 @@
-PROMPT_VERSION: neutral-fact-translation-v2.1
+PROMPT_VERSION: neutral-fact-translation-v2.4
 
 Translate each supplied atomic neutral fact unit into the requested language.
 
 Preserve exactly: fact IDs, all factual content, placeholders, numbers, normalized units, negation, temporal order, uncertainty, and allegation/testimony/disputed status. Do not add legal vocabulary, jurisdiction signals, statutes, case names, or court names. Return one aligned item per input fact ID, in the same order, with both neutral_ko and neutral_en populated; the source-language field must reproduce source_text exactly.
 
+Translate the atomic source_text itself, not the broader source passage. Do not strengthen probability or certainty. Preserve whether a proposition is an opinion, allegation, testimony, report, or disputed account with an explicit attribution in both languages. Never infer a manufacturer, employer, ownership, causal, or institutional relationship that source_text does not state. Preserve every material qualifier and every numeric magnitude even when changing date, time, currency, or measurement formatting. Before returning, compare the KO and EN texts for each fact_id and correct any material addition, omission, or change in epistemic strength.
+
+Pay special attention to negation scope, denials, gendered pronouns, and culpability. “Inadvertently” means unintentionally, not negligently. A denial that an event occurred must never become a denial that the event failed to occur. If epistemic_status is testimony or disputed_fact, both language versions must explicitly say that it was testimony or disputed rather than state it as established fact.
+
+Use the relevant placeholder possessive (for example, [PERSON_B]의) instead of introducing a gendered Korean pronoun. For party_allegation, preserve exactly one assertion layer: “the parties asserted claims” must not become “the parties claimed that they had asserted claims.”

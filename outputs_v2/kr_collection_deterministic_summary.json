@@ -1,40 +1,72 @@
 {
   "collection_version": "kr-us-highcourt-corpus-v2.0",
-  "source_dataset": "lbox/lbox_open",
-  "source_config": "precedent_corpus",
-  "source_revision": "10429acf7e13d7ef2ea4187ffbd685490289a82c",
+  "source_dataset": "legalize-kr/precedent-kr",
+  "source_config": "git-markdown",
+  "source_repository": "https://github.com/legalize-kr/precedent-kr",
+  "source_revision": "d4a9982a272518e83312184c584f6a3542c9ce23",
   "date_window": [
     "2000-01-01",
     "2025-12-31"
   ],
-  "candidate_target": 300,
+  "candidate_target": 1200,
   "seed": 20260810,
   "partial_run": false,
+  "candidate_target_met": true,
   "funnel": {
-    "source_scanned": 1100,
-    "civil_liability_candidate": 300,
-    "date_court_eligible": 0,
-    "adequate_opinion_text": 259,
-    "fact_sufficient": 270,
-    "strict_source_eligible": 0
+    "source_scanned": 11807,
+    "civil_liability_candidate": 6030,
+    "date_court_eligible": 6030,
+    "adequate_opinion_text": 5834,
+    "core_fact_sufficient": 4145,
+    "fact_sufficient": 4145,
+    "preferred_fact_sufficient_5_of_7": 4145,
+    "strict_source_eligible": 1955
   },
   "court_level_counts": {
-    "unknown|low": 260,
-    "supreme|medium": 40
+    "supreme|high": 6025,
+    "supreme|low": 5
   },
-  "domain_counts": {
-    "general_negligence_personal_injury": 164,
-    "medical_professional_liability": 89,
-    "other_civil_liability": 38,
-    "employer_supervisory_vicarious_liability": 9
+  "primary_domain_counts": {
+    "other_civil_liability": 2904,
+    "general_negligence_personal_injury": 1577,
+    "medical_professional_liability": 1535,
+    "product_liability": 14
+  },
+  "strict_primary_domain_counts": {
+    "general_negligence_personal_injury": 607,
+    "medical_professional_liability": 428,
+    "other_civil_liability": 908,
+    "product_liability": 12
+  },
+  "liability_theory_counts": {
+    "premises_liability": 86,
+    "comparative_fault": 495,
+    "intentional_misconduct": 365,
+    "vicarious_liability": 158,
+    "negligent_supervision": 77,
+    "wrongful_death": 233,
+    "punitive_or_multiple_damages_salient": 4
   },
   "exclusion_counts": {
-    "not_high_confidence_supreme": 300,
-    "decision_date_unknown": 300,
-    "not_civil_liability_candidate": 125,
-    "incidental:criminal_case": 117,
-    "opinion_text_too_short": 41,
-    "fact_insufficient_before_supplementation": 30,
-    "incidental:administrative_only": 8
+    "substantive_civil_liability_not_confirmed": 3580,
+    "core_fact_insufficient_before_supplementation": 1885,
+    "contract_only": 583,
+    "insurance_only": 125,
+    "administrative_only": 140,
+    "opinion_text_too_short": 196,
+    "criminal_case": 213,
+    "not_structured_supreme_court": 5
+  },
+  "saved_candidate_pool": {
+    "count": 1200,
+    "strict_source_eligible": 960,
+    "rejected": 240,
+    "primary_domain_counts": {
+      "general_negligence_personal_injury": 540,
+      "other_civil_liability": 346,
+      "medical_professional_liability": 300,
+      "product_liability": 14
+    },
+    "selection": "deterministic 80% strict / 20% rejected with preferred primary-domain stratification and hash fill"
   }
 }

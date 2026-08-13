@@ -23,7 +23,7 @@ def parser() -> argparse.ArgumentParser:
     result.add_argument("--output-dir", type=Path, default=Path("outputs_v2"))
     result.add_argument("--page-size", type=int, default=10)
     result.add_argument("--source-mode", choices=("parquet", "datasets-server"), default="parquet")
-    result.add_argument("--parquet-shards", type=int, default=2, help="Deterministic leading shard sampling frame; each shard is about 1 GB compressed.")
+    result.add_argument("--parquet-shards", type=int, default=0, help="0 requires all Parquet shards; a positive value is partial smoke mode only.")
     result.add_argument("--min-opinion-chars", type=int, default=1200)
     result.add_argument("--limit", type=int, default=0, help="Maximum rows scanned per state.")
     result.add_argument("--allow-partial", action="store_true", help="Allow a partial datasets-server sampling frame; every returned record is still QC'd individually.")
@@ -41,10 +41,11 @@ def parquet_candidate_rows(selected: list[dict], revision: str, shard_count: int
     with urllib.request.urlopen("https://huggingface.co/api/datasets/harvard-lil/cold-cases", timeout=120) as response:
         repo = json.load(response)
     revision = revision if revision and "unresolved" not in revision else repo.get("sha") or "main"
-    names = sorted(item["rfilename"] for item in repo.get("siblings", []) if item.get("rfilename", "").endswith(".parquet"))[:shard_count]
+    all_names = sorted(item["rfilename"] for item in repo.get("siblings", []) if item.get("rfilename", "").endswith(".parquet"))
+    names = all_names if shard_count <= 0 else all_names[:shard_count]
     urls = [f"https://huggingface.co/datasets/harvard-lil/cold-cases/resolve/{revision}/{name}" for name in names]
     jurisdictions = ",".join("'" + entry["primary_court_jurisdiction"].replace("'", "''") + "'" for entry in selected)
-    civil = "negligence|personal injury|wrongful death|medical malpractice|professional negligence|product liability|products liability|defective product|failure to warn|premises liability|vicarious liability|respondeat superior|negligent supervision|compensatory damages|civil damages"
+    civil = "negligence|personal injury|wrongful death|medical malpractice|professional negligence|product liability|products liability|defective product|failure to warn|premises liability|vicarious liability|respondeat superior|negligent supervision|compensatory damages|civil damages|tort|defamation|privacy|nuisance|conversion"
     sql = f"""
       WITH base AS (
         SELECT *, lower(coalesce(case_name, '') || ' ' || coalesce(nature_of_suit, '') || ' ' ||
@@ -64,7 +65,7 @@ def parquet_candidate_rows(selected: list[dict], revision: str, shard_count: int
     cursor = connection.execute(sql, [urls])
     columns = [item[0] for item in cursor.description]
     for values in cursor.fetchall():
-        yield dict(zip(columns, values)), {"partial": shard_count < len(repo.get("siblings", [])), "truncated_cells": [], "parquet_shards": names, "source_revision": revision}
+        yield dict(zip(columns, values)), {"partial": len(names) < len(all_names), "truncated_cells": [], "parquet_shards": names, "source_revision": revision}
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -121,7 +122,9 @@ def main(argv: list[str] | None = None) -> int:
         "partial_run": bool(args.limit), "source_mode": args.source_mode, "parquet_shards": args.parquet_shards if args.source_mode == "parquet" else None,
         "source_filter_partial": partial_seen, "seed": args.seed, "scanned_by_state": dict(scanned_by_state),
         "candidate_by_state": dict(candidate_by_state), "funnel": collection_funnel(records, scanned),
-        "domain_counts": dict(Counter(row["case_domain"] for row in records)),
+        "primary_domain_counts": dict(Counter(row["primary_domain"] for row in records)),
+        "strict_primary_domain_counts": dict(Counter(row["primary_domain"] for row in records if row["strict_source_eligible"])),
+        "liability_theory_counts": dict(Counter(tag for row in records for tag in row.get("liability_theories", []))),
         "exclusion_counts": dict(Counter(reason for row in records for reason in row["exclusion_reasons"])),
     }
     print(json.dumps(summary, ensure_ascii=False, indent=2))

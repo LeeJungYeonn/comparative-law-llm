@@ -14,10 +14,12 @@ window is `2000-01-01` through `2025-12-31` for both countries.
 
 ### Sources and inclusion rules
 
-- Korea: `lbox/lbox_open`, config `precedent_corpus` (CC BY-NC 4.0). A final
-  record must have mutually reinforcing Korean Supreme Court evidence, a civil
-  Supreme Court case number, and a high-confidence decision date. The cached
-  source revision is recorded in the collection summary.
+- Korea: `legalize-kr/precedent-kr` at a pinned Git revision. This repository
+  derives from the Korean National Law Information Center API. The collector
+  reads YAML-frontmatter Markdown only from `민사/대법원` and requires
+  `사건종류=민사`, `법원명=대법원`, `법원등급=대법원`, an in-window
+  `선고일자`, and a usable `판례내용` section. LBox is no longer used to guess
+  court or date eligibility.
 - United States: `harvard-lil/cold-cases`, config `default` (CC0 1.0). The
   source revision is pinned in `us_state_selection.json`. Main-corpus records
   require structured `court_type == "S"`; `SA`, `ST`, and every federal type
@@ -32,14 +34,17 @@ all represented states without downloading 32 GB of opinion text. Consequently
 actual opinion usability is checked record-by-record during candidate
 collection. Five states are then frozen deterministically using availability,
 domain coverage, publication metadata, and regional diversity. Candidate
-collection uses a pinned leading-shard sampling frame and records that frame in
-its summary; it never changes the frozen state set based on downstream results.
+collection scans all 32 pinned Parquet shards; a positive `--parquet-shards`
+value is partial smoke mode. It never changes the frozen state set based on
+downstream results.
 
-Every candidate is classified into the four core domains plus
-`other_civil_liability`. Finalization first attempts the 40/20/20/20 shared
-allocation. If unavailable, a max-flow calculation derives one common KR/US
-allocation without weakening court, date, source-grounding, or QC gates. The
-U.S. side is constrained to exactly 20 records from each frozen state.
+Every candidate receives one `primary_domain`: general negligence/personal
+injury, medical/professional liability, product liability, or other civil
+liability. Employer and supervisory doctrines are nonexclusive
+`liability_theories`/`secondary_tags`. After full collection, a bounded-flow
+calculation freezes one identical KR/US domain allocation, preferring 40--55
+general, 20--30 medical, 10--25 product, and the remainder other. The U.S.
+sample totals 100 with all five states represented at 10--30 records each.
 
 ### Family linkage and neutral facts
 
@@ -47,7 +52,10 @@ U.S. side is constrained to exactly 20 records from each frozen state.
 structured history/cross-reference identifiers. Fuzzy title similarity is not
 sufficient. The highest-court opinion always remains the reference judgment;
 linked lower-court text is supplied only as a separately labeled factual
-supplement when the seven-category fact-sufficiency gate fails.
+supplement only when at least one mandatory dimension is missing. Mandatory
+dimensions are parties/relationships, conduct or omission, harm, and a minimal
+causal/event sequence. Context, detailed chronology, and defense facts are
+optional enrichment; 5/7 remains preferred but is not an absolute gate.
 
 Neutral facts are built in three distinct stages:
 
@@ -60,10 +68,13 @@ Neutral facts are built in three distinct stages:
    and sufficiency checks, followed optionally by a separate evidence-bearing
    LLM audit. LLM QC proposes corrections but never edits facts silently.
 
-The API stages use the official OpenAI Python SDK and Responses API with strict
-JSON Schema. They read credentials only from `OPENAI_API_KEY`; the model must be
-provided by `--model` or `FACT_EXTRACTION_MODEL`. Each request key includes the
-case ID, stage, prompt version, input hash, and model. Raw responses, request
+The API stages use the project's established Letsur OpenAI-compatible gateway:
+`https://gw.letsur.ai/v1/chat/completions`, bearer authentication from
+`LETSUR_API_KEY`, and JSON Schema with JSON-object/JSON-only fallbacks. `.env`
+is loaded by `python-dotenv`; the key value is never printed or persisted. The
+model is configurable by `--model`, `FACT_EXTRACTION_MODEL`, or `LETSUR_MODEL`
+and defaults to the previously used `gpt-5.6-luna`. Each request key includes
+the case ID, stage, prompt version, input hash, model, and gateway identifier. Raw responses, request
 IDs, returned model IDs, timestamps, usage, hashes, errors, and bounded retries
 are retained under `outputs_v2/raw_api_responses/`. `--resume` skips successful
 requests. `--mock-response-dir` and `--dry-run` provide no-API smoke paths.
@@ -72,14 +83,21 @@ requests. `--mock-response-dir` and `--dry-run` provide no-API smoke paths.
 
 ```powershell
 & .venv\Scripts\python.exe -m pip install -r requirements-v2.txt
-& .venv\Scripts\python.exe collect_kr_supreme_cases_v2.py --start-date 2000-01-01 --end-date 2025-12-31 --candidate-target 300 --seed 20260810 --output-dir outputs_v2
-& .venv\Scripts\python.exe audit_us_state_cases_v2.py --start-date 2000-01-01 --end-date 2025-12-31 --source-mode parquet --output-dir outputs_v2
-& .venv\Scripts\python.exe collect_us_state_highcourt_cases_v2.py --states-from outputs_v2/us_state_selection.json --candidate-target 300 --source-mode parquet --parquet-shards 3 --seed 20260810 --output-dir outputs_v2
+git clone --depth 1 --filter=blob:none --sparse https://github.com/legalize-kr/precedent-kr.git .cache_v2/precedent-kr
+git -C .cache_v2/precedent-kr config core.longpaths true
+git -C .cache_v2/precedent-kr sparse-checkout set --no-cone "/민사/대법원/"
+& .venv\Scripts\python.exe smoke_test_letsur_v2.py
+& .venv\Scripts\python.exe collect_kr_supreme_cases_v2.py --source-dir .cache_v2/precedent-kr --start-date 2000-01-01 --end-date 2025-12-31 --candidate-target 1200 --seed 20260810 --output-dir outputs_v2
+& .venv\Scripts\python.exe audit_us_state_cases_v2.py --start-date 2000-01-01 --end-date 2025-12-31 --source-mode parquet --preserve-states-from outputs_v2/us_state_selection.json --output-dir outputs_v2 --overwrite
+& .venv\Scripts\python.exe collect_us_state_highcourt_cases_v2.py --states-from outputs_v2/us_state_selection.json --candidate-target 750 --source-mode parquet --parquet-shards 0 --seed 20260810 --output-dir outputs_v2
+& .venv\Scripts\python.exe assess_candidate_feasibility_v2.py --overwrite
 & .venv\Scripts\python.exe link_case_families_v2.py --input outputs_v2/kr_supreme_candidates.jsonl --input outputs_v2/us_state_highcourt_candidates.jsonl --output-dir outputs_v2
-& .venv\Scripts\python.exe extract_neutral_facts_v2.py --input outputs_v2/candidates_with_family_links.jsonl --model "$env:FACT_EXTRACTION_MODEL" --output-dir outputs_v2 --resume
-& .venv\Scripts\python.exe translate_neutral_facts_v2.py --input outputs_v2/neutral_facts_source.jsonl --model "$env:FACT_EXTRACTION_MODEL" --output-dir outputs_v2 --resume
-& .venv\Scripts\python.exe qc_neutral_facts_v2.py --input outputs_v2/neutral_facts_bilingual.jsonl --llm-model "$env:FACT_EXTRACTION_MODEL" --output-dir outputs_v2 --resume
-& .venv\Scripts\python.exe finalize_case_sample_v2.py --kr-target 100 --us-target 100 --seed 20260810 --output-dir outputs_v2
+& .venv\Scripts\python.exe extract_neutral_facts_v2.py --input outputs_v2/candidates_with_family_links.jsonl --limit-per-country 3 --output-dir outputs_v2/smoke_3x3 --resume
+& .venv\Scripts\python.exe prepare_bulk_manifest_v2.py --overwrite
+& .venv\Scripts\python.exe extract_neutral_facts_v2.py --input outputs_v2/bulk_extraction_manifest_200.jsonl --output-dir outputs_v2/bulk_200 --resume
+& .venv\Scripts\python.exe translate_neutral_facts_v2.py --input outputs_v2/bulk_200/neutral_facts_source.jsonl --output-dir outputs_v2/bulk_200 --resume
+& .venv\Scripts\python.exe qc_neutral_facts_v2.py --input outputs_v2/bulk_200/neutral_facts_bilingual.jsonl --llm-model gpt-5.6-luna --llm-warnings-only --output-dir outputs_v2/bulk_200 --resume
+& .venv\Scripts\python.exe finalize_case_sample_v2.py --facts-input outputs_v2/bulk_200/neutral_facts_bilingual.jsonl --qc-input outputs_v2/bulk_200/neutral_fact_qc.csv --kr-target 100 --us-target 100 --seed 20260810 --output-dir outputs_v2 --overwrite
 & .venv\Scripts\python.exe -m pytest -q tests/test_v2_pipeline.py
 ```
 

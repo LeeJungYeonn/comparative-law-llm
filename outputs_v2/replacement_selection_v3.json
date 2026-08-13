@@ -1,0 +1,683 @@
+{
+  "status": "provisional_roster_frozen",
+  "corpus_version": "kr-us-highcourt-corpus-v3.0",
+  "seed": 20260810,
+  "original_audit_flagged_replacements": [
+    "US_0bdc6cb112770284df",
+    "US_162eb334cc7d5a8b91",
+    "US_18fd4288d7f32131ce",
+    "US_1bd83c629182d24617",
+    "US_2b3ba71069d1e5eab9",
+    "US_39be177337afd8d1be",
+    "US_4e8bd43839d97e3e1f",
+    "US_a072ff18b300a13dfd",
+    "US_a83924c6ae07314b33",
+    "US_ace4efc8607c66874a",
+    "US_af3a72d6a4fbf2544a",
+    "US_b1a79acce1af757b58",
+    "US_bf6cccdd9b8a33c4a5",
+    "US_c2f1eaa3640f0a9bbf",
+    "US_cf1fe4f8bf2f7fa43b",
+    "US_e1da2d37a9dee8ec7b",
+    "US_f360178db4c0409aa2",
+    "US_f6a3b4ef121a4e3b04"
+  ],
+  "additional_source_ineligible_replacements": [
+    "KR_1490ae2a5caa81b4c7",
+    "KR_166fe3c2ec192a031c",
+    "KR_16747477bbb419c699",
+    "KR_2e57afc9436b5c385e",
+    "KR_55074ea924a215c67b",
+    "KR_655f2386b561c2a84a",
+    "KR_77616f4d33f49f160f",
+    "KR_8d7ca5d24afd11d1da",
+    "KR_92b1ce3452f5861ba4",
+    "KR_973642690caa8c1765",
+    "KR_9d2e86f030a6ea99c5",
+    "KR_cabb12a8960b273308",
+    "KR_d5131e7c37df509266",
+    "KR_fbac05e4c9ae195c2d",
+    "US_00f7c6571f18d3c66e",
+    "US_02bde060086590cc77",
+    "US_02cd16f932838519ba",
+    "US_07482ca42c075096bb",
+    "US_0abf417417190c2e89",
+    "US_2e67d6775a92caddee",
+    "US_36fd5aae9fa72a7fbb",
+    "US_4ee87caff5124d4003",
+    "US_514a1afebc7c89ad3f",
+    "US_57290d297c1a43a6d4",
+    "US_5e1df8e8cc45419467",
+    "US_5fb1681d1e52f4e709",
+    "US_624564663f55368864",
+    "US_861576769645010c57",
+    "US_911c57466fa2dd122c",
+    "US_9652590cf5c0086fbf",
+    "US_9cf64af04d2e95a72d",
+    "US_9f4d3cca3bba16c059",
+    "US_bdeec2edbb47432c64",
+    "US_bfd06f8cb32e6978f3",
+    "US_c494ba6285904ce918",
+    "US_f42baf15f4f65533de",
+    "US_f72de5a85fdd45cf64"
+  ],
+  "additional_balancing_swaps": [
+    "KR_17f99b470b67dcf2bd",
+    "KR_8272e1d4abaf8ec55f"
+  ],
+  "replacement_set_v3": [
+    "KR_0f2fb4048fdd1b2ba6",
+    "KR_3e400c529b48b85317",
+    "KR_5be8caa54d55da9c2d",
+    "KR_6623c47ec5cdef48bc",
+    "KR_872d527b52dfbd5927",
+    "KR_882ce243b36c889fda",
+    "KR_9dad33b6d6293b40f2",
+    "KR_a41002435a915c75d1",
+    "KR_ab2b68c40724d0aa92",
+    "KR_adf561060b125d6b87",
+    "KR_bcc14552a5ebdd0945",
+    "KR_c2567a4fb9e71fc1f7",
+    "KR_c93d64dedb05abdc5b",
+    "KR_d7658dab9202d2e025",
+    "KR_e841c27e080fa0659c",
+    "KR_fdfefa335ed21439c0",
+    "US_00df5ba88ee9d43fd5",
+    "US_04cf5031ab373b2ef6",
+    "US_061c987e5f6b8cf2e8",
+    "US_0b0596e3f457282cc2",
+    "US_143504a555ba2b1572",
+    "US_193fdb5b19590cbcab",
+    "US_1aba36d98e0653f066",
+    "US_1cfe591dc59be857da",
+    "US_231c5e7fb867d9b8c2",
+    "US_37fae4c5d51bff450a",
+    "US_43352148b1cf063f58",
+    "US_45c1de8fa5ac8eefab",
+    "US_4bf2e6511806b25f10",
+    "US_512d2cb96959fe1764",
+    "US_5334a4131f192eab74",
+    "US_60f81ce937468b4218",
+    "US_6ba935b9156e1996aa",
+    "US_73b5710930ed47d628",
+    "US_7f556627654c5d3f9a",
+    "US_8026310f8d6a3819bd",
+    "US_8636c5a0c5ede55860",
+    "US_8f953fe2f1a7911efc",
+    "US_94f469d91f6b1c555d",
+    "US_98be2374bed153f34a",
+    "US_99f0f4ac29a4da2463",
+    "US_9acb209b5020b6dec4",
+    "US_9b0dcb923fdb190dd3",
+    "US_9dc742b4409b555931",
+    "US_a07db3e0a97840c5b1",
+    "US_b24ef2018816af9946",
+    "US_b2c7f8c81dc1b0c361",
+    "US_b732d6870be7eac6fb",
+    "US_c387cc2f242da3c0dc",
+    "US_ca3855b0593ebfc33e",
+    "US_d15af88bf67507bd93",
+    "US_d367706577b84edea9",
+    "US_e05b7f2567e5800f56",
+    "US_e1738150309971f404",
+    "US_e2121974270074f961",
+    "US_f52ee52e184d02cd06",
+    "US_f5ad9cb96e57eb50d6"
+  ],
+  "replacement_count": 57,
+  "mappings": [
+    {
+      "origin_country": "KR",
+      "old_case_id": "KR_1490ae2a5caa81b4c7",
+      "old_state": null,
+      "new_case_id": "KR_0f2fb4048fdd1b2ba6",
+      "new_state": null,
+      "reason_category": "additional_source_ineligible",
+      "reason": "The opinion concerns contractual nonperformance and calculation of expectation damages under a construction agreement, making it a contract-only payment/damages dispute rather than a qualifying tort-liability domain."
+    },
+    {
+      "origin_country": "KR",
+      "old_case_id": "KR_166fe3c2ec192a031c",
+      "old_state": null,
+      "new_case_id": "KR_3e400c529b48b85317",
+      "new_state": null,
+      "reason_category": "additional_source_ineligible",
+      "reason": "The opinion concerns inheritance of a credit-guarantee reimbursement debt and the timeliness/effect of limited acceptance of inheritance, not a civil-liability damages merits issue."
+    },
+    {
+      "origin_country": "KR",
+      "old_case_id": "KR_16747477bbb419c699",
+      "old_state": null,
+      "new_case_id": "KR_5be8caa54d55da9c2d",
+      "new_state": null,
+      "reason_category": "additional_source_ineligible",
+      "reason": "보험계약상 보험금 지급 및 소송대행의무 불이행에 따른 계약상 손해배상만을 다루는 사건으로, 보험-커버리지 및 계약상 지급 분쟁에 해당하며 독립적인 민사책임의 실체적 본안 쟁점이 아니다."
+    },
+    {
+      "origin_country": "KR",
+      "old_case_id": "KR_17f99b470b67dcf2bd",
+      "old_state": null,
+      "new_case_id": "KR_6623c47ec5cdef48bc",
+      "new_state": null,
+      "reason_category": "additional_balancing_swap",
+      "reason": "minimum balancing swap required for exact KR-US domain equality"
+    },
+    {
+      "origin_country": "KR",
+      "old_case_id": "KR_2e57afc9436b5c385e",
+      "old_state": null,
+      "new_case_id": "KR_872d527b52dfbd5927",
+      "new_state": null,
+      "reason_category": "additional_source_ineligible",
+      "reason": "판결의 실질적 쟁점은 산업재해보상보험 유족급여·장의비에 관한 대위 및 합의서 해석이며, 민사상 손해배상책임의 성립이나 범위를 판단한 본안이 아니다. 특히 원심의 판단과 대법원의 파기 이유는 ‘처분문서인 이 사건 합의서의 문언’ 해석에 관한 것이다."
+    },
+    {
+      "origin_country": "KR",
+      "old_case_id": "KR_55074ea924a215c67b",
+      "old_state": null,
+      "new_case_id": "KR_882ce243b36c889fda",
+      "new_state": null,
+      "reason_category": "additional_source_ineligible",
+      "reason": "Insurance-coverage-only dispute concerning application of an automobile-insurance exclusion clause, not the underlying civil-liability merits."
+    },
+    {
+      "origin_country": "KR",
+      "old_case_id": "KR_655f2386b561c2a84a",
+      "old_state": null,
+      "new_case_id": "KR_9dad33b6d6293b40f2",
+      "new_state": null,
+      "reason_category": "additional_source_ineligible",
+      "reason": "계약상 품위유지약정 위반에 따른 채무불이행 및 손해배상만을 다루는 계약 전용 사건으로, 일반 불법행위·의료과실·제품책임의 실질적 쟁점이 없다."
+    },
+    {
+      "origin_country": "KR",
+      "old_case_id": "KR_77616f4d33f49f160f",
+      "old_state": null,
+      "new_case_id": "KR_a41002435a915c75d1",
+      "new_state": null,
+      "reason_category": "additional_source_ineligible",
+      "reason": "The opinion addresses only the statute-of-limitations accrual and interruption rules for a damages claim, without deciding a substantive civil-liability merits issue."
+    },
+    {
+      "origin_country": "KR",
+      "old_case_id": "KR_8272e1d4abaf8ec55f",
+      "old_state": null,
+      "new_case_id": "KR_ab2b68c40724d0aa92",
+      "new_state": null,
+      "reason_category": "additional_balancing_swap",
+      "reason": "minimum balancing swap required for exact KR-US domain equality"
+    },
+    {
+      "origin_country": "KR",
+      "old_case_id": "KR_8d7ca5d24afd11d1da",
+      "old_state": null,
+      "new_case_id": "KR_adf561060b125d6b87",
+      "new_state": null,
+      "reason_category": "additional_source_ineligible",
+      "reason": "계약상 상품권 제품 제공의무 불이행에 따른 전보배상만을 다루는 계약·지급 사건으로, 실질적인 불법행위상 민사책임이나 손해배상 merits 쟁점이 아니다."
+    },
+    {
+      "origin_country": "KR",
+      "old_case_id": "KR_92b1ce3452f5861ba4",
+      "old_state": null,
+      "new_case_id": "KR_bcc14552a5ebdd0945",
+      "new_state": null,
+      "reason_category": "additional_source_ineligible",
+      "reason": "소송의 판단 대상이 불법행위 손해배상책임의 성립이나 손해액 등 실체적 책임 merits가 아니라 소멸시효의 기산점 및 채무 승인에 따른 소멸시효 중단의 효력에 한정되어 있다."
+    },
+    {
+      "origin_country": "KR",
+      "old_case_id": "KR_973642690caa8c1765",
+      "old_state": null,
+      "new_case_id": "KR_c2567a4fb9e71fc1f7",
+      "new_state": null,
+      "reason_category": "additional_source_ineligible",
+      "reason": "실질적으로 대리사무계약상 자금집행순서와 계약금·선급금 지급에 관한 계약상 지급 분쟁이므로 contract-only payment 사건에 해당한다."
+    },
+    {
+      "origin_country": "KR",
+      "old_case_id": "KR_9d2e86f030a6ea99c5",
+      "old_state": null,
+      "new_case_id": "KR_c93d64dedb05abdc5b",
+      "new_state": null,
+      "reason_category": "additional_source_ineligible",
+      "reason": "보험자의 책임보험금 지급한도와 대위·변제액 공제만을 다룬 보험·구상금 쟁송으로, underlying civil-liability merits를 판단하지 않는다."
+    },
+    {
+      "origin_country": "KR",
+      "old_case_id": "KR_cabb12a8960b273308",
+      "old_state": null,
+      "new_case_id": "KR_d7658dab9202d2e025",
+      "new_state": null,
+      "reason_category": "additional_source_ineligible",
+      "reason": "The opinion concerns an insurer’s recourse claim against the workers’ compensation agency for payment of industrial accident benefits, rather than a substantive civil-liability damages merits issue. It is excluded as a workers’ compensation benefits and insurance-related reimbursement dispute."
+    },
+    {
+      "origin_country": "KR",
+      "old_case_id": "KR_d5131e7c37df509266",
+      "old_state": null,
+      "new_case_id": "KR_e841c27e080fa0659c",
+      "new_state": null,
+      "reason_category": "additional_source_ineligible",
+      "reason": "보험자 상호 간의 중복보험 구상관계와 소멸시효만을 판단한 사건으로, 민사책임·손해배상 성립의 실체적 merits가 없고 보험 관련 청구 및 기간 쟁점에 해당한다."
+    },
+    {
+      "origin_country": "KR",
+      "old_case_id": "KR_fbac05e4c9ae195c2d",
+      "old_state": null,
+      "new_case_id": "KR_fdfefa335ed21439c0",
+      "new_state": null,
+      "reason_category": "additional_source_ineligible",
+      "reason": "판결의 중심 쟁점은 교통사고 손해배상책임 자체가 아니라 의무보험금 산정 및 보험자의 초과지급금 반환·공제 여부인 보험·금액 문제이다."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_02cd16f932838519ba",
+      "old_state": "Louisiana",
+      "new_case_id": "US_143504a555ba2b1572",
+      "new_state": "Louisiana",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The opinion principally resolves prescription and does not adjudicate a substantive civil-liability merits issue; the discussion of negligence, product liability, Jones Act status, and maritime jurisdiction concerns alleged claims and vacated procedural findings."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_162eb334cc7d5a8b91",
+      "old_state": "Louisiana",
+      "new_case_id": "US_7f556627654c5d3f9a",
+      "new_state": "Louisiana",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_18fd4288d7f32131ce",
+      "old_state": "Louisiana",
+      "new_case_id": "US_9acb209b5020b6dec4",
+      "new_state": "Louisiana",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_2e67d6775a92caddee",
+      "old_state": "Louisiana",
+      "new_case_id": "US_b24ef2018816af9946",
+      "new_state": "Louisiana",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The controlling opinion resolves a nullity action concerning validity of service of process and appellate review, not a civil-liability or damages substantive-merits issue. The personal-injury action and damages award are only underlying procedural context."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_39be177337afd8d1be",
+      "old_state": "Louisiana",
+      "new_case_id": "US_b2c7f8c81dc1b0c361",
+      "new_state": "Louisiana",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_5fb1681d1e52f4e709",
+      "old_state": "Louisiana",
+      "new_case_id": "US_e05b7f2567e5800f56",
+      "new_state": "Louisiana",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The controlling opinion resolves a nullity action concerning alleged fraud, ill practice, spoliation, diligence, and summary judgment—not a substantive civil-liability or damages merits issue."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_a072ff18b300a13dfd",
+      "old_state": "Louisiana",
+      "new_case_id": "US_1aba36d98e0653f066",
+      "new_state": "Michigan",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_a83924c6ae07314b33",
+      "old_state": "Louisiana",
+      "new_case_id": "US_1cfe591dc59be857da",
+      "new_state": "Michigan",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_b1a79acce1af757b58",
+      "old_state": "Louisiana",
+      "new_case_id": "US_60f81ce937468b4218",
+      "new_state": "Michigan",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_bf6cccdd9b8a33c4a5",
+      "old_state": "Louisiana",
+      "new_case_id": "US_8636c5a0c5ede55860",
+      "new_state": "Michigan",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_e1da2d37a9dee8ec7b",
+      "old_state": "Louisiana",
+      "new_case_id": "US_99f0f4ac29a4da2463",
+      "new_state": "Michigan",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_00f7c6571f18d3c66e",
+      "old_state": "Michigan",
+      "new_case_id": "US_9b0dcb923fdb190dd3",
+      "new_state": "Michigan",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The controlling opinion resolves a statutory notice and filing issue rather than a civil-liability substantive-merits issue."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_02bde060086590cc77",
+      "old_state": "Michigan",
+      "new_case_id": "US_b732d6870be7eac6fb",
+      "new_state": "Michigan",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The opinion addresses only the timeliness of a medical-malpractice claim under the statutory discovery rule and does not decide a civil-liability substantive merits issue."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_0abf417417190c2e89",
+      "old_state": "Michigan",
+      "new_case_id": "US_e1738150309971f404",
+      "new_state": "Michigan",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The supplied opinion is an order denying reconsideration and addresses collateral attack and collateral estoppel, not a substantive civil-liability merits determination."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_36fd5aae9fa72a7fbb",
+      "old_state": "Michigan",
+      "new_case_id": "US_f5ad9cb96e57eb50d6",
+      "new_state": "Michigan",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The controlling opinion resolves only statute-of-limitations and notice-tolling issues and does not adjudicate the substantive medical-malpractice liability merits."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_624564663f55368864",
+      "old_state": "Michigan",
+      "new_case_id": "US_04cf5031ab373b2ef6",
+      "new_state": "Nevada",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The controlling opinion resolves service-of-process, waiver, and limitations issues; it does not adjudicate the underlying medical-negligence or damages merits."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_861576769645010c57",
+      "old_state": "Michigan",
+      "new_case_id": "US_0b0596e3f457282cc2",
+      "new_state": "Nevada",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The controlling opinion concerns expert-witness qualification and evidentiary gatekeeping under MCL 600.2169(1), and resolves the cases through dismissal and directed verdict for failure to present a qualified expert, without deciding substantive negligence, causation, or damages."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_9652590cf5c0086fbf",
+      "old_state": "Michigan",
+      "new_case_id": "US_231c5e7fb867d9b8c2",
+      "new_state": "Nevada",
+      "reason_category": "additional_source_ineligible",
+      "reason": "Limitations-only proceeding; the opinion does not decide a substantive civil-liability or damages merits issue."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_c494ba6285904ce918",
+      "old_state": "Michigan",
+      "new_case_id": "US_512d2cb96959fe1764",
+      "new_state": "Nevada",
+      "reason_category": "additional_source_ineligible",
+      "reason": "Contract-only dispute concerning the applicable limitations period; the opinion expressly characterizes the claim as breach of contract rather than a civil-liability tort merits issue."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_f360178db4c0409aa2",
+      "old_state": "Michigan",
+      "new_case_id": "US_8f953fe2f1a7911efc",
+      "new_state": "Nevada",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_f42baf15f4f65533de",
+      "old_state": "Michigan",
+      "new_case_id": "US_98be2374bed153f34a",
+      "new_state": "Nevada",
+      "reason_category": "additional_source_ineligible",
+      "reason": "Ineligible because the opinion resolves only a statutory notice/service requirement and does not decide a civil-liability substantive-merits issue; additionally, the source identifies a Court of Appeals panel rather than a controlling Michigan Supreme Court merits opinion."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_f72de5a85fdd45cf64",
+      "old_state": "Michigan",
+      "new_case_id": "US_9dc742b4409b555931",
+      "new_state": "Nevada",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The opinion resolves the sufficiency of a medical-malpractice notice of intent and its tolling effect, not a civil-liability substantive-merits issue."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_0bdc6cb112770284df",
+      "old_state": "Nevada",
+      "new_case_id": "US_a07db3e0a97840c5b1",
+      "new_state": "Nevada",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_1bd83c629182d24617",
+      "old_state": "Nevada",
+      "new_case_id": "US_061c987e5f6b8cf2e8",
+      "new_state": "Pennsylvania",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_514a1afebc7c89ad3f",
+      "old_state": "Nevada",
+      "new_case_id": "US_c387cc2f242da3c0dc",
+      "new_state": "Pennsylvania",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The opinion addresses only the procedural effect of an erroneous ex parte jury instruction and the scope of retrial, not a substantive civil-liability merits issue."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_9f4d3cca3bba16c059",
+      "old_state": "Nevada",
+      "new_case_id": "US_00df5ba88ee9d43fd5",
+      "new_state": "West Virginia",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The opinion concerns contract payment, breach-of-contract, mechanic's-lien, and jury-verdict issues, not a substantive civil-liability damages claim within the eligible domains."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_af3a72d6a4fbf2544a",
+      "old_state": "Nevada",
+      "new_case_id": "US_193fdb5b19590cbcab",
+      "new_state": "West Virginia",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_bfd06f8cb32e6978f3",
+      "old_state": "Nevada",
+      "new_case_id": "US_37fae4c5d51bff450a",
+      "new_state": "West Virginia",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The supplied opinion is expressly from the Nevada Court of Appeals rather than the state-highest court, making it an unusable controlling opinion under the eligibility requirement. In addition, the appellate decision resolves only attorney-misconduct/new-trial findings and remands for further findings, rather than deciding a civil-liability substantive merits issue."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_c2f1eaa3640f0a9bbf",
+      "old_state": "Nevada",
+      "new_case_id": "US_43352148b1cf063f58",
+      "new_state": "West Virginia",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_2b3ba71069d1e5eab9",
+      "old_state": "Pennsylvania",
+      "new_case_id": "US_45c1de8fa5ac8eefab",
+      "new_state": "West Virginia",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_57290d297c1a43a6d4",
+      "old_state": "Pennsylvania",
+      "new_case_id": "US_4bf2e6511806b25f10",
+      "new_state": "West Virginia",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The controlling issue is statute of limitations accrual and the discovery rule, without adjudication of the underlying negligence liability merits."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_5e1df8e8cc45419467",
+      "old_state": "Pennsylvania",
+      "new_case_id": "US_5334a4131f192eab74",
+      "new_state": "West Virginia",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The opinion resolves a procedural discontinuance and judgment-of-non-pros issue, not a civil-liability or damages substantive-merits issue."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_9cf64af04d2e95a72d",
+      "old_state": "Pennsylvania",
+      "new_case_id": "US_6ba935b9156e1996aa",
+      "new_state": "West Virginia",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The controlling opinion resolves statutory interpretation of DPW's Medicaid reimbursement lien and the effect of the statute of limitations, rather than a substantive merits determination of medical liability or damages."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_f6a3b4ef121a4e3b04",
+      "old_state": "Pennsylvania",
+      "new_case_id": "US_73b5710930ed47d628",
+      "new_state": "West Virginia",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_07482ca42c075096bb",
+      "old_state": "West Virginia",
+      "new_case_id": "US_8026310f8d6a3819bd",
+      "new_state": "West Virginia",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The opinion addresses insurance coverage, duty to defend, and the procedural standard for reconsidering interlocutory orders, rather than a substantive civil-liability merits issue."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_4e8bd43839d97e3e1f",
+      "old_state": "West Virginia",
+      "new_case_id": "US_94f469d91f6b1c555d",
+      "new_state": "West Virginia",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_4ee87caff5124d4003",
+      "old_state": "West Virginia",
+      "new_case_id": "US_ca3855b0593ebfc33e",
+      "new_state": "West Virginia",
+      "reason_category": "additional_source_ineligible",
+      "reason": "Insurance-coverage-only declaratory judgment concerning policy exclusions and duties to defend or indemnify; the underlying wrongful-death facts are not decided as a substantive civil-liability merits issue."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_911c57466fa2dd122c",
+      "old_state": "West Virginia",
+      "new_case_id": "US_d15af88bf67507bd93",
+      "new_state": "West Virginia",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The controlling opinion resolves only a statute-of-limitations and pleading/amendment issue, expressly stating that the motion does not require resolution of the negligence claim on the merits."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_ace4efc8607c66874a",
+      "old_state": "West Virginia",
+      "new_case_id": "US_d367706577b84edea9",
+      "new_state": "West Virginia",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_bdeec2edbb47432c64",
+      "old_state": "West Virginia",
+      "new_case_id": "US_e2121974270074f961",
+      "new_state": "West Virginia",
+      "reason_category": "additional_source_ineligible",
+      "reason": "The appeal concerns dismissal based on qualified immunity and pleading requirements, not a substantive civil-liability merits determination."
+    },
+    {
+      "origin_country": "US",
+      "old_case_id": "US_cf1fe4f8bf2f7fa43b",
+      "old_state": "West Virginia",
+      "new_case_id": "US_f52ee52e184d02cd06",
+      "new_state": "West Virginia",
+      "reason_category": "original_audit_flag",
+      "reason": "confirmed replacement required by external review and source recheck"
+    }
+  ],
+  "domain_counts": {
+    "KR": {
+      "general_negligence_personal_injury": 37,
+      "medical_professional_liability": 14,
+      "other_civil_liability": 39,
+      "product_liability": 10
+    },
+    "US": {
+      "general_negligence_personal_injury": 37,
+      "medical_professional_liability": 14,
+      "other_civil_liability": 39,
+      "product_liability": 10
+    }
+  },
+  "state_counts": {
+    "Louisiana": 14,
+    "Michigan": 22,
+    "Nevada": 17,
+    "Pennsylvania": 24,
+    "West Virginia": 23
+  },
+  "infeasibility_proof_without_balancing_swaps": {
+    "valid_kr_product_cases": 12,
+    "valid_us_product_cases": 6,
+    "mandatory_sufficient_us_product_candidates": 4,
+    "minimum_balancing_swaps": 2
+  },
+  "invariants": {
+    "total_200": true,
+    "kr_100": true,
+    "us_100": true,
+    "unique_case_id": true,
+    "unique_family_within_country": true,
+    "domain_match": true,
+    "states_bounded": true,
+    "all_domain_resolved": true,
+    "all_source_eligible": true,
+    "all_dates_eligible": true,
+    "all_candidate_core_fact_sufficient": true
+  }
+}

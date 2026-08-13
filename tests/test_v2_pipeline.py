@@ -5,11 +5,13 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from finalize_case_sample_v2 import main as finalize_main, max_flow_counts
+from extract_neutral_facts_v2 import select_smoke_cases
+from finalize_case_sample_v2 import flexible_state_domain_flow, main as finalize_main, max_flow_counts
 from pipeline_v2.io_utils import write_json, write_jsonl
+from pipeline_v2.legalize_kr import parse_markdown_record
 from pipeline_v2.rules import (
-    classify_domain, classify_kr_court, date_in_window, is_us_state_highcourt,
-    leakage_checks, select_main_opinion, source_span_grounding, strip_legal_citations,
+    assess_fact_sufficiency, classify_domain, classify_kr_court, date_in_window, is_us_state_highcourt,
+    leakage_checks, neutralize_jurisdiction_signals, select_main_opinion, source_span_grounding, strip_legal_citations,
     translation_equivalence_checks,
 )
 
@@ -62,11 +64,88 @@ def test_product_domain_outranks_generic_injury_signal() -> None:
     assert result["case_domain"] == "product_liability"
 
 
+def test_employer_theory_is_secondary_to_general_injury_domain() -> None:
+    result = classify_domain("An employee negligently drove within the scope of employment and injured a pedestrian.")
+    assert result["primary_domain"] == "general_negligence_personal_injury"
+    assert "vicarious_liability" in result["liability_theories"]
+
+
+def test_core_fact_sufficiency_does_not_require_defense_or_location() -> None:
+    result = assess_fact_sufficiency("[PERSON_A] drove and caused an injury to [PERSON_B].")
+    assert result["core_fact_sufficient"] is True
+    assert result["fact_sufficiency_score"] == 4
+    assert result["preferred_fact_sufficiency"] is False
+
+
+def test_translation_equivalence_normalizes_number_words_months_and_ordinals() -> None:
+    checks = translation_equivalence_checks(
+        "On December 12, 2007, [PERSON_A] visited the first-floor office with three experts.",
+        "2007년 12월 12일 [PERSON_A]는 전문가 3명과 1층 사무실을 방문했다.",
+        "en",
+    )
+    assert checks["translation_equivalence_status"] == "pass"
+
+
+def test_translation_equivalence_normalizes_repeated_months_korean_counters_and_total_others() -> None:
+    assert translation_equivalence_checks(
+        "2005년 5월 17일과 2005년 5월 29일", "May 17, 2005 and May 29, 2005", "ko"
+    )["translation_equivalence_status"] == "pass"
+    assert translation_equivalence_checks(
+        "[COMPANY_A] 등 7인과 한 대의 차량", "[COMPANY_A] and six others with one vehicle", "ko"
+    )["translation_equivalence_status"] == "pass"
+    assert translation_equivalence_checks(
+        "2008년 8월 20일경 안전에 관한 대책을 제출했다.",
+        "Around August 20, 2008, safety measures were submitted.",
+        "ko",
+    )["translation_equivalence_status"] == "pass"
+
+
+def test_translation_equivalence_accepts_semantic_negation_and_placeholder_repetition() -> None:
+    checks = translation_equivalence_checks(
+        "[PERSON_A]는 [PERSON_B]가 더 이상 일을 하지 않았다고 주장했다.",
+        "[PERSON_A] claimed that [PERSON_B] stopped working.",
+        "ko",
+    )
+    assert checks["translation_equivalence_status"] == "pass"
+
+
+def test_leakage_checks_do_not_match_state_names_inside_words_or_dates_as_citations() -> None:
+    checks = leakage_checks("The condition remained unchanged from 19 March 1993 until 28 June 2003.")
+    assert checks["jurisdiction_leakage_status"] == "pass"
+    assert checks["legal_leakage_status"] == "pass"
+    assert leakage_checks("The event occurred in Maine.")["jurisdiction_leakage_status"] == "fail"
+    neutralized, evidence = neutralize_jurisdiction_signals("The product was in the Texas area.")
+    assert neutralized == "The product was in the [LOCATION_JURISDICTION] area."
+    assert evidence == ["Texas"]
+    assert leakage_checks("A follow-up brain CT scan confirmed the injury.")["jurisdiction_leakage_status"] == "pass"
+
+
+def test_smoke_selection_prioritizes_fact_score_and_domain_diversity() -> None:
+    cases = [
+        {"case_id": "KR_A", "origin_country": "KR", "fact_sufficiency_score": 7, "primary_domain": "general"},
+        {"case_id": "KR_B", "origin_country": "KR", "fact_sufficiency_score": 7, "primary_domain": "general"},
+        {"case_id": "KR_C", "origin_country": "KR", "fact_sufficiency_score": 6, "primary_domain": "medical"},
+        {"case_id": "US_A", "origin_country": "US", "fact_sufficiency_score": 7, "primary_domain": "general"},
+        {"case_id": "US_B", "origin_country": "US", "fact_sufficiency_score": 6, "primary_domain": "product"},
+    ]
+    selected = select_smoke_cases(cases, 2)
+    assert [row["case_id"] for row in selected] == ["KR_A", "KR_C", "US_A", "US_B"]
+
+
+def test_legalize_markdown_structured_fields_and_opinion(tmp_path: Path) -> None:
+    path = tmp_path / "case.md"
+    path.write_text("---\n판례일련번호: '1'\n사건종류: 민사\n법원등급: 대법원\n선고일자: 2020-01-01\n---\n# 제목\n\n## 판례내용\n\n사실 본문\n", encoding="utf-8")
+    metadata, _, opinion = parse_markdown_record(path)
+    assert metadata["사건종류"] == "민사" and metadata["법원등급"] == "대법원"
+    assert opinion == "사실 본문"
+
+
 def test_placeholder_and_number_consistency_detects_missing_entity() -> None:
     ok = translation_equivalence_checks("[PERSON_A] drove 97 kilometers.", "[PERSON_A]은 97킬로미터를 운전했다.", "en")
     bad = translation_equivalence_checks("[PERSON_A] drove 97 kilometers.", "그 사람은 79킬로미터를 운전했다.", "en")
     assert ok["translation_equivalence_status"] == "pass"
-    assert set(bad["translation_equivalence_issues"]) == {"placeholder_mismatch", "number_mismatch"}
+    assert bad["translation_equivalence_issues"] == ["placeholder_mismatch"]
+    assert bad["translation_equivalence_warnings"] == ["number_mismatch"]
 
 
 def test_legal_citation_stripping_preserves_factual_sentence() -> None:
@@ -89,7 +168,7 @@ def test_source_span_grounding_whitespace_normalization_and_failure() -> None:
 
 def test_numeric_translation_consistency() -> None:
     assert translation_equivalence_checks("approximately 3.05 meters", "약 3.05미터", "en")["translation_equivalence_status"] == "pass"
-    assert "number_mismatch" in translation_equivalence_checks("approximately 3.05 meters", "약 3.5미터", "en")["translation_equivalence_issues"]
+    assert "number_mismatch" in translation_equivalence_checks("approximately 3.05 meters", "약 3.5미터", "en")["translation_equivalence_warnings"]
 
 
 def test_duplicate_family_capacity_cannot_fill_state_quota() -> None:
@@ -99,6 +178,16 @@ def test_duplicate_family_capacity_cannot_fill_state_quota() -> None:
     assert flow == 99
 
 
+def test_flexible_state_bounds_are_enforced() -> None:
+    states = ["A", "B", "C", "D", "E"]
+    targets = {"general_negligence_personal_injury": 100, "medical_professional_liability": 0, "product_liability": 0, "other_civil_liability": 0}
+    enough = {(state, "general_negligence_personal_injury"): 20 for state in states}
+    feasible, counts = flexible_state_domain_flow(states, enough, targets)
+    assert feasible and all(sum(counts[state, domain] for domain in targets) == 20 for state in states)
+    enough["A", "general_negligence_personal_injury"] = 9
+    assert flexible_state_domain_flow(states, enough, targets)[0] is False
+
+
 def _fact(case_id: str, country: str, domain: str) -> dict:
     source_language = "ko" if country == "KR" else "en"
     source = "[PERSON_A]가 1개의 경고를 받았다." if country == "KR" else "[PERSON_A] received 1 warning."
@@ -106,7 +195,7 @@ def _fact(case_id: str, country: str, domain: str) -> dict:
 
 
 def test_finalizer_enforces_100_100_state_domain_and_split_invariants(tmp_path: Path) -> None:
-    domains = (["general_negligence_personal_injury"] * 40 + ["medical_professional_liability"] * 20 + ["product_liability"] * 20 + ["employer_supervisory_vicarious_liability"] * 20)
+    domains = (["general_negligence_personal_injury"] * 45 + ["medical_professional_liability"] * 25 + ["product_liability"] * 12 + ["other_civil_liability"] * 18)
     states = ["Oregon", "Texas", "Ohio", "Maine", "Nevada"]
     kr, us, facts = [], [], []
     for index, domain in enumerate(domains):
@@ -126,5 +215,4 @@ def test_finalizer_enforces_100_100_state_domain_and_split_invariants(tmp_path: 
     summary = json.loads((out / "collection_summary.json").read_text(encoding="utf-8"))
     assert all(summary["sanity_checks"].values())
     assert summary["state_counts"] == {state: 20 for state in states}
-    assert summary["domain_counts"]["KR"] == summary["domain_counts"]["US"]
-
+    assert summary["primary_domain_counts"]["KR"] == summary["primary_domain_counts"]["US"]

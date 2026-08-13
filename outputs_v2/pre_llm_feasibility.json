@@ -1,0 +1,165 @@
+{
+  "collection_version": "kr-us-highcourt-corpus-v2.0",
+  "assessment_stage": "after deterministic source eligibility; before LLM extraction",
+  "hard_constraints_checked": [
+    "KR structured Supreme Court/date",
+    "US court_type=S/date",
+    "substantive centrality",
+    "controlling opinion",
+    "core_fact_sufficient",
+    "deduplicated case_family"
+  ],
+  "hard_constraints_not_yet_checked": [
+    "source-grounded fact-unit extraction",
+    "legal/jurisdiction leakage",
+    "KO/EN translation equivalence"
+  ],
+  "candidate_counts": {
+    "KR_all": 1200,
+    "US_all": 592,
+    "KR_strict_deduped": 960,
+    "US_strict_deduped": 163
+  },
+  "eligible_by_primary_domain": {
+    "KR": {
+      "general_negligence_personal_injury": 432,
+      "medical_professional_liability": 240,
+      "product_liability": 12,
+      "other_civil_liability": 276
+    },
+    "US": {
+      "general_negligence_personal_injury": 65,
+      "medical_professional_liability": 79,
+      "product_liability": 14,
+      "other_civil_liability": 5
+    }
+  },
+  "US_eligible_by_state": {
+    "Pennsylvania": 27,
+    "Michigan": 24,
+    "Louisiana": 38,
+    "Nevada": 34,
+    "West Virginia": 40
+  },
+  "matched_allocation": {
+    "general_negligence_personal_injury": 55,
+    "medical_professional_liability": 28,
+    "product_liability": 12,
+    "other_civil_liability": 5
+  },
+  "US_state_domain_flow": {
+    "Pennsylvania": {
+      "general_negligence_personal_injury": 12,
+      "medical_professional_liability": 13,
+      "product_liability": 0,
+      "other_civil_liability": 2
+    },
+    "Michigan": {
+      "general_negligence_personal_injury": 7,
+      "medical_professional_liability": 15,
+      "product_liability": 2,
+      "other_civil_liability": 0
+    },
+    "Louisiana": {
+      "general_negligence_personal_injury": 16,
+      "medical_professional_liability": 0,
+      "product_liability": 3,
+      "other_civil_liability": 0
+    },
+    "Nevada": {
+      "general_negligence_personal_injury": 10,
+      "medical_professional_liability": 0,
+      "product_liability": 4,
+      "other_civil_liability": 2
+    },
+    "West Virginia": {
+      "general_negligence_personal_injury": 10,
+      "medical_professional_liability": 0,
+      "product_liability": 3,
+      "other_civil_liability": 1
+    }
+  },
+  "allocation_report": {
+    "kr_available": {
+      "medical_professional_liability": 240,
+      "other_civil_liability": 276,
+      "general_negligence_personal_injury": 432,
+      "product_liability": 12
+    },
+    "us_available": {
+      "medical_professional_liability": 79,
+      "general_negligence_personal_injury": 65,
+      "product_liability": 14,
+      "other_civil_liability": 5
+    },
+    "us_available_by_state_domain": {
+      "Pennsylvania": {
+        "general_negligence_personal_injury": 12,
+        "medical_professional_liability": 13,
+        "product_liability": 0,
+        "other_civil_liability": 2
+      },
+      "Michigan": {
+        "general_negligence_personal_injury": 7,
+        "medical_professional_liability": 15,
+        "product_liability": 2,
+        "other_civil_liability": 0
+      },
+      "Louisiana": {
+        "general_negligence_personal_injury": 16,
+        "medical_professional_liability": 19,
+        "product_liability": 3,
+        "other_civil_liability": 0
+      },
+      "Nevada": {
+        "general_negligence_personal_injury": 19,
+        "medical_professional_liability": 9,
+        "product_liability": 4,
+        "other_civil_liability": 2
+      },
+      "West Virginia": {
+        "general_negligence_personal_injury": 11,
+        "medical_professional_liability": 23,
+        "product_liability": 5,
+        "other_civil_liability": 1
+      }
+    },
+    "shared_caps": {
+      "general_negligence_personal_injury": 65,
+      "medical_professional_liability": 79,
+      "product_liability": 12,
+      "other_civil_liability": 5
+    },
+    "preference_ranges": {
+      "general_negligence_personal_injury": [
+        40,
+        55
+      ],
+      "medical_professional_liability": [
+        20,
+        30
+      ],
+      "product_liability": [
+        10,
+        25
+      ],
+      "other_civil_liability": [
+        5,
+        30
+      ]
+    },
+    "candidate_allocations_considered": 4173,
+    "state_bounds": {
+      "minimum": 10,
+      "maximum": 30
+    },
+    "max_flow": 100,
+    "allocation": {
+      "general_negligence_personal_injury": 55,
+      "medical_professional_liability": 28,
+      "product_liability": 12,
+      "other_civil_liability": 5
+    }
+  },
+  "pre_llm_100_plus_100_source_feasible": true
+}

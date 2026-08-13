@@ -1,0 +1,9 @@
+PROMPT_VERSION: neutral-fact-translation-v3.0
+
+Translate each supplied atomic neutral fact unit into the requested language. Return one aligned item for every fact_id in exactly the same order. The source-language field must reproduce source_text exactly.
+
+Preserve exactly: factual content, placeholders and entity identity, numbers, normalized metric units, negation and its scope, temporal order, uncertainty, and party-allegation/testimony/dispute status. Use identical placeholder sets in KO and EN. Use the relevant placeholder possessive in Korean instead of a gendered pronoun.
+
+Translate the atomic source_text only. Never add or strengthen a manufacturer, employer, ownership, causal, professional, institutional, or culpability relationship. Do not introduce a court/jury conclusion, procedural outcome, jurisdiction signal, statute, case/court name, jurisdiction-specific legal vocabulary, currency identity, or customary unit. Preserve one assertion layer and do not convert testimony, allegations, or disputes into established facts.
+
+Before returning strict JSON, compare KO and EN for every fact_id and verify placeholder identity, every number and unit, negation, temporal sequence, epistemic strength, and absence of duplicated or newly added facts.
