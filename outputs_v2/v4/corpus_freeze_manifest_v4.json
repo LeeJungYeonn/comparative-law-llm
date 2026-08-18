@@ -1,0 +1,43 @@
+{
+  "corpus_version": "kr-us-highcourt-corpus-v4.0",
+  "status": "FROZEN",
+  "frozen_at_utc": "2026-08-18T08:13:40.795901+00:00",
+  "authoritative_independent_qc_inputs": [
+    "outputs_v2/v3_independent_quality_control_report.md",
+    "outputs_v2/v3_independent_qc_issues.csv",
+    "outputs_v2/v3_independent_qc_summary.json"
+  ],
+  "invariants": {
+    "total_200": true,
+    "kr_100": true,
+    "us_100": true,
+    "all_kr_eligible_supreme_court_merits": true,
+    "all_us_eligible_state_highest_court_merits": true,
+    "all_dates_2000_2025": true,
+    "no_substantive_duplicate_case_families": true,
+    "all_us_controlling_opinions_validated": true,
+    "kr_us_primary_domain_counts_equal": true,
+    "all_five_us_states_represented": true,
+    "each_us_state_between_10_and_30": true,
+    "all_neutral_facts_qc_pass": true,
+    "all_ko_en_pairs_equivalent": true,
+    "all_neutral_fact_source_synchronized": true,
+    "no_unresolved_qc_flags": true,
+    "kr_development_20": true,
+    "kr_confirmatory_80": true,
+    "us_development_20": true,
+    "us_confirmatory_80": true
+  },
+  "artifact_sha256": {
+    "outputs_v2/v4/final_cases_200_v4.jsonl": "bdde98317f030bb92643fcb1856e0789e6c92408e409415ab37647b51dfcf2d5",
+    "outputs_v2/v4/final_fact_patterns_200_v4.jsonl": "d05796dfc24369c82a1af66d1398b71f9154ee0394f7716f9618dd36202c37a2",
+    "outputs_v2/v4/final_fact_units_200_v4.jsonl": "9e299c15c0ab6b2ee65edce9c6a296ad48f5b18c7ed4bdf76e313b4e78b64250",
+    "outputs_v2/v4/canonical_final_qc_200_v4.jsonl": "3bbac0caac90790075cd344bfc1b159eb914c27534c4ccd1b5e04ec105c6b515",
+    "outputs_v2/v4/us_raw_sources_100_v4.jsonl": "ca9545cd77bc9312e9ffa4398c79efffa0e06950392b47825bf605cbba12ee46",
+    "outputs_v2/v4/us_controlling_opinions_100_v4.jsonl": "672280b7c65217a0e642fed187c603c64bf37cdcc85057dd8ba9649243d01e30",
+    "outputs_v2/v4/final_roster_manifest_200_v4.csv": "b2d7569eba508ca6e04bd3da2c16f570254127095e6abab3074a19bc3d6b3d9e",
+    "outputs_v2/v4/independent_qc_issue_resolution_v4.csv": "d0554e25c842f5a7e2a03f0214f1e0737b3141d7df9284127d4922fb751a44dd",
+    "outputs_v2/v4/final_qc_summary_v4.json": "c4ab5ee05e4e0e8b0617fabdad97e2c22f8927fa8b94c9ba6adc8fbef36b1fa7",
+    "outputs_v2/v4/source_duplicate_validation_v4.json": "d77c3b83eeed4cc9c7a3fd7b983ab57a6c7016ce4b7462b49940a12a7c4865bd"
+  }
+}

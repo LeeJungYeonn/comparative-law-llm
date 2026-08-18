@@ -1,0 +1,24 @@
+{
+  "corpus_version": "kr-us-highcourt-corpus-v4.0.1",
+  "source_corpus_version": "kr-us-highcourt-corpus-v4.0",
+  "source_artifact_sha256_at_upgrade": {
+    "outputs_v2/v4/final_cases_200_v4.jsonl": "bdde98317f030bb92643fcb1856e0789e6c92408e409415ab37647b51dfcf2d5",
+    "outputs_v2/v4/final_fact_patterns_200_v4.jsonl": "95db9f64fb7aae1688df5424db4879501b9ea31ec961170ad73588045bd95a07",
+    "outputs_v2/v4/final_fact_units_200_v4.jsonl": "9737b32a30b1f10703f91737b2fa4ed1f65cdb2b0f197d58cf14394aabadb3bd"
+  },
+  "case_count": 200,
+  "roster_unchanged": true,
+  "non_target_case_metadata_unchanged": true,
+  "old_substantive_civil_liability_central_distribution": {
+    "false": 23,
+    "true": 177
+  },
+  "new_substantive_civil_liability_central_true_count": 200,
+  "pre_v4_value_preserved_count": 200,
+  "user_manual_neutral_fact_edit_case_ids_with_stale_input_hashes": [
+    "KR_80cd6399334ab774b2",
+    "KR_cd0b887a7a431369b9"
+  ],
+  "neutral_fact_text_preserved_count": 200,
+  "fact_unit_text_preserved_count": 200
+}

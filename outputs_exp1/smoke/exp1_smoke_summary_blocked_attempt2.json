@@ -1,0 +1,111 @@
+{
+  "experiment_id": "exp1-input-language-smoke-v4.0.1",
+  "status": "BLOCKED_API_USAGE_LIMIT",
+  "pipeline_ready_to_freeze_for_full_exp1": false,
+  "blocker": "Letsur returned HTTP 429 usage_limit_exceeded: COST limit exceeded for every primary request.",
+  "model_requested": "gpt-5.6-luna",
+  "model_identifier_returned": null,
+  "prompt_version": "exp1-court-opinion-v1",
+  "system_prompt_versions": {
+    "ko": "exp1-court-opinion-system-ko-v1",
+    "en": "exp1-court-opinion-system-en-v1"
+  },
+  "user_prompt_versions": {
+    "ko": "exp1-court-opinion-user-ko-v1",
+    "en": "exp1-court-opinion-user-en-v1"
+  },
+  "generation_parameters": {
+    "base_url_identifier": "https://gw.letsur.ai/v1",
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "max_output_tokens": 8000,
+    "seed": 20260730,
+    "replicate": 1,
+    "primary_reasoning_effort": "medium",
+    "concurrency": 4
+  },
+  "selected_cases": [
+    {
+      "case_id": "KR_15f616454feb5baced",
+      "origin": "KR",
+      "state": null,
+      "primary_domain": "general_negligence_personal_injury"
+    },
+    {
+      "case_id": "KR_5be8caa54d55da9c2d",
+      "origin": "KR",
+      "state": null,
+      "primary_domain": "medical_professional_liability"
+    },
+    {
+      "case_id": "KR_6e91996913ed443be6",
+      "origin": "KR",
+      "state": null,
+      "primary_domain": "product_liability"
+    },
+    {
+      "case_id": "KR_b7cbce3536a0f4f763",
+      "origin": "KR",
+      "state": null,
+      "primary_domain": "other_civil_liability"
+    },
+    {
+      "case_id": "US_1aba36d98e0653f066",
+      "origin": "US",
+      "state": "Michigan",
+      "primary_domain": "other_civil_liability"
+    },
+    {
+      "case_id": "US_8b84f7c77a2cc4823f",
+      "origin": "US",
+      "state": "Pennsylvania",
+      "primary_domain": "general_negligence_personal_injury"
+    },
+    {
+      "case_id": "US_9dc742b4409b555931",
+      "origin": "US",
+      "state": "Nevada",
+      "primary_domain": "medical_professional_liability"
+    },
+    {
+      "case_id": "US_ca3855b0593ebfc33e",
+      "origin": "US",
+      "state": "West Virginia",
+      "primary_domain": "product_liability"
+    }
+  ],
+  "primary": {
+    "planned": 16,
+    "successful": 0,
+    "failed": 16,
+    "qc_pass": 0
+  },
+  "effort_parameter_check": {
+    "status": "NOT_RUN",
+    "reason": "Primary 16 generations did not pass."
+  },
+  "error_counts": {
+    "LLMRequestError: HTTP 429: {\"type\":\"usage_limit_exceeded\",\"title\":\"Usage Limit Exceeded\",\"status\":429,\"detail\":\"COST limit exceeded\",\"error_ref\":\"err_927dfb7b0c3f\"}": 1,
+    "LLMRequestError: HTTP 429: {\"type\":\"usage_limit_exceeded\",\"title\":\"Usage Limit Exceeded\",\"status\":429,\"detail\":\"COST limit exceeded\",\"error_ref\":\"err_e9cd45f32d78\"}": 1,
+    "LLMRequestError: HTTP 429: {\"type\":\"usage_limit_exceeded\",\"title\":\"Usage Limit Exceeded\",\"status\":429,\"detail\":\"COST limit exceeded\",\"error_ref\":\"err_618bfb0cbdd5\"}": 1,
+    "LLMRequestError: HTTP 429: {\"type\":\"usage_limit_exceeded\",\"title\":\"Usage Limit Exceeded\",\"status\":429,\"detail\":\"COST limit exceeded\",\"error_ref\":\"err_35d10014626b\"}": 1,
+    "LLMRequestError: HTTP 429: {\"type\":\"usage_limit_exceeded\",\"title\":\"Usage Limit Exceeded\",\"status\":429,\"detail\":\"COST limit exceeded\",\"error_ref\":\"err_64bbcd0a6737\"}": 1,
+    "LLMRequestError: HTTP 429: {\"type\":\"usage_limit_exceeded\",\"title\":\"Usage Limit Exceeded\",\"status\":429,\"detail\":\"COST limit exceeded\",\"error_ref\":\"err_48ac79298ab6\"}": 1,
+    "LLMRequestError: HTTP 429: {\"type\":\"usage_limit_exceeded\",\"title\":\"Usage Limit Exceeded\",\"status\":429,\"detail\":\"COST limit exceeded\",\"error_ref\":\"err_78f937a01bf2\"}": 1,
+    "LLMRequestError: HTTP 429: {\"type\":\"usage_limit_exceeded\",\"title\":\"Usage Limit Exceeded\",\"status\":429,\"detail\":\"COST limit exceeded\",\"error_ref\":\"err_efcd175f2d8c\"}": 1,
+    "LLMRequestError: HTTP 429: {\"type\":\"usage_limit_exceeded\",\"title\":\"Usage Limit Exceeded\",\"status\":429,\"detail\":\"COST limit exceeded\",\"error_ref\":\"err_9b47c31b0afc\"}": 1,
+    "LLMRequestError: HTTP 429: {\"type\":\"usage_limit_exceeded\",\"title\":\"Usage Limit Exceeded\",\"status\":429,\"detail\":\"COST limit exceeded\",\"error_ref\":\"err_c99392732638\"}": 1,
+    "LLMRequestError: HTTP 429: {\"type\":\"usage_limit_exceeded\",\"title\":\"Usage Limit Exceeded\",\"status\":429,\"detail\":\"COST limit exceeded\",\"error_ref\":\"err_3600beff429b\"}": 1,
+    "LLMRequestError: HTTP 429: {\"type\":\"usage_limit_exceeded\",\"title\":\"Usage Limit Exceeded\",\"status\":429,\"detail\":\"COST limit exceeded\",\"error_ref\":\"err_d288e6e2989b\"}": 1,
+    "LLMRequestError: HTTP 429: {\"type\":\"usage_limit_exceeded\",\"title\":\"Usage Limit Exceeded\",\"status\":429,\"detail\":\"COST limit exceeded\",\"error_ref\":\"err_3d9fd9dad642\"}": 1,
+    "LLMRequestError: HTTP 429: {\"type\":\"usage_limit_exceeded\",\"title\":\"Usage Limit Exceeded\",\"status\":429,\"detail\":\"COST limit exceeded\",\"error_ref\":\"err_2cf0b123a28c\"}": 1,
+    "LLMRequestError: HTTP 429: {\"type\":\"usage_limit_exceeded\",\"title\":\"Usage Limit Exceeded\",\"status\":429,\"detail\":\"COST limit exceeded\",\"error_ref\":\"err_0a3b95a6d192\"}": 1,
+    "LLMRequestError: HTTP 429: {\"type\":\"usage_limit_exceeded\",\"title\":\"Usage Limit Exceeded\",\"status\":429,\"detail\":\"COST limit exceeded\",\"error_ref\":\"err_716a638f0913\"}": 1
+  },
+  "source_corpus_hashes": {
+    "outputs_v2\\v4.0.1\\final_cases_200_v4_0_1.jsonl": "c9b6cffa2b1c75b67c2d7e031a604a26b49c57c317a61a649731f27127d1ec23",
+    "outputs_v2\\v4.0.1\\final_fact_patterns_200_v4_0_1.jsonl": "5e50e1c067abd9c7167f0bd36896523c6a5264ece5b2ee06d8a46a22d3814a8a"
+  },
+  "hypothesis_evaluation_performed": false,
+  "pca_performed": false
+}

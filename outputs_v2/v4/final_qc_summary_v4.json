@@ -1,0 +1,158 @@
+{
+  "corpus_version": "kr-us-highcourt-corpus-v4.0",
+  "status": "FROZEN",
+  "canonical_qc_artifact": "outputs_v2/v4/canonical_final_qc_200_v4.jsonl",
+  "canonical_qc_rows": 200,
+  "canonical_qc_pass": 200,
+  "canonical_qc_fail": 0,
+  "country_counts": {
+    "KR": 100,
+    "US": 100
+  },
+  "us_state_counts": {
+    "Louisiana": 16,
+    "Michigan": 19,
+    "Nevada": 18,
+    "Pennsylvania": 20,
+    "West Virginia": 27
+  },
+  "primary_domain_counts": {
+    "KR": {
+      "general_negligence_personal_injury": 42,
+      "medical_professional_liability": 16,
+      "other_civil_liability": 33,
+      "product_liability": 9
+    },
+    "US": {
+      "general_negligence_personal_injury": 42,
+      "medical_professional_liability": 16,
+      "other_civil_liability": 33,
+      "product_liability": 9
+    }
+  },
+  "other_civil_liability_subtypes": {
+    "KR": {
+      "employment_workplace": 9,
+      "financial_insurance_business": 12,
+      "other_economic_or_personal": 5,
+      "professional_services": 2,
+      "property_environmental_construction": 3,
+      "public_entity_institutional": 2
+    },
+    "US": {
+      "defamation_privacy_reputation": 1,
+      "employment_workplace": 14,
+      "financial_insurance_business": 8,
+      "other_economic_or_personal": 2,
+      "professional_services": 5,
+      "property_environmental_construction": 1,
+      "public_entity_institutional": 2
+    }
+  },
+  "split_counts": {
+    "KR_confirmatory": 80,
+    "KR_development": 20,
+    "US_confirmatory": 80,
+    "US_development": 20
+  },
+  "replacement_count": 30,
+  "retained_neutral_fact_correction_count": 36,
+  "replacement_neutral_fact_reextraction_count": 30,
+  "duplicate_case_family_removal_count": 2,
+  "noncontrolling_opinion_replacement_count": 6,
+  "decision_date_correction_count": 2,
+  "duplicate_validation": {
+    "exact_case_family_groups": [],
+    "exact_case_number_groups": [],
+    "exact_controlling_opinion_groups": [],
+    "exact_neutral_fact_groups": [],
+    "same_caption_date_groups_resolved_as_distinct": [
+      {
+        "case_ids": [
+          "KR_25ab15d21ac1967afd",
+          "KR_d7658dab9202d2e025"
+        ],
+        "case_numbers": [
+          "2009다54638",
+          "2009다65416"
+        ],
+        "opinion_sha256": [
+          "30f6be6c03e33b18f4955356e7e49828c02a2edc44f1ba640bded60292ee7970",
+          "e7fd3c51c88ed028cb3c643e53f1c39b0979cd310e7caee68bc0a505c9dcc57e"
+        ],
+        "resolution": "distinct_case_numbers_and_distinct_controlling_texts"
+      },
+      {
+        "case_ids": [
+          "KR_5ebeddec620aad3412",
+          "KR_d4a866bf8f86262c7f"
+        ],
+        "case_numbers": [
+          "2009다94278",
+          "2008다61615"
+        ],
+        "opinion_sha256": [
+          "7e75408a73ce4ca0408e9a558bd3a85031b13fb02c6fb5ce482d6118228bc34f",
+          "4e7c81904317e6c9c99546b1490091634fffc3fad8e6406a6b14a43e80c03fb9"
+        ],
+        "resolution": "distinct_case_numbers_and_distinct_controlling_texts"
+      },
+      {
+        "case_ids": [
+          "KR_61112d3135e80de786",
+          "KR_d0cfadb984b62f020b",
+          "KR_e841c27e080fa0659c"
+        ],
+        "case_numbers": [
+          "2008다3640",
+          "2007다77149",
+          "2008다3527"
+        ],
+        "opinion_sha256": [
+          "d8998941c5bc16f52d4fe50022b2c32f4728e13321bb3861f29a3424b64a594a",
+          "4cb7631feeb3413906e0145e803f5617a3dac18949d8173655edccc883ae485a",
+          "9818f2f473f58676694abf5d2ba475864c815511224f06299abc8e05f77d72a2"
+        ],
+        "resolution": "distinct_case_numbers_and_distinct_controlling_texts"
+      },
+      {
+        "case_ids": [
+          "KR_908095abe4f0d6d327",
+          "KR_f358ab674e5ded71f1"
+        ],
+        "case_numbers": [
+          "2005다23599",
+          "2005다21821"
+        ],
+        "opinion_sha256": [
+          "c84a66096b83716cd8f0f079d38c3f81772542488c9cc1a0d7a9cd533f925f7f",
+          "511308f56d1177c52855778ac51a6a60a0ee1cc827f6008a4ab01e9eebecf16c"
+        ],
+        "resolution": "distinct_case_numbers_and_distinct_controlling_texts"
+      }
+    ],
+    "substantive_duplicate_count": 0
+  },
+  "controlling_opinion_split_count": 39,
+  "invariants": {
+    "total_200": true,
+    "kr_100": true,
+    "us_100": true,
+    "all_kr_eligible_supreme_court_merits": true,
+    "all_us_eligible_state_highest_court_merits": true,
+    "all_dates_2000_2025": true,
+    "no_substantive_duplicate_case_families": true,
+    "all_us_controlling_opinions_validated": true,
+    "kr_us_primary_domain_counts_equal": true,
+    "all_five_us_states_represented": true,
+    "each_us_state_between_10_and_30": true,
+    "all_neutral_facts_qc_pass": true,
+    "all_ko_en_pairs_equivalent": true,
+    "all_neutral_fact_source_synchronized": true,
+    "no_unresolved_qc_flags": true,
+    "kr_development_20": true,
+    "kr_confirmatory_80": true,
+    "us_development_20": true,
+    "us_confirmatory_80": true
+  }
+}

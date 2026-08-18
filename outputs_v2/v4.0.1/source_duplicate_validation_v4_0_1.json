@@ -1,0 +1,73 @@
+{
+  "corpus_version": "kr-us-highcourt-corpus-v4.0.1",
+  "exact_case_family_groups": [],
+  "exact_case_number_groups": [],
+  "exact_controlling_opinion_groups": [],
+  "exact_neutral_fact_groups": [],
+  "same_caption_date_groups_resolved_as_distinct": [
+    {
+      "case_ids": [
+        "KR_25ab15d21ac1967afd",
+        "KR_d7658dab9202d2e025"
+      ],
+      "case_numbers": [
+        "2009다54638",
+        "2009다65416"
+      ],
+      "opinion_sha256": [
+        "30f6be6c03e33b18f4955356e7e49828c02a2edc44f1ba640bded60292ee7970",
+        "e7fd3c51c88ed028cb3c643e53f1c39b0979cd310e7caee68bc0a505c9dcc57e"
+      ],
+      "resolution": "distinct_case_numbers_and_distinct_controlling_texts"
+    },
+    {
+      "case_ids": [
+        "KR_5ebeddec620aad3412",
+        "KR_d4a866bf8f86262c7f"
+      ],
+      "case_numbers": [
+        "2009다94278",
+        "2008다61615"
+      ],
+      "opinion_sha256": [
+        "7e75408a73ce4ca0408e9a558bd3a85031b13fb02c6fb5ce482d6118228bc34f",
+        "4e7c81904317e6c9c99546b1490091634fffc3fad8e6406a6b14a43e80c03fb9"
+      ],
+      "resolution": "distinct_case_numbers_and_distinct_controlling_texts"
+    },
+    {
+      "case_ids": [
+        "KR_61112d3135e80de786",
+        "KR_d0cfadb984b62f020b",
+        "KR_e841c27e080fa0659c"
+      ],
+      "case_numbers": [
+        "2008다3640",
+        "2007다77149",
+        "2008다3527"
+      ],
+      "opinion_sha256": [
+        "d8998941c5bc16f52d4fe50022b2c32f4728e13321bb3861f29a3424b64a594a",
+        "4cb7631feeb3413906e0145e803f5617a3dac18949d8173655edccc883ae485a",
+        "9818f2f473f58676694abf5d2ba475864c815511224f06299abc8e05f77d72a2"
+      ],
+      "resolution": "distinct_case_numbers_and_distinct_controlling_texts"
+    },
+    {
+      "case_ids": [
+        "KR_908095abe4f0d6d327",
+        "KR_f358ab674e5ded71f1"
+      ],
+      "case_numbers": [
+        "2005다23599",
+        "2005다21821"
+      ],
+      "opinion_sha256": [
+        "c84a66096b83716cd8f0f079d38c3f81772542488c9cc1a0d7a9cd533f925f7f",
+        "511308f56d1177c52855778ac51a6a60a0ee1cc827f6008a4ab01e9eebecf16c"
+      ],
+      "resolution": "distinct_case_numbers_and_distinct_controlling_texts"
+    }
+  ],
+  "substantive_duplicate_count": 0
+}
