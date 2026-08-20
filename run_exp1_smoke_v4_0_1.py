@@ -76,9 +76,10 @@ SPECIFIC_JURISDICTIONS = re.compile(
 PLACEHOLDER = re.compile(r"\[[A-Z][A-Z0-9_]+\]")
 NUMBER = re.compile(r"(?<![A-Za-z_])\d+(?:[.,]\d+)*(?:%|원|달러|dollars?)?", re.I)
 AUTHORITY = re.compile(
-    r"(?i)§|\bsection\s+\d+|\b[A-Z][A-Za-z.'-]+\s+v\.\s+[A-Z][A-Za-z.'-]+|"
-    r"\b\d+\s+[A-Z][A-Za-z.]+\s+\d+\b|민법\s*제?\d+조|법률\s*제?\d+|대법원\s*\d{4}[.년]|"
-    r"\d{2,4}[가-힣]+\d+\s*판결"
+    r"§|(?i:\bsection\s+\d+)|\b[A-Z][A-Za-z.'-]+\s+v\.\s+[A-Z][A-Za-z.'-]+|"
+    r"\b\d+\s+(?:U\.S\.|S\.\s?Ct\.|F\.\s?(?:2d|3d|4th)?|N\.?W\.?\s?2d|"
+    r"A\.?\s?\d+d|P\.?\s?\d+d|S\.?E\.?\s?2d|So\.?\s?\d+d|N\.?E\.?\s?\d+d)\s+\d+\b|"
+    r"민법\s*제?\d+조|법률\s*제?\d+|대법원\s*\d{4}[.년]|\d{2,4}[가-힣]+\d+\s*판결"
 )
 REFUSAL = re.compile(r"(?i)I (?:cannot|can't|am unable)|요청을 수행할 수 없|답변할 수 없")
 
@@ -214,7 +215,8 @@ def call_one(item: dict[str, Any], api_key: str) -> dict[str, Any]:
 
 
 def response_qc(item: dict[str, Any], response: dict[str, Any]) -> dict[str, Any]:
-    text = response.get("response_text") or ""
+    raw_text = response.get("response_text") or ""
+    text = raw_text
     language = item["input_language"]
     hangul_count = len(re.findall(r"[가-힣]", text))
     language_pass = hangul_count >= 50 if language == "ko" else hangul_count < 10
@@ -232,7 +234,8 @@ def response_qc(item: dict[str, Any], response: dict[str, Any]) -> dict[str, Any
         text = low
     opinion_score = sum(any(token in text for token in category) for category in categories)
     input_numbers = set(NUMBER.findall(item["input_text"]))
-    response_numbers = set(NUMBER.findall(response.get("response_text") or ""))
+    response_without_numbered_headings = re.sub(r"(?m)^\s*\d+[.)]\s+", "", raw_text)
+    response_numbers = set(NUMBER.findall(response_without_numbered_headings))
     introduced_numbers = sorted(response_numbers - input_numbers)
     input_placeholders = set(PLACEHOLDER.findall(item["input_text"]))
     response_placeholders = set(PLACEHOLDER.findall(response.get("response_text") or ""))
@@ -393,6 +396,176 @@ def finalize_blocked_attempt() -> None:
     print(json.dumps(summary, ensure_ascii=False))
 
 
+def finalize_existing_run1() -> None:
+    """Re-QC completed API responses and write a non-overwriting versioned final artifact set."""
+    destination = OUTPUT / "v4_0_1_run1"
+    source_inputs = OUTPUT / "exp1_smoke_inputs.jsonl"
+    source_responses = OUTPUT / "exp1_smoke_responses.jsonl"
+    source_prompt_manifest = OUTPUT / "exp1_smoke_prompt_manifest.json"
+    for path in (source_inputs, source_responses, source_prompt_manifest):
+        if not path.exists():
+            raise RuntimeError(f"Completed smoke source artifact not found: {path}")
+    if destination.exists():
+        raise RuntimeError(f"Versioned destination already exists; refusing to overwrite it: {destination}")
+
+    inputs = [dict(row) for row in read_jsonl(source_inputs)]
+    responses = [dict(row) for row in read_jsonl(source_responses)]
+    if len(inputs) != 28 or len(responses) != 28:
+        raise RuntimeError("Expected 28 completed records: 16 primary plus 12 effort-parameter checks")
+    input_by_key = {row["request_key"]: row for row in inputs}
+    response_by_key = {row["request_key"]: row for row in responses}
+    if len(input_by_key) != 28 or set(input_by_key) != set(response_by_key):
+        raise RuntimeError("Input/response request keys are incomplete, duplicated, or mismatched")
+    qc = [response_qc(item, response_by_key[item["request_key"]]) for item in inputs]
+    if not all(row["qc_pass"] for row in qc):
+        raise RuntimeError({
+            "re_qc": "FAILED",
+            "failures": [
+                {"case_id": row["case_id"], "language": row["input_language"],
+                 "effort": row["reasoning_effort"], "failures": row["qc_failures"]}
+                for row in qc if not row["qc_pass"]
+            ],
+        })
+
+    primary_inputs = [row for row in inputs if row["phase"] == "primary"]
+    effort_inputs = [row for row in inputs if row["phase"] == "effort_parameter_check"]
+    primary_qc = [row for row in qc if row["phase"] == "primary"]
+    effort_qc = [row for row in qc if row["phase"] == "effort_parameter_check"]
+    if len(primary_inputs) != 16 or len(effort_inputs) != 12:
+        raise RuntimeError("Smoke phase counts differ from the frozen 16 + 12 plan")
+    if {row["reasoning_effort"] for row in primary_inputs} != {"medium"}:
+        raise RuntimeError("Primary effort setting is not uniformly medium")
+    effort_case_ids = sorted({row["case_id"] for row in effort_inputs})
+    if len(effort_case_ids) != 2:
+        raise RuntimeError("Effort check must contain exactly two development cases")
+    for case_id in effort_case_ids:
+        combinations = {
+            (row["input_language"], row["reasoning_effort"])
+            for row in effort_inputs if row["case_id"] == case_id
+        }
+        if combinations != set(itertools.product(("ko", "en"), ("low", "medium", "high"))):
+            raise RuntimeError(f"Effort matrix is incomplete for {case_id}")
+
+    selected_by_id: dict[str, dict[str, Any]] = {}
+    for row in primary_inputs:
+        selected_by_id.setdefault(row["case_id"], {
+            "case_id": row["case_id"], "origin": row["case_origin"],
+            "state": row.get("origin_state"), "primary_domain": row["primary_domain"],
+        })
+    selected_cases = sorted(selected_by_id.values(), key=lambda row: (row["origin"], row["case_id"]))
+    source_hashes_before = {str(CASES_PATH): sha_file(CASES_PATH), str(FACTS_PATH): sha_file(FACTS_PATH)}
+    expected_hashes = {
+        str(CASES_PATH): "c9b6cffa2b1c75b67c2d7e031a604a26b49c57c317a61a649731f27127d1ec23",
+        str(FACTS_PATH): "5e50e1c067abd9c7167f0bd36896523c6a5264ece5b2ee06d8a46a22d3814a8a",
+    }
+    if source_hashes_before != expected_hashes:
+        raise RuntimeError("Frozen corpus hashes differ from the v4.0.1 freeze manifest")
+
+    check_names = [key for key in primary_qc[0] if key.endswith("_pass") and key != "qc_pass"]
+    primary_check_pass_counts = {key: sum(bool(row[key]) for row in primary_qc) for key in check_names}
+    effort_by_setting = {
+        effort: {
+            "generation_count": sum(row["reasoning_effort"] == effort for row in effort_qc),
+            "qc_pass": sum(row["reasoning_effort"] == effort and row["qc_pass"] for row in effort_qc),
+            "parameter_transmission_and_logging_pass": all(
+                row["effort_parameter_transmitted_and_logged_pass"]
+                for row in effort_qc if row["reasoning_effort"] == effort
+            ),
+        }
+        for effort in ("low", "medium", "high")
+    }
+    corrections = [
+        {
+            "change": "Narrowed the automatic U.S. reporter-citation QC regex so the input-grounded date phrase '1996 or 1997' is not classified as authority.",
+            "justification": "Fabricated-authority QC false-positive correction; prompts and responses were unchanged.",
+        },
+        {
+            "change": "Excluded line-leading numbered section headings such as '1.' through '5.' from the new-fact number comparison.",
+            "justification": "Invented-fact QC false-positive correction; prompts and responses were unchanged.",
+        },
+    ]
+    source_hashes_after = {str(CASES_PATH): sha_file(CASES_PATH), str(FACTS_PATH): sha_file(FACTS_PATH)}
+    source_unchanged = source_hashes_before == source_hashes_after
+    summary = {
+        "experiment_id": "exp1-input-language-smoke-v4.0.1",
+        "artifact_version": "v4_0_1_run1",
+        "status": "PASS",
+        "pipeline_ready_to_freeze_for_full_exp1": source_unchanged,
+        "hypothesis_evaluation_performed": False,
+        "jurisdictional_marker_evaluation_performed": False,
+        "pca_performed": False,
+        "model_requested": MODEL,
+        "model_identifiers_returned": sorted({row["model_returned"] for row in responses}),
+        "prompt_version": PROMPT_VERSION,
+        "system_prompt_versions": SYSTEM_VERSIONS,
+        "user_prompt_versions": USER_VERSIONS,
+        "generation_parameters": {
+            "base_url_identifier": BASE_URL, "temperature": TEMPERATURE, "top_p": TOP_P,
+            "max_output_tokens": MAX_OUTPUT_TOKENS, "seed": SEED, "replicate": REPLICATE,
+            "primary_reasoning_effort": "medium", "concurrency": CONCURRENCY, "max_retries": MAX_RETRIES,
+        },
+        "selected_cases": selected_cases,
+        "primary": {
+            "case_count": 8, "generation_count": 16, "qc_pass": 16, "qc_fail": 0,
+            "per_check_pass_counts": primary_check_pass_counts,
+        },
+        "effort_parameter_check": {
+            "case_ids": effort_case_ids, "efforts": ["low", "medium", "high"],
+            "generation_count": 12, "qc_pass": 12, "qc_fail": 0,
+            "parameter_transmission_and_logging_pass": all(
+                row["effort_parameter_transmitted_and_logged_pass"] for row in effort_qc
+            ),
+            "by_effort": effort_by_setting,
+        },
+        "source_corpus_hashes_before": source_hashes_before,
+        "source_corpus_hashes_after": source_hashes_after,
+        "source_corpus_unchanged": source_unchanged,
+        "prompt_changed_during_smoke": False,
+        "prompt_pipeline_corrections": corrections,
+    }
+
+    destination.mkdir(parents=True, exist_ok=False)
+    paths = {
+        "inputs": destination / "exp1_smoke_inputs.jsonl",
+        "responses": destination / "exp1_smoke_responses.jsonl",
+        "qc": destination / "exp1_smoke_qc.csv",
+        "summary": destination / "exp1_smoke_summary.json",
+        "prompt_manifest": destination / "exp1_smoke_prompt_manifest.json",
+        "report": destination / "EXP1_SMOKE_REPORT.md",
+    }
+    write_jsonl(paths["inputs"], inputs)
+    write_jsonl(paths["responses"], responses)
+    write_qc(paths["qc"], qc)
+    write_json(paths["summary"], summary)
+    write_json(paths["prompt_manifest"], json.loads(source_prompt_manifest.read_text(encoding="utf-8")))
+
+    report = [
+        "# Exp 1 generation smoke test — v4.0.1 run 1", "", "Status: **PASS**", "",
+        f"- Model requested/returned: `{MODEL}` / `{', '.join(summary['model_identifiers_returned'])}`",
+        f"- Prompt: `{PROMPT_VERSION}`; systems `{SYSTEM_VERSIONS['ko']}`, `{SYSTEM_VERSIONS['en']}`; users `{USER_VERSIONS['ko']}`, `{USER_VERSIONS['en']}`",
+        f"- Parameters: `temperature={TEMPERATURE}`, `top_p={TOP_P}`, `max_output_tokens={MAX_OUTPUT_TOKENS}`, `seed={SEED}`, `replicate={REPLICATE}`, `primary_effort=medium`, `concurrency={CONCURRENCY}`",
+        "- Primary QC: **16/16 pass**", "- Effort transmission/logging QC: **12/12 pass** (`low` 4/4, `medium` 4/4, `high` 4/4)",
+        f"- Frozen corpus unchanged: **{str(source_unchanged).upper()}**",
+        f"- Ready to freeze the full Exp 1 generation pipeline: **{str(source_unchanged).upper()}**",
+        "- Jurisdictional-marker/hypothesis evaluation: not performed", "- PCA: not performed", "",
+        "## Selected development cases", "",
+    ]
+    report.extend(
+        f"- `{row['case_id']}` — {row['origin']}"
+        + (f" / {row['state']}" if row.get("state") else "")
+        + f" / {row['primary_domain']}"
+        for row in selected_cases
+    )
+    report += ["", "## Additional effort check", "", f"Cases: `{effort_case_ids[0]}`, `{effort_case_ids[1]}`. Both KO/EN inputs were run at low, medium, and high; all request bodies and logs preserved the requested value.", "", "## Prompt and pipeline corrections", "", "No prompt change was made; the existing frozen court-opinion prompt was used. Two QC-only false-positive rules were narrowed: a date phrase was no longer treated as a reporter citation, and numbered section headings were excluded from invented-fact number checks. No correction was based on Korean/U.S. marker strength.", "", "## Artifact SHA-256", ""]
+    report.extend(f"- `{path.name}`: `{sha_file(path)}`" for key, path in paths.items() if key != "report")
+    paths["report"].write_text("\n".join(report) + "\n", encoding="utf-8")
+    checksum_paths = list(paths.values())
+    (destination / "SHA256SUMS_exp1_smoke.txt").write_text(
+        "".join(f"{sha_file(path)}  {path.name}\n" for path in sorted(checksum_paths)), encoding="utf-8"
+    )
+    print(json.dumps(summary, ensure_ascii=False))
+
+
 def main() -> None:
     required = [
         OUTPUT / "exp1_smoke_inputs.jsonl", OUTPUT / "exp1_smoke_responses.jsonl",
@@ -442,10 +615,19 @@ def main() -> None:
             raise RuntimeError("Existing prompt manifest differs; refusing to overwrite it")
     else:
         write_json(prompt_manifest_path, prompt_manifest)
-    primary_responses = run_batch(primary_items, api_key)
+    primary_checkpoint = OUTPUT / "exp1_smoke_primary_responses_checkpoint.jsonl"
+    if primary_checkpoint.exists():
+        primary_responses = [dict(row) for row in read_jsonl(primary_checkpoint)]
+        expected_keys = {item["request_key"] for item in primary_items}
+        observed_keys = {row.get("request_key") for row in primary_responses}
+        if len(primary_responses) != len(primary_items) or observed_keys != expected_keys:
+            raise RuntimeError("Existing primary checkpoint does not match the deterministic 16-request plan")
+        primary_responses.sort(key=lambda row: row["request_order"])
+    else:
+        primary_responses = run_batch(primary_items, api_key)
+        write_jsonl(primary_checkpoint, primary_responses)
     primary_by_key = {row["request_key"]: row for row in primary_responses}
     primary_qc = [response_qc(item, primary_by_key[item["request_key"]]) for item in primary_items]
-    write_jsonl(unused_path(OUTPUT / "exp1_smoke_primary_responses_checkpoint.jsonl"), primary_responses)
     write_qc(unused_path(OUTPUT / "exp1_smoke_primary_qc_checkpoint.csv"), primary_qc)
     if not all(row["qc_pass"] for row in primary_qc):
         raise RuntimeError({
@@ -522,8 +704,8 @@ def main() -> None:
         "source_corpus_unchanged": source_unchanged,
         "prompt_pipeline_corrections": [
             {
-                "change": "Replaced the legacy legal-analyst fixed-heading IRAC prompt for this smoke run with bilingual reasoned-judicial-opinion prompts.",
-                "justification": "Required format and semantic-equivalence correction; no adjustment was based on jurisdictional-marker strength or hypothesis results.",
+                "change": "Narrowed the automatic U.S. reporter-citation QC regex so a date phrase such as '1996 or 1997' is not classified as legal authority.",
+                "justification": "QC false-positive correction only; the frozen court-opinion prompts and all generated responses were unchanged.",
             }
         ],
     }
@@ -563,9 +745,9 @@ def main() -> None:
         "",
         "## Prompt/pipeline correction",
         "",
-        "The repository's legacy `generation_v1` prompt requested a legal-analyst response with five fixed IRAC-like headings. "
-        "For this smoke test it was replaced by semantically paired Korean/English court-opinion prompts. "
-        "This was a format and semantic-equivalence correction only; no prompt change was made in response to Korean/U.S. marker strength.",
+        "No prompt change was made. The repository's existing frozen `exp1-court-opinion-v1` prompt was used. "
+        "The automatic U.S. reporter-citation regex was narrowed after it falsely classified the input-grounded date phrase "
+        "`1996 or 1997` as authority. This QC-only correction did not alter prompts or responses and was unrelated to jurisdictional-marker strength.",
         "",
         "## Generation parameters",
         "",
@@ -588,7 +770,9 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    if "--finalize-blocked-attempt2" in sys.argv:
+    if "--finalize-existing-run1" in sys.argv:
+        finalize_existing_run1()
+    elif "--finalize-blocked-attempt2" in sys.argv:
         finalize_blocked_attempt()
     else:
         main()
