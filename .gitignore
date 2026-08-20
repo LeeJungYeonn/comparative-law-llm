@@ -6,8 +6,4 @@ outputs/
 pilot_outputs/
 pilot_outputs_outdated/
 .cache_v2/
-outputs_v2/revised_smoke_kr/
-outputs_v2/revised_us_audit/
-outputs_v2/**/raw_api_responses/
-outputs_v2/raw_api_responses_v3/
-outputs_v2/**/neutral_fact_entity_mappings_private.jsonl
+outputs_*
