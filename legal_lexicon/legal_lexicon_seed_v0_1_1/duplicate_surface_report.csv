@@ -1,0 +1,18 @@
+﻿language,surface_form,match_type,surface_ids,concept_ids,concept_families,jurisdiction_scopes,primary_flags,orientation_flags,resolution,version
+en,(?<![A-Za-z0-9_])(?:plaintiffs?|defendants?|appellants?|appellees?|respondents?|petitioners?|\[(?:PERSON|COMPANY|ORGANIZATION|ENTITY|OTHER)_[A-Z0-9]+\])\s+(?:argues?|argued|asserts?|asserted)\s+that\b,regex,S0288;S0290;S0296,ARG_ASSERT;ARG_ASSERT;ARG_ASSERT,PARTY_ASSERTION,BOTH,1;1;1,0;0;0,matcher_deduplicate_same_span,0.1.1
+en,appeal,literal,S0209;S0237,KR_APPEAL;US_APPEAL,APPEAL,KR;US_GENERIC,0;0,0;0,matcher_exact_span_collapse_to_SHARED,0.1.1
+en,future medical expenses,literal,S0138;S0174,KR_FUTURE_MEDICAL_EXPENSES;US_FUTURE_MEDICAL_EXPENSES,FUTURE_MEDICAL_EXPENSES,KR;US_GENERIC,0;0,0;0,matcher_exact_span_collapse_to_SHARED,0.1.1
+en,medical expenses,literal,S0135;S0171,KR_MEDICAL_EXPENSES;US_MEDICAL_EXPENSES,MEDICAL_EXPENSES,KR;US_GENERIC,0;1,0;0,matcher_exact_span_collapse_to_SHARED,0.1.1
+en,non-economic damages,literal,S0122;S0163,KR_NON_ECONOMIC_DAMAGES;US_NONECONOMIC_DAMAGES,NON_ECONOMIC_DAMAGES,KR;US_GENERIC,1;1,0;0,matcher_exact_span_collapse_to_SHARED,0.1.1
+en,product liability,literal,S0033;S0100,KR_PRODUCT_LIABILITY;US_PRODUCT_LIABILITY,PRODUCT_LIABILITY,KR;US_GENERIC,1;1,0;0,matcher_exact_span_collapse_to_SHARED,0.1.1
+en,property damage,literal,S0144;S0176,KR_PROPERTY_DAMAGE;US_PROPERTY_DAMAGE,PROPERTY_DAMAGE,KR;US_GENERIC,0;1,0;0,matcher_exact_span_collapse_to_SHARED,0.1.1
+en,remand,literal,S0221;S0253,KR_REMAND;US_REMAND,APPELLATE_DISPOSITION,KR;US_GENERIC,1;1,0;0,matcher_exact_span_collapse_to_SHARED,0.1.1
+en,reverse,literal,S0218;S0251,KR_REVERSAL;US_REVERSED,APPELLATE_DISPOSITION,KR;US_GENERIC,1;1,0;0,matcher_exact_span_collapse_to_SHARED,0.1.1
+ko,소송기록,literal,S0231;S0261,KR_LITIGATION_RECORD;US_RECORD,RECORD,KR;US_GENERIC,1;0,0;0,matcher_exact_span_collapse_to_SHARED,0.1.1
+ko,손해배상,literal,S0119;S0154,KR_COMPENSATION_FOR_DAMAGES;US_DAMAGES,COMPENSATORY_RELIEF,KR;US_GENERIC,0;0,0;0,matcher_exact_span_collapse_to_SHARED,0.1.1
+ko,제조물책임,literal,S0031;S0101,KR_PRODUCT_LIABILITY;US_PRODUCT_LIABILITY,PRODUCT_LIABILITY,KR;US_GENERIC,1;0,0;0,matcher_exact_span_collapse_to_SHARED,0.1.1
+ko,징벌적 손해배상,literal,S0166;S0168,US_PUNITIVE_DAMAGES;US_EXEMPLARY_DAMAGES,PUNITIVE_DAMAGES,US_GENERIC,0;0,0;0,matcher_deduplicate_same_span,0.1.1
+ko,치료비,literal,S0134;S0172,KR_MEDICAL_EXPENSES;US_MEDICAL_EXPENSES,MEDICAL_EXPENSES,KR;US_GENERIC,0;0,0;0,matcher_exact_span_collapse_to_SHARED,0.1.1
+ko,항소,literal,S0208;S0238,KR_APPEAL;US_APPEAL,APPEAL,KR;US_GENERIC,1;0,0;0,matcher_exact_span_collapse_to_SHARED,0.1.1
+ko,향후 치료비,literal,S0137;S0175,KR_FUTURE_MEDICAL_EXPENSES;US_FUTURE_MEDICAL_EXPENSES,FUTURE_MEDICAL_EXPENSES,KR;US_GENERIC,0;0,0;0,matcher_exact_span_collapse_to_SHARED,0.1.1
+ko,환송,literal,S0220;S0255,KR_REMAND;US_REMAND,APPELLATE_DISPOSITION,KR;US_GENERIC,1;0,0;0,matcher_exact_span_collapse_to_SHARED,0.1.1

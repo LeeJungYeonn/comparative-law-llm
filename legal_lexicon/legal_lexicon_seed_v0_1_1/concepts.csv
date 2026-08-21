@@ -1,0 +1,126 @@
+﻿concept_id,category,concept_family,jurisdiction_scope,orientation_layer,source_id,source_locator,scope_tag,seed_status,review_note,version
+KR_TORT_CIVIL_ACT,doctrine,TORT_LIABILITY,KR,KR_specific,KR_CIVIL_ACT,Art. 750,core,candidate_not_frozen,Prefer explicit Civil-Act framing over bare 불법행위 for orientation.,0.1.1
+KR_UNLAWFUL_ACT,doctrine,UNLAWFUL_CONDUCT,KR,shared,KR_CIVIL_ACT,Art. 750,core,candidate_not_frozen,,0.1.1
+KR_INTENT_OR_NEGLIGENCE,doctrine,FAULT_BASIS,KR,shared,KR_CIVIL_ACT,Art. 750,core,candidate_not_frozen,,0.1.1
+KR_SUPERVISOR_LIABILITY,doctrine,SUPERVISORY_LIABILITY,KR,KR_specific,KR_CIVIL_ACT,Art. 755,core,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring unless a stronger jurisdiction-specific marker is present.,0.1.1
+KR_EMPLOYER_LIABILITY,doctrine,VICARIOUS_EMPLOYER_LIABILITY,KR,KR_specific,KR_CIVIL_ACT,Art. 756,core,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring unless a stronger jurisdiction-specific marker is present.,0.1.1
+KR_JOINT_TORT,doctrine,MULTIPLE_TORTFEASORS,KR,KR_specific,KR_CIVIL_ACT,Art. 760,core,candidate_not_frozen,,0.1.1
+KR_RIGHT_OF_REIMBURSEMENT,doctrine,RECOURSE,KR,KR_specific,KR_CIVIL_ACT,Art. 756(3),core,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring unless a stronger jurisdiction-specific marker is present.,0.1.1
+KR_ADEQUATE_CAUSATION,doctrine,LEGAL_CAUSATION,KR,KR_specific,KR_SC_CAUSATION_2015,2015Da210194,core,candidate_not_frozen,English rendering needs development validation.,0.1.1
+KR_CONTRIBUTORY_FAULT_SET_OFF,doctrine,FAULT_APPORTIONMENT,KR,KR_specific,KR_SC_FAULT_2022,case summary,core,candidate_not_frozen,Do not equate with U.S. comparative negligence.,0.1.1
+KR_LIABILITY_LIMITATION,doctrine,EQUITABLE_LIABILITY_LIMITATION,KR,KR_specific,KR_SC_FAULT_2022,case summary,core,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring unless a stronger jurisdiction-specific marker is present.,0.1.1
+KR_PRODUCT_LIABILITY,doctrine,PRODUCT_LIABILITY,KR,KR_specific,KR_PRODUCT_LIABILITY_ACT,Art. 3,product_liability,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring unless a stronger jurisdiction-specific marker is present.,0.1.1
+KR_MANUFACTURING_DEFECT,doctrine,MANUFACTURING_DEFECT,KR,KR_specific,KR_PRODUCT_LIABILITY_ACT,Art. 2(2)(a),product_liability,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring unless a stronger jurisdiction-specific marker is present.,0.1.1
+KR_DESIGN_DEFECT,doctrine,DESIGN_DEFECT,KR,KR_specific,KR_PRODUCT_LIABILITY_ACT,Art. 2(2)(b),product_liability,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring unless a stronger jurisdiction-specific marker is present.,0.1.1
+KR_INDICATION_DEFECT,doctrine,WARNING_OR_INSTRUCTION_DEFECT,KR,KR_specific,KR_PRODUCT_LIABILITY_ACT,Art. 2(2)(c),product_liability,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring unless a stronger jurisdiction-specific marker is present.,0.1.1
+KR_REASONABLE_ALTERNATIVE_DESIGN,doctrine,ALTERNATIVE_DESIGN,KR,KR_specific,KR_PRODUCT_LIABILITY_ACT,Art. 2(2)(b),product_liability,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring unless a stronger jurisdiction-specific marker is present.,0.1.1
+KR_EXPECTED_PRODUCT_SAFETY,doctrine,PRODUCT_SAFETY_EXPECTATION,KR,KR_specific,KR_PRODUCT_LIABILITY_ACT,Art. 2(2),product_liability,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring unless a stronger jurisdiction-specific marker is present.,0.1.1
+US_NEGLIGENCE,doctrine,NEGLIGENCE,US_GENERIC,US_generic,US_WEX_NEGLIGENCE,entry,core,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring in v0.1.1.,0.1.1
+US_DUTY_OF_CARE,doctrine,DUTY,US_GENERIC,US_generic,US_WEX_NEGLIGENCE,Legal Duty of Care,core,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring in v0.1.1.,0.1.1
+US_BREACH_OF_DUTY,doctrine,BREACH,US_GENERIC,US_generic,US_WEX_NEGLIGENCE,Breach of Duty of Care,core,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring in v0.1.1.,0.1.1
+US_REASONABLE_PERSON,doctrine,STANDARD_OF_CARE,US_GENERIC,US_generic,US_WEX_NEGLIGENCE,Legal Duty of Care,core,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring in v0.1.1.,0.1.1
+US_REASONABLE_CARE,doctrine,STANDARD_OF_CARE,US_GENERIC,US_generic,US_WEX_NEGLIGENCE,entry,core,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring in v0.1.1.,0.1.1
+US_FORESEEABILITY,doctrine,FORESEEABILITY,US_GENERIC,US_generic,US_WEX_NEGLIGENCE,entry,core,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring in v0.1.1.,0.1.1
+US_PROXIMATE_CAUSE,doctrine,LEGAL_CAUSATION,US_GENERIC,US_generic,US_WEX_PROXIMATE_CAUSE,entry,core,candidate_not_frozen,,0.1.1
+US_CAUSE_IN_FACT,doctrine,FACTUAL_CAUSATION,US_GENERIC,US_generic,US_WEX_NEGLIGENCE,Cause-In-Fact,core,candidate_not_frozen,,0.1.1
+US_BUT_FOR_CAUSATION,doctrine,FACTUAL_CAUSATION,US_GENERIC,US_generic,US_WEX_NEGLIGENCE,Cause-In-Fact,core,candidate_not_frozen,,0.1.1
+US_SUBSTANTIAL_FACTOR,doctrine,LEGAL_CAUSATION,US_GENERIC,US_generic,US_WEX_PROXIMATE_CAUSE,entry,core,candidate_not_frozen,,0.1.1
+US_SUPERSEDING_CAUSE,doctrine,INTERVENING_CAUSATION,US_GENERIC,US_generic,US_WEX_PROXIMATE_CAUSE,entry,core,candidate_not_frozen,,0.1.1
+US_INTERVENING_CAUSE,doctrine,INTERVENING_CAUSATION,US_GENERIC,US_generic,US_WEX_NEGLIGENCE,Proximate Cause,core,candidate_not_frozen,,0.1.1
+US_NEGLIGENCE_PER_SE,doctrine,STATUTORY_BREACH,US_GENERIC,US_generic,US_WEX_NEG_PER_SE,entry,core,candidate_not_frozen,,0.1.1
+US_COMPARATIVE_NEGLIGENCE,doctrine,FAULT_APPORTIONMENT,US_GENERIC,US_generic,US_WEX_COMPARATIVE,entry,core,candidate_not_frozen,,0.1.1
+US_PURE_COMPARATIVE_NEGLIGENCE,doctrine,FAULT_APPORTIONMENT,US_GENERIC,US_generic,US_WEX_COMPARATIVE,Pure Comparative Negligence,core,candidate_not_frozen,,0.1.1
+US_MODIFIED_COMPARATIVE_NEGLIGENCE,doctrine,FAULT_APPORTIONMENT,US_GENERIC,US_generic,US_WEX_COMPARATIVE,Modified Comparative Negligence,core,candidate_not_frozen,,0.1.1
+US_CONTRIBUTORY_NEGLIGENCE,doctrine,FAULT_APPORTIONMENT,US_GENERIC,US_generic,US_WEX_COMPARATIVE,Contributory Negligence,core,candidate_not_frozen,,0.1.1
+US_VICARIOUS_LIABILITY,doctrine,VICARIOUS_EMPLOYER_LIABILITY,US_GENERIC,US_generic,US_WEX_VICARIOUS,entry,core,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring in v0.1.1.,0.1.1
+US_RESPONDEAT_SUPERIOR,doctrine,VICARIOUS_EMPLOYER_LIABILITY,US_GENERIC,US_generic,US_WEX_VICARIOUS,entry,core,candidate_not_frozen,,0.1.1
+US_STRICT_LIABILITY,doctrine,STRICT_LIABILITY,US_GENERIC,US_generic,US_WEX_STRICT,entry,core,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring in v0.1.1.,0.1.1
+US_STRICT_PRODUCTS_LIABILITY,doctrine,PRODUCT_LIABILITY,US_GENERIC,US_generic,US_WEX_STRICT,Tort Law section,product_liability,candidate_not_frozen,,0.1.1
+US_PRODUCT_LIABILITY,doctrine,PRODUCT_LIABILITY,US_GENERIC,US_generic,US_WEX_PRODUCT,entry,product_liability,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring in v0.1.1.,0.1.1
+US_MANUFACTURING_DEFECT,doctrine,MANUFACTURING_DEFECT,US_GENERIC,US_generic,US_WEX_PRODUCT,entry,product_liability,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring in v0.1.1.,0.1.1
+US_DESIGN_DEFECT,doctrine,DESIGN_DEFECT,US_GENERIC,US_generic,US_WEX_PRODUCT,entry,product_liability,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring in v0.1.1.,0.1.1
+US_FAILURE_TO_WARN,doctrine,WARNING_OR_INSTRUCTION_DEFECT,US_GENERIC,US_generic,US_WEX_PRODUCT,marketing defect,product_liability,candidate_not_frozen,Retained for doctrine density but excluded from primary jurisdiction-orientation scoring in v0.1.1.,0.1.1
+US_CONSUMER_EXPECTATION_TEST,doctrine,PRODUCT_SAFETY_EXPECTATION,US_GENERIC,US_generic,US_WEX_PRODUCT,consumer expectation standard,product_liability,candidate_not_frozen,,0.1.1
+US_RISK_UTILITY_TEST,doctrine,PRODUCT_RISK_UTILITY,US_GENERIC,US_generic,US_WEX_PRODUCT,risk-utility standard,product_liability,candidate_not_frozen,,0.1.1
+US_ABNORMALLY_DANGEROUS_ACTIVITY,doctrine,STRICT_LIABILITY,US_GENERIC,US_generic,US_WEX_STRICT,Tort Law section,core,candidate_not_frozen,,0.1.1
+KR_COMPENSATION_FOR_DAMAGES,remedy,COMPENSATORY_RELIEF,KR,shared,KR_CIVIL_ACT,Arts. 750-752,core,candidate_not_frozen,,0.1.1
+KR_NON_ECONOMIC_DAMAGES,remedy,NON_ECONOMIC_DAMAGES,KR,KR_specific,KR_CIVIL_ACT,Art. 751,core,candidate_not_frozen,,0.1.1
+KR_MENTAL_ANGUISH,remedy,NON_ECONOMIC_DAMAGES,KR,KR_specific,KR_CIVIL_ACT,Art. 751,core,candidate_not_frozen,,0.1.1
+KR_CONSOLATION_MONEY,remedy,NON_ECONOMIC_DAMAGES,KR,KR_specific,KR_CIVIL_ACT,Art. 752,core,candidate_not_frozen,,0.1.1
+KR_PERIODICAL_COMPENSATION,remedy,PERIODIC_DAMAGES,KR,KR_specific,KR_CIVIL_ACT,Art. 751(2),core,candidate_not_frozen,,0.1.1
+KR_LOST_INCOME,remedy,LOST_EARNINGS,KR,KR_specific,KR_SC_DAMAGES_2022,press release,core,candidate_not_frozen,,0.1.1
+KR_LOST_PROFITS,remedy,LOST_PROFITS,KR,KR_specific,DEV_CORPUS,to validate,core,candidate_not_frozen,,0.1.1
+KR_MEDICAL_EXPENSES,remedy,MEDICAL_EXPENSES,KR,shared,DEV_CORPUS,to validate,core,candidate_not_frozen,,0.1.1
+KR_FUTURE_MEDICAL_EXPENSES,remedy,FUTURE_MEDICAL_EXPENSES,KR,shared,DEV_CORPUS,to validate,core,candidate_not_frozen,,0.1.1
+KR_CARE_EXPENSES,remedy,CARE_EXPENSES,KR,KR_specific,DEV_CORPUS,to validate,core,candidate_not_frozen,,0.1.1
+KR_FUNERAL_EXPENSES,remedy,FUNERAL_EXPENSES,KR,shared,DEV_CORPUS,to validate,core,candidate_not_frozen,,0.1.1
+KR_PROPERTY_DAMAGE,remedy,PROPERTY_DAMAGE,KR,shared,KR_CIVIL_ACT,Art. 750,core,candidate_not_frozen,,0.1.1
+KR_TREBLE_PRODUCT_DAMAGES,remedy,ENHANCED_DAMAGES,KR,KR_specific,KR_PRODUCT_LIABILITY_ACT,Art. 3(2),remedy_salient,candidate_not_frozen,,0.1.1
+KR_REPUTATION_RESTORATION,remedy,EQUITABLE_REMEDY,KR,KR_specific,KR_CIVIL_ACT,Art. 764,extension,candidate_not_frozen,,0.1.1
+KR_REDUCTION_COMPENSATION_AMOUNT,remedy,DAMAGES_REDUCTION,KR,KR_specific,KR_CIVIL_ACT,Art. 765,core,candidate_not_frozen,,0.1.1
+US_DAMAGES,remedy,COMPENSATORY_RELIEF,US_GENERIC,shared,US_WEX_DAMAGES,entry,core,candidate_not_frozen,Bare term: exclude from primary by default.,0.1.1
+US_COMPENSATORY_DAMAGES,remedy,COMPENSATORY_RELIEF,US_GENERIC,US_generic,US_WEX_COMPENSATORY,entry,core,candidate_not_frozen,,0.1.1
+US_ACTUAL_DAMAGES,remedy,COMPENSATORY_RELIEF,US_GENERIC,US_generic,US_WEX_COMPENSATORY,entry,core,candidate_not_frozen,,0.1.1
+US_ECONOMIC_DAMAGES,remedy,ECONOMIC_DAMAGES,US_GENERIC,US_generic,US_WEX_DAMAGES,entry,core,candidate_not_frozen,,0.1.1
+US_NONECONOMIC_DAMAGES,remedy,NON_ECONOMIC_DAMAGES,US_GENERIC,US_generic,US_WEX_DAMAGES,entry,core,candidate_not_frozen,,0.1.1
+US_PUNITIVE_DAMAGES,remedy,PUNITIVE_DAMAGES,US_GENERIC,US_generic,US_WEX_PUNITIVE,entry,remedy_salient,candidate_not_frozen,,0.1.1
+US_EXEMPLARY_DAMAGES,remedy,PUNITIVE_DAMAGES,US_GENERIC,US_generic,US_WEX_PUNITIVE,synonym candidate,remedy_salient,candidate_not_frozen,,0.1.1
+US_NOMINAL_DAMAGES,remedy,NOMINAL_DAMAGES,US_GENERIC,US_generic,US_WEX_NOMINAL,entry,core,candidate_not_frozen,,0.1.1
+US_MEDICAL_EXPENSES,remedy,MEDICAL_EXPENSES,US_GENERIC,shared,US_WEX_DAMAGES,tort losses,core,candidate_not_frozen,,0.1.1
+US_FUTURE_MEDICAL_EXPENSES,remedy,FUTURE_MEDICAL_EXPENSES,US_GENERIC,shared,DEV_CORPUS,to validate,core,candidate_not_frozen,,0.1.1
+US_PROPERTY_DAMAGE,remedy,PROPERTY_DAMAGE,US_GENERIC,shared,US_WEX_DAMAGES,tort losses,core,candidate_not_frozen,,0.1.1
+US_LOST_WAGES,remedy,LOST_EARNINGS,US_GENERIC,US_generic,US_WEX_DAMAGES,tort losses,core,candidate_not_frozen,,0.1.1
+US_LOST_EARNINGS,remedy,LOST_EARNINGS,US_GENERIC,US_generic,US_WEX_COMPENSATORY,entry,core,candidate_not_frozen,,0.1.1
+US_LOSS_EARNING_CAPACITY,remedy,LOST_EARNINGS,US_GENERIC,US_generic,DEV_CORPUS,to validate,core,candidate_not_frozen,,0.1.1
+US_PAIN_AND_SUFFERING,remedy,NON_ECONOMIC_DAMAGES,US_GENERIC,US_generic,US_WEX_DAMAGES,tort losses,core,candidate_not_frozen,,0.1.1
+US_EMOTIONAL_DISTRESS_DAMAGES,remedy,NON_ECONOMIC_DAMAGES,US_GENERIC,US_generic,US_WEX_COMPENSATORY,entry,core,candidate_not_frozen,,0.1.1
+US_TREBLE_DAMAGES,remedy,ENHANCED_DAMAGES,US_GENERIC,US_generic,US_WEX_DAMAGES,entry,remedy_salient,candidate_not_frozen,,0.1.1
+US_RESTITUTION,remedy,RESTITUTIONARY_REMEDY,US_GENERIC,US_generic,US_WEX_DAMAGES,entry,extension,candidate_not_frozen,,0.1.1
+US_INJUNCTION,remedy,EQUITABLE_REMEDY,US_GENERIC,US_generic,US_WEX_INJUNCTION,entry,extension,candidate_not_frozen,,0.1.1
+US_PRELIMINARY_INJUNCTION,remedy,EQUITABLE_REMEDY,US_GENERIC,US_generic,US_WEX_INJUNCTION,entry,extension,candidate_not_frozen,,0.1.1
+US_PERMANENT_INJUNCTION,remedy,EQUITABLE_REMEDY,US_GENERIC,US_generic,US_WEX_INJUNCTION,entry,extension,candidate_not_frozen,,0.1.1
+US_TEMPORARY_RESTRAINING_ORDER,remedy,EQUITABLE_REMEDY,US_GENERIC,US_generic,US_WEX_INJUNCTION,entry,extension,candidate_not_frozen,,0.1.1
+KR_FIRST_INSTANCE,procedure,COURT_LEVEL,KR,none,KR_CIVIL_PROCEDURE_ACT,first-instance provisions,procedure,candidate_not_frozen,,0.1.1
+KR_ORIGINAL_COURT,procedure,COURT_LEVEL,KR,none,KR_CIVIL_PROCEDURE_ACT,Art. 436,procedure,candidate_not_frozen,,0.1.1
+KR_APPEAL,procedure,APPEAL,KR,none,KR_CIVIL_PROCEDURE_ACT,appeal provisions,procedure,candidate_not_frozen,,0.1.1
+KR_APPELLATE_COURT,procedure,COURT_LEVEL,KR,none,KR_CIVIL_PROCEDURE_ACT,Arts. 390-418,procedure,candidate_not_frozen,,0.1.1
+KR_FINAL_APPEAL,procedure,FINAL_APPEAL,KR,none,KR_CIVIL_PROCEDURE_ACT,Arts. 422-437,procedure,candidate_not_frozen,,0.1.1
+KR_COURT_FINAL_APPEAL,procedure,COURT_LEVEL,KR,none,KR_CIVIL_PROCEDURE_ACT,Arts. 422-437,procedure,candidate_not_frozen,,0.1.1
+KR_REVERSAL,procedure,APPELLATE_DISPOSITION,KR,none,KR_CIVIL_PROCEDURE_ACT,Art. 436,procedure,candidate_not_frozen,,0.1.1
+KR_REMAND,procedure,APPELLATE_DISPOSITION,KR,none,KR_CIVIL_PROCEDURE_ACT,Art. 436,procedure,candidate_not_frozen,,0.1.1
+KR_REVERSAL_REMAND,procedure,APPELLATE_DISPOSITION,KR,none,KR_CIVIL_PROCEDURE_ACT,Art. 436,procedure,candidate_not_frozen,,0.1.1
+KR_TRANSFER,procedure,APPELLATE_DISPOSITION,KR,none,KR_CIVIL_PROCEDURE_ACT,Art. 436,procedure,candidate_not_frozen,,0.1.1
+KR_PLEADINGS,procedure,PLEADINGS,KR,none,KR_CIVIL_PROCEDURE_ACT,Art. 436(2),procedure,candidate_not_frozen,,0.1.1
+KR_JUDGMENT,procedure,JUDGMENT,KR,none,KR_CIVIL_PROCEDURE_ACT,multiple,procedure,candidate_not_frozen,Bare term: exclude from primary by default.,0.1.1
+KR_LITIGATION_RECORD,procedure,RECORD,KR,none,KR_CIVIL_PROCEDURE_ACT,Art. 421,procedure,candidate_not_frozen,,0.1.1
+KR_GROUNDS_FINAL_APPEAL,procedure,APPELLATE_ARGUMENT,KR,none,KR_CIVIL_PROCEDURE_ACT,appeal-to-Supreme-Court provisions,procedure,candidate_not_frozen,,0.1.1
+KR_LITIGATION_COSTS,procedure,COSTS,KR,none,KR_CIVIL_PROCEDURE_ACT,general provisions,procedure,candidate_not_frozen,,0.1.1
+US_APPEAL,procedure,APPEAL,US_GENERIC,none,US_COURTS_GLOSSARY,Appeal,procedure,candidate_not_frozen,,0.1.1
+US_APPELLANT,procedure,PARTY_ON_APPEAL,US_GENERIC,none,US_COURTS_GLOSSARY,Appellant,procedure,candidate_not_frozen,,0.1.1
+US_APPELLEE,procedure,PARTY_ON_APPEAL,US_GENERIC,none,US_COURTS_GLOSSARY,Appellee,procedure,candidate_not_frozen,,0.1.1
+US_APPELLATE_COURT,procedure,COURT_LEVEL,US_GENERIC,none,US_COURTS_GLOSSARY,Appellate,procedure,candidate_not_frozen,,0.1.1
+US_LOWER_COURT,procedure,COURT_LEVEL,US_GENERIC,none,US_COURTS_GLOSSARY,Appeal/Appellate,procedure,candidate_not_frozen,,0.1.1
+US_AFFIRMED,procedure,APPELLATE_DISPOSITION,US_GENERIC,none,US_COURTS_GLOSSARY,Affirmed,procedure,candidate_not_frozen,,0.1.1
+US_REVERSED,procedure,APPELLATE_DISPOSITION,US_GENERIC,none,US_COURTS_GLOSSARY,Reverse,procedure,candidate_not_frozen,,0.1.1
+US_REMAND,procedure,APPELLATE_DISPOSITION,US_GENERIC,none,US_COURTS_GLOSSARY,Remand,procedure,candidate_not_frozen,,0.1.1
+US_COMPLAINT,procedure,PLEADING_DOCUMENT,US_GENERIC,none,US_COURTS_GLOSSARY,Complaint,procedure,candidate_not_frozen,,0.1.1
+US_ANSWER,procedure,PLEADING_DOCUMENT,US_GENERIC,none,US_COURTS_GLOSSARY,Answer,procedure,candidate_not_frozen,,0.1.1
+US_RECORD,procedure,RECORD,US_GENERIC,none,US_COURTS_GLOSSARY,Record,procedure,candidate_not_frozen,Bare term: exclude from primary by default.,0.1.1
+US_MOTION_TO_DISMISS,procedure,MOTION,US_GENERIC,none,DEV_CORPUS,to validate,procedure,candidate_not_frozen,,0.1.1
+US_SUMMARY_JUDGMENT,procedure,SUMMARY_JUDGMENT,US_GENERIC,none,DEV_CORPUS,to validate,procedure,candidate_not_frozen,,0.1.1
+US_MOTION_SUMMARY_JUDGMENT,procedure,SUMMARY_JUDGMENT,US_GENERIC,none,DEV_CORPUS,to validate,procedure,candidate_not_frozen,,0.1.1
+US_STANDARD_OF_REVIEW,procedure,STANDARD_OF_REVIEW,US_GENERIC,none,DEV_CORPUS,to validate,procedure,candidate_not_frozen,,0.1.1
+US_DE_NOVO_REVIEW,procedure,STANDARD_OF_REVIEW,US_GENERIC,none,DEV_CORPUS,to validate,procedure,candidate_not_frozen,,0.1.1
+US_ABUSE_OF_DISCRETION,procedure,STANDARD_OF_REVIEW,US_GENERIC,none,DEV_CORPUS,to validate,procedure,candidate_not_frozen,,0.1.1
+US_SUBSTANTIAL_EVIDENCE_REVIEW,procedure,STANDARD_OF_REVIEW,US_GENERIC,none,DEV_CORPUS,to validate,procedure,candidate_not_frozen,,0.1.1
+US_FINAL_JUDGMENT,procedure,JUDGMENT,US_GENERIC,none,US_WEX_INJUNCTION,Permanent Injunctions,procedure,candidate_not_frozen,,0.1.1
+US_TRIAL,procedure,TRIAL_STAGE,US_GENERIC,none,US_WEX_NEG_PER_SE,entry,procedure,candidate_not_frozen,Bare term: exclude from primary by default.,0.1.1
+ARG_ASSERT,party_arg,PARTY_ASSERTION,BOTH,none,DEV_CORPUS,pattern seed; validate on held-out development judgments,argument,candidate_not_frozen,Require explicit party-role cue.,0.1.1
+ARG_CONTEND,party_arg,PARTY_ASSERTION,BOTH,none,DEV_CORPUS,pattern seed; validate on held-out development judgments,argument,candidate_not_frozen,Require explicit party-role cue.,0.1.1
+ARG_MAINTAIN,party_arg,PARTY_ASSERTION,BOTH,none,DEV_CORPUS,pattern seed; validate on held-out development judgments,argument,candidate_not_frozen,Require explicit party-role cue.,0.1.1
+ARG_ALLEGE,party_arg,PARTY_ALLEGATION,BOTH,none,DEV_CORPUS,pattern seed; validate on held-out development judgments,argument,candidate_not_frozen,Require explicit party-role cue.,0.1.1
+ARG_CLAIM,party_arg,PARTY_CLAIM,BOTH,none,DEV_CORPUS,pattern seed; validate on held-out development judgments,argument,candidate_not_frozen,Require explicit party-role cue.,0.1.1
+ARG_DISPUTE,party_arg,PARTY_DISPUTE,BOTH,none,DEV_CORPUS,pattern seed; validate on held-out development judgments,argument,candidate_not_frozen,Require explicit party-role cue.,0.1.1
+ARG_DEFENSE,party_arg,PARTY_DEFENSE,BOTH,none,DEV_CORPUS,pattern seed; validate on held-out development judgments,argument,candidate_not_frozen,Require explicit party-role cue.,0.1.1
+ARG_COUNTER,party_arg,PARTY_COUNTERARGUMENT,BOTH,none,DEV_CORPUS,pattern seed; validate on held-out development judgments,argument,candidate_not_frozen,Require explicit party-role cue.,0.1.1
+ARG_ARGUMENT_NOUN,party_arg,PARTY_ARGUMENT_NOUN,BOTH,none,DEV_CORPUS,pattern seed; validate on held-out development judgments,argument,candidate_not_frozen,Require explicit party-role cue.,0.1.1
