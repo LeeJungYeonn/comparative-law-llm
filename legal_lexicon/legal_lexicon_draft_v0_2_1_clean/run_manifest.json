@@ -1,0 +1,26 @@
+{
+  "artifact_version": "legal-lexicon-draft-v0.2.1-clean",
+  "counts": {
+    "cleanup_changes": 16,
+    "concepts": 151,
+    "duplicate_deactivations": 7,
+    "exact_active_duplicate_groups": 0,
+    "inactive_surfaces": 115,
+    "primary_surfaces": 225,
+    "surfaces_total": 340
+  },
+  "generated_at_utc": "2026-08-23T07:31:01.378108+00:00",
+  "guards": {
+    "bare_loss_of_earning_added": false,
+    "confirmatory_text_used": false,
+    "s0190_primary_active": false,
+    "s0190_retained": true,
+    "tuning_text_used": false,
+    "validation_text_used": false
+  },
+  "source_draft": {
+    "concepts_sha256": "5bdec3e2a39c8f8f09b6b96b1dbf0b4bb5d6db08b83519eb5293257481b42f8a",
+    "surface_forms_sha256": "949fef2e3540c1e69aad94dfa651a4752774840848ba04db58ba3b3d2c37f3f6"
+  },
+  "status": "PRE_TUNING_CLEANED_DRAFT"
+}

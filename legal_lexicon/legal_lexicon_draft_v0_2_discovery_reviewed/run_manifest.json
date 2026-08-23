@@ -1,0 +1,46 @@
+{
+  "artifact_version": "legal-lexicon-draft-v0.2-discovery-reviewed",
+  "counts": {
+    "accepted_actions": {
+      "add_canonical_surface_primary": 1,
+      "add_new_concept_primary": 26,
+      "add_regex_primary": 8,
+      "add_surface_primary": 7,
+      "promote_seed_to_primary": 7,
+      "retain_sensitivity": 8,
+      "validate_existing_primary": 25
+    },
+    "accepted_for_draft_or_sensitivity": 82,
+    "confirmatory_text_accessed_in_this_build": false,
+    "draft_concepts": 151,
+    "draft_primary_surfaces": 229,
+    "draft_surfaces": 336,
+    "input_discovery_candidates": 8261,
+    "new_concepts": 26,
+    "new_surfaces_net": 40,
+    "rejected": 8179,
+    "researcher_signoff_required": true,
+    "reviewer_type": "model_assisted_legal_review",
+    "seed_concepts": 125,
+    "seed_surfaces": 296,
+    "tuning_cases": 10,
+    "tuning_text_accessed_in_this_build": false,
+    "validation_cases": 10,
+    "validation_text_accessed_in_this_build": false
+  },
+  "generated_at_utc": "2026-08-23T06:59:05.544820+00:00",
+  "inputs": {
+    "discovery_review_input_sha256": "c62436ad1aebd09e5f496fa7852e472117f3adde22d2a8bf21b4dbdea86e02d8",
+    "nested_split_manifest_sha256": "54f144c0b78548ca86d87e35cca7b4e45e4a77f3ae6a5de3330fefd40017fd36",
+    "official_seed_concepts_sha256": "e6001e64e79c540648217453a6b12f428f501b89f7d49f15b771e8e170c5d2d5",
+    "official_seed_surface_forms_sha256": "2f8a528185150d19af6b044e3ca320bfd6f2f5c60d89fa27e09b5d24f05350b6"
+  },
+  "methodological_guards": {
+    "confirmatory_text_used": false,
+    "previous_v0_9_used": false,
+    "researcher_signoff_required": true,
+    "tuning_text_used": false,
+    "validation_text_used": false
+  },
+  "status": "DISCOVERY_REVIEWED_BEFORE_TUNING"
+}
