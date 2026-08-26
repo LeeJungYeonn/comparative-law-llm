@@ -1,0 +1,22 @@
+{
+  "category_incorrect_hits": 22,
+  "concept_incorrect_hits": 26,
+  "confirmatory_cases_used": 0,
+  "confirmatory_text_used_for_revision": false,
+  "deterministic_fn_audit_rows": 199,
+  "fulltext_fn_concept_case_findings": 42,
+  "input_tuning_hits": 1322,
+  "overbroad_surface_hits": 22,
+  "postrevision_tuning_hits": 1829,
+  "prevalidation_concepts": 177,
+  "prevalidation_primary_surfaces": 256,
+  "prevalidation_surface_rows": 372,
+  "recall_claimed": false,
+  "reviewed_FP": 22,
+  "reviewed_TP": 1300,
+  "reviewed_hit_precision": 0.983358547655068,
+  "tuning_cases_used": 10,
+  "tuning_revision_count": 42,
+  "validation_cases_used": 0,
+  "validation_text_used_for_revision": false
+}
