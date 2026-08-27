@@ -1,0 +1,5 @@
+﻿section,model_assisted_review_complete,researcher_review_complete,researcher_decision,researcher_notes
+hit_TP_FP_review,yes,,,
+FN_additions,yes,,,
+tuning_revision_log,yes,,,
+prevalidation_candidate_v0_3,yes,,,

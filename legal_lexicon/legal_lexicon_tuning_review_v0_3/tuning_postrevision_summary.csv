@@ -1,0 +1,11 @@
+﻿case_id,origin_country,primary_domain,total_hits,doctrine_hits,remedy_hits,procedure_hits,party_arg_hits,unique_concept_count,unique_concept_family_count
+KR_5b6e230014dd4d5663,KR,product_liability,65,18,0,45,2,16,14
+KR_5be8caa54d55da9c2d,KR,medical_professional_liability,53,20,0,31,2,21,17
+KR_6078abc75c440541ab,KR,general_negligence_personal_injury,50,13,11,24,2,13,11
+KR_a1301398c0525889ea,KR,general_negligence_personal_injury,194,145,9,37,3,22,17
+KR_b9478acaee2bfa081a,KR,other_civil_liability,25,5,0,16,4,15,14
+US_369a2f88efd4f55df4,US,general_negligence_personal_injury,290,157,1,126,6,28,21
+US_45c1de8fa5ac8eefab,US,medical_professional_liability,166,78,57,21,10,23,18
+US_9dc742b4409b555931,US,medical_professional_liability,214,101,1,102,10,17,14
+US_acb942a605c65e06f0,US,other_civil_liability,663,112,420,114,17,42,30
+US_f57bc43fc6478fd8b2,US,general_negligence_personal_injury,109,10,4,90,5,20,13

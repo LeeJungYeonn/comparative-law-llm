@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.py[cod]
+
+.cache_v2/
+legacy/
+legal_lexicon/outputs/
+
+outputs_*/**/*
+!outputs_v2/v4.0.2/
+!outputs_v2/v4.0.2/**

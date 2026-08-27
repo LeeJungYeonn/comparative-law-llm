@@ -1,0 +1,58 @@
+{
+  "corpus_version": "kr-us-highcourt-corpus-v4.0.2",
+  "status": "FROZEN",
+  "frozen_at_utc": "2026-08-20T10:08:27.360780+00:00",
+  "source_corpus_version": "kr-us-highcourt-corpus-v4.0.1",
+  "source_artifact_sha256_verified": {
+    "outputs_v2\\v4.0.1\\final_cases_200_v4_0_1.jsonl": "c9b6cffa2b1c75b67c2d7e031a604a26b49c57c317a61a649731f27127d1ec23",
+    "outputs_v2\\v4.0.1\\final_fact_patterns_200_v4_0_1.jsonl": "5e50e1c067abd9c7167f0bd36896523c6a5264ece5b2ee06d8a46a22d3814a8a",
+    "outputs_v2\\v4.0.1\\final_fact_units_200_v4_0_1.jsonl": "65bc8417b0c8b174cce0a1a1aee01edca2be0cfceff9296898e63f038521c902",
+    "outputs_v2\\v4.0.1\\final_roster_manifest_200_v4_0_1.csv": "b2d7569eba508ca6e04bd3da2c16f570254127095e6abab3074a19bc3d6b3d9e",
+    "outputs_v2\\v4.0.1\\canonical_final_qc_200_v4_0_1.jsonl": "e22bf7366553291b3fbb39b17395b5c1eb9313bb1cf4eca6b6d01f86e9a6b270"
+  },
+  "change_scope": "only the two specified bilingual neutral-fact entity substitutions and affected hashes/units",
+  "target_case_ids": [
+    "KR_6e91996913ed443be6",
+    "US_9dc742b4409b555931"
+  ],
+  "counts": {
+    "total": 200,
+    "by_split": {
+      "confirmatory": 160,
+      "development": 40
+    },
+    "by_country_split": {
+      "KR_development": 20,
+      "KR_confirmatory": 80,
+      "US_development": 20,
+      "US_confirmatory": 80
+    }
+  },
+  "prior_canonical_qc_carried_forward_without_rerun": "outputs_v2\\v4.0.1\\canonical_final_qc_200_v4_0_1.jsonl",
+  "invariants": {
+    "total_200": true,
+    "case_roster_and_order_unchanged": true,
+    "case_metadata_unchanged_excluding_version": true,
+    "all_non_target_facts_unchanged_excluding_version": true,
+    "all_non_target_units_unchanged_excluding_version": true,
+    "only_two_target_facts_changed": true,
+    "domains_unchanged": true,
+    "splits_unchanged": true,
+    "all_neutral_fact_hashes_current": true,
+    "all_fact_units_synchronized": true,
+    "all_residual_target_strings_removed": true,
+    "kr_development_20": true,
+    "kr_confirmatory_80": true,
+    "us_development_20": true,
+    "us_confirmatory_80": true
+  },
+  "artifact_sha256": {
+    "outputs_v2\\v4.0.2\\final_cases_200_v4_0_2.jsonl": "e044ee01df3da9fa0d1c355063be82ccf07971700c2cd943619391948321068b",
+    "outputs_v2\\v4.0.2\\final_fact_patterns_200_v4_0_2.jsonl": "20c4bad65fca9f93050be261c5bf792e762ca1ee6208750285b440cc2bad49f2",
+    "outputs_v2\\v4.0.2\\final_fact_units_200_v4_0_2.jsonl": "77e0b6e80adb668330dbb3ae66818baa4b0049978be81c12171e50bbe148227e",
+    "outputs_v2\\v4.0.2\\final_roster_manifest_200_v4_0_2.csv": "b2d7569eba508ca6e04bd3da2c16f570254127095e6abab3074a19bc3d6b3d9e",
+    "outputs_v2\\v4.0.2\\targeted_neutral_fact_corrections_v4_0_2.json": "b062c2e6a8da820bd3a85c965224189b37448227f71299339a9dac787538fc29"
+  },
+  "collection_rerun": false,
+  "corpus_qc_rerun": false
+}

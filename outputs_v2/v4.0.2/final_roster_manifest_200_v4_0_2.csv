@@ -1,0 +1,201 @@
+﻿case_id,origin_country,origin_state,case_name,case_number,decision_date,primary_domain,other_civil_liability_subtype,analysis_split,replacement_status
+KR_0dcfdd46d74a8951e1,KR,,손해배상(기),2007다248,2007-05-31,other_civil_liability,employment_workplace,confirmatory,retained
+KR_0f2fb4048fdd1b2ba6,KR,,손해배상(의),2007다80657,2008-07-24,medical_professional_liability,,confirmatory,replacement_v3
+KR_12b9dc4aa1ee6e184c,KR,,손해배상(기),2005다24318,2007-04-26,general_negligence_personal_injury,,confirmatory,retained
+KR_1346b7ea49f678b93c,KR,,손해배상(기),2004다759,2006-07-28,general_negligence_personal_injury,,confirmatory,v4_targeted_replacement
+KR_13b881769bf8928779,KR,,손해배상(기)등,2013다37722,2013-09-13,general_negligence_personal_injury,,confirmatory,retained
+KR_15f616454feb5baced,KR,,손해배상(기)[사립중학교 유도부 학생이 학교법인을 상대로 훈련 중에 입은 사고로 인한 손해배상을 구하는 사건],2016다33196,2018-12-28,general_negligence_personal_injury,,development,retained
+KR_196d874266db86b00d,KR,,구상금,2020다261776,2021-01-14,general_negligence_personal_injury,,confirmatory,retained
+KR_1db22dfee6cc310e77,KR,,손해배상(기),2007다50663,2008-07-24,other_civil_liability,financial_insurance_business,confirmatory,retained
+KR_21e5cc81eee32db79e,KR,,구상금,2002다50149,2002-12-26,general_negligence_personal_injury,,confirmatory,retained
+KR_251ece560a954ca2fc,KR,,손해배상(기),2015다241228,2016-12-15,other_civil_liability,professional_services,confirmatory,retained
+KR_25ab15d21ac1967afd,KR,,손해배상(의),2009다54638,2011-07-14,medical_professional_liability,,development,v4_targeted_replacement
+KR_26b3a33d5ab3eb8be8,KR,,손해배상(기),2004다8272,2006-07-06,other_civil_liability,employment_workplace,development,retained
+KR_2938a7d8dec5b2a57e,KR,,구상금,2022다238657,2022-09-29,general_negligence_personal_injury,,confirmatory,retained
+KR_29dbd6f831cc47236c,KR,,손해배상(기),2014다229009,2016-11-10,other_civil_liability,property_environmental_construction,confirmatory,retained
+KR_29de6fa2d32993658e,KR,,손해배상(산),2022다291009,2023-08-18,general_negligence_personal_injury,,confirmatory,retained
+KR_2fbbb928c434a8f95b,KR,,손해배상,2017다1448,2019-01-17,product_liability,,development,retained
+KR_38f0a0551f52400584,KR,,손해배상(기),2008다63192,2009-01-15,general_negligence_personal_injury,,confirmatory,retained
+KR_3bdfa18ada600372f2,KR,,손해배상(의),2018다246767,2020-04-09,medical_professional_liability,,confirmatory,retained
+KR_3d251e8be01dc48a0b,KR,,손해배상(기),2013다14903,2013-06-28,other_civil_liability,financial_insurance_business,confirmatory,retained
+KR_3e400c529b48b85317,KR,,손해배상(의),2018다10562,2018-12-13,medical_professional_liability,,confirmatory,replacement_v3
+KR_46eecae742ccab2781,KR,,손해배상(의)[피고 병원 의료진의 전원조치 후 하지마비의 영구장해가 남게 되자 손해배상을 청구한 사건],2020다217533,2023-07-13,medical_professional_liability,,confirmatory,v4_targeted_replacement
+KR_47079dcb1572fd2e34,KR,,손해배상(의),2002다45185,2004-10-28,medical_professional_liability,,confirmatory,retained
+KR_4b24e5a20e1f1ddead,KR,,손해배상(기),2006다32132,2008-04-24,other_civil_liability,other_economic_or_personal,confirmatory,retained
+KR_4e2107bebbe71bff1d,KR,,구상금,2014다201087,2014-04-24,general_negligence_personal_injury,,confirmatory,retained
+KR_4ea4b7c552d041ba9e,KR,,손해배상(기),2000다50213,2002-05-10,other_civil_liability,financial_insurance_business,development,retained
+KR_517073e205fb216efb,KR,,손해배상(기),2006다87798,2009-07-23,other_civil_liability,employment_workplace,confirmatory,retained
+KR_5b6e230014dd4d5663,KR,,손해배상(기),2020다263758,2025-07-18,product_liability,,development,retained
+KR_5be8caa54d55da9c2d,KR,,손해배상(의),98다50586,2000-01-21,medical_professional_liability,,development,replacement_v3
+KR_5ebeddec620aad3412,KR,,손해배상(기),2009다94278,2010-02-11,general_negligence_personal_injury,,development,retained
+KR_6078abc75c440541ab,KR,,구상금,2012다39103,2012-09-13,general_negligence_personal_injury,,development,v4_targeted_replacement
+KR_60ac72230335410754,KR,,손해배상(자),2001다9496,2001-09-04,general_negligence_personal_injury,,confirmatory,retained
+KR_61112d3135e80de786,KR,,손해배상(기),2008다3640,2009-12-24,general_negligence_personal_injury,,confirmatory,retained
+KR_6623c47ec5cdef48bc,KR,,손해배상(기),2000다61947,2002-03-29,medical_professional_liability,,confirmatory,replacement_v3
+KR_68e0deec401c3edd58,KR,,손해배상(기),2005다25021,2007-09-06,other_civil_liability,property_environmental_construction,confirmatory,retained
+KR_6a3e8f577c00b9c20c,KR,,손해배상(의)[미성년자인 환자에 대한 진료 과실 등으로 병원에 손해배상을 구하는 사건],2020다218925,2023-03-09,medical_professional_liability,,confirmatory,v4_targeted_replacement
+KR_6c7baac3a6e3991c4e,KR,,손해배상(자),99다54998,2000-04-25,general_negligence_personal_injury,,confirmatory,retained
+KR_6e91996913ed443be6,KR,,구상금,2012다4824,2015-03-26,product_liability,,development,retained
+KR_78134d127e8ed36369,KR,,손해배상(기),2004다46922,2006-01-12,other_civil_liability,financial_insurance_business,confirmatory,retained
+KR_7be1ae9174eea5f5f2,KR,,손해배상(자),2005다25755,2005-09-29,general_negligence_personal_injury,,confirmatory,retained
+KR_7f8df551c38264fcbe,KR,,손해배상(기)[성폭력범죄의 소년 피의자들이 경찰의 피의자신문조서 작성시 직무상 의무 위반을 이유로 국가배상책임을 구하는 사건],2015다224797,2020-04-29,other_civil_liability,employment_workplace,confirmatory,retained
+KR_80cd6399334ab774b2,KR,,구상금,2009다98928,2010-04-29,general_negligence_personal_injury,,confirmatory,retained
+KR_820a517fce55c93a84,KR,,손해배상(자),2005다16904,2006-03-09,general_negligence_personal_injury,,development,retained
+KR_86fdfbe3f16878dfcf,KR,,손해배상(기),2017다37096,2017-12-28,other_civil_liability,financial_insurance_business,confirmatory,retained
+KR_872d527b52dfbd5927,KR,,손해배상(의)[의료과오 민사소송에서 인과관계 증명완화 법리를 새로 설시한 사건],2022다219427,2023-08-31,medical_professional_liability,,confirmatory,replacement_v3
+KR_8954cbe1140427b3ef,KR,,손해배상(기),2002다17333,2003-09-05,product_liability,,confirmatory,retained
+KR_8a49a0389073fce149,KR,,구상금,2004다7040,2004-10-27,other_civil_liability,financial_insurance_business,confirmatory,retained
+KR_8f9a8d4ff8f0f379fb,KR,,구상금,2018다226015,2019-06-27,general_negligence_personal_injury,,confirmatory,v4_targeted_replacement
+KR_908095abe4f0d6d327,KR,,손해배상(기),2005다23599,2007-07-13,other_civil_liability,employment_workplace,confirmatory,retained
+KR_91bd2c03cf60df4426,KR,,손해배상(기)[임대인의 철거·재건축계획의 고지행위에 관하여 종전 임차인이 권리금 회수방해를 원인으로 한 손해배상을 청구한 사건],2022다202498,2022-08-11,other_civil_liability,property_environmental_construction,confirmatory,retained
+KR_934df9d2f48650c256,KR,,구상금·손해배상(기)등,"2008다65686, 65693",2010-01-28,general_negligence_personal_injury,,confirmatory,retained
+KR_94e863154231995db3,KR,,손해배상(기),99다33397,2001-03-23,other_civil_liability,financial_insurance_business,confirmatory,retained
+KR_9dad33b6d6293b40f2,KR,,손해배상(의),2002다48443,2002-10-25,medical_professional_liability,,confirmatory,replacement_v3
+KR_9fa690d66617cf987e,KR,,손해배상(기),2001다27777,2002-06-28,other_civil_liability,other_economic_or_personal,development,retained
+KR_9ff8adb69f213e129e,KR,,손해배상(기),2003다38207,2004-05-14,other_civil_liability,financial_insurance_business,confirmatory,retained
+KR_a1301398c0525889ea,KR,,손해배상(기)[도시일용노동의 경험칙상 가동연한],2018다248909,2019-02-21,general_negligence_personal_injury,,development,v4_targeted_replacement
+KR_a3d84a1ae8d86e74c5,KR,,구상금,2002다47181,2002-11-26,general_negligence_personal_injury,,confirmatory,retained
+KR_a41002435a915c75d1,KR,,손해배상(의)·구상금,"2009다82275, 82282",2012-01-27,medical_professional_liability,,confirmatory,replacement_v3
+KR_ab2b68c40724d0aa92,KR,,손해배상(기),2001다54045,2001-11-09,general_negligence_personal_injury,,confirmatory,replacement_v3
+KR_ac6643f28f1a875a1b,KR,,손해배상(기),2005다23438,2007-10-25,general_negligence_personal_injury,,confirmatory,retained
+KR_af61f4590681c75f54,KR,,임금채무부존재확인·재임용탈락처분무효등·손해배상(기)등,"2008다58794,58800,58817",2010-09-30,other_civil_liability,other_economic_or_personal,confirmatory,retained
+KR_b1623e21ca7095a358,KR,,"손해배상(기)[비법인사단의 대표자가 선량한 관리자의 주의의무를 위반한 경우, 비법인사단의 구성원에 대한 불법행위 손해배상책임의 성립 여부가 문제된 사건]",2023다314022,2024-07-11,other_civil_liability,other_economic_or_personal,confirmatory,retained
+KR_b24448d722a0190549,KR,,손해배상(기),2013다73957,2015-09-10,other_civil_liability,other_economic_or_personal,confirmatory,retained
+KR_b7cbce3536a0f4f763,KR,,특허출원인명의변경·손해배상(지),"2011다77313,77320",2014-11-13,other_civil_liability,employment_workplace,development,retained
+KR_b7d634c2e03993e164,KR,,손해배상(기),2004다48775,2007-06-15,general_negligence_personal_injury,,confirmatory,retained
+KR_b8c149d3a7eebfddda,KR,,손해배상(기)등,2007다53785,2009-11-12,other_civil_liability,professional_services,confirmatory,retained
+KR_b8f7e4d96ca6d41527,KR,,손해배상(기)[배트남전 참전군인 고엽제 피해 손해배상청구 사건],2006다17539,2013-07-12,product_liability,,development,retained
+KR_b9478acaee2bfa081a,KR,,손해배상(기),2013다209695,2017-03-15,other_civil_liability,public_entity_institutional,development,retained
+KR_bb48d36e58640760a7,KR,,손해배상(기),2005다31361,2006-03-10,product_liability,,confirmatory,retained
+KR_bca778095d79c8e711,KR,,손해배상,2016다213237,2016-09-28,other_civil_liability,employment_workplace,confirmatory,retained
+KR_bcc14552a5ebdd0945,KR,,손해배상(의),2007다70445,2010-07-22,medical_professional_liability,,confirmatory,replacement_v3
+KR_bd5712bcc29293f8e7,KR,,손해배상(기),2019다280481,2023-03-30,other_civil_liability,employment_workplace,confirmatory,retained
+KR_bd9cba7b4f62c65d0a,KR,,구상금,98다35525,2000-07-28,product_liability,,confirmatory,retained
+KR_c0c025922aca493f10,KR,,손해배상(기)(리조트 숙박권 구매계약에 승마체험이 포함되어 있는지 여부와 채무자의 부탁에 따라 제3자가 호의로 채무 이행행위를 한 경우 이행보조자로 볼 수 있는지가 문제된 사례),2017다275447,2018-02-13,general_negligence_personal_injury,,development,v4_targeted_replacement
+KR_c6a564478fdecad238,KR,,손해배상(기)[공인중개사가 부동산 중개 과정에서 임대차보증금 반환채무가 매수인에게 면책적으로 인수되지 않는다는 사정을 설명할 주의의무가 인정되는지 여부가 문제된 사건],2024다239364,2024-09-12,other_civil_liability,financial_insurance_business,confirmatory,retained
+KR_c6d493a48f0b6b6912,KR,,손해배상(자),2002다5019,2002-05-28,general_negligence_personal_injury,,confirmatory,retained
+KR_c93d64dedb05abdc5b,KR,,손해배상(의),2007다16519,2008-03-27,medical_professional_liability,,confirmatory,replacement_v3
+KR_c9a36c832dbc482f8f,KR,,손해배상(기),2006다50338,2008-09-11,general_negligence_personal_injury,,confirmatory,retained
+KR_cc8813e6652ff8b3e4,KR,,손해배상(기),2010다72045,2011-10-27,product_liability,,confirmatory,retained
+KR_cd0b887a7a431369b9,KR,,구상금,2004다48768,2006-09-28,general_negligence_personal_injury,,confirmatory,retained
+KR_cda2f7ae1f9162201f,KR,,손해배상,2003다16771,2004-03-12,product_liability,,confirmatory,retained
+KR_ce03d7157e09c4d242,KR,,구상금,2007다37530,2008-07-24,general_negligence_personal_injury,,confirmatory,retained
+KR_d0cfadb984b62f020b,KR,,손해배상(기),2007다77149,2009-12-24,general_negligence_personal_injury,,confirmatory,retained
+KR_d47698374deaa59285,KR,,구상금,2010다28390,2012-08-17,general_negligence_personal_injury,,confirmatory,v4_targeted_replacement
+KR_d4a866bf8f86262c7f,KR,,손해배상(기),2008다61615,2010-02-11,general_negligence_personal_injury,,confirmatory,retained
+KR_d614974ea605954ae6,KR,,손해배상(기),2018다273417,2019-07-10,other_civil_liability,financial_insurance_business,confirmatory,retained
+KR_d7658dab9202d2e025,KR,,손해배상(의),2009다65416,2011-07-14,medical_professional_liability,,confirmatory,replacement_v3
+KR_d9b3ee3b261df8b463,KR,,구상금,2018다212740,2022-08-31,general_negligence_personal_injury,,confirmatory,retained
+KR_de99291f16b6fe1b2a,KR,,손해배상(기),2014다225083,2016-08-25,general_negligence_personal_injury,,development,v4_targeted_replacement
+KR_df9ae8ebb4355cf9ab,KR,,"차별구제[신체적 장애가 있는 원고들이 시외버스와 광역형 시내버스에 저상버스를 도입하지 않고, 휠체어 탑승설비를 장착하지 않은 것이 「장애인차별금지 및 권리구제 등에 관한 법률」에서 금지하는 정당한 편의제공 의무 위반의 차별행위라고 주장하면서, 「장애인차별금지 및 권리구제 등에 관한 법률」 제46조에 따라 위자료의 지급과 제48조 제2항에 따라 차별행위의 시정을 위한 적극적 조치를 청구한 사안]",2019다217421,2022-02-17,other_civil_liability,employment_workplace,confirmatory,retained
+KR_e61f8571b55fd48e4c,KR,,손해배상(자),2016다260097,2021-07-15,general_negligence_personal_injury,,confirmatory,v4_targeted_replacement
+KR_e841c27e080fa0659c,KR,,손해배상(기),2008다3527,2009-12-24,general_negligence_personal_injury,,confirmatory,replacement_v3
+KR_eee8ecec3165d10cc6,KR,,구상금,2021다220864,2024-11-20,general_negligence_personal_injury,,development,retained
+KR_f1f9176685f8c1c0db,KR,,구상금,2017다267217,2018-03-13,general_negligence_personal_injury,,confirmatory,retained
+KR_f358ab674e5ded71f1,KR,,손해배상(기),2005다21821,2007-07-13,general_negligence_personal_injury,,confirmatory,retained
+KR_f5a5d762462130dccb,KR,,손해배상(기),2009다19864,2011-01-27,other_civil_liability,financial_insurance_business,confirmatory,retained
+KR_f8eefffc009c58124b,KR,,구상금,2022다309474,2023-06-29,general_negligence_personal_injury,,development,retained
+KR_f92051e8c5598d8ccc,KR,,손해배상(기),2004다2786,2007-11-15,other_civil_liability,public_entity_institutional,confirmatory,retained
+KR_fade97268b1abdcfa2,KR,,손해배상(기),2006다5550,2008-12-11,other_civil_liability,financial_insurance_business,confirmatory,retained
+KR_fd8f69f92c35adf0ac,KR,,보험금등청구의소[국민건강보험법에 따른 보험급여를 받은 피해자의 가해자에 대한 치료비 손해배상채권액의 산정 방식],2018다287935,2021-03-18,general_negligence_personal_injury,,confirmatory,v4_targeted_replacement
+KR_fdfefa335ed21439c0,KR,,손해배상(의),2007다25971,2010-05-27,medical_professional_liability,,confirmatory,replacement_v3
+US_00df5ba88ee9d43fd5,US,West Virginia,"Hairston v. General Pipeline Construction, Inc.",,2010-11-18,other_civil_liability,public_entity_institutional,confirmatory,replacement_v3
+US_03aa3f07d9d0e5332a,US,Nevada,Davenport v. Comstock Hills-Reno,,2002-05-17,general_negligence_personal_injury,,confirmatory,retained
+US_061c987e5f6b8cf2e8,US,Pennsylvania,"Rothrock v. Rothrock Motor Sales, Inc.",,2005-09-28,other_civil_liability,employment_workplace,confirmatory,replacement_v3
+US_0b0596e3f457282cc2,US,Nevada,Winchell v. Schiff,,2008-10-09,other_civil_liability,professional_services,confirmatory,replacement_v3
+US_0bdc6cb112770284df,US,Nevada,Torres v. Nev. Direct Ins. Co.,,2015-07-30,other_civil_liability,financial_insurance_business,confirmatory,v4_targeted_replacement
+US_0cb53a4c10c6b8a81c,US,Nevada,"PARSONS VS. COLT'S MANUFACTURING COMPANY, LLC (NRAP 5)",,2021-12-02,other_civil_liability,other_economic_or_personal,confirmatory,retained
+US_0cdf24e76568435f05,US,Michigan,Johanna Woodard v. University of Mich Medical Ctr,,2006-07-31,medical_professional_liability,,confirmatory,retained
+US_0eaf2fe14baa5be05e,US,Pennsylvania,"Dean v. Com., Dept. of Transp.",,2000-05-18,general_negligence_personal_injury,,confirmatory,retained
+US_0ed0e9c92a0a12ceca,US,West Virginia,MacE v. Ford Motor Company,,2007-05-25,other_civil_liability,financial_insurance_business,confirmatory,retained
+US_0ffb071db74bea0121,US,West Virginia,John Myers IV v. John Lawrence Pauley III,,2013-06-24,general_negligence_personal_injury,,development,v4_targeted_replacement
+US_1042602a184dd1c50b,US,Louisiana,Lazard v. Foti,,2003-10-21,general_negligence_personal_injury,,confirmatory,retained
+US_107f5beb1553bc775c,US,Nevada,"Tri-County Equipment & Leasing, LLC v. Klinke",,2012-06-28,general_negligence_personal_injury,,confirmatory,v4_targeted_replacement
+US_143504a555ba2b1572,US,Louisiana,Benjamin v. Housing Auth. of New Orleans,,2004-12-01,general_negligence_personal_injury,,confirmatory,replacement_v3
+US_157a99d9bc34ad07c0,US,Michigan,Nawrocki v. MacOmb County Road Commission,,2000-07-28,general_negligence_personal_injury,,confirmatory,retained
+US_15e86d45f19b975195,US,West Virginia,R.D. and K.D. v. WV Department of Health and Human Resources,,2018-11-19,other_civil_liability,financial_insurance_business,confirmatory,retained
+US_193c9ad26072b674b4,US,Nevada,"Lewis v. Sea Ray Boats, Inc.",,2003-03-21,product_liability,,confirmatory,retained
+US_193fdb5b19590cbcab,US,West Virginia,Arbogast v. Mid-Ohio Valley Medical Corp.,,2003-12-03,medical_professional_liability,,confirmatory,replacement_v3
+US_1aba36d98e0653f066,US,Michigan,Elezovic v. Ford Motor Co.,,2005-06-01,other_civil_liability,employment_workplace,development,replacement_v3
+US_286292f7d56c91120b,US,Nevada,Las Vegas Metropolitan Police Department v. Yeghiazarian,,2013-11-07,general_negligence_personal_injury,,confirmatory,retained
+US_2999172a4de14d7523,US,Nevada,"Ges, Inc. v. Corbitt",,2001-04-13,general_negligence_personal_injury,,confirmatory,v4_targeted_replacement
+US_2ce3ed6c0e8a324589,US,Pennsylvania,Passarello v. Grumbine,,2014-02-07,medical_professional_liability,,confirmatory,retained
+US_2dc42d5d55548348de,US,Michigan,Ahlam Kandil-Elsayed v. F & E Oil Inc,,2023-07-28,general_negligence_personal_injury,,confirmatory,retained
+US_32ce5cc46af8c47b58,US,Louisiana,Long v. STATE EX REL. DOTD,,2005-12-21,general_negligence_personal_injury,,confirmatory,retained
+US_369a2f88efd4f55df4,US,Pennsylvania,"Grove, J., Aplt. v. Port Authority",,2019-10-31,general_negligence_personal_injury,,development,retained
+US_37fae4c5d51bff450a,US,West Virginia,"Arnold Harrison v. Porsche Cars North America, Inc.",,2016-04-12,product_liability,,confirmatory,replacement_v3
+US_384364b54638f78623,US,West Virginia,Cunningham v. Herbert J. Thomas Memorial Hospital Ass'n,,2012-11-20,medical_professional_liability,,confirmatory,v4_targeted_replacement
+US_38d924f1ad3609200a,US,Pennsylvania,Regester v. County of Chester,,2002-05-31,general_negligence_personal_injury,,confirmatory,retained
+US_3a3052ef67238d90fa,US,Pennsylvania,"Zauflik, A., Aplt. v. Pennsbury School District",,2014-11-19,general_negligence_personal_injury,,confirmatory,retained
+US_3aa1784247c016e937,US,Louisiana,"Brewer v. J.B. Hunt Transport, Inc.",,2010-03-16,general_negligence_personal_injury,,confirmatory,v4_targeted_replacement
+US_3f0101285fcc76e2b1,US,Pennsylvania,Ieropoli v. AC&S CORP.,,2004-02-20,other_civil_liability,other_economic_or_personal,development,retained
+US_43352148b1cf063f58,US,West Virginia,Sydenstricker v. Mohan,,2005-06-30,medical_professional_liability,,development,replacement_v3
+US_45c1de8fa5ac8eefab,US,West Virginia,McDavid v. United States,,2003-07-03,medical_professional_liability,,development,replacement_v3
+US_46a80b1c5e06a72d45,US,Pennsylvania,"Excavation Technologies, Inc. v. Columbia Gas Co.",,2009-12-29,other_civil_liability,property_environmental_construction,confirmatory,retained
+US_47210f2421779c756f,US,Pennsylvania,Freed v. Geisinger Medical Center,,2009-06-15,medical_professional_liability,,confirmatory,retained
+US_472f038dea6238a51e,US,West Virginia,"Donna Hamilton v. Jaiyoung Ryu, M.D.",,2017-10-20,medical_professional_liability,,confirmatory,v4_targeted_replacement
+US_4a0f056bcec6698d7d,US,West Virginia,"City of Fairmont v. West Virginia Municiple League, Inc.",,2020-01-13,other_civil_liability,financial_insurance_business,confirmatory,v4_targeted_replacement
+US_4bf2e6511806b25f10,US,West Virginia,Karen Coffield v. Elgine H. McArdle,,2022-08-30,other_civil_liability,professional_services,confirmatory,replacement_v3
+US_512d2cb96959fe1764,US,Nevada,Cromer v. Wilson,,2010-03-11,general_negligence_personal_injury,,development,replacement_v3
+US_5334a4131f192eab74,US,West Virginia,Seymour v. Pendleton Community Care,,2001-07-11,other_civil_liability,employment_workplace,confirmatory,replacement_v3
+US_5374560fdfdf536ed1,US,Michigan,Whitman v. City of Burton,,2013-05-01,other_civil_liability,employment_workplace,confirmatory,v4_targeted_replacement
+US_545cf69d7c7286aae7,US,Michigan,"Page v. Klein Tools, Inc",,2000-04-25,general_negligence_personal_injury,,development,retained
+US_5786f3c28c6014a17f,US,West Virginia,"Modular Building Consultants of West Virginia, Inc. v. Poerio, Inc.",,2015-05-21,general_negligence_personal_injury,,confirmatory,retained
+US_59362b11f24be41b92,US,West Virginia,"E.B. v. W. Va. Regional Jail and Correctional Authority, etc.",,2017-01-27,general_negligence_personal_injury,,confirmatory,v4_targeted_replacement
+US_5d2b0b2b4752431c53,US,Pennsylvania,Farabaugh v. Pennsylvania Turnpike Commission,,2006-12-28,general_negligence_personal_injury,,confirmatory,retained
+US_5e6f9cfe4d6f03fb7f,US,Michigan,Case v. Consumers Power Co.,,2000-07-26,general_negligence_personal_injury,,confirmatory,retained
+US_60f81ce937468b4218,US,Michigan,Pohutski v. City of Allen Park,,2002-04-02,other_civil_liability,professional_services,confirmatory,replacement_v3
+US_63ffb974f8488a5664,US,Pennsylvania,Tucker v. Philadelphia Daily News,,2004-04-29,other_civil_liability,defamation_privacy_reputation,confirmatory,retained
+US_667a9b663657012cdc,US,West Virginia,"William Caudill, duly appointed guardian of minor infants T.M. and C.M., Charles Samuel Hammett, Kimberly Dawn Hammett, and Haylie Hammett v. EAN Holdings LLC, d/b/a Enterprise Rent-A-Car, Buenaventura Jesurum, Empire Fire and Marine Insurance Company, Rental Insurance Services, Inc,, and Rafael Lorenzo Herrera",,2022-04-26,general_negligence_personal_injury,,confirmatory,retained
+US_6ba935b9156e1996aa,US,West Virginia,W. Va. Regional Jail and Correctional Facility Authority v. A.B.,,2014-03-27,other_civil_liability,public_entity_institutional,confirmatory,replacement_v3
+US_6d3421be0f42fb2f6b,US,Michigan,"Greene v. a P Products, Ltd",,2006-07-19,product_liability,,confirmatory,retained
+US_6dff55c6853f31d0a6,US,Michigan,Estate of Samuel Corrado v. Karen Rieck,,2022-07-07,medical_professional_liability,,confirmatory,retained
+US_6e861d05305c993ccb,US,Louisiana,Credit v. Richland Parish School Board,,2012-03-13,general_negligence_personal_injury,,confirmatory,retained
+US_6e94c6d394acfdcdc7,US,Pennsylvania,Toy v. Metropolitan Life Insurance,,2007-07-18,other_civil_liability,financial_insurance_business,confirmatory,retained
+US_6fc55880fb74718547,US,Louisiana,Green v. K-Mart Corp.,,2004-05-25,general_negligence_personal_injury,,confirmatory,v4_targeted_replacement
+US_71162df598a424d867,US,Michigan,Kuznar v. Raksha Corp.,,2008-06-11,general_negligence_personal_injury,,confirmatory,retained
+US_73b5710930ed47d628,US,West Virginia,"Coleman Estate Ex Rel. Coleman v. R.M. Logging, Inc.",,2010-07-26,other_civil_liability,employment_workplace,confirmatory,replacement_v3
+US_77921eca4293bb5c27,US,Pennsylvania,"Grady v. Frito-Lay, Inc.",,2003-12-31,product_liability,,confirmatory,retained
+US_78f2e4c0127c877a51,US,Michigan,Woodman v. Kera LLC,,2010-06-18,general_negligence_personal_injury,,confirmatory,retained
+US_7cae584411e6f22f4b,US,Michigan,Antonio Craig v. Oakwood Hospital,,2004-07-23,medical_professional_liability,,confirmatory,retained
+US_8273a9a891358bad5d,US,Louisiana,Wooley v. Lucksinger,,2011-04-01,other_civil_liability,professional_services,confirmatory,retained
+US_89752cdd8fe08c1031,US,Pennsylvania,"Brewington, S. v. Phila. Sch. Dist., Aplt.",,2018-12-28,general_negligence_personal_injury,,development,retained
+US_8b84f7c77a2cc4823f,US,Pennsylvania,Hutchison Ex Rel. Hutchison v. Luddy,,2005-03-22,general_negligence_personal_injury,,development,retained
+US_8e816087051c99374d,US,Pennsylvania,"Yenchi, E. v. Ameriprise Financial, Aplts.",,2017-06-20,other_civil_liability,financial_insurance_business,confirmatory,retained
+US_8f953fe2f1a7911efc,US,Nevada,Kahn v. Morse & Mowbray,,2005-08-11,other_civil_liability,professional_services,development,replacement_v3
+US_94f469d91f6b1c555d,US,West Virginia,Gloria Allen v. Greenbrier Co. Sheriff's Dept.,,2013-06-28,general_negligence_personal_injury,,confirmatory,replacement_v3
+US_97456da392d82990a3,US,Louisiana,Wainwright v. Fontenot,,2000-10-17,medical_professional_liability,,development,v4_targeted_replacement
+US_979762a92670a0552a,US,Nevada,Sanchez Ex Rel. Sanchez v. Wal-Mart,,2009-12-24,medical_professional_liability,,confirmatory,v4_targeted_replacement
+US_98be2374bed153f34a,US,Nevada,"Sparks v. Alpha Tau Omega Fraternity, Inc.",,2011-05-26,general_negligence_personal_injury,,confirmatory,replacement_v3
+US_99f0f4ac29a4da2463,US,Michigan,MacK v. City of Detroit,,2002-07-31,other_civil_liability,employment_workplace,confirmatory,replacement_v3
+US_9acb209b5020b6dec4,US,Louisiana,Williams v. Jackson Parish Hospital,,2001-10-16,product_liability,,confirmatory,replacement_v3
+US_9c0d0f392a9c3505c1,US,Michigan,Stitt v. Holland Abundant Life Fellowship,,2000-07-18,general_negligence_personal_injury,,confirmatory,retained
+US_9dc742b4409b555931,US,Nevada,Fierle v. Perez,,2009-11-19,medical_professional_liability,,development,replacement_v3
+US_a0047ad180b5e21d95,US,Louisiana,Brooks v. State Ex Rel. Department of Transportation & Development,,2011-07-01,general_negligence_personal_injury,,confirmatory,retained
+US_a15bd1ea6aa4ea1ed9,US,Nevada,Vega v. Eastern Courtyard Associates,,2001-06-13,general_negligence_personal_injury,,confirmatory,v4_targeted_replacement
+US_a4ba9463b694840f34,US,West Virginia,"Delilah Stephens, M.D. v. Charles Rakes, etc.",,2015-06-16,medical_professional_liability,,development,v4_targeted_replacement
+US_acb942a605c65e06f0,US,Pennsylvania,"The Bert Company v. Turk, Aplts.",,2023-07-19,other_civil_liability,employment_workplace,development,retained
+US_afc0614636d20e04b8,US,Nevada,"Evans v. Dean Witter Reynolds, Inc.",,2000-08-18,other_civil_liability,employment_workplace,confirmatory,retained
+US_b160a9deca3c2a648b,US,Nevada,Seput v. Lacayo,,2006-05-25,general_negligence_personal_injury,,confirmatory,retained
+US_b24ef2018816af9946,US,Louisiana,"Richard L. Reynolds v. Robert J. Bordelon III, Robert J. Bordelon Jr., Usagencies Casualty Insurance Company, Automobile Club Inter-Insurance Exchange, and/or Auto Club Family Insurance Company D/B/A Triple a Insurance, Nissan North America, Infinity Division of Nissan North America, Inc., a Luxury Car Division of Nissan Motors, Insurance Auto Auctions Corp., Abc Insurance Company, Def Insurance Company and Xyz Insurance Company C/W State Farm Mutual Automobile Insurance Company as Subrogee of/and Linda Dupuy v. Robert Bordelon and Usagencies Casualty Insurance Company",,2015-06-30,other_civil_liability,financial_insurance_business,confirmatory,replacement_v3
+US_b267b8668935378e25,US,West Virginia,Ashley D. Gunno v. Kevin C. McNair,,2016-11-17,general_negligence_personal_injury,,development,v4_targeted_replacement
+US_b362543043cab0106c,US,Pennsylvania,"Bruno, D., Aplts. v. Erie Insurance",,2014-12-15,general_negligence_personal_injury,,confirmatory,retained
+US_b473e7585c6e5638dd,US,Michigan,"Trowell v. Providence Hosp. & Med. Ctrs., Inc.",,2017-12-06,medical_professional_liability,,confirmatory,retained
+US_b675276d7ca44f64e2,US,Louisiana,Schultz v. Guoth,,2011-01-19,medical_professional_liability,,confirmatory,v4_targeted_replacement
+US_b732d6870be7eac6fb,US,Michigan,Melissa Mays v. Governor Rick Snyder,,2020-07-29,other_civil_liability,employment_workplace,confirmatory,replacement_v3
+US_bb44001945931d8610,US,Nevada,"Badillo v. American Brands, Inc.",,2001-01-30,other_civil_liability,employment_workplace,confirmatory,retained
+US_ca3855b0593ebfc33e,US,West Virginia,"M.M., a Minor, By and Through Her Mother, etc. v. Pfizer, Inc.",,2017-11-01,product_liability,,development,replacement_v3
+US_cc8f60960ef40a7434,US,Pennsylvania,Young v. Commonwealth Department of Transportation,,2000-01-20,general_negligence_personal_injury,,development,retained
+US_cd09a42ab8bc802821,US,Pennsylvania,Walsh v. BASF Corporation Apl of: Dow,,2020-07-21,product_liability,,confirmatory,retained
+US_d367706577b84edea9,US,West Virginia,Katherine L. McGlinchey v. Woodrow Potesta,,2013-06-28,other_civil_liability,employment_workplace,confirmatory,replacement_v3
+US_e05b7f2567e5800f56,US,Louisiana,Cole v. Department of Public Safety,,2002-09-04,other_civil_liability,employment_workplace,confirmatory,replacement_v3
+US_e1738150309971f404,US,Michigan,Robert F Deshambo v. Charles W Anderson,,2004-07-23,general_negligence_personal_injury,,confirmatory,replacement_v3
+US_e2121974270074f961,US,West Virginia,"Lyle Brooks Griffith v. BCBank, Inc.",,2017-04-07,other_civil_liability,employment_workplace,confirmatory,replacement_v3
+US_e7bd006a7ac2277175,US,West Virginia,"All Med, LLC. v. Randolph Engineering Co.",,2012-02-24,general_negligence_personal_injury,,development,retained
+US_eafeabebaffbba2c82,US,Louisiana,"Landry v. Avondale Industries, Inc.",,2004-07-02,general_negligence_personal_injury,,confirmatory,retained
+US_ecb5bb62f940e7f86f,US,West Virginia,Tolley v. Carboline Co.,,2005-07-14,product_liability,,confirmatory,retained
+US_f2201634a8e19da0c7,US,Nevada,"YOUNT VS. CRISWELL RADOVAN, LLC",,2020-07-30,other_civil_liability,financial_insurance_business,confirmatory,retained
+US_f52ee52e184d02cd06,US,West Virginia,"Rohrbaugh v. Wal-Mart Stores, Inc.",,2002-10-11,other_civil_liability,employment_workplace,confirmatory,replacement_v3
+US_f57bc43fc6478fd8b2,US,Louisiana,"Joseph v. Broussard Rice Mill, Inc.",,2000-10-30,general_negligence_personal_injury,,development,v4_targeted_replacement
+US_f5ad9cb96e57eb50d6,US,Michigan,Robinson v. City of Lansing,,2010-04-08,general_negligence_personal_injury,,confirmatory,replacement_v3
+US_f9417e4d262285b1c6,US,Louisiana,"Alexander v. Toyota Motor Sales, U.S.A.",,2013-09-27,product_liability,,confirmatory,retained

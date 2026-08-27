@@ -1,0 +1,85 @@
+{
+  "corpus_version": "kr-us-highcourt-corpus-v4.0.2",
+  "source_corpus_version": "kr-us-highcourt-corpus-v4.0.1",
+  "status": "PASS",
+  "scope": "two user-directed neutral-fact entity-neutralization corrections only",
+  "collection_rerun": false,
+  "corpus_qc_rerun": false,
+  "prior_canonical_qc_artifact": "outputs_v2\\v4.0.1\\canonical_final_qc_200_v4_0_1.jsonl",
+  "prior_canonical_qc_sha256": "e22bf7366553291b3fbb39b17395b5c1eb9313bb1cf4eca6b6d01f86e9a6b270",
+  "target_case_ids": [
+    "KR_6e91996913ed443be6",
+    "US_9dc742b4409b555931"
+  ],
+  "corrections": [
+    {
+      "case_id": "KR_6e91996913ed443be6",
+      "analysis_split": "development",
+      "origin_country": "KR",
+      "primary_domain": "product_liability",
+      "changed_fact_fields": [
+        "neutral_fact_en",
+        "neutral_fact_en_sha256",
+        "neutral_fact_ko",
+        "neutral_fact_ko_sha256",
+        "neutral_fact_source",
+        "neutral_fact_source_sha256"
+      ],
+      "changed_unit_fields": [
+        "neutral_en",
+        "neutral_ko",
+        "text"
+      ],
+      "before_hashes": {
+        "neutral_fact_ko": "b25b4edf1ff618fe3ae018c90b21d69fd4553eea953bc81ccf96d79ec449ccb2",
+        "neutral_fact_en": "3e90d1535570c79ef8271fa406c05c6a5f87bfbdc489780a56900d0dbbfcfced",
+        "neutral_fact_source": "b25b4edf1ff618fe3ae018c90b21d69fd4553eea953bc81ccf96d79ec449ccb2"
+      },
+      "after_hashes": {
+        "neutral_fact_ko": "a3747eab60d8e3b197ff70b19781dab2181c4803dc48d2c0c74db4cc0125b256",
+        "neutral_fact_en": "0c210b70e68a58316c5c3433ccb75efd9311dc67b0486075682cf4952d7471d4",
+        "neutral_fact_source": "a3747eab60d8e3b197ff70b19781dab2181c4803dc48d2c0c74db4cc0125b256"
+      }
+    },
+    {
+      "case_id": "US_9dc742b4409b555931",
+      "analysis_split": "development",
+      "origin_country": "US",
+      "primary_domain": "medical_professional_liability",
+      "changed_fact_fields": [
+        "neutral_fact_en",
+        "neutral_fact_en_sha256",
+        "neutral_fact_ko",
+        "neutral_fact_ko_sha256",
+        "neutral_fact_source",
+        "neutral_fact_source_sha256"
+      ],
+      "changed_unit_fields": [
+        "neutral_en",
+        "neutral_ko",
+        "text"
+      ],
+      "before_hashes": {
+        "neutral_fact_ko": "e4ef203ffad9a7cf802129c16b0593e59fd94c29b4050c2218217ae384607fe4",
+        "neutral_fact_en": "fd9ec61042696272ab07fd6ca64943ee11d10bf6e0cc8fbdd30d794eb84ebde0",
+        "neutral_fact_source": "fd9ec61042696272ab07fd6ca64943ee11d10bf6e0cc8fbdd30d794eb84ebde0"
+      },
+      "after_hashes": {
+        "neutral_fact_ko": "df15b5aa960059d9608ec76f36057ff95d4a120a82c63d32f33525eb48b47b03",
+        "neutral_fact_en": "dbea718187799dcc67ed11f6b41d7264244c70c3eec1efddb030afb0fd0fc451",
+        "neutral_fact_source": "dbea718187799dcc67ed11f6b41d7264244c70c3eec1efddb030afb0fd0fc451"
+      }
+    }
+  ],
+  "non_target_fact_change_count": 0,
+  "non_target_unit_change_count": 0,
+  "case_metadata_change_count_excluding_version": 0,
+  "domain_change_count": 0,
+  "split_change_count": 0,
+  "residual_target_strings": {
+    "US_9dc742b4409b555931": false,
+    "KR_6e91996913ed443be6": false
+  },
+  "all_fact_hashes_current": true,
+  "all_fact_units_synchronized": true
+}
