@@ -8,7 +8,9 @@ from scripts.lexicon.run_occurrence_sensitivity_v1 import (
     AVAILABLE_PRIMARY,
     BOOTSTRAP_RUNS,
     OCCURRENCE_FEATURES,
+    PCA_FEATURES,
     derive_occurrence_features,
+    fit_pca,
     holm_adjust,
     protected_hashes,
     read_csv,
@@ -33,6 +35,13 @@ def test_occurrence_feature_guards():
         np.isfinite(float(row[feature])) and float(row[feature]) >= 0
         for row in rows for feature in OCCURRENCE_FEATURES
     )
+    assert PCA_FEATURES == ("avg_chars_per_sentence", *OCCURRENCE_FEATURES)
+    scaler, pca, standardized, scores = fit_pca(rows)
+    assert standardized.shape == scores.shape == (160, 7)
+    assert np.allclose(standardized.mean(axis=0), 0.0, atol=1e-12)
+    assert np.allclose(scores, pca.transform(scaler.transform(
+        np.array([[float(row[feature]) for feature in PCA_FEATURES] for row in rows])
+    )))
 
 
 def test_holm_is_exactly_six_tests():
@@ -57,5 +66,10 @@ def test_run_is_deterministic_and_protected_files_do_not_change(tmp_path):
     assert first["manifest"]["bootstrap_runs"] == BOOTSTRAP_RUNS
     assert first["manifest"]["primary_analysis_modified"] is False
     assert first["manifest"]["lexicon_modified"] is False
-    assert first["manifest"]["pca_modified_or_refit"] is False
+    assert first["manifest"]["primary_pca_modified_or_refit"] is False
+    assert first["manifest"]["exploratory_occurrence_pca_fitted"] is True
+    assert first["manifest"]["occurrence_pca_feature_order"] == list(PCA_FEATURES)
     assert first["manifest"]["LLM_outputs_used"] is False
+    assert (output / "occurrence_pca_7d.json").exists()
+    assert (output / "occurrence_scaler_7d.json").exists()
+    assert (output / "occurrence_pca_7d_pc1_pc2.png").exists()
