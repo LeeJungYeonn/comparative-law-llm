@@ -1,9 +1,0 @@
-.env
-__pycache__/
-*.py[cod]
-
-outputs/
-pilot_outputs/
-pilot_outputs_outdated/
-.cache_v2/
-outputs_*
