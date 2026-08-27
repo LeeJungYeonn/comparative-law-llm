@@ -1,0 +1,26 @@
+{
+  "confirmatory_used_for_lexicon_modification": false,
+  "content_byte_equivalent_to_prevalidation": true,
+  "copied_file_hashes": {
+    "concepts_v1_0.csv": "421990ac7671252d0f373390530482496c0947cd64ae952c97415ee20d6a39ee",
+    "lexicon_active_primary_v1_0.csv": "51446c25a4712273f3b6ccb5d04c2eab5867a81429bde39d29095152b4e9b6e3",
+    "lexicon_combined_v1_0.csv": "370c63c2a36b3348321edcdfa61d9a591458dcb6299c6ddcc735e0582a19830d",
+    "lexicon_matcher_v1_0.py": "bc474eb7ebd581b5288e7feb6d8008c35929846b9d8c47a416be337acef9d24d",
+    "surface_forms_v1_0.csv": "fe8c88dce2001c81a16cb6f778c89aa46ee1cd6b832b818534ae92a6235c9c30"
+  },
+  "generation_timestamp_utc": "2026-08-23T08:05:09.273989+00:00",
+  "lexicon_version": "v1.0",
+  "source_hashes": {
+    "concepts_prevalidation_v0_3.csv": "421990ac7671252d0f373390530482496c0947cd64ae952c97415ee20d6a39ee",
+    "lexicon_active_primary_prevalidation_v0_3.csv": "51446c25a4712273f3b6ccb5d04c2eab5867a81429bde39d29095152b4e9b6e3",
+    "lexicon_combined_prevalidation_v0_3.csv": "370c63c2a36b3348321edcdfa61d9a591458dcb6299c6ddcc735e0582a19830d",
+    "lexicon_matcher_prevalidation_v0_3.py": "bc474eb7ebd581b5288e7feb6d8008c35929846b9d8c47a416be337acef9d24d",
+    "surface_forms_prevalidation_v0_3.csv": "fe8c88dce2001c81a16cb6f778c89aa46ee1cd6b832b818534ae92a6235c9c30"
+  },
+  "source_prevalidation_seal_sha256": "fffe429d9ca22215ba45cbee2cc7e03512acdf31aa527eeb6a30b3f2b50928d2",
+  "source_prevalidation_version": "v0.3",
+  "status": "FROZEN_AFTER_HELD_OUT_VALIDATION_NO_CHANGES",
+  "timestamp_policy": "deterministic pre-validation candidate timestamp",
+  "validation_derived_modifications": 0,
+  "validation_used_for_lexicon_modification": false
+}
