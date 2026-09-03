@@ -1,0 +1,16 @@
+{
+  "decision_id": "BILINGUAL_SURFACE_RECOMMENDATIONS_SIGNOFF_V1",
+  "decision_date": "2026-09-03",
+  "decision_source": "researcher_user_instruction_current_session",
+  "decision": "approve_all_codex_recommendations_in_frozen_review_bundle",
+  "policy_id": "BILINGUAL_SURFACE_ACTIVATION_POLICY_V1",
+  "review_artifacts": {
+    "concept_disposition_review.csv": "d8a7e318f7591770a7d4f80d08ed4def272b22d73bc096859e9831423f9ccf35",
+    "surface_candidate_review.csv": "53b6f779366c65b5d9b0634e272afc2000d20396a92164667adfd6a01eafcae7"
+  },
+  "approved_summary": {
+    "activate_bilingually_concepts": 16,
+    "exclude_symmetrically_concepts": 2,
+    "selective_surface_exclusions_within_activated_concepts": 2
+  }
+}

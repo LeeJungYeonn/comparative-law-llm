@@ -1,0 +1,19 @@
+{
+  "version": "exp1-human-decisions-v1",
+  "decision_date": "2026-09-03",
+  "decision_source": "researcher_user_instruction_current_session",
+  "decisions": [
+    {
+      "case_id": "KR_0dcfdd46d74a8951e1",
+      "decision": "approved_retain_as_is",
+      "scope": "flagged_legal_leakage_findings",
+      "rationale": "Researcher approved freezing the current bilingual neutral facts without edits."
+    },
+    {
+      "case_id": "US_f9417e4d262285b1c6",
+      "decision": "approved_retain_as_is",
+      "scope": "flagged_legal_leakage_findings",
+      "rationale": "Researcher approved freezing the current bilingual neutral facts without edits."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "policy_id": "BILINGUAL_SURFACE_ACTIVATION_POLICY_V1",
+  "status": "researcher_approved",
+  "approval_date": "2026-09-03",
+  "approval_source": "researcher_user_instruction_current_session",
+  "scope": "pre-generation country-orientation surfaces only",
+  "rules": {
+    "source_lexicon_v1_0_immutable": true,
+    "confirmatory_inputs_or_outputs_used_for_validation": false,
+    "activation_requires_semantic_equivalence": true,
+    "activation_requires_same_jurisdictional_direction": true,
+    "activation_requires_matcher_controls": true,
+    "activation_requires_no_cross_concept_collision": true,
+    "failed_concept_disposition": "exclude_symmetrically_from_both_languages",
+    "one_sided_activation_prohibited": true,
+    "researcher_signoff_required_before_freeze": true
+  },
+  "audit_correction": "The earlier count of 42 used primary_include. The frozen orientation flag is orientation_include: 18 concepts have one-language orientation surfaces and zero have bilingual orientation surfaces."
+}

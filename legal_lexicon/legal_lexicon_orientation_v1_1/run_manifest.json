@@ -1,0 +1,49 @@
+{
+  "activated_opposite_language_surface_ids": [
+    "S0002",
+    "S0023",
+    "S0024",
+    "S0026",
+    "S0027",
+    "S0059",
+    "S0073",
+    "S0076",
+    "S0078",
+    "S0081",
+    "S0084",
+    "S0087",
+    "S0089",
+    "S0094",
+    "S0099",
+    "S0112",
+    "S0115",
+    "S0118"
+  ],
+  "api_generation_requests_sent": 0,
+  "artifact_sha256": {
+    "concepts_v1_1.csv": "421990ac7671252d0f373390530482496c0947cd64ae952c97415ee20d6a39ee",
+    "lexicon_active_primary_v1_1.csv": "d369f70a72868ea0807ed55eff3b4fbb22b9f59c42df368ba403e3281ca05250",
+    "lexicon_matcher_v1_1.py": "bc474eb7ebd581b5288e7feb6d8008c35929846b9d8c47a416be337acef9d24d",
+    "researcher_signoff_applied.csv": "44325c83712c14eccc2e08054097887fe5c2b608e75734f07302c736796c57d9",
+    "surface_forms_v1_1.csv": "d071430ccb340ae59ecb37d9058958fb622437e2a8757d8ea127d5da71673305"
+  },
+  "bilingual_orientation_concept_count": 16,
+  "confirmatory_cases_or_outputs_used_for_activation": 0,
+  "one_sided_orientation_concept_count": 0,
+  "orientation_family_counts": {
+    "KR_specific": 3,
+    "US_generic": 13,
+    "US_state_specific": 0
+  },
+  "policy_sha256": "24214ecb78f3a186740fc97df2b9bdcc305c100c8baa0e7cd6590c55977d504c",
+  "purpose": "Experiment 1 bilingual country-orientation measurement",
+  "researcher_decisions_sha256": "778c267025a9b8eb06efb0b3a6b4645a479877480a4961e7bc16a8a0c3f24b96",
+  "source_lexicon": "legal_lexicon_v1_0",
+  "source_lexicon_manifest_sha256": "569e71b76620472f9fedc689287e3538756078d0fff77f1db2dc9c6c67b47d3b",
+  "status": "FROZEN_PRE_GENERATION",
+  "symmetrically_excluded_concept_ids": [
+    "KR_JOINT_TORT",
+    "US_CAUSE_IN_FACT"
+  ],
+  "version": "legal-lexicon-orientation-v1.1"
+}
